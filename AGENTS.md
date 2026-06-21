@@ -60,6 +60,7 @@ Load from [`.cursor/skills/`](.cursor/skills/) when the user invokes or the task
 
 ## Git
 
+- Author email (this repo): `aizencot@gmail.com` — must match a verified GitHub email for contribution graph
 - Remote: `git@github.com:azencot/industry.git`
 - Use skill **`commit-push`** for all agent commits (avoids `--trailer` failures on older git)
 - Do **not** update git config
