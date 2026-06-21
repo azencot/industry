@@ -28,7 +28,7 @@ Amazon Applied Scientist phone screen live coding. Problems from [`code/`](../..
 
    `| YYYY-MM-DD | filename | minutes | pass/fail | notes |`
 
-7. **Optional mock file** — if full simulation, add `Amazon_FinTech/mocks/YYYY-MM-DD_timed-code.md` via `/debrief` template.
+7. **Optional** — if full simulation, run `/debrief` → `Amazon_FinTech/mocks/YYYY-MM-DD_timed-code.md` + summary in `.cursor/skills/debrief/`.
 
 ## Problem selection (default rotation)
 

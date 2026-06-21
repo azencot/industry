@@ -17,10 +17,12 @@ Active interview track. Annotated index — read entries before opening every fi
 
 | File | What | When to read |
 |------|------|--------------|
+| [`.cursor/skills/debrief/omri_azencot_experience.md`](../.cursor/skills/debrief/omri_azencot_experience.md) | **Canonical experience profile** — research arc, VLM flagship, JD alignment, interview framing | Start of every session; before pitch / ML deep-dive |
 | [`prep-plan.md`](prep-plan.md) | 7-day prep schedule (coding, ML, LP, mocks) | Daily — find today's block |
 | [`CV_Azencot_10399493.pdf`](CV_Azencot_10399493.pdf) | Resume for this application | Before intro / resume walkthrough |
 | [`stories/`](stories/) | STAR stories by Leadership Principle | Before LP drills and interview |
-| [`mocks/`](mocks/) | Dated mock logs; weaknesses → config updates | After every mock; before next session |
+| [`.cursor/skills/debrief/`](../.cursor/skills/debrief/) | Session debriefs & cross-chat handoffs | Start session B; after `/debrief` |
+| [`mocks/`](mocks/) | Simulated interview drill logs | After timed-code / full-mock / mock-lp |
 
 ---
 
@@ -64,10 +66,18 @@ Track which LPs have ready stories in [`stories/README.md`](stories/README.md). 
 
 ---
 
+## Debrief index
+
+| Date | Topic | File | Handoff for session B |
+|------|-------|------|------------------------|
+| 2026-06-21 | experience profile | [`omri_azencot_experience.md`](../.cursor/skills/debrief/omri_azencot_experience.md) | `@Files .cursor/skills/debrief/omri_azencot_experience.md` |
+
+Add a row after each `/debrief`. Store files in [`.cursor/skills/debrief/`](../.cursor/skills/debrief/).
+
 ## Mock log index
 
 | Date | Type | File | Top weakness fixed? |
 |------|------|------|---------------------|
 | | | | |
 
-Add a row after each `/debrief` or mock session.
+Add a row after each mock drill. Store files in [`mocks/`](mocks/).

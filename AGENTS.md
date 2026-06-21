@@ -10,8 +10,10 @@ Interview prep workspace for **Amazon FinTech Senior Applied Scientist** (FinTel
 
 1. [`INDEX.md`](INDEX.md) — annotated map of the repo
 2. [`Amazon_FinTech/INDEX.md`](Amazon_FinTech/INDEX.md) — active role, timeline, interviewer context
-3. [`Amazon_FinTech/prep-plan.md`](Amazon_FinTech/prep-plan.md) — weekly plan; check today's focus
-4. Latest entry in [`Amazon_FinTech/mocks/`](Amazon_FinTech/mocks/) if doing follow-up work
+3. [`.cursor/skills/debrief/omri_azencot_experience.md`](.cursor/skills/debrief/omri_azencot_experience.md) — experience profile, flagship project, JD alignment, IC framing
+4. [`Amazon_FinTech/prep-plan.md`](Amazon_FinTech/prep-plan.md) — weekly plan; check today's focus
+5. Latest [`.cursor/skills/debrief/`](.cursor/skills/debrief/) entry when borrowing context from a prior session
+6. Latest [`Amazon_FinTech/mocks/`](Amazon_FinTech/mocks/) entry if continuing mock-drill follow-up
 
 ## Behavior
 
@@ -31,6 +33,7 @@ Interview prep workspace for **Amazon FinTech Senior Applied Scientist** (FinTel
 
 ## Behavioral / LP conventions
 
+- **Positioning:** PI title reads managerial — prior loop feedback was "too managerial." Lead with hands-on IC work (see [`.cursor/skills/debrief/omri_azencot_experience.md`](.cursor/skills/debrief/omri_azencot_experience.md)); avoid grant/mentoring/roadmap stories at PS1
 - Format: **STAR** (Situation, Task, Action, Result)
 - Say **"I"**, not "we" — interviewers probe individual contribution
 - Include **metrics** (latency, F1, adoption, dollars, time saved)

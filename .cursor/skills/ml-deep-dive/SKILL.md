@@ -35,7 +35,7 @@ Technical portion of PS1 for Senior Applied Scientist, FinTelligence. Align with
    - "What would you measure in shadow mode?"
    - "When would synthetic data hurt you?"
 5. **Revise** — bullet outline of a stronger 3-min answer.
-6. **Persist** — optional notes in `Amazon_FinTech/mocks/YYYY-MM-DD_ml-deep-dive.md`.
+6. **Persist** — run `/debrief` → `.cursor/skills/debrief/` (and `mocks/` if treated as a drill).
 
 ## Default answer skeleton
 

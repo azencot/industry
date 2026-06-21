@@ -11,7 +11,7 @@ Personal workspace for industry job prep: Amazon FinTech Senior Applied Scientis
 | Path | What it is | When to read |
 |------|------------|--------------|
 | [`AGENTS.md`](AGENTS.md) | Onboarding for AI sessions: conventions, behavior, skills | Start of every Cursor session |
-| [`Amazon_FinTech/`](Amazon_FinTech/) | Role-specific prep: plan, stories, mocks, CV | Before interview work |
+| [`Amazon_FinTech/`](Amazon_FinTech/) | Role-specific prep: plan, stories, debriefs, mocks, CV | Before interview work |
 | [`code/`](code/) | LeetCode solutions (Python); `_practice` = scratch attempts | Coding prep, timed drills |
 | [`.cursor/skills/`](.cursor/skills/) | Repeatable prep workflows (`/mock-lp`, `/timed-code`, etc.) | When running a structured drill |
 
@@ -22,7 +22,7 @@ Personal workspace for industry job prep: Amazon FinTech Senior Applied Scientis
 - **Role:** Senior Applied Scientist, FinTelligence
 - **PS1:** Tue 30 Jun 2026, 21:00 Asia/Jerusalem — Karan Aggarwal (Senior Applied Scientist)
 - **Format:** intro + ML/LLM depth + Leadership Principles + 1 medium live code (Amazon Live Code)
-- **Details:** [`Amazon_FinTech/INDEX.md`](Amazon_FinTech/INDEX.md), [`Amazon_FinTech/prep-plan.md`](Amazon_FinTech/prep-plan.md)
+- **Details:** [`Amazon_FinTech/INDEX.md`](Amazon_FinTech/INDEX.md), [`.cursor/skills/debrief/omri_azencot_experience.md`](.cursor/skills/debrief/omri_azencot_experience.md), [`Amazon_FinTech/prep-plan.md`](Amazon_FinTech/prep-plan.md)
 
 ---
 
@@ -75,7 +75,7 @@ Add rows after `/timed-code` drills:
 
 After each prep session:
 
-1. Log mocks → `Amazon_FinTech/mocks/YYYY-MM-DD.md`
+1. Log debriefs → `.cursor/skills/debrief/YYYY-MM-DD_{topic}.md`; mock drills → `Amazon_FinTech/mocks/`
 2. Refine STAR stories → `Amazon_FinTech/stories/`
 3. Promote recurring fixes → `AGENTS.md` or relevant skill
 

@@ -1,6 +1,8 @@
 # Mock session logs
 
-Create one file per session: `YYYY-MM-DD_{type}.md` (e.g. `2026-06-26_full-mock.md`, `2026-06-24_timed-code.md`).
+Simulated interview drills only. For general session wrap-ups and cross-chat handoffs, use [`.cursor/skills/debrief/`](../../.cursor/skills/debrief/).
+
+Create one file per drill: `YYYY-MM-DD_{type}.md` (e.g. `2026-06-26_full-mock.md`, `2026-06-24_timed-code.md`).
 
 Update the mock index table in [`../INDEX.md`](../INDEX.md) after each entry.
 

@@ -40,7 +40,7 @@ Condensed from initial planning session. Adjust dates against [`INDEX.md`](../IN
 
 - [ ] 2 more timed mediums
 - [ ] 60-min full mock: pitch → ML project → 2 LP → 1 code → questions
-- [ ] `/debrief` → [`mocks/`](mocks/)
+- [ ] `/debrief` → [`.cursor/skills/debrief/`](../.cursor/skills/debrief/) (+ [`mocks/`](mocks/) if full mock)
 
 ## Day 7 — Weak areas + polish
 
