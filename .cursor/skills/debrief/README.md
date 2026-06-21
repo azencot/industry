@@ -11,7 +11,7 @@ Conclusions and handoffs from prep sessions. Use in a new Cursor chat via `@File
 | Pattern | Use for |
 |---------|---------|
 | `YYYY-MM-DD_{topic}.md` | Per-session debrief (e.g. `2026-06-24_prep-strategy.md`) |
-| `{name}_{topic}.md` | Long-lived reference docs (e.g. `omri_azencot_experience.md`) |
+| `{name}_{topic}.md` | Long-lived reference docs (e.g. `omri_azencot_experience.md`, `vlm_multimodal_project.md`) |
 
 Update the debrief index in [`Amazon_FinTech/INDEX.md`](../../Amazon_FinTech/INDEX.md) after each entry.
 

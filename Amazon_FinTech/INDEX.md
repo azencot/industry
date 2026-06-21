@@ -18,6 +18,8 @@ Active interview track. Annotated index — read entries before opening every fi
 | File | What | When to read |
 |------|------|--------------|
 | [`.cursor/skills/debrief/omri_azencot_experience.md`](../.cursor/skills/debrief/omri_azencot_experience.md) | **Canonical experience profile** — research arc, VLM flagship, JD alignment, interview framing | Start of every session; before pitch / ML deep-dive |
+| [`anchor-cheat-sheet.md`](anchor-cheat-sheet.md) | **Day 1 deliverable** — 3 VLM anchors (A/B/C): metric, IC role, JD map, LP hooks | Before ML deep-dive and LP drills |
+| [`.cursor/skills/debrief/vlm_multimodal_project.md`](../.cursor/skills/debrief/vlm_multimodal_project.md) | **Extended VLM project summary** — architecture, results, problems solved; extend over time | `@Files` for ML deep-dive, new results, follow-ups |
 | [`elevator-pitch.md`](elevator-pitch.md) | **PS1 intro script** (~90s spoken) — who → work → why FinTelligence; optional 30s + 45s cuts | Day 1; read aloud before PS1 |
 | [`prep-plan.md`](prep-plan.md) | 7-day prep schedule (coding, ML, LP, mocks) | Daily — find today's block |
 | [`CV_Azencot_10399493.pdf`](CV_Azencot_10399493.pdf) | Resume for this application | Before intro / resume walkthrough |
@@ -72,6 +74,7 @@ Track which LPs have ready stories in [`stories/README.md`](stories/README.md). 
 | Date | Topic | File | Handoff for session B |
 |------|-------|------|------------------------|
 | 2026-06-21 | experience profile | [`omri_azencot_experience.md`](../.cursor/skills/debrief/omri_azencot_experience.md) | `@Files .cursor/skills/debrief/omri_azencot_experience.md` |
+| 2026-06-21 | VLM project summary + Day 1 anchors | [`vlm_multimodal_project.md`](../.cursor/skills/debrief/vlm_multimodal_project.md) | `@Files vlm_multimodal_project.md` + `anchor-cheat-sheet.md` |
 
 Add a row after each `/debrief`. Store files in [`.cursor/skills/debrief/`](../.cursor/skills/debrief/).
 

@@ -7,9 +7,9 @@ Condensed from initial planning session. Adjust dates against [`INDEX.md`](../IN
 ## Day 1 — Story + resume architecture
 
 - [x] Elevator pitch (~90s) → [`elevator-pitch.md`](elevator-pitch.md) (read aloud; log time in practice table)
-- [ ] 3 anchor projects (STAR-ready): production ML/LLM, eval/monitoring, cross-functional ambiguity
-- [ ] Map each to JD: trust/precision, corrections loop, tiered inference, eval gating
-- [ ] One-page cheat sheet: project → metric → your role → lesson
+- [x] 3 anchor projects (STAR-ready): production ML/LLM, eval/monitoring, cross-functional ambiguity → [`anchor-cheat-sheet.md`](anchor-cheat-sheet.md) (all three angles on VLM project)
+- [x] Map each to JD: trust/precision, corrections loop, tiered inference, eval gating
+- [x] One-page cheat sheet: project → metric → your role → lesson → [`anchor-cheat-sheet.md`](anchor-cheat-sheet.md)
 
 ## Day 2 — ML/LLM depth (FinTech lens)
 

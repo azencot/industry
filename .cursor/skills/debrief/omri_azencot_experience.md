@@ -65,6 +65,9 @@ Sequential / dynamical modeling (Koopman, forecasting)
 
 ## Flagship project: Time-Series Vision-Language Models
 
+**Extended summary (build on this):** [`vlm_multimodal_project.md`](vlm_multimodal_project.md)  
+**PS1 cheat sheet:** [`anchor-cheat-sheet.md`](../../Amazon_FinTech/anchor-cheat-sheet.md)
+
 **Stack:** Python 3.11 · PyTorch 2.4 (8B) / 2.11 (Q35) · Transformers · PEFT/LoRA · TRL (GRPO) · Accelerate/DeepSpeed · HuggingFace · Slurm · 8× GPU DDP
 
 ### Elevator pitch (30s)
@@ -115,6 +118,28 @@ Decouples vision from language reasoning; caption priors transfer to downstream 
 ### Negative result (show rigor)
 
 Subset-mix experiments for temporal-relation and reasoning buckets **regressed vs control** → stopped additive buckets; revisiting data generation instead of stacking more training mixes.
+
+Stage B **over-reasoning** on complex TSRBench tasks (domain-specific, multi-hop alongside basic TS ops) — diagnosed via task-level audit, not fixed by stacking more training buckets.
+
+### Recent work (Jun 2025 — Anchor C material)
+
+1. **Caption scarcity (Stage A):** Generated synthetic TS↔text alignment data from TSExam + ChatTS (LLaVA-style) when real captions insufficient.
+2. **Synthetic too basic:** Added CaTS (~16K samples) to Stage A → strong perception eval (next-token prediction + TSExam perception slices).
+3. **Stage B reasoning gaps:** Audited TSRBench task taxonomy; identified **missing operations** (val extraction, segmentation, multi-hop primitives). Extended TSExam to cover these ops rather than adding data buckets blindly.
+
+**Planned Stage C:** GRPO / VRT — gold-based RL on SFT adapters (MCQ correctness rewards).
+
+### PS1 three anchors (one project, three angles)
+
+Full detail: [`vlm_multimodal_project.md`](vlm_multimodal_project.md). Cheat sheet: [`anchor-cheat-sheet.md`](../../Amazon_FinTech/anchor-cheat-sheet.md).
+
+| Anchor | Theme | VLM angle |
+|--------|-------|-----------|
+| **A** | Production ML/LLM | Dual-tower, two-stage curriculum, DDP training stack |
+| **B** | Eval / monitoring | Tiered eval, pilot harness, parse-miss, killed TR mixes |
+| **C** | Ambiguity / Dive Deep | Caption pipeline (synthetic + CaTS); TSRBench gap → extended TSExam ops |
+
+**Supporting LP stories (not anchors):** ImagenTime (Invent & Simplify, reframed); SKD debug (Dive Deep, reframed). **Retire PS1:** compute-bottleneck story.
 
 ### Experimentation methodology (Amazon-relevant)
 
@@ -202,7 +227,8 @@ Lean hardest on: **eval methodology**, **curriculum/domain adaptation**, **low-l
 
 ## Gaps & open items
 
-- [ ] **STAR stories** — user has 2 per LP; will share curated set for rewrite (managerial → IC framing)
+- [ ] **STAR stories** — triage done: ImagenTime + SKD keep (reframe); compute story retire; Customer Obsession gap remains
+- [x] **Three anchors + cheat sheet** — [`anchor-cheat-sheet.md`](../../Amazon_FinTech/anchor-cheat-sheet.md)
 - [ ] **Hands-on ledger** — explicit list of personal vs delegated work across 2020–present
 - [ ] **Industry collab specifics** — technical contribution per Google/NVIDIA/Bosch
 - [ ] **Motivation narrative** — why this IC role now (counter "will miss running a lab")
