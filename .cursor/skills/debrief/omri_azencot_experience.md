@@ -207,7 +207,7 @@ Lean hardest on: **eval methodology**, **curriculum/domain adaptation**, **low-l
 - [ ] **Industry collab specifics** — technical contribution per Google/NVIDIA/Bosch
 - [ ] **Motivation narrative** — why this IC role now (counter "will miss running a lab")
 - [ ] **Prior loop details** — which role/stories triggered "too managerial"
-- [ ] **2-min pitch** — draft in [`stories/`](../../Amazon_FinTech/stories/) or separate file
+- [x] **2-min pitch** — [`elevator-pitch.md`](../../Amazon_FinTech/elevator-pitch.md)
 - [ ] **Production story** — any internal tools, real (non-benchmark) eval, serving constraints
 
 ---

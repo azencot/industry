@@ -6,7 +6,7 @@ Condensed from initial planning session. Adjust dates against [`INDEX.md`](../IN
 
 ## Day 1 — Story + resume architecture
 
-- [ ] 2-min elevator pitch (who → relevant work → why FinTech/Amazon)
+- [x] Elevator pitch (~90s) → [`elevator-pitch.md`](elevator-pitch.md) (read aloud; log time in practice table)
 - [ ] 3 anchor projects (STAR-ready): production ML/LLM, eval/monitoring, cross-functional ambiguity
 - [ ] Map each to JD: trust/precision, corrections loop, tiered inference, eval gating
 - [ ] One-page cheat sheet: project → metric → your role → lesson
