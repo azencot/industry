@@ -26,6 +26,7 @@ Active interview track. Annotated index — read entries before opening every fi
 | [`stories/`](stories/) | STAR stories by Leadership Principle | Before LP drills and interview |
 | [`.cursor/skills/debrief/`](../.cursor/skills/debrief/) | Session debriefs & cross-chat handoffs | Start session B; after `/debrief` |
 | [`mocks/`](mocks/) | Simulated interview drill logs | After timed-code / full-mock / mock-lp |
+| [`debrief/`](debrief/) | FinTech-track session debriefs & reading notes | Start session B; after exploration reads |
 
 ---
 
@@ -45,8 +46,8 @@ Full posting context lives in prep chat / recruiter email — not duplicated her
 - **Role:** Senior Applied Scientist (FinTech background; NLP, limited-label learning)
 - **Likely interests:** document IE for payments/cash optimization, synthetic data for NER, continual pre-training for financial LLMs, production eval
 - **Read before PS1:**
-  - [Efficient continual pre-training LLMs for financial domains](https://aws.amazon.com/blogs/machine-learning/efficient-continual-pre-training-llms-for-financial-domains/) (co-authored)
-  - [ECG-QALM — synthetic text for NER](https://www.amazon.science/publications/ecg-qalm-entity-controlled-synthetic-text-generation-using-contextual-q-a-for-ner) (abstract)
+  - [Efficient continual pre-training LLMs for financial domains](https://aws.amazon.com/blogs/machine-learning/efficient-continual-pre-training-llms-for-financial-domains/) (co-authored) · paper [arxiv:2311.08545](https://arxiv.org/abs/2311.08545)
+  - [ECG-QALM — synthetic text for NER](https://www.amazon.science/publications/ecg-qalm-entity-controlled-synthetic-text-generation-using-contextual-q-a-for-ner) (abstract only; [ACL PDF](https://aclanthology.org/2023.findings-acl.349.pdf) if needed)
 - **Questions to ask him (pick 2):** eval gating before ship; how user corrections feed back; SLM vs frontier routing; hardest LLM failure mode on financial docs
 
 ---
@@ -75,8 +76,9 @@ Track which LPs have ready stories in [`stories/README.md`](stories/README.md). 
 |------|-------|------|------------------------|
 | 2026-06-21 | experience profile | [`omri_azencot_experience.md`](../.cursor/skills/debrief/omri_azencot_experience.md) | `@Files .cursor/skills/debrief/omri_azencot_experience.md` |
 | 2026-06-21 | VLM project summary + Day 1 anchors | [`vlm_multimodal_project.md`](../.cursor/skills/debrief/vlm_multimodal_project.md) | `@Files vlm_multimodal_project.md` + `anchor-cheat-sheet.md` |
+| 2026-06-21 | Day 2 — continual pre-training blog (Karan) | [`2026-06-21_continual-pretraining-blog.md`](debrief/2026-06-21_continual-pretraining-blog.md) | `@Files debrief/2026-06-21_continual-pretraining-blog.md` + `/ml-deep-dive` |
 
-Add a row after each `/debrief`. Store files in [`.cursor/skills/debrief/`](../.cursor/skills/debrief/).
+Add a row after each `/debrief`. FinTech-track notes → [`debrief/`](debrief/); cross-session profile → [`.cursor/skills/debrief/`](../.cursor/skills/debrief/).
 
 ## Mock log index
 
