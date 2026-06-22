@@ -78,6 +78,7 @@ Track which LPs have ready stories in [`stories/README.md`](stories/README.md). 
 | 2026-06-21 | VLM project summary + Day 1 anchors | [`vlm_multimodal_project.md`](../.cursor/skills/debrief/vlm_multimodal_project.md) | `@Files vlm_multimodal_project.md` + `anchor-cheat-sheet.md` |
 | 2026-06-21 | Day 2 — continual pre-training blog (Karan) | [`2026-06-21_continual-pretraining-blog.md`](debrief/2026-06-21_continual-pretraining-blog.md) | `@Files debrief/2026-06-21_continual-pretraining-blog.md` + `/ml-deep-dive` |
 | 2026-06-21 | Day 2 — ML depth interactive (3 topics) | [`2026-06-21_day2-ml-depth.md`](../.cursor/skills/debrief/2026-06-21_day2-ml-depth.md) | `@Files 2026-06-21_day2-ml-depth.md` + spoken drill retake |
+| 2026-06-22 | Day 3 — LP stories DCC L6 (Invent + Deliver Results) | [`2026-06-22_day3-lp-stories.md`](../.cursor/skills/debrief/2026-06-22_day3-lp-stories.md) | `@Files 2026-06-22_day3-lp-stories.md` + draft Ownership (TR kill) |
 
 Add a row after each `/debrief`. FinTech-track notes → [`debrief/`](debrief/); cross-session profile → [`.cursor/skills/debrief/`](../.cursor/skills/debrief/).
 

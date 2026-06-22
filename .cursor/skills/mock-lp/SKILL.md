@@ -23,7 +23,9 @@ Behavioral prep for Amazon interviews. Default context: [`Amazon_FinTech/stories
    - "Tell me about delivering results under a tight deadline with imperfect data."
 5. **User answers** (or user asks you to draft from their bullets).
 6. **Critique** using DCC quality bar in [`stories/README.md`](../../Amazon_FinTech/stories/README.md):
-   - [ ] **L5 length** — ~600–700 words body, ~5–6 min spoken (not compressed 90s)
+   - [ ] **L6 length** — ~800–900 words body, **~6–7 min** spoken (L5 is too thin)
+   - [ ] **Alternatives considered** — paths rejected with reason
+   - [ ] **Influence** — aligned team/stakeholders with data, not authority
    - [ ] **Ownership** early — role, what *I* owned vs collaborators
    - [ ] **Concrete before** — baseline pain, operational not just technical
    - [ ] **Friction** — ≥1 failed path or tuning struggle
@@ -31,7 +33,7 @@ Behavioral prep for Amazon interviews. Default context: [`Amazon_FinTech/stories
    - [ ] **Causal results** — which action drove which metric
    - [ ] Says **"I"**; metrics; lesson; plain English for jargon once
    - [ ] No self-labels ("core Invent move"); FinTech bridge optional
-7. **Iterate** — one revision pass; tighten **~5–6 min spoken script** (keep 90s backup).
+7. **Iterate** — one revision pass; tighten **~6–7 min spoken script** (keep 90s backup).
 8. **Persist** — save or update `Amazon_FinTech/stories/{lp-slug}_{title}.md` using full DCC sections; mark LP ready in `stories/README.md` table.
 
 ## Output format

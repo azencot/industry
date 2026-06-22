@@ -14,13 +14,13 @@ North star: [TSRBench](https://tsrbench.github.io/) · Control: allcap-a5b3 (TSE
 | **Problem** | General VLMs can't do exam-grade time-series reasoning (MCQ, numbers, temporal relations). |
 | **Insight** | Raw TS tokens are inefficient; dual visual encodings (chart + delay embedding) fused into one LLM. |
 | **What I built** | Patched Qwen3-VL-8B & Qwen3.5-0.8B forwards; DinoVisionTower; dual-stream collator + M-RoPE tags; two-stage curriculum (Stage A: vision alignment, Stage B: LM LoRA); YAML-config sweeps (162 configs); DDP on 8× GPU via Slurm. |
-| **Metrics** | TSExam HF **0.890** (0.8B) vs **0.901** (8B); caption attr-recovery **0.72** macro. |
-| **JD map** | End-to-end ML systems; tiered models (0.8B ≈ 8B on TSExam); multimodal finance docs analogy. |
-| **Honest limit** | TSRBench overall still gap vs frontier (~0.45 8B vs proprietary trillion-scale). |
+| **Metrics** | **Qwen3-VL-8B** stock (0.618 / 0.402) → our stack **3ep** (0.905 / 0.452). |
+| **JD map** | End-to-end ML systems; tiered eval gates; multimodal finance docs analogy. |
+| **Honest limit** | TSRBench +5 pp from stock real but below frontier; hard TR ~29%; proprietary gap remains. |
 | **Lesson** | Decouple *how to see* (Stage A) from *how to answer* (Stage B) — same pattern as domain alignment → task FT on finance docs. |
 | **LPs** | Invent & Simplify, Deliver Results, Ownership |
 
-**90s spoken:** Goal → dual encoding → two-stage curriculum → I built stack (patch, collator, sweeps) → 0.89 on 0.8B near 8B ceiling.
+**90s spoken:** **Qwen3-VL-8B** stock **0.618 / 0.402** → dual tower + curriculum → **0.905 / 0.452** (3ep).
 
 ---
 
@@ -89,7 +89,8 @@ North star: [TSRBench](https://tsrbench.github.io/) · Control: allcap-a5b3 (TSE
 
 | LP | Story | Status |
 |----|-------|--------|
-| Invent & Simplify | ImagenTime — [`stories/invent-simplify_imagentime.md`](stories/invent-simplify_imagentime.md) | Draft v2 DCC L5 |
+| Deliver Results | VLM Anchor A — [`stories/deliver-results_dual-tower-curriculum.md`](stories/deliver-results_dual-tower-curriculum.md) | Qwen3-VL-8B → 3ep: 0.618→0.905, 0.402→0.452 |
+| Invent & Simplify | ImagenTime — [`stories/invent-simplify_imagentime.md`](stories/invent-simplify_imagentime.md) | Draft v3 DCC L6 |
 | Dive Deep | SKD setup-bug debug **or** Anchor C TSRBench audit | Reframe SKD; Anchor C ready |
 | Customer Obsession | **Gap** | Need stakeholder/user story |
 

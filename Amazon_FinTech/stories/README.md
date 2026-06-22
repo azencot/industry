@@ -4,7 +4,7 @@ One file per story: `{lp-slug}_{short-title}.md` (e.g. `ownership_shipped-eval-g
 
 **Template:** [DayOne Careers (DCC)](https://dayone.careers) — **Title | Outline | Ecosystem | Issue | Objectives | Actions | Results | Learnings and Improvements**. Use this for every draft and rewrite.
 
-**Target role:** Senior Applied Scientist (FinTelligence) ≈ **L5–L6** — see length and quality bar below.
+**Target role:** Senior Applied Scientist — interview at **L6**; stories should also signal **L7** leverage where true (reusable frameworks, cross-project influence). See length bar below.
 
 ## Priority Leadership Principles (PS1)
 
@@ -13,7 +13,7 @@ One file per story: `{lp-slug}_{short-title}.md` (e.g. `ownership_shipped-eval-g
 | Customer Obsession | | | ☐ |
 | Ownership | | | ☐ |
 | Dive Deep | | | ☐ |
-| Deliver Results | | | ☐ |
+| Deliver Results | [`deliver-results_dual-tower-curriculum.md`](deliver-results_dual-tower-curriculum.md) | 0.618→0.905 TSExam; 0.402→0.452 TSRBench | ☐ |
 | Invent and Simplify | [`invent-simplify_imagentime.md`](invent-simplify_imagentime.md) | +58% / +132%; EDM ~35 NFE | ☐ |
 | Earn Trust | | | ☐ |
 | Have Backbone; Disagree and Commit | | | ☐ |
@@ -33,7 +33,7 @@ Map to spoken flow: **Ecosystem + Issue** ≈ Situation · **Objectives** ≈ Ta
 **Leadership Principle:** [exact LP name]
 **Project:** [anchor or supporting project]
 **Status:** Draft | Ready
-**Target length:** ~650–750 words (DCC body) · ~5–6 min spoken
+**Target length:** **L6** ~800–900 words (DCC body) · **~6–7 min** spoken · L7 beats where scope is real
 
 ---
 
@@ -109,50 +109,55 @@ Map to spoken flow: **Ecosystem + Issue** ≈ Situation · **Objectives** ≈ Ta
 
 ---
 
-## DCC quality bar (L5–L6 — apply on every draft)
+## DCC quality bar (L6 primary — L7 where earned)
 
 Use this after writing; mirrors DCC AI review. **Do not add filler** — expand only where real detail improves interview quality.
 
-### Length
+### Length (Omri target: L6 interview, L7 promotion signal)
 
-| Level | DCC body | Spoken |
-|-------|----------|--------|
-| L4 | ~450 w · ~4 min | OK shorter |
-| **L5 (target floor)** | **600–700 w** | **5–6 min** |
-| **L6 (stretch)** | **750–850 w** | **6–7 min** |
+| Level | DCC body | Spoken | When |
+|-------|----------|--------|------|
+| L5 | 600–700 w | 5–6 min | Floor only — too thin for L6 loop |
+| **L6 (primary target)** | **800–900 w** | **6–7 min** | **Default for every PS1 story** |
+| **L7 (selective beats)** | **900–1000 w** | **7–8 min** | Only when story has cross-team / field-level leverage — do not fabricate |
 
-Senior Applied Scientist stories should hit **L5 minimum**; add L6 depth when scope warrants it.
+At **L6**, interviewers expect: developed context, alternatives considered, risk managed, influence on technical direction, broader impact. At **L7**, add **long-term leverage** — reusable frameworks, enabling other teams, strategic bets that paid off across projects (e.g. ImagenTime → VLM arc, open eval protocol).
 
-### Required elements
+### Required elements (L6+)
 
 | Element | Where | What good looks like |
 |---------|-------|----------------------|
-| **Role & ownership** | Ecosystem | First/senior author; what *I* owned (hypothesis, ablations, pipeline, eval) vs collaborators |
-| **Stakeholders / users** | Ecosystem | Who cared — practitioners, downstream scientists, exam users, finance ops |
-| **Concrete "before"** | Issue | Baseline limits: length, speed (~1000 model calls), maintenance burden |
-| **Testable objectives** | Objectives | Same units as Results (%, model calls, modules removed) |
-| **Friction / failure** | Actions | ≥1 failed path (bad encoding, sampler hurt quality until tuned) |
-| **De-risk loop** | Actions | How you validated representation didn't destroy structure |
-| **Operational simplify** | Actions + Results | What became simpler — modules removed, config vs rewrite, reuse vision stack |
-| **Causal results** | Results | Representation → length/quality; sampler → speed |
-| **Practical impact** | Results | Who could use it more easily, what it enabled |
-| **Plain English** | Throughout | Explain DDPM, EDM, NFE once: "model calls per sample" |
-| **No LP self-labels** | Actions | Show behavior; don't say "core Invent move" |
-| **Collaborator honesty** | Ecosystem | Transparent team role without diluting "I" |
-
-### IC vs managerial (still applies at L5–L6)
-
-| Avoid | Do instead |
-|-------|------------|
-| "I led a research program" | "I owned the hypothesis and ablation plan" |
-| Publication strategy, grants, hiring | Technical forks you personally drove |
-| "We improved SOTA" | "I chose delay embedding over GAF because…" |
+| **Role & ownership** | Ecosystem | Project lead / senior author; what *I* owned vs collaborators — artifacts named |
+| **Stakeholders / users** | Ecosystem | Who depended on the outcome; why it mattered beyond a paper |
+| **Alternatives considered** | Issue or Actions | Paths you rejected and why (text tokens, single-stream, bespoke TS stack, incremental VAE) |
+| **Concrete "before"** | Issue | Baseline metrics, operational pain, cost of wrong path |
+| **Testable objectives** | Objectives | Same units as Results |
+| **Friction / failure** | Actions | ≥2 setbacks or rejected options with evidence |
+| **De-risk / risk management** | Actions | Staged validation, POC before pivot, eval gates |
+| **Influence** | Actions | How you aligned collaborators / changed team direction with data |
+| **Operational simplify** | Actions + Results | What became simpler to build, maintain, or extend |
+| **Causal results** | Results | Which action drove which metric |
+| **Broader impact** | Results + Learnings | Field, open stack, methodology others reuse — L7 signal |
+| **Plain English** | Throughout | Jargon explained once |
+| **No LP self-labels** | Actions | Demonstrate, don't name the LP |
 
 ### Spoken delivery
 
-- DCC body = **source of truth**; spoken script = **narrative read-aloud** of the same beats.
+- DCC body = **source of truth**; spoken script = **narrative read-aloud** (~6–7 min primary).
 - Prefer connected sentences over bullet dumps when speaking.
-- Keep a **90 sec backup** at the bottom — not the primary target for this role.
+- Keep a **90 sec backup** — emergency only, not L6 primary.
+
+---
+
+## IC vs managerial (L6+ — still applies)
+
+| Avoid | Do instead |
+|-------|------------|
+| "I led a research program" | "I owned the hypothesis, eval gates, and architecture forks" |
+| Grant/roadmap/hiring as hero | Technical decisions + measurable delivery |
+| "We improved SOTA" | "I chose dual-stream over text tokens because pilot showed…" |
+
+**L7 without sounding managerial:** frame influence as *technical persuasion with data* — POC ablations, eval protocol the team adopted, open stack others build on — not org chart authority.
 
 ---
 
@@ -164,7 +169,7 @@ Senior Applied Scientist stories should hit **L5 minimum**; add L6 depth when sc
 | **Metrics** required | Results (+ Issue baseline) |
 | **Tradeoff or failure** | ≥1 Action beat |
 | **Artifacts** named | IC proof + Actions |
-| **~5–6 min** spoken | Primary script for Senior Applied Scientist |
+| **~6–7 min** spoken | Primary script — L6 target |
 
 ## Refinement loop
 
