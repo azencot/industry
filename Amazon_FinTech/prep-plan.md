@@ -22,8 +22,9 @@ Condensed from initial planning session. Adjust dates against [`INDEX.md`](../IN
 
 ## Day 3 — Leadership Principles
 
-- [ ] 8 STAR stories: Customer Obsession, Ownership, Dive Deep, Deliver Results, Invent and Simplify, Earn Trust, Have Backbone, Learn and Be Curious
-- [ ] Rules: "I" not "we"; metrics; tradeoffs; lesson learned
+- [ ] 8 STAR stories (DCC template): Customer Obsession, Ownership, Dive Deep, Deliver Results, Invent and Simplify, Earn Trust, Have Backbone, Learn and Be Curious
+- [ ] Template + DCC quality bar → [`stories/README.md`](stories/README.md) (L5: ~650–750 w, ~5–6 min; narrative not bullets)
+- [ ] Rules: ownership early; friction/de-risk; causal results; plain English; "I" not "we"
 - [ ] Save drafts → [`stories/`](stories/)
 
 ## Day 4 — Live coding sprint #1

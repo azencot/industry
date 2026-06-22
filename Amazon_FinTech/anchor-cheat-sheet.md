@@ -89,7 +89,7 @@ North star: [TSRBench](https://tsrbench.github.io/) · Control: allcap-a5b3 (TSE
 
 | LP | Story | Status |
 |----|-------|--------|
-| Invent & Simplify | ImagenTime — reframe to IC | Reframe needed |
+| Invent & Simplify | ImagenTime — [`stories/invent-simplify_imagentime.md`](stories/invent-simplify_imagentime.md) | Draft v2 DCC L5 |
 | Dive Deep | SKD setup-bug debug **or** Anchor C TSRBench audit | Reframe SKD; Anchor C ready |
 | Customer Obsession | **Gap** | Need stakeholder/user story |
 
