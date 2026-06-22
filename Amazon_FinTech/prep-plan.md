@@ -13,10 +13,10 @@ Condensed from initial planning session. Adjust dates against [`INDEX.md`](../IN
 
 ## Day 2 — ML/LLM depth (FinTech lens)
 
-- [ ] RAG vs fine-tuning vs continual pre-training — when, cost, drift
-- [ ] NER/IE on messy finance docs; low-label strategies
-- [ ] Eval that gates releases; human-in-the-loop corrections
-- [ ] Practice aloud (3 min each): end-to-end LLM system; safe deploy; scarce labels; payment doc extraction
+- [x] RAG vs fine-tuning vs continual pre-training — when, cost, drift → [`.cursor/skills/debrief/2026-06-21_day2-ml-depth.md`](../.cursor/skills/debrief/2026-06-21_day2-ml-depth.md)
+- [x] NER/IE on messy finance docs; low-label strategies → same debrief (Topic 3)
+- [x] Eval that gates releases; human-in-the-loop corrections → same debrief (Topic 2)
+- [ ] Practice aloud (3 min each): end-to-end LLM system; safe deploy; scarce labels; payment doc extraction → `/ml-deep-dive` retakes; mock log [2026-06-21](mocks/2026-06-21_ml-deep-dive.md)
 - [x] Read Karan's continual pre-training blog (methodology; results skim TBD) → [`debrief/2026-06-21_continual-pretraining-blog.md`](debrief/2026-06-21_continual-pretraining-blog.md); full paper [arxiv:2311.08545](https://arxiv.org/abs/2311.08545) optional before PS1
 - [x] ECG-QALM abstract only (full paper skipped — PS1 bridge is Anchor C: TSExam op coverage audit, not NER synthetic generation) → [Amazon Science](https://www.amazon.science/publications/ecg-qalm-entity-controlled-synthetic-text-generation-using-contextual-q-a-for-ner)
 

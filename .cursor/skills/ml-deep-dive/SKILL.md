@@ -34,8 +34,11 @@ Technical portion of PS1 for Senior Applied Scientist, FinTelligence. Align with
    - "How do you know it's safe to reduce human review?"
    - "What would you measure in shadow mode?"
    - "When would synthetic data hurt you?"
-5. **Revise** — bullet outline of a stronger 3-min answer.
-6. **Persist** — run `/debrief` → `.cursor/skills/debrief/` (and `mocks/` if treated as a drill).
+5. **Full reference answer** — ~90s spoken bullets (not gaps-only); user learns by comparing, not reconstructing.
+6. **Optional retake** — user re-answers once; score delta only.
+7. **Persist** — run `/debrief` → `.cursor/skills/debrief/` (and `mocks/` if treated as a drill).
+
+Day 2 reference answers: [`.cursor/skills/debrief/2026-06-21_day2-ml-depth.md`](../debrief/2026-06-21_day2-ml-depth.md).
 
 ## Default answer skeleton
 

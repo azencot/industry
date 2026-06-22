@@ -77,6 +77,7 @@ Track which LPs have ready stories in [`stories/README.md`](stories/README.md). 
 | 2026-06-21 | experience profile | [`omri_azencot_experience.md`](../.cursor/skills/debrief/omri_azencot_experience.md) | `@Files .cursor/skills/debrief/omri_azencot_experience.md` |
 | 2026-06-21 | VLM project summary + Day 1 anchors | [`vlm_multimodal_project.md`](../.cursor/skills/debrief/vlm_multimodal_project.md) | `@Files vlm_multimodal_project.md` + `anchor-cheat-sheet.md` |
 | 2026-06-21 | Day 2 — continual pre-training blog (Karan) | [`2026-06-21_continual-pretraining-blog.md`](debrief/2026-06-21_continual-pretraining-blog.md) | `@Files debrief/2026-06-21_continual-pretraining-blog.md` + `/ml-deep-dive` |
+| 2026-06-21 | Day 2 — ML depth interactive (3 topics) | [`2026-06-21_day2-ml-depth.md`](../.cursor/skills/debrief/2026-06-21_day2-ml-depth.md) | `@Files 2026-06-21_day2-ml-depth.md` + spoken drill retake |
 
 Add a row after each `/debrief`. FinTech-track notes → [`debrief/`](debrief/); cross-session profile → [`.cursor/skills/debrief/`](../.cursor/skills/debrief/).
 
@@ -84,6 +85,6 @@ Add a row after each `/debrief`. FinTech-track notes → [`debrief/`](debrief/);
 
 | Date | Type | File | Top weakness fixed? |
 |------|------|------|---------------------|
-| | | | |
+| 2026-06-21 | ml-deep-dive | [`2026-06-21_ml-deep-dive.md`](mocks/2026-06-21_ml-deep-dive.md) | IC voice + metrics on Topics 1–2 (retake pending) |
 
 Add a row after each mock drill. Store files in [`mocks/`](mocks/).
