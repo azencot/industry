@@ -22,8 +22,8 @@ Condensed from initial planning session. Adjust dates against [`INDEX.md`](../IN
 
 ## Day 3 — Leadership Principles
 
-- [ ] 8 STAR stories (DCC template): Customer Obsession, Ownership, Dive Deep, Deliver Results, Invent and Simplify, Earn Trust, Have Backbone, Learn and Be Curious — **2 drafted** (Invent, Deliver Results)
-- [ ] Template + DCC quality bar → [`stories/README.md`](stories/README.md) (**L6:** ~800–900 w, ~6–7 min; L7 leverage where true)
+- [ ] 8 STAR stories (DOC template): … — **3 drafted** (Invent, Deliver Results, Ownership)
+- [ ] Template + DOC quality bar → [`stories/README.md`](stories/README.md) (**L6:** ~800–900 w, ~6–7 min; L7 leverage where true)
 - [ ] Rules: ownership early; friction/de-risk; causal results; plain English; "I" not "we"
 - [ ] Save drafts → [`stories/`](stories/)
 

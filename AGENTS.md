@@ -34,7 +34,7 @@ Interview prep workspace for **Amazon FinTech Senior Applied Scientist** (FinTel
 ## Behavioral / LP conventions
 
 - **Positioning:** PI title reads managerial — prior loop feedback was "too managerial." Lead with hands-on IC work (see [`.cursor/skills/debrief/omri_azencot_experience.md`](.cursor/skills/debrief/omri_azencot_experience.md)); avoid grant/mentoring/roadmap stories at PS1
-- Format: **DCC** ([`stories/README.md`](Amazon_FinTech/stories/README.md)) — Title · Outline · Ecosystem · Issue · Objectives · Actions · Results · Learnings; **L6: ~800–900 words / ~6–7 min spoken**; L7 leverage beats where true
+- Format: **DOC** ([`stories/README.md`](Amazon_FinTech/stories/README.md)) — Title · Outline · Ecosystem · Issue · Objectives · Actions · Results · Learnings; **L6: ~700–850 words body / ~8 min descriptive spoken**; apply **DOC AI checklist** in README after draft
 - Say **"I"**, not "we" — interviewers probe individual contribution
 - Include **metrics** (latency, F1, adoption, dollars, time saved)
 - End with **what you learned**

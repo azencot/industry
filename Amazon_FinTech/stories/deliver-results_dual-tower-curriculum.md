@@ -2,8 +2,8 @@
 
 **Leadership Principle:** Deliver Results  
 **Project:** Time-series VLM reasoning stack (Anchor A)  
-**Status:** Draft v4 — DCC L6  
-**Target length:** ~850 words (body) · ~6–7 min spoken
+**Status:** Draft v4 — DOC L6  
+**Target length:** ~850 words (body) · **~8 min spoken** (descriptive primary)
 
 ---
 
@@ -75,23 +75,29 @@ Project lead: architecture, curriculum, eval harness, experiment matrix. I patch
 - Patched Qwen3-VL-8B forwards; DinoVisionTower; dual-stream collator + M-RoPE.
 - Two-stage curriculum; tiered eval + pilot noise floors; 162 configs / 125 scripts.
 
-### Spoken script (~6–7 min)
+### Spoken script (~8 min)
 
-I lead a multimodal project at Ben-Gurion: teach vision-language models to reason over time series — exam questions, numeric answers, temporal relations, captions. Stakeholders need one model that generalizes across tasks — the same shape of problem as multimodal finance docs.
+I lead a multimodal modeling project at Ben-Gurion University: teach general-purpose vision-language models to reason over time series — multiple-choice exams, numeric answers, temporal relations, captions — not just classify shapes on a plot. The stakeholders are researchers who need one model that generalizes across task types, and downstream builders who need structured answers over sequential data. The shape of the problem is very close to what I care about in finance: multimodal documents where you cannot trust a single headline metric and you need exam-grade reliability on specific field types.
 
-When TSRBench published as a multi-task north star, I anchored delivery there. The starting point was **stock Qwen3-VL-8B** — no time-series stack, no custom training. It scored **TSExam-HF zero-point-six-one-eight** on seven hundred forty-six items and **TSRBench overall zero-point-four-zero-two** on four thousand one hundred twenty-five. A general open VLM could not do exam-grade time-series reasoning out of the box.
+For two years the field chased text-token time-series inputs and bespoke benchmarks. Each paper claimed state of the art locally, but nothing transferred. When TSRBench launched as a multi-task north star — perception, reasoning, prediction, decision-making across fourteen domains including finance — I anchored delivery on that benchmark. I owned technical direction end to end: dual-stream architecture, Qwen3-VL-8B integration, two-stage training recipe, a YAML experiment matrix with a hundred sixty-two configs and a hundred twenty-five scripts, tiered evaluation harness, and multi-scale validation. Collaborators run Slurm jobs and data curation; I implement the model patches, collators, gating logic, and the eval protocol the lab adopted as standard.
 
-We also killed alternatives — text tokens, single visual streams, per-benchmark forks. Proprietary models far larger still led the field. Eight GPUs, hundreds of configs, expensive north-star evals — I could not run full TSRBench on every hypothesis.
+The baseline I always name in interviews is stock Qwen3-VL-8B — no time-series stack, no custom training. It scored TSExam-HF zero-point-six-one-eight on seven hundred forty-six items and TSRBench overall zero-point-four-zero-two on four thousand one hundred twenty-five. A general open VLM could not do exam-grade time-series reasoning out of the box. That was the delivery gap.
 
-My objectives: close the gap from **Qwen3-VL-8B**, one unified dual-tower stack, **zero-point-nine-oh-plus** TSExam and **zero-point-four-five-plus** TSRBench together, and no feature merges unless tiered eval passes on both benchmarks.
+We also evaluated alternatives that failed, and I killed them with evidence rather than opinion. Text-token time series burned context and missed plot structure. Chart-only or delay-only single streams lost information in ablations — chart-only regressed on topology slices; text-token stalled on parse reliability. Per-benchmark model forks would never unify on TSRBench. Proprietary VLMs orders of magnitude larger still led the field. Operationally, full TSRBench evaluation is expensive. With eight GPUs and hundreds of hypotheses, I could not treat the north star as a daily loop. The delivery problem was concrete: lift stock Qwen3-VL-8B to competitive time-series reasoning — zero-point-nine-oh-plus on TSExam and roughly zero-point-four-five on TSRBench — in one stack, and refuse to promote changes that win one slice and regress another.
 
-I designed a dual tower on **Qwen3-VL-8B**: matplotlib charts through frozen Qwen ViT, delay embeddings through custom DINO, patched forwards, dual-stream collator, two-stage curriculum — Stage A frozen LLM for vision, Stage B LoRA for QA. Tiered eval with parse-miss separate from accuracy; fifteen-minute pilots; one YAML per hypothesis. Mixes that won TSExam but lost reasoning slices died — that is how we climbed from stock baseline without false promotions.
+My objectives were testable against those baselines. Close the VLM gap from stock Qwen3-VL-8B. One unified dual-tower architecture, not per-benchmark forks. Reach exam-grade and north-star competitive scores together — not trade TSExam for TSRBench. And ship discipline: no feature merges unless tiered eval shows net improvement; parse reliability tracked separately from accuracy.
 
-On results — always name **Qwen3-VL-8B** as the baseline. TSExam **zero-point-six-one-eight to zero-point-nine-oh-four-eight** — plus twenty-eight points. TSRBench **zero-point-four-zero-two to zero-point-four-five-two-four** — plus five points. Both moved on one stack. That is the deliver-results headline.
+I chose dual visual streams after ImagenTime convinced me image representations were the right abstraction. I built a LLaVA-style dual tower on Qwen3-VL-8B: matplotlib charts through the frozen native ViT; delay embeddings through a custom DinoVisionTower and trainable merger. I patched Qwen3-VL-8B forwards, built the dual-stream collator with M-RoPE type tags, and wired adapter merge across curriculum stages. That was weeks of integration risk. I de-risked with perception-only evaluation before spending eight-GPU weeks on language fine-tunes.
 
-Open stack, eval protocol, config index. Honest limit: hard reasoning slices and proprietary gap remain — we delivered the platform and the headline lifts first.
+I delivered a two-stage curriculum and made it the team’s training protocol. I considered end-to-end joint training from day one — faster on paper — but it hid perception bugs and produced over-reasoning on hard TSRBench tasks when vision was weak. Stage A: DINO LoRA plus merger on caption and alignment data, LLM frozen — learn how to see. Stage B: merge Stage A, add LM LoRA, QA fine-tune — learn how to answer. I curated ChatTS alignment, CaTS, TSExam MCQ, TSExam-numeric, with holdouts against forgetting. I persuaded the team to adopt staging as a gate: no Stage B spend until Stage A cleared perception thresholds.
 
-Lesson: baseline is stock **Qwen3-VL-8B**, tier eval like release gates, deliver both benchmarks — then chase hard slices. Same discipline for finance docs at scale.
+I built tiered eval as the delivery engine. Loss sanity, then TSExam subset, then TSRBench subset, then full north star — with parse-miss logged separately from accuracy. Pilot harness about fifteen minutes on zero-point-eight-B with noise floors where TSExam moves of three-tenths of a point were detectable. One hypothesis per YAML fork. Several TSExam-winning mixes died when reasoning slices regressed — that discipline is how we climbed from stock baseline without false promotions.
+
+On results — and I always anchor on stock Qwen3-VL-8B as the baseline. TSExam-HF went from zero-point-six-one-eight to zero-point-nine-oh-four-eight on our best three-epoch run — plus twenty-eight-point-seven percentage points. TSRBench overall went from zero-point-four-zero-two to zero-point-four-five-two-four — plus five points. Both headline benchmarks improved together on one dual-tower stack. Tiered gating and parse-miss logging prevented false wins; we have a living config index for handoff.
+
+Broader impact: I took stock Qwen3-VL-8B from failing exam-grade time-series reasoning to roughly ninety-point-five percent TSExam and forty-five-point-two percent TSRBench on the public north star. Open loaders, scripts, eval protocol. ImagenTime to dual-tower VLM is a deliberate research line, not two unrelated projects.
+
+Honest limit: plus five on TSRBench from stock is real but still below the proprietary frontier; hard reasoning slices and the trillion-scale gap remain. Stage C GRPO is next. The lesson I still use: name the right baseline, tier eval like release gates, deliver both benchmarks — then chase hard slices. Same discipline for multimodal finance docs at scale: staged alignment, task fine-tune, slice metrics before ship.
 
 ### Short version (~90 sec)
 

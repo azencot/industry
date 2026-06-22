@@ -31,13 +31,13 @@ North star: [TSRBench](https://tsrbench.github.io/) · Control: allcap-a5b3 (TSE
 | **Problem** | Full TSRBench runs are expensive; headline accuracy hides slice regressions and parse failures. |
 | **Insight** | Treat eval like a release gate — cheap sanity before north star; track parse-miss separately from accuracy. |
 | **What I built** | Tiered eval (loss → TSExam subset → TSRBench subset → full); per-task/per-group accuracy; parse-miss logging; pilot harness (~15 min, TSExam ±0.3 pp noise floor); HF + local dataset parity checks. |
-| **Metrics** | TSRBench overall **0.454** (8B best); killed TR bucket mixes that regressed vs control (TR ~29%). |
-| **JD map** | Eval frameworks that **gate** model changes; slice metrics by task group (→ doc type / entity type in FinTech). |
-| **Honest limit** | TR reasoning still hard (~29%); additive data buckets made it worse, not better. |
+| **Metrics** | Reasoning bracket: **TR 26.9→21.9 (−5 pp)** on synth mix → **killed**; gates **−3 pp overall / −5 pp per task**; reas mean 29.5→31.2 (misleading alone). |
+| **JD map** | Eval frameworks that **gate** model changes; slice metrics by task (→ doc type / entity in FinTech). |
+| **Honest limit** | Synthetic TR path wrong lever; TR still open — task coverage audit next (Anchor C). |
 | **Lesson** | More training mix ≠ better when task distribution shifts — stop and fix data generation. |
 | **LPs** | Ownership, Earn Trust, Dive Deep, Have Backbone |
 
-**90s spoken:** I owned eval harness → tiered gates → found TR mixes regressed → killed them → would shadow-eval + slice metrics before ship in production.
+**90s spoken:** TR sweet spot → synthetic TSExam tiers → gates −3/−5 pp → **TR 26.9→21.9** → killed mix despite AR/IR +7 pp.
 
 ---
 
@@ -89,8 +89,9 @@ North star: [TSRBench](https://tsrbench.github.io/) · Control: allcap-a5b3 (TSE
 
 | LP | Story | Status |
 |----|-------|--------|
+| Ownership | TR synth kill — [`stories/ownership_killed-tr-synthetic.md`](stories/ownership_killed-tr-synthetic.md) | Draft v2 DOC review |
 | Deliver Results | VLM Anchor A — [`stories/deliver-results_dual-tower-curriculum.md`](stories/deliver-results_dual-tower-curriculum.md) | Qwen3-VL-8B → 3ep: 0.618→0.905, 0.402→0.452 |
-| Invent & Simplify | ImagenTime — [`stories/invent-simplify_imagentime.md`](stories/invent-simplify_imagentime.md) | Draft v3 DCC L6 |
+| Invent & Simplify | ImagenTime — [`stories/invent-simplify_imagentime.md`](stories/invent-simplify_imagentime.md) | Draft v3 DOC L6 |
 | Dive Deep | SKD setup-bug debug **or** Anchor C TSRBench audit | Reframe SKD; Anchor C ready |
 | Customer Obsession | **Gap** | Need stakeholder/user story |
 

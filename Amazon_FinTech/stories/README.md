@@ -2,7 +2,7 @@
 
 One file per story: `{lp-slug}_{short-title}.md` (e.g. `ownership_shipped-eval-gating.md`).
 
-**Template:** [DayOne Careers (DCC)](https://dayone.careers) — **Title | Outline | Ecosystem | Issue | Objectives | Actions | Results | Learnings and Improvements**. Use this for every draft and rewrite.
+**Template:** [Day One Careers (DOC)](https://dayone.careers) — **Title | Outline | Ecosystem | Issue | Objectives | Actions | Results | Learnings and Improvements**. Use this for every draft and rewrite.
 
 **Target role:** Senior Applied Scientist — interview at **L6**; stories should also signal **L7** leverage where true (reusable frameworks, cross-project influence). See length bar below.
 
@@ -11,7 +11,7 @@ One file per story: `{lp-slug}_{short-title}.md` (e.g. `ownership_shipped-eval-g
 | LP | Story file | Metric / hook | Ready? |
 |----|------------|---------------|--------|
 | Customer Obsession | | | ☐ |
-| Ownership | | | ☐ |
+| Ownership | [`ownership_killed-tr-synthetic.md`](ownership_killed-tr-synthetic.md) | TR 26.9→21.9 (−5pp gate); killed mix | ☐ |
 | Dive Deep | | | ☐ |
 | Deliver Results | [`deliver-results_dual-tower-curriculum.md`](deliver-results_dual-tower-curriculum.md) | 0.618→0.905 TSExam; 0.402→0.452 TSRBench | ☐ |
 | Invent and Simplify | [`invent-simplify_imagentime.md`](invent-simplify_imagentime.md) | +58% / +132%; EDM ~35 NFE | ☐ |
@@ -21,9 +21,9 @@ One file per story: `{lp-slug}_{short-title}.md` (e.g. `ownership_shipped-eval-g
 
 ---
 
-## DCC story template
+## DOC story template
 
-Copy into a new file when drafting. **Write DCC sections as short narrative paragraphs**, not compressed bullets — bullets are for Results only.
+Copy into a new file when drafting. **Write DOC sections as short narrative paragraphs**, not compressed bullets — bullets are for Results only.
 
 Map to spoken flow: **Ecosystem + Issue** ≈ Situation · **Objectives** ≈ Task · **Actions** ≈ Action · **Results** ≈ Result · **Learnings** ≈ Lesson.
 
@@ -33,7 +33,7 @@ Map to spoken flow: **Ecosystem + Issue** ≈ Situation · **Objectives** ≈ Ta
 **Leadership Principle:** [exact LP name]
 **Project:** [anchor or supporting project]
 **Status:** Draft | Ready
-**Target length:** **L6** ~800–900 words (DCC body) · **~6–7 min** spoken · L7 beats where scope is real
+**Target length:** **L6** ~700–850 words (DOC body) · **~8 min** spoken (descriptive primary) · L7 beats where scope is real
 
 ---
 
@@ -86,9 +86,9 @@ Map to spoken flow: **Ecosystem + Issue** ≈ Situation · **Objectives** ≈ Ta
 
 -
 
-### Spoken script (~5–6 min)
+### Spoken script (~8 min)
 
-[Narrative paragraphs — read aloud; target 650–750 words, ~110–130 wpm]
+[Narrative paragraphs — read aloud; target ~950–1050 words, ~110–130 wpm; descriptive, scene-setting OK]
 
 ### Short version (~90 sec)
 
@@ -109,17 +109,17 @@ Map to spoken flow: **Ecosystem + Issue** ≈ Situation · **Objectives** ≈ Ta
 
 ---
 
-## DCC quality bar (L6 primary — L7 where earned)
+## DOC quality bar (L6 primary — L7 where earned)
 
-Use this after writing; mirrors DCC AI review. **Do not add filler** — expand only where real detail improves interview quality.
+Use this after writing; mirrors DOC AI review. **Do not add filler** — expand only where real detail improves interview quality.
 
 ### Length (Omri target: L6 interview, L7 promotion signal)
 
-| Level | DCC body | Spoken | When |
+| Level | DOC body | Spoken | When |
 |-------|----------|--------|------|
 | L5 | 600–700 w | 5–6 min | Floor only — too thin for L6 loop |
-| **L6 (primary target)** | **800–900 w** | **6–7 min** | **Default for every PS1 story** |
-| **L7 (selective beats)** | **900–1000 w** | **7–8 min** | Only when story has cross-team / field-level leverage — do not fabricate |
+| **L6 (primary target)** | **700–850 w** | **~8 min** (descriptive) | **Default for every PS1 story** |
+| **L7 (selective beats)** | **850–1000 w** | **8–9 min** | Cross-team / field-level leverage — do not fabricate |
 
 At **L6**, interviewers expect: developed context, alternatives considered, risk managed, influence on technical direction, broader impact. At **L7**, add **long-term leverage** — reusable frameworks, enabling other teams, strategic bets that paid off across projects (e.g. ImagenTime → VLM arc, open eval protocol).
 
@@ -140,12 +140,36 @@ At **L6**, interviewers expect: developed context, alternatives considered, risk
 | **Broader impact** | Results + Learnings | Field, open stack, methodology others reuse — L7 signal |
 | **Plain English** | Throughout | Jargon explained once |
 | **No LP self-labels** | Actions | Demonstrate, don't name the LP |
+| **False-promote stakes** | Issue or Actions | GPU cycle wasted, misleading progress update |
+| **Beyond formal scope** | Ecosystem | What you volunteered to own vs assignment |
+| **Delegation chain** | Actions | I did X; collaborator did Y; I owned Z |
+| **Process adoption** | Results | Template/protocol others now use — one concrete fact |
 
 ### Spoken delivery
 
-- DCC body = **source of truth**; spoken script = **narrative read-aloud** (~6–7 min primary).
-- Prefer connected sentences over bullet dumps when speaking.
-- Keep a **90 sec backup** — emergency only, not L6 primary.
+- DOC body = **source of truth**; **primary spoken script ~8 min** — descriptive narrative, not bullet compression.
+- **Do not read results tables aloud** — summarize 3–5 numbers that drive the decision.
+- Setup facts can breathe once in spoken form; avoid repeating the same gate/plateau line three times across sections.
+- Keep a **90 sec backup** for time pressure only.
+
+### DOC AI review checklist (apply after draft; Omri’s last manual pass)
+
+From Ownership story review — promote into all future drafts:
+
+| Fix | Do |
+|-----|-----|
+| **LP self-labels** | Never “this is what ownership looks like” — show operational facts |
+| **Ecosystem** | Role + who relied on you + team size/roles in plain English |
+| **Beyond scope** | One line: formal assignment vs what you voluntarily owned |
+| **Stakes** | What false promote would cost (GPU cycle, misleading lab update) |
+| **Friction** | Pressure to ship (aggregate up, resources spent) — one sentence |
+| **Delegation** | “I trained X; collaborator ran Y; I remained accountable for Z” |
+| **Goals vs guardrails** | Separate success objectives from pre-declared gates |
+| **Results table** | Full table in body for prep; spoken = one-sentence summary |
+| **Process impact** | One adoption fact (“template now default”) not vague “we changed culture” |
+| **Jargon budget** | Name only metrics needed for the decision; skip model/benchmark laundry lists |
+| **Lesson** | One direct process line; FinTech bridge only if asked |
+| **Spoken length** | **~8 min descriptive** primary script (~950–1050 words) |
 
 ---
 
@@ -169,12 +193,12 @@ At **L6**, interviewers expect: developed context, alternatives considered, risk
 | **Metrics** required | Results (+ Issue baseline) |
 | **Tradeoff or failure** | ≥1 Action beat |
 | **Artifacts** named | IC proof + Actions |
-| **~6–7 min** spoken | Primary script — L6 target |
+| **~8 min** spoken | Primary script — descriptive narrative |
 
 ## Refinement loop
 
-1. Draft in DCC template (narrative paragraphs).
-2. Run **DCC quality bar** checklist above (or DCC AI review).
+1. Draft in DOC template (narrative paragraphs).
+2. Run **DOC quality bar** checklist above (or DOC AI review).
 3. Read **spoken script** aloud; trim jargon, fix awkward transitions.
 4. Mark **Ready?** in table when it holds under pressure.
 5. After `/debrief` or mock: edit story file; promote repeated fixes to [`AGENTS.md`](../../AGENTS.md).
