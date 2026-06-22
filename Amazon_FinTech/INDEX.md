@@ -21,6 +21,7 @@ Active interview track. Annotated index — read entries before opening every fi
 | [`anchor-cheat-sheet.md`](anchor-cheat-sheet.md) | **Day 1 deliverable** — 3 VLM anchors (A/B/C): metric, IC role, JD map, LP hooks | Before ML deep-dive and LP drills |
 | [`.cursor/skills/debrief/vlm_multimodal_project.md`](../.cursor/skills/debrief/vlm_multimodal_project.md) | **Extended VLM project summary** — architecture, results, problems solved; extend over time | `@Files` for ML deep-dive, new results, follow-ups |
 | [`elevator-pitch.md`](elevator-pitch.md) | **PS1 intro script** (~90s spoken) — who → work → why FinTelligence; optional 30s + 45s cuts | Day 1; read aloud before PS1 |
+| [`stories/why-amazon.md`](stories/why-amazon.md) | **Why Amazon** (~1:30) — speakable prose; JD phrases verbatim | Day 3; if asked in intro |
 | [`prep-plan.md`](prep-plan.md) | 7-day prep schedule (coding, ML, LP, mocks) | Daily — find today's block |
 | [`CV_Azencot_10399493.pdf`](CV_Azencot_10399493.pdf) | Resume for this application | Before intro / resume walkthrough |
 | [`stories/`](stories/) | STAR stories by Leadership Principle | Before LP drills and interview |
@@ -38,6 +39,15 @@ Active interview track. Annotated index — read entries before opening every fi
 - **Tiered inference**: routing, SLMs, cost vs frontier quality
 
 Full posting context lives in prep chat / recruiter email — not duplicated here.
+
+### Writing rules (scripts + stories)
+
+Agents and drafts for this track:
+
+- **Use JD wording** from the role summary above — quote it; do not rewrite into pitch language.
+- **No cheese:** avoid “I'm excited about,” “three things together,” “that's the discipline I want in production,” “not in a vacuum,” “deep problem-solving under uncertainty,” LP self-labels, or closing summaries that tell the interviewer what to think.
+- **Motivation scripts** (~1:30 spoken): full sentences that read aloud; not telegraphic bullets. One concrete example in the middle — not a metric list.
+- Tone model: [`elevator-pitch.md`](elevator-pitch.md) and Omri's plain spoken drafts — not corporate interview copy.
 
 ---
 

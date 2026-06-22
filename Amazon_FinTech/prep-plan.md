@@ -23,6 +23,8 @@ Condensed from initial planning session. Adjust dates against [`INDEX.md`](../IN
 ## Day 3 — Leadership Principles
 
 - [ ] 8 STAR stories (DOC template): … — **4 drafted** (Invent, Deliver Results, Ownership, Dive Deep)
+- [ ] **Tell me about yourself** (~2–3 min) — extend [`elevator-pitch.md`](elevator-pitch.md); IC arc, not PI charter
+- [ ] **Why Amazon** (~1:30) → [`stories/why-amazon.md`](stories/why-amazon.md) — speakable prose; JD verbatim; [`INDEX.md`](INDEX.md) writing rules
 - [ ] Template + DOC quality bar → [`stories/README.md`](stories/README.md) (**L6:** ~800–900 w, ~6–7 min; L7 leverage where true)
 - [ ] Rules: ownership early; friction/de-risk; causal results; plain English; "I" not "we"
 - [ ] Save drafts → [`stories/`](stories/)

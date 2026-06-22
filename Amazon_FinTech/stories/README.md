@@ -19,6 +19,14 @@ One file per story: `{lp-slug}_{short-title}.md` (e.g. `ownership_shipped-eval-g
 | Have Backbone; Disagree and Commit | | | ☐ |
 | Learn and Be Curious | | | ☐ |
 
+## Intro / motivation (not STAR LPs)
+
+| Script | File | Target |
+|--------|------|--------|
+| Why Amazon | [`why-amazon.md`](why-amazon.md) | ~1:30 · speakable prose + JD verbatim |
+
+Tell me about yourself → extend [`elevator-pitch.md`](../elevator-pitch.md) (~2–3 min).
+
 ---
 
 ## DOC story template
