@@ -25,7 +25,9 @@ One file per story: `{lp-slug}_{short-title}.md` (e.g. `ownership_shipped-eval-g
 |--------|------|--------|
 | Why Amazon | [`why-amazon.md`](why-amazon.md) | ~1:30 · speakable prose + JD verbatim |
 
-Tell me about yourself → extend [`elevator-pitch.md`](../elevator-pitch.md) (~2–3 min).
+| Tell me about yourself | [`tell-me-about-yourself.md`](tell-me-about-yourself.md) | ~2–3 min · career arc |
+
+Current project depth → [`elevator-pitch.md`](../elevator-pitch.md) (~90s).
 
 ---
 
