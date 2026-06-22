@@ -126,4 +126,4 @@ Per-slice floors before promote — same as not shipping when one doc-type metri
 ### Related stories
 
 - **Deliver Results:** architecture + 0.618→0.905 — don’t repeat here.
-- **Dive Deep:** post-mortem task audit — separate LP.
+- **Dive Deep:** post-mortem task audit — [`dive-deep_tsrbench-reasoning-audit.md`](dive-deep_tsrbench-reasoning-audit.md).

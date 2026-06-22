@@ -41,7 +41,7 @@
 | **Ownership** (draft first) | Plateau ~46% TSRBench vs proprietary 46–55%; reasoning gap. You owned tiered TR plan, synthetic TSExam templates, **hard-failure gates (−3 pp overall, −5 pp per task)**, trained 0.8B, student ran 8B — **killed** path when TR flat and other tasks regressed. |
 | **Have Backbone** (same event, alt emphasis) | Disagreed with “add more synthetic TR data” after gates fired; committed to stop and study. |
 | **Earn Trust** (third use) | Transparent negative result; didn’t promote a mix that hurt slices. |
-| **Dive Deep** (related, Anchor C) | Manual inspection → TR sweet spot; post-failure → ops/coverage audit — **separate story** to avoid overlap. |
+- **Dive Deep:** Anchor C audit drafted — [`dive-deep_tsrbench-reasoning-audit.md`](../../Amazon_FinTech/stories/dive-deep_tsrbench-reasoning-audit.md). Ownership handoff only; 3 regimes; ~+5 pp 0.8B preliminary.
 
 **Do not reuse** Deliver Results tiered-eval paragraphs verbatim — Ownership foregrounds **gates + kill decision**.
 

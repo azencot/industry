@@ -92,7 +92,7 @@ North star: [TSRBench](https://tsrbench.github.io/) · Control: allcap-a5b3 (TSE
 | Ownership | TR synth kill — [`stories/ownership_killed-tr-synthetic.md`](stories/ownership_killed-tr-synthetic.md) | Draft v2 DOC review |
 | Deliver Results | VLM Anchor A — [`stories/deliver-results_dual-tower-curriculum.md`](stories/deliver-results_dual-tower-curriculum.md) | Qwen3-VL-8B → 3ep: 0.618→0.905, 0.402→0.452 |
 | Invent & Simplify | ImagenTime — [`stories/invent-simplify_imagentime.md`](stories/invent-simplify_imagentime.md) | Draft v3 DOC L6 |
-| Dive Deep | SKD setup-bug debug **or** Anchor C TSRBench audit | Reframe SKD; Anchor C ready |
+| Dive Deep | TSRBench reasoning audit — [`stories/dive-deep_tsrbench-reasoning-audit.md`](stories/dive-deep_tsrbench-reasoning-audit.md) | Draft v1; 3 regimes, ~+5 pp 0.8B prelim |
 | Customer Obsession | **Gap** | Need stakeholder/user story |
 
 ---

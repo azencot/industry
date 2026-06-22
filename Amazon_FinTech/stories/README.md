@@ -12,7 +12,7 @@ One file per story: `{lp-slug}_{short-title}.md` (e.g. `ownership_shipped-eval-g
 |----|------------|---------------|--------|
 | Customer Obsession | | | ☐ |
 | Ownership | [`ownership_killed-tr-synthetic.md`](ownership_killed-tr-synthetic.md) | TR 26.9→21.9 (−5pp gate); killed mix | ☐ |
-| Dive Deep | | | ☐ |
+| Dive Deep | [`dive-deep_tsrbench-reasoning-audit.md`](dive-deep_tsrbench-reasoning-audit.md) | 3 regimes; ~+5 pp 0.8B preliminary | ☐ |
 | Deliver Results | [`deliver-results_dual-tower-curriculum.md`](deliver-results_dual-tower-curriculum.md) | 0.618→0.905 TSExam; 0.402→0.452 TSRBench | ☐ |
 | Invent and Simplify | [`invent-simplify_imagentime.md`](invent-simplify_imagentime.md) | +58% / +132%; EDM ~35 NFE | ☐ |
 | Earn Trust | | | ☐ |
