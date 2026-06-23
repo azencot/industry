@@ -9,7 +9,8 @@ Active interview track. Annotated index — read entries before opening every fi
 | Milestone | Date | Notes |
 |-----------|------|-------|
 | **PS1 — phone screen** | Tue 30 Jun 2026, 21:00 Asia/Jerusalem | Karan Aggarwal; Zoom + [Live Code](https://livecode.amazon.jobs/joinsession/e4618c8d-2a90-4c8f-8fb1-b6e875c77bd7) |
-| Prep window | ~21–30 Jun 2026 | See [`prep-plan.md`](prep-plan.md) |
+| Imry Kissos referral call | 23 Jun 2026 | Principal AS; referred to role — Karan-focused prep pivot |
+| Prep window | 24–29 Jun 2026 (6 days) | See [`prep-plan.md`](prep-plan.md) — VLM depth + coding |
 
 ---
 
@@ -23,7 +24,7 @@ Active interview track. Annotated index — read entries before opening every fi
 | [`elevator-pitch.md`](elevator-pitch.md) | **PS1 intro script** (~90s spoken) — who → work → why FinTelligence; optional 30s + 45s cuts | Day 1; read aloud before PS1 |
 | [`stories/tell-me-about-yourself.md`](stories/tell-me-about-yourself.md) | **TMAY** (~2–3 min) — career arc; IC para 2 | Intro / resume block |
 | [`stories/why-amazon.md`](stories/why-amazon.md) | **Why Amazon** (~1:30) — speakable prose; JD phrases verbatim | Day 3; if asked in intro |
-| [`prep-plan.md`](prep-plan.md) | 7-day prep schedule (coding, ML, LP, mocks) | Daily — find today's block |
+| [`prep-plan.md`](prep-plan.md) | Karan-focused prep (24–29 Jun): VLM depth + coding | Daily — find today's block |
 | [`CV_Azencot_10399493.pdf`](CV_Azencot_10399493.pdf) | Resume for this application | Before intro / resume walkthrough |
 | [`stories/`](stories/) | STAR stories by Leadership Principle | Before LP drills and interview |
 | [`.cursor/skills/debrief/`](../.cursor/skills/debrief/) | Session debriefs & cross-chat handoffs | Start session B; after `/debrief` |
@@ -54,12 +55,23 @@ Agents and drafts for this track:
 
 ## Interviewer — Karan Aggarwal
 
-- **Role:** Senior Applied Scientist (FinTech background; NLP, limited-label learning)
-- **Likely interests:** document IE for payments/cash optimization, synthetic data for NER, continual pre-training for financial LLMs, production eval
-- **Read before PS1:**
-  - [Efficient continual pre-training LLMs for financial domains](https://aws.amazon.com/blogs/machine-learning/efficient-continual-pre-training-llms-for-financial-domains/) (co-authored) · paper [arxiv:2311.08545](https://arxiv.org/abs/2311.08545)
-  - [ECG-QALM — synthetic text for NER](https://www.amazon.science/publications/ecg-qalm-entity-controlled-synthetic-text-generation-using-contextual-q-a-for-ner) (abstract only; [ACL PDF](https://aclanthology.org/2023.findings-acl.349.pdf) if needed)
-- **Questions to ask him (pick 2):** eval gating before ship; how user corrections feed back; SLM vs frontier routing; hardest LLM failure mode on financial docs
+- **Role:** Senior Applied Scientist — **de facto most senior technical person on the team** (Imry, 23 Jun); at Amazon since join; built many in-house tools/frameworks
+- **Style (Imry):** Wants **maximum technical detail** — model, training, eval, ablations — not managerial “story.” Young; **rigid** on preferred solution patterns; use standard structure (problem → approach → complexity → code/metrics)
+- **Lead with:** VLM time-series project (Imry: interesting + relevant). Prior loop risk: PI framing → keep every answer IC/hands-on
+- **Likely interests:** document IE, limited-label learning, continual pre-training, production eval, time-series + LLMs
+- **Read before PS1 (skim only):**
+  - [Efficient continual pre-training LLMs for financial domains](https://aws.amazon.com/blogs/machine-learning/efficient-continual-pre-training-llms-for-financial-domains/) (co-authored) · [arxiv:2311.08545](https://arxiv.org/abs/2311.08545)
+  - [ECG-QALM abstract](https://www.amazon.science/publications/ecg-qalm-entity-controlled-synthetic-text-generation-using-contextual-q-a-for-ner) — optional; bridge is your eval/audit work, not NER synth
+- **Coding expectation:** Standard **LeetCode medium** (Python OK). Team uses pandas/numpy day-to-day; Imry says interviewers *rarely* ask that — don't trade coding reps for pandas drill
+- **Questions to ask him (pick 2):** eval gating before ship; how user corrections feed back; Chronos vs multimodal routing for TS tasks; hardest LLM failure mode on financial docs
+
+### Chronos (team stack — Imry)
+
+Team uses **[Chronos](https://github.com/amazon-science/chronos-forecasting)** for time-series LLM work. TS is fed as text, but cost stays manageable because Chronos **segments series into patches**; each patch maps to **a few tokens** (not one token per timestep).
+
+**Your bridge (VLM project):** You chose **dual visual encodings** (chart + delay embedding → Qwen ViT / DINO) instead of patch-tokenization — same motivation (efficient TS representation for a general LM), different modality bet. Know the contrast; don't dismiss their approach.
+
+**Learn (30–45 min):** Chronos README + “tokenization” / patching section; optional [Chronos paper](https://arxiv.org/abs/2403.07815).
 
 ---
 
@@ -77,7 +89,7 @@ Agents and drafts for this track:
 
 ## Story bank status
 
-Track which LPs have ready stories in [`stories/README.md`](stories/README.md). Target: **8 strong stories** covering the priority LPs before PS1.
+Track which LPs have ready stories in [`stories/README.md`](stories/README.md). **Karan pivot:** target **2–3 technical LP reframes** on the VLM project (Ownership/TR kill, Dive Deep/audit, Deliver Results backup) — not an 8-story bank.
 
 ---
 
