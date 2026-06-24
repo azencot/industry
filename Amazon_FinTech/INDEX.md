@@ -108,7 +108,8 @@ Track which LPs have ready stories in [`stories/README.md`](stories/README.md). 
 | 2026-06-21 | Day 2 — continual pre-training blog (Karan) | [`2026-06-21_continual-pretraining-blog.md`](debrief/2026-06-21_continual-pretraining-blog.md) | `@Files debrief/2026-06-21_continual-pretraining-blog.md` + `/ml-deep-dive` |
 | 2026-06-21 | Day 2 — ML depth interactive (3 topics) | [`2026-06-21_day2-ml-depth.md`](../.cursor/skills/debrief/2026-06-21_day2-ml-depth.md) | `@Files 2026-06-21_day2-ml-depth.md` + spoken drill retake |
 | 2026-06-22 | Day 3 — LP stories DOC L6 (Invent + Deliver Results) | [`2026-06-22_day3-lp-stories.md`](../.cursor/skills/debrief/2026-06-22_day3-lp-stories.md) | `@Files 2026-06-22_day3-lp-stories.md` + draft Ownership (TR kill) |
-| 2026-06-24 | Chronos bridge (v1 / Bolt / VLM contrast) | [`2026-06-24_chronos-bridge.md`](../.cursor/skills/debrief/2026-06-24_chronos-bridge.md) | `@Files 2026-06-24_chronos-bridge.md` + Anchor A spoken drill |
+| 2026-06-24 | Chronos bridge (v1 / Bolt / VLM contrast) | [`2026-06-24_chronos-bridge.md`](../.cursor/skills/debrief/2026-06-24_chronos-bridge.md) | `@Files 2026-06-24_chronos-bridge.md` |
+| 2026-06-24 | Anchor A spoken drill (Jun 24) | [`2026-06-24_anchor-a-spoken-drill.md`](../.cursor/skills/debrief/2026-06-24_anchor-a-spoken-drill.md) | `@Files 2026-06-24_anchor-a-spoken-drill.md` + Anchor B drill (Wed 25) |
 
 Add a row after each `/debrief`. FinTech-track notes → [`debrief/`](debrief/); cross-session profile → [`.cursor/skills/debrief/`](../.cursor/skills/debrief/).
 
@@ -117,5 +118,6 @@ Add a row after each `/debrief`. FinTech-track notes → [`debrief/`](debrief/);
 | Date | Type | File | Top weakness fixed? |
 |------|------|------|---------------------|
 | 2026-06-21 | ml-deep-dive | [`2026-06-21_ml-deep-dive.md`](mocks/2026-06-21_ml-deep-dive.md) | IC voice + metrics on Topics 1–2 (retake pending) |
+| 2026-06-24 | vlm-spoken-drill | [`2026-06-24_vlm-spoken-drill.md`](mocks/2026-06-24_vlm-spoken-drill.md) | Precise metrics 0.618/0.402→0.905/0.452; TR gate numbers for Q7 |
 
 Add a row after each mock drill. Store files in [`mocks/`](mocks/).

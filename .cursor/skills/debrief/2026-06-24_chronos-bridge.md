@@ -69,9 +69,8 @@
 
 ## Gaps / still drill aloud
 
-- **Anchor A** spoken run (architecture + metrics **0.618/0.402 → 0.905/0.452**) — not done in this session.
-- Self-Q&A three prompts: **fold into Anchor A** (~5 min), not a separate block — see prep-plan 24 Jun.
-- "What broke" depth lives in **Anchors B/C** (Wed): TR kill, task audit.
+- ~~**Anchor A** spoken run~~ — **done 24 Jun** → [`2026-06-24_anchor-a-spoken-drill.md`](2026-06-24_anchor-a-spoken-drill.md). Memorize exact metrics; TR kill numbers sharpen in **Anchor B** (Wed).
+- "What broke" depth continues in **Anchors B/C** (Wed): TR kill gates, task audit.
 
 ## Decisions / artifacts updated
 
