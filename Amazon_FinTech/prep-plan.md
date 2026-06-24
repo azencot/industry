@@ -35,8 +35,7 @@
 **VLM (primary)**
 
 - [ ] Read aloud [`anchor-cheat-sheet.md`](anchor-cheat-sheet.md) + [`vlm_multimodal_project.md`](../.cursor/skills/debrief/vlm_multimodal_project.md) (architecture section)
-- [ ] Spoken drill — **Anchor A** (~15 min): dual encodings, Stage A/B curriculum, training stack, key metrics (stock **0.618/0.402** → **0.905/0.452**)
-- [ ] Self-Q&A: why visual not tokenized TS? why decouple vision alignment from LM LoRA? what broke?
+- [ ] Spoken drill — **Anchor A** (~15 min): dual encodings, Stage A/B curriculum, training stack, key metrics (stock **0.618/0.402** → **0.905/0.452**); **fold in self-Q&A** (~5 min at end): visual not tokens? Stage A decoupled? what broke? (see [`debrief/2026-06-24_chronos-bridge.md`](../.cursor/skills/debrief/2026-06-24_chronos-bridge.md))
 - [x] **Chronos bridge** — done 23 Jun; Imry note = **Bolt** patching (not v1 per-step bins). One-liner: *same problem (efficient TS → model), different bet (forecast quantiles vs VLM reasoning)* → [`INDEX.md` Chronos note](INDEX.md#chronos-team-stack-imry)
 
 **Intro (light)**
