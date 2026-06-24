@@ -67,11 +67,17 @@ Agents and drafts for this track:
 
 ### Chronos (team stack — Imry)
 
-Team uses **[Chronos](https://github.com/amazon-science/chronos-forecasting)** for time-series LLM work. TS is fed as text, but cost stays manageable because Chronos **segments series into patches**; each patch maps to **a few tokens** (not one token per timestep).
+Team uses **[Chronos](https://github.com/amazon-science/chronos-forecasting)** for time-series forecasting. **Imry’s patch note = Chronos-Bolt** (production path), not original v1:
 
-**Your bridge (VLM project):** You chose **dual visual encodings** (chart + delay embedding → Qwen ViT / DINO) instead of patch-tokenization — same motivation (efficient TS representation for a general LM), different modality bet. Know the contrast; don't dismiss their approach.
+| Gen | Representation | Output |
+|-----|----------------|--------|
+| **v1 (T5)** | 1 quantized bin token per timestep | AR sample paths (probabilistic) |
+| **Bolt** | Patch-16 → encoder embedding | Direct multi-step **quantile** forecast |
+| **Chronos-2** | Bolt + multivariate / covariates | Universal forecaster |
 
-**Learn (30–45 min):** Chronos README + “tokenization” / patching section; optional [Chronos paper](https://arxiv.org/abs/2403.07815).
+**Your bridge (VLM project):** Dual visual encodings (chart → Qwen ViT; delay embedding → DINO) — same motivation (efficient TS → general model), different bet (**reasoning + NL**, not forecast quantiles). **Routing answer:** Chronos-class for trajectories; VLM for explain/QA/compliance slices.
+
+**Done (23 Jun):** Chronos bridge in [`prep-plan.md`](prep-plan.md) completed section.
 
 ---
 

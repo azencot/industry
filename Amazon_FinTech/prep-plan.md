@@ -4,17 +4,18 @@
 
 **Pivot (23 Jun — Imry Kissos):** Karan wants **technical depth on your project**, not managerial LP framing. Prioritize **VLM drill + coding**; skip generic system design and broad ML topics. See [Karan notes in `INDEX.md`](INDEX.md#interviewer--karan-aggarwal).
 
-**Remaining window:** 6 prep days (24–29 Jun). Day 3 (23 Jun) mostly spent on planning — carry intro/LP items into 24 Jun.
+**Remaining window:** 6 prep days (24–29 Jun). Day 3 (23 Jun) planning + late **Chronos bridge** — carry intro/LP items into 24 Jun.
 
 ---
 
-## Completed (Days 1–2)
+## Completed (Days 1–2 + late 23 Jun)
 
 - [x] Elevator pitch + 3 VLM anchors → [`anchor-cheat-sheet.md`](anchor-cheat-sheet.md)
 - [x] Generic ML depth (RAG/FT/eval/low-label) → [debrief](../.cursor/skills/debrief/2026-06-21_day2-ml-depth.md) — **no retake unless bridging from VLM**
 - [x] Karan continual pre-training blog skim → [`debrief/2026-06-21_continual-pretraining-blog.md`](debrief/2026-06-21_continual-pretraining-blog.md)
 - [x] Intro scripts drafted (TMAY, Why Amazon)
 - [x] 4 LP stories drafted (VLM-tied) — **reframe for IC/technical voice, not more drafts**
+- [x] **Chronos bridge** (~30 min, 23 Jun late): **v1** (quantize → 1 token/step → AR, 20 sample paths × 64 horizon) → **Bolt** (patch-16 → direct quantile forecast) → **Chronos-2** (covariates). Contrast dual ViT/DINO vs value-space patching; Stage A/B/C (align → MCQ reason → GRPO on CoT) vs Chronos data scale + tiered eval. **Hybrid:** route forecast (Chronos-class) vs explain/QA (VLM); fine-tune Chronos for reasoning = no NL head + task gap; full numeric forecast from VLM out of scope.
 
 ---
 
@@ -36,7 +37,7 @@
 - [ ] Read aloud [`anchor-cheat-sheet.md`](anchor-cheat-sheet.md) + [`vlm_multimodal_project.md`](../.cursor/skills/debrief/vlm_multimodal_project.md) (architecture section)
 - [ ] Spoken drill — **Anchor A** (~15 min): dual encodings, Stage A/B curriculum, training stack, key metrics (stock **0.618/0.402** → **0.905/0.452**)
 - [ ] Self-Q&A: why visual not tokenized TS? why decouple vision alignment from LM LoRA? what broke?
-- [ ] **Chronos bridge** (30–45 min): patch → few tokens; how your chart+DINO approach differs → [`INDEX.md` Chronos note](INDEX.md#chronos-team-stack-imry)
+- [x] **Chronos bridge** — done 23 Jun; Imry note = **Bolt** patching (not v1 per-step bins). One-liner: *same problem (efficient TS → model), different bet (forecast quantiles vs VLM reasoning)* → [`INDEX.md` Chronos note](INDEX.md#chronos-team-stack-imry)
 
 **Intro (light)**
 
