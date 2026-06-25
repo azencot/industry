@@ -67,7 +67,7 @@ Format: *metric anomaly → what I dug into → code/config change → result*
 
 **Coding**
 
-- [ ] 1× `/timed-code` medium — patterns: hash, sliding window, BFS/DFS
+- [x] 1× `/timed-code` medium — patterns: hash, sliding window, BFS/DFS → `2026-06-25_200_number_of_islands_practice.py`
 
 ---
 
