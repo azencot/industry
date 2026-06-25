@@ -52,16 +52,16 @@
 
 **VLM**
 
-- [ ] Spoken drill — **Anchor B** (~10 min): tiered eval, parse-miss vs accuracy, TR synthetic **kill** (26.9→21.9)
-- [ ] Spoken drill — **Anchor C** (~10 min): task coverage audit, missing ops, honest TSRBench/TR gaps
-- [ ] Anticipate Karan follow-ups: ablations, config sweeps, what you'd do with proprietary finance TS
+- [x] Spoken drill — **Anchor B** (~10 min): tiered eval, parse-miss vs accuracy, TR synthetic **kill** (26.9→21.9) → [`debrief/2026-06-25_anchor-bc-lp-debrief.md`](../.cursor/skills/debrief/2026-06-25_anchor-bc-lp-debrief.md)
+- [x] Spoken drill — **Anchor C** (~10 min): task coverage audit, missing ops, honest TSRBench/TR gaps
+- [ ] Anticipate Karan follow-ups: ablations, config sweeps, what you'd do with proprietary finance TS *(skim if time)*
 
 **LP reframe (technical, not “story”)**
 
 Format: *metric anomaly → what I dug into → code/config change → result*
 
-- [ ] Read aloud + reframe → [`ownership_killed-tr-synthetic.md`](stories/ownership_killed-tr-synthetic.md) (**fix:** strip lab-template; lead with eval gates)
-- [ ] Read aloud + reframe → [`dive-deep_tsrbench-reasoning-audit.md`](stories/dive-deep_tsrbench-reasoning-audit.md) (**fix:** +5 pp numbers, IC actions)
+- [x] Read aloud + reframe → [`ownership_killed-tr-synthetic.md`](stories/ownership_killed-tr-synthetic.md) (~78%; retake optional with exact pp numbers)
+- [x] Dive Deep — **covered via Anchor C** (60s handoff only; no separate drill)
 - [ ] Backup if asked: [`deliver-results_dual-tower-curriculum.md`](stories/deliver-results_dual-tower-curriculum.md) (verify leaderboard rank)
 - [ ] **Stop** drafting Customer Obsession / Earn Trust / etc. unless mock surfaces a gap
 

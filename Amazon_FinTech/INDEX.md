@@ -111,6 +111,7 @@ Track which LPs have ready stories in [`stories/README.md`](stories/README.md). 
 | 2026-06-24 | Chronos bridge (v1 / Bolt / VLM contrast) | [`2026-06-24_chronos-bridge.md`](../.cursor/skills/debrief/2026-06-24_chronos-bridge.md) | `@Files 2026-06-24_chronos-bridge.md` |
 | 2026-06-24 | Anchor A spoken drill (Jun 24) | [`2026-06-24_anchor-a-spoken-drill.md`](../.cursor/skills/debrief/2026-06-24_anchor-a-spoken-drill.md) | `@Files 2026-06-24_anchor-a-spoken-drill.md` + Anchor B drill (Wed 25) |
 | 2026-06-24 | timed-code 567 permutation | [`2026-06-24_timed-code-567.md`](../.cursor/skills/debrief/2026-06-24_timed-code-567.md) | `@Files 2026-06-24_timed-code-567.md` + TMAY IC paragraph |
+| 2026-06-25 | Anchor B/C spoken + Ownership LP | [`2026-06-25_anchor-bc-lp-debrief.md`](../.cursor/skills/debrief/2026-06-25_anchor-bc-lp-debrief.md) | `@Files 2026-06-25_anchor-bc-lp-debrief.md` + `/timed-code` |
 
 Add a row after each `/debrief`. FinTech-track notes → [`debrief/`](debrief/); cross-session profile → [`.cursor/skills/debrief/`](../.cursor/skills/debrief/).
 
@@ -121,5 +122,7 @@ Add a row after each `/debrief`. FinTech-track notes → [`debrief/`](debrief/);
 | 2026-06-21 | ml-deep-dive | [`2026-06-21_ml-deep-dive.md`](mocks/2026-06-21_ml-deep-dive.md) | IC voice + metrics on Topics 1–2 (retake pending) |
 | 2026-06-24 | vlm-spoken-drill | [`2026-06-24_vlm-spoken-drill.md`](mocks/2026-06-24_vlm-spoken-drill.md) | Precise metrics 0.618/0.402→0.905/0.452; TR gate numbers for Q7 |
 | 2026-06-24 | timed-code | [`2026-06-24_timed-code.md`](mocks/2026-06-24_timed-code.md) | `while`+`le` for overlap; state O(n²) worst case if probed |
+| 2026-06-25 | vlm-spoken-drill | [`2026-06-25_vlm-spoken-drill.md`](mocks/2026-06-25_vlm-spoken-drill.md) | Eval latencies; 0.382→0.405 verified |
+| 2026-06-25 | mock-lp | [`2026-06-25_mock-lp-ownership.md`](mocks/2026-06-25_mock-lp-ownership.md) | Ownership ~78%; exact TR pp numbers |
 
 Add a row after each mock drill. Store files in [`mocks/`](mocks/).
