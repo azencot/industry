@@ -29,15 +29,16 @@ North star: [TSRBench](https://tsrbench.github.io/) · Control: allcap-a5b3 (TSE
 | | |
 |---|---|
 | **Problem** | Full TSRBench runs are expensive; headline accuracy hides slice regressions and parse failures. |
-| **Insight** | Treat eval like a release gate — cheap sanity before north star; track parse-miss separately from accuracy. |
-| **What I built** | Tiered eval (loss → TSExam subset → TSRBench subset → full); per-task/per-group accuracy; parse-miss logging; pilot harness (~15 min, TSExam ±0.3 pp noise floor); HF + local dataset parity checks. |
-| **Metrics** | Reasoning bracket: **TR 26.9→21.9 (−5 pp)** on synth mix → **killed**; gates **−3 pp overall / −5 pp per task**; reas mean 29.5→31.2 (misleading alone). |
-| **JD map** | Eval frameworks that **gate** model changes; slice metrics by task (→ doc type / entity in FinTech). |
+| **Insight** | Treat eval like a release gate — cheap sanity before north star; track **parse-miss** separately from accuracy. |
+| **What I built** | Tiered eval gates (per checkpoint): **loss** (free) → **TSExam** (~35 s) → **176-item TSRBench slice** (~12 s) → **full TSRBench** (~3 min 0.8B / ~5 min 8B, 8-GPU parallel). Per-task/per-group accuracy; parse-miss logging; HF + local dataset parity. Promotion gates **−3 pp overall / −5 pp per task** (set before training). |
+| **Parse-miss** | MCQ tasks expect a **single letter**; anything else (free text / empty) = format failure, not scored as wrong answer. Surfaced **NR** and **TSF** on TSRBench as mostly parse-miss while underlying reasoning was often correct — format inconsistency, not capability gap. |
+| **Metrics** | **TR 26.9→21.9 (−5 pp)** on synth mix → **killed**; reas mean 29.5→31.2 (misleading alone); AR/IR **+7 pp** but gate tripped on TR. |
+| **JD map** | Eval frameworks that **gate** model changes; slice by task; schema/format reliability before accuracy (→ doc type / entity in FinTech). |
 | **Honest limit** | Synthetic TR path wrong lever; TR still open — task coverage audit next (Anchor C). |
 | **Lesson** | More training mix ≠ better when task distribution shifts — stop and fix data generation. |
 | **LPs** | Ownership, Earn Trust, Dive Deep, Have Backbone |
 
-**90s spoken:** TR sweet spot → synthetic TSExam tiers → gates −3/−5 pp → **TR 26.9→21.9** → killed mix despite AR/IR +7 pp.
+**90s spoken:** Gate expensive eval — loss → TSExam ~35 s → 176-item TSRBench slice ~12 s → full ~3–5 min. Parse-miss ≠ wrong answer (single-letter MCQ). TR synth → gates −3/−5 pp → **26.9→21.9** → killed despite AR/IR +7 pp.
 
 ---
 
@@ -45,16 +46,17 @@ North star: [TSRBench](https://tsrbench.github.io/) · Control: allcap-a5b3 (TSE
 
 | | |
 |---|---|
-| **Problem** | Stage A lacked captions; Stage B over-reasoned on complex TSRBench tasks (domain-specific, multi-hop). |
-| **Insight** | Gaps were *missing operations* in training/eval coverage, not just insufficient data volume. |
-| **What I built** | (1) Synthetic TS↔text alignment from TSExam + ChatTS for Stage A; (2) added CaTS ~16K for richer captions; (3) task-level TSRBench audit → extended TSExam with missing ops (val extraction, segmentation, multi-hop primitives). |
-| **Metrics** | Stage A: strong next-token + TSExam perception after CaTS; Stage B reasoning still in progress (TSRBench 0.339 control → probing caption-transfer). |
-| **JD map** | Low-label / synthetic data (with quality risk); learning from structured corrections; messy domain-specific reasoning. |
-| **Honest limit** | Synthetic captions are basic without CaTS; Stage B reasoning not solved yet. |
-| **Lesson** | When progress stalls, instrument tasks before adding data — same as debugging a stalled experiment (SKD story). |
-| **LPs** | Dive Deep, Learn and Be Curious, Customer Obsession (if framed as "what users/exam actually need") |
+| **Problem** | Skipping Stage A left TSExam stuck at **~61.8%** (50+ IF configs); Stage B weak on TSRBench reasoning — perception strong, reasoning ~25% bracket. |
+| **Insight** | Gaps were *missing operators/formats* in coverage, not volume alone — audit before stacking data. |
+| **Stage A (low-label)** | No TS captions at start → LLaVA-style align. I adapted TSExam/ChatTS generators: **gold features → text** (no LLM; randomized templates). Added **CaTS** (Rose Yu group — expert-audited domains) for messy real-world signal. Mix → Stage A → TSExam **~90.5%** (recent 8B stack). |
+| **Audit → fix** | Manual pass on all TSRBench reasoning tasks (AR, ER, NR, TR, …). **Three regimes:** (1) operator depth — segmentation, ordering, value extract, trend/seasonality; (2) domain knowledge — defer on 0.8B; (3) format/convention — e.g. **Goldstein scale** synthetics. Per-task TSExam generators for regimes 1+3. |
+| **Metrics (0.8B prelim)** | vs `stageb-weak11k`: TSRBench **0.382→0.405 (+2.3 pp)**; reasoning **0.245→0.255 (+1.0 pp)** with new data + Stage C. 8B WIP. |
+| **JD map** | Low-label synthetic + curated real captions; instrument tasks before scaling data. |
+| **Honest limit** | Reasoning/TR/IR still hard; domain-knowledge regime open; Stage C early. |
+| **Lesson** | When progress stalls, **instrument tasks** before adding data. |
+| **LPs** | Dive Deep, Learn and Be Curious, Customer Obsession (exam/user coverage) |
 
-**90s spoken:** Caption scarcity → I generated alignment data + added CaTS → Stage A fixed → Stage B still weak on TSRBench reasoning → I audited tasks, found missing ops → extended TSExam instead of stacking buckets.
+**90s spoken:** No captions → IF-only stuck **61.8%** → synthetic feature captions + CaTS → Stage A → **~90.5%** TSExam. TR kill → task audit (operators · domain defer · formats) → targeted TSExam gens + Stage C → **+2.3 pp** overall / **+1.0 pp** reasoning on 0.8B (prelim).
 
 ---
 
@@ -68,7 +70,9 @@ North star: [TSRBench](https://tsrbench.github.io/) · Control: allcap-a5b3 (TSE
 | TSExam-numeric medAE | 0.14 |
 | Caption attr-recovery | 0.72 |
 | Configs / scripts | 162 / 125 |
-| Pilot detectability | TSExam ±0.3 pp in ~15 min |
+| Eval gate latency | loss free · TSExam ~35 s · TSRBench slice 176 items ~12 s · full ~3 min (0.8B) / ~5 min (8B) |
+| Stage A lift | IF-only TSExam **~61.8%** → post–Stage A **~90.5%** (8B recent) |
+| Audit + Stage C (0.8B) | vs `stageb-weak11k`: overall **0.382→0.405** · reasoning **0.245→0.255** |
 
 ---
 
@@ -92,7 +96,7 @@ North star: [TSRBench](https://tsrbench.github.io/) · Control: allcap-a5b3 (TSE
 | Ownership | TR synth kill — [`stories/ownership_killed-tr-synthetic.md`](stories/ownership_killed-tr-synthetic.md) | Draft v2 DOC review |
 | Deliver Results | VLM Anchor A — [`stories/deliver-results_dual-tower-curriculum.md`](stories/deliver-results_dual-tower-curriculum.md) | Qwen3-VL-8B → 3ep: 0.618→0.905, 0.402→0.452 |
 | Invent & Simplify | ImagenTime — [`stories/invent-simplify_imagentime.md`](stories/invent-simplify_imagentime.md) | Draft v3 DOC L6 |
-| Dive Deep | TSRBench reasoning audit — [`stories/dive-deep_tsrbench-reasoning-audit.md`](stories/dive-deep_tsrbench-reasoning-audit.md) | Draft v1; 3 regimes, ~+5 pp 0.8B prelim |
+| Dive Deep | TSRBench reasoning audit — [`stories/dive-deep_tsrbench-reasoning-audit.md`](stories/dive-deep_tsrbench-reasoning-audit.md) | Draft v1; audit + Stage C: +2.3 pp overall / +1.0 pp reasoning (0.8B prelim) |
 | Customer Obsession | **Gap** | Need stakeholder/user story |
 
 ---
@@ -102,7 +106,7 @@ North star: [TSRBench](https://tsrbench.github.io/) · Control: allcap-a5b3 (TSE
 | Question | Point to |
 |----------|----------|
 | "Walk me through architecture" | Anchor A — dual tower, Stage A/B |
-| "How do you know it's ready to ship?" | Anchor B — tiered eval, parse-miss, negative TR |
+| "How do you know it's ready to ship?" | Anchor B — tiered eval latencies, parse-miss, −3/−5 pp gates, TR kill |
 | "What failed recently?" | Anchor B (TR mixes) + Anchor C (over-reasoning) |
 | "Low labels / synthetic data?" | Anchor C — synthetic align + CaTS + quality caveats |
 | "RL?" | GRPO warm-started from SFT, MCQ rewards; Stage C VRT planned |

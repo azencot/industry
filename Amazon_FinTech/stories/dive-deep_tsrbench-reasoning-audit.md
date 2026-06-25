@@ -49,9 +49,13 @@ I trained the **0.8B** validation model on the new recipe and pulled **per-task*
 
 ## Results
 
-**Preliminary (0.8B, in progress):**
+**Preliminary (0.8B vs `stageb-weak11k` control):**
 
-- Reasoning bracket **~+5 percentage points** versus the pre-audit control on the same eval harness.
+| Metric | Control (`reason-sbmix-weak11k`) | + audit data + Stage C | Δ |
+|--------|----------------------------------|------------------------|---|
+| TSRBench overall | **0.382** | **0.405** | **+2.3 pp** |
+| TSRBench reasoning | **0.245** | **0.255** | **+1.0 pp** |
+
 - **8B evaluation still running** — not claiming north-star promotion yet.
 - **Per-task error analysis:** “Missing operation” failures dropped to a **minimum** on several slices; remaining errors look like **wrong reasoning on correctly parsed items** — closer to the control’s failure mode on hard items, not random format collapse.
 
@@ -102,13 +106,13 @@ Third, unique formats and conventions. Some items fail because the model has nev
 
 From that taxonomy I split the work into three tracks. Step one: deepen the operator generators I already had — more span, harder compositions. Step two: synthetic data that introduces missing formats and conventions — scales, labels, answer templates that appear on TSRBench but not in our legacy exam mix. Step three: domain-specific knowledge where a small model can realistically absorb it. I executed step one and step two first because I expected format literacy to be the highest-ROI fix after the TR regression taught us that operator volume alone can help the wrong tasks.
 
-I trained the zero-point-eight-billion validation model on the new recipe and evaluated the same way I had on the killed mix — per task, with error patterns tagged, not just accuracy. Results are still preliminary, but directionally encouraging. On zero-point-eight-B I am seeing about a five-point lift on the reasoning bracket versus the pre-audit control on the same harness. Eight-billion runs are still in progress — I am not claiming north-star promotion yet. What matters more at this stage is the per-task shape of errors. I tag whether a miss is a missing operation — the model never attempted the right primitive — versus a reasoning error on a parsed item. On several slices, missing-operation failures dropped to a minimum compared to control. Remaining errors look more like the model reasoning incorrectly on items it at least parsed — closer to the control’s failure mode on hard questions, not random format collapse. That is the signal I was diving for: we are finally training on the right gaps.
+I trained the zero-point-eight-billion validation model on the new recipe and evaluated the same way I had on the killed mix — per task, with error patterns tagged, not just accuracy. Results are still preliminary, but directionally encouraging. On zero-point-eight-B versus `stageb-weak11k` control I am seeing **plus two-point-three points** on TSRBench overall (**0.382 to 0.405**) and **plus one point** on the reasoning bracket (**0.245 to 0.255**). Eight-billion runs are still in progress — I am not claiming north-star promotion yet. What matters more at this stage is the per-task shape of errors. I tag whether a miss is a missing operation — the model never attempted the right primitive — versus a reasoning error on a parsed item. On several slices, missing-operation failures dropped to a minimum compared to control. Remaining errors look more like the model reasoning incorrectly on items it at least parsed — closer to the control’s failure mode on hard questions, not random format collapse. That is the signal I was diving for: we are finally training on the right gaps.
 
-Next steps are to widen span and coverage in the step one and step two generators, then selectively pursue step three domain packs and Stage C gold-level VRT reinforcement where we have reliable labels. The durable outcome is not just five preliminary points — it is that we diagnose before we scale. When a benchmark bracket stalls, I instrument the tasks, classify the failure regime, and match the data fix to the gap. Operator buckets, format conventions, and domain knowledge are different levers. Same discipline I would use on payment or filing extraction: do not cargo-cult volume until you know whether the miss is format, field coverage, or domain context.
+Next steps are to widen span and coverage in the step one and step two generators, then selectively pursue step three domain packs and Stage C gold-level VRT reinforcement where we have reliable labels. The durable outcome is not just the preliminary two-point-three overall lift — it is that we diagnose before we scale. When a benchmark bracket stalls, I instrument the tasks, classify the failure regime, and match the data fix to the gap. Operator buckets, format conventions, and domain knowledge are different levers. Same discipline I would use on payment or filing extraction: do not cargo-cult volume until you know whether the miss is format, field coverage, or domain context.
 
 ### Short version (~90 sec)
 
-Reasoning weak on TSRBench. Operator-based synthetic mix regressed TR five points — killed. I audited every reasoning task; three regimes: domain knowledge, operator depth, format/convention. Step 1 deepened seven–eight operators; Step 2 added missing formats like Goldstein scale. Preliminary ~+5 pp on 0.8B; 8B WIP. Per-task misses from missing ops near zero; errors now look like reasoning, not format collapse. Lesson: instrument tasks before scaling data.
+Reasoning weak on TSRBench. Operator-based synthetic mix regressed TR five points — killed. I audited every reasoning task; three regimes: domain knowledge, operator depth, format/convention. Step 1 deepened operators; Step 2 added missing formats like Goldstein scale. Preliminary **+2.3 pp** overall / **+1.0 pp** reasoning on 0.8B vs `stageb-weak11k`; 8B WIP. Per-task misses from missing ops near zero; errors now look like reasoning, not format collapse. Lesson: instrument tasks before scaling data.
 
 ### Likely follow-ups
 
@@ -120,10 +124,11 @@ Reasoning weak on TSRBench. Operator-based synthetic mix regressed TR five point
 
 ### Weak spots / facts to verify
 
-- [ ] Exact reasoning bracket before/after for ~+5 pp (0.8B).
+- [x] Exact reasoning bracket before/after (0.8B): **0.245→0.255 (+1.0 pp)**; overall **0.382→0.405 (+2.3 pp)** vs `stageb-weak11k`.
 - [ ] Which tasks moved most in preliminary per-task table?
 - [ ] Goldstein scale — correct task/domain label on TSRBench?
 - [ ] Step 3 domain packs — any started or still planned?
+- [ ] 8B results when ready?
 
 ### FinTech bridge (only if asked)
 

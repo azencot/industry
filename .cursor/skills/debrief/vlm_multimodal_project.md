@@ -63,13 +63,14 @@ Time series input
 |-------|-------------|--------------|---------|
 | **A** | DINO backbone (LoRA) + alignment merger on caption/align data | **No** | Learn *how to see* a series |
 | **B** | Merge Stage A; add LM LoRA (+ optional DINO LoRA); merger often frozen | **Yes** (LM LoRA) | Learn *how to answer* |
-| **C** *(planned)* | GRPO / VRT — gold-based RL on SFT adapters | RL on LoRA | MCQ correctness rewards without human preference data |
+| **C** *(in progress)* | GRPO / VRT — gold-based RL on SFT adapters | RL on LoRA | CoT correctness rewards on gold labels |
 
 ### Stage A data sources (evolution)
 
-1. ChatTS alignment (105K) + caption buckets (7.7K)
-2. **Synthetic TS↔text alignment** generated from TSExam + ChatTS (LLaVA-style) when real captions were scarce
-3. **CaTS-Bench** (~16K) added when synthetic alone was too basic → strong Stage A on next-token prediction + TSExam perception slices
+0. **Baseline failure:** instruction-following only (no captions) — **50+ configs**, TSExam stuck at **~61.8%**; zero-shot TS-image perception insufficient.
+1. **Synthetic TS↔text alignment:** adapted TSExam + ChatTS generators — compose captions from **per-series gold features** (no LLM; template + randomization).
+2. **CaTS** (Rose Yu group): expert-audited domains (traffic, electricity, etc.); LLM trained on **~1.6K** audited seeds → **~16K** caption repo for messy real-world signal.
+3. **Stage A mix:** TSExam + ChatTS synthetic captions + CaTS → perception lift → TSExam **~90.5%** on recent 8B stack.
 
 ### Stage B data mix
 
@@ -87,8 +88,8 @@ Mostly QA: TSExam MCQ, ChatTS SFT, TSExam-numeric regression, small caption hold
 |------|---------|
 | **Training** | PyTorch DDP (`torchrun`, 8× RTX Pro 6000); LoRA via PEFT (~43M–few-hundred-M trainable params); stratified multi-task samplers; YAML-config-first sweeps (**162 configs**, **125 scripts**) |
 | **Data pipeline** | Unified loaders across TSExam, TSExam-numeric, caption, ChatTS, ICL-UCR, CaTS-Bench, TSRBench JSONL; stratified balancing; leave-one-out ablations (e.g. drop caption bucket → +3 pp TSExam) |
-| **Eval harness** | Tiered eval: loss → TSExam subset → TSRBench subset → full north-star; per-task/per-group accuracy; **parse-miss logging** separate from accuracy; HF + local dataset parity; OOD amplitude via per-series normalization fallback |
-| **Pilot harness** | 4-bucket capped subset (~10K samples, 2 epochs); screens datasets in **~8–15 min** on Q35; calibrated noise floors (**TSExam ±0.3 pp detectable**) |
+| **Eval harness** | Tiered gates per checkpoint: **loss** (free) → **TSExam** (~35 s) → **176-item TSRBench slice** (~12 s) → **full TSRBench** (~3 min 0.8B / ~5 min 8B, 8-GPU). Per-task/per-group accuracy; **parse-miss** (non–single-letter MCQ output) separate from accuracy — surfaced **NR** / **TSF** format gaps. HF + local parity. |
+| **Fast train screen** | Capped subset (~10K, 2 epochs) on Q35 for data-mix screening — distinct from eval gate ladder above |
 | **RL** | GRPO on Qwen3-VL-8B (TRL + DeepSpeed); warm-started from SFT adapters; rule-based MCQ correctness rewards |
 | **Infra** | Slurm submission; `QTSX_ARTIFACT_ROOT` artifact separation; dual venvs (torch 2.4/8B vs 2.11/Q35); NCCL tuning (P2P disable on heterogeneous nodes); agent/onboarding automation for repeatable train/eval workflows |
 | **Reproducibility** | Fixed samplers (post bug-fix), seed control, artifact paths, documented eval protocol fixes (e.g. deductive-reasoning option parsing) |
@@ -100,11 +101,10 @@ Mostly QA: TSExam MCQ, ChatTS SFT, TSExam-numeric regression, small caption hold
 Amazon-relevant habits embedded in the stack:
 
 1. **Config-first** — one hypothesis per change; fork YAML, not training code; parallel Slurm sweeps
-2. **Pilot before full run** — cheap screen with measured noise floors
-3. **Tiered eval gates** — don't run expensive TSRBench until TSExam sanity passes
-4. **Parse-miss ≠ accuracy** — track schema/reliability separately (production analog: doc parsing failures)
-5. **Multi-scale validation** — 0.8B first, 8B as ceiling reference
-6. **Living experiment index** — ~160 configs documented for reproducibility and handoff
+2. **Tiered eval gates** — loss → TSExam → TSRBench slice → full north star (see latencies in eval harness)
+3. **Parse-miss ≠ accuracy** — track schema/reliability separately (production analog: doc parsing failures)
+4. **Multi-scale validation** — 0.8B first, 8B as ceiling reference
+5. **Living experiment index** — ~160 configs documented for reproducibility and handoff
 
 ---
 
@@ -113,7 +113,8 @@ Amazon-relevant habits embedded in the stack:
 | Benchmark | Task | Best Q35 (0.8B) | Best 8B | Notes |
 |-----------|------|-----------------|---------|-------|
 | **TSExam HF** | 746-item MCQ (AutonLab) | **0.890** (tsexam-v2 repro) | **0.901** (unified champion) | Tiered eval sanity check |
-| **TSRBench overall** | 12-task MCQ north star | 0.374 (capnum-a8b4) | **0.454** (capnumicl-a8b4) | Public benchmark — verify leaderboard rank before PS1 |
+| **TSRBench reasoning** | Reasoning bracket (0.8B) | **0.245→0.255** (+1.0 pp) | — | vs `stageb-weak11k`; + audit data + Stage C (`reason-stageC-weak11k`) — prelim |
+| **TSRBench overall** | 12-task MCQ north star | **0.382→0.405** (+2.3 pp) | 0.374 (capnum-a8b4) | 0.8B audit path prelim; 8B best **0.454** (capnumicl-a8b4) |
 | **TSRBench TR** | Temporal-relation reasoning (160 items) | 0.287 (allcap control) | — | Hard problem; in progress |
 | **TSExam-numeric** | Regression (medAE) | **0.14** (unified3) | — | Numeric correctness |
 | **Caption attr-recovery** | 9-field macro accuracy | **0.72** (caption specialist) | — | Field extraction analog |
@@ -142,6 +143,18 @@ TSRBench reasoning tasks are domain-specific and multi-hop — they combine basi
 ## Problems solved — detailed log
 
 *Add new entries at the top as work progresses.*
+
+### 2026-06 — TSRBench task audit + Stage C (reasoning bracket)
+
+**Problem:** Blind TR/reasoning mixes regressed TR (−5 pp) — see Ownership kill.
+
+**Action:** Manual audit of all TSRBench reasoning tasks → three regimes (operator depth · domain knowledge defer · format/convention). Rebuilt reasoning synthetic repo; per-task TSExam generators (TR segmentation/ordering, NR value→formula, Goldstein-scale format synthetics, etc.). Adapted Stage B + Stage C (VRT/GRPO on gold CoT).
+
+**Result (0.8B prelim vs `stageb-weak11k`):** TSRBench overall **0.382→0.405 (+2.3 pp)**; reasoning **0.245→0.255 (+1.0 pp)**. 8B WIP.
+
+**Interview angle:** Anchor C — instrument before scaling data.
+
+---
 
 ### 2025-06 — Stage B reasoning gaps (TSRBench task audit)
 

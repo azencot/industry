@@ -40,7 +40,7 @@
 
 **Intro (light)**
 
-- [ ] TMAY + elevator pitch once — **IC paragraph only**; trim PI/managerial framing → [`tell-me-about-yourself.md`](stories/tell-me-about-yourself.md)
+- [x] TMAY + elevator pitch once — **IC paragraph only**; trim PI/managerial framing → [`tell-me-about-yourself.md`](stories/tell-me-about-yourself.md)
 
 **Coding**
 
@@ -49,8 +49,6 @@
 ---
 
 ## Wed 25 Jun — VLM drill #2 + LP reframe + 1 code
-
-**Carry from 24 Jun:** TMAY IC paragraph (if not done tonight)
 
 **VLM**
 

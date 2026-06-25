@@ -28,7 +28,7 @@ Everything else is **unchanged**.
 
 ## Short version (~90 sec)
 
-I build from scratch in ill-defined problems—first principles, experiments, revise fast. My focus is sequential modeling, representation learning, generative and multimodal models; 35+ papers, but I care about systems that work, not the PDF. Lately I want impact at scale—that's Amazon: ambiguity, invent to clarity, strong execution. [`elevator-pitch.md`](../elevator-pitch.md) for current flagship if he bites.
+I build from scratch in ill-defined problems—first principles, experiments, revise fast. My focus is sequential modeling, representation learning, generative and multimodal models; 40+ papers, but I care about systems that work, not the PDF. Lately I want impact at scale—that's Amazon: ambiguity, invent to clarity, strong execution. [`elevator-pitch.md`](../elevator-pitch.md) for current flagship if he bites.
 
 ---
 
@@ -54,4 +54,4 @@ I build from scratch in ill-defined problems—first principles, experiments, re
 
 | Date | Time (target ~2:00–2:30) | Felt natural? | Notes |
 |------|--------------------------|---------------|-------|
-| | | ☐ | IC pass on para 2 only |
+| 2026-06-25 | ~2–3 min | ☑ | Jun 24 close-out; IC para 2 hands-on artifacts |
