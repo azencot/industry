@@ -17,7 +17,7 @@ One file per story: `{lp-slug}_{short-title}.md` (e.g. `ownership_shipped-eval-g
 | Invent and Simplify | [`invent-simplify_imagentime.md`](invent-simplify_imagentime.md) | +58% / +132%; EDM ~35 NFE | ☐ |
 | Earn Trust | | | ☐ |
 | Have Backbone; Disagree and Commit | | | ☐ |
-| Learn and Be Curious | | | ☐ |
+| Learn and Be Curious | [`learn-be-curious_diffusion-mastery.md`](learn-be-curious_diffusion-mastery.md) | Learned diffusion from SDE up → 7 papers (ICML/ICLR/NeurIPS); ImagenTime/Few infra | ☐ |
 
 ## Intro / motivation (not STAR LPs)
 
