@@ -38,19 +38,19 @@
 - [x] Spoken drill — **Anchor A** (~15 min): dual encodings, Stage A/B curriculum, training stack, key metrics (stock **0.618/0.402** → **0.905/0.452**); **fold in self-Q&A** (~5 min at end): visual not tokens? Stage A decoupled? what broke? → [`debrief/2026-06-24_anchor-a-spoken-drill.md`](../.cursor/skills/debrief/2026-06-24_anchor-a-spoken-drill.md)
 - [x] **Chronos bridge** — done 23 Jun; Imry note = **Bolt** patching (not v1 per-step bins). One-liner: *same problem (efficient TS → model), different bet (forecast quantiles vs VLM reasoning)* → [`INDEX.md` Chronos note](INDEX.md#chronos-team-stack-imry)
 
-**Intro (light)** — *carried to Wed 25*
+**Intro (light)**
 
 - [ ] TMAY + elevator pitch once — **IC paragraph only**; trim PI/managerial framing → [`tell-me-about-yourself.md`](stories/tell-me-about-yourself.md)
 
-**Coding** — *carried to Wed 25 (2× code that day if short on time)*
+**Coding**
 
-- [ ] 1× `/timed-code` medium (25 min, narrated) — log in root [`INDEX.md`](../INDEX.md)
+- [x] 1× `/timed-code` medium — 567 permutation / sliding window (~50 min with debug) → [`debrief/2026-06-24_timed-code-567.md`](../.cursor/skills/debrief/2026-06-24_timed-code-567.md) · root [`INDEX.md`](../INDEX.md)
 
 ---
 
 ## Wed 25 Jun — VLM drill #2 + LP reframe + 1 code
 
-**Carry from 24 Jun:** TMAY IC paragraph · 1× `/timed-code` (from 24 Jun)
+**Carry from 24 Jun:** TMAY IC paragraph (if not done tonight)
 
 **VLM**
 

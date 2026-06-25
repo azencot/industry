@@ -12,6 +12,8 @@ description: >-
 
 Amazon Applied Scientist phone screen live coding. Problems from [`code/`](../../code/) or PS1-priority patterns in root [`INDEX.md`](../../INDEX.md).
 
+**Interview mode:** `code/` is in [`.cursorignore`](../../.cursorignore) and [`.vscode/settings.json`](../../.vscode/settings.json) disables Cursor Tab + inline/Python suggestions for all `.py` files in this repo. Paste your solution in chat for review after the drill (agent won't index `code/` during the timer).
+
 ## Workflow
 
 1. **Select problem**
@@ -29,6 +31,13 @@ Amazon Applied Scientist phone screen live coding. Problems from [`code/`](../..
    `| YYYY-MM-DD | filename | minutes | pass/fail | notes |`
 
 7. **Optional** — if full simulation, run `/debrief` → `Amazon_FinTech/mocks/YYYY-MM-DD_timed-code.md` + summary in `.cursor/skills/debrief/`.
+
+## Problem file convention (timed drills)
+
+- **Path:** `code/YYYY-MM-DD_{leetcode#}_{slug}_practice.py`
+- **Header:** full problem statement, examples, constraints, LeetCode link
+- **Body:** `class Solution(object):` — user fills in; agent does **not** hint unless asked mid-drill
+- **Tests:** small `if __name__ == "__main__"` block at bottom
 
 ## Problem selection (default rotation)
 

@@ -55,7 +55,7 @@ Add rows after `/timed-code` drills:
 
 | Date | Problem | Min | Pass? | Verbal / bug notes |
 |------|---------|-----|-------|-------------------|
-| | | | | |
+| 2026-06-24 | `2026-06-24_567_permutation_in_string_practice.py` | ~50 | pass | sliding window; `while`+`le` restart; fixed `for`/precedence bugs — over 25 min |
 
 ---
 
