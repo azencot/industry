@@ -54,6 +54,7 @@
 
 - [x] Spoken drill — **Anchor B** (~10 min): tiered eval, parse-miss vs accuracy, TR synthetic **kill** (26.9→21.9) → [`debrief/2026-06-25_anchor-bc-lp-debrief.md`](../.cursor/skills/debrief/2026-06-25_anchor-bc-lp-debrief.md)
 - [x] Spoken drill — **Anchor C** (~10 min): task coverage audit, missing ops, honest TSRBench/TR gaps
+- [x] **Qwen (HF) + PEFT/LoRA** — repo walkthrough: `AutoModelForImageTextToText` + processor, dual visual patch, hybrid Q35 LoRA targets (sparse attention / dense MLP), Stage A→B adapter chain at eval → [`debrief/2026-06-25_qwen-peft-technical.md`](../.cursor/skills/debrief/2026-06-25_qwen-peft-technical.md)
 - [ ] Anticipate Karan follow-ups: ablations, config sweeps, what you'd do with proprietary finance TS *(skim if time)*
 
 **LP reframe (technical, not “story”)**

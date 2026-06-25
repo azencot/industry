@@ -113,6 +113,7 @@ Track which LPs have ready stories in [`stories/README.md`](stories/README.md). 
 | 2026-06-24 | timed-code 567 permutation | [`2026-06-24_timed-code-567.md`](../.cursor/skills/debrief/2026-06-24_timed-code-567.md) | `@Files 2026-06-24_timed-code-567.md` + TMAY IC paragraph |
 | 2026-06-25 | Anchor B/C spoken + Ownership LP | [`2026-06-25_anchor-bc-lp-debrief.md`](../.cursor/skills/debrief/2026-06-25_anchor-bc-lp-debrief.md) | `@Files 2026-06-25_anchor-bc-lp-debrief.md` + `/timed-code` |
 | 2026-06-25 | timed-code Islands + Learn & Curious LP | [`2026-06-25_timed-code-and-learn-curious-lp.md`](../.cursor/skills/debrief/2026-06-25_timed-code-and-learn-curious-lp.md) | `@Files 2026-06-25_timed-code-and-learn-curious-lp.md` + Thu 26 coding sprint |
+| 2026-06-25 | Qwen (HF) + PEFT/LoRA technical | [`2026-06-25_qwen-peft-technical.md`](../.cursor/skills/debrief/2026-06-25_qwen-peft-technical.md) | `@Files 2026-06-25_qwen-peft-technical.md` + Karan ablation follow-ups |
 
 Add a row after each `/debrief`. FinTech-track notes → [`debrief/`](debrief/); cross-session profile → [`.cursor/skills/debrief/`](../.cursor/skills/debrief/).
 
