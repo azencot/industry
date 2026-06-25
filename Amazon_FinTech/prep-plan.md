@@ -63,7 +63,8 @@ Format: *metric anomaly → what I dug into → code/config change → result*
 - [x] Read aloud + reframe → [`ownership_killed-tr-synthetic.md`](stories/ownership_killed-tr-synthetic.md) (~78%; retake optional with exact pp numbers)
 - [x] Dive Deep — **covered via Anchor C** (60s handoff only; no separate drill)
 - [ ] Backup if asked: [`deliver-results_dual-tower-curriculum.md`](stories/deliver-results_dual-tower-curriculum.md) (verify leaderboard rank)
-- [ ] **Stop** drafting Customer Obsession / Earn Trust / etc. unless mock surfaces a gap
+- [x] **Variety story (non-VLM):** drafted **Learn & Be Curious** (diffusion → 7 papers; ImagenTime/Few) → [`learn-be-curious_diffusion-mastery.md`](stories/learn-be-curious_diffusion-mastery.md) — DOC + ~8 min script; **unrehearsed** (verify 7 papers, add 1 SDE decision, trim managerial voice)
+- [x] **Customer Obsession — decided NOT to draft** (repo-usability = open-source hygiene w/o adoption metrics; CO rare in technical screens). **Stop** drafting CO / Earn Trust / etc. unless mock surfaces a gap
 
 **Coding**
 
