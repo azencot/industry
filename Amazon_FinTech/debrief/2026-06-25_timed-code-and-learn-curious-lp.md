@@ -23,7 +23,7 @@
 ### 3. New story — Learn and Be Curious (diffusion)
 
 - User had a ready DOC narrative (learned diffusion w/ students Ilan, Nimrod → 7 papers ICML/ICLR/NeurIPS).
-- Drafted into agreed DOC format: [`stories/learn-be-curious_diffusion-mastery.md`](../../Amazon_FinTech/stories/learn-be-curious_diffusion-mastery.md).
+- Drafted into agreed DOC format: [`stories/learn-be-curious_diffusion-mastery.md`](../stories/learn-be-curious_diffusion-mastery.md).
 - Reframed for IC voice: "I learned/implemented/debugged/rewrote" not "my group succeeded"; trimmed managerial setup (tenure-track, funding/recruitment).
 - Filled **~8-min spoken script (~1048 words)** to match other LP files.
 - Registered in `stories/README.md` (still ☐ — drafted, not rehearsed).
@@ -49,4 +49,4 @@
 
 ## Next session
 
-> `@Files .cursor/skills/debrief/2026-06-25_timed-code-and-learn-curious-lp.md` — Fri 26 Jun coding sprint #1 (2× timed mediums: heap/intervals/trie/binary search); optionally rehearse Learn & Be Curious aloud once.
+> `@Files Amazon_FinTech/debrief/2026-06-25_timed-code-and-learn-curious-lp.md` — Fri 26 Jun coding sprint #1 (2× timed mediums: heap/intervals/trie/binary search); optionally rehearse Learn & Be Curious aloud once.

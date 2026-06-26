@@ -2,7 +2,7 @@
 
 Session debrief compiled 2026-06-21. Canonical reference for resume walkthrough, ML deep-dive, and story framing for **Senior Applied Scientist, FinTelligence** (PS1: Karan Aggarwal, 30 Jun 2026).
 
-Sources: [`CV_Azencot_10399493.pdf`](../../Amazon_FinTech/CV_Azencot_10399493.pdf), VLM project brief, [Google Scholar](https://scholar.google.com/citations?user=MEGuRmAAAAAJ&hl=en), prep-session analysis.
+Sources: [`CV_Azencot_10399493.pdf`](../CV_Azencot_10399493.pdf), VLM project brief, [Google Scholar](https://scholar.google.com/citations?user=MEGuRmAAAAAJ&hl=en), prep-session analysis.
 
 ---
 
@@ -66,7 +66,7 @@ Sequential / dynamical modeling (Koopman, forecasting)
 ## Flagship project: Time-Series Vision-Language Models
 
 **Extended summary (build on this):** [`vlm_multimodal_project.md`](vlm_multimodal_project.md)  
-**PS1 cheat sheet:** [`anchor-cheat-sheet.md`](../../Amazon_FinTech/anchor-cheat-sheet.md)
+**PS1 cheat sheet:** [`anchor-cheat-sheet.md`](../anchor-cheat-sheet.md)
 
 **Stack:** Python 3.11 · PyTorch 2.4 (8B) / 2.11 (Q35) · Transformers · PEFT/LoRA · TRL (GRPO) · Accelerate/DeepSpeed · HuggingFace · Slurm · 8× GPU DDP
 
@@ -131,7 +131,7 @@ Stage B **over-reasoning** on complex TSRBench tasks (domain-specific, multi-hop
 
 ### PS1 three anchors (one project, three angles)
 
-Full detail: [`vlm_multimodal_project.md`](vlm_multimodal_project.md). Cheat sheet: [`anchor-cheat-sheet.md`](../../Amazon_FinTech/anchor-cheat-sheet.md).
+Full detail: [`vlm_multimodal_project.md`](vlm_multimodal_project.md). Cheat sheet: [`anchor-cheat-sheet.md`](../anchor-cheat-sheet.md).
 
 | Anchor | Theme | VLM angle |
 |--------|-------|-----------|
@@ -228,12 +228,12 @@ Lean hardest on: **eval methodology**, **curriculum/domain adaptation**, **low-l
 ## Gaps & open items
 
 - [ ] **STAR stories** — triage done: ImagenTime + SKD keep (reframe); compute story retire; Customer Obsession gap remains
-- [x] **Three anchors + cheat sheet** — [`anchor-cheat-sheet.md`](../../Amazon_FinTech/anchor-cheat-sheet.md)
+- [x] **Three anchors + cheat sheet** — [`anchor-cheat-sheet.md`](../anchor-cheat-sheet.md)
 - [ ] **Hands-on ledger** — explicit list of personal vs delegated work across 2020–present
 - [ ] **Industry collab specifics** — technical contribution per Google/NVIDIA/Bosch
 - [ ] **Motivation narrative** — why this IC role now (counter "will miss running a lab")
 - [ ] **Prior loop details** — which role/stories triggered "too managerial"
-- [x] **2-min pitch** — [`elevator-pitch.md`](../../Amazon_FinTech/elevator-pitch.md)
+- [x] **2-min pitch** — [`elevator-pitch.md`](../elevator-pitch.md)
 - [ ] **Production story** — any internal tools, real (non-benchmark) eval, serving constraints
 
 ---
@@ -257,7 +257,7 @@ Lean hardest on: **eval methodology**, **curriculum/domain adaptation**, **low-l
 
 ## Related files
 
-- [`CV_Azencot_10399493.pdf`](../../Amazon_FinTech/CV_Azencot_10399493.pdf) — application resume
-- [`prep-plan.md`](../../Amazon_FinTech/prep-plan.md) — 7-day schedule
-- [`INDEX.md`](../../Amazon_FinTech/INDEX.md) — role timeline & interviewer context
-- [`stories/`](../../Amazon_FinTech/stories/) — STAR bank (pending IC reframes)
+- [`CV_Azencot_10399493.pdf`](../CV_Azencot_10399493.pdf) — application resume
+- [`prep-plan.md`](../prep-plan.md) — 7-day schedule
+- [`INDEX.md`](../INDEX.md) — role timeline & interviewer context
+- [`stories/`](../stories/) — STAR bank (pending IC reframes)

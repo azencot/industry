@@ -1,7 +1,7 @@
 # Time-Series Vision-Language Models — project summary
 
 **Long-lived reference.** Extend this file as the project evolves — new results, problems solved, ablations, interview angles.  
-**Interview cheat sheet:** [`Amazon_FinTech/anchor-cheat-sheet.md`](../../Amazon_FinTech/anchor-cheat-sheet.md)  
+**Interview cheat sheet:** [`Amazon_FinTech/anchor-cheat-sheet.md`](../anchor-cheat-sheet.md)  
 **Experience profile (broader arc):** [`omri_azencot_experience.md`](omri_azencot_experience.md)
 
 Last updated: 2026-06-21
@@ -214,7 +214,7 @@ TSRBench reasoning tasks are domain-specific and multi-hop — they combine basi
 
 ## PS1 interview hooks
 
-**One project, three anchors** — see [`anchor-cheat-sheet.md`](../../Amazon_FinTech/anchor-cheat-sheet.md).
+**One project, three anchors** — see [`anchor-cheat-sheet.md`](../anchor-cheat-sheet.md).
 
 | Anchor | Theme | Lead with |
 |--------|-------|-----------|

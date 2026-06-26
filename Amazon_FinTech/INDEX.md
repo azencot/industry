@@ -27,7 +27,7 @@ Active interview track. Annotated index — read entries before opening every fi
 | [`prep-plan.md`](prep-plan.md) | Karan-focused prep (24–29 Jun): VLM depth + coding | Daily — find today's block |
 | [`CV_Azencot_10399493.pdf`](CV_Azencot_10399493.pdf) | Resume for this application | Before intro / resume walkthrough |
 | [`stories/`](stories/) | STAR stories by Leadership Principle | Before LP drills and interview |
-| [`.cursor/skills/debrief/`](../.cursor/skills/debrief/) | Session debriefs & cross-chat handoffs | Start session B; after `/debrief` |
+| [`debrief/`](debrief/) | Session debriefs & cross-chat handoffs | Start session B; after `/debrief` |
 | [`mocks/`](mocks/) | Simulated interview drill logs | After timed-code / full-mock / mock-lp |
 | [`debrief/`](debrief/) | FinTech-track session debriefs & reading notes | Start session B; after exploration reads |
 
@@ -106,19 +106,19 @@ Track which LPs have ready stories in [`stories/README.md`](stories/README.md). 
 | 2026-06-21 | experience profile | [`omri_azencot_experience.md`](../.cursor/skills/debrief/omri_azencot_experience.md) | `@Files .cursor/skills/debrief/omri_azencot_experience.md` |
 | 2026-06-21 | VLM project summary + Day 1 anchors | [`vlm_multimodal_project.md`](../.cursor/skills/debrief/vlm_multimodal_project.md) | `@Files vlm_multimodal_project.md` + `anchor-cheat-sheet.md` |
 | 2026-06-21 | Day 2 — continual pre-training blog (Karan) | [`2026-06-21_continual-pretraining-blog.md`](debrief/2026-06-21_continual-pretraining-blog.md) | `@Files debrief/2026-06-21_continual-pretraining-blog.md` + `/ml-deep-dive` |
-| 2026-06-21 | Day 2 — ML depth interactive (3 topics) | [`2026-06-21_day2-ml-depth.md`](../.cursor/skills/debrief/2026-06-21_day2-ml-depth.md) | `@Files 2026-06-21_day2-ml-depth.md` + spoken drill retake |
-| 2026-06-22 | Day 3 — LP stories DOC L6 (Invent + Deliver Results) | [`2026-06-22_day3-lp-stories.md`](../.cursor/skills/debrief/2026-06-22_day3-lp-stories.md) | `@Files 2026-06-22_day3-lp-stories.md` + draft Ownership (TR kill) |
-| 2026-06-24 | Chronos bridge (v1 / Bolt / VLM contrast) | [`2026-06-24_chronos-bridge.md`](../.cursor/skills/debrief/2026-06-24_chronos-bridge.md) | `@Files 2026-06-24_chronos-bridge.md` |
-| 2026-06-24 | Anchor A spoken drill (Jun 24) | [`2026-06-24_anchor-a-spoken-drill.md`](../.cursor/skills/debrief/2026-06-24_anchor-a-spoken-drill.md) | `@Files 2026-06-24_anchor-a-spoken-drill.md` + Anchor B drill (Wed 25) |
-| 2026-06-24 | timed-code 567 permutation | [`2026-06-24_timed-code-567.md`](../.cursor/skills/debrief/2026-06-24_timed-code-567.md) | `@Files 2026-06-24_timed-code-567.md` + TMAY IC paragraph |
-| 2026-06-25 | Anchor B/C spoken + Ownership LP | [`2026-06-25_anchor-bc-lp-debrief.md`](../.cursor/skills/debrief/2026-06-25_anchor-bc-lp-debrief.md) | `@Files 2026-06-25_anchor-bc-lp-debrief.md` + `/timed-code` |
-| 2026-06-25 | timed-code Islands + Learn & Curious LP | [`2026-06-25_timed-code-and-learn-curious-lp.md`](../.cursor/skills/debrief/2026-06-25_timed-code-and-learn-curious-lp.md) | `@Files 2026-06-25_timed-code-and-learn-curious-lp.md` + Thu 26 coding sprint |
-| 2026-06-25 | Qwen (HF) + PEFT/LoRA technical | [`2026-06-25_qwen-peft-technical.md`](../.cursor/skills/debrief/2026-06-25_qwen-peft-technical.md) | `@Files 2026-06-25_qwen-peft-technical.md` + Karan ablation follow-ups |
-| 2026-06-26 | Coding sprint #1 + JD technical mini-mock | [`2026-06-26_coding-and-jd-technical.md`](../.cursor/skills/debrief/2026-06-26_coding-and-jd-technical.md) | `@Files 2026-06-26_coding-and-jd-technical.md` — resume JD mock at Q3 |
-| 2026-06-26 | Mock LP — Learn & Be Curious (diffusion) | [`2026-06-26_mock-lp-learn-curious.md`](../.cursor/skills/debrief/2026-06-26_mock-lp-learn-curious.md) | `@Files 2026-06-26_mock-lp-learn-curious.md` + story — drill full version, lock distillation numbers |
-| 2026-06-26 | JD drill — LLM system choices (RAG/FT/CPT/routing) | [`2026-06-26_llm-system-choices-drill.md`](../.cursor/skills/debrief/2026-06-26_llm-system-choices-drill.md) | `@Files 2026-06-26_llm-system-choices-drill.md` — resume JD track at agent-failure Q3 |
+| 2026-06-21 | Day 2 — ML depth interactive (3 topics) | [`2026-06-21_day2-ml-depth.md`](debrief/2026-06-21_day2-ml-depth.md) | `@Files 2026-06-21_day2-ml-depth.md` + spoken drill retake |
+| 2026-06-22 | Day 3 — LP stories DOC L6 (Invent + Deliver Results) | [`2026-06-22_day3-lp-stories.md`](debrief/2026-06-22_day3-lp-stories.md) | `@Files 2026-06-22_day3-lp-stories.md` + draft Ownership (TR kill) |
+| 2026-06-24 | Chronos bridge (v1 / Bolt / VLM contrast) | [`2026-06-24_chronos-bridge.md`](debrief/2026-06-24_chronos-bridge.md) | `@Files 2026-06-24_chronos-bridge.md` |
+| 2026-06-24 | Anchor A spoken drill (Jun 24) | [`2026-06-24_anchor-a-spoken-drill.md`](debrief/2026-06-24_anchor-a-spoken-drill.md) | `@Files 2026-06-24_anchor-a-spoken-drill.md` + Anchor B drill (Wed 25) |
+| 2026-06-24 | timed-code 567 permutation | [`2026-06-24_timed-code-567.md`](debrief/2026-06-24_timed-code-567.md) | `@Files 2026-06-24_timed-code-567.md` + TMAY IC paragraph |
+| 2026-06-25 | Anchor B/C spoken + Ownership LP | [`2026-06-25_anchor-bc-lp-debrief.md`](debrief/2026-06-25_anchor-bc-lp-debrief.md) | `@Files 2026-06-25_anchor-bc-lp-debrief.md` + `/timed-code` |
+| 2026-06-25 | timed-code Islands + Learn & Curious LP | [`2026-06-25_timed-code-and-learn-curious-lp.md`](debrief/2026-06-25_timed-code-and-learn-curious-lp.md) | `@Files 2026-06-25_timed-code-and-learn-curious-lp.md` + Thu 26 coding sprint |
+| 2026-06-25 | Qwen (HF) + PEFT/LoRA technical | [`2026-06-25_qwen-peft-technical.md`](debrief/2026-06-25_qwen-peft-technical.md) | `@Files 2026-06-25_qwen-peft-technical.md` + Karan ablation follow-ups |
+| 2026-06-26 | Coding sprint #1 + JD technical mini-mock | [`2026-06-26_coding-and-jd-technical.md`](debrief/2026-06-26_coding-and-jd-technical.md) | `@Files 2026-06-26_coding-and-jd-technical.md` — resume JD mock at Q3 |
+| 2026-06-26 | Mock LP — Learn & Be Curious (diffusion) | [`2026-06-26_mock-lp-learn-curious.md`](debrief/2026-06-26_mock-lp-learn-curious.md) | `@Files 2026-06-26_mock-lp-learn-curious.md` + story — drill full version, lock distillation numbers |
+| 2026-06-26 | JD drill — LLM system choices (RAG/FT/CPT/routing) | [`2026-06-26_llm-system-choices-drill.md`](debrief/2026-06-26_llm-system-choices-drill.md) | `@Files 2026-06-26_llm-system-choices-drill.md` — resume JD track at agent-failure Q3 |
 
-Add a row after each `/debrief`. FinTech-track notes → [`debrief/`](debrief/); cross-session profile → [`.cursor/skills/debrief/`](../.cursor/skills/debrief/).
+Add a row after each `/debrief`. Amazon FinTech session notes → [`debrief/`](debrief/); general profile/project refs → [`.cursor/skills/debrief/`](../.cursor/skills/debrief/).
 
 ## Mock log index
 

@@ -31,11 +31,11 @@ Strong on **modeling/RL mechanisms**, under-weights **production/eval-first fram
 
 ## Decisions / artifacts updated
 - [x] prep-plan.md — Fri 26 evening drill logged
-- [x] This debrief + mock log [`mocks/2026-06-26_jd-llm-system-choices.md`](../../Amazon_FinTech/mocks/2026-06-26_jd-llm-system-choices.md)
+- [x] This debrief + mock log [`mocks/2026-06-26_jd-llm-system-choices.md`](../mocks/2026-06-26_jd-llm-system-choices.md)
 - [x] INDEX.md debrief + mock rows
 
 ## Open questions
 - Q3 agent-failure (from afternoon JD mock) still unanswered.
 
 ## Next session (one prompt for session B)
-> Read `@Files .cursor/skills/debrief/2026-06-26_llm-system-choices-drill.md`. Resume JD track: answer the unanswered agent-failure Q3, then parallelism/scaling. Practice leading every answer with eval/data/guardrails before the model technique.
+> Read `@Files Amazon_FinTech/debrief/2026-06-26_llm-system-choices-drill.md`. Resume JD track: answer the unanswered agent-failure Q3, then parallelism/scaling. Practice leading every answer with eval/data/guardrails before the model technique.

@@ -4,7 +4,7 @@
 
 - **Type:** exploration / learning plan (Chronos vs VLM contrast for Karan)
 - **Duration:** ~45 min (late 23 Jun)
-- **Prior context:** Imry referral pivot; [`prep-plan.md`](../../Amazon_FinTech/prep-plan.md) Day 3 Chronos item; [`INDEX.md` Chronos note](../../Amazon_FinTech/INDEX.md#chronos-team-stack-imry)
+- **Prior context:** Imry referral pivot; [`prep-plan.md`](../prep-plan.md) Day 3 Chronos item; [`INDEX.md` Chronos note](../INDEX.md#chronos-team-stack-imry)
 
 ## Conclusions
 
@@ -74,8 +74,8 @@
 
 ## Decisions / artifacts updated
 
-- [x] [`Amazon_FinTech/prep-plan.md`](../../Amazon_FinTech/prep-plan.md) — Chronos bridge completed; session notes in Days 1–2 section
-- [x] [`Amazon_FinTech/INDEX.md`](../../Amazon_FinTech/INDEX.md) — v1/Bolt/Chronos-2 table; routing one-liner
+- [x] [`Amazon_FinTech/prep-plan.md`](../prep-plan.md) — Chronos bridge completed; session notes in Days 1–2 section
+- [x] [`Amazon_FinTech/INDEX.md`](../INDEX.md) — v1/Bolt/Chronos-2 table; routing one-liner
 - [ ] `vlm_multimodal_project.md` — no change needed (Chronos is interview bridge, not project doc)
 - [ ] `AGENTS.md` — no promote (one-time Chronos clarification)
 
@@ -88,4 +88,4 @@
 
 **One item:** Spoken **Anchor A** drill end-to-end (15 min), weaving in the three self-Q&A answers.
 
-> Read `@Files .cursor/skills/debrief/2026-06-24_chronos-bridge.md` `@Files Amazon_FinTech/anchor-cheat-sheet.md` — run Anchor A spoken drill; if Chronos comes up, use routing one-liner from this debrief. Then one `/timed-code` medium.
+> Read `@Files Amazon_FinTech/debrief/2026-06-24_chronos-bridge.md` `@Files Amazon_FinTech/anchor-cheat-sheet.md` — run Anchor A spoken drill; if Chronos comes up, use routing one-liner from this debrief. Then one `/timed-code` medium.

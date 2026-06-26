@@ -80,7 +80,7 @@ Add rows after `/timed-code` drills:
 
 After each prep session:
 
-1. Log debriefs → `.cursor/skills/debrief/YYYY-MM-DD_{topic}.md`; mock drills → `Amazon_FinTech/mocks/`
+1. Log debriefs → `Amazon_FinTech/debrief/YYYY-MM-DD_{topic}.md`; mock drills → `Amazon_FinTech/mocks/`
 2. Refine STAR stories → `Amazon_FinTech/stories/`
 3. Promote recurring fixes → `AGENTS.md` or relevant skill
 

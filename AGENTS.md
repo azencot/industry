@@ -12,7 +12,7 @@ Interview prep workspace for **Amazon FinTech Senior Applied Scientist** (FinTel
 2. [`Amazon_FinTech/INDEX.md`](Amazon_FinTech/INDEX.md) — active role, timeline, interviewer context
 3. [`.cursor/skills/debrief/omri_azencot_experience.md`](.cursor/skills/debrief/omri_azencot_experience.md) — experience profile, flagship project, JD alignment, IC framing
 4. [`Amazon_FinTech/prep-plan.md`](Amazon_FinTech/prep-plan.md) — weekly plan; check today's focus
-5. Latest [`.cursor/skills/debrief/`](.cursor/skills/debrief/) entry when borrowing context from a prior session
+5. Latest [`Amazon_FinTech/debrief/`](Amazon_FinTech/debrief/) entry when borrowing context from a prior session
 6. Latest [`Amazon_FinTech/mocks/`](Amazon_FinTech/mocks/) entry if continuing mock-drill follow-up
 
 ## Behavior

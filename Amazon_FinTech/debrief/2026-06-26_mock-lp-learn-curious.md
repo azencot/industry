@@ -4,7 +4,7 @@
 
 - **Type:** mock-lp (spoken LP drill, non-VLM diffusion story)
 - **Duration:** ~25 min
-- **Prior context:** [`learn-be-curious_diffusion-mastery.md`](../../Amazon_FinTech/stories/learn-be-curious_diffusion-mastery.md) (was unrehearsed); [`2026-06-26_coding-and-jd-technical.md`](2026-06-26_coding-and-jd-technical.md)
+- **Prior context:** [`learn-be-curious_diffusion-mastery.md`](../stories/learn-be-curious_diffusion-mastery.md) (was unrehearsed); [`2026-06-26_coding-and-jd-technical.md`](2026-06-26_coding-and-jd-technical.md)
 
 ## Conclusions
 
@@ -40,7 +40,7 @@ First rehearsal of the diffusion Learn & Be Curious story. Four-turn drill: full
 
 - [x] Story updated: added single-step distillation (NeurIPS'25) as IC-proof example + 60s/delivery fixes
 - [x] prep-plan.md — Fri 26 LP drill logged
-- [x] mock log [`mocks/2026-06-26_mock-lp-learn-curious.md`](../../Amazon_FinTech/mocks/2026-06-26_mock-lp-learn-curious.md)
+- [x] mock log [`mocks/2026-06-26_mock-lp-learn-curious.md`](../mocks/2026-06-26_mock-lp-learn-curious.md)
 - [x] INDEX.md debrief + mock rows; stories/README still ☐ (verify facts before Ready)
 
 ## Open questions
@@ -50,4 +50,4 @@ First rehearsal of the diffusion Learn & Be Curious story. Four-turn drill: full
 
 ## Next session (one prompt for session B)
 
-> Read `@Files .cursor/skills/debrief/2026-06-26_mock-lp-learn-curious.md` and `@Files Amazon_FinTech/stories/learn-be-curious_diffusion-mastery.md`. Drill the full ~5 min version once with the single-step distillation artifact and exact NeurIPS'25 numbers; then flip Ready? to ☑ if it holds.
+> Read `@Files Amazon_FinTech/debrief/2026-06-26_mock-lp-learn-curious.md` and `@Files Amazon_FinTech/stories/learn-be-curious_diffusion-mastery.md`. Drill the full ~5 min version once with the single-step distillation artifact and exact NeurIPS'25 numbers; then flip Ready? to ☑ if it holds.

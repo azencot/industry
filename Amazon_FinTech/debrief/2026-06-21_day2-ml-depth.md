@@ -3,8 +3,8 @@
 ## Session
 
 - **Type:** ml-deep-dive simulation (Day 2 prep — first three bullets + follow-ups)
-- **Duration:** ~60 min interactive Q&A (prior ~30 min reading logged in [`Amazon_FinTech/debrief/2026-06-21_continual-pretraining-blog.md`](../../Amazon_FinTech/debrief/2026-06-21_continual-pretraining-blog.md))
-- **Prior context:** Day 1 complete — [`elevator-pitch.md`](../../Amazon_FinTech/elevator-pitch.md), [`anchor-cheat-sheet.md`](../../Amazon_FinTech/anchor-cheat-sheet.md); Karan blog read earlier same day
+- **Duration:** ~60 min interactive Q&A (prior ~30 min reading logged in [`2026-06-21_continual-pretraining-blog.md`](2026-06-21_continual-pretraining-blog.md))
+- **Prior context:** Day 1 complete — [`elevator-pitch.md`](../elevator-pitch.md), [`anchor-cheat-sheet.md`](../anchor-cheat-sheet.md); Karan blog read earlier same day
 - **Not covered:** prep-plan line 19 — four 3-min spoken drills (end-to-end system; safe deploy; scarce labels; payment doc extraction)
 
 ---
@@ -117,9 +117,9 @@ Template repetition, layout-blind text, entity combos rare in prod → high offl
 
 ## Decisions / artifacts updated
 
-- [x] [`prep-plan.md`](../../Amazon_FinTech/prep-plan.md) — Day 2 bullets 1–3 marked done; spoken drills still open
+- [x] [`prep-plan.md`](../prep-plan.md) — Day 2 bullets 1–3 marked done; spoken drills still open
 - [x] [`ml-deep-dive/SKILL.md`](../ml-deep-dive/SKILL.md) — full reference + retake step
-- [x] [`Amazon_FinTech/mocks/2026-06-21_ml-deep-dive.md`](../../Amazon_FinTech/mocks/2026-06-21_ml-deep-dive.md)
+- [x] [`Amazon_FinTech/mocks/2026-06-21_ml-deep-dive.md`](../mocks/2026-06-21_ml-deep-dive.md)
 - [ ] `stories/` — no LP work this session
 - [ ] `omri_azencot_experience.md` — no change
 
@@ -134,5 +134,5 @@ Template repetition, layout-blind text, entity combos rare in prod → high offl
 
 ## Next session (one prompt for session B)
 
-> `@Files .cursor/skills/debrief/2026-06-21_day2-ml-depth.md` `@Files Amazon_FinTech/anchor-cheat-sheet.md`  
+> `@Files Amazon_FinTech/debrief/2026-06-21_day2-ml-depth.md` `@Files Amazon_FinTech/anchor-cheat-sheet.md`  
 > Run `/ml-deep-dive` — one spoken drill: **safe deploy of an LLM extraction system** (3 min → score → full reference → retake). Then start Day 3 `/mock-lp` (Customer Obsession + Ownership).

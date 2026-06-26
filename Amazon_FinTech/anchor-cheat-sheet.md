@@ -1,7 +1,7 @@
 # PS1 anchor cheat sheet — VLM time-series reasoning
 
 **One project, three angles.** Read before PS1 intro / ML deep-dive / LP follow-ups.  
-Full context: [`.cursor/skills/debrief/vlm_multimodal_project.md`](../.cursor/skills/debrief/vlm_multimodal_project.md)
+Full context: [`vlm_multimodal_project.md`](../.cursor/skills/debrief/vlm_multimodal_project.md)
 
 North star: [TSRBench](https://tsrbench.github.io/) · Control: allcap-a5b3 (TSExam 0.854, TSRBench 0.339, TR 28.7%)
 

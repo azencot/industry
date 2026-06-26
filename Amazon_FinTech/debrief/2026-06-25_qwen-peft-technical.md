@@ -87,7 +87,7 @@ base Qwen → Stage A adapter / merger prior → Stage B LoRA adapter → eval
 
 ## Decisions / artifacts updated
 
-- [x] [`Amazon_FinTech/prep-plan.md`](../../Amazon_FinTech/prep-plan.md) — Wed 25 VLM item
+- [x] [`Amazon_FinTech/prep-plan.md`](../prep-plan.md) — Wed 25 VLM item
 - [x] This debrief
 - [ ] `vlm_multimodal_project.md` — already has high-level PEFT; no change unless drilling file-level detail
 
@@ -97,4 +97,4 @@ base Qwen → Stage A adapter / merger prior → Stage B LoRA adapter → eval
 
 ## Next session (one prompt for session B)
 
-> Read `@Files .cursor/skills/debrief/2026-06-25_qwen-peft-technical.md` and `@Files .cursor/skills/debrief/vlm_multimodal_project.md`. Run a 5-min Karan follow-up drill: ablations, config sweeps, and “what would you change for proprietary finance TS?”
+> Read `@Files Amazon_FinTech/debrief/2026-06-25_qwen-peft-technical.md` and `@Files .cursor/skills/debrief/vlm_multimodal_project.md`. Run a 5-min Karan follow-up drill: ablations, config sweeps, and “what would you change for proprietary finance TS?”

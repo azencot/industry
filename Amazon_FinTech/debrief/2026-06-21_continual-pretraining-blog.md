@@ -110,7 +110,7 @@ Full CPT paper (blog underlying work): [arxiv:2311.08545](https://arxiv.org/abs/
 
 ## Decisions / artifacts updated
 
-- [x] This debrief → [`Amazon_FinTech/debrief/`](.)
+- [x] This debrief → [`debrief/`](.)
 - [x] [`INDEX.md`](../INDEX.md) debrief row
 - [x] [`prep-plan.md`](../prep-plan.md) — Day 2 Karan reads
 - [ ] Results skim before PS1 ([arxiv:2311.08545](https://arxiv.org/abs/2311.08545))

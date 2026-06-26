@@ -48,8 +48,8 @@
 
 ## Decisions / artifacts updated
 
-- [x] [`Amazon_FinTech/prep-plan.md`](../../Amazon_FinTech/prep-plan.md) — Anchor A drill done; TMAY + timed-code carried
-- [x] [`Amazon_FinTech/INDEX.md`](../../Amazon_FinTech/INDEX.md) — debrief + mock rows
+- [x] [`Amazon_FinTech/prep-plan.md`](../prep-plan.md) — Anchor A drill done; TMAY + timed-code carried
+- [x] [`Amazon_FinTech/INDEX.md`](../INDEX.md) — debrief + mock rows
 - [x] [`2026-06-24_chronos-bridge.md`](2026-06-24_chronos-bridge.md) — Anchor A gap closed
 - [ ] `vlm_multimodal_project.md` — no change (collator detail lives here)
 
@@ -61,4 +61,4 @@
 
 ## Next session (one prompt for session B)
 
-> `@Files .cursor/skills/debrief/2026-06-24_anchor-a-spoken-drill.md` + `anchor-cheat-sheet.md` — Wed 25: Anchor B spoken drill (tiered eval, TR kill 26.9→21.9) then Anchor C (task audit). Lead with precise metrics and TR gate numbers from corrections table.
+> `@Files Amazon_FinTech/debrief/2026-06-24_anchor-a-spoken-drill.md` + `anchor-cheat-sheet.md` — Wed 25: Anchor B spoken drill (tiered eval, TR kill 26.9→21.9) then Anchor C (task audit). Lead with precise metrics and TR gate numbers from corrections table.

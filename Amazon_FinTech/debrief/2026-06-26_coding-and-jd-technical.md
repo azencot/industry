@@ -4,7 +4,7 @@
 
 - **Type:** mixed — timed-code sprint + JD-technical mini-mock + plan adaptation
 - **Duration:** ~half day
-- **Prior context:** [`2026-06-25_qwen-peft-technical.md`](2026-06-25_qwen-peft-technical.md); Thu 26 coding sprint in [`prep-plan.md`](../../Amazon_FinTech/prep-plan.md)
+- **Prior context:** [`2026-06-25_qwen-peft-technical.md`](2026-06-25_qwen-peft-technical.md); Thu 26 coding sprint in [`prep-plan.md`](../prep-plan.md)
 
 ## Conclusions
 
@@ -22,7 +22,7 @@
 
 ### Plan adaptation — added JD technical track
 
-User flagged prep was over-indexed on own projects + LPs + (outdated) Karan work + basic coding; wanted general JD-aligned topics. Added to [`prep-plan.md`](../../Amazon_FinTech/prep-plan.md): agents, LLM system choices, A/B testing + null hypothesis, parallelism/scaling, eval gates — spread across Thu (mock), Fri (mock probe), Sat (refresh), Sun (review crib).
+User flagged prep was over-indexed on own projects + LPs + (outdated) Karan work + basic coding; wanted general JD-aligned topics. Added to [`prep-plan.md`](../prep-plan.md): agents, LLM system choices, A/B testing + null hypothesis, parallelism/scaling, eval gates — spread across Thu (mock), Fri (mock probe), Sat (refresh), Sun (review crib).
 
 ### JD technical mini-mock (interactive Q&A format)
 
@@ -41,7 +41,7 @@ User flagged prep was over-indexed on own projects + LPs + (outdated) Karan work
 ## Decisions / artifacts updated
 
 - [x] prep-plan.md — JD technical track (Thu/Fri/Sat/Sun); Thu 26 mini-mock checked
-- [x] This debrief + mock log [`mocks/2026-06-26_jd-technical-mock.md`](../../Amazon_FinTech/mocks/2026-06-26_jd-technical-mock.md)
+- [x] This debrief + mock log [`mocks/2026-06-26_jd-technical-mock.md`](../mocks/2026-06-26_jd-technical-mock.md)
 - [x] INDEX.md debrief + mock rows
 - [ ] No AGENTS.md change yet (A/B weakness is content, not behavior)
 
@@ -52,4 +52,4 @@ User flagged prep was over-indexed on own projects + LPs + (outdated) Karan work
 
 ## Next session (one prompt for session B)
 
-> Read `@Files .cursor/skills/debrief/2026-06-26_coding-and-jd-technical.md`. Resume the JD technical mini-mock at Q3 (agent auto-approved a money-moving error — debug + fix without collapsing to full human review), then cover LLM system choices and parallelism/scaling.
+> Read `@Files Amazon_FinTech/debrief/2026-06-26_coding-and-jd-technical.md`. Resume the JD technical mini-mock at Q3 (agent auto-approved a money-moving error — debug + fix without collapsing to full human review), then cover LLM system choices and parallelism/scaling.

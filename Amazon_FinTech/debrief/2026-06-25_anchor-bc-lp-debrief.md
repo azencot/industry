@@ -36,16 +36,16 @@
 
 ### Docs updated (committed `26822b4`)
 
-- [`anchor-cheat-sheet.md`](../../Amazon_FinTech/anchor-cheat-sheet.md)
+- [`anchor-cheat-sheet.md`](../anchor-cheat-sheet.md)
 - [`vlm_multimodal_project.md`](vlm_multimodal_project.md)
-- [`dive-deep_tsrbench-reasoning-audit.md`](../../Amazon_FinTech/stories/dive-deep_tsrbench-reasoning-audit.md)
-- [`prep-plan.md`](../../Amazon_FinTech/prep-plan.md) — Jun 24 TMAY done
+- [`dive-deep_tsrbench-reasoning-audit.md`](../stories/dive-deep_tsrbench-reasoning-audit.md)
+- [`prep-plan.md`](../prep-plan.md) — Jun 24 TMAY done
 
 ## Decisions / artifacts updated
 
 - [x] Cheat sheet + project doc + dive-deep story
-- [x] [`Amazon_FinTech/mocks/2026-06-25_vlm-spoken-drill.md`](../../Amazon_FinTech/mocks/2026-06-25_vlm-spoken-drill.md)
-- [x] [`Amazon_FinTech/mocks/2026-06-25_mock-lp-ownership.md`](../../Amazon_FinTech/mocks/2026-06-25_mock-lp-ownership.md)
+- [x] [`Amazon_FinTech/mocks/2026-06-25_vlm-spoken-drill.md`](../mocks/2026-06-25_vlm-spoken-drill.md)
+- [x] [`Amazon_FinTech/mocks/2026-06-25_mock-lp-ownership.md`](../mocks/2026-06-25_mock-lp-ownership.md)
 - [ ] `ownership_killed-tr-synthetic.md` — optional 90s technical script append
 
 ## Open (Jun 25 remainder)
@@ -55,4 +55,4 @@
 
 ## Next session
 
-> `@Files .cursor/skills/debrief/2026-06-25_anchor-bc-lp-debrief.md` — `/timed-code` hash map or BFS medium; then Thu 26 coding sprint.
+> `@Files Amazon_FinTech/debrief/2026-06-25_anchor-bc-lp-debrief.md` — `/timed-code` hash map or BFS medium; then Thu 26 coding sprint.

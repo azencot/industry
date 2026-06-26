@@ -11,7 +11,7 @@
 ## Completed (Days 1–2 + late 23 Jun)
 
 - [x] Elevator pitch + 3 VLM anchors → [`anchor-cheat-sheet.md`](anchor-cheat-sheet.md)
-- [x] Generic ML depth (RAG/FT/eval/low-label) → [debrief](../.cursor/skills/debrief/2026-06-21_day2-ml-depth.md) — **no retake unless bridging from VLM**
+- [x] Generic ML depth (RAG/FT/eval/low-label) → [debrief](debrief/2026-06-21_day2-ml-depth.md) — **no retake unless bridging from VLM**
 - [x] Karan continual pre-training blog skim → [`debrief/2026-06-21_continual-pretraining-blog.md`](debrief/2026-06-21_continual-pretraining-blog.md)
 - [x] Intro scripts drafted (TMAY, Why Amazon)
 - [x] 4 LP stories drafted (VLM-tied) — **reframe for IC/technical voice, not more drafts**
@@ -35,7 +35,7 @@
 **VLM (primary)**
 
 - [x] Read aloud [`anchor-cheat-sheet.md`](anchor-cheat-sheet.md) + [`vlm_multimodal_project.md`](../.cursor/skills/debrief/vlm_multimodal_project.md) (architecture section) — via interactive drill
-- [x] Spoken drill — **Anchor A** (~15 min): dual encodings, Stage A/B curriculum, training stack, key metrics (stock **0.618/0.402** → **0.905/0.452**); **fold in self-Q&A** (~5 min at end): visual not tokens? Stage A decoupled? what broke? → [`debrief/2026-06-24_anchor-a-spoken-drill.md`](../.cursor/skills/debrief/2026-06-24_anchor-a-spoken-drill.md)
+- [x] Spoken drill — **Anchor A** (~15 min): dual encodings, Stage A/B curriculum, training stack, key metrics (stock **0.618/0.402** → **0.905/0.452**); **fold in self-Q&A** (~5 min at end): visual not tokens? Stage A decoupled? what broke? → [`debrief/2026-06-24_anchor-a-spoken-drill.md`](debrief/2026-06-24_anchor-a-spoken-drill.md)
 - [x] **Chronos bridge** — done 23 Jun; Imry note = **Bolt** patching (not v1 per-step bins). One-liner: *same problem (efficient TS → model), different bet (forecast quantiles vs VLM reasoning)* → [`INDEX.md` Chronos note](INDEX.md#chronos-team-stack-imry)
 
 **Intro (light)**
@@ -44,7 +44,7 @@
 
 **Coding**
 
-- [x] 1× `/timed-code` medium — 567 permutation / sliding window (~50 min with debug) → [`debrief/2026-06-24_timed-code-567.md`](../.cursor/skills/debrief/2026-06-24_timed-code-567.md) · root [`INDEX.md`](../INDEX.md)
+- [x] 1× `/timed-code` medium — 567 permutation / sliding window (~50 min with debug) → [`debrief/2026-06-24_timed-code-567.md`](debrief/2026-06-24_timed-code-567.md) · root [`INDEX.md`](../INDEX.md)
 
 ---
 
@@ -52,9 +52,9 @@
 
 **VLM**
 
-- [x] Spoken drill — **Anchor B** (~10 min): tiered eval, parse-miss vs accuracy, TR synthetic **kill** (26.9→21.9) → [`debrief/2026-06-25_anchor-bc-lp-debrief.md`](../.cursor/skills/debrief/2026-06-25_anchor-bc-lp-debrief.md)
+- [x] Spoken drill — **Anchor B** (~10 min): tiered eval, parse-miss vs accuracy, TR synthetic **kill** (26.9→21.9) → [`debrief/2026-06-25_anchor-bc-lp-debrief.md`](debrief/2026-06-25_anchor-bc-lp-debrief.md)
 - [x] Spoken drill — **Anchor C** (~10 min): task coverage audit, missing ops, honest TSRBench/TR gaps
-- [x] **Qwen (HF) + PEFT/LoRA** — repo walkthrough: `AutoModelForImageTextToText` + processor, dual visual patch, hybrid Q35 LoRA targets (sparse attention / dense MLP), Stage A→B adapter chain at eval → [`debrief/2026-06-25_qwen-peft-technical.md`](../.cursor/skills/debrief/2026-06-25_qwen-peft-technical.md)
+- [x] **Qwen (HF) + PEFT/LoRA** — repo walkthrough: `AutoModelForImageTextToText` + processor, dual visual patch, hybrid Q35 LoRA targets (sparse attention / dense MLP), Stage A→B adapter chain at eval → [`debrief/2026-06-25_qwen-peft-technical.md`](debrief/2026-06-25_qwen-peft-technical.md)
 - [ ] Anticipate Karan follow-ups: ablations, config sweeps, what you'd do with proprietary finance TS *(skim if time)*
 
 **LP reframe (technical, not “story”)**
@@ -78,11 +78,11 @@ Format: *metric anomaly → what I dug into → code/config change → result*
 - [x] 3× timed mediums, narrated — `347` heap ~15 min pass; `56` intervals ~19 min pass; `153` binary search ~16 min pass *(all under 25 min)*
 - [ ] Patterns: ~~heap~~, ~~intervals~~, trie, ~~binary search~~
 - [x] Log results in root [`INDEX.md`](../INDEX.md)
-- [ ] Optional 5 min — Karan follow-up drill from [`Qwen/PEFT debrief`](../.cursor/skills/debrief/2026-06-25_qwen-peft-technical.md): ablations, config sweeps, proprietary finance TS
+- [ ] Optional 5 min — Karan follow-up drill from [`Qwen/PEFT debrief`](debrief/2026-06-25_qwen-peft-technical.md): ablations, config sweeps, proprietary finance TS
 - [x] 10 min — skimmed Karan's [*Efficient Continual Pre-training for Building Domain Specific LLMs*](https://arxiv.org/abs/2311.08545) (FinPythia). **Read:** results modest — mostly vs Pythia base (+10% on 6.9B, +2% on 1B); efficient data selection (ETS/ETA-DACP) matches DACP at ~10% corpus; appears to lose to BloombergGPT. **Unread:** appendix (likely BloombergGPT comparison detail). **Connection point:** same logic as my TR-synthetic kill — domain adaptation only ships if task eval gains hold *without* general-capability regression (paper checks ARC/MMLU/etc.).
-- [x] **JD technical mini-mock:** agents (~80%); A/B testing + null hypothesis (~60%→~85% on re-answer). A/B was weak spot — fixed: business metric primary, precision=guardrail, case-level randomize, no peeking, kill on safety. Q3 (agent money-moving failure) **unanswered → next** → [`mocks/2026-06-26_jd-technical-mock.md`](mocks/2026-06-26_jd-technical-mock.md) · [`debrief`](../.cursor/skills/debrief/2026-06-26_coding-and-jd-technical.md)
-- [x] **Mock LP — Learn & Be Curious (diffusion, non-VLM):** first rehearsal ~85–90%. Surfaced single-step distillation (NeurIPS'25) as the strong SDE-depth proof → added to story. Fixes: "I owned" not "my group", name a built artifact, drop filler openers, lock distillation numbers → [`mocks/2026-06-26_mock-lp-learn-curious.md`](mocks/2026-06-26_mock-lp-learn-curious.md) · [`debrief`](../.cursor/skills/debrief/2026-06-26_mock-lp-learn-curious.md)
-- [x] **JD drill — LLM system choices** (evening, ~70→85%): RAG vs FT vs CPT vs routing + human corrections. Fixed inversions (RAG=default for limited labels not CPT; FT shapes behavior not domain knowledge); corrections → regression tests/taxonomy first, RLHF later. **Recurring:** research-first instinct → must lead with eval/data/guardrails → [`mocks/2026-06-26_jd-llm-system-choices.md`](mocks/2026-06-26_jd-llm-system-choices.md) · [`debrief`](../.cursor/skills/debrief/2026-06-26_llm-system-choices-drill.md)
+- [x] **JD technical mini-mock:** agents (~80%); A/B testing + null hypothesis (~60%→~85% on re-answer). A/B was weak spot — fixed: business metric primary, precision=guardrail, case-level randomize, no peeking, kill on safety. Q3 (agent money-moving failure) **unanswered → next** → [`mocks/2026-06-26_jd-technical-mock.md`](mocks/2026-06-26_jd-technical-mock.md) · [`debrief`](debrief/2026-06-26_coding-and-jd-technical.md)
+- [x] **Mock LP — Learn & Be Curious (diffusion, non-VLM):** first rehearsal ~85–90%. Surfaced single-step distillation (NeurIPS'25) as the strong SDE-depth proof → added to story. Fixes: "I owned" not "my group", name a built artifact, drop filler openers, lock distillation numbers → [`mocks/2026-06-26_mock-lp-learn-curious.md`](mocks/2026-06-26_mock-lp-learn-curious.md) · [`debrief`](debrief/2026-06-26_mock-lp-learn-curious.md)
+- [x] **JD drill — LLM system choices** (evening, ~70→85%): RAG vs FT vs CPT vs routing + human corrections. Fixed inversions (RAG=default for limited labels not CPT; FT shapes behavior not domain knowledge); corrections → regression tests/taxonomy first, RLHF later. **Recurring:** research-first instinct → must lead with eval/data/guardrails → [`mocks/2026-06-26_jd-llm-system-choices.md`](mocks/2026-06-26_jd-llm-system-choices.md) · [`debrief`](debrief/2026-06-26_llm-system-choices-drill.md)
 
 **Skipped:** system design lite, FinTech scenario templates (Day 5 old plan)
 
@@ -91,7 +91,7 @@ Format: *metric anomaly → what I dug into → code/config change → result*
 ## Sat 27 Jun — Karan mock + debrief
 
 - [ ] **60-min mock:** TMAY (3 min) → **20 min VLM grill** (he picks anchor) → **1 JD technical probe** (agents / eval / routing / A/B) → **1 LP** (technical) → **1 code** → 2 questions
-- [ ] `/debrief` → [`.cursor/skills/debrief/`](../.cursor/skills/debrief/) + [`mocks/`](mocks/)
+- [ ] `/debrief` → [`debrief/`](debrief/) + [`mocks/`](mocks/)
 - [ ] Note: rigid interviewer — state approach → complexity → invariants; prefer standard structure
 
 ---

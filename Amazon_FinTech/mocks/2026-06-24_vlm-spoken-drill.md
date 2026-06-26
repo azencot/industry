@@ -23,7 +23,7 @@
 | Observation | Update where |
 |-------------|--------------|
 | Precise 8B before/after metrics | [`anchor-cheat-sheet.md`](../anchor-cheat-sheet.md) — already correct; **memorize verbatim** |
-| Collator/M-RoPE spoken 90s | [`2026-06-24_anchor-a-spoken-drill.md`](../../.cursor/skills/debrief/2026-06-24_anchor-a-spoken-drill.md) |
+| Collator/M-RoPE spoken 90s | [`2026-06-24_anchor-a-spoken-drill.md`](../debrief/2026-06-24_anchor-a-spoken-drill.md) |
 | TR kill numbers in self-Q&A | Wed 25 Anchor B drill + [`ownership_killed-tr-synthetic.md`](../stories/ownership_killed-tr-synthetic.md) reframe |
 
 ## Next session (one thing)
