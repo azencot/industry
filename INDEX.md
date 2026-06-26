@@ -57,6 +57,7 @@ Add rows after `/timed-code` drills:
 |------|---------|-----|-------|-------------------|
 | 2026-06-24 | `2026-06-24_567_permutation_in_string_practice.py` | ~50 | pass | sliding window; `while`+`le` restart; fixed `for`/precedence bugs — over 25 min |
 | 2026-06-25 | `2026-06-25_200_number_of_islands_practice.py` | ~35 | pass | DFS + visited; fixed `.length`/`'1'`/call-site/pre-mark bugs in 2 retries — over 25 min |
+| 2026-06-26 | `2026-06-26_347_top_k_frequent_elements_practice.py` | ~15 | pass | heap / top-K; size-k min-heap on `(freq,num)`; strong approach narration; one bug — `heappop(h)` instead of draining `h` in return — **under 25 min** |
 
 ---
 
@@ -68,6 +69,7 @@ Add rows after `/timed-code` drills:
 | `/timed-code` | 25-min coding simulation |
 | `/ml-deep-dive` | 3-min ML/LLM spoken answer + follow-ups |
 | `/debrief` | After mock or real interview — update stories & config |
+| `/log-timed-drill` | Log a finished timed-code result to INDEX + prep-plan |
 | `/commit-push` | Commit and push changes; no Cursor attribution |
 
 ---

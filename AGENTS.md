@@ -59,6 +59,7 @@ Load from [`.cursor/skills/`](.cursor/skills/) when the user invokes or the task
 | `timed-code` | Timed LeetCode simulation |
 | `ml-deep-dive` | ML/LLM technical depth practice |
 | `debrief` | Post-mock or post-interview write-up |
+| `log-timed-drill` | Logging a finished timed-code result to INDEX + prep-plan |
 | `commit-push` | User asks to commit and/or push |
 
 ## Git

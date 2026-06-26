@@ -75,9 +75,10 @@ Format: *metric anomaly → what I dug into → code/config change → result*
 
 ## Thu 26 Jun — Coding sprint #1
 
-- [ ] 2× timed mediums (25 min each), narrated
-- [ ] Patterns: heap, intervals, trie, binary search
+- [ ] 2× timed mediums (25 min each), narrated — **1/2:** `2026-06-26_347_top_k_frequent_elements_practice.py` (heap, ~15 min, pass)
+- [ ] Patterns: ~~heap~~, intervals, trie, binary search
 - [ ] Log results in root [`INDEX.md`](../INDEX.md)
+- [ ] Optional 5 min — Karan follow-up drill from [`Qwen/PEFT debrief`](../.cursor/skills/debrief/2026-06-25_qwen-peft-technical.md): ablations, config sweeps, proprietary finance TS
 - [ ] If time: 10 min — skim Karan paper abstract for **one** connection point to your work (not full read)
 
 **Skipped:** system design lite, FinTech scenario templates (Day 5 old plan)
