@@ -114,6 +114,7 @@ Track which LPs have ready stories in [`stories/README.md`](stories/README.md). 
 | 2026-06-25 | Anchor B/C spoken + Ownership LP | [`2026-06-25_anchor-bc-lp-debrief.md`](../.cursor/skills/debrief/2026-06-25_anchor-bc-lp-debrief.md) | `@Files 2026-06-25_anchor-bc-lp-debrief.md` + `/timed-code` |
 | 2026-06-25 | timed-code Islands + Learn & Curious LP | [`2026-06-25_timed-code-and-learn-curious-lp.md`](../.cursor/skills/debrief/2026-06-25_timed-code-and-learn-curious-lp.md) | `@Files 2026-06-25_timed-code-and-learn-curious-lp.md` + Thu 26 coding sprint |
 | 2026-06-25 | Qwen (HF) + PEFT/LoRA technical | [`2026-06-25_qwen-peft-technical.md`](../.cursor/skills/debrief/2026-06-25_qwen-peft-technical.md) | `@Files 2026-06-25_qwen-peft-technical.md` + Karan ablation follow-ups |
+| 2026-06-26 | Coding sprint #1 + JD technical mini-mock | [`2026-06-26_coding-and-jd-technical.md`](../.cursor/skills/debrief/2026-06-26_coding-and-jd-technical.md) | `@Files 2026-06-26_coding-and-jd-technical.md` — resume JD mock at Q3 |
 
 Add a row after each `/debrief`. FinTech-track notes → [`debrief/`](debrief/); cross-session profile → [`.cursor/skills/debrief/`](../.cursor/skills/debrief/).
 
@@ -127,5 +128,6 @@ Add a row after each `/debrief`. FinTech-track notes → [`debrief/`](debrief/);
 | 2026-06-25 | vlm-spoken-drill | [`2026-06-25_vlm-spoken-drill.md`](mocks/2026-06-25_vlm-spoken-drill.md) | Eval latencies; 0.382→0.405 verified |
 | 2026-06-25 | mock-lp | [`2026-06-25_mock-lp-ownership.md`](mocks/2026-06-25_mock-lp-ownership.md) | Ownership ~78%; exact TR pp numbers |
 | 2026-06-25 | mock-lp | [`2026-06-25_mock-lp-learn-curious.md`](mocks/2026-06-25_mock-lp-learn-curious.md) | Learn & Curious drafted (diffusion); unrehearsed, verify 7 papers |
+| 2026-06-26 | ml-deep-dive | [`2026-06-26_jd-technical-mock.md`](mocks/2026-06-26_jd-technical-mock.md) | JD technical; agents ~80%, A/B ~60→85%; Q3 unanswered |
 
 Add a row after each mock drill. Store files in [`mocks/`](mocks/).

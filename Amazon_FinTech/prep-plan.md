@@ -80,6 +80,7 @@ Format: *metric anomaly → what I dug into → code/config change → result*
 - [x] Log results in root [`INDEX.md`](../INDEX.md)
 - [ ] Optional 5 min — Karan follow-up drill from [`Qwen/PEFT debrief`](../.cursor/skills/debrief/2026-06-25_qwen-peft-technical.md): ablations, config sweeps, proprietary finance TS
 - [x] 10 min — skimmed Karan's [*Efficient Continual Pre-training for Building Domain Specific LLMs*](https://arxiv.org/abs/2311.08545) (FinPythia). **Read:** results modest — mostly vs Pythia base (+10% on 6.9B, +2% on 1B); efficient data selection (ETS/ETA-DACP) matches DACP at ~10% corpus; appears to lose to BloombergGPT. **Unread:** appendix (likely BloombergGPT comparison detail). **Connection point:** same logic as my TR-synthetic kill — domain adaptation only ships if task eval gains hold *without* general-capability regression (paper checks ARC/MMLU/etc.).
+- [x] **JD technical mini-mock:** agents (~80%); A/B testing + null hypothesis (~60%→~85% on re-answer). A/B was weak spot — fixed: business metric primary, precision=guardrail, case-level randomize, no peeking, kill on safety. Q3 (agent money-moving failure) **unanswered → next** → [`mocks/2026-06-26_jd-technical-mock.md`](mocks/2026-06-26_jd-technical-mock.md) · [`debrief`](../.cursor/skills/debrief/2026-06-26_coding-and-jd-technical.md)
 
 **Skipped:** system design lite, FinTech scenario templates (Day 5 old plan)
 
@@ -87,7 +88,7 @@ Format: *metric anomaly → what I dug into → code/config change → result*
 
 ## Fri 27 Jun — Karan mock + debrief
 
-- [ ] **60-min mock:** TMAY (3 min) → **20 min VLM grill** (he picks anchor) → **1 LP** (technical) → **1 code** → 2 questions
+- [ ] **60-min mock:** TMAY (3 min) → **20 min VLM grill** (he picks anchor) → **1 JD technical probe** (agents / eval / routing / A/B) → **1 LP** (technical) → **1 code** → 2 questions
 - [ ] `/debrief` → [`.cursor/skills/debrief/`](../.cursor/skills/debrief/) + [`mocks/`](mocks/)
 - [ ] Note: rigid interviewer — state approach → complexity → invariants; prefer standard structure
 
@@ -97,13 +98,15 @@ Format: *metric anomaly → what I dug into → code/config change → result*
 
 - [ ] 2× timed mediums (25 min each), narrated
 - [ ] Re-do any problem that failed or took >25 min
-- [ ] Light pandas/numpy refresh **only if** coding reps are solid (Imry: rarely tested)
+- [ ] JD technical refresh (30–40 min): LLM system choices (RAG vs FT/CPT vs routing), parallelism/scaling (data/model/pipeline + inference batching), eval gates for finance precision
+- [ ] Light pandas/numpy refresh **only if** coding reps + JD refresh are solid (Imry: rarely tested)
 
 ---
 
 ## Sun 29 Jun — Polish (no new material)
 
 - [ ] Re-read [`anchor-cheat-sheet.md`](anchor-cheat-sheet.md) — 90s per anchor from memory
+- [ ] Review JD technical crib: agents, LLM system choices, A/B/null hypothesis, parallelism, eval gates — no new papers
 - [ ] Re-run weakest LP story once (IC voice, timer)
 - [ ] Prepare **2 questions** for Karan → [`INDEX.md`](INDEX.md#interviewer--karan-aggarwal)
 - [ ] Why Amazon skim only if intro feels rusty
