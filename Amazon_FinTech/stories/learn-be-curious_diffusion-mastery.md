@@ -65,6 +65,13 @@ I chose this direction (not assigned), set the curriculum, did the math and codi
 - Redesigned curriculum with the SDE/ODE detour.
 - Rewrote diffusion framework (sampler / noise schedule / objective / eval isolated).
 - Foundation reused in ImagenTime, ImagenFew, and later diffusion projects.
+- **Single-step distillation (NeurIPS'25):** used an operator / dynamical-systems view of the reverse SDE to approximate the multi-step reverse process in one step — trained a student from a pretrained diffusion teacher. **Best concrete proof the SDE depth paid off** (would not have framed sampling as an operator-learning problem from libraries alone). *Validated quality-vs-speed tradeoff on image data.*
+
+### Single-step distillation — drill the strong follow-up
+
+Best answer to "a modeling decision your SDE understanding unlocked?" Plain-English framing: diffusion sampling is numerical integration of a reverse-time differential equation over many steps; the operator view lets you learn the trajectory map more directly and collapse it toward one step.
+- **Lock before PS1:** teacher model · metric (FID / downstream) · speedup factor · closeness to teacher · vs consistency-models / existing distillation.
+- **Delivery:** say "approximate the reverse process in one step via distillation" — *not* "change the main equation" (avoids a theory fight).
 
 ### Spoken script (~8 min)
 
@@ -100,8 +107,9 @@ Diffusion was becoming foundational but I couldn't make real modeling decisions 
 ### Weak spots / facts to verify
 
 - [ ] Exact count "seven papers" — confirm and list venues.
-- [ ] Sharpen one concrete technical decision the SDE detour enabled (sampler / schedule / conditioning).
-- [ ] Managerial-voice risk: keep "I implemented/debugged," trim "my group / students" framing.
+- [x] Sharpen one concrete technical decision the SDE detour enabled → **single-step distillation (NeurIPS'25)**; still lock teacher/metric/speedup/quality-gap numbers.
+- [ ] Managerial-voice risk: keep "I implemented/debugged," trim "my group / students" framing — recurred in 26 Jun drill.
+- [ ] Delivery: drop filler openers ("great question", "Feynman 101") in interview mode.
 
 ### FinTech bridge (only if asked)
 
