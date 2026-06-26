@@ -4,7 +4,7 @@
 
 - **Type:** interactive spoken drill (Karan-style Q&A)
 - **Duration:** ~45 min
-- **Prior context:** Chronos bridge done 23 Jun ([`2026-06-24_chronos-bridge.md`](2026-06-24_chronos-bridge.md)); prep-plan Tue 24 Jun block
+- **Prior context:** Chronos bridge done 23 Jun ([`2026-06-24_chronos-bridge.md`](2026-06-24_chronos-bridge.md)); prep-plan Wed 24 Jun block
 - **Covered:** Anchor A — problem, dual tower, collator/M-RoPE deep-dive, Stage A/B/C, training stack, metrics, self-Q&A (Q5–Q7)
 
 ## Conclusions

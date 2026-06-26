@@ -49,4 +49,4 @@
 
 ## Next session
 
-> `@Files .cursor/skills/debrief/2026-06-25_timed-code-and-learn-curious-lp.md` — Thu 26 Jun coding sprint #1 (2× timed mediums: heap/intervals/trie/binary search); optionally rehearse Learn & Be Curious aloud once.
+> `@Files .cursor/skills/debrief/2026-06-25_timed-code-and-learn-curious-lp.md` — Fri 26 Jun coding sprint #1 (2× timed mediums: heap/intervals/trie/binary search); optionally rehearse Learn & Be Curious aloud once.

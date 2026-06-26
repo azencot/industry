@@ -30,7 +30,7 @@
 
 ---
 
-## Tue 24 Jun — VLM drill #1 + intro + 1 code
+## Wed 24 Jun — VLM drill #1 + intro + 1 code
 
 **VLM (primary)**
 
@@ -48,7 +48,7 @@
 
 ---
 
-## Wed 25 Jun — VLM drill #2 + LP reframe + 1 code
+## Thu 25 Jun — VLM drill #2 + LP reframe + 1 code
 
 **VLM**
 
@@ -73,10 +73,10 @@ Format: *metric anomaly → what I dug into → code/config change → result*
 
 ---
 
-## Thu 26 Jun — Coding sprint #1
+## Fri 26 Jun — Coding sprint #1
 
-- [x] 2× timed mediums (25 min each), narrated — `347` heap ~15 min pass; `56` intervals ~19 min pass *(file mtime 12:39→12:58)*
-- [ ] Patterns: ~~heap~~, ~~intervals~~, trie, binary search
+- [x] 3× timed mediums, narrated — `347` heap ~15 min pass; `56` intervals ~19 min pass; `153` binary search ~16 min pass *(all under 25 min)*
+- [ ] Patterns: ~~heap~~, ~~intervals~~, trie, ~~binary search~~
 - [x] Log results in root [`INDEX.md`](../INDEX.md)
 - [ ] Optional 5 min — Karan follow-up drill from [`Qwen/PEFT debrief`](../.cursor/skills/debrief/2026-06-25_qwen-peft-technical.md): ablations, config sweeps, proprietary finance TS
 - [x] 10 min — skimmed Karan's [*Efficient Continual Pre-training for Building Domain Specific LLMs*](https://arxiv.org/abs/2311.08545) (FinPythia). **Read:** results modest — mostly vs Pythia base (+10% on 6.9B, +2% on 1B); efficient data selection (ETS/ETA-DACP) matches DACP at ~10% corpus; appears to lose to BloombergGPT. **Unread:** appendix (likely BloombergGPT comparison detail). **Connection point:** same logic as my TR-synthetic kill — domain adaptation only ships if task eval gains hold *without* general-capability regression (paper checks ARC/MMLU/etc.).
@@ -86,7 +86,7 @@ Format: *metric anomaly → what I dug into → code/config change → result*
 
 ---
 
-## Fri 27 Jun — Karan mock + debrief
+## Sat 27 Jun — Karan mock + debrief
 
 - [ ] **60-min mock:** TMAY (3 min) → **20 min VLM grill** (he picks anchor) → **1 JD technical probe** (agents / eval / routing / A/B) → **1 LP** (technical) → **1 code** → 2 questions
 - [ ] `/debrief` → [`.cursor/skills/debrief/`](../.cursor/skills/debrief/) + [`mocks/`](mocks/)
@@ -94,7 +94,7 @@ Format: *metric anomaly → what I dug into → code/config change → result*
 
 ---
 
-## Sat 28 Jun — Coding sprint #2
+## Sun 28 Jun — Coding sprint #2
 
 - [ ] 2× timed mediums (25 min each), narrated
 - [ ] Re-do any problem that failed or took >25 min
@@ -103,7 +103,7 @@ Format: *metric anomaly → what I dug into → code/config change → result*
 
 ---
 
-## Sun 29 Jun — Polish (no new material)
+## Mon 29 Jun — Polish (no new material)
 
 - [ ] Re-read [`anchor-cheat-sheet.md`](anchor-cheat-sheet.md) — 90s per anchor from memory
 - [ ] Review JD technical crib: agents, LLM system choices, A/B/null hypothesis, parallelism, eval gates — no new papers

@@ -14,7 +14,7 @@ Record a finished `/timed-code` attempt in **two** places. Keep one source of tr
 
 - **Date** (`YYYY-MM-DD`), **filename** (in `code/`), **minutes**, **pass/fail**
 - **Notes:** pattern, key invariant, bug(s) hit, over/under 25 min
-- If minutes unknown, estimate from drill timestamps and **flag the estimate** to the user.
+- **Minutes = the agent's job, not the user's.** The user is not timing themselves. Compute duration from the drill file's timestamps: start ≈ file creation (when the agent posted the problem), finish ≈ last modification. Use `stat -f "%SB %Sm" -t "%H:%M"` (needs `required_permissions: ["all"]`). **Do not ask the user how long it took.**
 
 ## Steps
 

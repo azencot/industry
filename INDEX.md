@@ -59,6 +59,7 @@ Add rows after `/timed-code` drills:
 | 2026-06-25 | `2026-06-25_200_number_of_islands_practice.py` | ~35 | pass | DFS + visited; fixed `.length`/`'1'`/call-site/pre-mark bugs in 2 retries — over 25 min |
 | 2026-06-26 | `2026-06-26_347_top_k_frequent_elements_practice.py` | ~15 | pass | heap / top-K; size-k min-heap on `(freq,num)`; strong approach narration; one bug — `heappop(h)` instead of draining `h` in return — **under 25 min** |
 | 2026-06-26 | `2026-06-26_56_merge_intervals_practice.py` | ~19 | pass | intervals; sort by start + scan; `start > max_end` flush else extend `max_end`; touching/nested/unsorted covered; clean first pass — **under 25 min** |
+| 2026-06-26 | `2026-06-26_153_find_min_rotated_sorted_array_practice.py` | ~16 | pass | binary search; shrink window on `nums[si] > nums[mi]`; post-loop pivot check + no-rotation fallback; all edges pass — **under 25 min** |
 
 ---
 
