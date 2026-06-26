@@ -116,6 +116,7 @@ Track which LPs have ready stories in [`stories/README.md`](stories/README.md). 
 | 2026-06-25 | Qwen (HF) + PEFT/LoRA technical | [`2026-06-25_qwen-peft-technical.md`](../.cursor/skills/debrief/2026-06-25_qwen-peft-technical.md) | `@Files 2026-06-25_qwen-peft-technical.md` + Karan ablation follow-ups |
 | 2026-06-26 | Coding sprint #1 + JD technical mini-mock | [`2026-06-26_coding-and-jd-technical.md`](../.cursor/skills/debrief/2026-06-26_coding-and-jd-technical.md) | `@Files 2026-06-26_coding-and-jd-technical.md` — resume JD mock at Q3 |
 | 2026-06-26 | Mock LP — Learn & Be Curious (diffusion) | [`2026-06-26_mock-lp-learn-curious.md`](../.cursor/skills/debrief/2026-06-26_mock-lp-learn-curious.md) | `@Files 2026-06-26_mock-lp-learn-curious.md` + story — drill full version, lock distillation numbers |
+| 2026-06-26 | JD drill — LLM system choices (RAG/FT/CPT/routing) | [`2026-06-26_llm-system-choices-drill.md`](../.cursor/skills/debrief/2026-06-26_llm-system-choices-drill.md) | `@Files 2026-06-26_llm-system-choices-drill.md` — resume JD track at agent-failure Q3 |
 
 Add a row after each `/debrief`. FinTech-track notes → [`debrief/`](debrief/); cross-session profile → [`.cursor/skills/debrief/`](../.cursor/skills/debrief/).
 
@@ -131,5 +132,6 @@ Add a row after each `/debrief`. FinTech-track notes → [`debrief/`](debrief/);
 | 2026-06-25 | mock-lp | [`2026-06-25_mock-lp-learn-curious.md`](mocks/2026-06-25_mock-lp-learn-curious.md) | Learn & Curious drafted (diffusion); unrehearsed, verify 7 papers |
 | 2026-06-26 | ml-deep-dive | [`2026-06-26_jd-technical-mock.md`](mocks/2026-06-26_jd-technical-mock.md) | JD technical; agents ~80%, A/B ~60→85%; Q3 unanswered |
 | 2026-06-26 | mock-lp | [`2026-06-26_mock-lp-learn-curious.md`](mocks/2026-06-26_mock-lp-learn-curious.md) | Learn & Curious (diffusion) ~85–90%; added single-step distillation; lock numbers |
+| 2026-06-26 | ml-deep-dive | [`2026-06-26_jd-llm-system-choices.md`](mocks/2026-06-26_jd-llm-system-choices.md) | RAG/FT/CPT/routing ~70→85%; fixed RAG-vs-CPT inversion; eval-first framing |
 
 Add a row after each mock drill. Store files in [`mocks/`](mocks/).
