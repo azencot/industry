@@ -75,11 +75,11 @@ Format: *metric anomaly → what I dug into → code/config change → result*
 
 ## Thu 26 Jun — Coding sprint #1
 
-- [ ] 2× timed mediums (25 min each), narrated — **1/2:** `2026-06-26_347_top_k_frequent_elements_practice.py` (heap, ~15 min, pass)
-- [ ] Patterns: ~~heap~~, intervals, trie, binary search
-- [ ] Log results in root [`INDEX.md`](../INDEX.md)
+- [x] 2× timed mediums (25 min each), narrated — `347` heap ~15 min pass; `56` intervals ~19 min pass *(file mtime 12:39→12:58)*
+- [ ] Patterns: ~~heap~~, ~~intervals~~, trie, binary search
+- [x] Log results in root [`INDEX.md`](../INDEX.md)
 - [ ] Optional 5 min — Karan follow-up drill from [`Qwen/PEFT debrief`](../.cursor/skills/debrief/2026-06-25_qwen-peft-technical.md): ablations, config sweeps, proprietary finance TS
-- [ ] If time: 10 min — skim Karan paper abstract for **one** connection point to your work (not full read)
+- [x] 10 min — skimmed Karan's [*Efficient Continual Pre-training for Building Domain Specific LLMs*](https://arxiv.org/abs/2311.08545) (FinPythia). **Read:** results modest — mostly vs Pythia base (+10% on 6.9B, +2% on 1B); efficient data selection (ETS/ETA-DACP) matches DACP at ~10% corpus; appears to lose to BloombergGPT. **Unread:** appendix (likely BloombergGPT comparison detail). **Connection point:** same logic as my TR-synthetic kill — domain adaptation only ships if task eval gains hold *without* general-capability regression (paper checks ARC/MMLU/etc.).
 
 **Skipped:** system design lite, FinTech scenario templates (Day 5 old plan)
 
