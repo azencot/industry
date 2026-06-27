@@ -65,7 +65,7 @@ Agents and drafts for this track:
   - [Efficient continual pre-training LLMs for financial domains](https://aws.amazon.com/blogs/machine-learning/efficient-continual-pre-training-llms-for-financial-domains/) (co-authored) · [arxiv:2311.08545](https://arxiv.org/abs/2311.08545)
   - [ECG-QALM abstract](https://www.amazon.science/publications/ecg-qalm-entity-controlled-synthetic-text-generation-using-contextual-q-a-for-ner) — optional; bridge is your eval/audit work, not NER synth
 - **Coding expectation:** Standard **LeetCode medium** (Python OK). Team uses pandas/numpy day-to-day; Imry says interviewers *rarely* ask that — don't trade coding reps for pandas drill
-- **Questions to ask him (pick 2):** [`ps1-questions-for-karan.md`](ps1-questions-for-karan.md) — eval gating; user corrections; Chronos vs multimodal routing; hardest LLM failure mode
+- **Questions to ask him (pick 2):** [`ps1-questions-for-karan.md`](ps1-questions-for-karan.md) — where trust is hardest; what strong impact looks like; corrections loop; hardest problem class (soft PS1 tone, not audit-style)
 
 ### Chronos (team stack — Imry)
 

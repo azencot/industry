@@ -2,105 +2,85 @@
 
 **Use on:** Tue 30 Jun 2026 PS1 (last ~5 min)  
 **Interviewer:** Karan Aggarwal — Senior Applied Scientist, FinTelligence  
-**Rule:** Ask **2 questions**. Have 2 backups ready if he already covered one.
+**Rule:** Ask **2 questions**. Have 1–2 backups if he already covered one.
 
 Full context: [`INDEX.md`](INDEX.md#interviewer--karan-aggarwal) · JD: [`job-description.md`](job-description.md)
 
 ---
 
-## PS1 night — ask these two
+## Tone for PS1 (read this first)
 
-### 1. Eval gating before ship
+PS1 questions should sound like **genuine curiosity about the role**, not like you're interviewing him or auditing the team's stack.
 
-> When you promote a model change on a FinTelligence document workflow, what does your actual gate look like offline — gold slices by doc type, shadow or replay mode, and which metrics are blocking versus advisory? I'm especially curious what you treat as a hard fail on precision-critical fields versus something you'd monitor but not block on.
+| Sounds natural | Sounds awkward in PS1 |
+|----------------|----------------------|
+| "Where is trust hardest to earn in practice?" | "What does your actual offline gate look like?" |
+| "What separates strong impact here?" | "Which metrics are blocking versus advisory?" |
+| "How do corrections usually feed back?" | "Do corrections go straight into training?" |
 
-**Why it's strong:** Maps to JD (“eval frameworks that gate every model change”) and your Anchor B tiered eval. Invites concrete production detail, not philosophy.
-
-**If he answers briefly:** “What slice regression has actually blocked a ship for you?”
+Keep each question to **1–2 sentences**. Stop. Let him talk. One short follow-up is fine if he opens a door — not a third prepared question.
 
 ---
 
-### 2. User corrections → durable signal
+## PS1 night — ask these two
 
-> How do user corrections flow back into the system today — regression tests and failure taxonomy first, or do some corrections go straight into training? What's been the hardest class of error to close with corrections alone?
+### 1. Where trust is hardest (JD-aligned)
 
-**Why it's strong:** Core JD responsibility. Shows you care about the closed loop, not just model quality at one snapshot.
+> The JD talks about finance teams trusting the system enough to rely on it without manual review. In your experience on FinTelligence, where is that trust hardest to earn — getting extraction right, reconciling across documents, or knowing when the system should abstain?
 
-**If he answers briefly:** “Do corrections ever become training signal automatically, or is there a human review step on the taxonomy first?”
+**Why it works:** Technical enough for Karan; opens eval, precision, abstention, and product judgment without asking him to describe internal runbooks.
+
+**If he answers briefly:** "Is that different for cash application versus contract or invoice workflows?"
+
+---
+
+### 2. What strong impact looks like
+
+> From your perspective, what separates a strong senior applied scientist on this team from someone who is only strong at modeling — is it mostly eval discipline, product judgment around financial risk, or owning a slice end to end?
+
+**Why it works:** Lets him define success on his own terms. You learn role expectations without sounding like you're grading the org.
+
+**If he answers briefly:** "What does that look like in the first year — a shipped change, an eval framework, or something else?"
 
 ---
 
 ## Backups (pick if #1 or #2 already covered)
 
-### 3. Chronos vs multimodal routing
+### 3. Corrections loop (softer)
 
-> For time-series work on the team, how do you decide between a Chronos-class forecaster and a multimodal reasoning path in production — is it task-type routing, confidence thresholds, or cost-quality tiers?
+> The role mentions systems that learn from user corrections. In practice, how do those corrections usually change the product — do they mostly improve eval coverage, tighten rules and guardrails, or eventually become training signal?
 
-**Why:** Shows you read team stack (Chronos/Bolt) and won't over-claim your VLM project fits every TS task.
-
-**Bridge if natural:** “In my project I routed reasoning to a VLM and would keep forecasting on a dedicated model — I'm curious how you draw that line at scale.”
+**Bridge if natural:** "I've found that turning recurring corrections into regression tests before retraining is often the safer path — curious how that plays out on your team."
 
 ---
 
-### 4. Hardest failure mode offline eval misses
+### 4. Hardest problem class
 
-> What's a failure mode on financial documents that offline eval struggled to catch until you had production signal — extraction that looks right but reconciliation or policy reasoning is wrong, or something else?
+> What's the class of problem on financial documents that still feels genuinely hard — messy real-world formats, low-label regimes, or getting agents to act safely at scale?
 
-**Why:** Opens his hardest-problem story; connects to your mock gap on reconciliation-layer debugging.
-
----
-
-## Full bank (by theme)
-
-### Production eval and monitoring
-
-**A. Post-ship kill criteria**
-
-> After partial automation is live, what post-ship signal has actually triggered a rollback or kill switch — slice precision drop, schema validity, unsupported-action rate — and how quickly could you detect it?
-
-**B. Parse/schema vs semantic accuracy**
-
-> On structured extraction tasks, how do you separate schema or format failures from semantic wrong answers in monitoring — and do you gate promotion on both?
-
-*Ties to your parse-miss work on TSRBench (NR/TSF).*
+**Why it works:** Opens his view of the frontier without asking for a post-mortem on a specific incident.
 
 ---
 
-### Agents and high-stakes actions
+### 5. Time-series at FinTelligence (only if TS came up in your project discussion)
 
-**C. Planning vs execution**
+> I saw the team works with Chronos for forecasting. For problems that need reasoning or explanation rather than a forecast, how do you usually think about routing or combining different model types?
 
-> When agents can act on financial data, how do you separate planning from execution in the architecture, and where do you hard-block versus route to human review?
-
-**D. Money-moving failure you mentioned in prep**
-
-> If an agent auto-approved a bad cash-application match, what would you inspect first in your stack — extraction logs, reconciliation step, or policy layer — and what would you ship first: containment or root-cause fix?
-
-*Use only if conversation already went there; otherwise sounds rehearsed.*
+**Use only if** your VLM / time-series thread already landed — otherwise it can feel like name-dropping homework.
 
 ---
 
-### Model strategy (his research + team stack)
+## Deeper follow-ups (only if conversation naturally goes there)
 
-**E. Continual pre-training vs task FT**
+*Don't lead with these in PS1. Use if he mentions eval gates, shadow mode, corrections, or agents and invites you to dig in.*
 
-> In your continual pre-training work on financial domains, when did domain adaptation move the needle versus when you still needed task-specific fine-tuning — and how did you gate against general-capability regression?
-
-*References his [FinPythia paper](https://arxiv.org/abs/2311.08545); don't lead with “I read your paper” — let him connect it.*
-
-**F. Low-label document types**
-
-> For document types with thin labels, what has worked better in practice — controlled synthetic generation with audit gates, or retrieval-heavy pipelines with human corrections as the main signal?
-
----
-
-### Role and team (use only if time and tone fit)
-
-**G. What “good” looks like in the first year**
-
-> For a senior applied scientist on FinTelligence, what does strong impact look like in the first 6–12 months — a shipped model change, an eval framework, or owning a slice end to end?
-
-*Softer; use if technical questions feel exhausted.*
+| Theme | Follow-up (one sentence) |
+|-------|--------------------------|
+| Eval before ship | "Do slice regressions on high-risk fields usually block promotion, or is it more about monitoring first?" |
+| Post-ship | "What kind of production signal has actually triggered a rollback for you?" |
+| Schema vs semantics | "Do you treat format failures separately from wrong extractions when you're measuring quality?" |
+| Agents / money-moving | "When an agent can take action on financial data, where do you draw the line between recommendation and automation?" |
+| Continual pre-training | "When has domain adaptation helped versus when you still needed task-specific fine-tuning?" |
 
 ---
 
@@ -108,30 +88,33 @@ Full context: [`INDEX.md`](INDEX.md#interviewer--karan-aggarwal) · JD: [`job-de
 
 | Avoid | Why |
 |-------|-----|
-| “What's the culture like?” | Generic; wastes scarce time |
-| “How do I get promoted?” | Wrong round |
-| “Can you tell me about the team?” | Too broad for Karan's technical style |
-| “I read your paper — can you explain it?” | Puts him in lecturer mode; ask a *specific* comparison question instead (E) |
-| Anything answerable from the JD posting | Shows you didn't read it |
-| More than 2 questions | PS1 format is ~5 min |
+| "What's the culture like?" | Generic; wastes scarce time |
+| "How do I get promoted?" | Wrong round |
+| "Can you tell me about the team?" | Too broad |
+| "I read your paper — can you explain it?" | Puts him in lecturer mode |
+| Detailed implementation audits ("what's your gate ladder?", "blocking vs advisory metrics?") | Sounds like you're interviewing him |
+| Anything fully answerable from the JD posting alone | Shows you didn't read it |
+| More than 2 questions + one follow-up | PS1 format is ~5 min |
 
 ---
 
 ## Delivery notes
 
-- **Order:** Technical depth first (eval or corrections), second question can be routing or failure-mode if the first sparked discussion.
-- **Length:** One question = 2–3 sentences max spoken. Stop. Let him talk.
-- **Listen for hooks:** If he mentions shadow mode, slice gates, or corrections taxonomy — ask one short follow-up, not a third new question.
-- **Don't debate:** If his answer differs from your prep (e.g. CPT vs RAG), note it; don't argue in PS1.
+- **Order:** Start with trust (#1) or role fit (#2) — both work after a technical screen.
+- **Listen:** If he mentions eval, corrections, or routing, you can use one row from the deeper follow-ups table — not a new scripted question.
+- **Don't debate:** If his answer differs from your prep, note it; don't argue in PS1.
+- **Rehearse once aloud** Mon 29 — goal is conversational, not memorized.
 
 ---
 
 ## Quick reference card (glance during PS1)
 
 ```
-1. Eval gates — blocking vs advisory metrics? Hard fail on precision fields?
-2. Corrections — regression tests/taxonomy first, or straight to training? Hardest error class?
+1. Where is trust hardest — extraction, reconciliation, or abstention?
+2. What separates strong senior AS impact here — eval, risk judgment, or owning a slice?
 
-Backup: Chronos vs multimodal routing in production?
-Backup: Failure mode offline eval missed until production?
+Backup: How do user corrections usually change the product?
+Backup: What problem class still feels genuinely hard?
+
+Follow-up only if he opens the door — don't lead with audit-style detail.
 ```
