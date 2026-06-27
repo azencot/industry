@@ -94,6 +94,7 @@ Format: *metric anomaly → what I dug into → code/config change → result*
 - [x] `/debrief` → [`debrief/2026-06-27_karan-full-mock.md`](debrief/2026-06-27_karan-full-mock.md) + [`mocks/2026-06-27_full-mock.md`](mocks/2026-06-27_full-mock.md) + [`ps1-questions-for-karan.md`](ps1-questions-for-karan.md)
 - [x] **Bonus drill:** `207_course_schedule` topological sort (Kahn) ~26 min pass (1 fix iteration) — covers ~~graph/topo~~; call it Kahn not DFS
 - [x] **Learning block (~40 min):** finance production eval & monitoring teach-and-quiz — fixes the ~70% JD probe gap → [`debrief/2026-06-27_eval-monitoring-lesson.md`](debrief/2026-06-27_eval-monitoring-lesson.md). Crib: gate by slice not headline · business metric ≠ guardrail · schema = deterministic · real citation ≠ supporting citation · shadow mode is diagnostic (withhold automation, don't kill shadow) · corrections → taxonomy → regression tests → component fix → selective FT
+- [x] **Bonus drill:** `211_design_add_and_search_words` trie wildcard ~17 min pass (2 fix iterations: `True`/`False`, `word[i+1:]`) — covers ~~trie~~
 - [ ] Note: rigid interviewer — state approach → complexity → invariants; prefer standard structure
 
 ---
@@ -101,7 +102,7 @@ Format: *metric anomaly → what I dug into → code/config change → result*
 ## Sun 28 Jun — Coding sprint #2
 
 - [ ] 2× timed mediums (25 min each), narrated
-- [ ] Re-do any problem that failed or took >25 min — **211 trie wildcard** (`dfs(node, index)` + `is_end`) if time
+- [ ] Re-do any problem that failed or took >25 min — ~~211 trie wildcard~~ (done Sat 27); hash / sliding window / two pointers if time
 - [ ] **JD technical refresh** (30–40 min) from [`job-description.md`](job-description.md):
   - LLM system choices (RAG vs FT/CPT vs routing); parallelism/scaling (data/model/pipeline + inference batching)
   - Eval gates for finance precision; **production monitoring** (dashboards, slice alerts, drift/regression after ship)
