@@ -90,7 +90,7 @@ Format: *metric anomaly → what I dug into → code/config change → result*
 
 ## Sat 27 Jun — Karan mock + debrief
 
-- [ ] **60-min mock:** TMAY (3 min) → **20 min VLM grill** (he picks anchor) → **1 JD technical probe** (agents / eval / routing / A/B) → **1 LP** (technical) → **1 code** → 2 questions
+- [ ] **60-min mock:** TMAY (3 min) → **20 min VLM grill** (he picks anchor) → **1 JD technical probe** — **document intelligence + production eval** (invoice/remittance/contract/ERP → extract/ground/reconcile/escalate; post-ship monitoring, slice regression, kill switches) → **1 LP** (technical) → **1 code** → 2 questions
 - [ ] `/debrief` → [`debrief/`](debrief/) + [`mocks/`](mocks/)
 - [ ] Note: rigid interviewer — state approach → complexity → invariants; prefer standard structure
 
@@ -99,8 +99,13 @@ Format: *metric anomaly → what I dug into → code/config change → result*
 ## Sun 28 Jun — Coding sprint #2
 
 - [ ] 2× timed mediums (25 min each), narrated
-- [ ] Re-do any problem that failed or took >25 min
-- [ ] JD technical refresh (30–40 min): LLM system choices (RAG vs FT/CPT vs routing), parallelism/scaling (data/model/pipeline + inference batching), eval gates for finance precision
+- [ ] Re-do any problem that failed or took >25 min — **211 trie wildcard** (`dfs(node, index)` + `is_end`) if time
+- [ ] **JD technical refresh** (30–40 min) from [`job-description.md`](job-description.md):
+  - LLM system choices (RAG vs FT/CPT vs routing); parallelism/scaling (data/model/pipeline + inference batching)
+  - Eval gates for finance precision; **production monitoring** (dashboards, slice alerts, drift/regression after ship)
+  - **User-corrections loop retake** (~10 min): corrections → failure taxonomy → regression tests → component fix → selective training signal
+  - **Calibration / abstention / thresholds** (~10 min): confidence routing, human handoff, unsupported-action rate
+  - **Retrieval quality** (~10 min): chunking, metadata, reranking, citation precision vs answer precision
 - [ ] Light pandas/numpy refresh **only if** coding reps + JD refresh are solid (Imry: rarely tested)
 
 ---
@@ -108,7 +113,11 @@ Format: *metric anomaly → what I dug into → code/config change → result*
 ## Mon 29 Jun — Polish (no new material)
 
 - [ ] Re-read [`anchor-cheat-sheet.md`](anchor-cheat-sheet.md) — 90s per anchor from memory
-- [ ] Review JD technical crib: agents, LLM system choices, A/B/null hypothesis, parallelism, eval gates — no new papers
+- [ ] Review **JD technical crib** (no new papers) — memorize lines from [`job-description.md`](job-description.md):
+  - *RAG grounds facts; FT shapes behavior; CPT teaches domain language; routing manages cost-risk*
+  - *Corrections → regression tests + failure taxonomy first; only some become training signal*
+  - *Thresholds + abstention decide automation; precision = compliance gate*
+  - *Document intel: invoice + remittance + contract + ERP → extract, ground, reconcile, escalate*
 - [ ] Re-run weakest LP story once (IC voice, timer)
 - [ ] Prepare **2 questions** for Karan → [`INDEX.md`](INDEX.md#interviewer--karan-aggarwal)
 - [ ] Why Amazon skim only if intro feels rusty
@@ -130,4 +139,4 @@ Format: *metric anomaly → what I dug into → code/config change → result*
 2. One `/timed-code` problem
 3. Update index or mock log (5 min)
 
-**Deprioritized (do not spend time here):** generic `/ml-deep-dive` retakes, 8-story LP bank, system design scenarios, full Karan paper, ECG-QALM deep read.
+**Deprioritized (do not spend time here):** generic `/ml-deep-dive` retakes, 8-story LP bank, system design scenarios, full Karan paper, ECG-QALM deep read, generic transformers/RLHF theory, Spark/Hadoop internals.

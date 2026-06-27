@@ -24,6 +24,7 @@ Active interview track. Annotated index — read entries before opening every fi
 | [`elevator-pitch.md`](elevator-pitch.md) | **PS1 intro script** (~90s spoken) — who → work → why FinTelligence; optional 30s + 45s cuts | Day 1; read aloud before PS1 |
 | [`stories/tell-me-about-yourself.md`](stories/tell-me-about-yourself.md) | **TMAY** (~2–3 min) — career arc; IC para 2 | Intro / resume block |
 | [`stories/why-amazon.md`](stories/why-amazon.md) | **Why Amazon** (~1:30) — speakable prose; JD phrases verbatim | Day 3; if asked in intro |
+| [`job-description.md`](job-description.md) | **Full JD** — responsibilities, qualifications, JD→prep map | Before tailoring scripts/stories to JD wording |
 | [`prep-plan.md`](prep-plan.md) | Karan-focused prep (24–29 Jun): VLM depth + coding | Daily — find today's block |
 | [`CV_Azencot_10399493.pdf`](CV_Azencot_10399493.pdf) | Resume for this application | Before intro / resume walkthrough |
 | [`stories/`](stories/) | STAR stories by Leadership Principle | Before LP drills and interview |
@@ -40,7 +41,7 @@ Active interview track. Annotated index — read entries before opening every fi
 - **Learning from user corrections**; eval frameworks that **gate** model changes
 - **Tiered inference**: routing, SLMs, cost vs frontier quality
 
-Full posting context lives in prep chat / recruiter email — not duplicated here.
+Full posting: [`job-description.md`](job-description.md).
 
 ### Writing rules (scripts + stories)
 
