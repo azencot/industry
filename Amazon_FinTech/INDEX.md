@@ -26,6 +26,7 @@ Active interview track. Annotated index — read entries before opening every fi
 | [`stories/why-amazon.md`](stories/why-amazon.md) | **Why Amazon** (~1:30) — speakable prose; JD phrases verbatim | Day 3; if asked in intro |
 | [`job-description.md`](job-description.md) | **Full JD** — responsibilities, qualifications, JD→prep map | Before tailoring scripts/stories to JD wording |
 | [`prep-plan.md`](prep-plan.md) | Karan-focused prep (24–29 Jun): VLM depth + coding | Daily — find today's block |
+| [`ps1-questions-for-karan.md`](ps1-questions-for-karan.md) | **PS1 night** — 2 questions to ask Karan + backups + quick reference card | Mon 29 / interview day |
 | [`CV_Azencot_10399493.pdf`](CV_Azencot_10399493.pdf) | Resume for this application | Before intro / resume walkthrough |
 | [`stories/`](stories/) | STAR stories by Leadership Principle | Before LP drills and interview |
 | [`debrief/`](debrief/) | Session debriefs & cross-chat handoffs | Start session B; after `/debrief` |
@@ -64,7 +65,7 @@ Agents and drafts for this track:
   - [Efficient continual pre-training LLMs for financial domains](https://aws.amazon.com/blogs/machine-learning/efficient-continual-pre-training-llms-for-financial-domains/) (co-authored) · [arxiv:2311.08545](https://arxiv.org/abs/2311.08545)
   - [ECG-QALM abstract](https://www.amazon.science/publications/ecg-qalm-entity-controlled-synthetic-text-generation-using-contextual-q-a-for-ner) — optional; bridge is your eval/audit work, not NER synth
 - **Coding expectation:** Standard **LeetCode medium** (Python OK). Team uses pandas/numpy day-to-day; Imry says interviewers *rarely* ask that — don't trade coding reps for pandas drill
-- **Questions to ask him (pick 2):** eval gating before ship; how user corrections feed back; Chronos vs multimodal routing for TS tasks; hardest LLM failure mode on financial docs
+- **Questions to ask him (pick 2):** [`ps1-questions-for-karan.md`](ps1-questions-for-karan.md) — eval gating; user corrections; Chronos vs multimodal routing; hardest LLM failure mode
 
 ### Chronos (team stack — Imry)
 
@@ -118,6 +119,7 @@ Track which LPs have ready stories in [`stories/README.md`](stories/README.md). 
 | 2026-06-26 | Coding sprint #1 + JD technical mini-mock | [`2026-06-26_coding-and-jd-technical.md`](debrief/2026-06-26_coding-and-jd-technical.md) | `@Files 2026-06-26_coding-and-jd-technical.md` — resume JD mock at Q3 |
 | 2026-06-26 | Mock LP — Learn & Be Curious (diffusion) | [`2026-06-26_mock-lp-learn-curious.md`](debrief/2026-06-26_mock-lp-learn-curious.md) | `@Files 2026-06-26_mock-lp-learn-curious.md` + story — drill full version, lock distillation numbers |
 | 2026-06-26 | JD drill — LLM system choices (RAG/FT/CPT/routing) | [`2026-06-26_llm-system-choices-drill.md`](debrief/2026-06-26_llm-system-choices-drill.md) | `@Files 2026-06-26_llm-system-choices-drill.md` — resume JD track at agent-failure Q3 |
+| 2026-06-27 | Karan full mock + PS1 questions | [`2026-06-27_karan-full-mock.md`](debrief/2026-06-27_karan-full-mock.md) | `@Files debrief/2026-06-27_karan-full-mock.md` + `ps1-questions-for-karan.md` — Sun 28 coding + JD refresh |
 
 Add a row after each `/debrief`. Amazon FinTech session notes → [`debrief/`](debrief/); general profile/project refs → [`.cursor/skills/debrief/`](../.cursor/skills/debrief/).
 
@@ -134,5 +136,6 @@ Add a row after each `/debrief`. Amazon FinTech session notes → [`debrief/`](d
 | 2026-06-26 | ml-deep-dive | [`2026-06-26_jd-technical-mock.md`](mocks/2026-06-26_jd-technical-mock.md) | JD technical; agents ~80%, A/B ~60→85%; Q3 unanswered |
 | 2026-06-26 | mock-lp | [`2026-06-26_mock-lp-learn-curious.md`](mocks/2026-06-26_mock-lp-learn-curious.md) | Learn & Curious (diffusion) ~85–90%; added single-step distillation; lock numbers |
 | 2026-06-26 | ml-deep-dive | [`2026-06-26_jd-llm-system-choices.md`](mocks/2026-06-26_jd-llm-system-choices.md) | RAG/FT/CPT/routing ~70→85%; fixed RAG-vs-CPT inversion; eval-first framing |
+| 2026-06-27 | full-mock | [`2026-06-27_full-mock.md`](mocks/2026-06-27_full-mock.md) | VLM ~85%; JD probe ~70% (precision guardrail, deterministic schema); TR-kill LP; LC19 pass ~18 min |
 
 Add a row after each mock drill. Store files in [`mocks/`](mocks/).
