@@ -95,6 +95,8 @@ Format: *metric anomaly → what I dug into → code/config change → result*
 - [x] **Bonus drill:** `207_course_schedule` topological sort (Kahn) ~26 min pass (1 fix iteration) — covers ~~graph/topo~~; call it Kahn not DFS
 - [x] **Learning block (~40 min):** finance production eval & monitoring teach-and-quiz — fixes the ~70% JD probe gap → [`debrief/2026-06-27_eval-monitoring-lesson.md`](debrief/2026-06-27_eval-monitoring-lesson.md). Crib: gate by slice not headline · business metric ≠ guardrail · schema = deterministic · real citation ≠ supporting citation · shadow mode is diagnostic (withhold automation, don't kill shadow) · corrections → taxonomy → regression tests → component fix → selective FT
 - [x] **Bonus drill:** `211_design_add_and_search_words` trie wildcard ~17 min pass (2 fix iterations: `True`/`False`, `word[i+1:]`) — covers ~~trie~~
+- [x] **Agent failure retake (spoken):** money-moving auto-approval ~80–85% — contain → 4-layer taxonomy (extraction · reconciliation · policy · guardrail) → deterministic fix + regression slice → selective FT last
+- [x] **Learning block (~15 min):** agentic workflows teach-and-quiz (paused at Q2) → [`debrief/2026-06-27_agentic-workflows-lesson.md`](debrief/2026-06-27_agentic-workflows-lesson.md). Crib: agent = plan→tools→state→verify→(maybe)act · reason broadly, act narrowly · narrow typed tools not `approve_payment()` · constrain ReAct in finance · **resume at Q2 (tool design + action boundaries)**
 - [ ] Note: rigid interviewer — state approach → complexity → invariants; prefer standard structure
 
 ---
