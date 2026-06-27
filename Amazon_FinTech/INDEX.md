@@ -121,7 +121,7 @@ Track which LPs have ready stories in [`stories/README.md`](stories/README.md). 
 | 2026-06-26 | JD drill — LLM system choices (RAG/FT/CPT/routing) | [`2026-06-26_llm-system-choices-drill.md`](debrief/2026-06-26_llm-system-choices-drill.md) | `@Files 2026-06-26_llm-system-choices-drill.md` — resume JD track at agent-failure Q3 |
 | 2026-06-27 | Karan full mock + PS1 questions | [`2026-06-27_karan-full-mock.md`](debrief/2026-06-27_karan-full-mock.md) | `@Files debrief/2026-06-27_karan-full-mock.md` + `ps1-questions-for-karan.md` — Sun 28 coding + JD refresh |
 | 2026-06-27 | Finance eval & monitoring (teach-and-quiz) | [`2026-06-27_eval-monitoring-lesson.md`](debrief/2026-06-27_eval-monitoring-lesson.md) | `@Files debrief/2026-06-27_eval-monitoring-lesson.md` — fixes JD probe gap; rehearse shadow-vs-kill + corrections loop |
-| 2026-06-27 | Agentic workflows (teach-and-quiz, paused Q2) | [`2026-06-27_agentic-workflows-lesson.md`](debrief/2026-06-27_agentic-workflows-lesson.md) | `@Files debrief/2026-06-27_agentic-workflows-lesson.md` — resume at Q2 tool design + action boundaries |
+| 2026-06-27 | Agentic workflows (teach-and-quiz, stopped high-level track) | [`2026-06-27_agentic-workflows-lesson.md`](debrief/2026-06-27_agentic-workflows-lesson.md) | `@Files debrief/2026-06-27_agentic-workflows-lesson.md` — if resumed, do low-level engineering-spec drill: tool schemas, verifier checks, logs, action boundaries |
 
 Add a row after each `/debrief`. Amazon FinTech session notes → [`debrief/`](debrief/); general profile/project refs → [`.cursor/skills/debrief/`](../.cursor/skills/debrief/).
 

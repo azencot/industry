@@ -63,6 +63,7 @@ Add rows after `/timed-code` drills:
 | 2026-06-27 | `2026-06-27_19_remove_nth_node_from_end_of_list_practice.py` | ~18 | pass | linked list / fast-slow; invariant: keep `node2` n ahead, delete when `node2` falls off; bugs: off-by-one (deleted node before target) + head-removal crash + `return []` vs `None` — fixed with dummy node + `while node2 != None`; **under 25 min** |
 | 2026-06-27 | `2026-06-27_207_course_schedule_practice.py` | ~26 | pass | graph / topological sort (Kahn); invariant: queue holds indegree-0 nodes, cycle iff `count != numCourses`; bugs: `list + int` concat + `if prereq not in courses` dropped multi-edges + `courses[course]` KeyError — fixed with `get(...)+[course]` / `.get(course,[])`; **just over 25 min**; call it Kahn not DFS |
 | 2026-06-27 | `2026-06-27_211_design_add_and_search_words_practice.py` | ~17 | pass | trie + DFS wildcard; invariant: `do_dfs(suffix, node)` matches suffix from node; bugs: `true`/`false` → `True`/`False` + `word[i+1]` (single char) → `word[i+1:]` (suffix); explicit for-loop on `.` is fine — skip `any()`; **under 25 min** |
+| 2026-06-27 | `2026-06-27_3_longest_substring_without_repeating_practice.py` | ~15 | pass | sliding window + last-index map; invariant: `si` = start of valid no-repeat window, jump only if `last_index[c] >= si`; bugs: max only on repeat + `len(s)-si` instead of `i-si+1`; fixed in 2 iterations — **under 25 min** |
 
 ---
 
