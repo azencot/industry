@@ -61,6 +61,7 @@ Add rows after `/timed-code` drills:
 | 2026-06-26 | `2026-06-26_56_merge_intervals_practice.py` | ~19 | pass | intervals; sort by start + scan; `start > max_end` flush else extend `max_end`; touching/nested/unsorted covered; clean first pass — **under 25 min** |
 | 2026-06-26 | `2026-06-26_153_find_min_rotated_sorted_array_practice.py` | ~16 | pass | binary search; shrink window on `nums[si] > nums[mi]`; post-loop pivot check + no-rotation fallback; all edges pass — **under 25 min** |
 | 2026-06-27 | `2026-06-27_19_remove_nth_node_from_end_of_list_practice.py` | ~18 | pass | linked list / fast-slow; invariant: keep `node2` n ahead, delete when `node2` falls off; bugs: off-by-one (deleted node before target) + head-removal crash + `return []` vs `None` — fixed with dummy node + `while node2 != None`; **under 25 min** |
+| 2026-06-27 | `2026-06-27_207_course_schedule_practice.py` | ~26 | pass | graph / topological sort (Kahn); invariant: queue holds indegree-0 nodes, cycle iff `count != numCourses`; bugs: `list + int` concat + `if prereq not in courses` dropped multi-edges + `courses[course]` KeyError — fixed with `get(...)+[course]` / `.get(course,[])`; **just over 25 min**; call it Kahn not DFS |
 
 ---
 

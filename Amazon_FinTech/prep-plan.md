@@ -92,6 +92,7 @@ Format: *metric anomaly → what I dug into → code/config change → result*
 
 - [x] **60-min mock:** TMAY (3 min) → **20 min VLM grill** (he picks anchor) → **1 JD technical probe** — **document intelligence + production eval** (invoice/remittance/contract/ERP → extract/ground/reconcile/escalate; post-ship monitoring, slice regression, kill switches) → **1 LP** (technical) → **1 code** → 2 questions — VLM (arch/why-not-Chronos) strong; JD probe ~70% (precision = guardrail vs primary; deterministic schema validation not LLM-judge); failure-debug Q closed (contain first → 4-layer taxonomy → regression test); Ownership/TR-kill LP strong ("evidence invalidated the hypothesis"); **code:** `19_remove_nth_node` ~18 min pass (2 fix iterations)
 - [x] `/debrief` → [`debrief/2026-06-27_karan-full-mock.md`](debrief/2026-06-27_karan-full-mock.md) + [`mocks/2026-06-27_full-mock.md`](mocks/2026-06-27_full-mock.md) + [`ps1-questions-for-karan.md`](ps1-questions-for-karan.md)
+- [x] **Bonus drill:** `207_course_schedule` topological sort (Kahn) ~26 min pass (1 fix iteration) — covers ~~graph/topo~~; call it Kahn not DFS
 - [ ] Note: rigid interviewer — state approach → complexity → invariants; prefer standard structure
 
 ---
