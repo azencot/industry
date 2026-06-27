@@ -120,6 +120,7 @@ Track which LPs have ready stories in [`stories/README.md`](stories/README.md). 
 | 2026-06-26 | Mock LP — Learn & Be Curious (diffusion) | [`2026-06-26_mock-lp-learn-curious.md`](debrief/2026-06-26_mock-lp-learn-curious.md) | `@Files 2026-06-26_mock-lp-learn-curious.md` + story — drill full version, lock distillation numbers |
 | 2026-06-26 | JD drill — LLM system choices (RAG/FT/CPT/routing) | [`2026-06-26_llm-system-choices-drill.md`](debrief/2026-06-26_llm-system-choices-drill.md) | `@Files 2026-06-26_llm-system-choices-drill.md` — resume JD track at agent-failure Q3 |
 | 2026-06-27 | Karan full mock + PS1 questions | [`2026-06-27_karan-full-mock.md`](debrief/2026-06-27_karan-full-mock.md) | `@Files debrief/2026-06-27_karan-full-mock.md` + `ps1-questions-for-karan.md` — Sun 28 coding + JD refresh |
+| 2026-06-27 | Finance eval & monitoring (teach-and-quiz) | [`2026-06-27_eval-monitoring-lesson.md`](debrief/2026-06-27_eval-monitoring-lesson.md) | `@Files debrief/2026-06-27_eval-monitoring-lesson.md` — fixes JD probe gap; rehearse shadow-vs-kill + corrections loop |
 
 Add a row after each `/debrief`. Amazon FinTech session notes → [`debrief/`](debrief/); general profile/project refs → [`.cursor/skills/debrief/`](../.cursor/skills/debrief/).
 
