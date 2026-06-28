@@ -66,6 +66,7 @@ Add rows after `/timed-code` drills:
 | 2026-06-27 | `2026-06-27_3_longest_substring_without_repeating_practice.py` | ~15 | pass | sliding window + last-index map; invariant: `si` = start of valid no-repeat window, jump only if `last_index[c] >= si`; bugs: max only on repeat + `len(s)-si` instead of `i-si+1`; fixed in 2 iterations — **under 25 min** |
 | 2026-06-28 | `2026-06-28_15_3sum_practice.py` | ~29 | pass | two pointers; sort + fix `i` + `lo`/`hi`; invariant: skip dupes at `i`/`lo`/`hi`, break if `nums[i]>0`; bugs: initial 2Sum/slice + indices not values, early `return`, wrong dup-skip neighbors — fixed in 2 iterations — **just over 25 min** |
 | 2026-06-28 | `2026-06-28_560_subarray_sum_equals_k_practice.py` | ~18 | pass | prefix sum + hash; invariant: count `prefix_count[curr_sum-k]` before update, seed `{0:1}`; clean first pass — **under 25 min** |
+| 2026-06-28 | `2026-06-28_875_koko_eating_bananas_practice.py` | ~23 | pass | binary search on answer; invariant: search `k` in `[1,max(piles)]`, feasible if `sum(ceil(pile/k))<=h`; bugs: upper bound `h` not `max(piles)`, `== h` not `<= h` — fixed after review — **under 25 min** |
 
 ---
 

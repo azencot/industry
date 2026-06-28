@@ -123,6 +123,7 @@ Track which LPs have ready stories in [`stories/README.md`](stories/README.md). 
 | 2026-06-27 | Finance eval & monitoring (teach-and-quiz) | [`2026-06-27_eval-monitoring-lesson.md`](debrief/2026-06-27_eval-monitoring-lesson.md) | `@Files debrief/2026-06-27_eval-monitoring-lesson.md` — fixes JD probe gap; rehearse shadow-vs-kill + corrections loop |
 | 2026-06-27 | Agentic workflows (teach-and-quiz, stopped high-level track) | [`2026-06-27_agentic-workflows-lesson.md`](debrief/2026-06-27_agentic-workflows-lesson.md) | `@Files debrief/2026-06-27_agentic-workflows-lesson.md` — if resumed, do low-level engineering-spec drill: tool schemas, verifier checks, logs, action boundaries |
 | 2026-06-28 | LLM / agentic trends (low-level decisions) | [`2026-06-28_llm-agentic-trends-drill.md`](debrief/2026-06-28_llm-agentic-trends-drill.md) | `@Files debrief/2026-06-28_llm-agentic-trends-drill.md` — Sun 28: 2× timed-code + JD refresh |
+| 2026-06-28 | Coding sprint #2 + JD technical refresh | [`2026-06-28_coding-and-jd-refresh.md`](debrief/2026-06-28_coding-and-jd-refresh.md) | `@Files debrief/2026-06-28_coding-and-jd-refresh.md` — Mon 29 polish: anchors, JD crib, binary-search rep |
 
 Add a row after each `/debrief`. Amazon FinTech session notes → [`debrief/`](debrief/); general profile/project refs → [`.cursor/skills/debrief/`](../.cursor/skills/debrief/).
 
@@ -141,5 +142,6 @@ Add a row after each `/debrief`. Amazon FinTech session notes → [`debrief/`](d
 | 2026-06-26 | ml-deep-dive | [`2026-06-26_jd-llm-system-choices.md`](mocks/2026-06-26_jd-llm-system-choices.md) | RAG/FT/CPT/routing ~70→85%; fixed RAG-vs-CPT inversion; eval-first framing |
 | 2026-06-27 | full-mock | [`2026-06-27_full-mock.md`](mocks/2026-06-27_full-mock.md) | VLM ~85%; JD probe ~70% (precision guardrail, deterministic schema); TR-kill LP; LC19 pass ~18 min |
 | 2026-06-28 | ml-deep-dive | [`2026-06-28_ml-deep-dive-agentic-trends.md`](mocks/2026-06-28_ml-deep-dive-agentic-trends.md) | Agentic trends ~75→85%; FSDP/LoRA/quant framing tightened; FlashAttention drill unanswered |
+| 2026-06-28 | timed-code | [`2026-06-28_timed-code.md`](mocks/2026-06-28_timed-code.md) | 3 mediums pass (3Sum/560/Koko); binary-search-on-answer bounds+feasibility to re-rep |
 
 Add a row after each mock drill. Store files in [`mocks/`](mocks/).
