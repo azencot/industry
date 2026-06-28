@@ -107,12 +107,7 @@ Format: *metric anomaly → what I dug into → code/config change → result*
 - [x] **LLM / agentic trends drill** (~40 min, continued from Sat 27): MCP, ReAct, FlashAttention, linear attention, FSDP/DDP, LoRA/RAG/synthetic, serving stack (vLLM → cache → routing → quant), agent observability — low-level decision framing for Karan → [`debrief/2026-06-28_llm-agentic-trends-drill.md`](debrief/2026-06-28_llm-agentic-trends-drill.md) · [`mocks/2026-06-28_ml-deep-dive-agentic-trends.md`](mocks/2026-06-28_ml-deep-dive-agentic-trends.md)
 - [x] 2× timed mediums — `2026-06-28_15_3sum_practice.py` (two pointers, ~29 min, pass after 2 fix iterations); `2026-06-28_560_subarray_sum_equals_k_practice.py` (prefix sum + hash, ~18 min, clean pass)
 - [ ] Re-do any problem that failed or took >25 min — ~~hash~~ / sliding window / ~~two pointers~~ if time
-- [ ] **JD technical refresh** (30–40 min) from [`job-description.md`](job-description.md):
-  - LLM system choices (RAG vs FT/CPT vs routing); parallelism/scaling (data/model/pipeline + inference batching)
-  - Eval gates for finance precision; **production monitoring** (dashboards, slice alerts, drift/regression after ship)
-  - **User-corrections loop retake** (~10 min): corrections → failure taxonomy → regression tests → component fix → selective training signal
-  - **Calibration / abstention / thresholds** (~10 min): confidence routing, human handoff, unsupported-action rate
-  - **Retrieval quality** (~10 min): chunking, metadata, reranking, citation precision vs answer precision
+- [x] **JD technical refresh** (30–40 min) from [`job-description.md`](job-description.md): 5-block cash-application drill — LLM choices/scaling, eval gates + monitoring, corrections loop, calibration/abstention, retrieval quality. **Locked lines:** *RAG updates facts/rules; FT/LoRA shapes behavior; CPT teaches domain language; routing manages cost-risk.* *Corrections → taxonomy + regression tests first; only some become training signal.* *Deterministic checks first, calibrated thresholds second, automation only on safe slices.* **Watch-outs:** don't say CPT first for changing customer rules; don't use raw p80/p95 confidence without calibration; don't fine-tune generator to fix retrieval.
 - [ ] Light pandas/numpy refresh **only if** coding reps + JD refresh are solid (Imry: rarely tested)
 
 ---
