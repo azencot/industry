@@ -67,6 +67,8 @@ Add rows after `/timed-code` drills:
 | 2026-06-28 | `2026-06-28_15_3sum_practice.py` | ~29 | pass | two pointers; sort + fix `i` + `lo`/`hi`; invariant: skip dupes at `i`/`lo`/`hi`, break if `nums[i]>0`; bugs: initial 2Sum/slice + indices not values, early `return`, wrong dup-skip neighbors — fixed in 2 iterations — **just over 25 min** |
 | 2026-06-28 | `2026-06-28_560_subarray_sum_equals_k_practice.py` | ~18 | pass | prefix sum + hash; invariant: count `prefix_count[curr_sum-k]` before update, seed `{0:1}`; clean first pass — **under 25 min** |
 | 2026-06-28 | `2026-06-28_875_koko_eating_bananas_practice.py` | ~23 | pass | binary search on answer; invariant: search `k` in `[1,max(piles)]`, feasible if `sum(ceil(pile/k))<=h`; bugs: upper bound `h` not `max(piles)`, `== h` not `<= h` — fixed after review — **under 25 min** |
+| 2026-06-28 | `2026-06-28_98_validate_binary_search_tree_practice.py` | ~? | pass | tree / BST; invariant: DFS with ancestor bounds `(low, high)`, strict `low < val < high`; paused ~16 min then clean pass on resume — file span 13:41–17:10 includes long break |
+| 2026-06-28 | `2026-06-28_322_coin_change_practice.py` | ~24 | fail | DP; correct recurrence on first try (try each coin, min over remainder) but didn't run: `get_amount` typo + no memo (exponential) + state `(amount,count)` not memoizable; fix = `minCoins(rem)` returns coins-from-here + memo dict, or bottom-up `dp[x]=min(dp[x-coin]+1)` — **conceptually close, not passing** |
 
 ---
 
