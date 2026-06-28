@@ -20,6 +20,7 @@ Active interview track. Annotated index — read entries before opening every fi
 |------|------|--------------|
 | [`.cursor/skills/debrief/omri_azencot_experience.md`](../.cursor/skills/debrief/omri_azencot_experience.md) | **Canonical experience profile** — research arc, VLM flagship, JD alignment, interview framing | Start of every session; before pitch / ML deep-dive |
 | [`anchor-cheat-sheet.md`](anchor-cheat-sheet.md) | **Day 1 deliverable** — 3 VLM anchors (A/B/C): metric, IC role, JD map, LP hooks | Before ML deep-dive and LP drills |
+| [`vlm-technical-cheat-sheet.md`](vlm-technical-cheat-sheet.md) | **Karan pull-thread page** — renderer tradeoff, dual-tower ablations, debug findings, canonical VLM numbers | Mon 29 polish; if Karan drills architecture / ablations |
 | [`.cursor/skills/debrief/vlm_multimodal_project.md`](../.cursor/skills/debrief/vlm_multimodal_project.md) | **Extended VLM project summary** — architecture, results, problems solved; extend over time | `@Files` for ML deep-dive, new results, follow-ups |
 | [`elevator-pitch.md`](elevator-pitch.md) | **PS1 intro script** (~90s spoken) — who → work → why FinTelligence; optional 30s + 45s cuts | Day 1; read aloud before PS1 |
 | [`stories/tell-me-about-yourself.md`](stories/tell-me-about-yourself.md) | **TMAY** (~2–3 min) — career arc; IC para 2 | Intro / resume block |
@@ -124,6 +125,7 @@ Track which LPs have ready stories in [`stories/README.md`](stories/README.md). 
 | 2026-06-27 | Agentic workflows (teach-and-quiz, stopped high-level track) | [`2026-06-27_agentic-workflows-lesson.md`](debrief/2026-06-27_agentic-workflows-lesson.md) | `@Files debrief/2026-06-27_agentic-workflows-lesson.md` — if resumed, do low-level engineering-spec drill: tool schemas, verifier checks, logs, action boundaries |
 | 2026-06-28 | LLM / agentic trends (low-level decisions) | [`2026-06-28_llm-agentic-trends-drill.md`](debrief/2026-06-28_llm-agentic-trends-drill.md) | `@Files debrief/2026-06-28_llm-agentic-trends-drill.md` — Sun 28: 2× timed-code + JD refresh |
 | 2026-06-28 | Coding sprint #2 + JD technical refresh | [`2026-06-28_coding-and-jd-refresh.md`](debrief/2026-06-28_coding-and-jd-refresh.md) | `@Files debrief/2026-06-28_coding-and-jd-refresh.md` — Mon 29 polish: anchors, JD crib, binary-search rep |
+| 2026-06-28 | VLM grill (Karan-style) + technical cheat sheet | [`2026-06-28_vlm-grill.md`](debrief/2026-06-28_vlm-grill.md) | `@Files debrief/2026-06-28_vlm-grill.md` + `vlm-technical-cheat-sheet.md` — Mon 29: answer Q6 FinTech bridge |
 
 Add a row after each `/debrief`. Amazon FinTech session notes → [`debrief/`](debrief/); general profile/project refs → [`.cursor/skills/debrief/`](../.cursor/skills/debrief/).
 
@@ -143,5 +145,6 @@ Add a row after each `/debrief`. Amazon FinTech session notes → [`debrief/`](d
 | 2026-06-27 | full-mock | [`2026-06-27_full-mock.md`](mocks/2026-06-27_full-mock.md) | VLM ~85%; JD probe ~70% (precision guardrail, deterministic schema); TR-kill LP; LC19 pass ~18 min |
 | 2026-06-28 | ml-deep-dive | [`2026-06-28_ml-deep-dive-agentic-trends.md`](mocks/2026-06-28_ml-deep-dive-agentic-trends.md) | Agentic trends ~75→85%; FSDP/LoRA/quant framing tightened; FlashAttention drill unanswered |
 | 2026-06-28 | timed-code | [`2026-06-28_timed-code.md`](mocks/2026-06-28_timed-code.md) | 3 mediums pass (3Sum/560/Koko); binary-search-on-answer bounds+feasibility to re-rep |
+| 2026-06-28 | vlm-grill | [`2026-06-28_vlm-grill.md`](mocks/2026-06-28_vlm-grill.md) | VLM depth ~80%; TR-kill strong; reconcile numbers; Q6 FinTech bridge unanswered |
 
 Add a row after each mock drill. Store files in [`mocks/`](mocks/).

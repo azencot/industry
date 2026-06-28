@@ -115,7 +115,8 @@ Format: *metric anomaly → what I dug into → code/config change → result*
 
 ## Mon 29 Jun — Polish (no new material)
 
-- [ ] Re-read [`anchor-cheat-sheet.md`](anchor-cheat-sheet.md) — 90s per anchor from memory
+- [ ] Re-read [`anchor-cheat-sheet.md`](anchor-cheat-sheet.md) — 90s per anchor from memory; skim [`vlm-technical-cheat-sheet.md`](vlm-technical-cheat-sheet.md) pull-thread table only (numbers + ablations, no new material)
+- [ ] **Answer Q6 FinTech bridge aloud** (carried from 2026-06-28 VLM grill → [`debrief/2026-06-28_vlm-grill.md`](debrief/2026-06-28_vlm-grill.md)): strongest *technical* bridge, not generic motivation — multimodal docs (one view loses info) → dual encoding; Stage A→B = domain align → task FT on invoices/remittance; tiered eval + parse-miss = schema reliability before accuracy; 0.8B≈8B TSExam = SLM routing
 - [ ] Review **JD technical crib** (no new papers) — memorize lines from [`job-description.md`](job-description.md):
   - *RAG grounds facts; FT shapes behavior; CPT teaches domain language; routing manages cost-risk*
   - *Corrections → regression tests + failure taxonomy first; only some become training signal*
