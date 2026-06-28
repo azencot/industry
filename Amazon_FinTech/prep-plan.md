@@ -109,7 +109,7 @@ Format: *metric anomaly → what I dug into → code/config change → result*
 - [x] Bonus drill — `2026-06-28_875_koko_eating_bananas_practice.py` (binary search on answer, ~23 min, pass after fix: bounds `max(piles)`, feasibility `<= h`)
 - [ ] Re-do any problem that failed or took >25 min — ~~hash~~ / sliding window / ~~two pointers~~ / ~~binary search~~ if time
 - [x] **JD technical refresh** (30–40 min) from [`job-description.md`](job-description.md): 5-block cash-application drill — LLM choices/scaling, eval gates + monitoring, corrections loop, calibration/abstention, retrieval quality. **Locked lines:** *RAG updates facts/rules; FT/LoRA shapes behavior; CPT teaches domain language; routing manages cost-risk.* *Corrections → taxonomy + regression tests first; only some become training signal.* *Deterministic checks first, calibrated thresholds second, automation only on safe slices.* **Watch-outs:** don't say CPT first for changing customer rules; don't use raw p80/p95 confidence without calibration; don't fine-tune generator to fix retrieval.
-- [ ] Light pandas/numpy refresh **only if** coding reps + JD refresh are solid (Imry: rarely tested)
+- [x] Light pandas/numpy refresh **only if** coding reps + JD refresh are solid (Imry: rarely tested): practiced finance-table mismatch query. **Locked pandas pattern:** merge tables by key → vectorized diff/feature column → boolean filter → `groupby(...).sum()` → `sort_values()`. Avoid row loops / `zip` for dataframe work.
 
 ---
 
