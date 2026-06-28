@@ -104,8 +104,9 @@ Format: *metric anomaly → what I dug into → code/config change → result*
 
 ## Sun 28 Jun — Coding sprint #2
 
-- [ ] 2× timed mediums (25 min each), narrated
-- [ ] Re-do any problem that failed or took >25 min — ~~211 trie wildcard~~ (done Sat 27); hash / sliding window / two pointers if time
+- [x] **LLM / agentic trends drill** (~40 min, continued from Sat 27): MCP, ReAct, FlashAttention, linear attention, FSDP/DDP, LoRA/RAG/synthetic, serving stack (vLLM → cache → routing → quant), agent observability — low-level decision framing for Karan → [`debrief/2026-06-28_llm-agentic-trends-drill.md`](debrief/2026-06-28_llm-agentic-trends-drill.md) · [`mocks/2026-06-28_ml-deep-dive-agentic-trends.md`](mocks/2026-06-28_ml-deep-dive-agentic-trends.md)
+- [x] 2× timed mediums — `2026-06-28_15_3sum_practice.py` (two pointers, ~29 min, pass after 2 fix iterations); `2026-06-28_560_subarray_sum_equals_k_practice.py` (prefix sum + hash, ~18 min, clean pass)
+- [ ] Re-do any problem that failed or took >25 min — ~~hash~~ / sliding window / ~~two pointers~~ if time
 - [ ] **JD technical refresh** (30–40 min) from [`job-description.md`](job-description.md):
   - LLM system choices (RAG vs FT/CPT vs routing); parallelism/scaling (data/model/pipeline + inference batching)
   - Eval gates for finance precision; **production monitoring** (dashboards, slice alerts, drift/regression after ship)

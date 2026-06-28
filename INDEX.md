@@ -64,6 +64,8 @@ Add rows after `/timed-code` drills:
 | 2026-06-27 | `2026-06-27_207_course_schedule_practice.py` | ~26 | pass | graph / topological sort (Kahn); invariant: queue holds indegree-0 nodes, cycle iff `count != numCourses`; bugs: `list + int` concat + `if prereq not in courses` dropped multi-edges + `courses[course]` KeyError — fixed with `get(...)+[course]` / `.get(course,[])`; **just over 25 min**; call it Kahn not DFS |
 | 2026-06-27 | `2026-06-27_211_design_add_and_search_words_practice.py` | ~17 | pass | trie + DFS wildcard; invariant: `do_dfs(suffix, node)` matches suffix from node; bugs: `true`/`false` → `True`/`False` + `word[i+1]` (single char) → `word[i+1:]` (suffix); explicit for-loop on `.` is fine — skip `any()`; **under 25 min** |
 | 2026-06-27 | `2026-06-27_3_longest_substring_without_repeating_practice.py` | ~15 | pass | sliding window + last-index map; invariant: `si` = start of valid no-repeat window, jump only if `last_index[c] >= si`; bugs: max only on repeat + `len(s)-si` instead of `i-si+1`; fixed in 2 iterations — **under 25 min** |
+| 2026-06-28 | `2026-06-28_15_3sum_practice.py` | ~29 | pass | two pointers; sort + fix `i` + `lo`/`hi`; invariant: skip dupes at `i`/`lo`/`hi`, break if `nums[i]>0`; bugs: initial 2Sum/slice + indices not values, early `return`, wrong dup-skip neighbors — fixed in 2 iterations — **just over 25 min** |
+| 2026-06-28 | `2026-06-28_560_subarray_sum_equals_k_practice.py` | ~18 | pass | prefix sum + hash; invariant: count `prefix_count[curr_sum-k]` before update, seed `{0:1}`; clean first pass — **under 25 min** |
 
 ---
 

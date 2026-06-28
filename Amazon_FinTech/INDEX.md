@@ -122,6 +122,7 @@ Track which LPs have ready stories in [`stories/README.md`](stories/README.md). 
 | 2026-06-27 | Karan full mock + PS1 questions | [`2026-06-27_karan-full-mock.md`](debrief/2026-06-27_karan-full-mock.md) | `@Files debrief/2026-06-27_karan-full-mock.md` + `ps1-questions-for-karan.md` — Sun 28 coding + JD refresh |
 | 2026-06-27 | Finance eval & monitoring (teach-and-quiz) | [`2026-06-27_eval-monitoring-lesson.md`](debrief/2026-06-27_eval-monitoring-lesson.md) | `@Files debrief/2026-06-27_eval-monitoring-lesson.md` — fixes JD probe gap; rehearse shadow-vs-kill + corrections loop |
 | 2026-06-27 | Agentic workflows (teach-and-quiz, stopped high-level track) | [`2026-06-27_agentic-workflows-lesson.md`](debrief/2026-06-27_agentic-workflows-lesson.md) | `@Files debrief/2026-06-27_agentic-workflows-lesson.md` — if resumed, do low-level engineering-spec drill: tool schemas, verifier checks, logs, action boundaries |
+| 2026-06-28 | LLM / agentic trends (low-level decisions) | [`2026-06-28_llm-agentic-trends-drill.md`](debrief/2026-06-28_llm-agentic-trends-drill.md) | `@Files debrief/2026-06-28_llm-agentic-trends-drill.md` — Sun 28: 2× timed-code + JD refresh |
 
 Add a row after each `/debrief`. Amazon FinTech session notes → [`debrief/`](debrief/); general profile/project refs → [`.cursor/skills/debrief/`](../.cursor/skills/debrief/).
 
@@ -139,5 +140,6 @@ Add a row after each `/debrief`. Amazon FinTech session notes → [`debrief/`](d
 | 2026-06-26 | mock-lp | [`2026-06-26_mock-lp-learn-curious.md`](mocks/2026-06-26_mock-lp-learn-curious.md) | Learn & Curious (diffusion) ~85–90%; added single-step distillation; lock numbers |
 | 2026-06-26 | ml-deep-dive | [`2026-06-26_jd-llm-system-choices.md`](mocks/2026-06-26_jd-llm-system-choices.md) | RAG/FT/CPT/routing ~70→85%; fixed RAG-vs-CPT inversion; eval-first framing |
 | 2026-06-27 | full-mock | [`2026-06-27_full-mock.md`](mocks/2026-06-27_full-mock.md) | VLM ~85%; JD probe ~70% (precision guardrail, deterministic schema); TR-kill LP; LC19 pass ~18 min |
+| 2026-06-28 | ml-deep-dive | [`2026-06-28_ml-deep-dive-agentic-trends.md`](mocks/2026-06-28_ml-deep-dive-agentic-trends.md) | Agentic trends ~75→85%; FSDP/LoRA/quant framing tightened; FlashAttention drill unanswered |
 
 Add a row after each mock drill. Store files in [`mocks/`](mocks/).
