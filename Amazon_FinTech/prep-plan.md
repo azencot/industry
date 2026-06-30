@@ -198,6 +198,8 @@ Format: *metric anomaly → what I dug into → code/config change → result*
 - [ ] If pressured on "why you": you owned promotion criteria when the lab had none; you ran 0.8B validation; you remained accountable for the 8B readout and promote/kill call.
 - [ ] Backup if they want a second angle: eval adapter-chain bug (**0.469 → 0.601** misleading jump) — you owned debugging and fixed train-time adapter-chain reconstruction at eval.
 
+**Ownership drill done (30 Jun, ~30 min):** full story + 5 probes (why kill if avg up, pressure after 8B spend, your role vs student, gates too conservative, what next). Reframed opener to lead with **"main developer, but the ownership moment was promotion criteria."** Story file updated: stronger 90s version + follow-up answers. **Hold these phrasings:** "killed that **data path**" (not "deleted patterns"); gains "might have been **distribution shift**"; student ran 8B to verify it wasn't a small-model artifact, **accepting compute cost** because verification mattered; gates **block promotion, not learning**; "I would **not start by generating more data** → audit first." Use "I hypothesized/decided/set," not "I felt."
+
 ### Logistics
 
 - [ ] Zoom at 21:00 sharp; [Live Code](https://livecode.amazon.jobs/joinsession/e4618c8d-2a90-4c8f-8fb1-b6e875c77bd7) ready.

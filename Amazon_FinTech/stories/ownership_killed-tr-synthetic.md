@@ -83,7 +83,7 @@ Formal: improve VLM reasoning on TSRBench. I also owned promotion criteria and k
 
 ### Spoken script (~8 min) — **use this in interview**
 
-At Ben-Gurion University I lead the evaluation and training-direction workstream on a time-series vision-language reasoning project. My formal assignment was to improve reasoning scores on TSRBench — a multi-task benchmark that spans perception, forecasting, decision-making, and reasoning across thousands of problems. But I also took on something the lab had not formalized: promotion criteria. We had been making GPU-heavy training decisions from headline benchmark movement, and I had seen how an average score could tick up while an important slice got worse. So I made myself accountable not just for running experiments, but for recommending what ships, what dies, and what needs deeper study before we commit another eight-GPU week.
+At Ben-Gurion University my formal role was main developer of the VLM stack, but the ownership moment was that I took responsibility for promotion criteria. My formal assignment was to improve reasoning scores on TSRBench — a multi-task benchmark that spans perception, forecasting, decision-making, and reasoning across thousands of problems. But the lab had not formalized how to stop a recipe when headline averages moved while a target slice regressed. We had been making GPU-heavy training decisions from aggregate benchmark movement, so I made myself accountable not just for running experiments, but for recommending what ships, what dies, and what needs deeper study before we commit another eight-GPU week.
 
 When I looked at where we stood, the picture was clear but uncomfortable. Overall TSRBench had plateaued near forty-six percent on our best dual-tower stack — competitive on perception and forecasting in places, but not where proprietary systems were pulling ahead. Proprietary VLMs sat in a forty-six to fifty-five percent band, and they were meaningfully stronger in the reasoning category — where we were only around twenty-nine percent on the reasoning bracket average. That gap was the bottleneck, not raw perception. I had already delivered headline lifts on TSExam and overall TSRBench in the architecture story; this chapter was specifically about whether we could close reasoning without breaking the evaluation discipline that got us there.
 
@@ -105,14 +105,19 @@ The lesson I took forward is direct: define slice-level floors before training, 
 
 ### Short version (~90 sec)
 
-Benchmark ~46%, reasoning ~29%. I targeted TR, set −3/−5 pp gates before training, built tiered synthetic data. TR went 26.9 → 21.9 (−5 pp); average and two tasks looked better. I killed promotion, saved the next GPU cycle, made per-task gates the lab default.
+My formal role was main developer for the VLM stack, but the ownership moment was that I took responsibility for promotion criteria. Our TSRBench result had reached about **46%**, which was strong against open-source and specialist models, but slicing showed reasoning was still weak — around **29–30%**, close to the **25%** random baseline. I decided the next meaningful step was not another small aggregate gain, but understanding and improving reasoning, starting with temporal relations, where we were at **26.9%**.
+
+I knew the risk of over-focusing on one task, so before training I set hard regression gates: no more than **−3 pp** on overall TSRBench and no more than **−5 pp** on any reasoning subtask. I curated a TR-focused synthetic subset and tested it two ways: a short fine-tune on Stage B, and a full Stage B retrain from Stage A. The short fine-tune failed. The retrain was harder to judge: reasoning average improved about **+1.8 pp**, and AR/IR improved around **+7 pp**, but TR dropped **26.9 → 21.9**, exactly hitting the kill gate.
+
+I killed that data path. The pressure was that the aggregate result looked like progress, and we had already spent compute, but the hypothesis had failed on the slice it was meant to fix. The durable result was a process change: our reasoning readouts now include overall score, reasoning average, and each reasoning subtask against pre-declared gates. My lesson was that ownership means protecting the objective, not defending an experiment.
 
 ### Likely follow-ups
 
-- Why kill if average went up?
-- Pressure to promote after 8B spend?
-- What happened next? → Anchor C coverage audit (brief pointer only)
-- Student vs your role?
+- **Why kill if average went up?** The empirical result contradicted the hypothesis. The data was designed to improve temporal relations, but TR fell **26.9 → 21.9**, so gains on other slices could have been distribution shift rather than real progress on the target capability. I killed that data path, not the broader direction, and moved to a deeper task audit.
+- **Pressure to promote after 8B spend?** The hard part was that the aggregate story looked positive after compute had already been spent: reasoning average up, AR/IR up around seven points. But the target slice hit the pre-declared kill gate, so promoting would have rewarded the wrong signal.
+- **Student vs your role?** I owned the diagnosis and decision loop: control analysis, TR focus, gates, data creation, 0.8B experiments, and promote/kill recommendation. I asked my student to run the same Stage B retrain recipe on 8B to check whether the failure was a small-model artifact; the larger run reinforced the kill call.
+- **Were the gates too conservative?** A **3 pp** overall drop is large when the total lift over control was only about **5–6 pp**. A **5 pp** per-task drop is material because reasoning tasks were near random; for TR, **26.9%** is only slightly above the **25%** baseline. The gates blocked promotion, not learning.
+- **What would you do next?** I would not start by generating more data. First I would audit TR examples and categorize failures into perception, operator coverage, domain knowledge, and reasoning depth; then choose Stage A caption/alignment data, Stage B QA data, or Stage C GRPO/VRT depending on the failure mode.
 
 ### Weak spots / facts to verify
 
