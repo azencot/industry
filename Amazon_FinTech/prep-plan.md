@@ -204,7 +204,16 @@ Format: *metric anomaly → what I dug into → code/config change → result*
 
 - [ ] Zoom at 21:00 sharp; [Live Code](https://livecode.amazon.jobs/joinsession/e4618c8d-2a90-4c8f-8fb1-b6e875c77bd7) ready.
 - [ ] Headset; quiet room; phone on backup.
+- [ ] AV test: https://amazon.zoom.us/test
 - [ ] `/debrief` same night while fresh.
+
+**Integration mock done (30 Jun PM, ~30 min):** science opener + binary-search approach + Ownership opener, all ~85–90%. **5-hour sprint complete** (setup · science · coding · ownership · integration).
+
+### Interview-day crib (read right before)
+
+- **Science:** TSRBench = multi-task (perception/reasoning/prediction/decision), don't commit to a task count. Chronos = forecasting, not NL reasoning (not "raw tokens"). Eval = TSExam fast gate → partial TSRBench screening → full TSRBench north star. Numbers **0.618/0.402 → 0.905/0.452**. **End with one FinTech bridge sentence** (one view loses info · precision + slice gates · routed SLMs only when eval holds). Self-bound: best among **open/non-proprietary**.
+- **Coding:** state invariant + O() before coding; `while left <= right` for exact binary search; `mid = left + (right-left)//2`; **dry-run the last 5 lines** before saying done (every miss today was a tail slip).
+- **Ownership:** lead with the **ownership moment** (promotion criteria), not benchmark context. Gates **−3 pp overall / −5 pp per task** set **before** training. **TR 26.9 → 21.9 (−5.0)** = kill despite avg **+1.8** and AR/IR **~+7**. Say "killed that **data path**," "**distribution shift**," gates "block **promotion, not learning**," "I would **not start by generating more data**." Use "I hypothesized/decided/set," not "I felt."
 
 ---
 
