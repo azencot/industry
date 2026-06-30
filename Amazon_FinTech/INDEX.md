@@ -126,6 +126,7 @@ Track which LPs have ready stories in [`stories/README.md`](stories/README.md). 
 | 2026-06-28 | LLM / agentic trends (low-level decisions) | [`2026-06-28_llm-agentic-trends-drill.md`](debrief/2026-06-28_llm-agentic-trends-drill.md) | `@Files debrief/2026-06-28_llm-agentic-trends-drill.md` — Sun 28: 2× timed-code + JD refresh |
 | 2026-06-28 | Coding sprint #2 + JD technical refresh | [`2026-06-28_coding-and-jd-refresh.md`](debrief/2026-06-28_coding-and-jd-refresh.md) | `@Files debrief/2026-06-28_coding-and-jd-refresh.md` — Mon 29 polish: anchors, JD crib, binary-search rep |
 | 2026-06-28 | VLM grill (Karan-style) + technical cheat sheet | [`2026-06-28_vlm-grill.md`](debrief/2026-06-28_vlm-grill.md) | `@Files debrief/2026-06-28_vlm-grill.md` + `vlm-technical-cheat-sheet.md` — Mon 29: answer Q6 FinTech bridge |
+| 2026-06-30 | PS1 final sprint (science/coding/Ownership) + systems drill | [`2026-06-30_ps1-final-sprint.md`](debrief/2026-06-30_ps1-final-sprint.md) | `@Files debrief/2026-06-30_ps1-final-sprint.md` — after real PS1, `/debrief` the interview |
 
 Add a row after each `/debrief`. Amazon FinTech session notes → [`debrief/`](debrief/); general profile/project refs → [`.cursor/skills/debrief/`](../.cursor/skills/debrief/).
 

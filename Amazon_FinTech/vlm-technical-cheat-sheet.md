@@ -26,6 +26,11 @@ Do not recite every checkpoint. If asked for lineage: dual 8B hit **0.886** befo
 | Biggest engineering debug? | Eval adapter-chain bug | misleading **0.469 → 0.601** (+13 pp) | Always reconstruct train-time adapter chain at eval |
 | Biggest training data failure? | TR synthetic kill | TR **26.9 → 21.9** despite AR/IR **+7 pp** | Killed because it regressed the exact target slice |
 | 0.8B vs 8B? | Size penalty is task-shape dependent | 0.8B **0.890** vs 8B **0.897** on TSExam | Route categorical/simple tasks to SLM when eval holds |
+| Batch / memory? | Effective global batch ≈ **64**; micro-batch varies by run | 8B: pdtb **2**/accum **4** early, **1**/accum **8** later | Constraint = visual-token activations, not dataset; DDP replica per GPU, no ZeRO |
+| LoRA / adapter chain? | Stage A merged before Stage B; eval must reconstruct chain | eval bug **+13 pp** if chain wrong | peft rank 16/α 32; LLM frozen + LoRA only |
+| Batch / memory? | Effective global batch ~**64**; micro-batch tuned to fit dual visual tokens | early 8B **pdtb=2, accum=4**; later unified **pdtb=1, accum=8** | Constraint is activation memory, not dataset size |
+| Distributed? | HF Trainer + Accelerate **DDP**; one full replica per GPU | sampler bug trained **1/8** data | No FSDP/DeepSpeed/ZeRO; fix `num_samples=len(w)` + shared seed |
+| Eval decode? | **Greedy** (`do_sample=False`); MCQ parse-miss tracked separately | adapter-chain eval bug **+13 pp** | Always reconstruct Stage A→B adapter chain at eval |
 
 ## 30-Second Opener
 
@@ -73,6 +78,92 @@ All adaptation is LoRA SFT unless otherwise noted.
 Default LoRA: rank 16, alpha 32, dropout 0.05, targets `q/k/v/o/gate/up/down_proj`.
 
 LR sensitivity from sweep: **3e-4 best (0.875)**, 1e-4 solid (0.821), 3e-5 underfit (0.768), **1e-3 diverged near chance (0.40)**.
+
+## Training / Systems Engineering
+
+Grounded config for Karan low-level probes. **Do not recite verbatim** — lead with the principle, cite numbers when pressed.
+
+### Hardware & precision
+
+| | 8B (historical) | 0.8B (recent) |
+|--|-----------------|---------------|
+| **GPUs** | mostly **8× A100** | **8× RTX Pro 6000** (~96 GB); fallback 3× RTX 4090 |
+| **Precision** | **bf16** train + eval (`load_model(dtype=torch.bfloat16)`) | same |
+| **TF32** | not explicitly set → PyTorch defaults | same |
+| **Sharding** | **DDP** — one full replica per GPU; no FSDP / DeepSpeed / ZeRO | same |
+| **Peak memory** | not logged; fits comfortably with LoRA + grad-checkpointing + bf16 | same |
+
+### Trainable parameters
+
+| Stage | Trains | Frozen |
+|-------|--------|--------|
+| **A** | DINOv3 LoRA + merger/projector (full via `modules_to_save`) | LLM (no LoRA), native Qwen ViT |
+| **B** | LM LoRA + DINO LoRA + merger (full unless `dino_freeze_merger: true`) | native Qwen ViT always frozen |
+
+Counts: **0.8B** ≈ **28.1M / 1.2B = 2.33%** trainable. **8B** Stage B dual ≈ **141M** trainable (≈ **51M** with frozen merger, **−64%**). LLM base is frozen LoRA-only; DINO backbone frozen + LoRA; merger full-trained in A.
+
+### Batch size (effective global ≈ 64)
+
+| Config | per-device | grad accum | GPUs | effective global |
+|--------|------------|------------|------|------------------|
+| **8B early dual** | **2** | **4** | 8 | **64** |
+| **8B unified / capnum / a4b10** | **1** | **8** | 8 | **64** |
+| **0.8B v2 A/B** | **4** | **2** | 8 | **64** |
+
+Interview line: *"We kept effective global batch around 64. Earlier 8B runs used pdtb=2/accum=4; later unified runs used pdtb=1/accum=8 to fit longer dual-tower examples. Constraint is activation + visual-token memory, not dataset size."*
+
+### Token budget
+
+- **max_length:** 8192 (8B), 4096 (0.8B v2).
+- **Chart:** matplotlib `figsize=(6,2)` JPEG; ≈ **114 visual tokens** per full-res TSExam chart (processor-dependent; dual collator shrinks multi-series ICL charts to fit `max_length`).
+- **Delay:** 256×256 → 16×16 patches → spatial_merge 2 → **64 tokens** (`patches` mode; 65 `cls_patches`, 1 `cls_only`).
+- Dual tower ≈ **doubles visual tokens per series** (chart span + delay span).
+
+### Optimizer & LR schedule
+
+- **Optimizer:** AdamW (`adamw_torch`, HF defaults): `weight_decay=0`, `betas=(0.9,0.999)`, `eps=1e-8`, `max_grad_norm=1.0` — none overridden.
+- **LR:** Stage A **1e-4**; Stage B **3e-4** (8B and 0.8B v2). Scheduler **cosine**, `warmup_ratio=0.05`.
+- **Epochs (champion):** 8B unified **A 4 / B 10**; 0.8B v2 **A 1 / B 2** (~27× larger data). Other rungs: a3b6, a5b15, a8b25, a20b120…
+- **LR sweep (32B, 25-ep Stage B):** 3e-5=0.768, 1e-4=0.821, **3e-4=0.875 best**, 1e-3=0.40 (chance).
+
+### PEFT / LoRA stack
+
+- **Package:** HuggingFace **peft** (`LoraConfig` / `get_peft_model`); pinned version not in configs (0.8B env: transformers 5.10.2 / torch 2.11).
+- **Config:** rank **16**, α **32**, dropout **0.05**, `bias="none"`, `task_type=CAUSAL_LM`.
+- **LLM targets:** `q/k/v/o_proj`, `gate/up/down_proj` (full-attention + MLPs; 0.8B DeltaNet `in_proj_*/out_proj` **not** targeted).
+- **DINO targets:** same module list, scoped via regex; native ViT excluded (`.*\.visual\..*`); LM excluded when `dino_lora_on_lm: false`.
+- **Adapter chain:** separate adapters per stage. Stage A **merged** (`merge_and_unload`) before Stage B trains fresh adapter. At eval: reconstruct chain (`--prior-adapter` merged, then `--adapter`) — the **+13 pp eval bug** fix.
+
+### Distributed & throughput
+
+- **Stack:** HF `Trainer`/`SFTTrainer` + **Accelerate DDP**. No FSDP / DeepSpeed / ZeRO.
+- **Sampler bug:** `WeightedRandomSampler(num_samples=N//world_size)` re-sharded by `BatchSamplerShard` → each rank saw **1/8** data. Fix: `num_samples=len(w)` + shared seed across ranks.
+- **Grad checkpointing:** ON. **Attention:** 8B `flash_attention_2`; 0.8B `sdpa`. **0.8B only:** `flash-linear-attention` + `causal-conv1d` → ~**6×** step speedup.
+- **Dataloader:** charts + delay images rendered on the fly in collator (no disk cache); `num_workers` 4 (8B) / 0 (0.8B).
+
+### Pretrained weights
+
+| Component | Checkpoint |
+|-----------|------------|
+| **8B** | `Qwen3-VL-8B-Instruct` (local `models/base/`); original primary was Qwen3-VL-32B-Instruct |
+| **0.8B** | `Qwen3.5-0.8B` |
+| **DINOv3** | `PIA-SPACE-LAB/dinov3-vitl-pretrain-lvd1689m` (ViT-L/16, 256px); older 8B refs `facebook/dinov3-vitl16-pretrain-lvd1689m` |
+| **Processor** | `AutoProcessor.from_pretrained(model_path)` — shared Qwen3VLProcessor / Qwen2VL image processor |
+
+Custom config: `vision_config.out_hidden_size=1024`, deepstack `[6,12,18]` (8B) / `[]` (0.8B), `patch_size=16`, `spatial_merge_size=2`, `image_size=256`; `get_image_features` / `get_video_features` monkey-patched for delay path.
+
+### Eval decode & parse
+
+- **Decode:** greedy (`do_sample=False`, `num_beams=1`); no temperature / top-p.
+- **max_new_tokens:** default 64; TSRBench MCQ **16**, caption **96**, numeric **64**, thinking **512**.
+- **MCQ parse:** regex cascade in `utils.extract_letter` (leading letter → "answer is X" → "X)" → JSON → standalone letter, validated vs option count). TSRBench JSON uses `extract_letter_from_json`.
+- **Parse-miss:** `pred is None` → logged in `parse_misses` + `<out>_parse_misses.jsonl`; scores as wrong for accuracy.
+
+### Caveats (say if pressed)
+
+- Peak GPU memory per stage **not logged** in repo.
+- Exact **peft** pinned version not in configs.
+- Chart token count (~114) is **processor-dependent**, not a fixed constant.
 
 ## Evaluation
 

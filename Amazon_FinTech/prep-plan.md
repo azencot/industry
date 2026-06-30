@@ -215,6 +215,18 @@ Format: *metric anomaly → what I dug into → code/config change → result*
 - **Coding:** state invariant + O() before coding; `while left <= right` for exact binary search; `mid = left + (right-left)//2`; **dry-run the last 5 lines** before saying done (every miss today was a tail slip).
 - **Ownership:** lead with the **ownership moment** (promotion criteria), not benchmark context. Gates **−3 pp overall / −5 pp per task** set **before** training. **TR 26.9 → 21.9 (−5.0)** = kill despite avg **+1.8** and AR/IR **~+7**. Say "killed that **data path**," "**distribution shift**," gates "block **promotion, not learning**," "I would **not start by generating more data**." Use "I hypothesized/decided/set," not "I felt."
 
+### Bonus: systems-engineering drill (30 Jun PM, ~40 min)
+
+Karan-style low-level Q&A → grounded `vlm-technical-cheat-sheet.md` "Training / Systems Engineering" section. **Weak spots to memorize** (got these wrong/blank in drill):
+
+- **Batch:** effective global **64**; 8B early **pdtb 2 × accum 4**, later unified **1 × 8** (×8 GPUs).
+- **LR:** Stage A **1e-4**, Stage B **3e-4**; cosine + **5% warmup**; sweep **3e-4 best (0.875)**, 1e-3 → chance (0.40).
+- **Sampler bug:** `num_samples=N//world_size` re-sharded by Accelerate → trained on **1/8** data; fix `num_samples=len(w)` + shared seed.
+- **Adapter chain:** Stage A **merged** before Stage B; eval must reconstruct chain → **+13 pp** (0.469→0.601) bug fix.
+- **Eval decode:** greedy + **regex parse** (not a classification head); parse-miss = `pred is None`, scores wrong.
+- **Optimizer:** AdamW (`adamw_torch`), wd 0, grad clip 1.0, grad checkpointing ON; flash-attn 2 (8B) / sdpa (0.8B); FLA+causal-conv1d → ~6× on 0.8B only.
+- **Top low-level trick to lead with:** adapter-chain reconstruction (+13 pp).
+
 ---
 
 ## Daily default (if short on time)
