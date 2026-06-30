@@ -4,6 +4,10 @@
 
 **Pivot (23 Jun — Imry Kissos):** Karan wants **technical depth on your project**, not managerial LP framing. Prioritize **VLM drill + coding**; skip generic system design and broad ML topics. See [Karan notes in `INDEX.md`](INDEX.md#interviewer--karan-aggarwal).
 
+**Recruiter update (29 Jun):** Phone screen is **1 hour on Zoom**: **Science Depth 20 min** + **Coding 20 min** on **Livecode** (no run/compile, no libraries) + **Ownership LP 20 min**. Prepare for a deep end-to-end ML walkthrough, LeetCode-medium algorithmic narration, and one strong Ownership story (gates set before training, kill recommendation when evidence invalidated the hypothesis).
+
+**Science-depth choice:** Lead with **multimodal / VLM time-series reasoning**, not diffusion, for this screen. Diffusion is your deeper theoretical comfort zone, but VLM is the stronger *role-aligned* story: end-to-end model development, multimodal inputs, Qwen integration, LoRA curriculum, eval gates, SLM routing, and finance transfer. Keep diffusion as a reserve if asked for mathematical depth: *"My deepest theory background is diffusion/SDE generative modeling; the end-to-end system most relevant to FinTech is the VLM stack, so I’ll walk through that."*
+
 **Remaining window:** 6 prep days (24–29 Jun). Day 3 (23 Jun) planning + late **Chronos bridge** — carry intro/LP items into 24 Jun.
 
 ---
@@ -122,7 +126,7 @@ Format: *metric anomaly → what I dug into → code/config change → result*
   - *Corrections → regression tests + failure taxonomy first; only some become training signal*
   - *Thresholds + abstention decide automation; precision = compliance gate*
   - *Document intel: invoice + remittance + contract + ERP → extract, ground, reconcile, escalate*
-- [ ] Re-run weakest LP story once (IC voice, timer)
+- [ ] Re-run **Ownership** story once (IC voice, timer) → [`ownership_killed-tr-synthetic.md`](stories/ownership_killed-tr-synthetic.md)
 - [ ] Prepare **2 questions** for Karan → [`ps1-questions-for-karan.md`](ps1-questions-for-karan.md) (rehearse once aloud)
 - [ ] Why Amazon skim only if intro feels rusty
 - [ ] AV test: https://amazon.zoom.us/test
@@ -131,9 +135,64 @@ Format: *metric anomaly → what I dug into → code/config change → result*
 
 ## Interview day (30 Jun)
 
-- [ ] Zoom at 21:00 sharp; [Live Code](https://livecode.amazon.jobs/joinsession/e4618c8d-2a90-4c8f-8fb1-b6e875c77bd7) ready
-- [ ] Headset; quiet room; phone on backup
-- [ ] `/debrief` same night while fresh
+**Goal:** Use ~5 hours to sharpen exactly what the recruiter said will be gated. No broad new material.
+
+### 5-hour final sprint
+
+| Time | Focus | Deliverable |
+|------|-------|-------------|
+| 0:00–0:15 | Setup + rubric | Rewrite the whiteboard header from memory: Science 20 / Coding 20 / Ownership 20. Open [`anchor-cheat-sheet.md`](anchor-cheat-sheet.md), [`vlm-technical-cheat-sheet.md`](vlm-technical-cheat-sheet.md), [`ownership_killed-tr-synthetic.md`](stories/ownership_killed-tr-synthetic.md), Livecode link. |
+| 0:15–1:45 | **Science Depth: VLM mind map** | One spoken end-to-end walkthrough: ideation → data → architecture → training → eval gates → deployment/serving analogy → lessons. Must include exact numbers: **0.618/0.402 → 0.905/0.452**, dual chart+delay, Stage A/B, parse-miss, TR kill, 0.8B routing. |
+| 1:45–2:00 | Break | No screens; reset voice. |
+| 2:00–3:20 | **Coding: Livecode simulation** | 2 mediums by hand, no execution. Narrate restate → approach → complexity → invariants → edge cases → dry run. Prioritize one DP or graph redo plus one array/hash/window redo. Use plain Python only; no imports unless absolutely standard. |
+| 3:20–3:35 | Break | Walk, water, no new content. |
+| 3:35–4:30 | **Ownership LP** | Rehearse [`ownership_killed-tr-synthetic.md`](stories/ownership_killed-tr-synthetic.md) once at 8 min, then one 90s version. Lead with **I set the gates / I owned the kill call / I changed the lab process**. Do not drift into team-management framing. |
+| 4:30–5:00 | Integration mock | 20 min science + 10 min code approach-only + 10 min Ownership opener + final logistics. Stop if answers get worse; confidence > cramming. |
+
+### Science Depth — answer map
+
+- [x] **Opener (30s):** "I’ll use my multimodal time-series VLM project because it covers the full ML lifecycle: problem framing, data, architecture, training, eval, and deployment-style routing. My deeper theory background is diffusion, but this is the best end-to-end system for the FinTech role."
+- [x] **Ideation:** raw numeric tokens and single-view plots underperform; finance analogy = one view of a payment/doc loses information.
+- [x] **Data:** TSExam, ChatTS, CaTS, TSRBench; synthetic labels known by construction but distribution can still be wrong.
+- [x] **Architecture:** Qwen3-VL chart stream + DINOv3 delay stream; reused visual-token pathway; LoRA adapters; no "hijacked video stream" wording.
+- [x] **Training:** Stage A vision alignment with LLM frozen; Stage B LM LoRA for QA/MCQ; explain why not end-to-end from day one.
+- [x] **Eval:** loss → TSExam → TSRBench slice → full TSRBench; parse-miss separate from accuracy; gates **−3 pp overall / −5 pp task**.
+- [x] **Results:** stock Qwen3-VL-8B **0.618 / 0.402** → stack **0.905 / 0.452**; 0.8B near 8B on TSExam supports SLM routing.
+- [x] **Hard question ready:** "Why VLM rather than Chronos?" Forecasting model for values vs VLM for multimodal reasoning/explanations; route by task.
+
+**Science drill done (30 Jun AM, ~75 min):** full 3-min walkthrough strong; probes on delay embeddings, DINO-stream integration, Stage A necessity, eval reliability, synthetic risk, numerical reasoning, routing, production-failure debugging. **Recurring fixes to hold in interview:**
+
+- Add **one FinTech bridge sentence** at the end of the science walkthrough (multimodal docs / one view loses info / SLM routing for cost). Don't leave the lesson research-only.
+- Self-bound the headline: **best among open/non-proprietary**; trillion-scale frontier + hard TR slice still ahead.
+- Commit to **one** TSRBench task-count number; say it confidently. Say "**Qwen3-VL-8B**, ported to **0.8B Qwen3.5**" decisively (no "or").
+- Synthetic risk = lead with **distribution shift even when labels are correct**; anchor with TR kill **26.9→21.9**.
+- Numerical reasoning = valid for **visually recoverable** quantities (trend, ranges, ordering, comparisons); **breaks** on exact high-precision values, very long/dense series, poor axis rendering → numeric tools / specialist model / abstain.
+- Partial TSRBench = **screening gate**, not winner declaration; full TSRBench + slice gates for promotion. Avoid "promote a model I believe in" phrasing.
+- Ablation fairness = matched backbone/data/compute/seed **plus token-budget control** (not "more visual tokens wins"); complementarity repeats across chart-only / delay-only / dual.
+- FinTech monitoring = don't assume input correct; **precision = compliance gate**; automation/intervention rate optimized **subject to** safety guardrails; corrections → taxonomy + regression tests first.
+
+### Coding — Livecode rules
+
+- [ ] Say constraints and edge cases before coding; if ambiguous, state a conservative assumption.
+- [ ] Write production-clean code without relying on execution: descriptive names, small helper only if it clarifies, no clever one-liners.
+- [ ] After code, dry-run one normal case and one edge case manually.
+- [ ] Always state runtime and space complexity.
+- [ ] Revisit one of: `57_insert_interval` or `322_coin_change` because they were paused/unfinished; then redo a clean pattern from hash/window/two-pointers.
+
+### Ownership — primary story
+
+- [ ] Use [`ownership_killed-tr-synthetic.md`](stories/ownership_killed-tr-synthetic.md) as the primary Ownership answer — already strong in Karan mock ("evidence invalidated the hypothesis").
+- [ ] 20-min structure: 7–8 min DOC story, then probes on why kill if average went up, pressure after 8B GPU spend, your role vs student, what you changed in the lab process.
+- [ ] Memorize kill line: **TR 26.9 → 21.9 (−5.0 pp)** — gate fired; reasoning avg **+1.8 pp** and AR/IR **~+7 pp** = **still kill**.
+- [ ] Ownership proof: pre-declared gates **−3 pp overall / −5 pp per task**; per-task promotion table; kill recommendation in lab review; updated eval template.
+- [ ] If pressured on "why you": you owned promotion criteria when the lab had none; you ran 0.8B validation; you remained accountable for the 8B readout and promote/kill call.
+- [ ] Backup if they want a second angle: eval adapter-chain bug (**0.469 → 0.601** misleading jump) — you owned debugging and fixed train-time adapter-chain reconstruction at eval.
+
+### Logistics
+
+- [ ] Zoom at 21:00 sharp; [Live Code](https://livecode.amazon.jobs/joinsession/e4618c8d-2a90-4c8f-8fb1-b6e875c77bd7) ready.
+- [ ] Headset; quiet room; phone on backup.
+- [ ] `/debrief` same night while fresh.
 
 ---
 
