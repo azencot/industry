@@ -69,6 +69,10 @@ Add rows after `/timed-code` drills:
 | 2026-06-28 | `2026-06-28_875_koko_eating_bananas_practice.py` | ~23 | pass | binary search on answer; invariant: search `k` in `[1,max(piles)]`, feasible if `sum(ceil(pile/k))<=h`; bugs: upper bound `h` not `max(piles)`, `== h` not `<= h` — fixed after review — **under 25 min** |
 | 2026-06-28 | `2026-06-28_98_validate_binary_search_tree_practice.py` | ~? | pass | tree / BST; invariant: DFS with ancestor bounds `(low, high)`, strict `low < val < high`; paused ~16 min then clean pass on resume — file span 13:41–17:10 includes long break |
 | 2026-06-28 | `2026-06-28_322_coin_change_practice.py` | ~24 | fail | DP; correct recurrence on first try (try each coin, min over remainder) but didn't run: `get_amount` typo + no memo (exponential) + state `(amount,count)` not memoizable; fix = `minCoins(rem)` returns coins-from-here + memo dict, or bottom-up `dp[x]=min(dp[x-coin]+1)` — **conceptually close, not passing** |
+| 2026-06-30 | `2026-06-30_322_coin_change_practice.py` | ~? | near | DP top-down memo; correct recurrence + base cases; one tail typo `return rem[mem]` → `return min_coins` — fixed |
+| 2026-06-30 | `2026-06-30_3_longest_substring_without_repeating_practice.py` | ~? | fail→fix | sliding window + last-index; bugs: didn't update hash on repeat + missing `last_seen[c] >= si` guard + `i-si` vs `i-si+1` — fixed |
+| 2026-06-30 | `2026-06-30_57_insert_interval_practice.py` | ~? | fail→fix | intervals 3-phase scan (before/merge/after); correct overlap `intervals[i][0] <= end`; tail typo `interval` → `intervals[i]` — fixed |
+| 2026-06-30 | `2026-06-30_739_daily_temperatures_practice.py` | ~? | pass | **new pattern: monotonic stack**; invariant: stack holds unresolved indices, temps decreasing bottom→top (emergent, not sorted); bug: `enumerate(...,start=1)` misaligned `i`/`temp` → all zeros; fix empty stack + no offset; O(n) amortized |
 
 ---
 
