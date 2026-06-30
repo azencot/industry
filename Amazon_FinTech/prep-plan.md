@@ -179,6 +179,16 @@ Format: *metric anomaly → what I dug into → code/config change → result*
 - [ ] Always state runtime and space complexity.
 - [ ] Revisit one of: `57_insert_interval` or `322_coin_change` because they were paused/unfinished; then redo a clean pattern from hash/window/two-pointers.
 
+**Coding drill done (30 Jun AM, ~40 min):** 3 mediums, all right approach, each with one end-of-solution slip → all fixed.
+
+| Problem | Pattern | Result | Slip |
+|---------|---------|--------|------|
+| `2026-06-30_322_coin_change_practice.py` | DP (top-down memo) | near-pass | `return rem[mem]` → `return min_coins` |
+| `2026-06-30_3_longest_substring_without_repeating_practice.py` | hash + sliding window | fail → fixed | stale hash update; need `last_seen[c] >= si` guard + `i - si + 1` |
+| `2026-06-30_57_insert_interval_practice.py` | intervals 3-phase scan | fail → fixed | `interval` → `intervals[i]` in phase 3 |
+
+**Interview habit to hold:** dry-run the **last 5 lines** before declaring done — every miss today was a tail typo/invariant slip, not a wrong plan. State invariant + O() aloud before coding.
+
 ### Ownership — primary story
 
 - [ ] Use [`ownership_killed-tr-synthetic.md`](stories/ownership_killed-tr-synthetic.md) as the primary Ownership answer — already strong in Karan mock ("evidence invalidated the hypothesis").
