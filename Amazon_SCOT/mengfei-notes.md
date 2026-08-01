@@ -17,6 +17,7 @@
 - Generative / synthetic data as **infrastructure** (pretrain, cost/latency, leakage/copyright, cold-start) — not only as a replacement forecaster
 - Mayank flagged generative TS + synthetic data for forecasting as rising priorities; Omri already collabing with Mayank + Boris on generative forecasting
 - Zero-shot / sim-only pretraining (ZSF by Simulation Alone): cut inference cost & latency; avoid leakage; close real-vs-synthetic gap
+- **Foundation models** — Mengfei: SCOT particularly interested; main driver he stated = **cut training times** (pretrain / adapt faster, less cycle time per slice)
 - Coherence + decision alignment already strong (CLOVER / hierarchical lines); next layer = scale, robustness to shift, cold-start, rare regimes
 - Production friction questions that mattered: where forecasts fail (tails, cold-start, lifecycle, reconciliation side effects, latency/cost); hard SKUs statistically vs operationally (sparsity, censoring, serving constraints); whether inference cost is dominated by long tail vs head
 
@@ -71,7 +72,7 @@
 
 ### Bridge sentence for Monday
 
-> When I spoke with Mengfei in February, the theme that stuck was generative modeling as **forecasting infrastructure** — synthetic pretrain for cost and latency, cold-start and rare regimes — on top of coherence work like CLOVER that’s already strong. I’ve been collaborating with you and Mayank on generative forecasting; I’d like your read on where that maps to Labs priorities this half, and where I’d contribute first inside the team.
+> When I spoke with Mengfei in February, the themes that stuck were generative modeling as **forecasting infrastructure** — synthetic pretrain for cost and latency, cold-start and rare regimes — and **foundation models mainly to cut training times**, on top of coherence work like CLOVER that’s already strong. I’ve been collaborating with you and Mayank on generative forecasting; I’d like your read on where that maps to Labs priorities this half, and where I’d contribute first inside the team.
 
 ---
 

@@ -12,7 +12,7 @@
 
 ## The argument in one breath
 
-You’re deep on generative models — diffusion, flow matching, VAEs — from the math through the implementation. Mayank and Boris already pulled you into generative forecasting (KGO). Their group is pushing synthetic / sim pretraining ([ZSF](https://arxiv.org/abs/2601.00970)); Mengfei confirmed synthetic data for forecasting is a SCOT interest. Monday: **I’m already the person for this bet — here’s a 90- and 180-day plan on SCOT’s real problems**, starting with the aleatoric uncertainty thread we never closed.
+You’re deep on generative models — diffusion, flow matching, VAEs — from the math through the implementation. Mayank and Boris already pulled you into generative forecasting (KGO). Their group is pushing synthetic / sim pretraining ([ZSF](https://arxiv.org/abs/2601.00970)); Mengfei confirmed synthetic data for forecasting **and** foundation models (mainly to **cut training times**). Monday: **I’m already the person for this bet — here’s a 90- and 180-day plan on SCOT’s real problems**, starting with the **epistemic uncertainty** thread we never closed on KGO.
 
 ---
 
@@ -28,7 +28,7 @@ VAE / diffusion / flow matching family — ImagenTime / ImagenFew, one-step dist
 
 ### 3. They already chose this collaboration
 
-Mayank + Boris contacted you → KGO. [ZSF by Simulation Alone](https://arxiv.org/abs/2601.00970). Mengfei: synthetic for forecasting as infrastructure ([`mengfei-notes.md`](mengfei-notes.md)). Convert external collab → owned SCOT work.
+Mayank + Boris contacted you → KGO. [ZSF by Simulation Alone](https://arxiv.org/abs/2601.00970). Mengfei: synthetic for forecasting as infrastructure + **foundation models mainly to cut training times** ([`mengfei-notes.md`](mengfei-notes.md)). Convert external collab → owned SCOT work.
 
 ### 4. What you want
 
@@ -40,16 +40,18 @@ Generative modeling for forecasting under SCOT constraints: cost/latency, cold-s
 
 ---
 
-## Open thread — aleatoric uncertainty
+## Open thread — epistemic uncertainty (use this)
 
-Boris raised **aleatoric uncertainty** on KGO; you offered to go further; **never closed**. Strong Monday / 90-day hook.
+**Correction / facts:** KGO already has **aleatoric** results (AUG — adaptive per-variable / per-horizon aleatoric uncertainty). What Boris was interested in, and what you offered but **never got to**, is **epistemic** uncertainty. That’s the unfinished Monday / 90-day hook.
 
-| Term | Meaning |
-|------|---------|
-| **Aleatoric** | Inherent data noise / demand volatility given observations — not “model uncertainty” |
-| **Epistemic** | Uncertainty about the model — shrinks with data / better models |
+| Term | Meaning | In KGO today |
+|------|---------|--------------|
+| **Aleatoric** | Inherent data noise / demand volatility given observations | **Have results** — AUG |
+| **Epistemic** | Uncertainty about the model / parameters — shrinks with more data, better models, or better coverage | **Boris’s interest; not done** |
 
-AUG in KGO = first cut (per-variable / per-horizon adaptive aleatoric). Next layer: richer adaptation, calibration diagnostics, optional aleatoric vs epistemic split for decisions.
+**Why SCOT cares about epistemic:** Cold-start, new categories, distribution shift, synthetic→real transfer — you need to know when the *model* is guessing, not only how noisy demand is. Epistemic high → don’t trust the spread the same way; collect data, fall back, or gate the decision. Mixing epistemic into aleatoric spreads can make you look “calibrated” while still being confidently wrong on OOD SKUs.
+
+**Spoken bridge (in Part 4 below):** we closed a cut of aleatoric; reopen epistemic as the SCOT charter.
 
 ---
 
@@ -65,11 +67,11 @@ Do **not** lead. 30s only if he asks “what else”:
 
 **0–90 (pick one with him):**
 
-1. **Aleatoric / calibration (default)** — finish the KGO thread; decision-relevant calibration; kill if only CRPS cosmetics  
+1. **Epistemic uncertainty (default)** — finish what Boris wanted on KGO: model uncertainty that is useful under SCOT slices (cold-start, shift, synthetic transfer); kill if it doesn’t change decision/gating behavior  
 2. **Synthetic → real transfer** — cold-start / rare regimes; kill if synthetics don’t transfer  
 3. **Efficient generative under SCOT constraints** — latency + slice eval; honest ship/kill  
 
-**90–180:** Turn finding into infrastructure (calibration layer, synthetic stress-test, or scoped generative serving) + next-quarter proposal.
+**90–180:** Turn finding into infrastructure (epistemic gating / uncertainty layer, synthetic stress-test, or scoped generative serving) + next-quarter proposal.
 
 ---
 
@@ -85,9 +87,9 @@ Thanks for making time — I’ve really valued the collaboration over the last 
 
 Quick status, then I want to shift to how I could contribute inside SCOT, not only as an external coauthor.
 
-On the NeurIPS paper — the efficient generative forecasting work we’ve been doing — it’s still under review. The early reviews came back positive, which is encouraging. On my side I owned **[TODO: your IC slice]**. Happy to dig into rebuttal or experiments whenever you want.
+On the NeurIPS paper — the efficient generative forecasting work we’ve been doing — it’s still under review. The early reviews came back positive, which is encouraging. On my side I owned the technical parts around **flow matching and the structured dynamical mechanics** that make single-step generation work — not just running experiments. Happy to dig into rebuttal or experiments whenever you want.
 
-The workshop was accepted — Foundation Models for Temporal Systems. Next step for me is locking website and CFP ownership with the co-organizers and making sure the program stays useful for people who actually ship forecasting systems, including SCOT. Tell me what would make that most valuable from your side — we can park ops for a minute if you’d rather go straight to the science conversation.
+The workshop was accepted — Foundation Models for Temporal Systems — which is great news for all of us as co-organizers. I’m looking forward to it. One thing I’d love is that we attract a really strong set of papers — work that connects forecasting research to systems people actually care about shipping. Happy to sync on that whenever useful; we don’t have to dig into ops today.
 
 What I mainly want to talk about today is fit: why I think I’m a strong match for the generative-forecasting bets you’re already making, and a concrete ninety- and one-eighty-day picture of what I’d own if I were inside the team.
 
@@ -117,9 +119,9 @@ A few months ago, Mayank and you contacted me about a joint project on generativ
 
 In parallel, your group published Zero-shot Forecasting by Simulation Alone — training strong forecasters from synthetic simulation alone, with a serious eye on leakage, privacy, cost, and whether the student can beat the teacher process. That matches how I think about generative models at scale: not only as a replacement predictor, but as infrastructure for pretraining and for covering regimes you don’t see enough of in real data.
 
-When I sat with Mengfei in February, he reinforced the same direction from the Forecasting Science side: interest in synthetic data for forecasting — especially for cost, latency, cold-start, and rare regimes — on top of coherence and decision-alignment work that SCOT already does well. The way I heard it, generative isn’t trying to delete quantile forecasting. It’s trying to make the system cheaper, more robust, and better in the ugly slices.
+When I sat with Mengfei in February, he reinforced the same direction from the Forecasting Science side. He was interested in synthetic data for forecasting — especially for cost, latency, cold-start, and rare regimes — on top of coherence and decision-alignment work that SCOT already does well. He also said SCOT is particularly interested in **foundation models**, and the driver he emphasized was practical: **cut training times** — pretrain once, adapt faster, spend less cycle time standing up models for new slices. The way I heard it, generative and foundation work isn’t trying to delete quantile forecasting. It’s trying to make the system cheaper to train and serve, more robust, and better in the ugly slices.
 
-There’s one more thread that feels especially SCOT-native. On our paper, you raised aleatoric uncertainty — how predictive uncertainty should behave across variables and horizons, and how much of the spread is real demand noise rather than model confusion. I said we could go further. We put in a first mechanism — the adaptive uncertainty gate — but we never really closed the deeper cut in the submission cycle. I keep thinking that unfinished thread is exactly the kind of problem inventory systems care about: if your uncertainty is wrong, your safety stock is wrong, even when the mean looks fine.
+There’s one more thread that feels especially SCOT-native. On KGO we already have results on **aleatoric** uncertainty — the adaptive uncertainty gate that adjusts spread across variables and horizons. What you were interested in, and what I said we could push into but we never got to in the submission cycle, is **epistemic** uncertainty — when the model itself is unsure, not just when demand is inherently noisy. I keep thinking that’s a real SCOT problem: cold-start, new slices, distribution shift, synthetic-to-real transfer. If you can’t tell model doubt from data noise, you make the wrong call on when to trust the forecast versus when to gate it or collect more signal.
 
 ---
 
@@ -127,7 +129,7 @@ There’s one more thread that feels especially SCOT-native. On our paper, you r
 
 So here’s what I’d want if I were contributing inside SCOT next quarter — one narrow charter with you, not a roadmap.
 
-My default ask is to finish the aleatoric uncertainty thread properly, under SCOT constraints. That means: take generative or probabilistic forecasters and make predictive uncertainty something you can trust for decisions. Clear calibration diagnostics on the slices that hurt — cold-start, intermittent SKUs, peak-ish weeks — and a kill criterion if we’re only moving CRPS around without changing decision quality. If you also care about separating aleatoric from epistemic uncertainty — what’s inherent noise versus what shrinks with more data or a better model — we can put that in scope explicitly. I won’t pretend vocabulary wars matter; what matters is whether a buyer or a planner can trust the spread.
+My default ask is to pick up the **epistemic uncertainty** thread properly, under SCOT constraints. Aleatoric we already touched in KGO. Epistemic is the open one: can we estimate when the model is out of its depth — cold-start SKUs, shift, regimes we mostly saw in synthetic pretraining — and turn that into something a decision system can use, not just another plot. Clear metrics on the slices that hurt, and a kill criterion if the epistemic signal doesn’t change gating or trust behavior versus pretending all uncertainty is aleatoric. I won’t get lost in vocabulary for its own sake; what matters is whether planners can tell “demand is noisy” from “we shouldn’t trust this model here.”
 
 If you’d rather point me at synthetic-to-real transfer instead, I’m equally happy to own that: which synthetic or sim-pretrained regimes actually help real demand families, and which ones look good offline and fail on the catalog. Same discipline — ship, iterate, or kill, written down.
 
@@ -141,7 +143,7 @@ By day ninety I want a short agreed charter, reproducible results, and a written
 
 By one-eighty I’d want that charter to have become something structural — not a notebook that dies after the write-up.
 
-If we went down the uncertainty path, that might look like a calibration layer people actually use next to a buying or inventory decision — with known failure modes. If we went down synthetic transfer, that might look like a stress-test or pretraining data recipe that forecasting changes have to survive before rollout. If the interesting result is that efficient generative forecasting only wins on certain SKU families under a latency budget, then the artifact is a scoped serving design with clear “use it here / don’t use it there” rules.
+If we went down the epistemic path, that might look like a model-uncertainty / gating layer people actually use next to a buying or inventory decision — especially on cold-start and shift — with known failure modes. If we went down synthetic transfer, that might look like a stress-test or pretraining data recipe that forecasting changes have to survive before rollout. If the interesting result is that efficient generative forecasting only wins on certain SKU families under a latency budget, then the artifact is a scoped serving design with clear “use it here / don’t use it there” rules.
 
 I’m not asking to replace the production quantile stack on day one. Quantiles are often the right object for single-period decisions. Where generative methods earn their keep is when you need trajectory structure, synthetic coverage, or uncertainty behavior that marginal quantiles don’t give you — and only when the cost is acceptable. I’d rather kill an attractive idea early than oversell it into serving.
 
@@ -157,11 +159,34 @@ One thing I’ll park unless you pull on it: I’ve also been building multimoda
 
 ### Close (~45–60s)
 
-Putting it together: I think the modeling fit is there — generative forecasting with serious attention to math, implementation, and cost. The collaboration already works. SCOT’s own directions on synthetic pretraining and production uncertainty make this feel like the right place to go deeper. What I’m asking for is a path to own that work inside the team — starting with a ninety-day charter, ideally the aleatoric thread we never closed, or synthetic transfer if that’s hotter — and a clear one-eighty picture of turning it into something the stack can use.
+Putting it together: I think the modeling fit is there — generative forecasting with serious attention to math, implementation, and cost. The collaboration already works. SCOT’s own directions on synthetic pretraining and production uncertainty make this feel like the right place to go deeper. What I’m asking for is a path to own that work inside the team — starting with a ninety-day charter, ideally the **epistemic** uncertainty thread we left open on KGO after we already had aleatoric results, or synthetic transfer if that’s hotter — and a clear one-eighty picture of turning it into something the stack can use.
 
 If you see a fit, I’d really appreciate an intro or a concrete next step — a hiring manager, a Labs lead, whatever the right door is. If timing isn’t right, I’m still all-in on finishing the NeurIPS paper and the workshop well. Either way I want this collaboration to stay strong.
 
 What would you point me at first if I were on the team next quarter?
+
+---
+
+## Prior Amazon loop (Special Projects) — process note
+
+**Do not volunteer** in the pitch. Don’t open with “I already did a loop” or “I don’t need another loop.”
+
+**What happened:** You completed an Amazon loop for **Special Projects**; feedback was you came across **too managerial** for what they needed. That is a negative IC signal if you lead with it — not a transferable “pass.”
+
+**Real upside (narrower than skip-the-loop):**
+- You’ve seen Amazon’s process once → less mystery
+- A recent loop *can* sometimes **speed** a new req (reuse notes, shorter path) if recruiter/HM decides that — Boris/referral can help navigate
+- Useful ask is **referral / intro / process**, not “waive the loop”
+
+**If fit conversation is going well — light process close (optional ~20s):**
+
+> If there’s a path onto Forecasting / Labs, I’d love your read on process — referral, who to talk to, and whether a recent Amazon loop helps speed things. I’m focused on an IC science seat.
+
+**Only if he asks whether you’ve looped before:**
+
+> Yes — Special Projects. Feedback was I came across too managerial for what they needed. Fair. Since then I’ve been deliberate about IC ownership — including the generative forecasting work with you. Happy to go through whatever process SCOT needs; I’m not assuming a skip.
+
+**Anti-pattern:** “I already passed, so I don’t need a loop.” Completing ≠ transferable pass across orgs, especially with managerial feedback.
 
 ---
 
@@ -171,8 +196,8 @@ What would you point me at first if I were on the team next quarter?
 |-------|------|----------------|
 | Open | 1 | status + shift to fit |
 | Why me | 2–3 | diffusion/FM + ~10 papers + KGO cost story |
-| Already your bet | 1.5–2 | Mayank/Boris contact, ZSF, Mengfei, aleatoric thread |
-| 90 days | 2–2.5 | charter + kill criteria |
+| Already your bet | 1.5–2 | Mayank/Boris contact, ZSF, Mengfei, **epistemic** thread |
+| 90 days | 2–2.5 | epistemic charter + kill criteria |
 | 180 days | 1.5–2 | infrastructure outcomes |
 | Optional multimodal | 0.5 | only if pulled |
 | Close | 1 | ask + next step |
@@ -189,10 +214,11 @@ What would you point me at first if I were on the team next quarter?
 - Claiming generative should replace quantile systems wholesale
 - Vague “happy to help with whatever”
 - Apologizing for the talk unprompted
+- Volunteering the Special Projects loop / “I don’t need another loop” (see process note above)
 
 ### If the March talk comes up
 
-> That talk was still too roadmap-heavy — I’ve gotten sharper on the IC side with you and Mayank on the generative forecasting paper. What I want to own next is a narrow charter under SCOT constraints — ideally the uncertainty thread we left open — with explicit kill criteria.
+> That talk was still too roadmap-heavy — I’ve gotten sharper on the IC side with you and Mayank on the generative forecasting paper. What I want to own next is a narrow charter under SCOT constraints — ideally the epistemic uncertainty thread we left open — with explicit kill criteria.
 
 ### If he pushes Koopman / SKOLR
 
@@ -202,8 +228,9 @@ What would you point me at first if I were on the team next quarter?
 
 ## TODO before Monday
 
-- [ ] Lock **your IC slice** one-liner for KGO; paste into the Open section TODO
+- [x] Lock **your IC slice** for KGO: flow matching + Koopman / structured dynamical mechanics ([`collaboration.md`](collaboration.md); Open section uses industry-safer wording)
 - [ ] Read Part 4 aloud once; cut to ≤12 min (drop multimodal first)
-- [ ] Default 90-day ask = **aleatoric/calibration**; fall back to synthetic-transfer if he downplays uncertainty
+- [ ] Default 90-day ask = **epistemic uncertainty**; fall back to synthetic-transfer if he downplays it
 - [ ] Do **not** prep a Koopman deep-dive — only the redirect above
 - [ ] Skim [ZSF abstract](https://arxiv.org/abs/2601.00970) for a clean nod — don’t present his paper back to him
+- [x] Remember: KGO **aleatoric** (AUG) already has results; unfinished thread = **epistemic**

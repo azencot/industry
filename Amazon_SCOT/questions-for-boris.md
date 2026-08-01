@@ -7,22 +7,22 @@ Pick **3–4** live. Soft career tone — collaborator seeking a clear path, not
 ## A. Collaboration ops (open with these if needed)
 
 1. **Paper while under review** — Anything we should avoid saying externally? Who should own the rebuttal experiment backlog on the Amazon side vs my side?
-2. **Workshop** — What would make the NeurIPS workshop most useful for SCOT Forecasting (invited speakers, problem statements, industry panel)? Who should own CFP / site logistics?
+2. **Workshop** — Keep light: shared win as co-organizers; hope we attract strong papers. Don’t invent ownership of CFP/site unless he opens ops.
 
 ---
 
 ## B. Team priorities (feed the contribution pitch)
 
 3. **Bottleneck** — On foundation / sim-trained forecasting, where do you feel the bottleneck is right now: generators, scaling, transfer to real demand, or production eval mismatch?
-4. **Aleatoric thread** — On KGO you raised aleatoric uncertainty and I said we could go further — we never closed it. Is that still something you’d want owned inside SCOT (calibration for decision-quality), or did priorities move?
-5. **Mengfei bridge** — When I spoke with Mengfei in February, the theme that stuck was generative modeling as **infrastructure** — synthetic pretrain for cost/latency, cold-start and rare regimes — on top of coherence work like CLOVER. How does that map to what you and Labs are prioritizing this half?
+4. **Epistemic thread** — On KGO we already have aleatoric results via AUG; you were interested in **epistemic** uncertainty and I said we could go further — we never closed it. Is that still something you’d want owned inside SCOT (model doubt / gating under cold-start and shift), or did priorities move?
+5. **Mengfei bridge** — When I spoke with Mengfei in February, I heard generative as **infrastructure** (synthetic for cost/latency, cold-start, rare regimes) and **foundation models mainly to cut training times**, on top of coherence work like CLOVER. How does that map to what you and Labs are prioritizing this half?
 
 ---
 
 ## C. Fit / path (the real ask)
 
-6. **Where I’d help first** — If I were contributing inside SCOT Forecasting / Labs next quarter, where would you point me first — aleatoric/calibration, synthetic transfer, or something else — and what would “good” look like in 90 days?
-7. **Openings / process** — Are there Sr / Principal Applied Scientist openings (or upcoming reqs) on Forecasting Science or Labs where my background is a fit? Who should I talk to next, and are you open to referring or intros?
+6. **Where I’d help first** — If I were contributing inside SCOT Forecasting / Labs next quarter, where would you point me first — epistemic uncertainty, synthetic transfer, or something else — and what would “good” look like in 90 days?
+7. **Openings / process** — Are there Sr / Principal Applied Scientist openings (or upcoming reqs) on Forecasting Science or Labs where my background is a fit? Who should I talk to next, and are you open to referring or intros? *(If warm: ask whether a recent Amazon loop helps speed process — IC seat, not “skip the loop.” See [`contribution-plan.md`](contribution-plan.md) Special Projects note.)*
 
 ---
 
@@ -46,6 +46,6 @@ Pick **3–4** live. Soft career tone — collaborator seeking a clear path, not
 | Goal | Ask |
 |------|-----|
 | Collab hygiene | Paper external constraints; workshop value for SCOT |
-| Pitch fuel | Aleatoric unfinished thread; bottleneck; Mengfei ↔ Labs |
+| Pitch fuel | Epistemic unfinished thread; bottleneck; Mengfei ↔ Labs |
 | Career | 90-day placement + openings / referral / intro |
 | Close | Explicit next step |
