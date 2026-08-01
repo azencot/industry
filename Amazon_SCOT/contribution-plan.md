@@ -1,130 +1,150 @@
-# Contribution plan — Omri → SCOT Forecasting / Labs
+# Contribution plan — Omri → SCOT (Monday with Boris)
 
-**Purpose:** Monday pitch to Boris. Convince him you are the right IC to join / deepen into SCOT — with a concrete 90-day contribution shape, not a generic interest statement.
+**Purpose:** Convince Boris you are the right IC to deepen into SCOT — not with a generic “I’m interested,” but with a clear math/modeling fit plus a 90/180-day arc on generative forecasting under real SCOT constraints.
 
-**Tone:** peer who already ships research with the team. Say “I”, metrics, and kill criteria. Avoid PI / mentoring / grant framing.
+**How Boris hears you:** He cares about **math and modeling**. Lead with diffusion / flow matching / Koopman depth (theory + code), then show the collab is already real (KGO, workshop), then propose what you would *own* inside SCOT. Say “I.” Avoid PI / lab-roadmap voice ([`talks/README.md`](talks/README.md)).
 
-**Spine:** [`mengfei-notes.md`](mengfei-notes.md) (19 Feb dinner) — generative as infrastructure; coherence already strong; cold-start / rare regimes / cost-latency next.
-
----
-
-## Positioning (15s)
-
-> I’m an applied scientist for messy sequential data — forecasting, generative models under scarcity, and systematic eval. We’ve already collaborated on a NeurIPS paper and an accepted workshop, and I’ve been working with you and Mayank on generative forecasting. I want to put that stack on SCOT’s problems at catalog scale: synthetic/sim pretrain, foundation forecasters, and generative infrastructure that survives production cost and measurement.
+**Related:** [`mengfei-notes.md`](mengfei-notes.md) · [`collaboration.md`](collaboration.md) · [ZSF by Simulation Alone](https://arxiv.org/abs/2601.00970) · [SKOLR](https://arxiv.org/abs/2506.14113)
 
 ---
 
-## Mengfei bridge (60–90s — say before theses)
+## The argument in one breath
 
-> In February I sat down with Mengfei. What stuck was that generative modeling at SCOT looks less like a drop-in replacement for quantile forecasting and more like **scalable infrastructure** — pretrain on synthetic to cut inference cost and latency, handle cold-start and rare regimes, without giving up the coherence / decision-alignment work (CLOVER and friends) that’s already strong. Mayank had also flagged generative TS and synthetic data as rising priorities. That’s the lane I’ve been building toward with ImagenTime / ImagenFew and Freq-Synth — joint temporal distributions as a data engine, not only as a point forecaster — and it’s why the collab with you already feels like the right problem class.
-
----
-
-## Why SCOT (not another lab)
-
-| SCOT need (Mengfei + public) | Your proof |
-|------------------------------|------------|
-| Synthetic / sim as pretrain infrastructure (ZSF-by-simulation); cost + latency + leakage | ImagenTime / ImagenFew / Freq-Synth; ongoing generative forecasting with Boris + Mayank |
-| Cold-start SKUs + rare-regime robustness | Data-scarce + irregular-TS lines; rare-regime amplification framing from Feb dinner |
-| Coherent hierarchical structure (by construction, not only post-hoc) | Can speak CLOVER/PHF vocabulary; pitch generative hierarchical pretrain |
-| Quantiles when single-period; trajectories when path/coupled costs | Explicit decision framing prepared for Mengfei — reuse with Boris |
-| Publish *and* ship | NeurIPS joint paper + accepted workshop |
-
-Canonical arc: [`.cursor/skills/debrief/omri_azencot_experience.md`](../.cursor/skills/debrief/omri_azencot_experience.md).
+You’ve spent years on the exact stack SCOT is leaning into: generative models (diffusion, flow matching, VAEs), Koopman structure for dynamics, and synthetic data as forecasting infrastructure. Mayank and Boris already pulled you into that lane — that’s how KGO happened. Mengfei independently confirmed synthetic data for forecasting is a SCOT interest. So Monday is not “hire me someday.” It’s: **here’s why I’m already the person for this bet, and here’s a 90- and 180-day plan to put it on SCOT’s real problems.**
 
 ---
 
-## Four contribution theses (pick 2 to speak; keep 4 as backup)
+## Part 1 — Why me (speakable credentials)
 
-### 1. Synthetic / sim as foundation-forecasting infrastructure (primary)
+Speak these as connected paragraphs, not a CV bullet dump. Order matters: math credibility first (Boris), then proof you already work with them, then the plan.
 
-**Bet:** ZSF-by-simulation / synthetic pretrain is the SCOT-scale play — cost, latency, leakage, cold-start. Needs people who have *built* generative TS systems and know when synthetic helps vs lies.
+### 1. Diffusion and flow matching — math and implementation
 
-**What I would do in 90 days:**
+I work on diffusion and flow matching from both sides. On the modeling side I care about the SDE / transport view, not just calling a library. On the implementation side I’ve shipped training and sampling stacks, including pushing diffusion toward **one-step** regimes when iterative cost is the blocker. KGO sits in that world: it’s built around **flow matching**, even though FM’s role there is deliberately limited — the point is a structured transport you can actually run, not a thousand denoising steps. That matters at SCOT scale, where inference cost across SKUs can eat theoretical wins.
 
-- Own a narrow transfer study: which synthetic regimes help held-out demand families vs inflate offline metrics
-- Cold-start + rare-regime slices explicit in the eval (Mengfei friction list)
-- Guardrail note: distribution mismatch / bias amplification / calibration drift — how we’d detect them
-- Internal note + optional workshop / follow-on paper track
+If he goes deep: be ready to talk KoFM vs classical iterative FM/diffusion, and why closed-form / single-step generation is the production-relevant move ([`collaboration.md`](collaboration.md) — ≥25× vs iterative generative baselines on ProbTS).
 
-**Ask Boris:** bottleneck today — generators, scaling, transfer to real demand, or production eval mismatch?
+### 2. Koopman — theory and practice (his excitement lane)
 
-### 2. Hierarchically coherent synthetic data (by construction)
+I’m deep on Koopman in theory and in practice — lifting nonlinear dynamics into a space where evolution is linear / structured, then using that for generation and forecasting. This isn’t a buzzword for me; it’s been a through-line in my work (Koopman VAEs / operator views / one-step diffusion via Koopman). Boris has been publishing in this direction too — e.g. [SKOLR](https://arxiv.org/abs/2506.14113) (structured Koopman ↔ linear RNN) and related IEEE work ([IEEE Xplore](https://ieeexplore.ieee.org/document/11423976)). KGO is the natural joint of **his** Koopman interest and **my** generative / FM stack. On Monday, treat Koopman as shared language, not a tutorial.
 
-**Bet:** CLOVER showed joint bottom-level → aggregate can buy coherence; generative pretrain on *structurally coherent* hierarchies could internalize that before fine-tune — less reliance on post-hoc reconciliation.
+### 3. Generative modeling body of work (~10 papers)
 
-**What I would do in 90 days:**
+Across VAE, diffusion, and flow matching I’ve built a real body of work — on the order of **ten papers** in this family — not a single opportunistic project. ImagenTime / ImagenFew, one-step distillation, irregular and data-scarce regimes, and now KGO with him and Mayank. The through-line is: learn a distribution over trajectories so you can forecast, simulate, and synthesize — and do it in a way that stays controllable when data is messy or scarce.
 
-- Prototype or design: generate bottom-level jointly, aggregate up, pretrain, fine-tune on real category/region
-- Compare vs independent-per-series synthetic + reconciliation baseline on a scoped hierarchy
-- Stay honest about additive vs nonlinear cross-series limits (question you raised with Mengfei)
+### 4. They already chose this collaboration — and SCOT already wants the theme
 
-**Ask:** will reconciliation stay necessary long-term, or can structure live inside the generative model?
+A few months ago **Mayank and Boris contacted me** for a joint project on generative modeling and forecasting. That’s how KGO came into existence — not me cold-pitching a random paper. In parallel, their group (Boris, Mayank, Mengfei, and others) put out [Zero-shot Forecasting by Simulation Alone](https://arxiv.org/abs/2601.00970) (ICLR’26): synthetic / sim pretraining as a serious path for foundation-style forecasting under leakage, privacy, and cost constraints. Separately, when I sat with **Mengfei**, he confirmed SCOT’s interest in **synthetic data for forecasting** — generative as infrastructure (cost, latency, cold-start, rare regimes), not as a cute replacement for every quantile forecaster ([`mengfei-notes.md`](mengfei-notes.md)).
 
-### 3. Trajectories where path costs beat marginal quantiles
+So the strategic picture is already aligned. Monday is about converting an external collab into **owned SCOT work** with real catalog constraints.
 
-**Bet:** Quantiles are right for single-period newsvendor; generative paths matter for lead times, carryover, multi-echelon coupling. Don’t oversell generation where P90 suffices.
+### 5. What I want: a clear 90 / 180-day arc inside SCOT
 
-**What I would do in 90 days:**
-
-- Pick one decision setting where joint temporal dependence clearly changes the optimal policy vs independent quantiles
-- Show a small simulation study: path samples → inventory evolution vs quantile-only rule
-- Document when *not* to pay for generative inference (head SKUs, single-period, latency-bound serving)
-
-**Ask:** do you simulate demand paths for policy eval today, or mostly quantile decision rules?
-
-### 4. Synthetic stress-test as ship gate + collab surface
-
-**Bet:** Synthetic generators as sandbox for forecast/policy changes before rollout — same kill-discipline muscle as research eval gates. Workshop + NeurIPS paper prove collaboration already works.
-
-**What I would do in 90 days:**
-
-- Define 2–3 shock scenarios (promo spike, cold-start burst, post-peak) used as a pre-deploy stress suite
-- Finish paper/rebuttal cleanly; make workshop useful to Forecasting Labs
-- One-pager charter with named Amazon owner + success metric for continued internal work
+I want to propose working on **generative modeling for forecasting** under SCOT’s real-world constraints — serving cost, cold-start SKUs, rare regimes, eval that matches business damage, synthetic distributions that transfer instead of lying. Concrete arc below. The math/modeling depth is how I earn the seat; the arc is what I do once I’m in it.
 
 ---
 
-## 90-day sketch (speakable)
+## Part 2 — Multimodal / reasoning (optional, secondary)
 
-| Weeks | Focus | Exit artifact |
-|-------|--------|---------------|
-| 1–2 | Align with Boris/Mengfei on *one* problem (likely synthetic transfer or cold-start) + data access | 1-pager charter |
-| 3–6 | Core experiments / audit harness + mismatch guards | Reproducible results + kill/ship recommendation |
-| 7–10 | Harden cold-start / rare-regime / PPE-style slices; socialize | Internal note or design review |
-| 11–13 | Write-up + next-quarter proposal; workshop logistics parallel | Decision: continue / expand / hand off |
+**Recommendation:** Do **not** lead with multimodal or VLM reasoning. Boris’s door is Koopman + generative + synthetic forecasting. Multimodal is a *horizon* card.
 
----
+**When to mention (30s, only if energy is high or he asks “what else”):**
 
-## Spoken pitch outline (~8–10 min)
+> Separate from the generative forecasting arc, I’ve also been building multimodal / VLM systems for time-series *reasoning* — not just predicting a number, but explaining and answering over series. I don’t think that’s the first problem I’d own at SCOT. But if the stack eventually needs models that reason over forecasts, demand context, or multimodal signals, I already have that muscle. Happy to park it unless you see an earlier pull.
 
-1. **Positioning** (15s) — sequential / generative forecasting IC; already with Boris + Mayank
-2. **Mengfei bridge** (60–90s) — generative as infrastructure; coherence already strong
-3. **Thesis 1** (2–3 min) — synthetic/sim foundation infrastructure; 90-day moves + risks
-4. **Thesis 2** (2–3 min) — coherent hierarchical synthetic **or** trajectories-vs-quantiles (match his energy)
-5. **Ask** (60s) — where to point me first next quarter + openings / intros
+**Why hold it back:** March group talk already skewed vision/roadmap; FinTech loop feedback was “too managerial.” Multimodal as a second act keeps Monday IC and math-forward. SCOT may go multimodal later — you don’t need to force it now.
 
 ---
 
-## Anti-patterns (do not do)
+## Part 3 — The 90 / 180-day arc (what you’d own)
 
-- Lead with PI lab size, grants, or student mentoring
-- **Repeat the March group-talk voice** — roadmap / “foundation models are the future” / open-challenges laundry list ([`talks/README.md`](talks/README.md)). Lead with what *you* build, measure, and would ship in 90 days
-- Over-sell VLMs / generative as default replacement for production quantile systems
-- Vague “I’d love to help with whatever”
-- Ignore cost/latency pushback — meet it head-on (Mar follow-up line + one-step / sim-pretrain cost story)
-- Treat Monday as a stealth interview loop — no LP labels unless he goes there
-- Apologize for the talk unprompted — only if Boris references it; then one sentence + pivot to IC artifact
+Frame this as **one program** with two horizons, not four disconnected theses. Primary theme: generative modeling for forecasting at SCOT — synthetic + structured dynamics + cost-aware serving.
 
-### If the March talk comes up (15s)
+### Days 0–90 — Prove transfer and earn trust
 
-> That talk was still too roadmap-heavy — I’ve gotten sharper since on the IC side with you and Mayank. What I want to own next is a narrow synthetic-transfer / cold-start experiment with explicit kill criteria on cost and slice regressions.
+**Goal:** One sharp problem, one owner (you), one kill/ship recommendation. Prefer something that sits at the intersection of KGO / Koopman–generative skill and ZSF-by-simulation / synthetic infrastructure.
+
+**Candidate problem (pick with Boris in week 1):**
+
+- **Synthetic → real transfer audit:** Which regimes from sim/synthetic pretraining (SarSim0-style or richer generative synthetics) actually help SCOT-like demand families, and which inflate offline metrics? Explicit slices: cold-start, intermittent/tail SKUs, promo / peak-ish shocks.
+- **Or:** Take a KGO-style structured generative forecaster and stress it on a SCOT-relevant constraint — latency budget, multivariate/hierarchical slice, or calibration under shift — and report honestly.
+
+**What “done” looks like at day 90:**
+
+- A short charter everyone agrees on (problem, data access reality, success metric)
+- Reproducible experiments + a written recommendation: ship / iterate / kill
+- Explicit failure modes called out: synthetic mismatch, bias amplification, calibration drift (you already raise these — keep doing that)
+- Parallel: KGO rebuttal / follow-ups clean; workshop ops not blocking science
+
+**Spoken version:**
+
+> For the first ninety days I’d want one narrow charter with you — not a roadmap. Most likely: synthetic or sim-pretrained models into real demand slices that matter for SCOT, with cold-start and rare regimes in the eval, and a clear kill criterion if the synthetic distribution isn’t transferring. I can bring the generative and Koopman modeling; I need your judgment on which slice is worth the access cost.
+
+### Days 90–180 — Make it structural
+
+**Goal:** Turn the 90-day finding into something that can live inside the stack — not a one-off notebook.
+
+Examples of 180-day outcomes (choose based on 90-day result):
+
+- A **synthetic data / stress-test layer** used before forecast or policy changes ship (sandbox, not only training data)
+- A **structured generative** component (Koopman / FM lineage) that is competitive on a scoped serving envelope — where trajectory samples are worth more than marginal quantiles
+- A design for **hierarchically coherent** synthetic or generative pretrain (Mengfei / CLOVER vocabulary) if reconciliation and structure are the pain
+- Internal note + optional paper/workshop track that SCOT is happy to stand behind
+
+**Spoken version:**
+
+> By one-eighty I’d want that charter to have become infrastructure or a scoped production-adjacent prototype — synthetic stress tests, or a generative/Koopman forecaster that survives a real latency and slice eval — with a clear next-quarter proposal. Publish when it’s real; don’t publish instead of shipping judgment.
+
+### How this maps to their papers (use lightly, don’t lecture)
+
+| Their work | Your bridge |
+|------------|-------------|
+| [ZSF by Simulation Alone](https://arxiv.org/abs/2601.00970) | You’ve built generative TS engines; you can attack *transfer quality*, rare regimes, and richer generators beyond SARIMA-style sims — and you know when generative cost is worth it |
+| [SKOLR](https://arxiv.org/abs/2506.14113) / Boris Koopman line | Shared language; KGO is already the collab artifact that combines Koopman structure with generative transport |
+| Mengfei / CLOVER / coherence | Generative as complement to strong coherence/decision pillars — infrastructure and robustness, not “throw away quantiles” |
+
+---
+
+## Part 4 — Full spoken pitch (~8–12 min)
+
+Rehearse once aloud. Cut anything that sounds like the March talk’s “backbone of future systems.”
+
+1. **Open (30–45s)** — Thanks for the collab; paper under review with positive early signal; workshop accepted. Then: *I want to talk about how I contribute inside SCOT, not only as an external coauthor.*
+
+2. **Math / modeling fit (2–3 min)** — Diffusion + flow matching (theory + impl); Koopman (theory + practice); ~10 generative papers. Nod to his Koopman line and to KGO as the joint object. One concrete number from KGO if natural (speed / ProbTS) — then your IC slice when you’ve locked it.
+
+3. **Why this is already their bet (1–2 min)** — Mayank and Boris contacted you → KGO. ZSF-by-simulation. Mengfei: synthetic for forecasting. You’re not inventing a theme; you’re offering to own it under production constraints.
+
+4. **90 / 180 arc (3–4 min)** — One charter in 90 days; structural outcome by 180. Ask him which problem he’d point you at first.
+
+5. **Optional multimodal (30s)** — Only if it fits; park as later pull.
+
+6. **Close (45–60s)** — Ask for openings / intros / next step. Stay in on NeurIPS either way.
+
+### Closing lines (draft)
+
+> What I’m asking for is a path to own generative forecasting work inside SCOT — with the real constraints, not only the NeurIPS constraints. I think the modeling fit is there, the collab already works, and I can be concrete about ninety and one-eighty days. If you see a fit, I’d love an intro or a clear next step. If timing is off, I’m still all-in on finishing KGO and the workshop well.
+
+---
+
+## Anti-patterns
+
+- PI voice, grants, student mentoring, lab size
+- March-talk roadmap / open-challenges laundry list
+- Leading with multimodal / VLM / “reasoning over everything”
+- Claiming generative should replace quantile systems wholesale
+- Vague “happy to help with whatever”
+- Apologizing for the talk unprompted (if he brings it up → one sentence, then IC pivot)
+
+### If the March talk comes up
+
+> That talk was still too roadmap-heavy — I’ve gotten sharper on the IC side with you and Mayank on KGO. What I want to own next is a narrow generative-for-forecasting charter under SCOT constraints, with explicit kill criteria.
 
 ---
 
 ## TODO before Monday
 
-- [ ] Lock **your IC slice** one-liner for KGO in [`collaboration.md`](collaboration.md) (KoPE / KoFM / AUG / experiments)
-- [ ] Rehearse pitch once aloud; cut to ≤10 min — **IC voice, not March-talk roadmap**
-- [x] Paper/workshop titles filled from PDFs in `papers/` + `workshops/`
-- [ ] Primary thesis = #1 synthetic/sim infrastructure (Boris ZSF line) — bridge with KGO’s ≥25× inference story
+- [ ] Lock **your IC slice** one-liner for KGO in [`collaboration.md`](collaboration.md)
+- [ ] Rehearse Parts 1 + 3 aloud once (math fit → 90/180); time it
+- [ ] Decide: mention multimodal only if he opens the door
+- [ ] Skim [SKOLR abstract](https://arxiv.org/abs/2506.14113) + [ZSF abstract](https://arxiv.org/abs/2601.00970) so nods land cleanly — don’t present his papers back to him

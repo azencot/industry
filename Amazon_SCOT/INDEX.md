@@ -8,7 +8,7 @@ Secondary track (not a formal interview loop). Prep for ongoing collaboration wi
 
 1. **Short collab update** — NeurIPS’26 paper + workshop (5–8 min)
 2. **Bridge from Mengfei** — what you heard as team needs (2–3 min)
-3. **Contribution pitch** — why you are the right IC for SCOT Forecasting / Labs (8–10 min)
+3. **Contribution pitch** — math/modeling fit (diffusion/FM, Koopman, ~10 generative papers) → they already pulled you in (KGO, ZSF, Mengfei) → 90/180-day generative-for-forecasting arc ([`contribution-plan.md`](contribution-plan.md))
 4. **Questions + next step** — openings, workstream intros, continued collab path (5 min)
 
 Tone: IC scientist who **already collaborates** with the team — not “please interview me.” Lead with what you would build, not lab-PI narrative.
@@ -38,7 +38,7 @@ Tone: IC scientist who **already collaborates** with the team — not “please 
 | [`collaboration.md`](collaboration.md) | Paper (KGO) + workshop status; 60s spoken updates | Open of call |
 | [`papers/`](papers/) | NeurIPS’26 KGO submission PDF | Before paper update; rebuttal prep |
 | [`workshops/`](workshops/) | Accepted workshop proposal PDF | Before workshop ops |
-| [`contribution-plan.md`](contribution-plan.md) | **Main deliverable** — 90-day contribution thesis | Rehearse once aloud |
+| [`contribution-plan.md`](contribution-plan.md) | **Main deliverable** — speakable pitch: credentials → collab proof → 90/180 arc | Rehearse once aloud |
 | [`talks/`](talks/) | Group talk slides + IC vs managerial read | If talk comes up; anti-pattern check before Monday |
 | [`questions-for-boris.md`](questions-for-boris.md) | 4–6 questions + ask for next step | End of call |
 | [`notes/`](notes/) | Session debriefs + post-call dumps | After `/debrief`; after Monday |
