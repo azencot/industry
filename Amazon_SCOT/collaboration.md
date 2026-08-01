@@ -17,7 +17,8 @@ Status as of Sat 1 Aug 2026. Artifacts in-repo under [`papers/`](papers/) and [`
 | **Title** | Koopman Generative Operators for Efficient Probabilistic Time-Series Forecasting |
 | **Collaborators** | Boris Oreshkin + others (full list not in anonymous PDF — confirm with Boris if needed). Ongoing generative forecasting thread also involves **Mayank Jauhari** |
 | **One-line problem** | Probabilistic forecasting needs structured dynamics + expressive uncertainty + **fast inference**; diffusion/flow are flexible but iterative/expensive |
-| **Method (speakable)** | **KGO** = forecasting as evolution of structured uncertainty: **KoPE** (temporally consistent latent traj) + **KoFM** (single-step generation via closed-form matrix exp in Koopman space) + **AUG** (per-variable / per-horizon adaptive uncertainty) |
+| **Method (speakable)** | **KGO** = forecasting as evolution of structured uncertainty: **KoPE** (temporally consistent latent traj) + **KoFM** (single-step generation via closed-form matrix exp in Koopman space) + **AUG** (per-variable / per-horizon adaptive **aleatoric** uncertainty) |
+| **Open thread (Boris)** | He flagged **aleatoric uncertainty**; you offered follow-up work; **not done** in submission cycle — strong Monday / 90-day charter ([`contribution-plan.md`](contribution-plan.md)) |
 | **Headline results** | ProbTS: best CRPS on **12/17**, best NMAE on **11/17**; strong long-horizon; ablations: −KoPE/−KoFM/−AUG hurt CRPS up to ~12% / ~26% / ~16%; **≥25×** faster inference vs iterative generative models |
 | **Your IC contribution** | TODO — lock one sentence before Monday: what *you* owned (KoPE / KoFM / AUG / experiments / writing). Avoid “we” |
 
@@ -69,6 +70,7 @@ Status as of Sat 1 Aug 2026. Artifacts in-repo under [`papers/`](papers/) and [`
 
 - Paper: Amazon-side constraints on what we can say externally while under review?
 - Paper: who owns rebuttal timeline / experiment backlog (your IC slice vs Boris/Mayank)?
+- Paper / next science: reopen the **aleatoric uncertainty** thread from KGO — still a priority for him / SCOT?
 - Workshop: who owns website + CFP; SCOT-useful invited/panel topics?
 - After NeurIPS cycle: natural follow-on inside SCOT Forecasting / Labs (KGO serving cost? synthetic pretrain + KGO?)?
 

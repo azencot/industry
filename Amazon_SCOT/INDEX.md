@@ -8,7 +8,7 @@ Secondary track (not a formal interview loop). Prep for ongoing collaboration wi
 
 1. **Short collab update** — NeurIPS’26 paper + workshop (5–8 min)
 2. **Bridge from Mengfei** — what you heard as team needs (2–3 min)
-3. **Contribution pitch** — math/modeling fit (diffusion/FM, Koopman, ~10 generative papers) → they already pulled you in (KGO, ZSF, Mengfei) → 90/180-day generative-for-forecasting arc ([`contribution-plan.md`](contribution-plan.md))
+3. **Contribution pitch** — generative math/impl fit (diffusion/FM; **not** Koopman-led) → collab proof → 90/180 arc; full spoken script in [`contribution-plan.md`](contribution-plan.md)
 4. **Questions + next step** — openings, workstream intros, continued collab path (5 min)
 
 Tone: IC scientist who **already collaborates** with the team — not “please interview me.” Lead with what you would build, not lab-PI narrative.
