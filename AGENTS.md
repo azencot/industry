@@ -4,16 +4,23 @@ Hand this to every new AI session working in this repo. Treat it like a day-one 
 
 ## Purpose
 
-Interview prep workspace for **Amazon FinTech Senior Applied Scientist** (FinTelligence). Not a production app repo — optimize for **recall under pressure**, **articulation** (ML + STAR stories), and **timed coding with narration**.
+Industry prep workspace with two Amazon tracks:
+
+- **FinTech (FinTelligence)** — formal interview loop: recall under pressure, LP/STAR articulation, timed coding with narration
+- **SCOT (Forecasting)** — relationship / contribution prep (not a PS1 machine unless it becomes a formal loop)
+
+Not a production app repo.
 
 ## Reading order
 
 1. [`INDEX.md`](INDEX.md) — annotated map of the repo
-2. [`Amazon_FinTech/INDEX.md`](Amazon_FinTech/INDEX.md) — active role, timeline, interviewer context
-3. [`.cursor/skills/debrief/omri_azencot_experience.md`](.cursor/skills/debrief/omri_azencot_experience.md) — experience profile, flagship project, JD alignment, IC framing
-4. [`Amazon_FinTech/prep-plan.md`](Amazon_FinTech/prep-plan.md) — weekly plan; check today's focus
-5. Latest [`Amazon_FinTech/debrief/`](Amazon_FinTech/debrief/) entry when borrowing context from a prior session
-6. Latest [`Amazon_FinTech/mocks/`](Amazon_FinTech/mocks/) entry if continuing mock-drill follow-up
+2. Active track INDEX:
+   - FinTech → [`Amazon_FinTech/INDEX.md`](Amazon_FinTech/INDEX.md)
+   - SCOT → [`Amazon_SCOT/INDEX.md`](Amazon_SCOT/INDEX.md) (contacts, collab, contribution pitch, questions)
+3. [`.cursor/skills/debrief/omri_azencot_experience.md`](.cursor/skills/debrief/omri_azencot_experience.md) — experience profile, flagship project, IC framing (shared)
+4. FinTech only: [`Amazon_FinTech/prep-plan.md`](Amazon_FinTech/prep-plan.md) — weekly plan; check today's focus
+5. FinTech only: latest [`Amazon_FinTech/debrief/`](Amazon_FinTech/debrief/) or [`mocks/`](Amazon_FinTech/mocks/) when continuing that track
+6. SCOT only: [`contribution-plan.md`](Amazon_SCOT/contribution-plan.md) + [`mengfei-notes.md`](Amazon_SCOT/mengfei-notes.md) before Boris/Mengfei calls; session/post-call notes in [`Amazon_SCOT/notes/`](Amazon_SCOT/notes/) (SCOT debriefs live here, not under FinTech)
 
 ## Behavior
 

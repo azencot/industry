@@ -1,8 +1,8 @@
 # industry — repo index
 
-Personal workspace for industry job prep: Amazon FinTech Senior Applied Scientist interviews, LeetCode practice, and compounding interview artifacts.
+Personal workspace for industry job prep: Amazon FinTech Senior Applied Scientist interviews, Amazon SCOT relationship/contribution prep, LeetCode practice, and compounding interview artifacts.
 
-**New session?** Read in order: this file → [`AGENTS.md`](AGENTS.md) → [`Amazon_FinTech/INDEX.md`](Amazon_FinTech/INDEX.md).
+**New session?** Read in order: this file → [`AGENTS.md`](AGENTS.md) → active track INDEX (`Amazon_FinTech` or `Amazon_SCOT`).
 
 ---
 
@@ -11,18 +11,30 @@ Personal workspace for industry job prep: Amazon FinTech Senior Applied Scientis
 | Path | What it is | When to read |
 |------|------------|--------------|
 | [`AGENTS.md`](AGENTS.md) | Onboarding for AI sessions: conventions, behavior, skills | Start of every Cursor session |
-| [`Amazon_FinTech/`](Amazon_FinTech/) | Role-specific prep: plan, stories, debriefs, mocks, CV | Before interview work |
+| [`Amazon_FinTech/`](Amazon_FinTech/) | Role-specific prep: plan, stories, debriefs, mocks, CV | Before FinTech interview work |
+| [`Amazon_SCOT/`](Amazon_SCOT/) | SCOT relationship track: contacts, collab, contribution pitch | Before Boris / Mengfei / SCOT calls |
 | [`code/`](code/) | LeetCode solutions (Python); `_practice` = scratch attempts | Coding prep, timed drills |
 | [`.cursor/skills/`](.cursor/skills/) | Repeatable prep workflows (`/mock-lp`, `/timed-code`, etc.) | When running a structured drill |
 
 ---
 
-## Amazon FinTech (active target)
+## Amazon FinTech (primary loop track)
 
 - **Role:** Senior Applied Scientist, FinTelligence
 - **PS1:** Tue 30 Jun 2026 — **completed** with Karan Aggarwal. Debrief: [`Amazon_FinTech/debrief/2026-06-30_ps1-karan-real-interview.md`](Amazon_FinTech/debrief/2026-06-30_ps1-karan-real-interview.md)
 - **Format:** intro + ML/LLM depth + Leadership Principles + 1 medium live code (Amazon Live Code)
 - **Details:** [`Amazon_FinTech/INDEX.md`](Amazon_FinTech/INDEX.md), [`.cursor/skills/debrief/omri_azencot_experience.md`](.cursor/skills/debrief/omri_azencot_experience.md), [`Amazon_FinTech/prep-plan.md`](Amazon_FinTech/prep-plan.md)
+
+---
+
+## Amazon SCOT (secondary — relationship / contribution)
+
+- **Org:** Supply Chain Optimization Technologies — Forecasting Science / Labs circle
+- **Contacts:** Boris Oreshkin (Principal Scientist); Mengfei Cao (Sr AS / Science Manager)
+- **Collab:** NeurIPS 2026 joint forecasting paper (under review, positive initial reviews); NeurIPS 2026 workshop (**accepted**)
+- **Next:** Mon 3 Aug 2026 call with Boris — short paper/workshop update, then contribution / fit pitch
+- **Details:** [`Amazon_SCOT/INDEX.md`](Amazon_SCOT/INDEX.md), [`Amazon_SCOT/contribution-plan.md`](Amazon_SCOT/contribution-plan.md)
+- **Not** a formal PS1 loop yet — no stories/mocks/timed-code bank in this folder
 
 ---
 
