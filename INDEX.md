@@ -20,7 +20,7 @@ Personal workspace for industry job prep: Amazon FinTech Senior Applied Scientis
 ## Amazon FinTech (active target)
 
 - **Role:** Senior Applied Scientist, FinTelligence
-- **PS1:** Tue 30 Jun 2026, 21:00 Asia/Jerusalem — Karan Aggarwal (Senior Applied Scientist)
+- **PS1:** Tue 30 Jun 2026 — **completed** with Karan Aggarwal. Debrief: [`Amazon_FinTech/debrief/2026-06-30_ps1-karan-real-interview.md`](Amazon_FinTech/debrief/2026-06-30_ps1-karan-real-interview.md)
 - **Format:** intro + ML/LLM depth + Leadership Principles + 1 medium live code (Amazon Live Code)
 - **Details:** [`Amazon_FinTech/INDEX.md`](Amazon_FinTech/INDEX.md), [`.cursor/skills/debrief/omri_azencot_experience.md`](.cursor/skills/debrief/omri_azencot_experience.md), [`Amazon_FinTech/prep-plan.md`](Amazon_FinTech/prep-plan.md)
 
@@ -73,6 +73,7 @@ Add rows after `/timed-code` drills:
 | 2026-06-30 | `2026-06-30_3_longest_substring_without_repeating_practice.py` | ~? | fail→fix | sliding window + last-index; bugs: didn't update hash on repeat + missing `last_seen[c] >= si` guard + `i-si` vs `i-si+1` — fixed |
 | 2026-06-30 | `2026-06-30_57_insert_interval_practice.py` | ~? | fail→fix | intervals 3-phase scan (before/merge/after); correct overlap `intervals[i][0] <= end`; tail typo `interval` → `intervals[i]` — fixed |
 | 2026-06-30 | `2026-06-30_739_daily_temperatures_practice.py` | ~? | pass | **new pattern: monotonic stack**; invariant: stack holds unresolved indices, temps decreasing bottom→top (emergent, not sorted); bug: `enumerate(...,start=1)` misaligned `i`/`temp` → all zeros; fix empty stack + no offset; O(n) amortized |
+| 2026-06-30 | **PS1 live** — trailing-window z-score (`2026-06-30_trailing_zscore_normalization.py`) | ~? | incomplete | real Karan PS1; bugs: `q` uninitialized, `math.std`, batched first-k vs per-index windows, loop from `k+1`, typo; fix = one loop, `window = ts[max(0,i-k+1):i+1]` |
 
 ---
 

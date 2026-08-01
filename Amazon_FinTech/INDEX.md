@@ -8,7 +8,7 @@ Active interview track. Annotated index — read entries before opening every fi
 
 | Milestone | Date | Notes |
 |-----------|------|-------|
-| **PS1 — phone screen** | Tue 30 Jun 2026, 21:00 Asia/Jerusalem | Karan Aggarwal; Zoom + [Live Code](https://livecode.amazon.jobs/joinsession/e4618c8d-2a90-4c8f-8fb1-b6e875c77bd7) |
+| **PS1 — phone screen** | Tue 30 Jun 2026, 21:00 Asia/Jerusalem | **Done** — Karan; LP pivot, fundamentals grill, trailing z-score code. Debrief: [`2026-06-30_ps1-karan-real-interview.md`](debrief/2026-06-30_ps1-karan-real-interview.md) |
 | Imry Kissos referral call | 23 Jun 2026 | Principal AS; referred to role — Karan-focused prep pivot |
 | Prep window | 24–29 Jun 2026 (6 days) | See [`prep-plan.md`](prep-plan.md) — VLM depth + coding |
 
@@ -127,6 +127,7 @@ Track which LPs have ready stories in [`stories/README.md`](stories/README.md). 
 | 2026-06-28 | Coding sprint #2 + JD technical refresh | [`2026-06-28_coding-and-jd-refresh.md`](debrief/2026-06-28_coding-and-jd-refresh.md) | `@Files debrief/2026-06-28_coding-and-jd-refresh.md` — Mon 29 polish: anchors, JD crib, binary-search rep |
 | 2026-06-28 | VLM grill (Karan-style) + technical cheat sheet | [`2026-06-28_vlm-grill.md`](debrief/2026-06-28_vlm-grill.md) | `@Files debrief/2026-06-28_vlm-grill.md` + `vlm-technical-cheat-sheet.md` — Mon 29: answer Q6 FinTech bridge |
 | 2026-06-30 | PS1 final sprint (science/coding/Ownership) + systems drill | [`2026-06-30_ps1-final-sprint.md`](debrief/2026-06-30_ps1-final-sprint.md) | `@Files debrief/2026-06-30_ps1-final-sprint.md` — after real PS1, `/debrief` the interview |
+| 2026-06-30 | **PS1 real interview — Karan** | [`2026-06-30_ps1-karan-real-interview.md`](debrief/2026-06-30_ps1-karan-real-interview.md) | `@Files debrief/2026-06-30_ps1-karan-real-interview.md` — LP remap, fundamentals drill, retype z-score |
 
 Add a row after each `/debrief`. Amazon FinTech session notes → [`debrief/`](debrief/); general profile/project refs → [`.cursor/skills/debrief/`](../.cursor/skills/debrief/).
 

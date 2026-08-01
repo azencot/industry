@@ -67,6 +67,20 @@ Define **slice-level floors before training** and treat a **target-task regressi
 
 ## Interview notes
 
+### LP mapping (PS1 Karan feedback — 30 tasks-06-30)
+
+**Do not lead with Ownership.** Karan read "I set promotion gates as eval lead" as **expected responsibility**, not going beyond your lane.
+
+| Use instead | Angle |
+|-------------|-------|
+| **Have Backbone** | Killed mix after 8B GPU spend when average + AR/IR looked like wins; lab pressure to promote |
+| **Invent and Simplify** | Per-task promotion table replaced aggregate-only readouts |
+| **Dive Deep** | Post-mortem task audit (separate story file) |
+
+If forced into Ownership: open with **sunk-cost pressure**, not "I took eval accountability."
+
+**PS1 length:** ~2–3 min spoken, not the 8 min script below.
+
 ### Role & accountability (say early if probed)
 
 Formal: improve VLM reasoning on TSRBench. I also owned promotion criteria and kill recommendations. Student ran 8B; I ran 0.8B and the per-task eval.
