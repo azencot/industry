@@ -31,7 +31,7 @@ Personal workspace for industry job prep: Amazon FinTech Senior Applied Scientis
 
 - **Org:** Supply Chain Optimization Technologies — Forecasting Science / Labs circle
 - **Contacts:** Boris Oreshkin (Principal Scientist); Mengfei Cao (Sr AS / Science Manager)
-- **Collab:** NeurIPS 2026 joint forecasting paper (under review, positive initial reviews); NeurIPS 2026 workshop (**accepted**)
+- **Collab:** NeurIPS 2026 **KGO** paper (under review) + workshop **Foundation Models for Temporal Systems** (**accepted**) — [`Amazon_SCOT/collaboration.md`](Amazon_SCOT/collaboration.md)
 - **Next:** Mon 3 Aug 2026 call with Boris — short paper/workshop update, then contribution / fit pitch
 - **Details:** [`Amazon_SCOT/INDEX.md`](Amazon_SCOT/INDEX.md), [`Amazon_SCOT/contribution-plan.md`](Amazon_SCOT/contribution-plan.md)
 - **Not** a formal PS1 loop yet — no stories/mocks/timed-code bank in this folder

@@ -29,11 +29,12 @@
 |-------|----------------|
 | Repo now has two Amazon tracks | `AGENTS.md`, root `INDEX.md` |
 | SCOT session debriefs live under `Amazon_SCOT/notes/`, not FinTech debrief/ | debrief skill + `AGENTS.md` reading order (this session) |
+| March SCOT group talk read managerial (roadmap / backbone-of-future) | [`talks/README.md`](../talks/README.md); anti-patterns in `contribution-plan.md` |
 
 ## Open TODOs before Mon 3 Aug
 
 1. Fill paper/workshop titles + IC contribution slice in [`collaboration.md`](../collaboration.md)
-2. Rehearse [`contribution-plan.md`](../contribution-plan.md) once ≤10 min
+2. Rehearse [`contribution-plan.md`](../contribution-plan.md) once ≤10 min — **IC voice, not March-talk roadmap**
 3. After call: dump notes to `notes/2026-08-03_boris-call.md`
 
 ## Next session

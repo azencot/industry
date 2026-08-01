@@ -109,16 +109,22 @@ Canonical arc: [`.cursor/skills/debrief/omri_azencot_experience.md`](../.cursor/
 ## Anti-patterns (do not do)
 
 - Lead with PI lab size, grants, or student mentoring
+- **Repeat the March group-talk voice** — roadmap / “foundation models are the future” / open-challenges laundry list ([`talks/README.md`](talks/README.md)). Lead with what *you* build, measure, and would ship in 90 days
 - Over-sell VLMs / generative as default replacement for production quantile systems
 - Vague “I’d love to help with whatever”
-- Ignore cost/latency pushback — meet it head-on (Mar follow-up line)
+- Ignore cost/latency pushback — meet it head-on (Mar follow-up line + one-step / sim-pretrain cost story)
 - Treat Monday as a stealth interview loop — no LP labels unless he goes there
+- Apologize for the talk unprompted — only if Boris references it; then one sentence + pivot to IC artifact
+
+### If the March talk comes up (15s)
+
+> That talk was still too roadmap-heavy — I’ve gotten sharper since on the IC side with you and Mayank. What I want to own next is a narrow synthetic-transfer / cold-start experiment with explicit kill criteria on cost and slice regressions.
 
 ---
 
 ## TODO before Monday
 
-- [x] Structure Mengfei notes; rewrite Mengfei bridge
-- [ ] Fill paper/workshop titles in [`collaboration.md`](collaboration.md)
-- [ ] Rehearse pitch once aloud; cut to ≤10 min
-- [ ] Primary thesis = #1 synthetic/sim infrastructure (Boris ZSF line)
+- [ ] Lock **your IC slice** one-liner for KGO in [`collaboration.md`](collaboration.md) (KoPE / KoFM / AUG / experiments)
+- [ ] Rehearse pitch once aloud; cut to ≤10 min — **IC voice, not March-talk roadmap**
+- [x] Paper/workshop titles filled from PDFs in `papers/` + `workshops/`
+- [ ] Primary thesis = #1 synthetic/sim infrastructure (Boris ZSF line) — bridge with KGO’s ≥25× inference story

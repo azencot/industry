@@ -26,7 +26,7 @@
 |---|---|
 | **Role** | Senior Applied Scientist, Science Manager — Forecasting Science, Amazon |
 | **Themes** | Probabilistic / coherent forecasting (CLOVER); hierarchical demand; foundation / sim forecasting at scale |
-| **Relationship** | Dinner Thu **19 Feb 2026** (Grace SEA104) — full notes [`mengfei-notes.md`](mengfei-notes.md); Mar 19 follow-up |
+| **Relationship** | Dinner Thu **19 Feb 2026** (Grace SEA104) — full notes [`mengfei-notes.md`](mengfei-notes.md); Mar 19 follow-up after group talk |
 | **Bridge to Boris** | Generative = infrastructure (cost, latency, cold-start, rare regimes) on top of strong coherence / decision-alignment pillars |
 
 **Useful public anchors:**
@@ -40,7 +40,8 @@
 
 | Name | Links | Notes |
 |------|-------|-------|
-| **Mayank** (Jauhari?) | — | Collab with Omri + Boris on generative forecasting; told Omri generative TS + synthetic data are becoming priorities |
+| **Mayank Jauhari** | Amazon Sr AS ([workshop bio](../workshops/neurips2026_fm_temporal_systems_proposal.pdf)) | Collab with Omri + Boris on generative forecasting; workshop co-organizer; flagged generative TS + synthetic as priorities |
+| **Danielle Maddix Robinson** | AWS Sr AS | Workshop co-organizer with Boris / Omri |
 | **Dmitry Efimov** | [Scholar](https://scholar.google.com/citations?user=ABTWMYwAAAAJ&hl=en) | SCOT forecasting coauthor circle (e.g. SPADE / ZSF lines) |
 | **Michael Mahoney** | [Scholar](https://scholar.google.com/citations?user=QXyvv94AAAAJ&hl=en) | SCOT / Amazon Science coauthor on forecasting papers |
 | **Abhishek Gupta** | [LinkedIn](https://www.linkedin.com/in/abhishek-arun-gupta/) | SCOT scientist (mechanism design / supply-chain science surface) |

@@ -5,3 +5,6 @@
 __pycache__/
 **/__pycache__/
 *.pyc
+
+# Confidential NeurIPS submission (anonymous / do not distribute)
+Amazon_SCOT/papers/neurips2026_kgo_koopman_generative_operator.pdf

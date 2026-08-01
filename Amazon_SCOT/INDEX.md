@@ -21,8 +21,9 @@ Tone: IC scientist who **already collaborates** with the team — not “please 
 |-----------|------|-------|
 | Dinner with Mengfei Cao | Thu 19 Feb 2026, 17:00–19:00 | Grace SEA104; generative-as-infrastructure thread — [`mengfei-notes.md`](mengfei-notes.md) · raw [`notes/2026-02-19_mengfei-dinner-prep.md`](notes/2026-02-19_mengfei-dinner-prep.md) |
 | Mengfei follow-up | 19 Mar 2026 | Post-talk ping; production-scale generative framing |
-| Joint forecasting paper | NeurIPS 2026 | Under review; positive initial reviews — [`collaboration.md`](collaboration.md) |
-| Workshop proposal | NeurIPS 2026 | **Accepted** — [`collaboration.md`](collaboration.md) |
+| **Group talk** | ~Mar 2026 (PDF 12 Mar) | [`talks/`](talks/) — generative FM forecasting; director likely present; self-read: too managerial — see [`talks/README.md`](talks/README.md) |
+| Joint forecasting paper (KGO) | NeurIPS 2026 | Under review; [`papers/`](papers/) · [`collaboration.md`](collaboration.md) |
+| Workshop proposal | NeurIPS 2026 | **Accepted** — FM for Temporal Systems; [`workshops/`](workshops/) · [`collaboration.md`](collaboration.md) |
 | **Call with Boris** | Mon 3 Aug 2026 | Paper/workshop + SCOT contribution pitch |
 | Post-call notes | after Mon | Drop into [`notes/`](notes/) |
 
@@ -34,8 +35,11 @@ Tone: IC scientist who **already collaborates** with the team — not “please 
 |------|------|--------------|
 | [`contacts.md`](contacts.md) | Boris + Mengfei roles / research anchors | Before the call |
 | [`mengfei-notes.md`](mengfei-notes.md) | Feb 19 Mengfei dinner — team needs spine | Before pitch; rehearse bridge sentence |
-| [`collaboration.md`](collaboration.md) | Paper + workshop status; 60s spoken update | Open of call |
+| [`collaboration.md`](collaboration.md) | Paper (KGO) + workshop status; 60s spoken updates | Open of call |
+| [`papers/`](papers/) | NeurIPS’26 KGO submission PDF | Before paper update; rebuttal prep |
+| [`workshops/`](workshops/) | Accepted workshop proposal PDF | Before workshop ops |
 | [`contribution-plan.md`](contribution-plan.md) | **Main deliverable** — 90-day contribution thesis | Rehearse once aloud |
+| [`talks/`](talks/) | Group talk slides + IC vs managerial read | If talk comes up; anti-pattern check before Monday |
 | [`questions-for-boris.md`](questions-for-boris.md) | 4–6 questions + ask for next step | End of call |
 | [`notes/`](notes/) | Session debriefs + post-call dumps | After `/debrief`; after Monday |
 | [`notes/2026-08-01_scot-scaffold.md`](notes/2026-08-01_scot-scaffold.md) | Track setup debrief + Monday handoff | Start of next SCOT session |
