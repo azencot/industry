@@ -139,6 +139,18 @@ I have two backups if you’d rather point me elsewhere. **B:** efficient genera
 
 I’d rather own A deeply unless you redirect me. I can bring the generative modeling; I need your judgment on data access and which demand families make the right first comparison to SarSim0-style baselines.
 
+### Wedge A — experiment one-pager (from Boris mock; memorize)
+
+**Protocol:** Freeze FM backbone, data/training budget, and eval. Change **only** the synthetic pretrain corpus: SarSim0 vs generative synthetics (trained on Amazon historic series with a time-based train/val/test split to avoid leakage). Combo / staged pretrain = experiment 2, not experiment 1.
+
+**Slices:** Cold-start and rare regimes (keep hard periods such as COVID in; reweight if needed — don’t delete the ugly years and then claim rare-regime wins).
+
+**Metrics:** Same as their FM eval — **CRPS** (distribution quality), **NMAE** (normalized point error), quantile loss as applicable. Not precision/recall/F1.
+
+**Train-time alignment:** Also track synthetic **generation cost** (or end-to-end pretrain wall-clock to a CRPS target). Quality without a cost bound fights Mengfei’s FM-for-training-time story. Speed via **efficient / one-step sampling**, not “Koopman” branding.
+
+**Kill:** Generative must **match or beat** SarSim0 on the cold-start/rare-regime slice within run-to-run noise. One short debug pass if not. If still no lift → **kill A**. Ask Boris whether backup is B or C — don’t assume C.
+
 What you’d get from me is hands-on modeling, experiments, and an honest recommendation — not a slide deck of open challenges. By day ninety: agreed charter, reproducible comparison to the existing sim→FM line, written ship-or-kill. Paper rebuttal and workshop stay professional in parallel without becoming the main story.
 
 ---
@@ -165,9 +177,9 @@ I’ve also built multimodal systems for time-series reasoning. I wouldn’t own
 
 Putting it together: I think the modeling fit is there — diffusion and flow matching with efficient sampling. You already started the foundation-from-synthetic bet; I want to bridge that into modern generative **synthetics** so the data feeding the FM catches up — that’s my default ninety-day charter. Backups if you redirect: efficient generative forecasting, or conditional sampling where concat-plus-AdaGN isn’t enough for lookback conditions. The collaboration already works. What I’m asking for is a path to own that bridge inside the team — and a clear next step if you see a fit.
 
-If you see a fit, I’d really appreciate an intro or a concrete next step — a hiring manager, a Labs lead, whatever the right door is. If timing isn’t right, I’m still all-in on finishing the NeurIPS paper and the workshop well. Either way I want this collaboration to stay strong.
+If you see a fit, I’d really appreciate an intro to a **Forecasting Science manager**. You can say I’m a hands-on generative modeling scientist — diffusion and flow matching — we’ve already collaborated on efficient generative forecasting in KGO, and I want to strengthen the sim→foundation line by bringing modern generative synthetics into that stack. If timing isn’t right, I’m still all-in on finishing the NeurIPS paper and the workshop well. Either way I want this collaboration to stay strong.
 
-What would you point me at first if I were on the team next quarter?
+What would you point me at first if I were on the team next quarter — or are you open to that intro?
 
 ---
 
@@ -185,7 +197,10 @@ What would you point me at first if I were on the team next quarter?
 
 **Only if he asks whether you’ve looped:**
 
-> Yes — Special Projects. Feedback was I came across too managerial for what they needed. Fair. Since then I’ve been deliberate about IC ownership — including the generative forecasting work with you. Happy to go through whatever process SCOT needs; I’m not assuming a skip.
+> Yes — Special Projects. Feedback was I came across too managerial for what they needed. Fair — years in academia trained a certain presentation style. Since then I’ve been deliberate about IC ownership. Concrete: on KGO I owned the flow matching and efficient-sampling mechanics; separately I’ve owned dual-tower design/implementation and synthetic data pipelines in my multimodal TS work. Happy to go through whatever process SCOT needs; I’m not assuming a skip.
+
+**Anti-pattern:** “I already passed, so I don’t need a loop.” Completing ≠ transferable pass across orgs, especially with managerial feedback.  
+**Anti-pattern:** “The loop judged me incorrectly.” Sounds defensive — don’t argue the verdict; show IC evidence.
 
 ---
 
@@ -214,6 +229,9 @@ What would you point me at first if I were on the team next quarter?
 - Claiming generative should replace quantile systems wholesale
 - Vague “happy to help with whatever”
 - Volunteering Special Projects loop / “I don’t need another loop”
+- Arguing the Special Projects verdict (“judged incorrectly”) — fair + IC evidence only
+- Forecasting pitch metrics as precision/recall/F1 — use CRPS / NMAE / quantile loss
+- Soft kill (“PoC has no kill”) — match/beat SarSim0 within noise or kill A
 
 ### If the March talk comes up
 
@@ -235,5 +253,7 @@ What would you point me at first if I were on the team next quarter?
 - [x] Read Part 4 aloud; skim ZSF abstract
 - [x] Default 90-day ask = **Wedge A** (bridge synthetic + ZSF → modern generative synthetics)
 - [x] Conditioning IC crib: concat + AdaGN works for covariates; weaker when condition = lookback sequence
-- [ ] Optional: one interrupt rehearsal (“Why not just scale SarSim0?”)
+- [x] Boris mock grill — experiment one-pager + loop IC bullets + Forecasting Science intro ask ([`notes/2026-08-01_boris-mock-drill.md`](notes/2026-08-01_boris-mock-drill.md))
+- [ ] Optional: one more “Why not scale SarSim0?” interrupt using the one-pager — then stop
 - [ ] Do **not** prep a Koopman deep-dive
+- [ ] Mon 3 Aug: real call → `notes/2026-08-03_boris-call.md`

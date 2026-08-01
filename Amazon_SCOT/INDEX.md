@@ -24,6 +24,7 @@ Tone: IC scientist who **already collaborates** with the team — not “please 
 | **Group talk** | ~Mar 2026 (PDF 12 Mar) | [`talks/`](talks/) — generative FM forecasting; director likely present; self-read: too managerial — see [`talks/README.md`](talks/README.md) |
 | Joint forecasting paper (KGO) | NeurIPS 2026 | Under review; [`papers/`](papers/) · [`collaboration.md`](collaboration.md) |
 | Workshop proposal | NeurIPS 2026 | **Accepted** — FM for Temporal Systems; [`workshops/`](workshops/) · [`collaboration.md`](collaboration.md) |
+| Boris mock grill | Sat 1 Aug 2026 | Wedge A experiment one-pager; CRPS/NMAE; kill line; Forecasting Science intro — [`notes/2026-08-01_boris-mock-drill.md`](notes/2026-08-01_boris-mock-drill.md) |
 | **Call with Boris** | Mon 3 Aug 2026 | Paper/workshop + SCOT contribution pitch |
 | Post-call notes | after Mon | Drop into [`notes/`](notes/) |
 
@@ -42,7 +43,8 @@ Tone: IC scientist who **already collaborates** with the team — not “please 
 | [`talks/`](talks/) | Group talk slides + IC vs managerial read | If talk comes up; anti-pattern check before Monday |
 | [`questions-for-boris.md`](questions-for-boris.md) | 4–6 questions + ask for next step | End of call |
 | [`notes/`](notes/) | Session debriefs + post-call dumps | After `/debrief`; after Monday |
-| [`notes/2026-08-01_scot-scaffold.md`](notes/2026-08-01_scot-scaffold.md) | Track setup debrief + Monday handoff | Start of next SCOT session |
+| [`notes/2026-08-01_scot-scaffold.md`](notes/2026-08-01_scot-scaffold.md) | Track setup debrief | Context on how SCOT folder was built |
+| [`notes/2026-08-01_boris-mock-drill.md`](notes/2026-08-01_boris-mock-drill.md) | Boris mock corrections + Monday handoff | Before final rehearsal |
 | [`.cursor/skills/debrief/omri_azencot_experience.md`](../.cursor/skills/debrief/omri_azencot_experience.md) | Canonical research arc (shared with FinTech) | If bridging TS / synthetic / eval |
 
 ---
