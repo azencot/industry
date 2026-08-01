@@ -18,7 +18,8 @@ Status as of Sat 1 Aug 2026. Artifacts in-repo under [`papers/`](papers/) and [`
 | **Collaborators** | Boris Oreshkin + others (full list not in anonymous PDF — confirm with Boris if needed). Ongoing generative forecasting thread also involves **Mayank Jauhari** |
 | **One-line problem** | Probabilistic forecasting needs structured dynamics + expressive uncertainty + **fast inference**; diffusion/flow are flexible but iterative/expensive |
 | **Method (speakable)** | **KGO** = forecasting as evolution of structured uncertainty: **KoPE** + **KoFM** (single-step) + **AUG** (adaptive **aleatoric** — **results already in paper**) |
-| **Open thread (Boris)** | He was interested in **epistemic** uncertainty; you offered; **not done** — strong Monday / 90-day charter ([`contribution-plan.md`](contribution-plan.md)) |
+| **Open thread (Boris)** | **Side:** epistemic uncertainty (aleatoric/AUG already done); offered, not finished — mention only if natural ([`contribution-plan.md`](contribution-plan.md)) |
+| **Main contribution bet** | Efficient diffusion / flow-matching generative forecasting at SCOT scale |
 | **Headline results** | ProbTS: best CRPS on **12/17**, best NMAE on **11/17**; strong long-horizon; ablations: −KoPE/−KoFM/−AUG hurt CRPS up to ~12% / ~26% / ~16%; **≥25×** faster inference vs iterative generative models |
 | **Your IC contribution** | Technical ownership of **flow matching** and **Koopman mechanics** in KGO (the structured transport / dynamical pieces — not only experiments/writing) |
 
@@ -70,7 +71,7 @@ Status as of Sat 1 Aug 2026. Artifacts in-repo under [`papers/`](papers/) and [`
 
 - Paper: Amazon-side constraints on what we can say externally while under review?
 - Paper: who owns rebuttal timeline / experiment backlog (your IC slice vs Boris/Mayank)?
-- Paper / next science: reopen the **epistemic uncertainty** thread from KGO (aleatoric/AUG already done) — still a priority for him / SCOT?
+- Paper / next science: main line = efficient generative forecasting at SCOT scale; side = epistemic thread from KGO if he still cares
 - Workshop: light — congratulate acceptance; attracting strong papers (ops later if needed)
 - After NeurIPS cycle: natural follow-on inside SCOT Forecasting / Labs (KGO serving cost? synthetic pretrain + KGO?)?
 

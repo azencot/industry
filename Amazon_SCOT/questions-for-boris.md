@@ -14,14 +14,14 @@ Pick **3–4** live. Soft career tone — collaborator seeking a clear path, not
 ## B. Team priorities (feed the contribution pitch)
 
 3. **Bottleneck** — On foundation / sim-trained forecasting, where do you feel the bottleneck is right now: generators, scaling, transfer to real demand, or production eval mismatch?
-4. **Epistemic thread** — On KGO we already have aleatoric results via AUG; you were interested in **epistemic** uncertainty and I said we could go further — we never closed it. Is that still something you’d want owned inside SCOT (model doubt / gating under cold-start and shift), or did priorities move?
-5. **Mengfei bridge** — When I spoke with Mengfei in February, I heard generative as **infrastructure** (synthetic for cost/latency, cold-start, rare regimes) and **foundation models mainly to cut training times**, on top of coherence work like CLOVER. How does that map to what you and Labs are prioritizing this half?
+4. **Epistemic (side)** — On KGO we have aleatoric via AUG; you were interested in epistemic and we never closed it. Still interesting as a follow-on, or should we stay focused on efficient generative forecasting at scale?
+5. **Mengfei bridge** — When I spoke with Mengfei in February, I heard generative as **infrastructure** (synthetic for cost/latency, cold-start, rare regimes) and **foundation models mainly to cut training times**. How does that map to Labs priorities this half?
 
 ---
 
 ## C. Fit / path (the real ask)
 
-6. **Where I’d help first** — If I were contributing inside SCOT Forecasting / Labs next quarter, where would you point me first — epistemic uncertainty, synthetic transfer, or something else — and what would “good” look like in 90 days?
+6. **Where I’d help first** — If I were contributing inside SCOT Forecasting / Labs next quarter, where would you point me first — efficient generative forecasting under serving constraints, foundation/synthetic for train-time, or something else — and what would “good” look like in 90 days?
 7. **Openings / process** — Are there Sr / Principal Applied Scientist openings (or upcoming reqs) on Forecasting Science or Labs where my background is a fit? Who should I talk to next, and are you open to referring or intros? *(If warm: ask whether a recent Amazon loop helps speed process — IC seat, not “skip the loop.” See [`contribution-plan.md`](contribution-plan.md) Special Projects note.)*
 
 ---
@@ -46,6 +46,6 @@ Pick **3–4** live. Soft career tone — collaborator seeking a clear path, not
 | Goal | Ask |
 |------|-----|
 | Collab hygiene | Paper external constraints; workshop value for SCOT |
-| Pitch fuel | Epistemic unfinished thread; bottleneck; Mengfei ↔ Labs |
+| Pitch fuel | Efficient gen @ scale; Mengfei train-time; epistemic only as side |
 | Career | 90-day placement + openings / referral / intro |
 | Close | Explicit next step |
