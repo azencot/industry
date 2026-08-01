@@ -37,12 +37,14 @@
 
 - Delay embedding → small images → leverage vision diffusion (concrete representation bet you made)  
 - ImagenFew few-shot / data-scarce angle → cold-start SKUs  
-- One-step Koopman distillation → **inference cost / latency** (their pushback)  
+- One-step / efficient sampling → **inference cost / latency** (their pushback)  
 - Explicit cite of Boris’s sim-only FM line — already framed as complementary  
 - Quantile vs trajectory decision split — keep; it’s applied, not managerial  
+- **Group Q that stuck:** how to do **conditional / constrained sampling** — you now have recent IC work (AdaGN / concat / newer methods) → Wedge C in [`../contribution-plan.md`](../contribution-plan.md)
 
 ### Assets to leave on the shelf Monday
 
 - “Generative models may be the backbone of future forecasting systems”  
 - Long open-challenges laundry list  
-- PI-flavored author-list tour of the whole lab portfolio
+- PI-flavored author-list tour of the whole lab portfolio  
+- Relitigating the whole talk — extract the **conditioning gap**, don’t re-present the deck

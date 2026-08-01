@@ -8,7 +8,7 @@ Secondary track (not a formal interview loop). Prep for ongoing collaboration wi
 
 1. **Short collab update** — NeurIPS’26 paper + workshop (5–8 min)
 2. **Bridge from Mengfei** — what you heard as team needs (2–3 min)
-3. **Contribution pitch** — bring **efficient diffusion/FM generative forecasting** to SCOT scale; full spoken script in [`contribution-plan.md`](contribution-plan.md) (epistemic = side thread only)
+3. **Contribution pitch** — bridge SCOT’s sim→FM line into modern diffusion/FM generative; full script in [`contribution-plan.md`](contribution-plan.md)
 4. **Questions + next step** — openings, workstream intros, continued collab path (5 min)
 
 Tone: IC scientist who **already collaborates** with the team — not “please interview me.” Lead with what you would build, not lab-PI narrative.

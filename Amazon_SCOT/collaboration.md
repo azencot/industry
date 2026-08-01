@@ -19,7 +19,7 @@ Status as of Sat 1 Aug 2026. Artifacts in-repo under [`papers/`](papers/) and [`
 | **One-line problem** | Probabilistic forecasting needs structured dynamics + expressive uncertainty + **fast inference**; diffusion/flow are flexible but iterative/expensive |
 | **Method (speakable)** | **KGO** = forecasting as evolution of structured uncertainty: **KoPE** + **KoFM** (single-step) + **AUG** (adaptive **aleatoric** — **results already in paper**) |
 | **Open thread (Boris)** | **Side:** epistemic uncertainty (aleatoric/AUG already done); offered, not finished — mention only if natural ([`contribution-plan.md`](contribution-plan.md)) |
-| **Main contribution bet** | Efficient diffusion / flow-matching generative forecasting at SCOT scale |
+| **Main contribution bet** | Bridge existing sim→FM line into modern diffusion/FM generative (efficient sampling) |
 | **Headline results** | ProbTS: best CRPS on **12/17**, best NMAE on **11/17**; strong long-horizon; ablations: −KoPE/−KoFM/−AUG hurt CRPS up to ~12% / ~26% / ~16%; **≥25×** faster inference vs iterative generative models |
 | **Your IC contribution** | Technical ownership of **flow matching** and **Koopman mechanics** in KGO (the structured transport / dynamical pieces — not only experiments/writing) |
 
