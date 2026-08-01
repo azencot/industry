@@ -40,7 +40,7 @@
 - One-step / efficient sampling → **inference cost / latency** (their pushback)  
 - Explicit cite of Boris’s sim-only FM line — already framed as complementary  
 - Quantile vs trajectory decision split — keep; it’s applied, not managerial  
-- **Group Q that stuck:** how to do **conditional / constrained sampling** — you now have recent IC work (AdaGN / concat / newer methods) → Wedge C in [`../contribution-plan.md`](../contribution-plan.md)
+- **Group Q that stuck:** conditional / constrained sampling — IC crib: concat + AdaGN OK for covariates; weak when condition = lookback → Wedge C backup in [`../contribution-plan.md`](../contribution-plan.md)
 
 ### Assets to leave on the shelf Monday
 

@@ -21,7 +21,7 @@ Pick **3–4** live. Soft career tone — collaborator seeking a clear path, not
 
 ## C. Fit / path (the real ask)
 
-6. **Where I’d help first** — If I were on the team next quarter, would you rather I start by (A) upgrading synthetics feeding the FM, (B) efficient generative forecasting on a SCOT slice, or (C) **conditional / constrained sampling** — the gap from the group talk — and what would “good” look like in 90 days?
+6. **Where I’d help first** — My default would be upgrading synthetics feeding the FM (modern generative sim on top of ZSF). Would you rather I start there, or redirect to efficient generative forecasting or conditional sampling — and what would “good” look like in 90 days?
 7. **Openings / process** — Are there Sr / Principal Applied Scientist openings (or upcoming reqs) on Forecasting Science or Labs where my background is a fit? Who should I talk to next, and are you open to referring or intros? *(If warm: ask whether a recent Amazon loop helps speed process — IC seat, not “skip the loop.” See [`contribution-plan.md`](contribution-plan.md) Special Projects note.)*
 
 ---

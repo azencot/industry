@@ -60,15 +60,18 @@ Do **not** lead. 30s only if he asks “what else.”
 
 **Context you must respect:** They already showed zero-shot FM forecasting from simulation alone ([ZSF / SarSim0](https://arxiv.org/abs/2601.00970)). You’re not proposing “discover foundation models.” You’re proposing the next capability jump: **basic sim → modern generative synthetics / efficient generative forecasters**, including **conditional / constrained sampling** (a gap they voiced after your group talk).
 
-**0–90 (pick one primary wedge with Boris):**
+**0–90:**
 
-1. **Bridge ZSF-style FM into modern generative modeling**
-   - **Wedge A — Better synthetic for their FM:** replace or augment basic SARIMA-style sim with diffusion/FM generative synthetics; measure lift vs basic-sim baseline.
-   - **Wedge B — Efficient generative forecaster beside/on top of FM:** single-step / cheap-sampling generative forecasting (KGO-lineage) on a SCOT slice; quality + serve cost.
-   - **Wedge C — Conditional / constrained sampling (strong if they still care):** during the group talk they were unsure how to add **constraints / conditioning** into generative or FM-style work. You’ve spent the last few months with a PhD student on this — AdaGN-style conditioning, concat-to-input, and more recent techniques. Own a scoped bakeoff: which conditioning mechanism works for SCOT-relevant constraints (covariates, calendars, promo flags, capacity-ish bounds, etc.) under an efficient-sampling regime. Kill if conditioning doesn’t beat naive concat on a pre-agreed constraint set.
-2. **Side if he pulls:** Epistemic uncertainty (aleatoric already in KGO).
+- **Default = Wedge A** — Bridge synthetic + ZSF into modern generative modeling: replace/augment basic SARIMA-style sim with diffusion/FM generative synthetics; measure lift vs basic-sim baseline on zero-shot / fine-tune / train-time metrics. Kill if fancy synthetics don’t transfer.
+- **Backup B** — Efficient generative forecasting (KGO-lineage) on a SCOT slice; quality + serve cost.
+- **Backup C** — Conditional / constrained sampling (group-talk gap). IC crib below. Composes with A (controllable synthetics).
+- **Side if he pulls:** Epistemic (aleatoric already in KGO).
 
-**90–180:** Make the winning wedge structural — generative synthetic pipeline; scoped efficient-gen serving; and/or a **reusable conditioning module** the FM/gen stack can call when constraints matter.
+### Wedge C — conditioning IC crib (speakable ~45s)
+
+In diffusion / flow matching, the usual recipe is: **embed the time series, concat the condition, then AdaGN** — adaptive scale and translate — to fuse the two signals. That works well for **general / vector-like conditions** (covariates, calendars, promo flags). It works **much worse when the condition is itself a lookback sequence** (a history of values) — concat+AdaGN doesn’t handle sequential conditioning as cleanly. That’s the bakeoff I’ve been running with a PhD student: when concat+AdaGN is enough, and when you need something else for lookback-as-condition. For SCOT, covariates → start with concat+AdaGN; history-conditioned generation → don’t assume the default trick.
+
+**90–180:** Default path = generative synthetic pipeline feeding FM pretrain (from A). Fold in conditioning (C) if controllable synthetics matter. B only if serve-path generative forecast becomes the priority.
 
 ---
 
@@ -102,7 +105,7 @@ On the implementation side I’ve built and shipped training and sampling stacks
 
 That’s exactly how I think about our joint paper. The interesting part for SCOT isn’t a fancy architecture name. It’s probabilistic forecasting with a generative transport that can run in a **single step** instead of an iterative sampler — and on ProbTS that bought strong accuracy on most settings and on the order of **twenty-five times** faster inference versus iterative generative baselines. At Amazon scale, that cost story is the point.
 
-Around that I’ve built a real body of work — on the order of ten papers across VAEs, diffusion, and flow matching. ImagenTime and ImagenFew are about learning trajectory distributions for time series, including few-shot and data-scarce settings. I’ve worked on irregular sampling, synthetic and scarce-data regimes, and distillation for faster sampling. Over the past few months I’ve also gone deep with a PhD student on **conditional / constrained generation** — how you actually inject constraints into diffusion and related models: AdaGN-style conditioning, concat-to-input, and more recent techniques, with honest bakeoffs rather than one default trick. The through-line is: learn a distribution over trajectories so you can forecast, simulate, and synthesize — controllably, and in a way that can survive production cost.
+Around that I’ve built a real body of work — on the order of ten papers across VAEs, diffusion, and flow matching. ImagenTime and ImagenFew are about learning trajectory distributions for time series, including few-shot and data-scarce settings. I’ve worked on irregular sampling, synthetic and scarce-data regimes, and distillation for faster sampling. Over the past few months I’ve also gone deep with a PhD student on **conditional generation**. The standard construction is concat the embedded series with the condition, then AdaGN to scale and translate — that works well for covariates and similar signals, and it breaks down more when the condition is a **lookback sequence**. Knowing that split matters if you want controllable synthetics on top of a foundation-from-sim stack. The through-line is: learn a distribution over trajectories so you can forecast, simulate, and synthesize — controllably, and in a way that can survive production cost.
 
 So when I say I’m a generative modeling person, I mean theory plus code plus a track record — aimed at making generative forecasting **practical at scale**, not only accurate on a benchmark.
 
@@ -118,9 +121,9 @@ In parallel, your group published Zero-shot Forecasting by Simulation Alone — 
 
 When I sat with Mengfei in February, he reinforced interest in synthetic data for forecasting — cost, latency, cold-start, rare regimes — and foundation models for training-time. Generative work isn’t trying to delete quantile forecasting or throw away ZSF. It’s the next layer on a stack you already started.
 
-There’s also a concrete gap I remember from the group talk: the room was unsure how to do **conditional sampling / constraints** well in this stack. That’s a real systems need — calendars, promos, covariates, soft operational constraints — and it’s something I’ve been actively building recently, not a slide-deck idea.
+There’s also a concrete gap I remember from the group talk: the room was unsure how to do **conditional sampling / constraints** well in this stack. I’ve been building that recently — and the practical takeaway is that concat-plus-AdaGN is a solid default for covariate-like conditions, but not when the condition is a lookback history. Happy to bring that in as a follow-on to better synthetics; it’s not my day-one charter unless you say it should be.
 
-[Side, ~20–30s — optional] One open thread from KGO I’ll flag but not center: we already have aleatoric results via the adaptive uncertainty gate. You were interested in **epistemic** uncertainty; I said we could go there; we didn’t in the submission cycle. Happy to pick that up later if you still care — but the main thing I want to own is bridging modern generative modeling into the FM-from-synthetic line, including conditioning when that’s the bottleneck.
+[Side, ~20–30s — optional] One open thread from KGO I’ll flag but not center: we already have aleatoric results via the adaptive uncertainty gate. You were interested in **epistemic** uncertainty; I said we could go there; we didn’t in the submission cycle. Happy to pick that up later if you still care — but the main thing I want to own is bridging modern generative synthetics into the FM-from-synthetic line.
 
 ---
 
@@ -128,17 +131,13 @@ There’s also a concrete gap I remember from the group talk: the room was unsur
 
 So here’s what I’d want if I were contributing inside SCOT next quarter — one narrow charter with you, not a roadmap.
 
-You already have foundation forecasting from synthetic data. I don’t want to reinvent that. I want to **bridge it into modern generative modeling** — diffusion and flow matching with efficient sampling.
+You already have foundation forecasting from synthetic data. I don’t want to reinvent that. **My default ask is Wedge A:** bridge that synthetic + ZSF line into modern generative modeling — diffusion and flow matching with efficient sampling — so the data that feeds the foundation model isn’t stuck on basic sim.
 
-Concretely, I’d pick one wedge with you in week one:
+Concretely: keep the FM pretrain / zero-shot setup, but replace or augment the basic simulator with generative synthetics — rare regimes, richer trajectories, messier demand shapes that a simple sim undersamples. Success looks like measurable lift versus the basic-sim baseline on metrics you already care about — zero-shot quality, fine-tune efficiency, training-cycle time — with a clear kill criterion if fancy synthetics don’t transfer.
 
-**Wedge A:** upgrade the synthetic side. Keep the FM pretrain / zero-shot setup, but replace or augment the basic simulator with generative synthetics — so rare regimes, richer trajectories, and messier demand shapes aren’t undersampled the way they are in a simple sim. Success looks like measurable lift versus the basic-sim baseline on the metrics you already care about — zero-shot quality, fine-tune efficiency, training-cycle time — with a kill criterion if fancy synthetics don’t transfer.
+I have two backups if you’d rather point me elsewhere. **B:** efficient generative forecasting — KGO-style single-step sampling — on a SCOT slice, judged on quality and serve cost. **C:** conditional sampling — the gap from the group talk. What we’ve found is concat-plus-AdaGN works well for covariate-like conditions and struggles when the condition is a lookback sequence; that’s a real design choice, not a slogan. C also folds into A if you want controllable generative synthetics.
 
-**Wedge B:** bring efficient generative forecasting — the KGO-style single-step / cheap-sampling idea — onto a SCOT-relevant slice beside or on top of the FM path. Success looks like quality plus a serve-cost envelope that could plausibly live at Amazon scale, again versus a clear baseline, with a kill if it only wins offline.
-
-**Wedge C:** solve **conditional / constrained sampling** for the generative or FM-style stack. After the group talk it was clear this was an open question for the team. I’ve been working this with a PhD student — AdaGN-style, concat-to-input, and newer conditioning methods — comparing what actually holds constraints without wrecking sample quality or latency. Success looks like a small bakeoff on SCOT-relevant constraint types, with a recommended default and a kill if nothing beats naive concat by enough to matter.
-
-I’d rather own one wedge deeply than all three shallowly. A and C also compose well — better synthetics that are *conditionally* controllable. I can bring the generative modeling; I need your judgment on which wedge is the hotter SCOT need right now.
+I’d rather own A deeply unless you redirect me. I can bring the generative modeling; I need your judgment on data access and which demand families make the right first comparison to SarSim0-style baselines.
 
 What you’d get from me is hands-on modeling, experiments, and an honest recommendation — not a slide deck of open challenges. By day ninety: agreed charter, reproducible comparison to the existing sim→FM line, written ship-or-kill. Paper rebuttal and workshop stay professional in parallel without becoming the main story.
 
@@ -148,7 +147,7 @@ What you’d get from me is hands-on modeling, experiments, and an honest recomm
 
 By one-eighty I’d want that charter to have become something structural — not a notebook that dies after the write-up.
 
-If we took wedge A, that might look like a generative synthetic pipeline that regularly feeds foundation-model pretrain — with known failure modes and a clear rule for when basic sim is enough. If we took wedge B, a scoped path where efficient generative forecasting is allowed for the SKU families or decisions where trajectory modeling is worth the cost — “use it here / don’t use it there.” If we took wedge C — or A+C — a **conditioning / constraints module** the stack can reuse when you need controlled synthetics or constrained forecasts, with a documented recipe (when AdaGN-style wins, when concat is enough, when you need something newer). Either way, the point is to strengthen the FM-from-synthetic bet you already made, not to run a parallel science island.
+If we stay on A — my default — that looks like a generative synthetic pipeline that regularly feeds foundation-model pretrain, with known failure modes and a clear rule for when basic sim is enough. Conditioning (C) can layer on so those synthetics are controllable for covariates versus lookback-style conditions. If you redirect to B, a scoped efficient-generative serving path with “use it here / don’t use it there.” The point is to strengthen the FM-from-synthetic bet you already made, not to run a parallel science island.
 
 I’m not asking to replace the production quantile stack on day one. Quantiles are often right for single-period decisions. Generative methods earn their keep when you need richer synthetics, trajectory structure, or distributions that basic sim can’t give you — **and** when sampling is cheap enough that SCOT can afford them. I’d rather kill an attractive idea early than oversell it into serving.
 
@@ -164,7 +163,7 @@ I’ve also built multimodal systems for time-series reasoning. I wouldn’t own
 
 ### Close (~45–60s)
 
-Putting it together: I think the modeling fit is there — diffusion and flow matching with efficient sampling. You already started the foundation-from-synthetic bet; I want to bridge that into modern generative modeling so the synthetics and the forecasters catch up to what generative methods can actually do at scale. The collaboration already works. What I’m asking for is a path to own that bridge inside the team — a ninety-day charter on one clear wedge, a one-eighty picture of turning it into something the stack can use, and a clear next step if you see a fit.
+Putting it together: I think the modeling fit is there — diffusion and flow matching with efficient sampling. You already started the foundation-from-synthetic bet; I want to bridge that into modern generative **synthetics** so the data feeding the FM catches up — that’s my default ninety-day charter. Backups if you redirect: efficient generative forecasting, or conditional sampling where concat-plus-AdaGN isn’t enough for lookback conditions. The collaboration already works. What I’m asking for is a path to own that bridge inside the team — and a clear next step if you see a fit.
 
 If you see a fit, I’d really appreciate an intro or a concrete next step — a hiring manager, a Labs lead, whatever the right door is. If timing isn’t right, I’m still all-in on finishing the NeurIPS paper and the workshop well. Either way I want this collaboration to stay strong.
 
@@ -197,7 +196,7 @@ What would you point me at first if I were on the team next quarter?
 | Open | 1 | status + shift to fit |
 | Why me | 2–3 | diffusion/FM + **efficient sampling** + KGO speed story |
 | Already your bet | 1.5–2 | ZSF exists but basic sim; Mengfei train-time; bridge to modern gen |
-| 90 days | 2–2.5 | wedge A / B / C (conditioning) — pick one |
+| 90 days | 2–2.5 | **Default A** — gen synthetics→ZSF; B/C backups |
 | 180 days | 1.5–2 | scoped serving / train-time structural outcome |
 | Optional multimodal | 0.5 | only if pulled |
 | Close | 1 | ask + next step |
@@ -233,8 +232,8 @@ What would you point me at first if I were on the team next quarter?
 ## TODO before Monday
 
 - [x] Lock KGO IC slice: flow matching + structured dynamical mechanics
-- [ ] Read Part 4 aloud once; cut to ≤12 min
-- [ ] Default 90-day ask = **bridge ZSF → modern gen** (A synthetics / B efficient forecast / **C conditional sampling**); epistemic only if he pulls
-- [ ] If leading with C: 2–3 sentence IC summary of AdaGN vs concat vs newer methods + one SCOT constraint example
+- [x] Read Part 4 aloud; skim ZSF abstract
+- [x] Default 90-day ask = **Wedge A** (bridge synthetic + ZSF → modern generative synthetics)
+- [x] Conditioning IC crib: concat + AdaGN works for covariates; weaker when condition = lookback sequence
+- [ ] Optional: one interrupt rehearsal (“Why not just scale SarSim0?”)
 - [ ] Do **not** prep a Koopman deep-dive
-- [ ] Skim [ZSF abstract](https://arxiv.org/abs/2601.00970) for a clean nod
