@@ -1,8 +1,8 @@
 # Contribution plan — Omri → SCOT (Monday with Boris)
 
-**Purpose:** Convince Boris you are the right IC to deepen into SCOT — **bridge** their existing sim→foundation forecasting line into **modern generative modeling** (diffusion / flow matching + efficient sampling).
+**Purpose of the call:** Explore whether there is a path for you at SCOT. Convince Boris you can **contribute** — bridge their existing sim→foundation forecasting line into **modern generative modeling** (diffusion / flow matching + efficient sampling). **Not** a promised role; there may be no opening (or none for you) right now.
 
-**How Boris hears you:** He values **math and modeling**. Lead with generative forecasting / synthetics that can actually strengthen the FM bet they already made. Show KGO / workshop / Mengfei alignment. Propose what you would *own*. Say “I.” Avoid PI / lab-roadmap voice ([`talks/README.md`](talks/README.md)).
+**How Boris hears you:** He values **math and modeling**. Lead with generative forecasting / synthetics that can strengthen the FM bet they already made. Show KGO / workshop / Mengfei alignment. Propose a concrete charter as *evidence of fit* — framed as “if there were a path,” not “when I’m on the team.” Say “I.” Avoid PI / lab-roadmap voice ([`talks/README.md`](talks/README.md)).
 
 **Main bet (do not lose this):** SCOT already has FM-from-synthetic ([ZSF](https://arxiv.org/abs/2601.00970)) with relatively **basic** sim. You bring the next jump — diffusion/FM generative synthetics and/or efficient generative forecasting — not “invent foundation models.”
 
@@ -16,7 +16,7 @@
 
 ## The argument in one breath
 
-You’re deep on diffusion and flow matching — math and implementation — especially **efficient sampling**. SCOT already has a foundation-forecasting bet on **synthetic pretrain** ([ZSF](https://arxiv.org/abs/2601.00970)) — and that synthetic is still relatively **basic** (SARIMA-style sim). Monday: **I want to bridge that existing FM effort into modern generative modeling** — richer diffusion/FM synthetics and/or efficient generative forecasting — under SCOT constraints. KGO is proof we already collaborate on the efficient-gen side. Epistemic is a side door, not the headline.
+You’re deep on diffusion and flow matching — math and implementation — especially **efficient sampling**. SCOT already has a foundation-forecasting bet on **synthetic pretrain** ([ZSF](https://arxiv.org/abs/2601.00970)) — and that synthetic is still relatively **basic** (SARIMA-style sim). Monday: show how you’d **bridge that existing FM effort into modern generative modeling** if a path existed — and ask honestly whether opportunities / timing / intros make sense. KGO is proof you already collaborate. Epistemic is a side door, not the headline.
 
 ---
 
@@ -85,13 +85,13 @@ Rehearse once. Center **efficient generative forecasting**. Epistemic = one shor
 
 Thanks for making time — I’ve really valued the collaboration over the last few months.
 
-Quick status, then I want to shift to how I could contribute inside SCOT, not only as an external coauthor.
+Quick status, then I want to shift to whether there’s a path for me to contribute inside SCOT more deeply — not only as an external coauthor. I know openings aren’t always there; I’m mainly here to show fit and get your honest read.
 
-On the NeurIPS paper — the efficient generative forecasting work we’ve been doing — it’s still under review. The early reviews came back positive, which is encouraging. On my side I owned the technical parts around **flow matching and the structured dynamical mechanics** that make single-step generation work — not just running experiments. Happy to dig into rebuttal or experiments whenever you want.
+On the NeurIPS paper — the efficient generative forecasting work we’ve been doing — rebuttal is in. One reviewer already said concerns are addressed; waiting on the second; next is a short AC meta-review note. On my side I owned the technical parts around **flow matching and the structured dynamical mechanics** that make single-step generation work — not just running experiments. Happy to sync on the AC summary whenever you want.
 
 The workshop was accepted — Foundation Models for Temporal Systems — which is great news for all of us as co-organizers. I’m looking forward to it. One thing I’d love is that we attract a really strong set of papers — work that connects forecasting research to systems people actually care about shipping. Happy to sync on that whenever useful; we don’t have to dig into ops today.
 
-What I mainly want to talk about today is fit: bridging your foundation-from-synthetic work into modern generative modeling — diffusion and flow matching with **efficient sampling** — and a concrete ninety- and one-eighty-day picture of what I’d own if I were inside the team.
+What I mainly want to talk about today is contribution fit: bridging your foundation-from-synthetic work into modern generative modeling — diffusion and flow matching with **efficient sampling** — and a concrete picture of what I’d own **if** there were a path. Then I want your honest sense of opportunities and timing.
 
 ---
 
@@ -129,7 +129,7 @@ There’s also a concrete gap I remember from the group talk: the room was unsur
 
 ### What I’d own — 90 days (~2–2.5 min)
 
-So here’s what I’d want if I were contributing inside SCOT next quarter — one narrow charter with you, not a roadmap.
+Here’s a concrete charter I’d propose **if** there were a path to contribute inside SCOT next quarter — one narrow bet with you, not a roadmap. Treat this as “how I’d show up,” not as assuming a seat exists.
 
 You already have foundation forecasting from synthetic data. I don’t want to reinvent that. **My default ask is Wedge A:** bridge that synthetic + ZSF line into modern generative modeling — diffusion and flow matching with efficient sampling — so the data that feeds the foundation model isn’t stuck on basic sim.
 
@@ -157,7 +157,7 @@ What you’d get from me is hands-on modeling, experiments, and an honest recomm
 
 ### What I’d own — 180 days (~1.5–2 min)
 
-By one-eighty I’d want that charter to have become something structural — not a notebook that dies after the write-up.
+By one-eighty — **if** that charter were real — I’d want it to have become something structural — not a notebook that dies after the write-up.
 
 If we stay on A — my default — that looks like a generative synthetic pipeline that regularly feeds foundation-model pretrain, with known failure modes and a clear rule for when basic sim is enough. Conditioning (C) can layer on so those synthetics are controllable for covariates versus lookback-style conditions. If you redirect to B, a scoped efficient-generative serving path with “use it here / don’t use it there.” The point is to strengthen the FM-from-synthetic bet you already made, not to run a parallel science island.
 
@@ -175,11 +175,13 @@ I’ve also built multimodal systems for time-series reasoning. I wouldn’t own
 
 ### Close (~45–60s)
 
-Putting it together: I think the modeling fit is there — diffusion and flow matching with efficient sampling. You already started the foundation-from-synthetic bet; I want to bridge that into modern generative **synthetics** so the data feeding the FM catches up — that’s my default ninety-day charter. Backups if you redirect: efficient generative forecasting, or conditional sampling where concat-plus-AdaGN isn’t enough for lookback conditions. The collaboration already works. What I’m asking for is a path to own that bridge inside the team — and a clear next step if you see a fit.
+Putting it together: I think the modeling fit is there — diffusion and flow matching with efficient sampling. You already started the foundation-from-synthetic bet; I’d want to bridge that into modern generative **synthetics** so the data feeding the FM catches up — that’s the charter I’d propose if a path existed. Backups if you’d redirect: efficient generative forecasting, or conditional sampling where concat-plus-AdaGN isn’t enough for lookback conditions. The collaboration already works.
 
-If you see a fit, I’d really appreciate an intro to a **Forecasting Science manager**. You can say I’m a hands-on generative modeling scientist — diffusion and flow matching — we’ve already collaborated on efficient generative forecasting in KGO, and I want to strengthen the sim→foundation line by bringing modern generative synthetics into that stack. If timing isn’t right, I’m still all-in on finishing the NeurIPS paper and the workshop well. Either way I want this collaboration to stay strong.
+I’m not assuming there’s an opening. What I’m asking for is your honest read — is there a path worth exploring, an intro that makes sense, or is timing off for now? Either way I’m all-in on finishing the NeurIPS paper and the workshop well, and I want this collaboration to stay strong.
 
-What would you point me at first if I were on the team next quarter — or are you open to that intro?
+If you *do* see a fit and timing allows, an intro to a **Forecasting Science manager** would help. You can say I’m a hands-on generative modeling scientist — diffusion and flow matching — we’ve already collaborated on efficient generative forecasting in KGO, and I’d want to strengthen the sim→foundation line with modern generative synthetics.
+
+What’s your honest read on opportunities and timing?
 
 ---
 
@@ -191,9 +193,9 @@ What would you point me at first if I were on the team next quarter — or are y
 
 **Real upside (narrow):** process familiarity; recent loop *may* speed a new req if recruiter/HM decides; ask Boris for **referral / intro / process**, not “waive the loop.”
 
-**If fit is warm — optional ~20s:**
+**If conversation is warm and he opens process — optional ~20s:**
 
-> If there’s a path onto Forecasting / Labs, I’d love your read on process — referral, who to talk to, and whether a recent Amazon loop helps speed things. I’m focused on an IC science seat.
+> If there’s any path onto Forecasting / Labs worth exploring, I’d love your read — referral, who to talk to, timing, and whether a recent Amazon loop helps speed things. I’m focused on an IC science seat. Totally fine if the answer is “not now.”
 
 **Only if he asks whether you’ve looped:**
 
@@ -208,13 +210,13 @@ What would you point me at first if I were on the team next quarter — or are y
 
 | Block | ~Min | Focus |
 |-------|------|--------|
-| Open | 1 | status + shift to fit |
+| Open | 1 | status + shift to exploratory fit |
 | Why me | 2–3 | diffusion/FM + **efficient sampling** + KGO speed story |
 | Already your bet | 1.5–2 | ZSF exists but basic sim; Mengfei train-time; bridge to modern gen |
-| 90 days | 2–2.5 | **Default A** — gen synthetics→ZSF; B/C backups |
-| 180 days | 1.5–2 | scoped serving / train-time structural outcome |
+| 90 days | 2–2.5 | **Default A** as hypothetical charter — gen synthetics→ZSF; B/C backups |
+| 180 days | 1.5–2 | scoped serving / train-time structural outcome *if* a path existed |
 | Optional multimodal | 0.5 | only if pulled |
-| Close | 1 | ask + next step |
+| Close | 1 | honest read on opportunities / timing; intro only if warm |
 | **Total** | **~8–12** | |
 
 ---
@@ -232,6 +234,7 @@ What would you point me at first if I were on the team next quarter — or are y
 - Arguing the Special Projects verdict (“judged incorrectly”) — fair + IC evidence only
 - Forecasting pitch metrics as precision/recall/F1 — use CRPS / NMAE / quantile loss
 - Soft kill (“PoC has no kill”) — match/beat SarSim0 within noise or kill A
+- Sounding like a seat is already promised (“when I’m on the team,” “my ninety-day plan at SCOT”) — charter is hypothetical evidence of fit; openings may not exist
 
 ### If the March talk comes up
 

@@ -8,7 +8,7 @@
 | **Known for** | N-BEATS (ICLR 2020); N-HiTS; meta-learning / zero-shot forecasting |
 | **SCOT themes** | Large-scale / foundation time-series forecasting; synthetic & simulation data; peak-event demand (e.g. SPADE); research that ships |
 | **Relationship** | Joint NeurIPS’26 forecasting paper (under review); NeurIPS’26 workshop (accepted); months of collaboration; generative forecasting with Omri + Mayank |
-| **Monday call** | Mon 3 Aug 2026 — collab update + contribution / fit conversation |
+| **Monday call** | Mon 3 Aug 2026 — collab update + exploratory contribution / opportunities conversation (no promised role) |
 
 **How to talk to him:** technical peer. Lead with concrete modeling / data / eval bets and what you would own. Avoid managerial PI framing (same IC discipline as FinTech prep).
 

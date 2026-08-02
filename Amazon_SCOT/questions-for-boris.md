@@ -1,12 +1,14 @@
 # Questions for Boris — Mon 3 Aug 2026
 
-Pick **3–4** live. Soft career tone — collaborator seeking a clear path, not an audit.
+Pick **3–4** live. Tone: collaborator checking whether a path exists — not assuming a hire.
+
+**Reality check:** No seat has been offered. There may be no opening. Contribution ideas = evidence of fit; career asks = honest exploration.
 
 ---
 
 ## A. Collaboration ops (open with these if needed)
 
-1. **Paper while under review** — Anything we should avoid saying externally? Who should own the rebuttal experiment backlog on the Amazon side vs my side?
+1. **Paper while under review** — Anything we should avoid saying externally? For the AC meta-review: want me to draft the summary of responses + revision changes (R1 addressed; waiting on R2), or will Amazon side own that?
 2. **Workshop** — Keep light: shared win as co-organizers; hope we attract strong papers. Don’t invent ownership of CFP/site unless he opens ops.
 
 ---
@@ -19,16 +21,16 @@ Pick **3–4** live. Soft career tone — collaborator seeking a clear path, not
 
 ---
 
-## C. Fit / path (the real ask)
+## C. Fit / path (exploratory — the real ask)
 
-6. **Where I’d help first** — My default would be upgrading synthetics feeding the FM (modern generative sim on top of ZSF). Would you rather I start there, or redirect to efficient generative forecasting or conditional sampling — and what would “good” look like in 90 days?
-7. **Openings / process** — Intro to a **Forecasting Science manager**? Suggested line: generative modeling (diffusion/FM); collab on KGO; wants to strengthen sim→FM with modern generative synthetics. IC seat; if warm, whether a recent Amazon loop helps speed process — not “skip the loop.” See [`contribution-plan.md`](contribution-plan.md).
+6. **Where I’d help if there were a path** — My default would be upgrading synthetics feeding the FM (modern generative sim on top of ZSF). Would that be the right first bet from your side, or would you redirect to efficient generative forecasting / conditional sampling — and what would “good” look like in ~90 days *if* someone owned that?
+7. **Opportunities / timing** — Is there any opening or upcoming req on Forecasting Science / Labs where this background is a fit, or is timing off for now? If warm: open to an intro to a manager? Suggested one-liner: generative modeling (diffusion/FM); collab on KGO; wants to strengthen sim→FM with modern generative synthetics. IC seat. Recent Amazon loop only if he opens process — not “skip the loop.” See [`contribution-plan.md`](contribution-plan.md).
 
 ---
 
 ## D. Backup (if time / energy)
 
-8. How do strong external collaborators usually convert — full-time loop, contractor/visit, continued unpaid collab only?
+8. How do strong external collaborators usually convert when there *is* interest — full-time loop, contractor/visit, continued unpaid collab only?
 9. Which SCOT forecast failure mode is most expensive right now (peak/PPE, cold-start SKUs, sparse/intermittent, supply censoring, hierarchical reconciliation side effects, latency/cost)?
 10. For policy eval — do you mostly use marginal quantiles, or do you simulate joint demand trajectories when lead times / multi-period coupling matter?
 11. Longer term: does reconciliation stay necessary, or can hierarchical structure live inside generative / foundation models?
@@ -37,7 +39,7 @@ Pick **3–4** live. Soft career tone — collaborator seeking a clear path, not
 
 ## Close (say this)
 
-> I’ve really valued the collaboration on the paper and the workshop. I’d like to go deeper — ideally as part of the team. If you see a fit, I’d appreciate an intro or a clear next step; if timing is off, I’m still all-in on finishing the NeurIPS work well.
+> I’ve really valued the collaboration on the paper and the workshop. I’d like to contribute more deeply if there’s a path — and I know that might not exist right now. If you see a fit and timing allows, an intro or clear next step would mean a lot; if timing is off, I’m still all-in on finishing the NeurIPS work well and keeping this collab strong.
 
 ---
 
@@ -47,5 +49,5 @@ Pick **3–4** live. Soft career tone — collaborator seeking a clear path, not
 |------|-----|
 | Collab hygiene | Paper external constraints; workshop value for SCOT |
 | Pitch fuel | Bridge ZSF→modern gen; conditioning gap from talk; Mengfei train-time |
-| Career | 90-day placement + openings / referral / intro |
-| Close | Explicit next step |
+| Career | Honest read on openings / timing; intro only if warm |
+| Close | Next step **or** graceful “not now” + continued collab |

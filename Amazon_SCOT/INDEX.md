@@ -1,17 +1,19 @@
 # Amazon SCOT — relationship & contribution track
 
-Secondary track (not a formal interview loop). Prep for ongoing collaboration with SCOT Forecasting scientists and for converting that relationship into a clear fit / hire path.
+Secondary track (not a formal interview loop). Ongoing collab with SCOT Forecasting scientists; Monday is an **exploratory** conversation about whether there is a path for you inside SCOT — not a promised role.
 
 ---
 
 ## Call goal — Mon 3 Aug 2026 (Boris Oreshkin)
 
+**Reality check:** Boris has **not** offered a seat. There may be **no** opening (or none they’d put you on). Goal = (1) stay strong on the collab, (2) show you can contribute concretely, (3) learn honestly whether opportunities exist / who to talk to / what timing looks like.
+
 1. **Short collab update** — NeurIPS’26 paper + workshop (5–8 min)
 2. **Bridge from Mengfei** — what you heard as team needs (2–3 min)
-3. **Contribution pitch** — bridge SCOT’s sim→FM line into modern diffusion/FM generative; full script in [`contribution-plan.md`](contribution-plan.md)
-4. **Questions + next step** — openings, workstream intros, continued collab path (5 min)
+3. **Contribution pitch** — how you’d help if there were a path (Wedge A); full script in [`contribution-plan.md`](contribution-plan.md)
+4. **Questions + reality check** — priorities, whether openings exist, intro only if warm; graceful if timing is off (5 min)
 
-Tone: IC scientist who **already collaborates** with the team — not “please interview me.” Lead with what you would build, not lab-PI narrative.
+Tone: IC collaborator exploring fit — lead with what you’d build, not “when I join.” Don’t sound like the hire is already decided.
 
 ---
 
@@ -66,7 +68,8 @@ Public anchors (skim, don’t over-prep):
 | Is | Is not |
 |----|--------|
 | Relationship + contribution prep | Full PS1 / LP / timed-code machine |
+| Exploratory “is there a path?” conversation | A promised SCOT seat or open req |
+| Concrete “how I’d help if there were a path” | Assuming hire / “when I’m on the team” |
 | Paper + workshop hygiene | A second FinTech story bank |
-| Clear “how I help SCOT” narrative | Generic “I’m excited about Amazon” |
 
 If SCOT becomes a formal loop, promote files here and reuse FinTech skills (`/mock-lp`, `/timed-code`, `/debrief`) without duplicating the whole FinTech tree.
