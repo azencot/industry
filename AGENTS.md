@@ -4,10 +4,11 @@ Hand this to every new AI session working in this repo. Treat it like a day-one 
 
 ## Purpose
 
-Industry prep workspace with two Amazon tracks:
+Industry prep workspace:
 
 - **FinTech (FinTelligence)** — formal interview loop: recall under pressure, LP/STAR articulation, timed coding with narration
-- **SCOT (Forecasting)** — relationship / contribution prep (not a PS1 machine unless it becomes a formal loop)
+- **Forecasting** — general industry forecasting practice for AS roles (production, eval, tradeoffs); **not** SCOT
+- **SCOT** — relationship / contribution prep (not a PS1 machine unless it becomes a formal loop)
 
 Not a production app repo.
 
@@ -16,11 +17,13 @@ Not a production app repo.
 1. [`INDEX.md`](INDEX.md) — annotated map of the repo
 2. Active track INDEX:
    - FinTech → [`Amazon_FinTech/INDEX.md`](Amazon_FinTech/INDEX.md)
+   - Forecasting → [`Forecasting/INDEX.md`](Forecasting/INDEX.md) (week plan, notes, `/forecasting` drills)
    - SCOT → [`Amazon_SCOT/INDEX.md`](Amazon_SCOT/INDEX.md) (contacts, collab, contribution pitch, questions)
 3. [`.cursor/skills/debrief/omri_azencot_experience.md`](.cursor/skills/debrief/omri_azencot_experience.md) — experience profile, flagship project, IC framing (shared)
 4. FinTech only: [`Amazon_FinTech/prep-plan.md`](Amazon_FinTech/prep-plan.md) — weekly plan; check today's focus
 5. FinTech only: latest [`Amazon_FinTech/debrief/`](Amazon_FinTech/debrief/) or [`mocks/`](Amazon_FinTech/mocks/) when continuing that track
-6. SCOT only: [`contribution-plan.md`](Amazon_SCOT/contribution-plan.md) + [`mengfei-notes.md`](Amazon_SCOT/mengfei-notes.md) before Boris/Mengfei calls; session/post-call notes in [`Amazon_SCOT/notes/`](Amazon_SCOT/notes/) (SCOT debriefs live here, not under FinTech)
+6. Forecasting only: [`Forecasting/prep-plan.md`](Forecasting/prep-plan.md); notes under [`Forecasting/notes/`](Forecasting/notes/)
+7. SCOT only: [`contribution-plan.md`](Amazon_SCOT/contribution-plan.md) + [`mengfei-notes.md`](Amazon_SCOT/mengfei-notes.md) before Boris/Mengfei calls; session/post-call notes in [`Amazon_SCOT/notes/`](Amazon_SCOT/notes/) (SCOT debriefs live here, not under FinTech or Forecasting)
 
 ## Behavior
 
@@ -65,6 +68,7 @@ Load from [`.cursor/skills/`](.cursor/skills/) when the user invokes or the task
 | `mock-lp` | LP / behavioral practice |
 | `timed-code` | Timed LeetCode simulation |
 | `ml-deep-dive` | ML/LLM technical depth practice |
+| `forecasting` | Industry forecasting system design / tradeoff drills |
 | `debrief` | Post-mock or post-interview write-up |
 | `log-timed-drill` | Logging a finished timed-code result to INDEX + prep-plan |
 | `commit-push` | User asks to commit and/or push |

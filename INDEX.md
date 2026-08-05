@@ -1,8 +1,8 @@
 # industry — repo index
 
-Personal workspace for industry job prep: Amazon FinTech Senior Applied Scientist interviews, Amazon SCOT relationship/contribution prep, LeetCode practice, and compounding interview artifacts.
+Personal workspace for industry job prep: Amazon FinTech interviews, general forecasting-role practice, Amazon SCOT relationship/contribution prep, LeetCode, and compounding interview artifacts.
 
-**New session?** Read in order: this file → [`AGENTS.md`](AGENTS.md) → active track INDEX (`Amazon_FinTech` or `Amazon_SCOT`).
+**New session?** Read in order: this file → [`AGENTS.md`](AGENTS.md) → active track INDEX (`Amazon_FinTech`, `Forecasting`, or `Amazon_SCOT`).
 
 ---
 
@@ -12,9 +12,10 @@ Personal workspace for industry job prep: Amazon FinTech Senior Applied Scientis
 |------|------------|--------------|
 | [`AGENTS.md`](AGENTS.md) | Onboarding for AI sessions: conventions, behavior, skills | Start of every Cursor session |
 | [`Amazon_FinTech/`](Amazon_FinTech/) | Role-specific prep: plan, stories, debriefs, mocks, CV | Before FinTech interview work |
+| [`Forecasting/`](Forecasting/) | General industry forecasting practice (not SCOT) | When targeting forecasting AS roles |
 | [`Amazon_SCOT/`](Amazon_SCOT/) | SCOT relationship track: contacts, collab, contribution pitch | Before Boris / Mengfei / SCOT calls |
 | [`code/`](code/) | LeetCode solutions (Python); `_practice` = scratch attempts | Coding prep, timed drills |
-| [`.cursor/skills/`](.cursor/skills/) | Repeatable prep workflows (`/mock-lp`, `/timed-code`, etc.) | When running a structured drill |
+| [`.cursor/skills/`](.cursor/skills/) | Repeatable prep workflows (`/mock-lp`, `/timed-code`, `/forecasting`, etc.) | When running a structured drill |
 
 ---
 
@@ -27,6 +28,15 @@ Personal workspace for industry job prep: Amazon FinTech Senior Applied Scientis
 
 ---
 
+## Forecasting (general industry practice)
+
+- **Purpose:** Senior/principal AS forecasting roles — production systems, eval, tradeoffs (LightGBM vs FMs, etc.)
+- **Not** SCOT relationship prep (that stays under `Amazon_SCOT/`)
+- **Plan:** [`Forecasting/prep-plan.md`](Forecasting/prep-plan.md) · [`Forecasting/INDEX.md`](Forecasting/INDEX.md)
+- **Skill:** `/forecasting`
+
+---
+
 ## Amazon SCOT (secondary — relationship / contribution)
 
 - **Org:** Supply Chain Optimization Technologies — Forecasting Science / Labs circle
@@ -35,6 +45,7 @@ Personal workspace for industry job prep: Amazon FinTech Senior Applied Scientis
 - **Next:** Mon 3 Aug 2026 call with Boris — short paper/workshop update, then contribution / fit pitch
 - **Details:** [`Amazon_SCOT/INDEX.md`](Amazon_SCOT/INDEX.md), [`Amazon_SCOT/contribution-plan.md`](Amazon_SCOT/contribution-plan.md)
 - **Not** a formal PS1 loop yet — no stories/mocks/timed-code bank in this folder
+- **Unrelated** to the general [`Forecasting/`](Forecasting/) practice track
 
 ---
 
