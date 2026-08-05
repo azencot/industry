@@ -41,7 +41,7 @@ User has deep research TS / generative / FM expertise. Push **production judgmen
    - “How would you A/B against the current champion?”
 5. **Reference skeleton** — give a tight 90s–3 min outline after they answer (not a paper).
 6. **Optional retake** — one retry; score delta only.
-7. **Persist** — save corrections to `Forecasting/notes/YYYY-MM-DD_<topic>.md`; update [`prep-plan.md`](../../Forecasting/prep-plan.md) checkboxes if mid-week.
+7. **Persist** — save corrections to `Forecasting/notes/YYYY-MM-DD_<topic>.md`; update [`prep-plan.md`](../../Forecasting/prep-plan.md) checkboxes if mid-week. Session debriefs for this track also live under `Forecasting/notes/` (not FinTech/SCOT folders).
 
 ## Default answer skeleton
 

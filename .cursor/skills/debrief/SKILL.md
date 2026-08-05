@@ -19,12 +19,15 @@ After mock interview, timed code drill, real interview, exploration session, or 
 
 **Amazon SCOT session debriefs** live under **[`Amazon_SCOT/notes/`](../../Amazon_SCOT/notes/)** (`YYYY-MM-DD_{topic}.md`) — relationship/contribution track; not a FinTech PS1 machine unless it becomes a formal loop.
 
+**Forecasting track session debriefs** live under **[`Forecasting/notes/`](../../Forecasting/notes/)** (`YYYY-MM-DD_{topic}.md`) — general industry forecasting practice; not SCOT.
+
 **General reusable references** about Omri or project background live under **`.cursor/skills/debrief/`** so every future agent can load them independent of interview track.
 
 | File type | Path pattern | Example |
 |-----------|--------------|---------|
 | Amazon FinTech session debrief | `Amazon_FinTech/debrief/YYYY-MM-DD_{topic}.md` | `2026-06-24_prep-strategy.md` |
 | Amazon SCOT session debrief | `Amazon_SCOT/notes/YYYY-MM-DD_{topic}.md` | `2026-08-01_scot-scaffold.md` |
+| Forecasting session debrief | `Forecasting/notes/YYYY-MM-DD_{topic}.md` | `2026-08-05_day1-tierA-debrief.md` |
 | General profile/project reference | `.cursor/skills/debrief/{name}_{topic}.md` | `omri_azencot_experience.md`, `vlm_multimodal_project.md` |
 
 Template: [`Amazon_FinTech/debrief/README.md`](../../Amazon_FinTech/debrief/README.md).
@@ -37,10 +40,11 @@ Template: [`Amazon_FinTech/debrief/README.md`](../../Amazon_FinTech/debrief/READ
    - Session type, duration, what was covered
    - What went well / what broke
    - Any recurring corrections ("still wrong", "forgot to mention X")
-2. **Write debrief** — FinTech session notes → **`Amazon_FinTech/debrief/`**. SCOT session notes → **`Amazon_SCOT/notes/`**. General background about Omri or a project → **`.cursor/skills/debrief/`**.
+2. **Write debrief** — FinTech session notes → **`Amazon_FinTech/debrief/`**. SCOT session notes → **`Amazon_SCOT/notes/`**. Forecasting session notes → **`Forecasting/notes/`**. General background about Omri or a project → **`.cursor/skills/debrief/`**.
 3. **Update indexes**
    - FinTech: add row to debrief table in [`Amazon_FinTech/INDEX.md`](../../Amazon_FinTech/INDEX.md); mock table / timed log / stories README as applicable
    - SCOT: add timeline or key-files pointer in [`Amazon_SCOT/INDEX.md`](../../Amazon_SCOT/INDEX.md)
+   - Forecasting: add session log row in [`Forecasting/INDEX.md`](../../Forecasting/INDEX.md); update [`Forecasting/prep-plan.md`](../../Forecasting/prep-plan.md) checkboxes
 4. **Promote corrections** — if something failed twice or is broadly useful:
 
    | If correction is about… | Update |
@@ -60,6 +64,7 @@ Confirm files touched:
 ```
 Debrief saved: Amazon_FinTech/debrief/YYYY-MM-DD_{topic}.md
   — or Amazon_SCOT/notes/YYYY-MM-DD_{topic}.md for SCOT track
+  — or Forecasting/notes/YYYY-MM-DD_{topic}.md for Forecasting track
 [Mock log: Amazon_FinTech/mocks/YYYY-MM-DD_{type}.md — if applicable]
 Updated: [list paths]
 Next session: [one item + @Files prompt]
@@ -70,6 +75,7 @@ Next session: [one item + @Files prompt]
 - Facts live in repo files; preferences live in AGENTS.md and skills
 - **Amazon FinTech session debriefs → `Amazon_FinTech/debrief/`**
 - **Amazon SCOT session debriefs → `Amazon_SCOT/notes/`**
+- **Forecasting session debriefs → `Forecasting/notes/`**
 - **General profile/project references → `.cursor/skills/debrief/`**
 - Corrections in session → debrief file → config update
 - Do not leave learnings only in chat; session B should `@Files` the debrief

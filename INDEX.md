@@ -34,6 +34,7 @@ Personal workspace for industry job prep: Amazon FinTech interviews, general for
 - **Not** SCOT relationship prep (that stays under `Amazon_SCOT/`)
 - **Plan:** [`Forecasting/prep-plan.md`](Forecasting/prep-plan.md) · [`Forecasting/INDEX.md`](Forecasting/INDEX.md)
 - **Skill:** `/forecasting`
+- **Latest:** 2026-08-05 Day 1 Tier A deep-dives — [`Forecasting/notes/2026-08-05_day1-tierA-debrief.md`](Forecasting/notes/2026-08-05_day1-tierA-debrief.md); pipeline naive still open
 
 ---
 

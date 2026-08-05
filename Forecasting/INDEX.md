@@ -33,6 +33,14 @@ Shared profile: [`.cursor/skills/debrief/omri_azencot_experience.md`](../.cursor
 
 ---
 
+## Session log
+
+| Date | Session | Notes |
+|------|---------|-------|
+| 2026-08-05 | Day 1 Tier A deep-dives | [`notes/2026-08-05_day1-tierA-debrief.md`](notes/2026-08-05_day1-tierA-debrief.md) — SN/ETS/LGBM/Chronos; pipeline still open |
+
+---
+
 ## Positioning (read once)
 
 You already have deeper research expertise than most industry scientists. **Do not** spend time on classical theory derivations (ARIMA proofs, stationarity lemmas). Gap = what production forecasting teams actually do, how they evaluate, and what tradeoffs they make.

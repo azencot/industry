@@ -1,7 +1,7 @@
 # Forecasting — week prep plan
 
 **Track:** [`INDEX.md`](INDEX.md) · **Skill:** `/forecasting`  
-**Window:** one focused week · start date: ________  
+**Window:** one focused week · start date: **2026-08-05**  
 **Rule:** industry decision-making > new algorithms. Skip ARIMA/stationarity proofs.
 
 ---
@@ -24,6 +24,8 @@ Keep the skeleton. Cut breadth so the week is finishable:
 
 ## Day 1 — Industrial landscape (3h)
 
+**Status (2026-08-05):** Tier A deep-dives done (SN → ETS → LightGBM/boosting primer → Chronos/Bolt). Decision table + M4/M5 themes written. TimesFM left as Tier A one-liner only (pair with Chronos). Pipeline + full spoken quiz still open.
+
 ### Part 1 — Methods as decision objects (~75 min)
 
 Tier, don’t equalize:
@@ -35,6 +37,8 @@ Tier, don’t equalize:
 | **C — name-drop only** | Moirai, Moment, Lag-Llama, TimeGPT, Timer | What family + zero-shot or not |
 
 For each Tier A (and skim B): *When use? Why choose? Why reject?*
+
+Deep-dives: [`notes/2026-08-05_tierA-deep-dives.md`](notes/2026-08-05_tierA-deep-dives.md) · session debrief: [`notes/2026-08-05_day1-tierA-debrief.md`](notes/2026-08-05_day1-tierA-debrief.md)
 
 ### Part 2 — Competition themes (~45 min)
 
@@ -51,10 +55,12 @@ Write [`notes/method-decision-table.md`](notes/method-decision-table.md):
 
 | Method | Pros | Cons | Production use |
 
-- [ ] Tier A complete
-- [ ] M4/M5 themes noted
-- [ ] Decision table drafted
+- [x] Tier A complete — decision table + deep-dives (SN, ETS, LGBM, Chronos); TimesFM = table one-liner only
+- [x] M4/M5 themes noted — [`notes/2026-08-05_day1-competition-themes.md`](notes/2026-08-05_day1-competition-themes.md)
+- [x] Decision table drafted — [`notes/method-decision-table.md`](notes/method-decision-table.md)
 - [ ] Pipeline: seasonal naive baseline on chosen dataset
+- [x] Spoken lock-in: Tier A self-checks (SN product-vs-baseline; ETS vs SN; Chronos everywhere) — LGBM vs Chronos corrected once; worth one clean retake
+- [ ] Tier B skim (optional before Day 2)
 
 ---
 
@@ -182,7 +188,7 @@ Code lives under [`pipeline/`](pipeline/) if you implement in-repo.
 
 | Day | Date | Done? | Artifact |
 |-----|------|-------|----------|
-| 1 | | | decision table + naive |
+| 1 | 2026-08-05 | partial | decision table + Tier A deep-dives + debrief; **pipeline naive still open** |
 | 2 | | | LightGBM pipeline |
 | 3 | | | metrics cheat sheet |
 | 4 | | | production checklist |
