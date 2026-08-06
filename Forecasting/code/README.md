@@ -37,3 +37,14 @@ Writes `reports/metrics.csv` and `reports/metrics_by_regime.md`.
 ## Interview one-liner
 
 Naive = no train; ETS = cheap per-series fit; LightGBM = global train on features; Chronos-Bolt = pretrained zero-shot inference.
+
+## Qualitative review
+
+After a bakeoff run (forecast CSVs present):
+
+```bash
+python -m src.build_qual_report
+open reports/qual/QUAL.html
+```
+
+Overlays (history + true horizon + all models), horizon MAE curve, regime×model ranks, intermittent hit/miss table. No retrain.

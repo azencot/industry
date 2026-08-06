@@ -1,0 +1,6 @@
+regime,chronos_bolt_small,ets,lightgbm,seasonal_naive
+cold_start,2.0,4.0,1.0,3.0
+intermittent,1.0,2.0,3.0,4.0
+mean_step,2.0,3.0,1.0,4.0
+promo_driven,2.0,4.0,1.0,3.0
+smooth_seasonal,1.0,3.0,2.0,4.0

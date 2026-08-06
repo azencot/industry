@@ -1,0 +1,15 @@
+regime,series_id,reason
+smooth_seasonal,smooth_001,first_id
+smooth_seasonal,smooth_010,best_mase_under_seasonal_naive
+smooth_seasonal,smooth_009,worst_mase_under_seasonal_naive
+mean_step,mean_step_001,first_id
+mean_step,mean_step_009,best_mase_under_ets
+mean_step,mean_step_008,worst_mase_under_ets
+promo_driven,promo_001,first_id
+promo_driven,promo_010,best_mase_under_lightgbm
+promo_driven,promo_004,worst_mase_under_lightgbm
+intermittent,intermittent_001,first_id
+intermittent,intermittent_004,best_mase_under_chronos_bolt_small
+cold_start,cold_001,first_id
+cold_start,cold_010,best_mase_under_chronos_bolt_small
+cold_start,cold_002,worst_mase_under_chronos_bolt_small

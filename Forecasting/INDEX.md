@@ -26,7 +26,7 @@ Target questions:
 | [`prep-plan.md`](prep-plan.md) | 7-day checklist + daily hands-on thread |
 | [`notes/`](notes/) | Day summaries, one-pagers, mock answers |
 | [`data/`](data/) | Synthetic multi-regime panel + gold checks + [`data/review/REVIEW.html`](data/review/REVIEW.html) |
-| [`code/`](code/) | SN / ETS / LightGBM / Chronos-Bolt bakeoff · [`code/reports/metrics_by_regime.md`](code/reports/metrics_by_regime.md) |
+| [`code/`](code/) | Bakeoff + [`code/reports/metrics_by_regime.md`](code/reports/metrics_by_regime.md) + qual [`code/reports/qual/QUAL.html`](code/reports/qual/QUAL.html) |
 
 Skill: **`/forecasting`** — spoken system-design / tradeoff drills.
 

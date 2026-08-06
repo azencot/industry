@@ -8,3 +8,4 @@ lightgbm>=4.0
 torch>=2.2,<2.4
 chronos-forecasting==1.4.1
 transformers>=4.40,<4.46
+matplotlib>=3.7
