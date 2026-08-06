@@ -25,7 +25,8 @@ Target questions:
 |------|------|
 | [`prep-plan.md`](prep-plan.md) | 7-day checklist + daily hands-on thread |
 | [`notes/`](notes/) | Day summaries, one-pagers, mock answers |
-| [`pipeline/`](pipeline/) | Hands-on baseline → LightGBM → FM comparison (optional code) |
+| [`data/`](data/) | Synthetic multi-regime panel + gold checks + [`data/review/REVIEW.html`](data/review/REVIEW.html) |
+| [`code/`](code/) | Model bakeoff (later; reads `data/generated/`) |
 
 Skill: **`/forecasting`** — spoken system-design / tradeoff drills.
 
@@ -37,7 +38,8 @@ Shared profile: [`.cursor/skills/debrief/omri_azencot_experience.md`](../.cursor
 
 | Date | Session | Notes |
 |------|---------|-------|
-| 2026-08-05 | Day 1 Tier A deep-dives | [`notes/2026-08-05_day1-tierA-debrief.md`](notes/2026-08-05_day1-tierA-debrief.md) — SN/ETS/LGBM/Chronos; pipeline still open |
+| 2026-08-05 | Day 1 Tier A deep-dives | [`notes/2026-08-05_day1-tierA-debrief.md`](notes/2026-08-05_day1-tierA-debrief.md) — SN/ETS/LGBM/Chronos |
+| 2026-08-05 | Phase 1 synthetic data (signed off) | [`notes/2026-08-05_phase1-data-debrief.md`](notes/2026-08-05_phase1-data-debrief.md) · [`data/review/REVIEW.html`](data/review/REVIEW.html) — 50 series, gold 19/19 |
 
 ---
 

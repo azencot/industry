@@ -1,0 +1,10 @@
+{
+  "cutoff": "2024-12-03",
+  "horizon": 28,
+  "freq": "D",
+  "seed": 42,
+  "start_date": "2022-01-01",
+  "n_series_per_regime": 10,
+  "n_series_total": 50,
+  "n_rows": 44583
+}

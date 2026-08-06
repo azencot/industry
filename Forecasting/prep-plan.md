@@ -24,7 +24,7 @@ Keep the skeleton. Cut breadth so the week is finishable:
 
 ## Day 1 — Industrial landscape (3h)
 
-**Status (2026-08-05):** Tier A deep-dives done (SN → ETS → LightGBM/boosting primer → Chronos/Bolt). Decision table + M4/M5 themes written. TimesFM left as Tier A one-liner only (pair with Chronos). Pipeline + full spoken quiz still open.
+**Status (2026-08-05):** Tier A deep-dives done (SN → ETS → LightGBM/boosting primer → Chronos/Bolt). Decision table + M4/M5 themes written. TimesFM left as Tier A one-liner only (pair with Chronos). **Phase 1 synthetic data signed off** ([`data/review/REVIEW.html`](data/review/REVIEW.html)). Next: seasonal naive on that panel → `Forecasting/code/`.
 
 ### Part 1 — Methods as decision objects (~75 min)
 
@@ -58,7 +58,8 @@ Write [`notes/method-decision-table.md`](notes/method-decision-table.md):
 - [x] Tier A complete — decision table + deep-dives (SN, ETS, LGBM, Chronos); TimesFM = table one-liner only
 - [x] M4/M5 themes noted — [`notes/2026-08-05_day1-competition-themes.md`](notes/2026-08-05_day1-competition-themes.md)
 - [x] Decision table drafted — [`notes/method-decision-table.md`](notes/method-decision-table.md)
-- [ ] Pipeline: seasonal naive baseline on chosen dataset
+- [x] Phase 1 data: synthetic panel + gold verify + [`data/review/REVIEW.html`](data/review/REVIEW.html) — **manual review signed off 2026-08-05**
+- [ ] Pipeline: seasonal naive baseline on signed-off panel (`Forecasting/code/`)
 - [x] Spoken lock-in: Tier A self-checks (SN product-vs-baseline; ETS vs SN; Chronos everywhere) — LGBM vs Chronos corrected once; worth one clean retake
 - [ ] Tier B skim (optional before Day 2)
 
@@ -171,7 +172,9 @@ Run `/forecasting` on a subset. Aim for **3–5 min** structured answers:
 
 ## Hands-on project (every day, 30–45 min)
 
-Dataset: M5, Favorita, or Electricity — pick one and stick.
+**Phase 1 data — signed off (2026-08-05):** synthetic multi-regime panel under [`data/`](data/). Human review via [`data/review/REVIEW.html`](data/review/REVIEW.html) complete; gold 19/19.
+
+Then stick to that panel for the bakeoff (M5/Favorita/Electricity optional later):
 
 1. Seasonal naive baseline  
 2. LightGBM + lags + calendar  
@@ -180,7 +183,7 @@ Dataset: M5, Favorita, or Electricity — pick one and stick.
 5. Segment analysis (where each wins/fails)  
 6. Deploy/monitor notes (even if not deployed)
 
-Code lives under [`pipeline/`](pipeline/) if you implement in-repo.
+Model code will live under [`code/`](code/) (reads [`data/generated/`](data/generated/)).
 
 ---
 
@@ -188,7 +191,7 @@ Code lives under [`pipeline/`](pipeline/) if you implement in-repo.
 
 | Day | Date | Done? | Artifact |
 |-----|------|-------|----------|
-| 1 | 2026-08-05 | partial | decision table + Tier A deep-dives + debrief; **pipeline naive still open** |
+| 1 | 2026-08-05 | partial | Tier A + decision table; **Phase 1 data signed off** ([`data/`](data/)); next = SN baseline in [`code/`](code/) |
 | 2 | | | LightGBM pipeline |
 | 3 | | | metrics cheat sheet |
 | 4 | | | production checklist |

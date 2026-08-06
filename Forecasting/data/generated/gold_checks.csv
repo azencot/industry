@@ -1,0 +1,20 @@
+check,pass,detail
+unique_series_ds,True,dupes=0
+cutoff_json_matches_column,True,cutoff=2024-12-03
+horizon_matches_config,True,horizon=28
+regime_count::smooth_seasonal,True,n_series=10
+regime_count::mean_step,True,n_series=10
+regime_count::promo_driven,True,n_series=10
+regime_count::intermittent,True,n_series=10
+regime_count::cold_start,True,n_series=10
+no_daily_gaps,True,gap_series=[]
+post_cutoff_horizon_rows,True,min=28 max=28
+promo_zero::smooth_seasonal,True,promo_sum=0
+promo_zero::mean_step,True,promo_sum=0
+promo_zero::intermittent,True,promo_sum=0
+smooth_seasonal::acf7,True,mean_acf7=0.719
+smooth_seasonal::zero_rate,True,max_zero_rate=0.000
+mean_step::mean_jump,True,all_ok
+promo_driven::lift_and_rate,True,all_ok
+intermittent::discrete_sparse,True,all_ok
+cold_start::train_length,True,all_ok
