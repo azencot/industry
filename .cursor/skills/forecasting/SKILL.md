@@ -11,7 +11,7 @@ description: >-
 
 ## When to use
 
-General forecasting-role prep — **not** Amazon SCOT relationship work (`Amazon_SCOT/`). Plan: [`Forecasting/prep-plan.md`](../../Forecasting/prep-plan.md). Profile: [`omri_azencot_experience.md`](../debrief/omri_azencot_experience.md). Hands-on panel: [`Forecasting/data/`](../../Forecasting/data/) (review [`REVIEW.html`](../../Forecasting/data/review/REVIEW.html)).
+General forecasting-role prep — **not** Amazon SCOT relationship work (`Amazon_SCOT/`). Plan: [`Forecasting/prep-plan.md`](../../Forecasting/prep-plan.md). Profile: [`omri_azencot_experience.md`](../debrief/omri_azencot_experience.md). Hands-on panel: [`Forecasting/data/`](../../Forecasting/data/) (review [`REVIEW.html`](../../Forecasting/data/review/REVIEW.html)). Bakeoff: [`Forecasting/code/`](../../Forecasting/code/).
 
 ## Positioning
 

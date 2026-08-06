@@ -59,7 +59,7 @@ Write [`notes/method-decision-table.md`](notes/method-decision-table.md):
 - [x] M4/M5 themes noted — [`notes/2026-08-05_day1-competition-themes.md`](notes/2026-08-05_day1-competition-themes.md)
 - [x] Decision table drafted — [`notes/method-decision-table.md`](notes/method-decision-table.md)
 - [x] Phase 1 data: synthetic panel + gold verify + [`data/review/REVIEW.html`](data/review/REVIEW.html) — **manual review signed off 2026-08-05**
-- [ ] Pipeline: seasonal naive baseline on signed-off panel (`Forecasting/code/`)
+- [x] Pipeline: SN + ETS + LightGBM + Chronos-Bolt bakeoff on signed-off panel ([`code/`](code/) · [`code/reports/metrics_by_regime.md`](code/reports/metrics_by_regime.md))
 - [x] Spoken lock-in: Tier A self-checks (SN product-vs-baseline; ETS vs SN; Chronos everywhere) — LGBM vs Chronos corrected once; worth one clean retake
 - [ ] Tier B skim (optional before Day 2)
 
@@ -74,7 +74,7 @@ lags · rolling stats · MA / EWMA · seasonality · holidays · promos · weath
 **Implement:** LightGBM forecasting pipeline (lags + calendar minimum). Goal = *why boosting stays strong*, not a Kaggle medal.
 
 - [ ] Feature list with “why it helps / when it leaks”
-- [ ] LightGBM pipeline runs; beats seasonal naive on ≥1 metric
+- [x] LightGBM pipeline runs; beats seasonal naive on ≥1 metric (see bakeoff overall WAPE/MASE)
 - [ ] Spoken 2-min: “Why LightGBM still wins many production bakeoffs”
 
 ---
@@ -95,7 +95,7 @@ Forced answers:
 Skim (don’t deep-read everything): Amazon Forecast metrics docs; one Uber/Google forecasting-metrics writeup.
 
 - [ ] [`notes/metrics-cheat-sheet.md`](notes/metrics-cheat-sheet.md) written
-- [ ] Pipeline: report MAE, RMSE, WAPE, MASE side-by-side
+- [x] Pipeline: report MAE, RMSE, WAPE, MASE side-by-side ([`code/reports/metrics_by_regime.md`](code/reports/metrics_by_regime.md))
 - [ ] Spoken 2-min: “MAPE doubled overnight — debug playbook”
 
 ---
@@ -125,7 +125,7 @@ pretrain · tokenization / patching · zero-shot · fine-tune · context · prob
 Forced: *Why not Chronos everywhere? When does LightGBM still win?*
 
 - [ ] [`notes/fm-competitor-cards.md`](notes/fm-competitor-cards.md) — ½ page each for 3 models
-- [ ] Pipeline: add Chronos-Bolt or TimesFM zero-shot compare
+- [x] Pipeline: Chronos-Bolt small zero-shot compare (TimesFM still optional)
 - [ ] Spoken 3-min: LightGBM vs Chronos decision tree
 
 ---
@@ -191,7 +191,7 @@ Model code will live under [`code/`](code/) (reads [`data/generated/`](data/gene
 
 | Day | Date | Done? | Artifact |
 |-----|------|-------|----------|
-| 1 | 2026-08-05 | partial | Tier A + decision table; **Phase 1 data signed off** ([`data/`](data/)); next = SN baseline in [`code/`](code/) |
+| 1 | 2026-08-05–06 | partial | Tier A + data + **bakeoff v1** + review debrief ([`notes/2026-08-06_bakeoff-v1-debrief.md`](notes/2026-08-06_bakeoff-v1-debrief.md)); Day 2 spoken/feature list open |
 | 2 | | | LightGBM pipeline |
 | 3 | | | metrics cheat sheet |
 | 4 | | | production checklist |
