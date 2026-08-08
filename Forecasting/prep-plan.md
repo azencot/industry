@@ -79,6 +79,24 @@ lags · rolling stats · MA / EWMA · seasonality · holidays · promos · weath
 
 ---
 
+## Cross-cutting — industry failure modes (light add, 2026-08-06)
+
+Saw in a **peer/industry profile** (Keystone-style vaccine demand work — *not your story*). Treat as a checklist of problems principals expect you to name; fold into Days 3–4 / 7, don’t add a new day or copy their bullets.
+
+| Failure mode | Where it lands in this plan | Interview one-liner |
+|--------------|----------------------------|---------------------|
+| Historical **stock-outs** (censored demand) | Day 2 features lens #3 · Day 3 intermittent · Day 4 missing/outliers | Model observed sales ≠ demand; unconstrain or censor-aware train |
+| **Short history** / cold series | Day 1 M5 related series · Day 4 cold start · Day 6 Airbnb geography | Pool / hierarchy / priors — don’t fit a lonely local model |
+| **Sparsity** / intermittent | Day 1 Part 2 · Day 3 metrics | WAPE/MASE (or intermittent-aware), not MAPE |
+| **Irregular / multi-scale seasonality** | Day 2 calendar/holidays · Day 5 when FM helps | Separate week-of-year vs season-phase vs launch effects — don’t confound |
+| **Probabilistic + hierarchical** | Day 3 pinball/CRPS · Day 1 hierarchy · Day 7 uncertainty | Decisions need quantiles + coherent plans, not leaf point MAPE |
+| **Business tuning** / launch timing | Day 4 A/B + impact · Day 7 measure business impact | Forecast exists to change a decision (e.g. pull launch forward) |
+
+- [ ] When doing Day 4 checklist, explicitly cover **stock-out censoring** + **business decision** (not only model ship)
+- [ ] Day 7 probe: “Demand history has stock-outs — what do you do?”
+
+---
+
 ## Day 3 — Evaluation (3h)
 
 Study until you can answer without notes:
@@ -132,19 +150,24 @@ Forced: *Why not Chronos everywhere? When does LightGBM still win?*
 
 ## Day 6 — Case studies (2–3h)
 
-Curated only (pick **3–4**):
+Curated only. Look for: data quality, features, eval, ops — notice models are often secondary.
 
-| Prefer | Theme |
-|--------|-------|
-| Amazon Science / Forecast / SCOT-adjacent public posts | demand, inventory, peak events |
-| Uber / Lyft forecasting or Michelangelo | platform ML + forecasting |
-| Airbnb / DoorDash / Instacart | marketplace demand |
-| Netflix / Spotify / Pinterest | capacity / traffic / infra (optional contrast) |
+### Reading list (pick **3–4**; all five are solid)
 
-Look for: data quality, features, eval, ops — notice models are often secondary.
+| # | Post | Why read (interview hook) |
+|---|------|---------------------------|
+| 1 | [The history of Amazon’s forecasting algorithm](https://www.amazon.science/latest-news/the-history-of-amazons-forecasting-algorithm) (Amazon Science) | Decade of production evolution: point → **quantiles**, many local systems → unified model, inventory decisions need distributions not MAPE flex — **read 2026-08-06** |
+| 2 | [Introducing Chronos-2](https://www.amazon.science/blog/introducing-chronos-2-from-univariate-to-universal-forecasting) (Amazon Science, Oct 2025) | Latest FM framing: univariate → **covariate / multivariate** zero-shot; use to sharpen “when FM vs LightGBM,” not to abandon baselines |
+| 3 | [How DoorDash built an ensemble for time series](https://careersatdoordash.com/blog/how-doordash-built-an-ensemble-learning-model-for-time-series-forecasting/) (DoorDash, 2023) | **Accuracy vs speed/cost**; ensembles of cheap learners beat grid-search of fancy configs at marketplace scale |
+| 4 | [When history fails you, borrow from geography](https://airbnb.tech/data/when-history-fails-you-borrow-from-geography/) (Airbnb) | Cold / thin history: **borrow strength** across related corridors (hierarchical / prior propagation) — M5 “related series” in the wild |
+| 5 | [Real-Time Spatial Temporal Forecasting @ Lyft](https://eng.lyft.com/real-time-spatial-temporal-forecasting-lyft-fa90b3f3ec24) (Lyft) | Marketplace forecasts under **latency + retrain cost**; classical vs NN chosen by horizon/granularity, not fashion — **read 2026-08-06** |
 
-- [ ] 3 blogs summarized in [`notes/case-studies.md`](notes/case-studies.md)
-- [ ] One reusable line per blog for interviews
+**Optional swaps** (if you want a 6th later): [Uber — Forecasting at Uber: An Introduction](https://www.uber.com/us/en/blog/forecasting-introduction/) (platform + backtesting culture); [Amazon Science — correlated products/sellers](https://www.amazon.science/blog/data-on-correlated-products-and-sellers-helps-improve-demand-forecasting) (cross-series / cold start via graphs).
+
+**Today shortcut:** if reading ahead of Day 6, do **1 → 3 → 4** first (ops judgment); save Chronos-2 (#2) for after Day 5 FM cards; Lyft (#5) when you want production latency language.
+
+- [x] 2/3 blogs summarized in [`notes/case-studies.md`](notes/case-studies.md) — Amazon history + Lyft (need one more: DoorDash or Airbnb)
+- [x] One reusable line per blog for interviews — Amazon + Lyft locked in note
 - [ ] Pipeline: failure analysis — where naive / LGBM / FM each win
 
 ---
