@@ -33,8 +33,9 @@ Personal workspace for industry job prep: Amazon FinTech interviews, general for
 - **Purpose:** Senior/principal AS forecasting roles — production systems, eval, tradeoffs (LightGBM vs FMs, etc.)
 - **Not** SCOT relationship prep (that stays under `Amazon_SCOT/`)
 - **Plan:** [`Forecasting/prep-plan.md`](Forecasting/prep-plan.md) · [`Forecasting/INDEX.md`](Forecasting/INDEX.md)
+- **Company / call prep:** [`Forecasting/interviews/`](Forecasting/interviews/) — next: Keystone.AI / Raunak Mon **2026-08-10** ([`prep`](Forecasting/interviews/keystone-ai/2026-08-10_raunak-prep.md))
 - **Skill:** `/forecasting`
-- **Latest:** 2026-08-05 Day 1 Tier A deep-dives — [`Forecasting/notes/2026-08-05_day1-tierA-debrief.md`](Forecasting/notes/2026-08-05_day1-tierA-debrief.md); pipeline naive still open
+- **Latest:** 2026-08-08 Day 3 metrics + Keystone prep; Day 1 Tier A — [`Forecasting/notes/2026-08-05_day1-tierA-debrief.md`](Forecasting/notes/2026-08-05_day1-tierA-debrief.md)
 
 ---
 
