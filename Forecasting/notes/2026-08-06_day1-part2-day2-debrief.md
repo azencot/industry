@@ -27,12 +27,12 @@
 
 ## Still open
 
-- [ ] Day 3: metrics cheat sheet + spoken “MAPE doubled overnight”
+- [x] Day 3: metrics cheat sheet + spoken “MAPE doubled overnight” — see [`2026-08-08_day3-metrics-debrief.md`](2026-08-08_day3-metrics-debrief.md)
 - [ ] Spoken retake: LightGBM vs Chronos using bakeoff regime table (from bakeoff debrief)
 - [ ] Optional Tier B skim
 
 ## Next session
 
-1. Start **Day 3 — Evaluation**: write [`metrics-cheat-sheet.md`](metrics-cheat-sheet.md); practice MAPE-debug spoken.
+1. ~~Day 3~~ → **Day 4 — Production** (see Day 3 debrief handoff).
 
-**Handoff:** `@Forecasting/notes/2026-08-06_day1-part2-day2-debrief.md` `@Forecasting/notes/2026-08-06_day2-features.md` `@Forecasting/prep-plan.md` `@Forecasting/code/reports/metrics_by_regime.md`
+**Handoff:** `@Forecasting/notes/2026-08-08_day3-metrics-debrief.md` `@Forecasting/notes/metrics-cheat-sheet.md` `@Forecasting/prep-plan.md`

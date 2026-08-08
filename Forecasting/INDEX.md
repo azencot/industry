@@ -43,6 +43,7 @@ Shared profile: [`.cursor/skills/debrief/omri_azencot_experience.md`](../.cursor
 | 2026-08-05 | Bakeoff v1 (SN/ETS/LGBM/Chronos-Bolt) | [`code/`](code/) · [`code/reports/metrics_by_regime.md`](code/reports/metrics_by_regime.md) |
 | 2026-08-06 | Bakeoff code review + metrics/Chronos Q&A | [`notes/2026-08-06_bakeoff-v1-debrief.md`](notes/2026-08-06_bakeoff-v1-debrief.md) |
 | 2026-08-06 | Day 1 Part 2 themes + Day 2 features | [`notes/2026-08-06_day1-part2-day2-debrief.md`](notes/2026-08-06_day1-part2-day2-debrief.md) · themes · [`notes/2026-08-06_day2-features.md`](notes/2026-08-06_day2-features.md) |
+| 2026-08-08 | Day 3 Evaluation / metrics | [`notes/2026-08-08_day3-metrics-debrief.md`](notes/2026-08-08_day3-metrics-debrief.md) · [`notes/metrics-cheat-sheet.md`](notes/metrics-cheat-sheet.md) |
 
 ---
 

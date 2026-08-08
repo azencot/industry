@@ -78,6 +78,8 @@ Problem & business stake
 
 - Jumping to FMs without a baseline
 - MAPE as default for intermittent / sparse demand
+- Jumping to MoE / architecture on “MAPE doubled” before metric artifact + pipeline + baselines
+- Claiming RMSE has wrong units (it matches \(y\); issue is outlier amplification)
 - “We’d use the latest paper” with no cost/latency story
 - Research tour without a ship decision
 - Confusing this track with SCOT contribution / Boris pitch

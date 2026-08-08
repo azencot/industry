@@ -112,9 +112,10 @@ Forced answers:
 
 Skim (don’t deep-read everything): Amazon Forecast metrics docs; one Uber/Google forecasting-metrics writeup.
 
-- [ ] [`notes/metrics-cheat-sheet.md`](notes/metrics-cheat-sheet.md) written
+- [x] [`notes/metrics-cheat-sheet.md`](notes/metrics-cheat-sheet.md) written — point + pinball/CRPS + intervals/calibration/KPIs
 - [x] Pipeline: report MAE, RMSE, WAPE, MASE side-by-side ([`code/reports/metrics_by_regime.md`](code/reports/metrics_by_regime.md))
-- [ ] Spoken 2-min: “MAPE doubled overnight — debug playbook”
+- [x] Spoken 2-min: “MAPE doubled overnight — debug playbook” — playbook locked in metrics cheat sheet
+- Debrief: [`notes/2026-08-08_day3-metrics-debrief.md`](notes/2026-08-08_day3-metrics-debrief.md)
 
 ---
 
