@@ -11,9 +11,9 @@ Signed off 2026-08-08: point metrics · pinball/CRPS · intervals · coverage/ca
 |--------|------|----------------------|------------------------|
 | **MAE** | Mean \(\|y-\hat{y}\|\) — typical absolute miss | Yes | Hard to compare across scales / series |
 | **RMSE** | \(\sqrt{\mathrm{mean}((y-\hat{y})^2)}\) — L2 / spike lens | **Yes** (root restores units; MSE does not) | Rare large errors dominate; bad sole champion metric if you care about typical days |
-| **MAPE** | Mean \(\|y-\hat{y}\|/\|y\|\) — per-point % | % | **Unusable** at \(y=0\) / near-zero; overweight tiny days; underweight big SKUs |
-| **SMAPE** | % with \((\|y\|+\|\hat{y}\|)/2\) in denom | % | Softer than MAPE on zeros, still noisy near both-zero; weaker than WAPE for retail panels |
-| **WAPE** | \(\sum\|e\|/\sum\|y\|\) — portfolio % | % | Needs \(\sum\|y\|>0\); preferred “%” for demand panels |
+| **MAPE** | Mean \(\|y_i-\hat{y}_i\| / \|y_i\|\) — per-point % | % | **Unusable** at \(y_i=0\) / near-zero; overweight tiny days; underweight big SKUs |
+| **SMAPE** | % with \((\|y_i\|+\|\hat{y}_i\|)/2\) in denom | % | Softer than MAPE on zeros, still noisy near both-zero; weaker than WAPE for retail panels |
+| **WAPE** | \(\sum\|e_i\|/\sum\|y_i\|\) — portfolio % | % | Needs \(\sum\|y_i\|>0\); preferred “%” for demand panels |
 | **MASE** | MAE / MAE(seasonal naive) — scaled vs baseline | Unitless ratio | Needs a clear seasonal naive; great for intermittent + cross-series compare |
 
 **Default bakeoff stack (this repo):** MAE · RMSE · WAPE · MASE — see [`../code/reports/metrics_by_regime.md`](../code/reports/metrics_by_regime.md).
@@ -33,7 +33,7 @@ Point WAPE alone is not enough when the decision needs stock risk / safety stock
 
 ## Intervals, coverage, calibration
 
-**Prediction interval (PI)** — band \([L,U]\) claiming that \(y\) falls inside with **nominal** probability \(1-\alpha\) (e.g. 90% PI ⇒ \(\alpha=0.1\)).  
+**Prediction interval (PI)** — band \([L,U]\) claiming that \(y\) falls inside with **nominal** probability \(1-\alpha\) (e.g. 90% PI ⇒ \(\alpha=0.1\), computed with q5 and q95 quantiles).   
 Convention: \(\alpha\) = miss/tail rate (outside); \(1-\alpha\) = claimed coverage (inside).
 
 **Central PI from quantiles:** \(L = q_{\alpha/2}\), \(U = q_{1-\alpha/2}\).
@@ -45,7 +45,16 @@ Convention: \(\alpha\) = miss/tail rate (outside); \(1-\alpha\) = claimed covera
 
 Quantile meaning: \(P(Y \le q_\tau) \approx \tau\). So q95 ≈ “95% of outcomes at or below.” One-sided upper quantiles are fine for “don’t stock out” decisions.
 
-**Coverage** — empirical hit rate of the PI on held-out (time-ordered) data. Claim 90% → observe ~90%. Too low = overconfident (narrow); too high = underconfident (wide). Check **conditional** coverage (horizon, promo, intermittent) — average can lie.
+**Coverage** — empirical hit rate of the PI on held-out (time-ordered) data:
+
+\[
+\mathrm{coverage}
+=
+\frac{1}{n}\sum_{i=1}^{n}
+\mathbf{1}\{L_i \le y_i \le U_i\}
+\]
+
+Claim \(1-\alpha\) (e.g. 90%) → observe \(\approx 1-\alpha\). Too low = overconfident (narrow); too high = underconfident (wide). Check **conditional** coverage (horizon, promo, intermittent) — average can lie.
 
 **Calibration** — are stated probabilities honest? Quantile check: ~\(\tau\) of actuals below \(\hat{q}_\tau\). Full CDF: PIT roughly uniform. Interval = object you ship; coverage/calibration = audit that the uncertainty is real.
 
