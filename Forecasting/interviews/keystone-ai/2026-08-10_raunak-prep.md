@@ -199,9 +199,9 @@ Cross-links in this repo: [`../../notes/method-decision-table.md`](../../notes/m
 
 ## 7. Day-before checklist
 
-- [ ] Skim [Zero100 future-of-forecasting](https://keystone.ai/resources/keystone-presents-future-of-forecasting-to-supply-chain-leaders-at-zero-100-live/) thesis (probabilistic + decision constraints) — 5 min
-- [ ] Skim [Unified Forecasting](https://www.keystone.ai/solutions/unified-forecasting) + homepage DEEP/RAIN story (10 min)
-- [ ] Skim Raunak’s public interview / LinkedIn themes (5 min)
+- [x] Skim [Zero100 future-of-forecasting](https://keystone.ai/resources/keystone-presents-future-of-forecasting-to-supply-chain-leaders-at-zero-100-live/) thesis (probabilistic + decision constraints) — 5 min
+- [x] Skim [Unified Forecasting](https://www.keystone.ai/solutions/unified-forecasting) + homepage DEEP/RAIN story (10 min)
+- [x] Skim Raunak’s public interview / LinkedIn themes (5 min)
 - [ ] Rehearse 60–90s intro once out loud
 - [ ] Rehearse one 2-min: “When LightGBM vs a foundation model for intermittent manufacturing demand?” (end on **probabilistic → decision**)
 - [ ] Rehearse one 90s: “MAPE doubled on a client panel — how I debug” (and why point MAPE isn’t the client north star)
