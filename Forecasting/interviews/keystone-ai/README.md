@@ -24,10 +24,10 @@ Enterprise AI for **manufacturing / CPG / pharma supply-chain** decisions: deman
 
 | Date | What | Notes |
 |------|------|-------|
-| ~Nov 2025 | First meeting with Raunak (~30 min) | Positive impression (your read) |
+| ~Nov 2025 | First meeting with Raunak (~30 min) | **Mutual interest to join**; they flexed **remote** vs on-site; **blocked on full-time** (you at BGU) |
 | ~Apr 2026 | You messaged: expected move to Seattle | Now **already in Seattle** |
 | ~Aug 2026 | He replied; scheduled call | He wants to **tell you what Keystone is doing** |
-| **Mon 2026-08-10** | Call with Raunak | Prep: [`2026-08-10_raunak-prep.md`](2026-08-10_raunak-prep.md) — reading checklist done through Raunak interview; rehearsals still open · debrief [`../../notes/2026-08-08_keystone-raunak-prep-debrief.md`](../../notes/2026-08-08_keystone-raunak-prep-debrief.md) |
+| **Mon 2026-08-10** | Call with Raunak | Prep ready · **Availability:** FT yes; prefer remote, OK on-site to earn trust; BGU through Oct but summer industry OK; no IP · close-out [`../../notes/2026-08-09_keystone-raunak-prep-debrief.md`](../../notes/2026-08-09_keystone-raunak-prep-debrief.md) |
 
 ## People notes
 

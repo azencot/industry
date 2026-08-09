@@ -35,7 +35,7 @@ Personal workspace for industry job prep: Amazon FinTech interviews, general for
 - **Plan:** [`Forecasting/prep-plan.md`](Forecasting/prep-plan.md) · [`Forecasting/INDEX.md`](Forecasting/INDEX.md)
 - **Company / call prep:** [`Forecasting/interviews/`](Forecasting/interviews/) — next: Keystone.AI / Raunak Mon **2026-08-10** ([`prep`](Forecasting/interviews/keystone-ai/2026-08-10_raunak-prep.md))
 - **Skill:** `/forecasting`
-- **Latest:** 2026-08-08 Keystone prep (readings done; rehearsals open) · Day 3 metrics — [`Forecasting/notes/2026-08-08_keystone-raunak-prep-debrief.md`](Forecasting/notes/2026-08-08_keystone-raunak-prep-debrief.md)
+- **Latest:** 2026-08-09 Keystone prep close-out (FT availability; intro done; Mon Raunak) — [`Forecasting/notes/2026-08-09_keystone-raunak-prep-debrief.md`](Forecasting/notes/2026-08-09_keystone-raunak-prep-debrief.md)
 
 ---
 

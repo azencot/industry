@@ -29,10 +29,9 @@
 | Zero100 skim | Done |
 | Unified Forecasting / DEEP–RAIN skim | Done |
 | Raunak interview / LinkedIn themes | Done |
-| Rehearse 60–90s intro | **Todo** |
-| Rehearse LightGBM vs FM (→ decision) | **Todo** |
-| Rehearse MAPE-debug 90s | **Todo** |
-| Confirm call link / Seattle one-liner | **Todo** |
+| Rehearse 60–90s intro | **Done** (2026-08-09) |
+| Rehearse LightGBM vs FM / MAPE-debug | **Skipped** — optional pocket answers only; not a PS1 |
+| Confirm call link / Seattle one-liner | **Done** (2026-08-09) |
 
 ---
 
@@ -54,12 +53,4 @@
 
 ## Next session (before Mon call)
 
-**One action:** rehearse out loud — intro + LightGBM/FM skeleton + MAPE-debug 90s (checklist remainder).
-
-**Handoff prompt:**
-
-```
-@Forecasting/interviews/keystone-ai/2026-08-10_raunak-prep.md
-@Forecasting/notes/2026-08-08_keystone-raunak-prep-debrief.md
-Continue Keystone prep: drill the remaining day-before rehearsals (intro, LGBM vs FM, MAPE debug); keep listening-first posture for Mon Raunak call.
-```
+**Status:** Superseded by [`2026-08-09_keystone-raunak-prep-debrief.md`](2026-08-09_keystone-raunak-prep-debrief.md) (availability pocket + re-engage framing + checklist closed).

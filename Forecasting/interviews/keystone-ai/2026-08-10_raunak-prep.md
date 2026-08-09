@@ -1,7 +1,9 @@
 # Prep — Raunak Singh (VP Science), Keystone.AI
 
-**When:** Monday **2026-08-10** (two days after this note)  
-**Format:** He invited you to hear what Keystone is building — **listening-first**, not a PS1. Still prepare like a soft screen: clear IC story, sharp questions, local Seattle / Bellevue fit.
+**When:** Monday **2026-08-10**  
+**Format:** He invited you to hear what Keystone is building — **listening-first**, not a PS1. This is a **re-engage after known mutual interest**, not a cold soft screen.
+
+**Prior thread (critical):** ~Nov 2025 they wanted you to join and flexed **remote** vs on-site; it didn’t close because you were at **BGU** and they needed **full-time**. Science fit / interest was already established; the blocker was employment constraint.
 
 ---
 
@@ -9,12 +11,22 @@
 
 | Is | Isn’t |
 |----|--------|
-| Relationship restart + product briefing | Formal coding / LP loop |
-| Soft mutual fit (science depth × **already in Seattle**) | Guaranteed next round |
-| Chance to show production judgment on *their* problem (mfg intermittent demand → decisions) | Academic seminar or Chronos paper recap |
+| Reconnect + product/org update since Nov | Formal coding / LP loop |
+| Mutual interest check with **new facts** (you’re in Seattle; is full-time viable now?) | Cold “prove you know forecasting” screen |
+| Chance to show you still think at their altitude (RAIN / FF / DEEP / agents) | Academic seminar or Chronos paper recap |
+| Path-clearing talk if interest is still two-sided | Guaranteed offer replay |
 
-**Your goal:** leave him thinking *“this person already thinks about the hard parts of enterprise forecasting, and is already local.”*  
-**His likely goal:** sell the science story, gauge interest/fit, maybe open a hiring path.
+**Your goal:** leave him thinking *“constraints that blocked us may have moved — and this person is still the scientist we wanted, now local.”*  
+**His likely goal:** brief what’s new since Nov, re-gauge interest/availability, maybe reopen hiring.
+
+**How prep changes vs a cold intro call:**
+
+| Still do | Don’t overdo |
+|----------|----------------|
+| Listen to what’s *new* (product, Kari, roles, Bellevue) | Re-pitch Keystone thesis back at him as if he doesn’t know you |
+| Clear, honest **availability / BGU / full-time** story if asked | Over-rehearse LGBM/MAPE drills |
+| Two science angles as optional depth (CLIP; multimodal-in-FF) | “Sell” like a first interview — they already flexed for you once |
+| Seattle + interest in next step | Dwelling on “you wanted me before” (he knows; one brief callback max) |
 
 ---
 
@@ -128,19 +140,34 @@ So “agentic” at Keystone is **not** a chat UI over SAP. It’s a loop that n
 
 > If the end state is agents that act on economic decisions, I see multimodal work less as the agent itself and more as the perception and reasoning layer — grounding messy enterprise and time-series context into calibrated beliefs the decision layer can trust. How are you splitting science ownership between belief models, constraint optimization, and agent orchestration today?
 
-**Reuse from your Nov meeting:** brief callback only (“good to reconnect — last time we talked about …”) if you remember a specific thread; otherwise don’t invent nostalgia.
+**Reuse from your Nov meeting:** One brief callback is enough — e.g. good to reconnect; last time interest was real but **full-time vs BGU** blocked it. Don’t narrate the whole saga unless he asks. Don’t invent product nostalgia.
 
 ---
 
 ## 4. Your 60–90s intro (practice out loud)
 
-Frame for **enterprise forecasting product**, not FinTech or SCOT pitch:
+Frame for **enterprise forecasting product**, not FinTech or SCOT pitch. With prior mutual interest, lead slightly warmer / less “prove who I am”:
 
-> I’m an applied ML scientist focused on sequential and multimodal time series — generative models, representation learning, and rigorous eval. Most recently I’ve been building end-to-end systems that reason over time series with vision-language models, with heavy emphasis on curriculum, ablations, and honest negative results. I’m also deepening production forecasting judgment — baselines, intermittent demand, **probabilistic eval** (pinball/CRPS), and when boosting beats foundation models. I’m a US permanent resident; I reached out in the spring about relocating, and I’m now based in Seattle. I’d love to understand how Keystone is wiring Foundation Forecasting into **decision constraints** — and how far along the **agentic decision** path you are beyond the belief models.
+> Good to reconnect. I’m still focused on sequential and multimodal time series — generative models, representation learning, rigorous eval — most recently end-to-end systems that reason over time series with vision-language models. I’ve also been sharpening production forecasting judgment: intermittent demand, probabilistic eval, when boosting beats foundation models. I’m a US permanent resident and I’m now based in Seattle. I’d love to hear what’s changed on the Keystone science side since we last spoke — and how Foundation Forecasting is wiring into decision constraints and the agentic path.
+
+**If availability comes up (likely):** use the pocket answer below. Full-time is yes; don’t lead with remote as a demand; be concrete on BGU/Oct and summer flexibility; IP is clean if asked.
+
+**Availability pocket (speak this, don’t over-explain):**
+
+> I’m available for a full-time role. I’m employed at BGU through October, but this is academia — over the summer I can work in industry, and there are no IP conflicts. I prefer remote, but I understand I may need to be on-site while I build trust; I’m already in Seattle, so that’s workable. Happy to align on a start path that fits the team.
+
+**Hygiene:**
+
+| Say | Don’t |
+|-----|--------|
+| Full-time: yes | Soften into “maybe depending on…” |
+| Prefer remote, willing on-site to earn trust | Open with remote as a condition (they already flexed once) |
+| BGU → Oct; summer industry OK; no IP issue | Vague “academic constraints” without a date |
+| Seattle makes on-site ramp easy | Re-litigate Nov remote negotiation as the main topic |
 
 **If he asks for depth:** pick *one* IC story (ImagenTime / irregular TS / dual-encoding VLM) with a metric and a tradeoff — then connect to **enterprise** problems: scarcity, irregular sampling, eval gates, not architecture tourism.
 
-**Avoid:** grant/mentoring/lab-management framing; “we” without “I”; Chronos-everywhere evangelism; treating **point MAPE/WAPE** as the north star; pitching **chatbots / generic agent frameworks** without belief calibration + decision metrics.
+**Avoid:** grant/mentoring/lab-management framing; “we” without “I”; Chronos-everywhere evangelism; treating **point MAPE/WAPE** as the north star; pitching **chatbots / generic agent frameworks** without belief calibration + decision metrics; overplaying “you recruited me before.”
 
 ---
 
@@ -187,13 +214,18 @@ Cross-links in this repo: [`../../notes/method-decision-table.md`](../../notes/m
 
 **Org / Seattle / fit**
 
-12. Where is science headcount growing — Bellevue vs NY vs client-embedded?
-13. What would a strong principal / senior scientist own in the next 12 months on the forecasting ↔ decision ↔ agent stack?
-14. After this briefing, what would a useful next step look like if there’s mutual interest?
+12. What’s changed in the science org / product stack since we last spoke (roles, Bellevue, Foundation Forecasting maturity)?
+13. Where is science headcount growing — Bellevue vs NY vs client-embedded?
+14. What would a strong principal / senior scientist own in the next 12 months on the forecasting ↔ decision ↔ agent stack?
+15. After this briefing, what would a useful next step look like if there’s mutual interest?
+
+**Availability (only if the door opens — don’t force)**
+
+16. Last time full-time was the constraint on my side — assuming interest is still two-sided, what does a realistic path look like now that I’m in Seattle?
 
 **Soft Kari / FM probe (optional, only if natural)**
 
-15. With Kari joining as Distinguished Scientist — how are you shaping the foundation-model side of Foundation Forecasting, and what gaps are you still hiring for?
+17. With Kari joining as Distinguished Scientist — how are you shaping the foundation-model side of Foundation Forecasting, and what gaps are you still hiring for?
 
 ---
 
@@ -202,12 +234,21 @@ Cross-links in this repo: [`../../notes/method-decision-table.md`](../../notes/m
 - [x] Skim [Zero100 future-of-forecasting](https://keystone.ai/resources/keystone-presents-future-of-forecasting-to-supply-chain-leaders-at-zero-100-live/) thesis (probabilistic + decision constraints) — 5 min
 - [x] Skim [Unified Forecasting](https://www.keystone.ai/solutions/unified-forecasting) + homepage DEEP/RAIN story (10 min)
 - [x] Skim Raunak’s public interview / LinkedIn themes (5 min)
-- [ ] Rehearse 60–90s intro once out loud
-- [ ] Rehearse one 2-min: “When LightGBM vs a foundation model for intermittent manufacturing demand?” (end on **probabilistic → decision**)
-- [ ] Rehearse one 90s: “MAPE doubled on a client panel — how I debug” (and why point MAPE isn’t the client north star)
-- [ ] Confirm call link / timezone; one-liner ready: **already in Seattle** (reached out in spring about the move)
+- [x] Rehearse 60–90s intro once out loud
+- [x] Confirm call link / timezone; one-liner ready: **already in Seattle** (reached out in spring about the move)
 
-### Spoken 2-min skeleton — LightGBM vs FM (manufacturing)
+**Enough for this call.** Listening-first briefing ≠ PS1. Skip timed production drills unless you want optional pocket answers below.
+
+### Optional pocket answers (not required)
+
+Only useful if he casually probes method choice or client eval — otherwise don’t rehearse as if this were a live-code loop.
+
+| Pocket | When it might come up | Skip unless… |
+|--------|----------------------|--------------|
+| LightGBM vs FM | He asks how you’d segment intermittent mfg demand / when FMs win | You’re rusty and want one crisp hybrid answer |
+| MAPE doubled | He talks client success metrics or “why planners don’t trust forecasts” | You want a 60s debug that ends on *point MAPE ≠ north star* |
+
+### Spoken 2-min skeleton — LightGBM vs FM (manufacturing) *[optional]*
 
 ```
 Problem: lumpy SKU×customer demand → inventory / production decisions under uncertainty.
