@@ -275,11 +275,5 @@ Ship decision: hybrid by segment + monitoring; the forecast only “wins” if t
 
 ## 9. Post-call (same day)
 
-Capture in a new file `2026-08-10_raunak-debrief.md`:
-
-- What they’re actually building (their words)
-- Hiring / Seattle signal
-- Any names (Kari? others?)
-- Your strongest moment / weakest
-- Promised follow-ups
-- Update [`README.md`](README.md) table + [`../INDEX.md`](../INDEX.md) + [`../../INDEX.md`](../../INDEX.md) session log
+- [x] Captured in [`2026-08-10_raunak-debrief.md`](2026-08-10_raunak-debrief.md)
+- [x] Updated [`README.md`](README.md) · [`../../INDEX.md`](../../INDEX.md) · root INDEX

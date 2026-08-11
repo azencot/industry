@@ -1,19 +1,16 @@
 # Amazon SCOT — relationship & contribution track
 
-Secondary track (not a formal interview loop). Ongoing collab with SCOT Forecasting scientists; Monday is an **exploratory** conversation about whether there is a path for you inside SCOT — not a promised role.
+Secondary track (not a formal interview loop). Ongoing collab with SCOT Forecasting scientists; Boris call done — he is checking with his team on whether there is a path. Still **not** a promised role.
 
 ---
 
-## Call goal — Mon 3 Aug 2026 (Boris Oreshkin)
+## Status after Boris call (Mon 10 Aug 2026)
 
-**Reality check:** Boris has **not** offered a seat. There may be **no** opening (or none they’d put you on). Goal = (1) stay strong on the collab, (2) show you can contribute concretely, (3) learn honestly whether opportunities exist / who to talk to / what timing looks like.
+**Ball with Boris.** He will check with his team on a possible path; he is not the hiring decision-maker but said he **affects** those decisions. Positioning locked in-call: **full-time IC**, available now (academic leave from Oct). Collab continues on paper + workshop.
 
-1. **Short collab update** — NeurIPS’26 paper + workshop (5–8 min)
-2. **Bridge from Mengfei** — what you heard as team needs (2–3 min)
-3. **Contribution pitch** — how you’d help if there were a path (Wedge A); full script in [`contribution-plan.md`](contribution-plan.md)
-4. **Questions + reality check** — priorities, whether openings exist, intro only if warm; graceful if timing is off (5 min)
+Full notes + analysis: [`notes/2026-08-10_boris-call.md`](notes/2026-08-10_boris-call.md).
 
-Tone: IC collaborator exploring fit — lead with what you’d build, not “when I join.” Don’t sound like the hire is already decided.
+**While waiting:** keep Wedge A contribution pitch ready for whoever he introduces; polite nudge if silent ~7–10 days; do not pause other industry tracks.
 
 ---
 
@@ -27,8 +24,8 @@ Tone: IC collaborator exploring fit — lead with what you’d build, not “whe
 | Joint forecasting paper (KGO) | NeurIPS 2026 | Under review; [`papers/`](papers/) · [`collaboration.md`](collaboration.md) |
 | Workshop proposal | NeurIPS 2026 | **Accepted** — FM for Temporal Systems; [`workshops/`](workshops/) · [`collaboration.md`](collaboration.md) |
 | Boris mock grill | Sat 1 Aug 2026 | Wedge A experiment one-pager; CRPS/NMAE; kill line; Forecasting Science intro — [`notes/2026-08-01_boris-mock-drill.md`](notes/2026-08-01_boris-mock-drill.md) |
-| **Call with Boris** | Mon 3 Aug 2026 | Paper/workshop + SCOT contribution pitch |
-| Post-call notes | after Mon | Drop into [`notes/`](notes/) |
+| **Call with Boris** | Mon 10 Aug 2026 | Collab update + SCOT FT IC ask; he will check with team — [`notes/2026-08-10_boris-call.md`](notes/2026-08-10_boris-call.md) |
+| Boris follow-up | pending | Hiring check + paper/workshop contact |
 
 ---
 
@@ -46,7 +43,8 @@ Tone: IC collaborator exploring fit — lead with what you’d build, not “whe
 | [`questions-for-boris.md`](questions-for-boris.md) | 4–6 questions + ask for next step | End of call |
 | [`notes/`](notes/) | Session debriefs + post-call dumps | After `/debrief`; after Monday |
 | [`notes/2026-08-01_scot-scaffold.md`](notes/2026-08-01_scot-scaffold.md) | Track setup debrief | Context on how SCOT folder was built |
-| [`notes/2026-08-01_boris-mock-drill.md`](notes/2026-08-01_boris-mock-drill.md) | Boris mock corrections + Monday handoff | Before final rehearsal |
+| [`notes/2026-08-01_boris-mock-drill.md`](notes/2026-08-01_boris-mock-drill.md) | Boris mock corrections | Context for Wedge A pitch still needed for next SCOT contact |
+| [`notes/2026-08-10_boris-call.md`](notes/2026-08-10_boris-call.md) | **Live Boris call** — outcomes + analysis | After call; before nudge / next intro |
 | [`.cursor/skills/debrief/omri_azencot_experience.md`](../.cursor/skills/debrief/omri_azencot_experience.md) | Canonical research arc (shared with FinTech) | If bridging TS / synthetic / eval |
 
 ---

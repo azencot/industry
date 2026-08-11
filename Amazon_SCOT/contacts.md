@@ -8,7 +8,7 @@
 | **Known for** | N-BEATS (ICLR 2020); N-HiTS; meta-learning / zero-shot forecasting |
 | **SCOT themes** | Large-scale / foundation time-series forecasting; synthetic & simulation data; peak-event demand (e.g. SPADE); research that ships |
 | **Relationship** | Joint NeurIPS’26 forecasting paper (under review); NeurIPS’26 workshop (accepted); months of collaboration; generative forecasting with Omri + Mayank |
-| **Monday call** | Mon 3 Aug 2026 — collab update + exploratory contribution / opportunities conversation (no promised role) |
+| **Call (10 Aug 2026)** | Collab warmth (workshop teamwork; paper packaging praise); you asked for SCOT FT IC path; he will check with team (influencer, not decision-maker) — [`notes/2026-08-10_boris-call.md`](notes/2026-08-10_boris-call.md) |
 
 **How to talk to him:** technical peer. Lead with concrete modeling / data / eval bets and what you would own. Avoid managerial PI framing (same IC discipline as FinTech prep).
 
@@ -46,4 +46,4 @@
 | **Michael Mahoney** | [Scholar](https://scholar.google.com/citations?user=QXyvv94AAAAJ&hl=en) | SCOT / Amazon Science coauthor on forecasting papers |
 | **Abhishek Gupta** | [LinkedIn](https://www.linkedin.com/in/abhishek-arun-gupta/) | SCOT scientist (mechanism design / supply-chain science surface) |
 
-After Monday, add anyone Boris introduces (hiring managers, Labs leads, peer AS) here.
+When Boris introduces anyone (hiring managers, Labs leads, peer AS), add them here.

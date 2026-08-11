@@ -33,9 +33,9 @@ Personal workspace for industry job prep: Amazon FinTech interviews, general for
 - **Purpose:** Senior/principal AS forecasting roles — production systems, eval, tradeoffs (LightGBM vs FMs, etc.)
 - **Not** SCOT relationship prep (that stays under `Amazon_SCOT/`)
 - **Plan:** [`Forecasting/prep-plan.md`](Forecasting/prep-plan.md) · [`Forecasting/INDEX.md`](Forecasting/INDEX.md)
-- **Company / call prep:** [`Forecasting/interviews/`](Forecasting/interviews/) — next: Keystone.AI / Raunak Mon **2026-08-10** ([`prep`](Forecasting/interviews/keystone-ai/2026-08-10_raunak-prep.md))
+- **Company / call prep:** [`Forecasting/interviews/`](Forecasting/interviews/) — Keystone.AI / Raunak call done **2026-08-10** ([`debrief`](Forecasting/interviews/keystone-ai/2026-08-10_raunak-debrief.md)); ball = CV + his manager
 - **Skill:** `/forecasting`
-- **Latest:** 2026-08-09 Keystone prep close-out (FT availability; intro done; Mon Raunak) — [`Forecasting/notes/2026-08-09_keystone-raunak-prep-debrief.md`](Forecasting/notes/2026-08-09_keystone-raunak-prep-debrief.md)
+- **Latest:** 2026-08-10 Raunak call — opportunistic hiring; asked for CV; FM/synthetic data + Boris interest — [`Forecasting/interviews/keystone-ai/2026-08-10_raunak-debrief.md`](Forecasting/interviews/keystone-ai/2026-08-10_raunak-debrief.md)
 
 ---
 
@@ -44,7 +44,8 @@ Personal workspace for industry job prep: Amazon FinTech interviews, general for
 - **Org:** Supply Chain Optimization Technologies — Forecasting Science / Labs circle
 - **Contacts:** Boris Oreshkin (Principal Scientist); Mengfei Cao (Sr AS / Science Manager)
 - **Collab:** NeurIPS 2026 **KGO** paper (under review) + workshop **Foundation Models for Temporal Systems** (**accepted**) — [`Amazon_SCOT/collaboration.md`](Amazon_SCOT/collaboration.md)
-- **Next:** Mon 3 Aug 2026 call with Boris — short paper/workshop update, then contribution / fit pitch
+- **Latest:** Boris call **2026-08-10** — FT IC interest stated; he will check with team — [`Amazon_SCOT/notes/2026-08-10_boris-call.md`](Amazon_SCOT/notes/2026-08-10_boris-call.md)
+- **Next:** Wait for Boris follow-up (~7–10 day nudge if silent); keep Wedge A pitch ready for any intro
 - **Details:** [`Amazon_SCOT/INDEX.md`](Amazon_SCOT/INDEX.md), [`Amazon_SCOT/contribution-plan.md`](Amazon_SCOT/contribution-plan.md)
 - **Not** a formal PS1 loop yet — no stories/mocks/timed-code bank in this folder
 - **Unrelated** to the general [`Forecasting/`](Forecasting/) practice track
