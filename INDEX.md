@@ -1,8 +1,8 @@
 # industry — repo index
 
-Personal workspace for industry job prep: Amazon FinTech interviews, general forecasting-role practice, Amazon SCOT relationship/contribution prep, LeetCode, and compounding interview artifacts.
+Personal workspace for industry job prep: Amazon FinTech interviews, general forecasting-role practice, generative AI role prep, Amazon SCOT relationship/contribution prep, LeetCode, and compounding interview artifacts.
 
-**New session?** Read in order: this file → [`AGENTS.md`](AGENTS.md) → active track INDEX (`Amazon_FinTech`, `Forecasting`, or `Amazon_SCOT`).
+**New session?** Read in order: this file → [`AGENTS.md`](AGENTS.md) → active track INDEX (`Amazon_FinTech`, `Forecasting`, `GenAI`, or `Amazon_SCOT`).
 
 ---
 
@@ -13,6 +13,7 @@ Personal workspace for industry job prep: Amazon FinTech interviews, general for
 | [`AGENTS.md`](AGENTS.md) | Onboarding for AI sessions: conventions, behavior, skills | Start of every Cursor session |
 | [`Amazon_FinTech/`](Amazon_FinTech/) | Role-specific prep: plan, stories, debriefs, mocks, CV | Before FinTech interview work |
 | [`Forecasting/`](Forecasting/) | General industry forecasting practice (not SCOT) | When targeting forecasting AS roles |
+| [`GenAI/`](GenAI/) | Generative AI / LLM role interviews and prep (not forecasting) | When targeting GenAI roles |
 | [`Amazon_SCOT/`](Amazon_SCOT/) | SCOT relationship track: contacts, collab, contribution pitch | Before Boris / Mengfei / SCOT calls |
 | [`code/`](code/) | LeetCode solutions (Python); `_practice` = scratch attempts | Coding prep, timed drills |
 | [`.cursor/skills/`](.cursor/skills/) | Repeatable prep workflows (`/mock-lp`, `/timed-code`, `/forecasting`, etc.) | When running a structured drill |
@@ -32,10 +33,22 @@ Personal workspace for industry job prep: Amazon FinTech interviews, general for
 
 - **Purpose:** Senior/principal AS forecasting roles — production systems, eval, tradeoffs (LightGBM vs FMs, etc.)
 - **Not** SCOT relationship prep (that stays under `Amazon_SCOT/`)
+- **Not** general GenAI role prep (that stays under `GenAI/`)
 - **Plan:** [`Forecasting/prep-plan.md`](Forecasting/prep-plan.md) · [`Forecasting/INDEX.md`](Forecasting/INDEX.md)
 - **Company / call prep:** [`Forecasting/interviews/`](Forecasting/interviews/) — Keystone.AI / Raunak call done **2026-08-10** ([`debrief`](Forecasting/interviews/keystone-ai/2026-08-10_raunak-debrief.md)); ball = CV + his manager
 - **Skill:** `/forecasting`
 - **Latest:** 2026-08-10 Raunak call — opportunistic hiring; asked for CV; FM/synthetic data + Boris interest — [`Forecasting/interviews/keystone-ai/2026-08-10_raunak-debrief.md`](Forecasting/interviews/keystone-ai/2026-08-10_raunak-debrief.md)
+
+---
+
+## GenAI (generative AI roles)
+
+- **Purpose:** Generative AI / LLM role interviews and prep — systems, eval, RAG/agents/tradeoffs
+- **Not** forecasting (use [`Forecasting/`](Forecasting/)); **not** FinTelligence formal loop scaffolding (use [`Amazon_FinTech/`](Amazon_FinTech/))
+- **Details:** [`GenAI/INDEX.md`](GenAI/INDEX.md)
+- **Company / call prep:** [`GenAI/interviews/`](GenAI/interviews/) — Apple Health AIML recruiter screen **2026-08-12** ([`prep`](GenAI/interviews/apple-health-aiml/2026-08-12_recruiter-prep.md))
+- **Session notes:** [`GenAI/notes/`](GenAI/notes/)
+- **Related skill:** `/ml-deep-dive`
 
 ---
 

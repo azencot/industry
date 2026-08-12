@@ -8,6 +8,7 @@ Industry prep workspace:
 
 - **FinTech (FinTelligence)** — formal interview loop: recall under pressure, LP/STAR articulation, timed coding with narration
 - **Forecasting** — general industry forecasting practice for AS roles (production, eval, tradeoffs); **not** SCOT
+- **GenAI** — generative AI / LLM role interviews and prep; **not** forecasting
 - **SCOT** — relationship / contribution prep (not a PS1 machine unless it becomes a formal loop)
 
 Not a production app repo.
@@ -18,12 +19,14 @@ Not a production app repo.
 2. Active track INDEX:
    - FinTech → [`Amazon_FinTech/INDEX.md`](Amazon_FinTech/INDEX.md)
    - Forecasting → [`Forecasting/INDEX.md`](Forecasting/INDEX.md) (week plan, notes, `/forecasting` drills)
+   - GenAI → [`GenAI/INDEX.md`](GenAI/INDEX.md) (interviews, notes; GenAI roles only)
    - SCOT → [`Amazon_SCOT/INDEX.md`](Amazon_SCOT/INDEX.md) (contacts, collab, contribution pitch, questions)
 3. [`.cursor/skills/debrief/omri_azencot_experience.md`](.cursor/skills/debrief/omri_azencot_experience.md) — experience profile, flagship project, IC framing (shared)
 4. FinTech only: [`Amazon_FinTech/prep-plan.md`](Amazon_FinTech/prep-plan.md) — weekly plan; check today's focus
 5. FinTech only: latest [`Amazon_FinTech/debrief/`](Amazon_FinTech/debrief/) or [`mocks/`](Amazon_FinTech/mocks/) when continuing that track
-6. Forecasting only: [`Forecasting/prep-plan.md`](Forecasting/prep-plan.md); notes under [`Forecasting/notes/`](Forecasting/notes/) (session debriefs live here, not under FinTech/SCOT)
-7. SCOT only: [`contribution-plan.md`](Amazon_SCOT/contribution-plan.md) + [`mengfei-notes.md`](Amazon_SCOT/mengfei-notes.md) before Boris/Mengfei calls; session/post-call notes in [`Amazon_SCOT/notes/`](Amazon_SCOT/notes/) (SCOT debriefs live here, not under FinTech or Forecasting)
+6. Forecasting only: [`Forecasting/prep-plan.md`](Forecasting/prep-plan.md); notes under [`Forecasting/notes/`](Forecasting/notes/) (session debriefs live here, not under FinTech/SCOT/GenAI)
+7. GenAI only: notes under [`GenAI/notes/`](GenAI/notes/); company prep under [`GenAI/interviews/`](GenAI/interviews/) (not under Forecasting)
+8. SCOT only: [`contribution-plan.md`](Amazon_SCOT/contribution-plan.md) + [`mengfei-notes.md`](Amazon_SCOT/mengfei-notes.md) before Boris/Mengfei calls; session/post-call notes in [`Amazon_SCOT/notes/`](Amazon_SCOT/notes/) (SCOT debriefs live here, not under FinTech/Forecasting/GenAI)
 
 ## Behavior
 
