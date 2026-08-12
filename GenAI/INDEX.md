@@ -29,7 +29,7 @@ Related skill (shared with FinTech depth practice): **`/ml-deep-dive`**.
 |------|---------|-------|
 | 2026-08-12 | Apple Health AIML recruiter prep | [`interviews/apple-health-aiml/2026-08-12_recruiter-prep.md`](interviews/apple-health-aiml/2026-08-12_recruiter-prep.md) — multimodal + TS fit; soft screen scripts |
 | 2026-08-12 | Apple Health AIML recruiter screen (~10 min) | [`interviews/apple-health-aiml/2026-08-12_recruiter-debrief.md`](interviews/apple-health-aiml/2026-08-12_recruiter-debrief.md) — loop mapped; HM **Shirley Ren**; next = HM screen |
-| 2026-08-12 | Apple Health AIML HM screen prep | [`interviews/apple-health-aiml/2026-08-12_hm-screen-prep.md`](interviews/apple-health-aiml/2026-08-12_hm-screen-prep.md) — health AI · Apple · LLM training run |
+| 2026-08-12 | Apple Health AIML HM screen prep | [`interviews/apple-health-aiml/2026-08-12_hm-screen-prep.md`](interviews/apple-health-aiml/2026-08-12_hm-screen-prep.md) — **Fri 2026-08-21 11:05–11:50 AM PDT**; health AI · Apple · LLM training run; day-by-day schedule |
 
 ---
 

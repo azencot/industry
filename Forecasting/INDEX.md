@@ -49,6 +49,7 @@ Shared profile: [`.cursor/skills/debrief/omri_azencot_experience.md`](../.cursor
 | 2026-08-09 | Keystone prep close-out | [`notes/2026-08-09_keystone-raunak-prep-debrief.md`](notes/2026-08-09_keystone-raunak-prep-debrief.md) — re-engage framing; FT availability pocket; intro/logistics done; LGBM/MAPE optional |
 | 2026-08-10 | Keystone call with Raunak | [`interviews/keystone-ai/2026-08-10_raunak-debrief.md`](interviews/keystone-ai/2026-08-10_raunak-debrief.md) — opportunistic hire; manager + CV; FM/synthetic data; Boris interest |
 | 2026-08-12 | TTD Channel Growth recruiter prep | [`interviews/the-trade-desk/2026-08-12_recruiter-prep.md`](interviews/the-trade-desk/2026-08-12_recruiter-prep.md) — Senior AS; forecast / pace / recs on emerging channels |
+| 2026-08-12 | TTD recruiter screen (Stephanie) | [`interviews/the-trade-desk/2026-08-12_recruiter-debrief.md`](interviews/the-trade-desk/2026-08-12_recruiter-debrief.md) — cleared; HM **Kennedy**; next = 45 min Python coding; DL is team gap |
 
 ---
 

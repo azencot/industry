@@ -6,22 +6,23 @@
 | **Req** | 200670570-3337 |
 | **Team** | Health AIML (MLAI) |
 | **HM** | **Shirley Ren** (Shirley You Ren) — Senior ML Manager / Principal Engineer, Health & Fitness |
+| **Recruiter** | **Tyler** |
 | **Location** | Seattle, WA — **on-site** expected |
 | **Posted** | 2026-06-30 |
-| **Comp (public)** | Base **$175K–$308.5K** + RSU / ESPP / benefits. Recruiter factors: experience, interview performance, current team comps |
+| **Comp (public)** | Base **$175K–$308.5K** + RSU / ESPP / benefits. Tyler’s factors: experience, interview performance, current team comps |
 
 ## Active thread
 
 | Date | What | Notes |
 |------|------|-------|
-| **2026-08-12** | Recruiter phone (~**10 min**) | Cleared soft gate. Full loop briefed. **Action: send next-week availability for HM screen.** Debrief: [`2026-08-12_recruiter-debrief.md`](2026-08-12_recruiter-debrief.md) |
-| **Next** | **HM screen — Shirley Ren, 45 min** | Prep: [`2026-08-12_hm-screen-prep.md`](2026-08-12_hm-screen-prep.md) — health AI · Apple · impactful LLM training run |
+| **2026-08-12** | Recruiter phone (~**10 min**) — **Tyler** | Cleared soft gate. Full loop briefed. Debrief: [`2026-08-12_recruiter-debrief.md`](2026-08-12_recruiter-debrief.md) |
+| **2026-08-21** | **HM screen — Shirley Ren** | **Fri 11:05–11:50 AM PDT**, Webex. **Fit** (Tyler’s three topics; no coding). Prep: [`2026-08-12_hm-screen-prep.md`](2026-08-12_hm-screen-prep.md) |
 
-## Loop (from recruiter)
+## Loop (from Tyler)
 
 | Stage | Format | Focus |
 |-------|--------|--------|
-| 1. HM screen | 45 min | Interest in health AI; interest in Apple; most impactful LLM training run |
+| 1. HM screen | 45 min · **fit** | Interest in health AI; interest in Apple; most impactful LLM training run (**no coding**) |
 | 2. Tech screen | 45 min | Depth: LLM training + multimodal fundamentals |
 | 3. Virtual on-site | 5 interviews | (1) LLM training + infra · (2) multimodal arch + TS encoding · (3) research rigor · (4) tech leadership / systems · (5) health domain + applied ML judgement |
 
@@ -41,7 +42,7 @@ Research lead for **multimodal / representation models** over **health & fitness
 
 ### Public LinkedIn — verify before outreach (peer / org signal)
 
-Apple rarely labels **Health AIML** vs **Health AI** cleanly; prefer recruiter/HM naming over cold outreach mid-loop.
+Apple rarely labels **Health AIML** vs **Health AI** cleanly; prefer Tyler / HM naming over cold outreach mid-loop.
 
 | Person | Role signal | Why relevant | LinkedIn |
 |--------|-------------|--------------|----------|
@@ -51,4 +52,4 @@ Apple rarely labels **Health AIML** vs **Health AI** cleanly; prefer recruiter/H
 | **Jens Behrmann** | Senior Research Scientist, Health AI | Foundational health ML; often Zurich-leaning | [jens-behrmann-3b4239151](https://www.linkedin.com/in/jens-behrmann-3b4239151) |
 | **Aditya Nair** | Senior MLE, Apple Health (Seattle) | Local org signal | [anair111](https://www.linkedin.com/in/anair111) |
 
-**Outreach:** Do **not** cold-email Shirley mid-loop unless recruiter suggests it. After HM screen, ask her or recruiter whom to meet next.
+**Outreach:** Do **not** cold-email Shirley mid-loop unless Tyler suggests it. After HM screen, ask her or Tyler whom to meet next.

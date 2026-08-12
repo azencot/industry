@@ -161,3 +161,5 @@ Avoid on first screen: “What’s your exact pacing controller?” / IP-probing
 > I’m very interested in this role and the Bellevue team. I’d love to meet the hiring manager or a scientist on Channel Growth next. Happy to send an updated CV or any materials that help.
 
 After the call: write `2026-08-12_recruiter-debrief.md` (their questions, level signal, next step, any HM name) and update this README’s active thread.
+
+**Done 2026-08-12:** Stephanie screen → [`2026-08-12_recruiter-debrief.md`](2026-08-12_recruiter-debrief.md). HM = **Kennedy**. Next = **45 min Python coding**, then HM.

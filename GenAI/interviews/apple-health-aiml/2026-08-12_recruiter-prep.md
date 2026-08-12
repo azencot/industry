@@ -155,4 +155,4 @@ Avoid on first screen: “What’s the exact model Apple Watch uses?” / IP-pro
 
 After the call: write `2026-08-12_recruiter-debrief.md` (their questions, level signal, next step, any HM name) and update this README’s active thread.
 
-**Done 2026-08-12:** short ~10 min process brief → [`2026-08-12_recruiter-debrief.md`](2026-08-12_recruiter-debrief.md). HM = Shirley Ren. Next prep: [`2026-08-12_hm-screen-prep.md`](2026-08-12_hm-screen-prep.md).
+**Done 2026-08-12:** short ~10 min process brief with **Tyler** → [`2026-08-12_recruiter-debrief.md`](2026-08-12_recruiter-debrief.md). HM = Shirley Ren. Next prep: [`2026-08-12_hm-screen-prep.md`](2026-08-12_hm-screen-prep.md).

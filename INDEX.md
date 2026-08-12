@@ -35,9 +35,9 @@ Personal workspace for industry job prep: Amazon FinTech interviews, general for
 - **Not** SCOT relationship prep (that stays under `Amazon_SCOT/`)
 - **Not** general GenAI role prep (that stays under `GenAI/`)
 - **Plan:** [`Forecasting/prep-plan.md`](Forecasting/prep-plan.md) · [`Forecasting/INDEX.md`](Forecasting/INDEX.md)
-- **Company / call prep:** [`Forecasting/interviews/`](Forecasting/interviews/) — Keystone.AI / Raunak call done **2026-08-10** ([`debrief`](Forecasting/interviews/keystone-ai/2026-08-10_raunak-debrief.md)); **The Trade Desk** Channel Growth recruiter **2026-08-12** ([`prep`](Forecasting/interviews/the-trade-desk/2026-08-12_recruiter-prep.md))
+- **Company / call prep:** [`Forecasting/interviews/`](Forecasting/interviews/) — Keystone.AI / Raunak call done **2026-08-10** ([`debrief`](Forecasting/interviews/keystone-ai/2026-08-10_raunak-debrief.md)); **The Trade Desk** Channel Growth: recruiter done **2026-08-12** ([`debrief`](Forecasting/interviews/the-trade-desk/2026-08-12_recruiter-debrief.md)); next = **Python coding** then **HM Kennedy**
 - **Skill:** `/forecasting`
-- **Latest:** 2026-08-12 TTD recruiter screen (Senior AS, Channel Growth) — [`Forecasting/interviews/the-trade-desk/`](Forecasting/interviews/the-trade-desk/)
+- **Latest:** 2026-08-12 TTD Stephanie screen — cleared; coding 45 min then Kennedy — [`Forecasting/interviews/the-trade-desk/2026-08-12_recruiter-debrief.md`](Forecasting/interviews/the-trade-desk/2026-08-12_recruiter-debrief.md)
 
 ---
 
@@ -46,7 +46,7 @@ Personal workspace for industry job prep: Amazon FinTech interviews, general for
 - **Purpose:** Generative AI / LLM role interviews and prep — systems, eval, RAG/agents/tradeoffs
 - **Not** forecasting (use [`Forecasting/`](Forecasting/)); **not** FinTelligence formal loop scaffolding (use [`Amazon_FinTech/`](Amazon_FinTech/))
 - **Details:** [`GenAI/INDEX.md`](GenAI/INDEX.md)
-- **Company / call prep:** [`GenAI/interviews/`](GenAI/interviews/) — Apple Health AIML: recruiter done **2026-08-12**; next **HM screen (Shirley Ren)** ([`debrief`](GenAI/interviews/apple-health-aiml/2026-08-12_recruiter-debrief.md) · [`HM prep`](GenAI/interviews/apple-health-aiml/2026-08-12_hm-screen-prep.md))
+- **Company / call prep:** [`GenAI/interviews/`](GenAI/interviews/) — Apple Health AIML: recruiter done **2026-08-12**; **HM screen Fri 2026-08-21, 11:05–11:50 AM PDT** with Shirley Ren ([`debrief`](GenAI/interviews/apple-health-aiml/2026-08-12_recruiter-debrief.md) · [`HM prep`](GenAI/interviews/apple-health-aiml/2026-08-12_hm-screen-prep.md))
 - **Session notes:** [`GenAI/notes/`](GenAI/notes/)
 - **Related skill:** `/ml-deep-dive`
 
