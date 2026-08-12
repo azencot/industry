@@ -35,9 +35,9 @@ Personal workspace for industry job prep: Amazon FinTech interviews, general for
 - **Not** SCOT relationship prep (that stays under `Amazon_SCOT/`)
 - **Not** general GenAI role prep (that stays under `GenAI/`)
 - **Plan:** [`Forecasting/prep-plan.md`](Forecasting/prep-plan.md) · [`Forecasting/INDEX.md`](Forecasting/INDEX.md)
-- **Company / call prep:** [`Forecasting/interviews/`](Forecasting/interviews/) — Keystone.AI / Raunak call done **2026-08-10** ([`debrief`](Forecasting/interviews/keystone-ai/2026-08-10_raunak-debrief.md)); ball = CV + his manager
+- **Company / call prep:** [`Forecasting/interviews/`](Forecasting/interviews/) — Keystone.AI / Raunak call done **2026-08-10** ([`debrief`](Forecasting/interviews/keystone-ai/2026-08-10_raunak-debrief.md)); **The Trade Desk** Channel Growth recruiter **2026-08-12** ([`prep`](Forecasting/interviews/the-trade-desk/2026-08-12_recruiter-prep.md))
 - **Skill:** `/forecasting`
-- **Latest:** 2026-08-10 Raunak call — opportunistic hiring; asked for CV; FM/synthetic data + Boris interest — [`Forecasting/interviews/keystone-ai/2026-08-10_raunak-debrief.md`](Forecasting/interviews/keystone-ai/2026-08-10_raunak-debrief.md)
+- **Latest:** 2026-08-12 TTD recruiter screen (Senior AS, Channel Growth) — [`Forecasting/interviews/the-trade-desk/`](Forecasting/interviews/the-trade-desk/)
 
 ---
 

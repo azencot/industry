@@ -19,7 +19,7 @@ After mock interview, timed code drill, real interview, exploration session, or 
 
 **Amazon SCOT session debriefs** live under **[`Amazon_SCOT/notes/`](../../Amazon_SCOT/notes/)** (`YYYY-MM-DD_{topic}.md`) — relationship/contribution track; not a FinTech PS1 machine unless it becomes a formal loop.
 
-**Forecasting track session debriefs** live under **[`Forecasting/notes/`](../../Forecasting/notes/)** (`YYYY-MM-DD_{topic}.md`) — general industry forecasting practice; not SCOT.
+**Forecasting track session debriefs** live under **[`Forecasting/notes/`](../../Forecasting/notes/)** (`YYYY-MM-DD_{topic}.md`) — general industry forecasting practice; not SCOT. Company call prep/debriefs → **[`Forecasting/interviews/`](../../Forecasting/interviews/)**.
 
 **GenAI track session debriefs** live under **[`GenAI/notes/`](../../GenAI/notes/)** (`YYYY-MM-DD_{topic}.md`) — generative AI / LLM roles; not forecasting. Company call prep/debriefs → **[`GenAI/interviews/`](../../GenAI/interviews/)**.
 
@@ -30,6 +30,7 @@ After mock interview, timed code drill, real interview, exploration session, or 
 | Amazon FinTech session debrief | `Amazon_FinTech/debrief/YYYY-MM-DD_{topic}.md` | `2026-06-24_prep-strategy.md` |
 | Amazon SCOT session debrief | `Amazon_SCOT/notes/YYYY-MM-DD_{topic}.md` | `2026-08-01_scot-scaffold.md` |
 | Forecasting session debrief | `Forecasting/notes/YYYY-MM-DD_{topic}.md` | `2026-08-05_day1-tierA-debrief.md` |
+| Forecasting company call prep/debrief | `Forecasting/interviews/{company}/YYYY-MM-DD_*.md` | `Forecasting/interviews/the-trade-desk/2026-08-12_recruiter-prep.md` |
 | GenAI session debrief | `GenAI/notes/YYYY-MM-DD_{topic}.md` | `2026-08-12_rag-eval-debrief.md` |
 | GenAI company call prep/debrief | `GenAI/interviews/{company}/YYYY-MM-DD_*.md` | `GenAI/interviews/acme/2026-08-12_prep.md` |
 | General profile/project reference | `.cursor/skills/debrief/{name}_{topic}.md` | `omri_azencot_experience.md`, `vlm_multimodal_project.md` |
@@ -48,7 +49,7 @@ Template: [`Amazon_FinTech/debrief/README.md`](../../Amazon_FinTech/debrief/READ
 3. **Update indexes**
    - FinTech: add row to debrief table in [`Amazon_FinTech/INDEX.md`](../../Amazon_FinTech/INDEX.md); mock table / timed log / stories README as applicable
    - SCOT: add timeline or key-files pointer in [`Amazon_SCOT/INDEX.md`](../../Amazon_SCOT/INDEX.md)
-   - Forecasting: add session log row in [`Forecasting/INDEX.md`](../../Forecasting/INDEX.md); update [`Forecasting/prep-plan.md`](../../Forecasting/prep-plan.md) checkboxes
+   - Forecasting: add session log row in [`Forecasting/INDEX.md`](../../Forecasting/INDEX.md); company table in [`Forecasting/interviews/INDEX.md`](../../Forecasting/interviews/INDEX.md) if applicable; update [`Forecasting/prep-plan.md`](../../Forecasting/prep-plan.md) checkboxes
    - GenAI: add session log row in [`GenAI/INDEX.md`](../../GenAI/INDEX.md); company table in [`GenAI/interviews/INDEX.md`](../../GenAI/interviews/INDEX.md) if applicable
 4. **Promote corrections** — if something failed twice or is broadly useful:
 
@@ -81,7 +82,7 @@ Next session: [one item + @Files prompt]
 - Facts live in repo files; preferences live in AGENTS.md and skills
 - **Amazon FinTech session debriefs → `Amazon_FinTech/debrief/`**
 - **Amazon SCOT session debriefs → `Amazon_SCOT/notes/`**
-- **Forecasting session debriefs → `Forecasting/notes/`**
+- **Forecasting session debriefs → `Forecasting/notes/`** (company calls → **`Forecasting/interviews/`**)
 - **GenAI session debriefs → `GenAI/notes/`** (company calls → `GenAI/interviews/`)
 - **General profile/project references → `.cursor/skills/debrief/`**
 - Corrections in session → debrief file → config update
