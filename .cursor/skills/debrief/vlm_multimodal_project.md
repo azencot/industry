@@ -4,13 +4,16 @@
 **Interview cheat sheet:** [`Amazon_FinTech/anchor-cheat-sheet.md`](../anchor-cheat-sheet.md)  
 **Experience profile (broader arc):** [`omri_azencot_experience.md`](omri_azencot_experience.md)
 
-Last updated: 2026-06-21
+Last updated: 2026-08-12
 
 ---
 
 ## Overview
 
 **Goal:** Teach general-purpose VLMs to reason over univariate and multivariate time series — not just classify UCR shapes, but answer exam-style questions, forecast, explain temporal relations, and generate structured captions.
+
+**Current models (2026-08+):** **Qwen3.5** at **9B** and **27B**.  
+**Earlier campaign (FinTech PS1 era):** Qwen3-VL-**8B** and Qwen3.5-**0.8B** — published metrics in this file are from that era unless re-measured.
 
 **North star benchmark:** [TSRBench](https://tsrbench.github.io/) — multi-task, multi-modal time series reasoning (15 tasks across 4 dimensions: Perception, Reasoning, Prediction, Decision-Making; 4,125 problems from 14 domains including finance). TSRBench evaluates both textual and visual TS representations; text and vision are strongly complementary per the benchmark authors.
 
@@ -48,12 +51,12 @@ Time series input
 
 **Model integration (personal ownership):**
 
-- Patched forwards for **Qwen3-VL-8B** and **Qwen3.5-0.8B (Q35)**
+- Patched forwards for **Qwen3.5 9B / 27B** (current) and earlier **Qwen3-VL-8B** / **Qwen3.5-0.8B (Q35)**
 - Custom **DinoVisionTower** for delay-embedding stream
-- **Dual-stream collator** with M-RoPE type tags (Q35)
+- **Dual-stream collator** with M-RoPE type tags
 - **Adapter merge/resume** across curriculum stages (Stage A weights → Stage B init)
 
-**Scale strategy:** Validate ideas on **0.8B Q35** first (~15 min pilot runs); compare against **8B ceiling** before committing full sweeps.
+**Scale strategy:** Validate ideas on the smaller scale first; compare against the larger ceiling before committing full sweeps — **current: 9B → 27B**; earlier: **0.8B Q35 → 8B**.
 
 ---
 
@@ -90,8 +93,8 @@ Mostly QA: TSExam MCQ, ChatTS SFT, TSExam-numeric regression, small caption hold
 | **Data pipeline** | Unified loaders across TSExam, TSExam-numeric, caption, ChatTS, ICL-UCR, CaTS-Bench, TSRBench JSONL; stratified balancing; leave-one-out ablations (e.g. drop caption bucket → +3 pp TSExam) |
 | **Eval harness** | Tiered gates per checkpoint: **loss** (free) → **TSExam** (~35 s) → **176-item TSRBench slice** (~12 s) → **full TSRBench** (~3 min 0.8B / ~5 min 8B, 8-GPU). Per-task/per-group accuracy; **parse-miss** (non–single-letter MCQ output) separate from accuracy — surfaced **NR** / **TSF** format gaps. HF + local parity. |
 | **Fast train screen** | Capped subset (~10K, 2 epochs) on Q35 for data-mix screening — distinct from eval gate ladder above |
-| **RL** | GRPO on Qwen3-VL-8B (TRL + DeepSpeed); warm-started from SFT adapters; rule-based MCQ correctness rewards |
-| **Infra** | Slurm submission; `QTSX_ARTIFACT_ROOT` artifact separation; dual venvs (torch 2.4/8B vs 2.11/Q35); NCCL tuning (P2P disable on heterogeneous nodes); agent/onboarding automation for repeatable train/eval workflows |
+| **RL** | GRPO (TRL + DeepSpeed); warm-started from SFT adapters; rule-based MCQ correctness rewards (earlier on Qwen3-VL-8B; scale with current 9B/27B as needed) |
+| **Infra** | Slurm submission; `QTSX_ARTIFACT_ROOT` artifact separation; venv / torch versioning per model family; NCCL tuning; agent/onboarding automation |
 | **Reproducibility** | Fixed samplers (post bug-fix), seed control, artifact paths, documented eval protocol fixes (e.g. deductive-reasoning option parsing) |
 
 ---
@@ -103,12 +106,14 @@ Amazon-relevant habits embedded in the stack:
 1. **Config-first** — one hypothesis per change; fork YAML, not training code; parallel Slurm sweeps
 2. **Tiered eval gates** — loss → TSExam → TSRBench slice → full north star (see latencies in eval harness)
 3. **Parse-miss ≠ accuracy** — track schema/reliability separately (production analog: doc parsing failures)
-4. **Multi-scale validation** — 0.8B first, 8B as ceiling reference
+4. **Multi-scale validation** — smaller scale first, larger as ceiling (**current: 9B → 27B**; earlier: 0.8B → 8B)
 5. **Living experiment index** — ~160 configs documented for reproducibility and handoff
 
 ---
 
 ## Results
+
+*Table = earlier **8B / 0.8B** campaign. Re-measure on **Qwen3.5 9B / 27B** when numbers land.*
 
 | Benchmark | Task | Best Q35 (0.8B) | Best 8B | Notes |
 |-----------|------|-----------------|---------|-------|
@@ -120,7 +125,7 @@ Amazon-relevant habits embedded in the stack:
 | **Caption attr-recovery** | 9-field macro accuracy | **0.72** (caption specialist) | — | Field extraction analog |
 | **ChatTS** | Free-text QA (cat/num/reason) | — | ~0.84 cat / 0.76 num | 8B path |
 
-**Headline for intro:** Open **8B** scores **~46% overall on TSRBench** — strongest open-source model at that scale, just below frontier proprietary systems orders of magnitude larger. TSExam ~90% is internal eval discipline, not the external hook.
+**Headline for intro:** Earlier open **8B** scored **~46% overall on TSRBench** — strongest open-source model at that scale then, just below frontier proprietary systems. **Current training/eval is on Qwen3.5 9B and 27B.** TSExam ~90% is internal eval discipline, not the external hook.
 
 ---
 
@@ -218,7 +223,7 @@ TSRBench reasoning tasks are domain-specific and multi-hop — they combine basi
 
 | Anchor | Theme | Lead with |
 |--------|-------|-----------|
-| **A** | Production ML/LLM | Dual-tower, Stage A/B curriculum, DDP stack, 0.890 on 0.8B |
+| **A** | Production ML/LLM | Dual-tower, Stage A/B curriculum, DDP stack; **current 9B/27B**; earlier 0.890 on 0.8B |
 | **B** | Eval / monitoring | Tiered eval, pilot harness, parse-miss, killed TR mixes |
 | **C** | Dive Deep / ambiguity | Caption pipeline + TSRBench task audit → extended TSExam |
 
@@ -226,8 +231,8 @@ TSRBench reasoning tasks are domain-specific and multi-hop — they combine basi
 
 1. Problem (30s): VLMs fail exam-grade TS reasoning
 2. Insight (30s): Dual encodings; Stage A decouples vision from language
-3. System (60s): What *I* built — patch, collator, YAML sweeps, Slurm DDP
-4. Win (30s): TSExam 0.89 on 0.8B *or* TSRBench ~46% open 8B
+3. System (60s): What *I* built — patch, collator, YAML sweeps, Slurm DDP; scales **9B / 27B**
+4. Win (30s): TSExam 0.89 on 0.8B *or* TSRBench ~46% open 8B (earlier campaign — refresh for 9B/27B)
 5. Honest limit (30s): TR mixes regressed; Stage B reasoning gaps
 6. FinTech bridge (30s): Multimodal docs, field extraction, eval-gated ship
 
@@ -239,7 +244,8 @@ TSRBench reasoning tasks are domain-specific and multi-hop — they combine basi
 
 ## Stack
 
-Python 3.11 · PyTorch 2.4 (8B) / 2.11 (Q35) · Transformers 4.57 / 5.10 · PEFT/LoRA · TRL (GRPO) · Accelerate/DeepSpeed · HuggingFace datasets · Slurm · 8× GPU DDP
+Python 3.11 · PyTorch · Transformers · PEFT/LoRA · TRL (GRPO) · Accelerate/DeepSpeed · HuggingFace datasets · Slurm · multi-GPU DDP  
+**Current models:** Qwen3.5 **9B** / **27B** · **Earlier:** Qwen3-VL-8B / Qwen3.5-0.8B (dual torch venvs historically)
 
 ---
 
@@ -256,4 +262,5 @@ Python 3.11 · PyTorch 2.4 (8B) / 2.11 (Q35) · Transformers 4.57 / 5.10 · PEFT
 
 | Date | Change |
 |------|--------|
+| 2026-08-12 | Current models → **Qwen3.5 9B / 27B**; earlier 8B / 0.8B metrics kept and labeled |
 | 2026-06-21 | Initial extended summary — architecture, curriculum, results, Stage A/B problems solved, three anchors |

@@ -3,6 +3,8 @@
 **One project, three angles.** Read before PS1 intro / ML deep-dive / LP follow-ups.  
 Full context: [`vlm_multimodal_project.md`](../.cursor/skills/debrief/vlm_multimodal_project.md)
 
+**Current models (2026-08+):** Qwen3.5 **9B** / **27B**. Metrics below are from the earlier **8B / 0.8B** campaign unless re-measured.
+
 North star: [TSRBench](https://tsrbench.github.io/) · Control: allcap-a5b3 (TSExam 0.854, TSRBench 0.339, TR 28.7%)
 
 ---
@@ -13,14 +15,14 @@ North star: [TSRBench](https://tsrbench.github.io/) · Control: allcap-a5b3 (TSE
 |---|---|
 | **Problem** | General VLMs can't do exam-grade time-series reasoning (MCQ, numbers, temporal relations). |
 | **Insight** | Raw TS tokens are inefficient; dual visual encodings (chart + delay embedding) fused into one LLM. |
-| **What I built** | Patched Qwen3-VL-8B & Qwen3.5-0.8B forwards; DinoVisionTower; dual-stream collator + M-RoPE tags; two-stage curriculum (Stage A: vision alignment, Stage B: LM LoRA); YAML-config sweeps (162 configs); DDP on 8× GPU via Slurm. |
-| **Metrics** | **Qwen3-VL-8B** stock (0.618 / 0.402) → our stack **3ep** (0.905 / 0.452). |
+| **What I built** | Patched Qwen forwards across scales (**current: Qwen3.5 9B / 27B**; earlier: Qwen3-VL-8B & Qwen3.5-0.8B); DinoVisionTower; dual-stream collator + M-RoPE tags; two-stage curriculum (Stage A: vision alignment, Stage B: LM LoRA); YAML-config sweeps (162 configs); multi-GPU DDP via Slurm. |
+| **Metrics** | Earlier: **Qwen3-VL-8B** stock (0.618 / 0.402) → our stack **3ep** (0.905 / 0.452). Refresh for 9B/27B when ready. |
 | **JD map** | End-to-end ML systems; tiered eval gates; multimodal finance docs analogy. |
 | **Honest limit** | TSRBench +5 pp from stock real but below frontier; hard TR ~29%; proprietary gap remains. |
 | **Lesson** | Decouple *how to see* (Stage A) from *how to answer* (Stage B) — same pattern as domain alignment → task FT on finance docs. |
 | **LPs** | Invent & Simplify, Deliver Results, Ownership |
 
-**90s spoken:** **Qwen3-VL-8B** stock **0.618 / 0.402** → dual tower + curriculum → **0.905 / 0.452** (3ep).
+**90s spoken:** Dual tower + curriculum on Qwen VLMs — earlier **8B** stock **0.618 / 0.402** → **0.905 / 0.452** (3ep); **now training at 9B and 27B**.
 
 ---
 

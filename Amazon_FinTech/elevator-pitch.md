@@ -10,7 +10,7 @@
 
 I'm Omri. Applied ML scientist working on generative and multimodal modeling on sequential data. PhD from Technion. I publish mostly at NeurIPS, ICML, and ICLR, and I care about the full stack: model, data, training, and eval.
 
-Right now my main project is teaching VLMs to **reason over time series** — questions, numeric answers, how things relate over time. You can feed series as text, but it's **inefficient**; from **ImagenTime and similar projects** we learned VLMs do better when we **render series as images**. I built the training and eval stack — 100-plus experiments on eight GPUs. On **TSRBench**, the public north-star benchmark, our **open 8B model** scores **~46% overall** — the first open-source model at that scale that sits **just below frontier proprietary systems**, GPT-class models orders of magnitude larger.
+Right now my main project is teaching VLMs to **reason over time series** — questions, numeric answers, how things relate over time. You can feed series as text, but it's **inefficient**; from **ImagenTime and similar projects** we learned VLMs do better when we **render series as images**. I built the training and eval stack — 100-plus experiments on multi-GPU clusters. We're now on **Qwen3.5** at **9B and 27B**. On an earlier open **8B** run, **TSRBench** (public north-star) hit **~46% overall** — first open-source model at that scale that sat **just below frontier proprietary systems**, GPT-class models orders of magnitude larger.
 
 Before that, generative work on messy sequential data — gaps, irregular timing. Same habit: fix data and eval before you trust the headline number.
 
@@ -31,7 +31,7 @@ One thing I'd flag: I killed a training mix that looked good overall but regress
 | Block | ~sec | One line |
 |-------|------|----------|
 | Who | 15 | Name, generative + multimodal sequential, full-stack IC |
-| Flagship | 40 | Goal → images → I built stack → TSRBench ~46%, open 8B vs frontier |
+| Flagship | 40 | Goal → images → I built stack → now 9B/27B; earlier TSRBench ~46% open 8B |
 | Before | 10 | Messy sequential data, eval discipline |
 | Why here | 25 | Scale, precision, peers, not solo research |
 | Close | 5 | "Go deep on whatever you want" |

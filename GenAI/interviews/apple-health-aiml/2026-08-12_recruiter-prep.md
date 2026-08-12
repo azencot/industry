@@ -39,12 +39,12 @@ Recruiters often probe: walkthrough of recent work, why Apple/Health, publicatio
 
 | JD signal | Your evidence | How to say it |
 |-----------|---------------|---------------|
-| **Large multimodal models** | Qwen VLM stack; dual visual encodings → LLM; LoRA / PEFT / DDP | “I build and train multimodal LLMs end-to-end — not just apply APIs.” |
+| **Large multimodal models** | Qwen3.5 VLM stack (**9B** / **27B**); dual visual encodings → LLM; LoRA / PEFT / DDP | “I build and train multimodal LLMs end-to-end — not just apply APIs.” |
 | **Health/fitness representation + multimodal** | TS as images + language; representation learning under scarcity | “Same problem class: heterogeneous physiological / activity-like **time series** + language/vision → shared representations.” Don’t fake clinical claims. |
 | **Time-series, SSL, cross-modal** (preferred) | ImagenTime, irregular TS, dual-tower cross-modal alignment | Preferred quals are your **strongest** match — lead here. |
-| **Train + evaluate multimodal** | Tiered eval, pilots, ablations, 0.8B↔8B | Eval rigor is a differentiator; Apple cares about **safe** health LLMs. |
+| **Train + evaluate multimodal** | Tiered eval, pilots, ablations, multi-scale **9B↔27B** | Eval rigor is a differentiator; Apple cares about **safe** health LLMs. |
 | **PhD + SOTA pubs** | PhD Technion; 40+ NeurIPS/ICML/ICLR | One sentence; don’t list papers unless asked. |
-| **Major LLM training runs** | Hands-on multi-GPU fine-tunes / curricula (8B class), not foundation pretrain from scratch | Frame honestly: **contributed to / owned** large multimodal **training runs** (DDP, LoRA, multi-stage). Don’t claim GPT-scale pretraining. |
+| **Major LLM training runs** | Hands-on multi-GPU fine-tunes / curricula at **9B / 27B** class, not foundation pretrain from scratch | Frame honestly: **contributed to / owned** large multimodal **training runs** (DDP, LoRA, multi-stage). Don’t claim GPT-scale pretraining. |
 | **Research lead / guide multimodality** | Technical leadership on architecture + experiments | Lead with **technical** leadership of research direction — not people management. |
 | **Safe LLM deployment in health** | Eval gates, negative results, abstention thinking | Motivation + discipline: “wrong answer in health is costly; I gate on eval before claiming progress.” |
 | **Industry experience** | UCLA faculty; ICSI Berkeley affiliate; industry collabs (Google/NVIDIA/Bosch — keep light unless they ask for detail) | “Industry + applied research experience beyond academia.” |
@@ -75,7 +75,7 @@ They asked for multimodal + time series + cross-modal + eval — that is your la
 
 ### Flagship project (45–60s if they ask “tell me about a recent project”)
 
-> I built a research stack to fine-tune multimodal LLMs on time-series reasoning. The core idea: one visualization isn’t enough — I use a line-chart encoding for trend/amplitude semantics and a delay-embedding image for structure, fuse both into the LLM, and train in two stages: first align vision to “see” series, then teach the language model to answer. I ran large config-driven sweeps on multi-GPU clusters with LoRA, and gated progress with a tiered eval — cheap pilots before expensive full benchmarks. On a 0.8B model we reached about 0.89 on a hard MCQ exam, close to an 8B reference. When a data-mix idea hurt temporal reasoning, I killed it and went back to data generation instead of stacking more training. That’s the working style I’d bring: architecture + data + honest eval.
+> I built a research stack to fine-tune multimodal LLMs on time-series reasoning. The core idea: one visualization isn’t enough — I use a line-chart encoding for trend/amplitude semantics and a delay-embedding image for structure, fuse both into the LLM, and train in two stages: first align vision to “see” series, then teach the language model to answer. We’re on **Qwen3.5** at **9B and 27B** scales — large config-driven sweeps on multi-GPU clusters with LoRA, gated by a tiered eval so cheap pilots happen before expensive full benchmarks. When a data-mix idea hurt temporal reasoning, I killed it and went back to data generation instead of stacking more training. That’s the working style I’d bring: architecture + data + honest eval.
 
 ### Motivation for health (don’t claim MD expertise)
 

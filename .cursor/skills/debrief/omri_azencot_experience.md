@@ -68,11 +68,14 @@ Sequential / dynamical modeling (Koopman, forecasting)
 **Extended summary (build on this):** [`vlm_multimodal_project.md`](vlm_multimodal_project.md)  
 **PS1 cheat sheet:** [`anchor-cheat-sheet.md`](../anchor-cheat-sheet.md)
 
-**Stack:** Python 3.11 · PyTorch 2.4 (8B) / 2.11 (Q35) · Transformers · PEFT/LoRA · TRL (GRPO) · Accelerate/DeepSpeed · HuggingFace · Slurm · 8× GPU DDP
+**Current models (2026-08+):** **Qwen3.5** at **9B** and **27B** (multi-scale train/eval).  
+**Earlier campaign (FinTech PS1 era):** Qwen3-VL-**8B** and Qwen3.5-**0.8B** — metrics below are from that era unless noted.
+
+**Stack:** Python 3.11 · PyTorch · Transformers · PEFT/LoRA · TRL (GRPO) · Accelerate/DeepSpeed · HuggingFace · Slurm · multi-GPU DDP (current: Qwen3.5 **9B / 27B**)
 
 ### Elevator pitch (30s)
 
-Built an end-to-end research stack for fine-tuning and evaluating multimodal LLMs on time-series reasoning. Core idea: represent each series through two complementary visual encodings — a matplotlib line chart (native Qwen ViT) and a delay-embedding image (DINOv3) — fused into a single LLM for MCQ, regression, captioning, and open QA. Ran 100+ config-driven experiments across two model scales (8B and 0.8B), multiple benchmarks, and a Slurm/DDP cluster, with systematic ablations and a fast pilot harness for dataset screening.
+Built an end-to-end research stack for fine-tuning and evaluating multimodal LLMs on time-series reasoning. Core idea: represent each series through two complementary visual encodings — a matplotlib line chart (native Qwen ViT) and a delay-embedding image (DINOv3) — fused into a single LLM for MCQ, regression, captioning, and open QA. Ran 100+ config-driven experiments across model scales (now **Qwen3.5 9B and 27B**; earlier 8B / 0.8B), multiple benchmarks, and a Slurm/DDP cluster, with systematic ablations and a fast pilot harness for dataset screening.
 
 ### Problem & approach
 
@@ -93,14 +96,16 @@ Decouples vision from language reasoning; caption priors transfer to downstream 
 
 | Area | What I built / operated |
 |------|-------------------------|
-| **Model integration** | Patched Qwen3-VL-8B and Qwen3.5-0.8B forwards; custom DinoVisionTower; dual-stream collator with M-RoPE type tags (Q35); adapter merge/resume across stages |
-| **Training** | PyTorch DDP (torchrun, 8× RTX Pro 6000), LoRA via PEFT (~43M–few-hundred-M trainable params), stratified multi-task samplers, YAML-config-first sweeps (162 configs, 125 scripts) |
+| **Model integration** | Patched Qwen forwards across scales — **current: Qwen3.5 9B / 27B**; earlier: Qwen3-VL-8B and Qwen3.5-0.8B; custom DinoVisionTower; dual-stream collator with M-RoPE type tags; adapter merge/resume across stages |
+| **Training** | PyTorch DDP (torchrun, multi-GPU), LoRA via PEFT (~43M–few-hundred-M trainable params), stratified multi-task samplers, YAML-config-first sweeps (162 configs, 125 scripts) |
 | **Data pipeline** | Unified loaders for TSExam (20K MCQ), TSExam-numeric (11K regression), caption (7.7K), ChatTS (105K align + 44K SFT), ICL-UCR, CaTS-Bench, TSRBench JSONL |
 | **Eval harness** | Tiered eval (loss → TSExam subset → TSRBench subset → full north-star); per-task/per-group accuracy; parse-miss logging; HF + local dataset parity |
-| **RL / advanced** | GRPO on Qwen3-VL-8B (TRL + DeepSpeed) with MCQ correctness rewards; pilot harness (~8–15 min Q35 runs) with measured noise floors for dataset ablation |
-| **Infra** | Slurm submission, artifact root separation (QTSX_ARTIFACT_ROOT), dual venvs (torch 2.4/8B vs 2.11/Q35), NCCL tuning, agent/onboarding automation |
+| **RL / advanced** | GRPO (TRL + DeepSpeed) with MCQ correctness rewards; pilot harness with measured noise floors for dataset ablation |
+| **Infra** | Slurm submission, artifact root separation (QTSX_ARTIFACT_ROOT), venv / torch versioning per model family, NCCL tuning, agent/onboarding automation |
 
 ### Benchmarks & headline results
+
+*Metrics below are from the earlier **8B / 0.8B** campaign unless re-measured on **9B / 27B** — refresh when new numbers land.*
 
 | Benchmark | Task | Best Q35 (0.8B) | Best 8B (reference) |
 |-----------|------|-----------------|---------------------|
@@ -111,7 +116,7 @@ Decouples vision from language reasoning; caption priors transfer to downstream 
 | Caption attr-recovery | 9-field macro accuracy | **0.72** (caption specialist) | — |
 | ChatTS | Free-text QA (cat/num/reason) | — | ~0.84 cat / 0.76 num |
 
-**Caption-transfer hypothesis (current arc):** Stage A on descriptive captions → Stage B on TSExam/TSRBench. Achieved 0.88 TSExam HF with caption priors; probing whether linguistic structure helps temporal reasoning on TSRBench (north star ~0.32–0.34 on 0.8B vs 0.45 on 8B).
+**Caption-transfer hypothesis (current arc):** Stage A on descriptive captions → Stage B on TSExam/TSRBench. Achieved 0.88 TSExam HF with caption priors (0.8B/8B era); probing whether linguistic structure helps temporal reasoning on TSRBench; **re-running / scaling on Qwen3.5 9B and 27B**.
 
 **Control baseline (Jun 2025):** allcap-a5b3 — TSExam 0.854, TSRBench 0.339, TR 28.7%.
 
@@ -147,7 +152,7 @@ Full detail: [`vlm_multimodal_project.md`](vlm_multimodal_project.md). Cheat she
 - **Pilot harness** — 4-bucket capped subset (~10K samples, 2 epochs); screens datasets in ~15 min; calibrated noise floors (TSExam ±0.3 pp detectable)
 - **Tiered eval gates** — cheap TSExam HF sanity before expensive full TSRBench; parse-miss tracked separately from accuracy
 - **Reproducibility** — fixed samplers, seed control, artifact paths, documented eval protocol fixes
-- **Multi-scale validation** — validate on 0.8B Q35 first; compare against 8B ceiling
+- **Multi-scale validation** — validate on smaller scale first; compare against larger ceiling (**current: 9B → 27B**; earlier: 0.8B Q35 → 8B)
 
 ---
 
@@ -157,7 +162,7 @@ Full detail: [`vlm_multimodal_project.md`](vlm_multimodal_project.md). Cheat she
 |----------------------|----------|----------|
 | End-to-end ML systems | VLM stack: data → train → eval → infra | **Strong** |
 | Eval gating / regression detection | Tiered eval, pilot noise floors, parse-miss logging | **Very strong** — sharpest differentiator |
-| Tiered models / cost tradeoffs | Q35 0.8B near 8B on TSExam (0.890 vs 0.901) | **Strong** |
+| Tiered models / cost tradeoffs | Multi-scale (earlier: Q35 0.8B near 8B on TSExam 0.890 vs 0.901; **now 9B / 27B**) | **Strong** |
 | Data-centric iteration | Caption-transfer, negative TR buckets, leave-one-out ablations | **Very strong** |
 | Messy structured data | Irregular TS, multimodal encodings, field-level caption recovery | **Analogous** — bridge explicitly to finance |
 | Learning from corrections | GRPO (rule-based MCQ rewards); iterative supervision loops | **Partial** — not production user-feedback yet |
@@ -178,7 +183,7 @@ Explicit translations from time-series research → finance:
 | TSExam-numeric medAE 0.14 | Numeric correctness for payment matching |
 | Irregular TS completion + masking | Incomplete records, delayed postings, partial remittance fields |
 | Tiered eval + parse-miss tracking | Slice metrics by doc/entity type; schema parsing reliability before accuracy |
-| 0.8B near 8B quality | SLM routing when quality holds; cost at transaction scale |
+| 0.8B near 8B quality (earlier); now **9B / 27B** multi-scale | SLM / mid-size routing when quality holds; cost at product scale |
 | Negative TR bucket mixes | Don't cargo-cult data — same discipline before shipping to finance users |
 
 ### Production bridge (20s — not yet built, but show thinking)
@@ -193,8 +198,8 @@ Explicit translations from time-series research → finance:
 
 1. **Problem (30s):** VLMs fail on temporal/structured reasoning; need exam-grade QA
 2. **Insight (30s):** Dual encodings; decouple vision alignment from language reasoning
-3. **System (60s):** Two-stage curriculum, unified pipeline, tiered eval, 0.8B→8B validation
-4. **Win (30s):** TSExam **0.890 on 0.8B** vs **0.901 on 8B**
+3. **System (60s):** Two-stage curriculum, unified pipeline, tiered eval, multi-scale (**9B / 27B**; earlier 0.8B→8B)
+4. **Win (30s):** TSExam **0.890 on 0.8B** vs **0.901 on 8B** (earlier campaign — refresh if 9B/27B numbers ready)
 5. **Honest limit (30s):** TR bucket mixes regressed; pivoted to data generation
 6. **FinTech bridge (30s):** Same pattern as doc IE — multimodal inputs, field extraction, regression-gated releases
 
@@ -242,12 +247,13 @@ Lean hardest on: **eval methodology**, **curriculum/domain adaptation**, **low-l
 
 | Metric | Value |
 |--------|-------|
-| TSExam HF (Q35) | 0.890 |
-| TSExam HF (8B) | 0.901 |
+| **Current models** | Qwen3.5 **9B** / **27B** |
+| TSExam HF (Q35 0.8B, earlier) | 0.890 |
+| TSExam HF (8B, earlier) | 0.901 |
+| TSRBench overall (Q35 / 8B, earlier) | 0.374 / 0.454 |
+| TSRBench TR | ~29% (hard problem, in progress) |
 | TSExam-numeric medAE | 0.14 |
 | Caption attr-recovery | 0.72 macro |
-| TSRBench overall (Q35 / 8B) | 0.374 / 0.454 |
-| TSRBench TR | ~29% (hard problem, in progress) |
 | Generative gains (ImagenTime) | +58% short / +132% long |
 | Data-scarce improvement | +55% with 5% data |
 | Experiment configs | 162 configs, 125 scripts |
