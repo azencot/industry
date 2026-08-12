@@ -46,7 +46,7 @@ Personal workspace for industry job prep: Amazon FinTech interviews, general for
 - **Purpose:** Generative AI / LLM role interviews and prep — systems, eval, RAG/agents/tradeoffs
 - **Not** forecasting (use [`Forecasting/`](Forecasting/)); **not** FinTelligence formal loop scaffolding (use [`Amazon_FinTech/`](Amazon_FinTech/))
 - **Details:** [`GenAI/INDEX.md`](GenAI/INDEX.md)
-- **Company / call prep:** [`GenAI/interviews/`](GenAI/interviews/) — Apple Health AIML recruiter screen **2026-08-12** ([`prep`](GenAI/interviews/apple-health-aiml/2026-08-12_recruiter-prep.md))
+- **Company / call prep:** [`GenAI/interviews/`](GenAI/interviews/) — Apple Health AIML: recruiter done **2026-08-12**; next **HM screen (Shirley Ren)** ([`debrief`](GenAI/interviews/apple-health-aiml/2026-08-12_recruiter-debrief.md) · [`HM prep`](GenAI/interviews/apple-health-aiml/2026-08-12_hm-screen-prep.md))
 - **Session notes:** [`GenAI/notes/`](GenAI/notes/)
 - **Related skill:** `/ml-deep-dive`
 

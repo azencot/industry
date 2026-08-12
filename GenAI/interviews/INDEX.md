@@ -4,6 +4,6 @@ Exploratory and formal conversations with generative-AI employers. Separate from
 
 | Company | Contact | Next | Prep |
 |---------|---------|------|------|
-| **Apple — Health AIML** | Recruiter (phone) | **2026-08-12** recruiter screen | [`apple-health-aiml/`](apple-health-aiml/) |
+| **Apple — Health AIML** | **Shirley Ren** (HM) | Send next-week avail → **HM screen 45 min** | [`apple-health-aiml/`](apple-health-aiml/) |
 
 After each call: drop prep/debrief in that company’s folder (`YYYY-MM-DD_*.md`) and add a row to [`../INDEX.md`](../INDEX.md) session log.
