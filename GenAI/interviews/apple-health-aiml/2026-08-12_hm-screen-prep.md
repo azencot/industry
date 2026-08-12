@@ -15,13 +15,13 @@
 
 ---
 
-## Tyler’s three topics (this is the entire round)
+## Three topics Shirley will cover (Tyler briefed these)
 
 1. **Specific interest in health AI**
 2. **Interest in Apple**
 3. **Walk through most impactful LLM training run** (spoken narrative — not a pad, not a live code)
 
-Everything else is supporting color. Do not turn this into a coding screen, a paper quiz, or a full on-site research talk.
+Tyler is **not** on this call. He told you what Shirley is likely to focus on. Everything else is supporting color. Do not turn this into a coding screen, a paper quiz, or a full on-site research talk.
 
 ---
 
@@ -36,7 +36,7 @@ Everything else is supporting color. Do not turn this into a coding screen, a pa
 | Dress | Whatever presents your best self in a work setting (invite language). |
 | After | Write `2026-08-21_hm-screen-debrief.md` and update [`README.md`](README.md). |
 
-**Daily budget until the call:** **45–75 min** on weekdays, **one 45-min mock** on the weekend. Stop when Tyler’s three topics are clean out loud. Do **not** prep the 5-interview on-site this week.
+**Daily budget until the call:** **45–75 min** on weekdays, **one 45-min mock** on the weekend. Stop when the three HM topics are clean out loud. Do **not** prep the 5-interview on-site this week.
 
 **Do not mix tracks:** TTD / forecasting stories stay parked. Lead with multimodal LLM training. TS credibility only if she asks.
 
@@ -44,7 +44,7 @@ Everything else is supporting color. Do not turn this into a coding screen, a pa
 
 ## Prep schedule — Wed Aug 12 → Fri Aug 21
 
-Source of truth for *what* to say: this file §§2–6. Depth for the training run: [`.cursor/skills/debrief/vlm_multimodal_project.md`](../../../.cursor/skills/debrief/vlm_multimodal_project.md) + [`.cursor/skills/debrief/omri_azencot_experience.md`](../../../.cursor/skills/debrief/omri_azencot_experience.md). IC verbs only.
+Source of truth for *what* to say: this file §§2–6. Training-run depth: [`2026-08-12_hm-3c-training-run.md`](2026-08-12_hm-3c-training-run.md). Broader project: [`.cursor/skills/debrief/vlm_multimodal_project.md`](../../../.cursor/skills/debrief/vlm_multimodal_project.md). IC verbs only.
 
 ### How to use each day
 
@@ -69,14 +69,14 @@ Source of truth for *what* to say: this file §§2–6. Depth for the training r
 
 ### Thu Aug 13 — training-run walkthrough (core of the call) (~60–75 min)
 
-Tyler’s topic 3. Spoken walkthrough of the most impactful LLM training run — still **fit**, not a tech screen. She may probe, but you are telling a story, not writing code.
+This is topic 3. Spoken walkthrough of the most impactful LLM training run — still **fit**, not a tech screen. Shirley may probe, but you are telling a story, not writing code. Detail: [`2026-08-12_hm-3c-training-run.md`](2026-08-12_hm-3c-training-run.md).
 
 1. Pick **one** run and freeze it: multimodal Qwen3.5 VLM fine-tune / curriculum at **9B ↔ 27B** (dual visual encodings → LLM). Honest frame: **major multimodal training run you owned**, not pretrain-from-scratch.
 2. Speak the **2–3 min** structure in §3C once, timer on: problem → architecture → training design → scale → eval gate → kill decision → result.
-3. Lock **numbers you will actually say** (do not mix campaigns):
-   - **Current work:** Qwen3.5 **9B / 27B**, multi-stage, LoRA/PEFT, DDP.
-   - **Measured campaign you can cite:** earlier **8B / 0.8B** — TSExam HF **~0.90**; TSRBench overall **~0.45** on 8B (open-source strong at that scale then). If 9B/27B numbers are not re-measured, say so: *“those metrics are from the prior scale; current runs are 9B/27B with the same eval gate.”*
-4. Write **one sentence** for the kill: data-mix hurt temporal reasoning → **stopped stacking training** → went back to data generation / task coverage.
+3. Lock **numbers you will actually say** (do not mix campaigns) — detail file §5–6:
+   - **Current:** Qwen3.5 **9B / 27B**; 27B FT TSExam **~0.92**; 9B r64 **~0.89**.
+   - **8B champion (cite):** stock **0.62 → ~0.90 / 0.926** TSExam; TSRBench **~0.40 → ~0.45**. Do **not** claim 9B/27B won TSRBench (zero-shot 27B ties the 8B champion; FT trades reasoning for perception).
+4. Kill sentence: TR synth **26.9 → 21.9** → **killed** → data generation, not more GPU.
 5. Drill the probe bank in §3C — **one sentence each**, out loud.
 
 **Exit check:** 2–3 min walkthrough without notes; you can name one metric class + one negative result.
@@ -104,7 +104,7 @@ Also rehearse the **curriculum in 30s:** Stage A = see the series (vision/alignm
 
 ### Sat Aug 15 — sharpen topic 1 without a JD rewrite (~45 min)
 
-Stay on **Tyler topic 1**, but the answer is **TS representations for LLMs**; health is downstream. Read **abstracts only** so you can say “same problem class,” not “I became a health person.” Do **not** open with “I read your paper.”
+Stay on **topic 1** (interest in health AI), but the answer is **TS representations for LLMs**; health is downstream. Read **abstracts only** so you can say “same problem class,” not “I became a health person.” Do **not** open with “I read your paper.”
 
 | Piece | Why it maps to you | Your bridge if it comes up |
 |-------|--------------------|----------------------------|
@@ -147,7 +147,7 @@ After: write 5 bullets — where you went long, where you sounded managerial, an
 
 ---
 
-### Tue Aug 18 — Mock #2, all three Tyler topics under interruption (~60 min)
+### Tue Aug 18 — Mock #2, all three HM topics under interruption (~60 min)
 
 Same 45-min shape. Force interruptions from **§3D**, not only the training run:
 
@@ -179,7 +179,7 @@ If using Cursor: drill from this file + the VLM project note; IC framing only.
 
 1. Full spoken pass once: intro → **health AI** → **Apple** → 2–3 min **training run** → two questions → close. **Timer.**
 2. Webex already verified. No CoderPad.
-3. Layout: this file + notepad with Tyler’s three topics + 2 questions. Close extra tabs.
+3. Layout: this file + notepad with the three HM topics + 2 questions. Close extra tabs.
 4. **Stop.** No new papers. Sleep.
 
 **Exit check:** one clean pass; voice is IC; you know the join rule (≤10 min early).
@@ -190,7 +190,7 @@ If using Cursor: drill from this file + the VLM project note; IC framing only.
 
 **Morning (15 min, not a study block):**
 
-- Skim Tyler’s three topics + kill-decision sentence + two questions.
+- Skim the three HM topics + kill-decision sentence + two questions.
 - 60s intro once.
 - Water, quiet room, phone on DND.
 
@@ -218,10 +218,10 @@ If using Cursor: drill from this file + the VLM project note; IC framing only.
 
 ---
 
-## 1. Call shape (expected — fit, Tyler’s three topics)
+## 1. Call shape (expected — fit with Shirley)
 
-| Block | ~time | Tyler topic |
-|-------|-------|-------------|
+| Block | ~time | Focus |
+|-------|-------|--------|
 | Warm + your intro | 5–8 min | Who you are; current center of gravity = multimodal TS → LLM |
 | Why health AI / why Apple | 10–15 min | **(1)** TS-for-LLM; health = downstream at scale · **(2) Apple** — not a JD rewrite |
 | Deep dive: impactful LLM training run | 15–20 min | **(3)** spoken narrative; she may probe ablations, scale, failure modes — still not a coding exercise |
@@ -239,7 +239,7 @@ If using Cursor: drill from this file + the VLM project note; IC framing only.
 
 ### A. Specific interest in health AI (~45–60s)
 
-Tyler will ask this. **Do not** rewrite yourself as a health researcher. The honest answer is: your research interest is **TS representations for LLMs**; health is the same problem at scale.
+Shirley is likely to ask this — Tyler named it as an HM focus; he is not in the room. **Do not** rewrite yourself as a health researcher. The honest answer is: your research interest is **TS representations for LLMs**; health is the same problem at scale.
 
 > The thing I actually work on is how to **represent time series so an LLM can work with them** — not dump numbers into context and hope. Dual visual encodings, alignment curricula, eval gates: the bet is that perception of the series is the bottleneck, then language reasoning can sit on top. Health and fitness is not a different scientific angle for me. It’s the same problem downstream, at scale: messy longitudinal signals, often with another modality, and you only keep a change if eval moved. That’s the setting I want — real series, real users — not a pivot into being a health specialist.
 
@@ -254,40 +254,59 @@ Tyler will ask this. **Do not** rewrite yourself as a health researcher. The hon
 
 ### B. Interest in Apple (~45–60s)
 
-> Apple is where those series already live on devices people use every day, and Health AIML is building the **foundational** multimodal / time-series layer — representation learning included — rather than wrapping an API. I want the TS-for-LLM work to hit that stack: scale, real signals, a real eval bar. That’s the Apple interest; not product trivia.
+Tyler listed this because **HMs use it as a filter, not a trivia quiz.** Almost every candidate has a rehearsed “I’m excited to work at Apple.” Shirley has heard that sentence this week. She is not scoring product knowledge or brand enthusiasm.
 
-**Avoid:** product trivia guesses about Watch internals; IP fishing; “I love Apple products” without the research bridge; a second copy of a JD-shaped health pitch.
+**What she is actually listening for**
+
+| Not the signal | The signal |
+|----------------|------------|
+| Do you know Watch / Health app features? | Can you say why **this org’s setting** is the right place for *your* work? |
+| Are you excited to work for Apple? | Will you still want the job once it’s privacy, on-device, slower publication, health/fitness series — not a ChatGPT lab with Apple on the resume? |
+| Did you memorize the JD? | Did you **choose constraints** (device-resident series, foundational TS/multimodal layer, eval that isn’t a leaderboard) rather than the logo? |
+
+It’s a **disambiguation** question: tourist vs someone who picked *this* research setting. A pretty paragraph that would also work at Google Health or OpenAI is a miss. A short, specific choice is a hit.
+
+**Spoken (keep it a choice, not a fan letter):**
+
+> I’m not here for the brand. The reason it’s Apple is the setting of the same problem I already work on: the series already live on the device, Health AIML is building the foundational TS / multimodal layer rather than a chatbot wrapper, and privacy / on-device are constraints on the *representation* — not a side quest. That’s a different place to do TS-for-LLM than a paper lab or a digital-health startup. I don’t need product trivia to mean that.
+
+**If she probes “so you just want a well-resourced lab?”**  
+> Resourcing isn’t the discriminator. The discriminator is where the signals are and what the eval is allowed to be. That’s Apple Health AIML for this problem; it wouldn’t be a generic FM lab.
+
+**Avoid:** Watch internals; IP fishing; “I love Apple products”; a second JD-shaped health pitch; excitement as the lead.
 
 ### C. Most impactful LLM training run (core of the call)
 
-**Pick one run and stick to it:** multimodal Qwen3.5 VLM fine-tune / curriculum at **9B ↔ 27B** (dual visual encodings → LLM). Frame honestly as **major multimodal training run you owned**, not multi-trillion-token pretrain-from-scratch.
+**Detail (numbers, ablations, bugs, 9B/27B):** [`2026-08-12_hm-3c-training-run.md`](2026-08-12_hm-3c-training-run.md) — memorize §1 spoken; pull from the rest.
 
-**Spoken structure (~2–3 min, then let her dig):**
+**Pick one run and stick to it:** multimodal Qwen3.5 VLM fine-tune / curriculum at **9B ↔ 27B** (dual visual encodings → LLM). Frame honestly as **major multimodal training run you owned**, not multi-trillion-token pretrain-from-scratch. Cite the **8B** campaign for the measured champion and most ablations.
+
+**Spoken structure (~2–3 min, then let her dig):** full script in the detail file §1.
 
 1. **Problem** — time-series reasoning with an LLM; single visualization encoding was insufficient.  
 2. **Architecture** — line-chart encoding (trend/amplitude) + delay-embedding image (structure); fuse both into the LLM.  
 3. **Training design** — multi-stage: (i) align vision to “see” series, (ii) teach LM to answer; LoRA / PEFT; config-driven sweeps; multi-GPU DDP.  
-4. **Scale** — **9B and 27B** class; pilots before full runs.  
+4. **Scale** — **9B and 27B** class; recipe proven on 8B; pilots before full runs.  
 5. **Eval gate** — tiered eval; cheap pilots → expensive full benchmarks; no ship without metric move.  
-6. **Hard call** — when a data-mix idea hurt temporal reasoning, **killed it** and went back to data generation instead of stacking more training.  
-7. **Result / learning** — what moved (name the metric class you actually have); lesson = architecture + data + honest eval beat more GPU hours on a bad mix.
+6. **Hard call** — TR synth **26.9 → 21.9**; **killed it**; went back to data generation.  
+7. **Result** — 8B stock **0.62 → ~0.90** TSExam, TSRBench **~0.40 → ~0.45**; 27B FT TSExam **~0.92**. Do not claim 9B/27B won TSRBench.
 
-**Probe bank (have one sentence each):**
+**Probe bank (one sentence each; full answers in detail file §10):**
 
 | Probe | Pocket |
 |-------|--------|
-| Why two visual encoders? | Complementary failure modes: trend vs dynamical structure |
-| Why not text-only TS? | Perception bottleneck; images as a strong inductive bias for amplitude/shape |
-| LoRA vs full FT? | Cost / iteration speed vs capacity; when you’d unfreeze |
-| DDP / infra pain? | One real bug or bottleneck you owned (sync, OOM, data pipeline) |
-| How do you know it generalized? | Held-out tasks / ablations / negative results |
-| Pretrain vs fine-tune honesty | Fine-tune / adapter / curriculum scale — not claiming GPT-scale pretrain lead |
+| Why two visual encoders? | Complementary failure modes: trend vs dynamical structure (ChatTS num 0.17 vs 0.71 vs dual 0.79) |
+| Why not text-only TS? | Perception bottleneck; would compare to a native TS encoder on *their* signals |
+| LoRA vs full FT? | Cost / iteration; r64/r128 sweet spots; r256 hurt |
+| DDP / infra pain? | Sampler 1/8 data, adapter-chain +13 pp, Q35 EOS/thinking eval bugs |
+| How do you know it generalized? | Held-out HF + TSRBench; slice gates; parse-miss ≠ accuracy |
+| Pretrain vs fine-tune honesty | Fine-tune / adapter / curriculum — not GPT-scale pretrain |
 
 ### D. Hard questions under this story
 
 The story’s vulnerability: *“same problem, health is just downstream”* can sound like you don’t care about the team, can’t transfer to wearables, or are shopping any multimodal seat. Drill these until the answer is 20–40s, then stop. **Don’t** repair them by becoming a health person.
 
-#### Fit / motivation (Tyler 1–2)
+#### Fit / motivation (health AI · Apple)
 
 **“If it isn’t a different scientific angle, why this team and not any TS–LLM group?”**  
 > The *question* is the same. The *setting* isn’t. Academic TS–LLM is public benchmarks and a leaderboard. Here the series are longitudinal, user-specific, privacy-constrained, and eval is not “did TSExam move.” I want that constraint on the representation problem. I’m not claiming a new identity. I’m claiming the right place to do the work.

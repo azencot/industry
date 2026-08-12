@@ -16,7 +16,7 @@
 | Date | What | Notes |
 |------|------|-------|
 | **2026-08-12** | Recruiter phone (~**10 min**) — **Tyler** | Cleared soft gate. Full loop briefed. Debrief: [`2026-08-12_recruiter-debrief.md`](2026-08-12_recruiter-debrief.md) |
-| **2026-08-21** | **HM screen — Shirley Ren** | **Fri 11:05–11:50 AM PDT**, Webex. **Fit** (Tyler’s three topics; no coding). Prep: [`2026-08-12_hm-screen-prep.md`](2026-08-12_hm-screen-prep.md) |
+| **2026-08-21** | **HM screen — Shirley Ren** | **Fri 11:05–11:50 AM PDT**, Webex. **Fit**. Prep: [`2026-08-12_hm-screen-prep.md`](2026-08-12_hm-screen-prep.md) · training-run detail: [`2026-08-12_hm-3c-training-run.md`](2026-08-12_hm-3c-training-run.md) |
 
 ## Loop (from Tyler)
 
