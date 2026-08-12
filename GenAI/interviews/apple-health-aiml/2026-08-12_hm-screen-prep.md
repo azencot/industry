@@ -62,9 +62,8 @@ Source of truth for *what* to say: this file §§2–6. Depth for the training r
 2. Say **60s intro** (§2) out loud twice — kill any lab-PI / “my students” language.
 3. Say **health AI** + **why Apple** (§3A–B) once each (~45–60s).
 4. Pick **2 questions** from §6 and write them at the top of a notepad for Aug 21.
-5. Logistics one-liner once: Seattle · green card / PR · FT · on-site fine.
 
-**Exit check:** intro does not sound like a PI pitch.
+**Exit check:** intro does not sound like a PI pitch. Do **not** volunteer green card / Seattle / FT — Tyler already has that.
 
 ---
 
@@ -103,9 +102,9 @@ Also rehearse the **curriculum in 30s:** Stage A = see the series (vision/alignm
 
 ---
 
-### Sat Aug 15 — sharpen topic 1 (health AI) with her problem class (~45 min)
+### Sat Aug 15 — sharpen topic 1 without a JD rewrite (~45 min)
 
-Stay on **Tyler topic 1**. Read **abstracts only** so the health-AI answer sounds specific, not generic. Do **not** open with “I read your paper.” Do **not** turn Saturday into a Shirley bibliography.
+Stay on **Tyler topic 1**, but the answer is **TS representations for LLMs**; health is downstream. Read **abstracts only** so you can say “same problem class,” not “I became a health person.” Do **not** open with “I read your paper.”
 
 | Piece | Why it maps to you | Your bridge if it comes up |
 |-------|--------------------|----------------------------|
@@ -113,9 +112,9 @@ Stay on **Tyler topic 1**. Read **abstracts only** so the health-AI answer sound
 | [Speech FMs generalize to wearable TS](https://machinelearning.apple.com/research/speech-foundation) (Narain, Aldeneh, Ren) | Cross-modal transfer, data-scarce health/fitness sensors | You know **representation transfer under scarcity**; you don’t fake ECG/PPG product work |
 | RelCon / wearable motion FMs (Xu, Narain, … Ren) | Sensor/motion foundation models for wearables | Adjacent to dual-representation thinking; stay high-level |
 
-**If she asks how you’d work on health signals:** messy longitudinal TS + another modality + **eval/safety gate** before claiming progress. Not clinical diagnosis.
+**If she asks how you’d work on health signals:** same stack — represent the series so the LLM can use them; eval gate before claiming progress. Not clinical diagnosis.
 
-**Exit check:** 3-sentence overlap (“same problem class: TS reasoning with LLMs”) and 1-sentence difference (“I fused two visual views; they also explore dedicated TS encoders / speech-FM transfer”).
+**Exit check:** 3-sentence overlap (“same problem class: TS reasoning with LLMs”) and 1-sentence difference (“I fused two visual views; they also explore dedicated TS encoders / speech-FM transfer”). Health is the downstream, not a new angle.
 
 ---
 
@@ -138,24 +137,24 @@ After: write 5 bullets — where you went long, where you sounded managerial, an
 
 ### Mon Aug 17 — health AI + Apple pockets under pressure (~45 min)
 
-1. Re-say §3A and §3B. Then answer follow-ups:
-   - *Why not a pure FM lab?* → privacy, on-device/platform, safety eval as first-class.
-   - *Why not clinical / digital-health startup?* → you want Apple’s data + deployment bar, not a clinician hat you don’t have.
-   - *Why Seattle / this seat?* → already local; IC research scientist; multimodal + TS is the JD.
+1. Re-say §3A and §3B. Then drill **§3D** (hard questions) — 20–40s, then stop. Priority follow-ups:
+   - *Why this domain if you’re not a clinician?* → TS representations for LLMs; health is downstream at scale, not a new scientific identity.
+   - *Why not a pure FM / TS lab?* → real series + consequential eval; privacy/on-device constrain the representation.
+   - *Why not a clinical / digital-health startup?* → you’re not putting on a clinician hat; you want this representation problem on Apple’s signals.
 2. Anti-pattern pass (§5): say the “Avoid” column out loud, then the “Do” rewrite.
-3. Optional 15 min: JD skim only — multimodal, representation learning, time series, train+eval, safe LLM in health. No Watch internals.
 
-**Exit check:** health-AI answer never claims MD expertise; Apple answer names **foundational multimodal + high cost of error**, not gadgets.
+**Exit check:** health-AI answer never sounds JD-adapted or clinical; it names **representing series for LLMs** first.
 
 ---
 
 ### Tue Aug 18 — Mock #2, all three Tyler topics under interruption (~60 min)
 
-Same 45-min shape. Force interruptions on **each** topic, not only the training run:
+Same 45-min shape. Force interruptions from **§3D**, not only the training run:
 
-1. Health AI — “you’re not a clinician; why this domain?”
-2. Apple — “why not a pure FM lab / another big-tech health team?”
-3. Training run — §3C probe bank + Fri table (spoken; no pad)
+1. Health AI — “no health papers / you’ll just continue your VLM.”
+2. Apple — “why this team if it’s the same scientific angle?”
+3. Transfer — “PPG isn’t a UCR chart; 27B isn’t on-device.”
+4. Training run — §3C probe bank + Fri table (spoken; no pad)
 
 If using Cursor: drill from this file + the VLM project note; IC framing only.
 
@@ -180,7 +179,7 @@ If using Cursor: drill from this file + the VLM project note; IC framing only.
 
 1. Full spoken pass once: intro → **health AI** → **Apple** → 2–3 min **training run** → two questions → close. **Timer.**
 2. Webex already verified. No CoderPad.
-3. Layout: this file + notepad with Tyler’s three topics + 2 questions + logistics line. Close extra tabs.
+3. Layout: this file + notepad with Tyler’s three topics + 2 questions. Close extra tabs.
 4. **Stop.** No new papers. Sleep.
 
 **Exit check:** one clean pass; voice is IC; you know the join rule (≤10 min early).
@@ -224,7 +223,7 @@ If using Cursor: drill from this file + the VLM project note; IC framing only.
 | Block | ~time | Tyler topic |
 |-------|-------|-------------|
 | Warm + your intro | 5–8 min | Who you are; current center of gravity = multimodal TS → LLM |
-| Why health AI / why Apple | 10–15 min | **(1) health AI** · **(2) Apple** — specific, not generic |
+| Why health AI / why Apple | 10–15 min | **(1)** TS-for-LLM; health = downstream at scale · **(2) Apple** — not a JD rewrite |
 | Deep dive: impactful LLM training run | 15–20 min | **(3)** spoken narrative; she may probe ablations, scale, failure modes — still not a coding exercise |
 | Your questions + close | 5–8 min | Team problems, success bar, next step |
 
@@ -232,7 +231,7 @@ If using Cursor: drill from this file + the VLM project note; IC framing only.
 
 ## 2. 60-second intro (same IC spine)
 
-> I’m an applied ML research scientist focused on sequential and multimodal data. Recently I’ve been leading the **technical** direction on multimodal time-series models — dual visual encodings into an LLM, multi-stage training curricula, and a strict eval harness so we only keep changes that move the metrics. Before that: generative and representation learning for time series, including image-based transforms and irregular sampling. PhD Technion; publish NeurIPS/ICML/ICLR. I’m a US permanent resident, based in Seattle, looking for a full-time **IC** research role where I own multimodality work hands-on — architecture, training, and gating what ships. Health AIML fits because it’s foundational multimodal models over health and fitness signals, with a high bar for getting answers wrong.
+> I’m an applied ML research scientist focused on sequential and multimodal data. Recently I’ve been leading the **technical** direction on multimodal time-series models — dual visual encodings into an LLM, multi-stage training curricula, and a strict eval harness so we only keep changes that move the metrics. Before that: generative and representation learning for time series, including image-based transforms and irregular sampling. PhD Technion; publish NeurIPS/ICML/ICLR. I own this work hands-on — architecture, training, and gating what ships. I want that same problem — **representing series so an LLM can actually use them** — in a setting where the signals are real and the scale is large. Health AIML is that downstream, not a new field for me.
 
 ---
 
@@ -240,16 +239,24 @@ If using Cursor: drill from this file + the VLM project note; IC framing only.
 
 ### A. Specific interest in health AI (~45–60s)
 
-> I’m not a clinician. What I care about is models that understand **messy longitudinal signals** — activity and physiological-like time series, plus language or other modalities — and that only ship when evaluation supports it. Health and fitness is where that combination is both high-impact and high-cost-of-error: overconfident LLMs are unacceptable. My last few years have been exactly that problem class on the research side — multimodal + time series + cross-modal alignment + eval gates — and I want to apply it where the data is real user health/fitness context and the deployment bar is Apple’s, not a paper leaderboard alone.
+Tyler will ask this. **Do not** rewrite yourself as a health researcher. The honest answer is: your research interest is **TS representations for LLMs**; health is the same problem at scale.
 
-**If she probes “why not pure foundation-model lab?”**  
-> I want the constraints: privacy, on-device/platform realities, and safety eval as first-class. That’s where the research decisions get interesting.
+> The thing I actually work on is how to **represent time series so an LLM can work with them** — not dump numbers into context and hope. Dual visual encodings, alignment curricula, eval gates: the bet is that perception of the series is the bottleneck, then language reasoning can sit on top. Health and fitness is not a different scientific angle for me. It’s the same problem downstream, at scale: messy longitudinal signals, often with another modality, and you only keep a change if eval moved. That’s the setting I want — real series, real users — not a pivot into being a health specialist.
+
+**If she probes “why health, then?”**  
+> Because that’s where those series already exist densely and the answers get used. The research question doesn’t change; the data and the eval bar do.
+
+**If she probes “why not a pure foundation-model / TS lab?”**  
+> I want the series to be real and the eval to be consequential. Privacy and on-device constraints make the *representation* problem more interesting, not a reason I became a clinician.
+
+**If she probes “you’re not a clinician.”**  
+> Correct — and I’m not trying to be. I care about the representation and the LLM, not diagnosis. Health is the application surface.
 
 ### B. Interest in Apple (~45–60s)
 
-> Apple already sits on devices people trust with health and fitness data, and Health AIML is explicitly building **foundational multimodal** tech for those experiences — representation learning and time series included. I want to do multimodal research where it reaches people at scale and where wrong answers matter. Seattle + IC research scientist role is the practical fit; the intellectual fit is multimodal + TS under a safety-first product bar.
+> Apple is where those series already live on devices people use every day, and Health AIML is building the **foundational** multimodal / time-series layer — representation learning included — rather than wrapping an API. I want the TS-for-LLM work to hit that stack: scale, real signals, a real eval bar. That’s the Apple interest; not product trivia.
 
-**Avoid:** product trivia guesses about Watch internals; IP fishing; “I love Apple products” without the research bridge.
+**Avoid:** product trivia guesses about Watch internals; IP fishing; “I love Apple products” without the research bridge; a second copy of a JD-shaped health pitch.
 
 ### C. Most impactful LLM training run (core of the call)
 
@@ -276,9 +283,76 @@ If using Cursor: drill from this file + the VLM project note; IC framing only.
 | How do you know it generalized? | Held-out tasks / ablations / negative results |
 | Pretrain vs fine-tune honesty | Fine-tune / adapter / curriculum scale — not claiming GPT-scale pretrain lead |
 
+### D. Hard questions under this story
+
+The story’s vulnerability: *“same problem, health is just downstream”* can sound like you don’t care about the team, can’t transfer to wearables, or are shopping any multimodal seat. Drill these until the answer is 20–40s, then stop. **Don’t** repair them by becoming a health person.
+
+#### Fit / motivation (Tyler 1–2)
+
+**“If it isn’t a different scientific angle, why this team and not any TS–LLM group?”**  
+> The *question* is the same. The *setting* isn’t. Academic TS–LLM is public benchmarks and a leaderboard. Here the series are longitudinal, user-specific, privacy-constrained, and eval is not “did TSExam move.” I want that constraint on the representation problem. I’m not claiming a new identity. I’m claiming the right place to do the work.
+
+**“You have no health papers. Why you instead of someone who does?”**  
+> A health-ML hire often has the domain and a classifier. This seat is foundational representation / multimodal / TS + models that reason. That’s what I actually trained. I’ll learn the health-specific failure modes from the team — I won’t fake that I already have them. What transfers: how you represent a series, how you curriculum-train, how you kill a run when the metric you care about moves the wrong way.
+
+**“This sounds like you’ll keep working on your VLM paper on our data.”**  
+> If year one is a health-specific encoder or eval harness, that’s the job. I don’t need to keep matplotlib + DINO. What I won’t do is pretend the science is “health” when the science is “how the model sees the series.” I want the representation work *on your signals*, not a reprint of TSRBench.
+
+**“Are you shopping any Seattle GenAI / multimodal role?”**  
+> I’m looking for IC work where I own TS / multimodal training. This seat is high priority because the problem matches — represent series so a model can use them, on real signals — not because it’s convenient. *(Don’t volunteer TTD/SCOT. If pressed on other processes: a few science roles; this is the TS→LLM + real-signals match.)*
+
+**“Why Apple, not Google/Meta FM lab or a digital-health startup?”**  
+> Apple is where the series already live on the device, and Health AIML is building the foundational TS / multimodal layer, not a chatbot wrapper and not a clinic. I don’t have a Watch roadmap. The pull is representation research that has to survive privacy and platform constraints.
+
+**“Why not forecasting? That’s also time series at scale.”**  
+> Forecasting is one task on a series. I moved to *reasoning over series with an LLM* because perception of the series was the bottleneck I wanted. This role’s interesting layer is representation + multimodal, not a pacing or demand model.
+
+#### Transfer to wearables / their methods
+
+**“PPG, ECG, accel aren’t UCR line charts. Why would your encodings transfer?”**  
+> They wouldn’t, as a drop-in. Chart + delay was an inductive bias for generic series, not a proposal to plot Watch PPG into Qwen-ViT. The transferable idea is **complementary representations** — one view loses information. On health signals I’d ask which encoding preserves the structure that matters (morphology, time–frequency, long-horizon behavior), then eval. I would not port matplotlib.
+
+**“We use a dedicated time-series encoder into an LLM, not images. Why images?”**  
+> Images were a way to steal a strong visual prior when the LLM couldn’t see the series. A native TS encoder is the more honest inductive bias if you have the data. I wouldn’t die on matplotlib. I’d compare encoder families — native TS, visual, speech-FM transfer, maybe both — with the same eval gate. Same bottleneck: the LLM doesn’t perceive the series until you represent it.
+
+**“We’re doing sensor / motion foundation models and probing speech FMs on wearables. You’re a VLM person.”**  
+> Same bottleneck, different encoder. They get a representation of a wearable series that transfers; I fused two views into an LLM. I’d rather *compare* those representation families on the team’s tasks than insist on VLMs. Probing a strong pretrained encoder is often the right first move under data scarcity — I’ve lived the “don’t stack more training on a bad mix” version of that.
+
+**“9B / 27B won’t run on-device.”**  
+> Those runs were for iteration and ceiling, not a deployment proposal. Validate the representation at a scale you can ablate; then ask what has to freeze, probe, or distill for the platform. I have not shipped on-Watch. I won’t pretend 27B is the product.
+
+**“Wearables are irregular, missing, multi-rate. Your benchmarks look clean.”**  
+> Irregular sampling is a first-class representation issue, not a preprocessing footnote — that’s why I worked on irregular TS completion / masking, not only clean UCR. I won’t overclaim I modeled PPG dropouts. I will treat missingness as part of how the model sees the series.
+
+#### Eval / judgment
+
+**“Your metrics are TSExam / TSRBench. That’s not health.”**  
+> Correct. Those were instrumentable research north stars. Here I’d expect to **learn the team’s eval** — slices, abstention, the failure that actually matters — not import TSRBench. The transferable habit: don’t ship on a metric that doesn’t measure the error you care about. I already track parse-miss separately from accuracy because format failure isn’t reasoning.
+
+**“LLMs in health are dangerous. Your eval is MCQ accuracy.”**  
+> MCQ was a proxy I could iterate on. It is not a safety case. In this setting I’d expect wrong answers and overconfidence to be first-class, including when to abstain. I would not claim my current harness is that eval. I would claim I won’t decorate an LLM until the metric matches the failure mode.
+
+**“What would you refuse to ship / kill here?”**  
+> Same as the training run: if a flashy LLM wrapper hurts temporal structure, calibration, or a slice we actually care about, kill it and go back to data or representation. Don’t stack more SFT.
+
+**“What does year one look like if you’re not becoming a health specialist?”**  
+> (1) Learn *their* series and the eval that matters. (2) Representation experiments under *their* compute and privacy budget — what encoding lets a model use the signal. (3) Honest negative results. I would not spend year one proposing Watch features or playing clinician.
+
+#### Training-run (only if she goes deep)
+
+Keep §3C one-liners. Extra under this story:
+
+**“Isn’t rendering series as images a hack?”**  
+> It’s a bet on a pretrained visual prior, not a law of nature. It paid off when a single view wasn’t enough. If a native encoder wins on their signals, that’s the right call — same scientific question.
+
+**“You only fine-tuned. We need foundation-scale training.”**  
+> Honest: I owned multimodal training runs at 9B/27B — curriculum, LoRA, DDP, eval gates — not pretrain-from-scratch. The muscle is designing the run and gating it, not claiming GPT-scale pretrain.
+
 ---
 
-## 4. Logistics pocket (if asked)
+## 4. Logistics pocket (only if she asks)
+
+Tyler already has work auth, Seattle, FT, on-site. **Do not volunteer.** If she asks:
 
 > US permanent resident (green card). Based in Seattle. Full-time IC. On-site Seattle is fine. Available now / can align start with the team (BGU academic leave through Oct doesn’t block FT start).
 
@@ -291,9 +365,10 @@ Comp: only if she raises it — factors already named by Tyler (experience, inte
 | Avoid | Do |
 |-------|-----|
 | Lab-PI / grant / “my students…” | “I designed / trained / gated…” |
-| Generic Apple fan pitch | Multimodal + health/fitness deployment bar |
-| Claiming clinical expertise | Longitudinal multimodal signals + eval/safety |
-| Forecasting-company story as lead | TS credibility only if she asks; lead with multimodal LLM training |
+| JD-adapted health passion / “overconfident LLMs in health” as the lead | **Representing TS so LLMs can use them**; health = same problem at scale |
+| Claiming clinical expertise | You’re a TS/LLM person; health is the application surface |
+| Generic Apple fan pitch | Devices + foundational TS/multimodal layer, not gadgets |
+| Forecasting-company story as lead | Forecasting is one use of a series; lead with TS → LLM representations |
 | Dumping paper list | One training-run narrative + offer depth |
 
 ---
