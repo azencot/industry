@@ -32,11 +32,12 @@ IC research scientist building **multimodal foundation models** over industrial 
 | Person | Role signal | Why relevant | LinkedIn / page |
 |--------|-------------|--------------|-----------------|
 | **Shabnam Ghaffarzadegan** | **HM** — Lead/Senior RS, CR/RHI1-NA | Posted this req; audio analytics / SoundSee → multimodal sensor FMs | [LinkedIn](https://www.linkedin.com/in/shabnam-ghaffarzadegan-42142a93) · [Bosch expert](https://www.bosch.com/research/about-bosch-research/our-research-experts/shabnam-ghaffarzadegan/) |
+| **Shir** | Contact at **BCAI** (Haifa) | Asked if you applied; likely the intro. Don’t narrate a Shir–Shabnam mix-up on the call. | — |
 | **GS/HRS-PAC-NA** | HR / recruiting | On the invite; may join | — |
 
-Public alumni / org signal only (do **not** cold-email mid-loop): Jorge Piazentin Ono (visual analytics / FM labels); Panpan Xu, Liang Gou, Huan Song (alumni).
+**Bosch papers (BCAI Haifa, not this Sunnyvale team):** Synth-FAR (TMLR 2026), LDDBM modality translation (NeurIPS 2025), edge-attribute graph gen / traffic scenes (TMLR 2025). Use in “why Bosch.” Don’t imply you already sit on Shabnam’s team.
 
-**Open item:** CV lists a **Bosch AI** collab with details TBD. Name it only if you can.
+Public alumni / org signal only (do **not** cold-email mid-loop): Jorge Piazentin Ono (visual analytics / FM labels); Panpan Xu, Liang Gou, Huan Song (alumni).
 
 ## Track boundary
 

@@ -226,7 +226,23 @@ Lean hardest on: **eval methodology**, **curriculum/domain adaptation**, **low-l
 
 **Applied research:** Experiment design; ablations; model analysis; algorithm development; data-centric modeling
 
-**Industry collaboration:** Google, NVIDIA, Bosch AI — *details TBD; add hands-on contribution per partner when available*
+**Industry collaboration:** Google, NVIDIA, **Bosch Center for AI (Haifa)** — three papers (see below). Google/NVIDIA still TBD.
+
+### Bosch Center for AI (Haifa) — name these
+
+Collab is **BCAI Haifa**, not RTC-NA Sunnyvale. Do not imply you already work on Shabnam’s SoundSee team. Do say you already publish with Bosch AI.
+
+| Paper | Venue | Bosch coauthors (public) | Why it maps |
+|-------|-------|--------------------------|-------------|
+| **Synth-FAR** — synthetic frequency + AR data for TS forecasting / FM pipelines | TMLR 2026 | Michal Moshkovitz, Orly Avner, **Dotan Di Castro** (+ Liran Nochumsohn, you) | JD preferred: synthetic data, frequency, TSFM data pipelines. Earlier line: Freq-Synth. |
+| **LDDBM** — general **modality translation** via contrastive + predictive latent diffusion bridge | NeurIPS 2025 | Nimrod Berman, Omkar Joglekar, Eitan Kosman, **Dotan Di Castro** | **Best fit for Shabnam:** arbitrary sensor/vision modality pairs, not a forecast head. |
+| **Reviving Life on the Edge** — joint score-based graph generation with rich edge attributes; traffic-scene graphs | TMLR 2025 (you recalled 2024) | Nimrod Berman, Eitan Kosman, **Dotan Di Castro** | ADAS-adjacent generative; don’t oversell as an ADAS product. |
+
+**Spoken (15–20s, why Bosch / “have you worked with Bosch?”):**
+
+> I’ve collaborated with Bosch Center for AI on three papers: synthetic frequency-driven time series for foundation-model data pipelines, a general modality-translation diffusion bridge, and graph generation for traffic scenes. I want to do that class of work inside RTC — multimodal sensors plus vision, with product transfer.
+
+If probed on contribution: IC verbs for what **you** decided/built; Bosch scientists were collaborators, not your reports. Don’t invent implementation you didn’t own.
 
 ---
 
@@ -235,7 +251,7 @@ Lean hardest on: **eval methodology**, **curriculum/domain adaptation**, **low-l
 - [ ] **STAR stories** — triage done: ImagenTime + SKD keep (reframe); compute story retire; Customer Obsession gap remains
 - [x] **Three anchors + cheat sheet** — [`anchor-cheat-sheet.md`](../anchor-cheat-sheet.md)
 - [ ] **Hands-on ledger** — explicit list of personal vs delegated work across 2020–present
-- [ ] **Industry collab specifics** — technical contribution per Google/NVIDIA/Bosch
+- [x] **Industry collab specifics** — Bosch BCAI Haifa: Synth-FAR, LDDBM, edge-graph TMLR (see above). Google/NVIDIA still TBD.
 - [ ] **Motivation narrative** — why this IC role now (counter "will miss running a lab")
 - [ ] **Prior loop details** — which role/stories triggered "too managerial"
 - [x] **2-min pitch** — [`elevator-pitch.md`](../elevator-pitch.md)

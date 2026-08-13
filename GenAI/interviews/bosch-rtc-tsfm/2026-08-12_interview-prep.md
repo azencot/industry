@@ -21,6 +21,7 @@
 4. **Lock logistics pocket** (§5): Seattle → Sunnyvale hybrid · Green Card · FT. Don’t volunteer Apple.
 5. **Pick 3 questions** (§6) aimed at **her** team (sensor FMs + vision), not a generic TSFM seminar.
 6. **Skim anti-patterns** (§7) once — especially: don’t quiz SoundSee/ISS; don’t fake ICASSP.
+7. **Tonight:** say **§4A** Q1, Q3, Q5, Q9, Q11 out loud once. Stop. Don’t cram §8.
 
 Skip until a later technical round: radar PHY, TimesFM recap, ADAS product trivia.
 
@@ -72,7 +73,6 @@ Headline for yourself: she asked for **multimodal FMs over sensors + vision**, *
 | Not 3+ years sitting in an industrial research lab as FTE | UCLA + ICSI + industry collabs; hands-on training systems. IC verbs. |
 | PI title reads managerial | Designed, implemented, trained, debugged, killed mixes. |
 | Seattle vs Sunnyvale hybrid | §5. Don’t volunteer “I won’t relocate.” |
-| Bosch collab on profile is TBD | Use only if you can name it. Otherwise skip. |
 
 ---
 
@@ -84,7 +84,13 @@ Headline for yourself: she asked for **multimodal FMs over sensors + vision**, *
 
 ### Why Bosch / why this team (20–30s)
 
-> I want to work on foundation models for **real sensors**, not only forecast heads on well-behaved series. Chronos-style models are the wrong abstraction when the signal is acoustics or vibration sitting next to a camera. Bosch RTC is one of the few industrial labs hiring exactly that — classify, describe, fuse, and transfer into products — and still publishing. I’m especially interested in this team because the mandate is multimodal perception for physical AI, not a forecasting-only charter.
+> I want to work on foundation models for **real sensors**, not only forecast heads on well-behaved series. Chronos-style models are the wrong abstraction when the signal is acoustics or vibration sitting next to a camera. I’ve already published with Bosch Center for AI — synthetic frequency-driven time series, a general modality-translation diffusion bridge, and graph generation for traffic scenes — and I want to do that class of work inside RTC, with product transfer. This team’s mandate is multimodal perception for physical AI, not a forecasting-only charter.
+
+### Bosch collab pocket (15–20s if she asks “have you worked with Bosch?”)
+
+> Yes — with Bosch Center for AI in Haifa, three papers. The closest to this role is a NeurIPS 2025 modality-translation diffusion bridge: map between arbitrary modalities in a shared latent space, which is the same problem as fusing sensors and vision. Synth-FAR is synthetic frequency-plus-autoregressive data for time-series and foundation-model pipelines. The third is score-based graph generation with rich edge attributes, including traffic scenes. Different group from Sunnyvale — I want to bring that collaboration inside RTC.
+
+Lead with **LDDBM** for her. Synth-FAR if she hits frequency / synthetic data. Graph paper if ADAS/traffic. Don’t list coauthor org charts. Don’t claim SoundSee.
 
 ### Flagship — VLM as TSFM (45–60s)
 
@@ -113,11 +119,95 @@ Headline for yourself: she asked for **multimodal FMs over sensors + vision**, *
 | How do you fuse video and time series? | Dual-encoder / cross-attention / shared LLM token space. I built chart + delay → LLM. For driving video I’d keep time-aligned context tokens; I would not dump raw lidar into a ViT without a sensor-specific encoder. |
 | Signal processing experience? | STFT, delay embeddings, invertibility checks, irregular sampling. Not a radar PHY expert. |
 | Publications? | 40+ top ML venues; cluster = generative TS, irregular TS, multimodal reasoning. |
-| Industry experience / Bosch collab? | Only if named. Otherwise: applied research + ICSI; want to do this inside Bosch products. |
+| Industry experience / Bosch collab? | BCAI Haifa, three papers. Lead **LDDBM** (modality translation). Don’t imply you already work on her team. Shir = intro; don’t narrate a mix-up. |
 | Competing processes? | Exploring a few industry science roles. Don’t volunteer Apple unless asked. This team is high priority if the science + hybrid work. |
 | Comp? | Prefer level/scope first; public base is $165–195K; happy to discuss total package later. Don’t raise RS vs Senior. |
 | Management? | Looking for **IC research** impact; will guide technical direction / mentoring as needed. |
 | Can you relocate? | §5. Open to discussing hybrid and relocation for the right team. |
+
+---
+
+## 4A. Hard probes — say these out loud (tonight)
+
+Fit is a good match. The failure mode is **sounding like a forecasting PI who wandered in**, or **overclaiming audio/ADAS**. These are the questions that create that failure. Each answer is **20–40s**. If she isn’t asking it, don’t volunteer the whole paragraph.
+
+**Practice set (5):** Q1 · Q3 · Q5 · Q9 · Q11. Read the rest once.
+
+### Q1. “Your papers look like forecasting and VLMs. Why this team?”
+
+Trap: Chronos vs LightGBM, or “I like foundation models.”
+
+> Forecasting is one head. What I actually build is models that **classify, describe, and fuse**. The VLM stack is exam-style classification, captions, and QA over series — not a forecast-only mandate. ImagenTime is a representation bet: STFT vs delay embeddings for different frequency regimes. This team is sensor FMs plus vision for physical AI. That’s the same problem with a harder sensor stack, which is why I want it.
+
+### Q2. “You’re not an audio / ICASSP person. How would you work with acoustics and vibration?”
+
+Trap: fake torchaudio production or speech ASR.
+
+> I’m not a speech scientist. I am a representation-and-eval person for sequential signals. High-frequency sensors I treat as spectrograms / STFT — hop size vs time resolution, invertibility, not averaging away transients. Low-frequency telemetry I treat as delay embeddings and long context. I would start from that split, then learn Bosch’s mics, sample rates, and domain shift — hardware and rooms change the distribution, which is the real audio problem. Learned filterbanks are on the table; I wouldn’t pretend I’ve already shipped them.
+
+### Q3. “How would you design a multimodal sensor foundation model in the first six months?”
+
+Trap: “pretrain a 27B on all Bosch sensors.”
+
+> I would not start with a giant pretrain. First: clocks, sensor list, label taxonomy, and a **task suite** that matches the product verbs — event detect, classify, describe, fuse — not MAE. Second: a representation bakeoff on **one** high-frequency task — STFT vs learned patches vs delay — with a frozen eval. Third: add vision only if an ablation moves the slice. Shared backbone with **modality-specific tokenizers** is the default; two specialists if the bakeoff says so. Pretrain scale comes after the eval and the data contract are real.
+
+### Q4. “One model or two for low- and high-frequency sensors?”
+
+> Default: one backbone, different tokenizers and patch rates. Forcing the same patch size on audio and slow telemetry is how you destroy transients or blow up sequence length. I’d bake that off against two specialists. I don’t have a religion about one giant model.
+
+### Q5. “Labels are scarce and the sound vocabulary is open. How do you eval?”
+
+This is **her** public challenge. Don’t lecture; show the same discipline.
+
+> You cannot enumerate every sound. I would not wait for a perfect ontology. Weak labels and synthetic data to get a representation, then a **held-out event set** plus an abstain / unknown bucket — the model should know when it doesn’t know. Slice metrics by sensor, environment, and frequency band. If a data mix helps the average and hurts the hard slice, I kill it. I did that on temporal-relation buckets in the VLM work. Open vocabulary is an eval-and-abstention problem, not a bigger softmax.
+
+### Q6. “When would you *not* fuse the camera?”
+
+> If series-only already hits the slice, or the camera isn’t time-aligned, or the extra encoder doesn’t move the metric in an ablation. Fusion is a hypothesis. I would ship the cheaper unimodal model until vision pays for itself on the task that matters.
+
+### Q7. “You have a diffusion modality-translation paper and a VLM. Which would you use here?”
+
+> Different jobs. **LDDBM** is: map modality A to modality B in a shared latent space when you need translation or virtual sensing — audio to another signal, for example. The **VLM** is: language and image context, classification, description, instruction following. For Bosch I would not pick one ideology. Event detection on vibration might want a native encoder plus a small head. Description and fusion with video might want a VLM. Translation between sensors might want a bridge. Bake off by task.
+
+### Q8. “Synthetic data is in our preferred quals. When does it hurt?”
+
+> When it’s too clean or too simple — the model learns the generator, not the sensor. In the VLM work, synthetic captions that were too basic didn’t transfer to hard reasoning; I had to change the data, not stack more mixes. Synth-FAR is the other side: frequency-aware synthetics to cover regimes real data misses. I’d always keep a real held-out sensor set as the gate. Synthetic is a pretrain/augment tool, not the north star.
+
+### Q9. “On the Bosch papers — what did *you* do?”
+
+Trap: “we published with Dotan.” She will hear PI.
+
+> I was the academic PI and a technical collaborator, not a Bosch FTE. On the modality-translation paper I owned the research framing — latent bridge, contrastive plus predictive losses — with Bosch scientists as coauthors. On Synth-FAR the frequency diagnosis and synthetic-generator design is the line I care about. I don’t claim I wrote every training loop. What I want now is to be the IC who owns architecture, experiments, and eval **inside** RTC, not to run a lab remotely.
+
+If she pushes “so you didn’t implement it”: name one concrete decision you actually made. If you didn’t implement a piece, say so. Don’t inflate.
+
+### Q10. “Will you miss running a lab? This is an IC role.”
+
+> That’s why I’m here. I want to own models end-to-end again — architecture, data, training, gating — on sensors that have to transfer. Mentoring is fine as a side effect. I’m not looking for a people-manager seat.
+
+### Q11. “You’re in Seattle. This is Sunnyvale hybrid.”
+
+> I’m based in Seattle. I’m interested enough in this problem and team that I’m open to relocation. I want to understand the hybrid pattern — days on site — and then make that work. I’m not asking to be remote-first.
+
+Don’t add “unless the pay is X.” Don’t mention Apple.
+
+### Q12. “This posting is Research Scientist, not Senior. Are you overleveled?”
+
+> I’m interested in **this** team’s problem. I’m happy to be mapped to the level you use. I operate as a senior IC on architecture and eval; I won’t fight the title on a first conversation.
+
+### Q13. “Always-on audio has privacy issues. How do you think about that?”
+
+Her public writing. Stay high-level; don’t design a product.
+
+> Raw waveforms leaving the device is the wrong default. I’d rather work with on-device embeddings, short buffers, and explicit retention limits — and I’d treat “unknown sound” as abstain, not a cloud round-trip of everything. That’s an eval and systems constraint, not an afterthought. I’d follow Bosch’s product and legal bar; I wouldn’t freelance a privacy architecture in this call.
+
+### Q14. “The JD mentions agentic AI. What’s your experience?”
+
+> Weak. I’ve built training and eval loops, not multi-agent products. If the team means tool-using models around labeling or experiment automation, I can learn that. I wouldn’t claim an agents portfolio.
+
+### Q15. “Tell me a result that didn’t work.”
+
+> On the VLM stack I added data mixes aimed at temporal-relation reasoning. The average looked fine; the hard TR slice dropped. I had set the floor before training, so I killed the mix and went back to data generation instead of stacking more buckets. The lesson: slice metrics gate the work, not the headline number.
 
 ---
 
@@ -166,7 +256,7 @@ Avoid: “Tell me about SoundSee on the ISS” / IP-probing / comp as #1 / “I 
 | Claiming radar/lidar/ultrasound or speech DSP | Honest: STFT / delay / irregular TS; learning curve is Bosch sensor stacks |
 | Correcting her to “Senior TSFM” | Use **Research Scientist, Multimodal Foundational Models** |
 | Claiming Chronos-scale pretrain from scratch | Honest: multimodal training runs, curricula, representation FMs |
-| Overclaiming the CV “Bosch AI” collab | Name it or omit it |
+| Overclaiming you already work on Shabnam’s team | BCAI Haifa collab is real; RTC-NA is the move you want |
 | Long paper list | One flagship (VLM) + frequency pocket (ImagenTime) |
 | Negotiating $165K band on this call | Learn loop + hybrid + next step |
 
