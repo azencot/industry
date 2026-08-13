@@ -33,7 +33,7 @@ Related skill (shared with FinTech depth practice): **`/ml-deep-dive`**.
 | 2026-08-12 | Apple Health AIML HM 3C training-run detail | [`interviews/apple-health-aiml/2026-08-12_hm-3c-training-run.md`](interviews/apple-health-aiml/2026-08-12_hm-3c-training-run.md) — 9B/27B + 8B champion; **resume at §4** |
 | 2026-08-12 | Bosch RTC-NA TSFM interview prep | [`interviews/bosch-rtc-tsfm/2026-08-12_interview-prep.md`](interviews/bosch-rtc-tsfm/2026-08-12_interview-prep.md) — multimodal TSFM (beyond forecasting); Sunnyvale hybrid |
 | 2026-08-12 | Bosch HM invite (Shabnam) | [`interviews/bosch-rtc-tsfm/2026-08-12_hm-invite.md`](interviews/bosch-rtc-tsfm/2026-08-12_hm-invite.md) — **Multimodal FM** req; **Thu 2026-08-13 3:15–3:45 PM PDT** Teams fit |
-| 2026-08-13 | Bosch HM screen (Shabnam + recruiter) | [`interviews/bosch-rtc-tsfm/2026-08-13_hm-screen-debrief.md`](interviews/bosch-rtc-tsfm/2026-08-13_hm-screen-debrief.md) — fit; success = **business impact**; waiting on next-step |
+| 2026-08-13 | Bosch HM screen (Shabnam + Joy) | [`interviews/bosch-rtc-tsfm/2026-08-13_hm-screen-debrief.md`](interviews/bosch-rtc-tsfm/2026-08-13_hm-screen-debrief.md) — fit; reloc required; they confer; if yes → **coding + deep dive** |
 
 ---
 

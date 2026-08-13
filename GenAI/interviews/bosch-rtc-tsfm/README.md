@@ -7,9 +7,10 @@
 | **Team** | **Foundation Model Powered AI Enablers** — Bosch RTC-NA · org **CR/RHI1-NA** |
 | **Legal entity** | Robert Bosch LLC |
 | **HM** | **Shabnam Ghaffarzadegan** (CR/RHI1-NA) — Lead / Senior RS, audio + multimodal sensor FMs |
-| **HR on thread** | **GS/HRS-PAC-NA** |
-| **HM screen** | **Done 2026-08-13** (Shabnam + recruiter). Debrief: [`2026-08-13_hm-screen-debrief.md`](2026-08-13_hm-screen-debrief.md). Waiting on follow-up. |
-| **Location** | Sunnyvale, CA — **hybrid** |
+| **HR on thread** | **Meyouhas Joy Galia** (recruiter on the call) · GS/HRS-PAC-NA |
+| **HM screen** | **Done 2026-08-13** (Shabnam + Joy). Debrief: [`2026-08-13_hm-screen-debrief.md`](2026-08-13_hm-screen-debrief.md). They confer. |
+| **If progress** | Technical screen: **coding + deep dive** |
+| **Location** | Sunnyvale, CA — **hybrid**; **relocation required** (stated on the call; not rejected) |
 | **Comp (public, both reqs)** | Base **$165K–$195K** + corporate bonus + LTI (ask recruiter; not FAANG RSUs) |
 | **Why this folder** | **GenAI**, not [`Forecasting/`](../../../Forecasting/). Sensor + vision **foundation models**, explicitly **beyond forecasting**. |
 
@@ -21,7 +22,7 @@ JDs are nearly identical. On the call, use **her** title: Research Scientist, Mu
 |------|------|-------|
 | **2026-08-12** | Prep (written against Senior TSFM JD) | [`2026-08-12_interview-prep.md`](2026-08-12_interview-prep.md) — still the spoken spine; retargeted to Shabnam |
 | **2026-08-12** | HM email invite | [`2026-08-12_hm-invite.md`](2026-08-12_hm-invite.md) — **Shabnam**; Teams; **background + interest** |
-| **2026-08-13** | **HM screen — Shabnam + recruiter** | Fit done. Debrief: [`2026-08-13_hm-screen-debrief.md`](2026-08-13_hm-screen-debrief.md). She: success = **business impact**. Waiting on next-step. |
+| **2026-08-13** | **HM screen — Shabnam + Joy** | Fit done. They confer. If yes: **coding + deep dive**. Debrief: [`2026-08-13_hm-screen-debrief.md`](2026-08-13_hm-screen-debrief.md). Reloc required. |
 
 ## Role in one line
 
@@ -32,8 +33,9 @@ IC research scientist building **multimodal foundation models** over industrial 
 | Person | Role signal | Why relevant | LinkedIn / page |
 |--------|-------------|--------------|-----------------|
 | **Shabnam Ghaffarzadegan** | **HM** — Lead/Senior RS, CR/RHI1-NA | Posted this req; audio analytics / SoundSee → multimodal sensor FMs | [LinkedIn](https://www.linkedin.com/in/shabnam-ghaffarzadegan-42142a93) · [Bosch expert](https://www.bosch.com/research/about-bosch-research/our-research-experts/shabnam-ghaffarzadegan/) |
-| **Shir** | Contact at **BCAI** (Haifa) | Asked if you applied; likely the intro. Don’t narrate a Shir–Shabnam mix-up on the call. | — |
-| **GS/HRS-PAC-NA** | HR / recruiting | On the invite; may join | — |
+| **Shir** | Contact at **BCAI** (Haifa) | Asked if you applied; likely the intro. Don’t narrate a Shir–Shabnam mix-up. | — |
+| **Meyouhas Joy Galia** | Recruiter (on the HM screen) | Logistics: auth, comp, hybrid; stated **reloc required**; named next stage | — |
+| **GS/HRS-PAC-NA** | HR / recruiting alias on the invite | Same org as Joy | — |
 
 **Bosch papers (BCAI Haifa, not this Sunnyvale team):** Synth-FAR (TMLR 2026), LDDBM modality translation (NeurIPS 2025), edge-attribute graph gen / traffic scenes (TMLR 2025). Use in “why Bosch.” Don’t imply you already sit on Shabnam’s team.
 
