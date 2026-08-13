@@ -8,7 +8,7 @@
 | **Legal entity** | Robert Bosch LLC |
 | **HM** | **Shabnam Ghaffarzadegan** (CR/RHI1-NA) — Lead / Senior RS, audio + multimodal sensor FMs |
 | **HR on thread** | **GS/HRS-PAC-NA** |
-| **HM screen** | **Thu 2026-08-13, 3:15–3:45 PM PDT** · Microsoft Teams · 30 min fit |
+| **HM screen** | **Done 2026-08-13** (Shabnam + recruiter). Debrief: [`2026-08-13_hm-screen-debrief.md`](2026-08-13_hm-screen-debrief.md). Waiting on follow-up. |
 | **Location** | Sunnyvale, CA — **hybrid** |
 | **Comp (public, both reqs)** | Base **$165K–$195K** + corporate bonus + LTI (ask recruiter; not FAANG RSUs) |
 | **Why this folder** | **GenAI**, not [`Forecasting/`](../../../Forecasting/). Sensor + vision **foundation models**, explicitly **beyond forecasting**. |
@@ -21,7 +21,7 @@ JDs are nearly identical. On the call, use **her** title: Research Scientist, Mu
 |------|------|-------|
 | **2026-08-12** | Prep (written against Senior TSFM JD) | [`2026-08-12_interview-prep.md`](2026-08-12_interview-prep.md) — still the spoken spine; retargeted to Shabnam |
 | **2026-08-12** | HM email invite | [`2026-08-12_hm-invite.md`](2026-08-12_hm-invite.md) — **Shabnam**; Teams; **background + interest** |
-| **2026-08-13** | **HM screen — Shabnam Ghaffarzadegan** | **Thu 3:15–3:45 PM PDT**, Teams. Prep: [`2026-08-12_interview-prep.md`](2026-08-12_interview-prep.md) |
+| **2026-08-13** | **HM screen — Shabnam + recruiter** | Fit done. Debrief: [`2026-08-13_hm-screen-debrief.md`](2026-08-13_hm-screen-debrief.md). She: success = **business impact**. Waiting on next-step. |
 
 ## Role in one line
 

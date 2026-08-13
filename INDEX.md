@@ -46,7 +46,7 @@ Personal workspace for industry job prep: Amazon FinTech interviews, general for
 - **Purpose:** Generative AI / LLM role interviews and prep — systems, eval, RAG/agents/tradeoffs; also **multimodal / TSFM** research-scientist roles that are not forecasting-AS loops
 - **Not** forecasting (use [`Forecasting/`](Forecasting/)); **not** FinTelligence formal loop scaffolding (use [`Amazon_FinTech/`](Amazon_FinTech/))
 - **Details:** [`GenAI/INDEX.md`](GenAI/INDEX.md)
-- **Company / call prep:** [`GenAI/interviews/`](GenAI/interviews/) — Apple Health AIML: recruiter done **2026-08-12**; **HM screen Fri 2026-08-21, 11:05–11:50 AM PDT** with Shirley Ren ([`debrief`](GenAI/interviews/apple-health-aiml/2026-08-12_recruiter-debrief.md) · [`HM prep`](GenAI/interviews/apple-health-aiml/2026-08-12_hm-screen-prep.md)); **Bosch RTC-NA:** HM **Shabnam Ghaffarzadegan**, Multimodal Foundational Models; **HM screen Thu 2026-08-13, 3:15–3:45 PM PDT** (Teams) ([`invite`](GenAI/interviews/bosch-rtc-tsfm/2026-08-12_hm-invite.md) · [`prep`](GenAI/interviews/bosch-rtc-tsfm/2026-08-12_interview-prep.md))
+- **Company / call prep:** [`GenAI/interviews/`](GenAI/interviews/) — Apple Health AIML: recruiter done **2026-08-12**; **HM screen Fri 2026-08-21, 11:05–11:50 AM PDT** with Shirley Ren ([`debrief`](GenAI/interviews/apple-health-aiml/2026-08-12_recruiter-debrief.md) · [`HM prep`](GenAI/interviews/apple-health-aiml/2026-08-12_hm-screen-prep.md)); **Bosch RTC-NA:** HM screen with **Shabnam Ghaffarzadegan** **done 2026-08-13** — waiting on follow-up ([`debrief`](GenAI/interviews/bosch-rtc-tsfm/2026-08-13_hm-screen-debrief.md))
 - **Session notes:** [`GenAI/notes/`](GenAI/notes/)
 - **Related skill:** `/ml-deep-dive`
 
