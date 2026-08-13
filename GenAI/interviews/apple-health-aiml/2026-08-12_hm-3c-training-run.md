@@ -1,5 +1,7 @@
 # 3C — Most impactful LLM training run (detail)
 
+**Resume (2026-08-12):** read through **§3 Architecture**. Next pass starts at **§4 Curriculum**. Do not restart from §1 unless the spoken paragraph is cold.
+
 **For:** HM screen with Shirley Ren · Fri 2026-08-21  
 **Spoken 2–3 min lives in** [`2026-08-12_hm-screen-prep.md`](2026-08-12_hm-screen-prep.md) §3C. **This file is the pull-thread.**  
 **Sources:** [`Amazon_FinTech/vlm-technical-cheat-sheet.md`](../../../Amazon_FinTech/vlm-technical-cheat-sheet.md), [`Amazon_FinTech/anchor-cheat-sheet.md`](../../../Amazon_FinTech/anchor-cheat-sheet.md), [`.cursor/skills/debrief/vlm_multimodal_project.md`](../../../.cursor/skills/debrief/vlm_multimodal_project.md), repo `azencot-group/TSLMTSEXAM` branch **`iucc_cluster`** (as of 2026-08-12).  

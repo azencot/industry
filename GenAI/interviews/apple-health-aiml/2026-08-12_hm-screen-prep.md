@@ -56,6 +56,8 @@ Source of truth for *what* to say: this file §§2–6. Training-run depth: [`20
 
 ### Wed Aug 12 — confirm + lock the spine (~45 min)
 
+**Partial:** 3C detail read through **§3**. Resume at [`2026-08-12_hm-3c-training-run.md`](2026-08-12_hm-3c-training-run.md) **§4**.
+
 **Done if you already wrote this file; still do the reply + one spoken pass.**
 
 1. Reply confirming the slot.
@@ -69,7 +71,7 @@ Source of truth for *what* to say: this file §§2–6. Training-run depth: [`20
 
 ### Thu Aug 13 — training-run walkthrough (core of the call) (~60–75 min)
 
-This is topic 3. Spoken walkthrough of the most impactful LLM training run — still **fit**, not a tech screen. Shirley may probe, but you are telling a story, not writing code. Detail: [`2026-08-12_hm-3c-training-run.md`](2026-08-12_hm-3c-training-run.md).
+This is topic 3. Spoken walkthrough of the most impactful LLM training run — still **fit**, not a tech screen. Shirley may probe, but you are telling a story, not writing code. Detail: [`2026-08-12_hm-3c-training-run.md`](2026-08-12_hm-3c-training-run.md) — **resume at §4** (curriculum); §§1–3 already read 2026-08-12.
 
 1. Pick **one** run and freeze it: multimodal Qwen3.5 VLM fine-tune / curriculum at **9B ↔ 27B** (dual visual encodings → LLM). Honest frame: **major multimodal training run you owned**, not pretrain-from-scratch.
 2. Speak the **2–3 min** structure in §3C once, timer on: problem → architecture → training design → scale → eval gate → kill decision → result.

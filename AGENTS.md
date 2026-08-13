@@ -8,7 +8,7 @@ Industry prep workspace:
 
 - **FinTech (FinTelligence)** — formal interview loop: recall under pressure, LP/STAR articulation, timed coding with narration
 - **Forecasting** — general industry forecasting practice for AS roles (production, eval, tradeoffs); **not** SCOT
-- **GenAI** — generative AI / LLM role interviews and prep; **not** forecasting
+- **GenAI** — generative AI / LLM role interviews and prep, including multimodal / TSFM research-scientist roles; **not** forecasting-AS loops
 - **SCOT** — relationship / contribution prep (not a PS1 machine unless it becomes a formal loop)
 
 Not a production app repo.
