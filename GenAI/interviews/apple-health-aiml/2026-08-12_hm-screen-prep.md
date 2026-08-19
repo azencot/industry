@@ -170,7 +170,7 @@ If using Cursor: drill from this file + the VLM project note; IC framing only.
    - What is Health AIML prioritizing in 6–12 months for this seat?
    - What does **strong** look like in year one (papers vs shipped components vs eval infra)?
 2. Say the close (§7) once.
-3. If she asks competing processes: Apple Health AIML is **high priority** (multimodal + TS + Seattle). Don’t volunteer TTD/SCOT unless asked; if asked, keep it one sentence.
+3. If she asks competing processes: Apple Health AIML is **high priority** (multimodal + TS + Seattle). Don’t volunteer SCOT unless asked. **TTD is closed (2026-08-19).** If asked: a few science roles; Bosch RTC multimodal FMs is also in process — this seat is the Seattle + health-signals match. Keep it one sentence.
 4. Comp: only if she raises it — experience, interview performance, team comps (Tyler’s factors). Prefer level/fit.
 
 **Exit check:** questions are about *her team’s problems*, not Watch sensors or candidate count.
@@ -320,7 +320,7 @@ The story’s vulnerability: *“same problem, health is just downstream”* can
 > If year one is a health-specific encoder or eval harness, that’s the job. I don’t need to keep matplotlib + DINO. What I won’t do is pretend the science is “health” when the science is “how the model sees the series.” I want the representation work *on your signals*, not a reprint of TSRBench.
 
 **“Are you shopping any Seattle GenAI / multimodal role?”**  
-> I’m looking for IC work where I own TS / multimodal training. This seat is high priority because the problem matches — represent series so a model can use them, on real signals — not because it’s convenient. *(Don’t volunteer TTD/SCOT. If pressed on other processes: a few science roles; this is the TS→LLM + real-signals match.)*
+> I’m looking for IC work where I own TS / multimodal training. This seat is high priority because the problem matches — represent series so a model can use them, on real signals — not because it’s convenient. *(Don’t volunteer SCOT. TTD is closed. If pressed on other processes: a few science roles, including Bosch RTC multimodal FMs; this is the TS→LLM + real-signals + Seattle match.)*
 
 **“Why Apple, not Google/Meta FM lab or a digital-health startup?”**  
 > Apple is where the series already live on the device, and Health AIML is building the foundational TS / multimodal layer, not a chatbot wrapper and not a clinic. I don’t have a Watch roadmap. The pull is representation research that has to survive privacy and platform constraints.

@@ -16,6 +16,7 @@ Company / exploratory call prep and ongoing GenAI interview depth: systems, eval
 |------|------|
 | [`notes/`](notes/) | Session debriefs, one-pagers, mock answers |
 | [`interviews/`](interviews/) | Company / exploratory call prep |
+| [`../talks/ts-vlm/`](../talks/ts-vlm/) | Bosch 30-min VLM talk (HTML); later Sep 7 community extension |
 
 Shared profile: [`.cursor/skills/debrief/omri_azencot_experience.md`](../.cursor/skills/debrief/omri_azencot_experience.md).
 
@@ -34,6 +35,7 @@ Related skill (shared with FinTech depth practice): **`/ml-deep-dive`**.
 | 2026-08-12 | Bosch RTC-NA TSFM interview prep | [`interviews/bosch-rtc-tsfm/2026-08-12_interview-prep.md`](interviews/bosch-rtc-tsfm/2026-08-12_interview-prep.md) — multimodal TSFM (beyond forecasting); Sunnyvale hybrid |
 | 2026-08-12 | Bosch HM invite (Shabnam) | [`interviews/bosch-rtc-tsfm/2026-08-12_hm-invite.md`](interviews/bosch-rtc-tsfm/2026-08-12_hm-invite.md) — **Multimodal FM** req; **Thu 2026-08-13 3:15–3:45 PM PDT** Teams fit |
 | 2026-08-13 | Bosch HM screen (Shabnam + Joy) | [`interviews/bosch-rtc-tsfm/2026-08-13_hm-screen-debrief.md`](interviews/bosch-rtc-tsfm/2026-08-13_hm-screen-debrief.md) — fit; reloc required; they confer; if yes → **coding + deep dive** |
+| 2026-08-19 | Bosch next-round invite (Joy) | [`interviews/bosch-rtc-tsfm/2026-08-19_next-round-invite.md`](interviews/bosch-rtc-tsfm/2026-08-19_next-round-invite.md) — **one 1h technical** (30-min talk + Q&A + take-home in-hour); availability sent; **waiting on Joy** |
 
 ---
 

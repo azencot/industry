@@ -1,6 +1,7 @@
 # Prep — Bosch HM screen with Shabnam Ghaffarzadegan
 
 **When:** **Thursday, August 13, 2026 · 3:15–3:45 PM PDT** (30 min) — **done.** Debrief: [`2026-08-13_hm-screen-debrief.md`](2026-08-13_hm-screen-debrief.md).  
+**Status (2026-08-19):** **Advancing.** Next loop: [`2026-08-19_next-round-invite.md`](2026-08-19_next-round-invite.md). This file remains the spoken spine for the technical hour / presentation Q&A.  
 **Role (use this title on the call):** [AI Research Scientist — Multimodal Foundational Models](https://jobs.smartrecruiters.com/BoschGroup/744000139447918-ai-research-scientist-multimodal-foundational-models-) (Sunnyvale, hybrid)  
 **You first read:** [Senior TSFM](https://jobs.smartrecruiters.com/BoschGroup/744000135345769-senior-ai-research-scientist-time-series-foundational-models?trid=2d92f286-613b-4daf-9dfa-6340ffbecf73) — same group, almost the same JD. **Do not correct her to Senior TSFM.**  
 **HM:** **Shabnam Ghaffarzadegan** (CR/RHI1-NA) — she emailed; she will be on Teams  

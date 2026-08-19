@@ -6,7 +6,7 @@
 **HR:** **Meyouhas Joy Galia** (Joy) — recruiter opened  
 **Role:** [AI Research Scientist — Multimodal Foundational Models](https://jobs.smartrecruiters.com/BoschGroup/744000139447918-ai-research-scientist-multimodal-foundational-models-) (Sunnyvale, hybrid)  
 **Prior:** [`2026-08-12_interview-prep.md`](2026-08-12_interview-prep.md) · [`2026-08-12_hm-invite.md`](2026-08-12_hm-invite.md)  
-**Next:** They **confer**. If you progress: **technical screen = coding + deep dive**. Do not start a full coding campaign until the invite lands. If it does, retarget depth around **business impact**, **multi-rate high/low-freq fusion**, and **one-backbone vs specialists** (see §Corrections).
+**Next (updated 2026-08-19):** **Advancing.** One **1h technical** — presentation + take-home nested under it. [`2026-08-19_next-round-invite.md`](2026-08-19_next-round-invite.md). Panel Q&A is the depth (one-model / high-low-freq in backup, not a FAQ talk).
 
 ---
 
@@ -55,14 +55,14 @@ That is the most important thing she said. RTC is not a NeurIPS-count lab. Next 
 
 ## Loop (if they progress)
 
-They confer internally first. **Not a yes.** If yes:
+They conferred. **Yes — advancing (2026-08-19).** Joy’s invite replaced the vague “coding + deep dive”:
 
 | Stage | What they named |
 |-------|-----------------|
 | **This call** | Fit (done) |
-| **Next** | **Technical screen: coding + deep dive** |
+| **Next** | **One 1h technical:** 30-min presentation + panel Q&A + take-home (sent 2 days prior, discussed in-hour) |
 
-Format unknown until the invite (language, duration, live vs take-home). Do **not** assume Amazon Live Code. When the invite arrives: one coding pass + TSFM/multimodal depth from this file — not a forecasting drill, not Apple Health scripts.
+Not Amazon Live Code. Presentation default = VLM flagship. Take-home: wait for the prompt. Depth from this file — not a forecasting drill, not Apple Health scripts. Details: [`2026-08-19_next-round-invite.md`](2026-08-19_next-round-invite.md).
 
 ---
 
@@ -134,19 +134,17 @@ ImagenTime pocket if they go one step deeper: STFT won on long periodic / high-f
 
 ## Signal (honest)
 
-Positive: she spent the call on **role taste and problem taste**. You hit the seat (IC, research+eng), didn’t overclaim Bosch productization, didn’t reject reloc, and they **named a next stage** (coding + deep dive) rather than a vague “we’ll be in touch.” None of that is a reject tell.
+Positive: she spent the call on **role taste and problem taste**. You hit the seat (IC, research+eng), didn’t overclaim Bosch productization, didn’t reject reloc, and they **named a next stage** (coding + deep dive) rather than a vague “we’ll be in touch.”
 
-Not a lock: they still have to **confer**. Reloc is required. Public band is tight. Coding is now in the loop — this was not on the HM invite.
-
-Do not assume pass or fail until Joy emails.
+**2026-08-19:** Joy confirmed **pass**. Next is **one 1h technical** (presentation + take-home nested under it — indent was flattened in the first paste). Reloc is still required. Public band is still tight.
 
 ---
 
 ## Immediate next actions
 
-1. **Wait** for Joy / Shabnam. Don’t ping the same day.  
-2. Optional: short thank-you reply-all (Joy + Shabnam) — interest in the **sensor+vision FM** problem, IC research+eng, open to Sunnyvale reloc, happy to continue to the technical screen. No new claims, no comp.  
-3. **Do not** start a Bosch coding campaign until the invite (language, length, platform). When it lands: coding + this debrief’s depth rewrites. **Do not** reopen Chronos-vs-LightGBM.  
+1. **Wait** for Joy — availability already sent (Mon–Wed 8/24–26, 10am–3pm PT; Mon/Tue preferred). [`2026-08-19_next-round-invite.md`](2026-08-19_next-round-invite.md). Don’t ping.  
+2. Nearer deadline: **Apple Health HM Fri 2026-08-21 11:05–11:50 PDT**. Optional while waiting: 30-min Bosch presentation outline (VLM flagship).  
+3. **Do not** start a Bosch coding campaign until the take-home arrives (two days before that slot). Technical hour uses this debrief’s depth rewrites. **Do not** reopen Chronos-vs-LightGBM.  
 4. Treat **Sunnyvale relocation** as in-play. Don’t reverse it in writing.
 
 ---
@@ -154,13 +152,14 @@ Do not assume pass or fail until Joy emails.
 ## Hand-off prompt (next session)
 
 ```
+@GenAI/interviews/bosch-rtc-tsfm/2026-08-19_next-round-invite.md
 @GenAI/interviews/bosch-rtc-tsfm/2026-08-13_hm-screen-debrief.md
 @GenAI/interviews/bosch-rtc-tsfm/2026-08-12_interview-prep.md
-Bosch HM screen with Shabnam + Joy (Meyouhas Joy Galia) done 2026-08-13.
-They confer. If progress: technical screen = coding + deep dive. Wait for invite before coding prep.
+Bosch advancing after HM screen (Shabnam + Joy) 2026-08-13. Joy invite 2026-08-19; availability sent; waiting on Joy.
+Offered Mon–Wed 2026-08-24–26, 10:00 AM–3:00 PM PT (Mon/Tue preferred) for technical + presentation.
 Spine = heterogeneous representation layer for sensor+vision FMs; success = business impact / transfer.
 You said: IC; research+eng; fine with hybrid; they require Sunnyvale reloc (did not reject); comp after level/scope; don’t know if Bosch papers shipped.
 Fix one-model: shared backbone, modality-specific tokenizers/patch rates, STFT vs delay.
 High/low-freq: clocks align, do not upsample; multi-rate tokens / fuse on coarser grid.
-Do not pitch forecasting. LDDBM = Haifa collab, not her product.
+Do not pitch forecasting. TTD is closed. LDDBM = Haifa collab, not her product.
 ```

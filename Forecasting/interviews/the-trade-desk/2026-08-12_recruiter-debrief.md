@@ -3,7 +3,7 @@
 **Type:** Recruiter phone screen  
 **Recruiter:** Stephanie  
 **Prior:** [`2026-08-12_recruiter-prep.md`](2026-08-12_recruiter-prep.md)  
-**Next:** She **shares your profile** internally → **45 min Python coding** with an applied scientist → **HM screen with Kennedy** (if coding goes well)
+**Next (superseded):** She was going to share the profile → 45 min Python coding → HM Kennedy. **Closed 2026-08-19** — they decided not to continue. [`2026-08-19_closed.md`](2026-08-19_closed.md)
 
 ---
 
@@ -98,18 +98,13 @@ Structure: **base + equity** (4-year vest). Don’t negotiate on the next screen
 
 ## Immediate next actions
 
-1. Wait for Stephanie to share profile / send coding-screen scheduling. Reply fast with availability.
-2. Prep **45 min Python** as a **finished** solution with narration (not a research talk). Reuse `/timed-code` muscle; target **done + tested**, not 80% elegant.
-3. After coding is on the calendar: HM prep for **Kennedy** — live-event forecast/pacing, DL, causal inference, business metrics. Don’t deep-prep the 4-interview final yet.
+**Superseded 2026-08-19:** loop **closed** — [`2026-08-19_closed.md`](2026-08-19_closed.md). No coding screen. Do not keep a TTD campaign.
 
 ---
 
 ## Hand-off prompt (next session)
 
 ```
-@Forecasting/interviews/the-trade-desk/2026-08-12_recruiter-debrief.md
-@Forecasting/interviews/the-trade-desk/README.md
-Prep TTD 45-min Python coding screen (applied scientist): collaborative, narrate reasoning, finish a polished solution.
-Then outline Kennedy HM: live events + audio, DL forecasting + short-term pacing, causal inference, business metrics.
-IC only.
+@Forecasting/interviews/the-trade-desk/2026-08-19_closed.md
+TTD Channel Growth closed 2026-08-19. No coding screen. Do not keep a TTD campaign.
 ```

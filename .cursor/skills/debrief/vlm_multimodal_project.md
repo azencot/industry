@@ -2,41 +2,51 @@
 
 **Long-lived reference.** Extend this file as the project evolves — new results, problems solved, ablations, interview angles.  
 **Interview cheat sheet:** [`Amazon_FinTech/anchor-cheat-sheet.md`](../anchor-cheat-sheet.md)  
-**Experience profile (broader arc):** [`omri_azencot_experience.md`](omri_azencot_experience.md)
+**Experience profile (broader arc):** [`omri_azencot_experience.md`](omri_azencot_experience.md)  
+**Talk map:** [`talks/ts-vlm/README.md`](../../../talks/ts-vlm/README.md)
 
-Last updated: 2026-08-12
+**Source of truth for numbers:** private repo [`azencot-group/TSLMTSEXAM`](https://github.com/azencot-group/TSLMTSEXAM) branch **`grpo`**, `RUN_SUMMARY.md` through **§28 (2026-08-10)**. Do **not** quote `main` (frozen 2026-06-30) or mix unlabeled campaigns.
+
+Last updated: 2026-08-19
 
 ---
 
 ## Overview
 
-**Goal:** Teach general-purpose VLMs to reason over univariate and multivariate time series — not just classify UCR shapes, but answer exam-style questions, forecast, explain temporal relations, and generate structured captions.
+**Goal:** Teach general-purpose VLMs to reason over univariate and multivariate time series — not just classify UCR shapes, but answer exam-style questions, explain temporal relations, and generate structured captions. If there is “prediction,” it is choose-the-answer, not a forecast head.
 
-**Current models (2026-08+):** **Qwen3.5** at **9B** and **27B**.  
-**Earlier campaign (FinTech PS1 era):** Qwen3-VL-**8B** and Qwen3.5-**0.8B** — published metrics in this file are from that era unless re-measured.
+**Which scale to quote (lock):**
 
-**North star benchmark:** [TSRBench](https://tsrbench.github.io/) — multi-task, multi-modal time series reasoning (15 tasks across 4 dimensions: Perception, Reasoning, Prediction, Decision-Making; 4,125 problems from 14 domains including finance). TSRBench evaluates both textual and visual TS representations; text and vision are strongly complementary per the benchmark authors.
+| Role | Model | Use in a talk |
+|------|--------|----------------|
+| **TSExam / TSRBench ceiling** | Qwen3-VL-**8B** dual | Headline three-bench results |
+| **ChatTS ceiling** | Qwen3.5-**27B** dual (thinking OFF) | Beats ChatTS-14B paper on cat |
+| **Stage C / serving** | Qwen3.5-**9B** dual | TSExam **0.9316** after C-RS; vLLM port |
+| **Recipe screen** | Qwen3.5-**0.8B** | Fast pilots; not the external hook |
+| **Scale probe, not a result** | Qwen3.5-**122B-A10B** MoE | Trained; FT letter-A bias — do not slide |
 
-**Supporting benchmarks:** TSExam (20K MCQ + 746-item HF eval), TSExam-numeric (11K regression), ChatTS (105K align + 44K SFT), caption data (7.7K), ICL-UCR, CaTS-Bench (~16K), TSRBench JSONL (12-task MCQ north-star subset).
+**North star:** [TSRBench](https://tsrbench.github.io/) — 15 tasks, 4 dimensions, **4,125** problems, official protocol. Paper open ceiling: Qwen3-VL-32B **44.9%** overall; closed: GPT-5 (T+V) **55.6%**.
 
-**Intellectual lineage:** ImagenTime (NeurIPS 2024) established that rendering time series as images unlocks vision-model advances; this project extends that insight from *generation* to *reasoning* via VLMs.
+**Supporting benches:** TSExam HF (`AutonLab/TimeSeriesExam1`, n=746) · ChatTS official A/B · TSExam-numeric · captions · ICL-UCR · CaTS-Bench. The 12-task JSONL is a **training gate**, not the SOTA claim.
+
+**Intellectual lineage:** ImagenTime (NeurIPS 2024) — TS-as-image for *generation*; this project is *reasoning* via a VLM with two live towers.
 
 ---
 
-## Core insight
+## Core insight (measured, not a hunch)
 
-LLMs do not understand raw time-series values efficiently — feeding numeric tokens is wasteful and weak on structure.
+LLMs do not use raw numeric tokens well. **One rendering loses information.**
 
-**Dual representation hypothesis:** A single rendering loses information.
+| Encoding | Captures | Route | Failure mode if used alone |
+|----------|----------|-------|----------------------------|
+| **Line chart** (matplotlib) | Amplitude, trend, axes | Frozen native Qwen ViT (`visual`) | Weaker on anomaly / causality |
+| **Delay-embedding** | Shape / recurrence; **scale-invariant** | DINOv3 + merger (`visual_dino`) | **ChatTS numerical collapses** (~0.17–0.35 vs ~0.71 matplotlib) |
 
-| Encoding | Captures | Route |
-|----------|----------|-------|
-| **Line chart** (matplotlib) | Amplitude, trend, local shape | Frozen native Qwen ViT (`visual`) |
-| **Delay-embedding plot** | Topological / dynamical structure | DINOv3 + trainable merger (`visual_dino`) |
+**Dual tower** feeds both in parallel. Empirically: dual 8B **beats every 32B single-tower** on TSExam-full (0.886 vs 0.849); dual ChatTS numerical **matches ChatTS-14B paper** (0.787). Native ViT **cannot** be LoRA’d into a delay encoder (`qwendelay` 0.601 vs DINO 0.831). Complementary by TSExam category: delay wins anomaly + causality; chart wins noise + pattern.
 
-Both streams are projected into LLM token space and fused for downstream tasks (MCQ, regression, captioning, open QA).
+**Implementation note (Q&A, not a title):** DINOv3 rides Qwen’s video stream (`t=1`); native ViT stays on the image stream and is never LoRA’d.
 
-**Design principle:** Decouple *how to see* a series from *how to answer* about it — enables caption/alignment priors to transfer to downstream QA (same pattern as domain pre-training → task fine-tuning on finance docs).
+**Design principle:** Decouple *how to see* from *how to answer* — Stage A captions transfer to Stage B QA.
 
 ---
 
@@ -49,39 +59,42 @@ Time series input
     └── delay-embedding image → DINOv3 + merger (LoRA in Stage A) ──→ projector ──┘
 ```
 
-**Model integration (personal ownership):**
+**Personal ownership:** patched Qwen3-VL-8B / Qwen3.5 0.8B / 9B / 27B / 122B-A10B forwards; `DinoVisionTower`; dual-stream collator (M-RoPE); adapter merge/resume A→B; **vLLM out-of-tree dual plugin** (9B, 100/100 TSExam-gate parity vs HF).
 
-- Patched forwards for **Qwen3.5 9B / 27B** (current) and earlier **Qwen3-VL-8B** / **Qwen3.5-0.8B (Q35)**
-- Custom **DinoVisionTower** for delay-embedding stream
-- **Dual-stream collator** with M-RoPE type tags
-- **Adapter merge/resume** across curriculum stages (Stage A weights → Stage B init)
-
-**Scale strategy:** Validate ideas on the smaller scale first; compare against the larger ceiling before committing full sweeps — **current: 9B → 27B**; earlier: **0.8B Q35 → 8B**.
+**Scale strategy:** validate the recipe on 0.8B/8B; 9B/27B for ChatTS + native thinking + serving; do **not** assume bigger is better on TSRBench (it isn’t, yet).
 
 ---
 
 ## Training curriculum
 
-| Stage | What trains | LLM updates? | Purpose |
-|-------|-------------|--------------|---------|
-| **A** | DINO backbone (LoRA) + alignment merger on caption/align data | **No** | Learn *how to see* a series |
-| **B** | Merge Stage A; add LM LoRA (+ optional DINO LoRA); merger often frozen | **Yes** (LM LoRA) | Learn *how to answer* |
-| **C** *(in progress)* | GRPO / VRT — gold-based RL on SFT adapters | RL on LoRA | CoT correctness rewards on gold labels |
+| Stage | What trains | LLM updates? | Status |
+|-------|-------------|--------------|--------|
+| **A** | DINO LoRA + merger on caption/align | **No** | Locked. LLM frozen. Perception: what a series is + components. |
+| **B** | Merge A; LM LoRA; merger often frozen | **Yes** | Locked. QA + traces. |
+| **C** | C-RS (SFT on **gold** TR rationales) then C-RL2 (GRPO) | LoRA | **Working recipe on 9B.** Early letter-GRPO on saturated SFT was a **no-op**. |
 
-### Stage A data sources (evolution)
+### Stage C — what actually happened (`grpo` §7, §27–28)
 
-0. **Baseline failure:** instruction-following only (no captions) — **50+ configs**, TSExam stuck at **~61.8%**; zero-shot TS-image perception insufficient.
-1. **Synthetic TS↔text alignment:** adapted TSExam + ChatTS generators — compose captions from **per-series gold features** (no LLM; template + randomization).
-2. **CaTS** (Rose Yu group): expert-audited domains (traffic, electricity, etc.); LLM trained on **~1.6K** audited seeds → **~16K** caption repo for messy real-world signal.
-3. **Stage A mix:** TSExam + ChatTS synthetic captions + CaTS → perception lift → TSExam **~90.5%** on recent 8B stack.
+- Letter GRPO on new-ds SFT: **0.795 vs SFT 0.796** — 90% of groups had zero reward-std.
+- Reasoning-format GRPO: **regressed 11 pp** (confident wrong chains).
+- Fresh GRPO from bare base: learned **format**, not correctness (~zero-shot).
+- **C-RS → C-RL2** on a rationale-free 9B letters base: TSExam **0.9316** (all-time), box/fmt 1.0, TSRBench inline **40.7** (+1.2).
+- Think-base + RL: **format only**, accuracy-neutral (third confirmation).
 
-### Stage B data mix
+Talk: in progress / upweight good answers — don’t say “GRPO is how we got SOTA.” Gold traces then RL moved TSExam; TSRBench barely moved.
 
-Mostly QA: TSExam MCQ, ChatTS SFT, TSExam-numeric regression, small caption holdout to avoid forgetting.
+### Stage A data (evolution)
 
-**Caption-transfer hypothesis (active arc):** Stage A descriptive captions (ChatTS align, CaTS, aligned captions) → Stage B on TSExam/TSRBench. Achieved **0.88 TSExam HF** with caption priors; probing whether linguistic structure helps temporal reasoning on TSRBench (north star still ~0.32–0.34 on 0.8B vs ~0.45 on 8B).
+0. Instruction-only: **50+ configs**, TSExam stuck **~61.8%**.
+1. Synthetic captions from **per-series gold features** (template + randomization; no LLM labeler).
+2. **CaTS** (~16K) for messy real signal.
+3. Mix → 8B TSExam **~90.5%+**; full-B ep10 **0.926**.
 
-**Control baseline (Jun 2025):** `allcap-a5b3` — TSExam 0.854, TSRBench 0.339, TR 28.7%.
+### Stage B mix
+
+TSExam MCQ, ChatTS SFT/IFT, TSExam-numeric, optional caption holdout, TR-20k / **TR-v2** operator families. **ICL-UCR raises ICL and costs TSRBench pred/decision** — TSRBench champ is **no-ICL**.
+
+**Control (Jun 2025):** `allcap-a5b3` — TSExam 0.854, TSRBench 0.339, TR 28.7%.
 
 ---
 
@@ -89,43 +102,49 @@ Mostly QA: TSExam MCQ, ChatTS SFT, TSExam-numeric regression, small caption hold
 
 | Area | Details |
 |------|---------|
-| **Training** | PyTorch DDP (`torchrun`, 8× RTX Pro 6000); LoRA via PEFT (~43M–few-hundred-M trainable params); stratified multi-task samplers; YAML-config-first sweeps (**162 configs**, **125 scripts**) |
-| **Data pipeline** | Unified loaders across TSExam, TSExam-numeric, caption, ChatTS, ICL-UCR, CaTS-Bench, TSRBench JSONL; stratified balancing; leave-one-out ablations (e.g. drop caption bucket → +3 pp TSExam) |
-| **Eval harness** | Tiered gates per checkpoint: **loss** (free) → **TSExam** (~35 s) → **176-item TSRBench slice** (~12 s) → **full TSRBench** (~3 min 0.8B / ~5 min 8B, 8-GPU). Per-task/per-group accuracy; **parse-miss** (non–single-letter MCQ output) separate from accuracy — surfaced **NR** / **TSF** format gaps. HF + local parity. |
-| **Fast train screen** | Capped subset (~10K, 2 epochs) on Q35 for data-mix screening — distinct from eval gate ladder above |
-| **RL** | GRPO (TRL + DeepSpeed); warm-started from SFT adapters; rule-based MCQ correctness rewards (earlier on Qwen3-VL-8B; scale with current 9B/27B as needed) |
-| **Infra** | Slurm submission; `QTSX_ARTIFACT_ROOT` artifact separation; venv / torch versioning per model family; NCCL tuning; agent/onboarding automation |
-| **Reproducibility** | Fixed samplers (post bug-fix), seed control, artifact paths, documented eval protocol fixes (e.g. deductive-reasoning option parsing) |
+| **Training** | PyTorch DDP; LoRA/PEFT; YAML-config-first (**162+ configs**); stratified samplers; warm-restart `continue_adapter` (fresh cosine — naive `--resume` froze LR) |
+| **Data** | Unified loaders: TSExam / numeric / caption / ChatTS / ICL-UCR / CaTS / TSRBench / TR-v2 (named series, up to 8 ch, series-as-options) |
+| **Eval** | Loss → TSExam HF → TSRBench slice → full n=4125. Parse-miss ≠ accuracy. Official ChatTS rule-based cat/num/reason. Thinking ON/OFF + EOS `<\|im_end\|>` (two bugs caught — see log) |
+| **RL** | Stage C: STaR/vLLM gen, C-RS, C-RL2 GRPO (per-chunk backward, 4096 completions); **not** the failed letter-GRPO on new-ds |
+| **Serving** | vLLM 0.25.1 dual plugin; bake merged 9B; **100/100** greedy parity vs HF on a local TSExam gate (~30 GPU-min for the port) |
+| **Scale** | 122B-A10B ZeRO-3 (attention + shared-expert LoRA; don’t LoRA 256 routed experts). FT MC collapsed to letter-A — adapter regime, not a published win |
 
 ---
 
-## Experimentation methodology
+## Results (official protocols)
 
-Amazon-relevant habits embedded in the stack:
+*TSExam = HF n=746. TSRBench = official overall n=4125. ChatTS = paper A/B cat/num. Label the campaign when you speak.*
 
-1. **Config-first** — one hypothesis per change; fork YAML, not training code; parallel Slurm sweeps
-2. **Tiered eval gates** — loss → TSExam → TSRBench slice → full north star (see latencies in eval harness)
-3. **Parse-miss ≠ accuracy** — track schema/reliability separately (production analog: doc parsing failures)
-4. **Multi-scale validation** — smaller scale first, larger as ceiling (**current: 9B → 27B**; earlier: 0.8B → 8B)
-5. **Living experiment index** — ~160 configs documented for reproducibility and handoff
+### Headline three-bench (talk contribution 4)
 
----
+| Bench | Best we report | Vs published | Note |
+|-------|----------------|--------------|------|
+| **TSExam HF** | **0.926** 8B full-B ep10; **0.9316** 9B after C-RS | No public dual-tower posting this on HF TSExam | 0.901 unified a4b10 is the earlier specialist champ |
+| **ChatTS** | Dual 8B **matches 14B paper numerical** (0.787); **27B cat 0.92 / 0.90** beats paper 0.889 / 0.862 | ChatTS-14B paper A 0.889/0.788, B 0.862/0.787; GPT-4o vision much lower | Official ChatTS metrics, not HiTSR |
+| **TSRBench overall** | **0.4565** 8B no-ICL 4ep; **0.454** capnumicl-a8b4; TR-v2 8B **44.7** | Paper: Qwen3-VL-32B **44.9**, TimeOmni-1-7B **36.7**, ChatTS-14B **33.5**, GPT-5 T+V **55.6** | **SOTA or on par among open**; still behind proprietary. First known stack at/near SOTA on **all three** public protocols |
 
-## Results
+Do **not** say 9B/27B beat 8B on TSRBench (they don’t: ~0.41–0.43). Do **not** treat TimeOmni **49.4** as overall — that is the **EP** column; overall is **36.7**.
 
-*Table = earlier **8B / 0.8B** campaign. Re-measure on **Qwen3.5 9B / 27B** when numbers land.*
+### Scale snapshot (don’t mix unlabeled)
 
-| Benchmark | Task | Best Q35 (0.8B) | Best 8B | Notes |
-|-----------|------|-----------------|---------|-------|
-| **TSExam HF** | 746-item MCQ (AutonLab) | **0.890** (tsexam-v2 repro) | **0.901** (unified champion) | Tiered eval sanity check |
-| **TSRBench reasoning** | Reasoning bracket (0.8B) | **0.245→0.255** (+1.0 pp) | — | vs `stageb-weak11k`; + audit data + Stage C (`reason-stageC-weak11k`) — prelim |
-| **TSRBench overall** | 12-task MCQ north star | **0.382→0.405** (+2.3 pp) | 0.374 (capnum-a8b4) | 0.8B audit path prelim; 8B best **0.454** (capnumicl-a8b4) |
-| **TSRBench TR** | Temporal-relation reasoning (160 items) | 0.287 (allcap control) | — | Hard problem; in progress |
-| **TSExam-numeric** | Regression (medAE) | **0.14** (unified3) | — | Numeric correctness |
-| **Caption attr-recovery** | 9-field macro accuracy | **0.72** (caption specialist) | — | Field extraction analog |
-| **ChatTS** | Free-text QA (cat/num/reason) | — | ~0.84 cat / 0.76 num | 8B path |
+| Model | TSExam HF | TSRBench overall | ChatTS (best cells) |
+|-------|-----------|------------------|---------------------|
+| 8B dual Stage B | **0.926** full-B ep10 | **0.4565** no-ICL 4ep | B 0.901 / 0.847 (single-cosine) |
+| 9B dual Stage B | 0.883 (10ep) | ~0.41–0.43 | 9B-4ep ~0.91 / 0.87 |
+| 9B + C-RS/C-RL2 | **0.9316** | inline 40.7 | C-RL2 board ~0.89/0.82/0.90/0.86 |
+| 27B dual OFF | **0.921** | (re-runs @2048) | **A 0.92 / B 0.90 cat** |
+| 0.8B Q35 | 0.890 v2 | 0.405 audit path | — |
+| 122B zs / FT | zs **0.731** (best zs) / FT 0.47 letter-A | zs 41.6 | FT ChatTS 0.86; MC broken |
 
-**Headline for intro:** Earlier open **8B** scored **~46% overall on TSRBench** — strongest open-source model at that scale then, just below frontier proprietary systems. **Current training/eval is on Qwen3.5 9B and 27B.** TSExam ~90% is internal eval discipline, not the external hook.
+### Other (backup, not spine)
+
+| Bench | Best | Notes |
+|-------|------|-------|
+| TSExam-numeric medAE | **0.14** (unified3 0.8B) | Six-order GT range — report medAE |
+| Caption 9-field | **0.72** | Attr-recovery |
+| ICL-UCR | micro **0.688**, 90/90 beats-chance | Fourth bench; trades off TSRBench pred/decision |
+
+**Spoken headline:** Official protocol on TSExam, ChatTS, and TSRBench — SOTA or on par; TSRBench is where closed models still win. 8B is the TSRBench/TSExam Stage-B ceiling; 27B is the ChatTS ceiling.
 
 ---
 
@@ -133,67 +152,67 @@ Amazon-relevant habits embedded in the stack:
 
 ### TR / reasoning bucket mixes regressed
 
-Subset-mix experiments targeting temporal-relation and reasoning buckets **performed worse than control** → stopped additive buckets; pivoted to revisiting **data generation** rather than stacking more training mixes.
+Blind TR mixes **hurt** the hard slice. Stopped stacking buckets; audited primitives; rebuilt generators (TR-v2). Extra full-B epochs: TSExam climbs, **TSRBench saturates ~0.44 from ep3**, reasoning group stuck ~0.27–0.30.
 
-**Lesson:** More data buckets ≠ better when task distribution shifts. Same discipline needed before shipping to finance users.
+### Mixed multivariate schemas (ravel as univariate)
 
-### Stage B over-reasoning on complex TSRBench tasks
+ChatTS student path stores `timeseries` as `[C, T]` and splits **per channel**. TSExam used named 1-D fields (`ts` / `ts1` / `ts2`). Loaders that `.ravel()` a 2-D `ts` **concatenate channels in time** — one fake univariate; delay geometry is garbage. Dual collator is **N series → N markers → N chart + N delay**. Talk: slide 13, not a fifth contribution.
 
-TSRBench reasoning tasks are domain-specific and multi-hop — they combine basic TS analysis (value extraction, segmentation) with higher-level inference. Model sometimes over-reasons or fails on primitives.
+### Early GRPO did not beat SFT
 
-**Diagnosis (Jun 2025):** Task-level audit revealed **missing operations** in training/eval coverage — not insufficient volume alone. Response: extended TSExam to support identified operations rather than blindly adding data buckets.
+Letter GRPO no-op; reasoning GRPO regressed. Binary correctness on saturated MCQ has no group variance.
+
+### Native thinking
+
+Zero-shot thinking **destroys** TSRBench (9B **0.166** ON vs **0.417** OFF). Fine-tuned: thinking-OFF is the fair best after two eval bugs (thinking never engaged; wrong EOS → runaway). Don’t claim CoT as a free win.
+
+### 122B FT
+
+Attention-only LoRA: TSExam 0.43→0.47 with letter-A bias (508/746). Capability is there (zs 0.73, ChatTS 0.86); **adapter regime** is not a three-bench result.
+
+### Single-cosine vs warm-restart
+
+One 11-ep cosine **does not** reproduce full-B TSExam 0.926 (best 0.902); it **wins ChatTS**. Don’t treat schedule as a footnote.
 
 ---
 
 ## Problems solved — detailed log
 
-*Add new entries at the top as work progresses.*
+*Add new entries at the top.*
 
-### 2026-06 — TSRBench task audit + Stage C (reasoning bracket)
+### 2026-08 — Stage C2/C3 + TR-v2 + 122B (`grpo` §27–28)
 
-**Problem:** Blind TR/reasoning mixes regressed TR (−5 pp) — see Ownership kill.
+**Problem:** Letter GRPO on a format-saturated base is a no-op; TSRBench reasoning still missing operator families (NR rate-conversion, two-event localization).
 
-**Action:** Manual audit of all TSRBench reasoning tasks → three regimes (operator depth · domain knowledge defer · format/convention). Rebuilt reasoning synthetic repo; per-task TSExam generators (TR segmentation/ordering, NR value→formula, Goldstein-scale format synthetics, etc.). Adapted Stage B + Stage C (VRT/GRPO on gold CoT).
+**Action:** C-RS gold-rationale SFT → C-RL2; TR-v2 20k / 7 families; 122B ZeRO-3 dual chain.
 
-**Result (0.8B prelim vs `stageb-weak11k`):** TSRBench overall **0.382→0.405 (+2.3 pp)**; reasoning **0.245→0.255 (+1.0 pp)**. 8B WIP.
+**Result:** 9B TSExam **0.9316**; TR-v2 8B TSRBench **44.7** (IR/CD/ER gains; NR still recites units and fails conversion). 122B FT not usable for MC.
 
-**Interview angle:** Anchor C — instrument before scaling data.
+### 2026-07 — Qwen3.5 9B/27B + thinking/EOS eval bugs (`iucc_cluster` / `grpo` §23–25)
 
----
+**Problem:** Dual eval never set `enable_thinking`; then thinking-ON ran away on wrong EOS.
 
-### 2025-06 — Stage B reasoning gaps (TSRBench task audit)
+**Action:** Collator toggle; stop on `<|im_end|>`; first-answer extract; MNT 2048 on TSRBench.
 
-**Problem:** Stage B QA fine-tuning underperformed on TSRBench reasoning slices despite decent TSExam scores. Over-reasoning on complex multi-hop tasks.
+**Result:** 27B TSExam **0.921**; 27B ChatTS cat above ChatTS-14B; 8B still leads TSRBench.
 
-**Action:** Spent several days on TSRBench task taxonomy — mapped required primitives (val extraction, segmentation, multi-hop decisions alongside basic TS analysis). Identified operations absent from TSExam training coverage. Extended TSExam to support these operations.
+### 2026-07 — vLLM dual-tower port (`grpo` §26)
 
-**Status:** In progress — probing whether coverage fix improves TSRBench TR without hurting TSExam transfer.
+**Action:** Out-of-tree plugin + bake; skip video re-norm / extra timestamp tokens.
 
-**Interview angle:** Anchor C (Dive Deep) — instrument tasks before adding data.
+**Result:** 100/100 answer parity vs HF on a 100-item greedy gate. 8B deepstack not ported.
 
----
+### 2026-06 — TSRBench task audit + Stage C (0.8B)
 
-### 2025-06 — Synthetic captions too basic (CaTS integration)
+**Problem:** Blind TR mixes regressed TR (−5 pp).
 
-**Problem:** Synthetic TS↔text alignment from TSExam + ChatTS unlocked Stage A training but captions lacked richness for robust perception.
+**Action:** Task audit → three regimes; extended TSExam ops; VRT/GRPO on 0.8B.
 
-**Action:** Integrated **CaTS-Bench** (~16K samples) into Stage A mix.
+**Result:** 0.8B TSRBench **0.382→0.405**; reasoning **0.245→0.255**.
 
-**Result:** Strong Stage A eval on next-token prediction and TSExam perception slices.
+### 2026-06 — Captions too basic / scarce
 
-**Interview angle:** Synthetic data quality risk — augment with curated real data when synthetic ceiling hits (Karan's ECG-QALM lane).
-
----
-
-### 2025-06 — Caption data scarcity (synthetic alignment generation)
-
-**Problem:** Real time-series caption data insufficient for Stage A alignment (LLaVA-style TS↔text pairing).
-
-**Action:** Generated synthetic alignment data from TSExam + ChatTS templates/pipelines.
-
-**Result:** Enough volume to train Stage A vision alignment without LLM updates.
-
-**Interview angle:** Low-label regime — synthetic bootstrap with quality caveats.
+Synthetic gold-feature captions, then **CaTS** in Stage A. LOO: **dropping** a caption bucket **+3 pp TSExam** — mix quality > more buckets.
 
 ---
 
@@ -201,60 +220,49 @@ TSRBench reasoning tasks are domain-specific and multi-hop — they combine basi
 
 | Research concept | FinTech parallel |
 |------------------|------------------|
-| Dual chart + delay encoding | Multimodal docs: tables + text + numbers; one view loses information |
-| Two-stage curriculum (caption → QA) | Domain alignment → task fine-tuning on invoices, remittance, filings |
-| Caption 9-field attr-recovery (0.72) | Entity/field extraction from documents |
-| TSExam-numeric medAE 0.14 | Numeric correctness for payment matching |
-| Tiered eval + parse-miss tracking | Slice metrics by doc/entity type; schema reliability before accuracy |
-| 0.8B near 8B on TSExam (0.890 vs 0.901) | SLM routing when quality holds; cost at transaction scale |
-| Negative TR bucket mixes | Don't cargo-cult data before shipping to finance users |
-| Extended TSExam ops | Cover extraction/segmentation primitives the benchmark actually tests |
-| Synthetic + CaTS caption pipeline | Controlled synthetic text for NER/IE with quality gates |
+| Dual chart + delay | Tables + text + numbers; one view loses information |
+| A then B | Domain alignment → task FT |
+| Caption 9-field 0.72 | Field extraction |
+| TSExam-numeric medAE 0.14 | Numeric correctness |
+| Parse-miss vs accuracy | Schema reliability before accuracy |
+| 0.8B near 8B on TSExam | SLM routing when quality holds |
+| GRPO no-op on saturated MCQ | Reward design before “just add RL” |
+| vLLM dual parity gate | Serve the same model you trained |
 
-### Production bridge (not yet built — show thinking)
+### Production bridge (not yet built)
 
-> Shadow eval before promote; confidence/abstention when parse-miss spikes; slice regressions by task group; human review queue for low-confidence outputs; user corrections → golden-set refresh → gated retrain.
+> Shadow eval before promote; abstain on parse-miss spikes; slice regressions; human queue; corrections → golden set → gated retrain.
 
 ---
 
-## PS1 interview hooks
-
-**One project, three anchors** — see [`anchor-cheat-sheet.md`](../anchor-cheat-sheet.md).
+## PS1 / Bosch interview hooks
 
 | Anchor | Theme | Lead with |
 |--------|-------|-----------|
-| **A** | Production ML/LLM | Dual-tower, Stage A/B curriculum, DDP stack; **current 9B/27B**; earlier 0.890 on 0.8B |
-| **B** | Eval / monitoring | Tiered eval, pilot harness, parse-miss, killed TR mixes |
-| **C** | Dive Deep / ambiguity | Caption pipeline + TSRBench task audit → extended TSExam |
+| **A** | Production ML | Dual tower **measured** (numerical collapse + qwendelay control); DDP; vLLM 9B parity |
+| **B** | Eval | Official three-bench protocol; parse-miss; thinking/EOS bugs caught; killed TR mixes |
+| **C** | Dive Deep | Caption + TSRBench ops audit; TR-v2; Stage C = gold traces not letter-GRPO |
 
-**5–7 min ML deep-dive order:**
+**5–7 min order:** problem → two geometries (evidence) → I built towers/collator/eval → **8B ~45.6% TSRBench / 0.926 TSExam / ChatTS on par with 14B; 27B wins ChatTS cat** → TR saturates / GRPO no-op → transfer = frozen suite + vLLM, not 122B.
 
-1. Problem (30s): VLMs fail exam-grade TS reasoning
-2. Insight (30s): Dual encodings; Stage A decouples vision from language
-3. System (60s): What *I* built — patch, collator, YAML sweeps, Slurm DDP; scales **9B / 27B**
-4. Win (30s): TSExam 0.89 on 0.8B *or* TSRBench ~46% open 8B (earlier campaign — refresh for 9B/27B)
-5. Honest limit (30s): TR mixes regressed; Stage B reasoning gaps
-6. FinTech bridge (30s): Multimodal docs, field extraction, eval-gated ship
-
-**Karan resonance:** eval methodology, curriculum/domain adaptation, low-label caption transfer, negative results from bad data mixing — mirrors his [continual pre-training for financial LLMs](https://aws.amazon.com/blogs/machine-learning/efficient-continual-pre-training-llms-for-financial-domains/) and [ECG-QALM synthetic NER](https://www.amazon.science/publications/ecg-qalm-entity-controlled-synthetic-text-generation-using-contextual-q-a-for-ner) work.
-
-**Anti-patterns (prior loop):** Don't lead with "research program" or mentorship — say "I implemented the tiered eval harness" / "I designed the dual-tower stack."
+**Anti-patterns:** Don’t lead with 9B/27B as the better model. Don’t say first dual-view in the universe (LLaTiSA is plot+table on **HiTSR**). Don’t say 122B worked. Don’t say Stage C GRPO is the SOTA.
 
 ---
 
 ## Stack
 
-Python 3.11 · PyTorch · Transformers · PEFT/LoRA · TRL (GRPO) · Accelerate/DeepSpeed · HuggingFace datasets · Slurm · multi-GPU DDP  
-**Current models:** Qwen3.5 **9B** / **27B** · **Earlier:** Qwen3-VL-8B / Qwen3.5-0.8B (dual torch venvs historically)
+Python 3.11 · PyTorch · Transformers · PEFT/LoRA · TRL · DeepSpeed ZeRO-3 · vLLM (9B dual plugin) · HF datasets · Slurm DDP  
+**Models:** Qwen3-VL-8B (north-star champ) · Qwen3.5 0.8B / 9B / 27B · 122B-A10B (infra only)
 
 ---
 
 ## Open questions
 
-- [ ] Exact TSRBench leaderboard rank for open 8B before PS1 — verify on [tsrbench.github.io](https://tsrbench.github.io/)
-- [ ] Does extended TSExam ops coverage improve TSRBench TR without TSExam regression?
-- [ ] Stage C GRPO/VRT — timeline and expected gain on MCQ vs reasoning slices
-- [ ] Caption-transfer: does Stage A linguistic structure help TR on TSRBench at 0.8B scale?
+- [x] TSRBench 8B vs paper table — **0.4565** vs Qwen3-VL-32B 44.9 / GPT-5 55.6 (open on par; closed ahead)
+- [ ] 27B dual TSRBench at MNT 2048 — still in-flight in §23
+- [ ] NR operator coverage in TR-v2 (rate conversion, two-event localization)
+- [ ] 122B shared-expert MLP LoRA retrain (pending a healthy Stage B)
+- [ ] vLLM: 8B deepstack + ChatTS/ICL paths
 
 ---
 
@@ -262,5 +270,6 @@ Python 3.11 · PyTorch · Transformers · PEFT/LoRA · TRL (GRPO) · Accelerate/
 
 | Date | Change |
 |------|--------|
-| 2026-08-12 | Current models → **Qwen3.5 9B / 27B**; earlier 8B / 0.8B metrics kept and labeled |
-| 2026-06-21 | Initial extended summary — architecture, curriculum, results, Stage A/B problems solved, three anchors |
+| 2026-08-19 | Synced to **`grpo` §21–28**. 8B is TSExam/TSRBench ceiling; 27B ChatTS; Stage C = C-RS not letter-GRPO; vLLM; 122B caveat. Dual-tower evidence (numerical collapse, qwendelay). |
+| 2026-08-12 | Current models → 9B / 27B (overstated — 8B still north-star) |
+| 2026-06-21 | Initial extended summary |

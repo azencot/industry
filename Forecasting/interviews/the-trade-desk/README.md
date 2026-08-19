@@ -9,14 +9,15 @@
 | **Recruiter** | **Stephanie** |
 | **Location** | **Bellevue** (hybrid asked on screen) |
 | **Posted** | 2026-07-31 |
+| **Status** | **Closed 2026-08-19** — they decided not to continue. Did not reach coding or Kennedy. Log: [`2026-08-19_closed.md`](2026-08-19_closed.md) |
 | **Comp (Stephanie, 2026-08-12)** | Base **$200k–$228k** + equity **$400k–$440k / 4 years** → ~**$300k–$340k** TC/year. Public JD base still [$124.9k–$228.9k](https://careers.thetradedesk.com/jobs/5021488007/senior-applied-scientist-channel-growth). |
 
-## Active thread
+## Thread (closed)
 
 | Date | What | Notes |
 |------|------|-------|
-| **2026-08-12** | Recruiter phone (Stephanie) | Cleared. Debrief: [`2026-08-12_recruiter-debrief.md`](2026-08-12_recruiter-debrief.md) |
-| **Next** | She shares profile → **45 min Python coding** (AS) → **HM Kennedy** | Coding: collaborative, reasoning, **finished** solution |
+| **2026-08-12** | Recruiter phone (Stephanie) | Cleared then. Debrief: [`2026-08-12_recruiter-debrief.md`](2026-08-12_recruiter-debrief.md) |
+| **2026-08-19** | **Closed** | They decided not to continue. [`2026-08-19_closed.md`](2026-08-19_closed.md). No coding screen. |
 
 ## Loop (from recruiter)
 

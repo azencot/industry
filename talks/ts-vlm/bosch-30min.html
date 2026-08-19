@@ -1,0 +1,1175 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>VLM reasoning over time series — Omri Azencot</title>
+  <style>
+    :root {
+      --bg: #14110e;
+      --paper: #1c1814;
+      --ink: #f3ece3;
+      --muted: #b7a99a;
+      --line: #3a322b;
+      --accent: #d4783c;
+      --accent-2: #7eb8a8;
+      --warn: #c9a227;
+      --backup: #6e8cff;
+      --layout: #e8c07a;
+      --mono: "IBM Plex Mono", ui-monospace, Menlo, Consolas, monospace;
+      --sans: "Iowan Old Style", "Palatino Linotype", Palatino, Georgia, serif;
+      --ui: "Avenir Next", "Segoe UI", system-ui, sans-serif;
+    }
+
+    * { box-sizing: border-box; }
+    html, body {
+      margin: 0; height: 100%;
+      background: var(--bg); color: var(--ink);
+      font-family: var(--ui);
+    }
+    body { overflow: hidden; }
+
+    .deck { height: 100%; }
+    .slide {
+      display: none;
+      height: 100%;
+      padding: 6.5vh 7.5vw 10vh;
+      position: relative;
+      background:
+        radial-gradient(1200px 500px at 110% -10%, rgba(212,120,60,.12), transparent 55%),
+        var(--paper);
+    }
+    .slide.on { display: flex; flex-direction: column; }
+    .slide.backup { background:
+      radial-gradient(1200px 500px at 110% -10%, rgba(110,140,255,.12), transparent 55%),
+      var(--paper);
+    }
+
+    .kicker {
+      font-family: var(--mono);
+      font-size: 13px;
+      letter-spacing: .14em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin: 0 0 1rem;
+    }
+    .slide.backup .kicker { color: var(--backup); }
+
+    h1, h2 {
+      font-family: var(--sans);
+      font-weight: 600;
+      letter-spacing: -.02em;
+      margin: 0 0 .7rem;
+      line-height: 1.12;
+    }
+    h1 { font-size: clamp(1.85rem, 3.4vw, 2.75rem); white-space: nowrap; }
+    h2 { font-size: clamp(1.35rem, 2.4vw, 2.05rem); }
+    .lede {
+      font-size: 1.18rem;
+      color: var(--muted);
+      line-height: 1.4;
+      margin: 0;
+    }
+
+    .viz-pair {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1rem;
+      align-items: start;
+    }
+    .viz {
+      margin: 0;
+      display: flex;
+      flex-direction: column;
+      height: 52vh;
+      border: 1px solid var(--line);
+      border-radius: 12px;
+      overflow: hidden;
+      background: rgba(0,0,0,.22);
+    }
+    .viz img {
+      display: block;
+      flex: 1;
+      width: 100%;
+      min-height: 0;
+      object-fit: contain;
+      background: var(--paper);
+    }
+    .viz figcaption {
+      flex: 0 0 auto;
+      padding: .7rem .95rem .85rem;
+      font-size: .98rem;
+      color: var(--muted);
+      line-height: 1.35;
+    }
+    .viz figcaption .lab {
+      display: block;
+      font-family: var(--mono);
+      font-size: 11px;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: .25rem;
+    }
+
+    .task-stack {
+      display: flex;
+      flex-direction: column;
+      gap: .7rem;
+      height: 100%;
+      min-height: 0;
+    }
+    .task {
+      flex: 1;
+      min-height: 0;
+      display: grid;
+      grid-template-columns: 1.2fr .9fr;
+      border: 1px solid var(--line);
+      border-radius: 12px;
+      overflow: hidden;
+      background: rgba(0,0,0,.22);
+    }
+    .task img {
+      display: block;
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+      background: var(--paper);
+    }
+    .task .copy {
+      padding: .75rem 1.05rem;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+    .task .copy .lab {
+      font-family: var(--mono);
+      font-size: 11px;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin: 0 0 .3rem;
+    }
+    .task .copy h3 {
+      font-family: var(--sans);
+      font-size: 1.12rem;
+      font-weight: 600;
+      margin: 0 0 .3rem;
+      line-height: 1.2;
+    }
+    .task .copy p {
+      margin: 0;
+      color: var(--muted);
+      font-size: .95rem;
+      line-height: 1.35;
+    }
+    .task .copy .q {
+      margin: .4rem 0 0;
+      color: var(--ink);
+      font-size: .92rem;
+      line-height: 1.35;
+    }
+    .task .copy .opts {
+      margin: .3rem 0 0;
+      font-family: var(--mono);
+      font-size: .78rem;
+      color: var(--muted);
+      line-height: 1.4;
+    }
+
+    .ph {
+      border: 1px solid var(--line);
+      border-radius: 12px;
+      padding: 1.15rem 1.35rem;
+      color: var(--ink);
+      font-size: 1.05rem;
+      line-height: 1.45;
+    }
+    .ph.ghost {
+      border-style: dashed;
+      color: var(--muted);
+    }
+    .ph strong { color: var(--ink); font-weight: 600; }
+    .ph ul, .ph ol { margin: .55rem 0 0; padding-left: 1.2rem; }
+    .ph li { margin: .32rem 0; }
+    .ph p { margin: 0 0 .55rem; }
+    .ph p:last-child { margin: 0; }
+
+    .grid2, .grid3, .grid4 {
+      display: grid;
+      gap: .85rem;
+      height: 100%;
+      align-content: start;
+    }
+    .grid2 { grid-template-columns: 1fr 1fr; }
+    .grid3 { grid-template-columns: 1fr 1fr 1fr; }
+    .grid4 { grid-template-columns: 1fr 1fr 1fr 1fr; }
+    .card {
+      border: 1px solid var(--line);
+      border-radius: 12px;
+      padding: 1rem 1.1rem;
+      background: rgba(0,0,0,.18);
+    }
+    .card .lab {
+      font-family: var(--mono);
+      font-size: 11px;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin: 0 0 .45rem;
+    }
+    .card h3 {
+      font-family: var(--sans);
+      font-size: 1.15rem;
+      font-weight: 600;
+      margin: 0 0 .4rem;
+      line-height: 1.2;
+    }
+    .card p { margin: 0; color: var(--muted); font-size: .98rem; line-height: 1.4; }
+    .card img.thumb {
+      display: block;
+      width: 100%;
+      height: 26vh;
+      object-fit: contain;
+      background: var(--paper);
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      margin: 0 0 .75rem;
+    }
+    .card.mine {
+      border-color: rgba(212,120,60,.55);
+      background: rgba(212,120,60,.08);
+    }
+    .card.mine .lab { color: var(--accent); }
+    .card.dim { opacity: .72; }
+
+    .statrow {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: .85rem;
+    }
+    .stat {
+      border: 1px solid var(--line);
+      border-radius: 12px;
+      padding: 1.05rem 1.15rem;
+      background: rgba(0,0,0,.18);
+    }
+    .stat .n {
+      font-family: var(--sans);
+      font-size: clamp(1.8rem, 3.2vw, 2.6rem);
+      font-weight: 600;
+      letter-spacing: -.03em;
+      line-height: 1;
+      color: var(--ink);
+    }
+    .stat .u {
+      font-family: var(--mono);
+      font-size: 12px;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-top: .45rem;
+    }
+    .stat .d { color: var(--muted); font-size: .95rem; margin-top: .35rem; line-height: 1.35; }
+
+    .flow {
+      display: flex;
+      align-items: stretch;
+      gap: .6rem;
+      flex-wrap: wrap;
+    }
+    .node {
+      flex: 1 1 9rem;
+      border: 1px solid var(--line);
+      border-radius: 10px;
+      padding: .75rem .85rem;
+      background: rgba(0,0,0,.2);
+      min-width: 8.5rem;
+    }
+    .node .lab {
+      font-family: var(--mono);
+      font-size: 10px;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+      color: var(--accent-2);
+      margin: 0 0 .3rem;
+    }
+    .node b { display: block; font-size: 1.02rem; font-weight: 600; }
+    .node span { display: block; color: var(--muted); font-size: .9rem; margin-top: .2rem; }
+    .arrow {
+      align-self: center;
+      color: var(--muted);
+      font-size: 1.4rem;
+      flex: 0 0 auto;
+    }
+
+    .towers {
+      display: grid;
+      grid-template-columns: 1fr auto 1.15fr;
+      gap: .7rem;
+      align-items: stretch;
+    }
+    .tower-col { display: flex; flex-direction: column; gap: .55rem; }
+    .merge {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: stretch;
+      gap: .55rem;
+      min-width: 10rem;
+    }
+    .plus {
+      align-self: center;
+      color: var(--accent);
+      font-family: var(--mono);
+      font-size: 1.4rem;
+    }
+
+    table.nums {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: .95rem;
+    }
+    table.nums th, table.nums td {
+      text-align: left;
+      padding: .45rem .55rem;
+      border-bottom: 1px solid var(--line);
+    }
+    table.nums th {
+      font-family: var(--mono);
+      font-size: 11px;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+      color: var(--muted);
+      font-weight: 500;
+    }
+    table.nums td.hi { color: var(--accent-2); font-weight: 600; }
+    table.nums td.closed { color: var(--warn); }
+
+    .fn {
+      margin-top: .85rem;
+      font-size: .88rem;
+      color: var(--muted);
+      max-width: 46rem;
+    }
+    .tag {
+      display: inline-block;
+      font-family: var(--mono);
+      font-size: 11px;
+      letter-spacing: .06em;
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      padding: 2px 8px;
+      color: var(--muted);
+      margin-right: .35rem;
+    }
+
+    .intent {
+      display: none;
+      margin-top: .95rem;
+      padding: .75rem .95rem;
+      border-left: 3px solid var(--layout);
+      background: rgba(232,192,122,.07);
+      color: var(--layout);
+      font-size: .9rem;
+      line-height: 1.4;
+      max-width: 52rem;
+    }
+    body.layout .intent { display: block; }
+    .intent b { color: var(--ink); font-weight: 650; }
+
+    .meta {
+      position: absolute;
+      left: 7.5vw; right: 7.5vw; bottom: 3.2vh;
+      display: flex; justify-content: space-between; align-items: baseline;
+      font-family: var(--mono); font-size: 12px; color: var(--muted);
+      letter-spacing: .04em;
+    }
+    .bar {
+      position: absolute; left: 0; right: 0; bottom: 0; height: 3px;
+      background: var(--line);
+    }
+    .bar > i {
+      display: block; height: 100%; background: var(--accent);
+      width: 0;
+    }
+
+    .hud {
+      position: fixed; top: 12px; right: 16px; z-index: 5;
+      font-family: var(--mono); font-size: 11px; color: var(--muted);
+      display: flex; gap: 10px; align-items: center;
+    }
+    .chip {
+      border: 1px solid var(--line); padding: 3px 8px; border-radius: 999px;
+    }
+    body.layout .chip.mode { color: var(--layout); border-color: var(--layout); }
+
+    @media (max-width: 900px) {
+      .grid3, .grid4, .statrow, .towers { grid-template-columns: 1fr; }
+      .grid2 { grid-template-columns: 1fr; }
+    }
+
+    @media print {
+      body { overflow: visible; background: #fff; color: #111; }
+      .slide { display: flex !important; height: 100vh; page-break-after: always; background: #fff; }
+      .hud, .intent, .bar { display: none !important; }
+      .kicker, .lede, .card p, .fn, .stat .d { color: #444; }
+      .ph, .card, .stat, .node { border-color: #ccc; background: #fafafa; }
+      .viz { border-color: #ccc; }
+      .viz img { background: #fff; }
+    }
+  </style>
+</head>
+<body>
+  <div class="hud">
+    <span class="chip mode" id="mode">PRESENT</span>
+    <span class="chip" id="pos">1 / 24</span>
+    <span>← → · L notes · B backups</span>
+  </div>
+  <div class="deck" id="deck">
+
+    <!-- 1 -->
+    <section class="slide on">
+      <h1>VLM reasoning over time series</h1>
+      <p class="lede">A model that can <em>see</em> a series and <em>answer</em> about it.</p>
+      <div class="body">
+        <div class="viz-pair">
+          <figure class="viz">
+            <img src="assets/slide1-chart.png" alt="Line chart of one series">
+            <figcaption><span class="lab">Chart</span> Amplitude, trend, axes — what the native ViT sees.</figcaption>
+          </figure>
+          <figure class="viz delay">
+            <img src="assets/slide1-delay.png" alt="Delay embedding of the same series">
+            <figcaption><span class="lab">Delay</span> Topology, shape, recurrence — scale thrown away on purpose.</figcaption>
+          </figure>
+        </div>
+      </div>
+      <div class="intent"><b>Job:</b> name the product. Point at the two views of the <em>same</em> series. IC identity is spoken, not a slide.</div>
+      <div class="meta"><span>Omri Azencot</span><span class="sn"></span></div>
+    </section>
+
+    <!-- 2 -->
+    <section class="slide">
+      <p class="kicker">Problem</p>
+      <h2>See a series. Answer about it.</h2>
+      <div class="body">
+        <div class="task-stack">
+          <div class="task">
+            <img src="assets/slide2-describe.png" alt="One window of a real series">
+            <div class="copy">
+              <p class="lab">Describe</p>
+              <h3>What is this series doing?</h3>
+              <p>Trend, seasonality, a spike, a regime change.</p>
+            </div>
+          </div>
+          <div class="task">
+            <img src="assets/slide2-compare.png" alt="Two windows of the same kind of series">
+            <div class="copy">
+              <p class="lab">Compare</p>
+              <h3>How do two windows differ?</h3>
+              <p>Same shape, different amplitude? Same event, twice?</p>
+            </div>
+          </div>
+          <div class="task">
+            <img src="assets/slide2-explain.png" alt="Two marked events on a series">
+            <div class="copy">
+              <p class="lab">Explain</p>
+              <h3>Why did that happen?</h3>
+              <p>Cause, order of events, what the pattern implies.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="intent"><b>Job:</b> reasoning = three question types, not a horizon. Same real series as slide 1. Do not recite detect / classify / fuse.</div>
+      <div class="meta"><span>Problem</span><span class="sn"></span></div>
+    </section>
+
+    <!-- 3 -->
+    <section class="slide">
+      <p class="kicker">Problem</p>
+      <h2>What I actually evaluate</h2>
+      <div class="body">
+        <div class="task-stack">
+          <div class="task">
+            <img src="assets/slide3-tsexam.png" alt="TSExam cyclic-pattern series">
+            <div class="copy">
+              <p class="lab">TSExam · MCQ</p>
+              <h3>Exam-style understanding</h3>
+              <p class="q">What is the primary cyclic pattern observed in the time series?</p>
+              <p class="opts">A SquareWave · B SineWave · C SawtoothWave · D No Wave</p>
+            </div>
+          </div>
+          <div class="task">
+            <img src="assets/slide3-chatts.png" alt="ChatTS series with a spike">
+            <div class="copy">
+              <p class="lab">ChatTS · open QA</p>
+              <h3>Language + numbers</h3>
+              <p class="q">How large is the spike at timestamp t?</p>
+              <p class="opts">Trend, seasonality, local features — values have to be right.</p>
+            </div>
+          </div>
+          <div class="task">
+            <img src="assets/slide3-tsrbench.png" alt="TSRBench series with unlabeled events">
+            <div class="copy">
+              <p class="lab">TSRBench · temporal relation</p>
+              <h3>The north star</h3>
+              <p class="q">The series contains a sharp spike, a drop to a new baseline, and a high-frequency burst. What is their chronological order?</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="intent"><b>Job:</b> three official protocols, one question each. TSRBench is localize-then-order — no timestamps or A–D on the plot. Numbers wait until results.</div>
+      <div class="meta"><span>Problem</span><span class="sn"></span></div>
+    </section>
+
+    <!-- 5 -->
+    <section class="slide">
+      <p class="kicker">Related work</p>
+      <h2>Three ways people do time-series reasoning</h2>
+      <p class="lede">Different interfaces into an LLM. Each throws something away.</p>
+      <div class="body">
+        <div class="grid3">
+          <div class="card">
+            <img class="thumb" src="assets/slide4-text.png" alt="Series dumped as text tokens in a prompt">
+            <p class="lab">1 · Text</p>
+            <h3>Series as tokens</h3>
+            <p>Dump numbers + context into a language model. Time-MQA.</p>
+          </div>
+          <div class="card">
+            <img class="thumb" src="assets/slide4-patch.png" alt="Series split into patches and encoded">
+            <p class="lab">2 · Native TS</p>
+            <h3>A series encoder</h3>
+            <p>Patch-MLP or SoftPrompt into the LLM. ChatTS, OpenTSLM. One encoder.</p>
+          </div>
+          <div class="card">
+            <img class="thumb" src="assets/slide4-charttable.png" alt="Same series as a plot and a numeric table">
+            <p class="lab">3 · Chart VLM</p>
+            <h3>Plot, sometimes + table</h3>
+            <p>One VLM on rendered views. Includes LLaTiSA (plot + numeric table).</p>
+          </div>
+        </div>
+        <p class="fn"><strong style="color:var(--ink)">This work:</strong> two <em>geometries</em>, two ViTs, one reasoner.</p>
+      </div>
+      <div class="intent"><b>Job:</b> landscape in 60s. Walk left→right. Don’t argue yet.</div>
+      <div class="meta"><span>Related</span><span class="sn"></span></div>
+    </section>
+
+    <!-- 6 -->
+    <section class="slide">
+      <p class="kicker">Related · text</p>
+      <h2>Values as text tokens</h2>
+      <p class="lede">Time-MQA: question answering over numbers plus text context. The series never becomes a visual object.</p>
+      <div class="body">
+        <div class="ph">
+          <p>Language is the right <em>output</em> interface. Raw values as the <em>input</em> tokens are expensive, weak on shape, and die on context length.</p>
+          <p>I keep the LLM head. I do not serialize the waveform as the vision.</p>
+        </div>
+      </div>
+      <div class="intent"><b>Job:</b> kill family 1 as an input. Honest: you still want language. One paper name is enough.</div>
+      <div class="meta"><span>Related</span><span class="sn"></span></div>
+    </section>
+
+    <!-- 7 -->
+    <section class="slide">
+      <p class="kicker">Related · native TS · chart VLMs</p>
+      <h2>One series encoder — or one VLM on two images</h2>
+      <p class="lede">ChatTS (patch-MLP) and OpenTSLM (SoftPrompt / Flamingo) put a <em>native</em> series encoder into the LLM. Still one geometry.</p>
+      <div class="body">
+        <div class="ph">
+          <p>If the room says “two visual views already exist”: <strong>LLaTiSA</strong> is plot + <em>numeric table</em> into one Qwen3-VL. Same VLM, two images of different <em>kinds</em>. They eval HiTSR, not TSExam / ChatTS / TSRBench.</p>
+          <p>This work: chart ViT + <strong>delay DINOv3</strong> — two geometries, not plot+table.</p>
+        </div>
+      </div>
+      <div class="intent"><b>Job:</b> respect native TS-MLLMs. Don’t claim “nobody uses two visual views.” Don’t dunk on LLaTiSA; distinguish geometries vs table.</div>
+      <div class="meta"><span>Related</span><span class="sn"></span></div>
+    </section>
+
+    <!-- 8 -->
+    <section class="slide">
+      <p class="kicker">This work</p>
+      <h2>Four contributions</h2>
+      <p class="lede">The rest of the talk is this spine. Not a paper tour.</p>
+      <div class="body">
+        <div class="grid4">
+          <div class="card mine">
+            <p class="lab">1 · Data</p>
+            <h3>Improve the repos</h3>
+            <p>Synthetic captions, added patterns — not “I downloaded three datasets.”</p>
+          </div>
+          <div class="card mine">
+            <p class="lab">2 · Arch</p>
+            <h3>Dual tower</h3>
+            <p>Chart + delay into one LLM. N series → N dual views.</p>
+          </div>
+          <div class="card mine">
+            <p class="lab">3 · Train</p>
+            <h3>Own 3-stage recipe</h3>
+            <p>See, then reason, then (in progress) prefer.</p>
+          </div>
+          <div class="card mine">
+            <p class="lab">4 · Results</p>
+            <h3>Three official benches</h3>
+            <p>SOTA or on par on the triple. Proprietary still wins TSRBench.</p>
+          </div>
+        </div>
+      </div>
+      <div class="intent"><b>Job:</b> signpost. Close will repeat these four. ~40s.</div>
+      <div class="meta"><span>Spine</span><span class="sn"></span></div>
+    </section>
+
+    <!-- 9 -->
+    <section class="slide">
+      <p class="kicker">Contribution 1 · data</p>
+      <h2>Open repos are the substrate</h2>
+      <p class="lede">TSExam, ChatTS, CaTS — starting point, not the contribution.</p>
+      <div class="body">
+        <div class="grid3">
+          <div class="card">
+            <p class="lab">TSExam</p>
+            <h3>Exam MCQ</h3>
+            <p>Held-out HF protocol. Fast internal gate.</p>
+          </div>
+          <div class="card">
+            <p class="lab">ChatTS</p>
+            <h3>QA + numeric</h3>
+            <p>Official categorical / numerical metrics.</p>
+          </div>
+          <div class="card">
+            <p class="lab">CaTS</p>
+            <h3>Messy real signal</h3>
+            <p>Expert-audited domains for perception.</p>
+          </div>
+        </div>
+      </div>
+      <div class="intent"><b>Job:</b> name the three. Next slide is what <em>you</em> changed.</div>
+      <div class="meta"><span>Data</span><span class="sn"></span></div>
+    </section>
+
+    <!-- 10 -->
+    <section class="slide">
+      <p class="kicker">Contribution 1 · data</p>
+      <h2>What I changed</h2>
+      <p class="lede">Instruction-only never taught the model to see. Captions and new pattern families did.</p>
+      <div class="body">
+        <div class="ph">
+          <ul>
+            <li><strong>Synthetic captions</strong> from per-series gold features (templates, no LLM labeler) — Stage A bootstrap.</li>
+            <li><strong>Added patterns / operators</strong> the benches actually test (including temporal-relation families after an audit).</li>
+            <li>CaTS into the mix when templates were too clean. Quality of the mix beat “more buckets.”</li>
+          </ul>
+        </div>
+      </div>
+      <div class="intent"><b>Job:</b> contribution 1 in I verbs. 50+ configs stuck ~61.8% TSExam until captions — one number if you have time, not a table.</div>
+      <div class="meta"><span>Data</span><span class="sn"></span></div>
+    </section>
+
+    <!-- 11 -->
+    <section class="slide">
+      <p class="kicker">Contribution 2 · architecture</p>
+      <h2>One reasoner. Two views.</h2>
+      <p class="lede">Not two models. Not a bigger ViT on one plot.</p>
+      <div class="body">
+        <div class="towers">
+          <div class="tower-col">
+            <div class="node"><p class="lab">Input</p><b>Time series</b><span>Univariate or N named series</span></div>
+            <div class="grid2" style="gap:.55rem">
+              <div class="node"><p class="lab">Chart</p><b>Line plot</b><span>Native Qwen ViT · frozen</span></div>
+              <div class="node"><p class="lab">Delay</p><b>Embedding image</b><span>DINOv3 + merger</span></div>
+            </div>
+          </div>
+          <div class="plus">→</div>
+          <div class="merge">
+            <div class="node"><p class="lab">Projectors</p><b>Fuse in token space</b><span>M-RoPE · dual collator</span></div>
+            <div class="node"><p class="lab">Reasoner</p><b>One LLM</b><span>LoRA when the stage says so</span></div>
+          </div>
+        </div>
+      </div>
+      <div class="intent"><b>Job:</b> the picture they remember. Why two views is the next slide. Don’t implement yet.</div>
+      <div class="meta"><span>Arch</span><span class="sn"></span></div>
+    </section>
+
+    <!-- 12 -->
+    <section class="slide">
+      <p class="kicker">Contribution 2 · architecture</p>
+      <h2>Why two views — measured</h2>
+      <p class="lede">Complementary categories. They will hear high vs low frequency without a FAQ slide.</p>
+      <div class="body">
+        <div class="grid3">
+          <div class="card">
+            <p class="lab">Delay alone</p>
+            <h3>ChatTS numerical collapses</h3>
+            <p>Scale-invariant on purpose. ~0.17–0.35 vs ~0.71 with the chart.</p>
+          </div>
+          <div class="card">
+            <p class="lab">Chart alone</p>
+            <h3>Keeps axes</h3>
+            <p>Wins noise and pattern. Weaker on anomaly and causality.</p>
+          </div>
+          <div class="card mine">
+            <p class="lab">Native ViT ≠ delay</p>
+            <h3>Cannot LoRA it into DINO</h3>
+            <p>qwendelay 0.601 vs DINO 0.831. Second geometry needs a second tower.</p>
+          </div>
+        </div>
+        <p class="fn">Dual 8B beats every 32B single-tower we ran on TSExam-full. Not “a unique snowflake in the literature” — a measured pair of inductive biases.</p>
+      </div>
+      <div class="intent"><b>Job:</b> evidence, not aesthetics. High/low frequency maps itself. Do not replay HM questions by name.</div>
+      <div class="meta"><span>Arch</span><span class="sn"></span></div>
+    </section>
+
+    <!-- 13 -->
+    <section class="slide">
+      <p class="kicker">Contribution 2 · architecture</p>
+      <h2>What I implemented</h2>
+      <p class="lede">Towers, collator, merge, DDP. Multivariate is a contract, not a reshape.</p>
+      <div class="body">
+        <div class="ph">
+          <p><strong>N series = N markers = N dual views.</strong> Each named channel gets its own chart and its own delay.</p>
+          <p>Student ChatTS stored <code style="font-family:var(--mono);font-size:.95em">[C, T]</code> and split per channel. TSExam used <code style="font-family:var(--mono);font-size:.95em">ts</code> / <code style="font-family:var(--mono);font-size:.95em">ts1</code> / <code style="font-family:var(--mono);font-size:.95em">ts2</code>. Mixing them and <code style="font-family:var(--mono);font-size:.95em">.ravel()</code> concatenated channels <em>in time</em> — one fake univariate. Delay geometry was garbage.</p>
+          <p>I caught it in the collator. Not by training a bigger model.</p>
+        </div>
+      </div>
+      <div class="intent"><b>Job:</b> IC verbs + the format bug in one minute. Stacked-chart fallback on marker mismatch stays backup. Not a fifth contribution.</div>
+      <div class="meta"><span>Arch</span><span class="sn"></span></div>
+    </section>
+
+    <!-- 14 -->
+    <section class="slide">
+      <p class="kicker">Contribution 3 · training</p>
+      <h2>Own recipe. LLaVA as ancestor.</h2>
+      <p class="lede">Three stages. Not “we followed LLaVA.”</p>
+      <div class="body">
+        <div class="flow">
+          <div class="node"><p class="lab">A</p><b>Perception</b><span>What a series is · components · LLM frozen</span></div>
+          <div class="arrow">→</div>
+          <div class="node"><p class="lab">B</p><b>Reasoning</b><span>QA + traces · LLM LoRA</span></div>
+          <div class="arrow">→</div>
+          <div class="node"><p class="lab">C</p><b>Preference</b><span>In progress · upweight good answers</span></div>
+        </div>
+        <p class="fn">Align, then teach the language model to answer. Same shape as LLaVA; the document is a time series, and stage C is not a finished RL paper.</p>
+      </div>
+      <div class="intent"><b>Job:</b> curriculum as a design. Don’t tell GRPO mechanics here.</div>
+      <div class="meta"><span>Train</span><span class="sn"></span></div>
+    </section>
+
+    <!-- 15 -->
+    <section class="slide">
+      <p class="kicker">Contribution 3 · Stage A</p>
+      <h2>Perception — what a time series is</h2>
+      <p class="lede">Train vision and alignment. Freeze the LLM. Teach components, not answers yet.</p>
+      <div class="body">
+        <div class="ph">
+          <p>Instruction-only: 50+ configs, TSExam stuck at <strong>~61.8%</strong>. The model could talk. It could not see.</p>
+          <p>Captions from gold features, then CaTS, unlocked Stage B. Decouple <em>how to see</em> from <em>how to answer</em>.</p>
+        </div>
+      </div>
+      <div class="intent"><b>Job:</b> Stage A is load-bearing. One number. Don’t wander into caption 9-field 0.72 unless asked.</div>
+      <div class="meta"><span>Train</span><span class="sn"></span></div>
+    </section>
+
+    <!-- 16 -->
+    <section class="slide">
+      <p class="kicker">Contribution 3 · Stage B</p>
+      <h2>Reasoning — QA plus traces</h2>
+      <p class="lede">Merge A. LoRA the language model. Teach it how to answer about a series.</p>
+      <div class="body">
+        <div class="ph">
+          <p>Mix: exam MCQ, ChatTS QA, numeric questions, caption holdout, temporal-relation families.</p>
+          <p>Traces are part of the recipe — how to get to the letter, not only the letter. This is the stage that owns the three-bench numbers.</p>
+        </div>
+      </div>
+      <div class="intent"><b>Job:</b> Stage B = the reasoner. ICL-UCR tradeoff is backup (helps ICL, costs TSRBench pred/decision).</div>
+      <div class="meta"><span>Train</span><span class="sn"></span></div>
+    </section>
+
+    <!-- 17 -->
+    <section class="slide">
+      <p class="kicker">Contribution 3 · Stage C</p>
+      <h2>Post-adaptation — in progress</h2>
+      <p class="lede">Upweight good responses. Downweight bad ones. Not the SOTA story.</p>
+      <div class="body">
+        <div class="ph">
+          <p>Idea: after SFT, prefer answers that are actually right — including gold reasoning traces, not format theater.</p>
+          <p>Status: working recipe on 9B (gold traces, then RL). Early letter-only preference on a saturated model was a no-op. Don’t take this as “GRPO is how we got the three-bench result.”</p>
+        </div>
+      </div>
+      <div class="intent"><b>Job:</b> honest C. Don’t hide it; don’t lead with it. Mechanics on backup.</div>
+      <div class="meta"><span>Train</span><span class="sn"></span></div>
+    </section>
+
+    <!-- 18 -->
+    <section class="slide">
+      <p class="kicker">Contribution 4 · results</p>
+      <h2>One stack. Three official protocols.</h2>
+      <p class="lede">First known open stack at or near SOTA on TSExam, ChatTS, and TSRBench together. LLaTiSA reports HiTSR — different board.</p>
+      <div class="body">
+        <div class="statrow">
+          <div class="stat">
+            <div class="n">0.926</div>
+            <div class="u">TSExam · 8B</div>
+            <div class="d">HF n=746 · full Stage B</div>
+          </div>
+          <div class="stat">
+            <div class="n">on par</div>
+            <div class="u">ChatTS · 8B / 27B</div>
+            <div class="d">8B matches 14B paper numerical; 27B wins cat (~0.92 / 0.90)</div>
+          </div>
+          <div class="stat">
+            <div class="n">45.6%</div>
+            <div class="u">TSRBench · 8B</div>
+            <div class="d">Official overall · n=4,125 · no-ICL</div>
+          </div>
+        </div>
+      </div>
+      <div class="intent"><b>Job:</b> quote 8B for TSExam / TSRBench; 27B only for ChatTS cat. Don’t lead with 9B 0.9316 as the north star.</div>
+      <div class="meta"><span>Results</span><span class="sn"></span></div>
+    </section>
+
+    <!-- 19 -->
+    <section class="slide">
+      <p class="kicker">Contribution 4 · results</p>
+      <h2>TSRBench — open on par, proprietary ahead</h2>
+      <p class="lede">The north star is still where giant closed systems win. That is the headroom, not a dodge.</p>
+      <div class="body">
+        <div class="ph" style="padding:.85rem 1rem">
+          <table class="nums">
+            <thead>
+              <tr><th>System</th><th>Overall</th><th></th></tr>
+            </thead>
+            <tbody>
+              <tr><td>GPT-5 (text + vision)</td><td class="closed">55.6%</td><td>Closed</td></tr>
+              <tr><td><strong>This work · 8B dual</strong></td><td class="hi">45.6%</td><td>Open · official protocol</td></tr>
+              <tr><td>Qwen3-VL-32B (paper)</td><td>44.9%</td><td>Open chart VLM</td></tr>
+              <tr><td>TimeOmni-1-7B</td><td>36.7%</td><td>Do not quote 49.4 — that is EP</td></tr>
+              <tr><td>ChatTS-14B</td><td>33.5%</td><td>Native TS-MLLM</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+      <div class="intent"><b>Job:</b> second to closed, on par with 32B open. Full table is backup. Don’t mix unlabeled campaigns.</div>
+      <div class="meta"><span>Results</span><span class="sn"></span></div>
+    </section>
+
+    <!-- 20 -->
+    <section class="slide">
+      <p class="kicker">Contribution 4 · rigor</p>
+      <h2>How I know it isn’t fake</h2>
+      <p class="lede">I killed a mix that helped the average and hurt the hard reasoning slice.</p>
+      <div class="body">
+        <div class="grid2">
+          <div class="card">
+            <p class="lab">What looked fine</p>
+            <h3>Overall moved</h3>
+            <p>Temporal-relation buckets in the mix. Average didn’t complain.</p>
+          </div>
+          <div class="card mine">
+            <p class="lab">What I watched</p>
+            <h3>The hard slice dropped</h3>
+            <p>TR ~5 pp vs control. Missing primitives, not “need more buckets.”</p>
+          </div>
+        </div>
+        <p class="fn">Stopped stacking. Audited operators. Rebuilt generators. Extra epochs still climb TSExam while TSRBench saturates — reasoning group stuck until the data contract is right.</p>
+      </div>
+      <div class="intent"><b>Job:</b> Ownership + Dive Deep in one minute. Highest-signal story. Leave air for the panel.</div>
+      <div class="meta"><span>Results</span><span class="sn"></span></div>
+    </section>
+
+    <!-- 21 -->
+    <section class="slide">
+      <p class="kicker">Contribution 4 · scale</p>
+      <h2>Small to choose. 8B still the ceiling.</h2>
+      <p class="lede">Don’t mix unlabeled campaigns. Bigger is not automatically better on the north star.</p>
+      <div class="body">
+        <div class="grid4">
+          <div class="card">
+            <p class="lab">0.8B</p>
+            <h3>Choose the recipe</h3>
+            <p>Fast pilots. Not the external hook.</p>
+          </div>
+          <div class="card mine">
+            <p class="lab">8B dual</p>
+            <h3>TSExam / TSRBench</h3>
+            <p>Headline ceiling. Quote this.</p>
+          </div>
+          <div class="card">
+            <p class="lab">27B dual</p>
+            <h3>ChatTS cat</h3>
+            <p>Wins the language-heavy board. Not TSRBench.</p>
+          </div>
+          <div class="card dim">
+            <p class="lab">9B</p>
+            <h3>Stage C · serve</h3>
+            <p>vLLM port. Don’t lead with it as better.</p>
+          </div>
+        </div>
+      </div>
+      <div class="intent"><b>Job:</b> drop this slide if the room is slow. Do not slide 122B. 9B/27B do <em>not</em> beat 8B on TSRBench (~0.41–0.43).</div>
+      <div class="meta"><span>Results</span><span class="sn"></span></div>
+    </section>
+
+    <!-- 22 -->
+    <section class="slide">
+      <p class="kicker">Transfer · 6 months</p>
+      <h2>A frozen reasoning suite on their sensors</h2>
+      <p class="lede">Then scale. Not a giant pretrain on day one.</p>
+      <div class="body">
+        <div class="ph">
+          <ol>
+            <li>Clocks, sensor list, label taxonomy, what “unknown” means.</li>
+            <li>One frozen task suite that looks like this talk: see, then answer.</li>
+            <li>Bake encodings on that suite. Pretrain scale comes after the contract is real.</li>
+          </ol>
+        </div>
+      </div>
+      <div class="intent"><b>Job:</b> your 6-month plan in your language. Don’t parrot the posting. Don’t quote “business impact.”</div>
+      <div class="meta"><span>Transfer</span><span class="sn"></span></div>
+    </section>
+
+    <!-- 23 -->
+    <section class="slide">
+      <p class="kicker">Transfer</p>
+      <h2>Extra vision is a hypothesis</h2>
+      <p class="lede">Ablate the camera on that same frozen suite. Ship the cheaper model until it pays.</p>
+      <div class="body">
+        <div class="grid2">
+          <div class="card">
+            <p class="lab">Series only</p>
+            <h3>Default</h3>
+            <p>Dual tower on the signal. No camera until a slice moves.</p>
+          </div>
+          <div class="card">
+            <p class="lab">Series + image</p>
+            <h3>Test, don’t preach</h3>
+            <p>Time alignment required. Fusion without a shared clock leaks.</p>
+          </div>
+        </div>
+      </div>
+      <div class="intent"><b>Job:</b> fusion without religion. If slow, merge with 24.</div>
+      <div class="meta"><span>Transfer</span><span class="sn"></span></div>
+    </section>
+
+    <!-- 24 -->
+    <section class="slide">
+      <p class="kicker">Transfer</p>
+      <h2>Success is whether a unit can run it</h2>
+      <p class="lede">Not a paper count. A parity gate: the served model is the trained model.</p>
+      <div class="body">
+        <div class="ph">
+          <p>I ported the 9B dual stack to vLLM. <strong>100 / 100</strong> greedy answer parity vs Hugging Face on a local TSExam gate.</p>
+          <p>That is the transfer test I already ran on my stack. Same bar on their sensors: freeze eval, serve what you trained, watch the slice.</p>
+        </div>
+      </div>
+      <div class="intent"><b>Job:</b> use, not NeurIPS. Do not slide 122B. Don’t quote her business-impact line.</div>
+      <div class="meta"><span>Transfer</span><span class="sn"></span></div>
+    </section>
+
+    <!-- 25 -->
+    <section class="slide">
+      <p class="kicker">Close</p>
+      <h2>Four things I want you to keep</h2>
+      <div class="body">
+        <div class="ph">
+          <ol>
+            <li><strong>Data</strong> — open repos are not enough. Synthetic captions and added patterns are the work.</li>
+            <li><strong>Dual tower</strong> — one reasoner, two geometries. Not two models. Not plot+table.</li>
+            <li><strong>See, then reason</strong> — then (in progress) prefer. Don’t skip perception.</li>
+            <li><strong>Three benches, then transfer</strong> — open weights vs giant proprietary; a frozen suite on sensors; a unit that can run it.</li>
+          </ol>
+        </div>
+      </div>
+      <div class="intent"><b>Job:</b> ~45s. Last line spoken: happy to go to architecture, data, or eval in Q&amp;A. Stop.</div>
+      <div class="meta"><span>Takeaways</span><span class="sn"></span></div>
+    </section>
+
+    <!-- BACKUPS -->
+    <section class="slide backup">
+      <p class="kicker">Backup · numbers</p>
+      <h2>Labeled by campaign. Don’t mix.</h2>
+      <div class="body">
+        <div class="ph" style="padding:.7rem 1rem; overflow:auto">
+          <table class="nums">
+            <thead>
+              <tr><th>Model</th><th>TSExam HF</th><th>TSRBench</th><th>ChatTS</th></tr>
+            </thead>
+            <tbody>
+              <tr><td>8B dual Stage B</td><td class="hi">0.926</td><td class="hi">0.4565</td><td>num matches 14B paper</td></tr>
+              <tr><td>9B dual Stage B</td><td>0.883</td><td>~0.41–0.43</td><td>~0.91 / 0.87</td></tr>
+              <tr><td>9B + C-RS</td><td>0.9316</td><td>inline 40.7</td><td>—</td></tr>
+              <tr><td>27B dual OFF</td><td>0.921</td><td>re-run @2048</td><td class="hi">cat 0.92 / 0.90</td></tr>
+              <tr><td>0.8B</td><td>0.890</td><td>0.405</td><td>—</td></tr>
+            </tbody>
+          </table>
+          <p class="fn" style="margin-top:.6rem">Caption attr-recovery 0.72 · numeric medAE 0.14 · ICL-UCR micro 0.688 (trades off TSRBench). 122B FT letter-A — infra only, not a result.</p>
+        </div>
+      </div>
+      <div class="intent"><b>Q&amp;A.</b> Spoken path uses 0.926 / 45.6% / ChatTS vs 14B / GPT-5 55.6.</div>
+      <div class="meta"><span>Backup</span><span class="sn"></span></div>
+    </section>
+
+    <section class="slide backup">
+      <p class="kicker">Backup · backbone</p>
+      <h2>One backbone vs two specialists</h2>
+      <p class="lede">Shared trunk is the foundation-model bet. Not the same tokenizer for every rate.</p>
+      <div class="body">
+        <div class="ph">
+          <p>Language still has BPE. Vision still has patches. Unification lives at the token layer, not one patch size for audio and CAN.</p>
+          <p>Bake off vs two specialists on a <em>frozen</em> task. Don’t recant into a zoo. Don’t religiously insist on one giant net.</p>
+        </div>
+      </div>
+      <div class="intent"><b>If they replay the HM “one model?” question.</b> Pair with the next backup on mixed rates.</div>
+      <div class="meta"><span>Backup</span><span class="sn"></span></div>
+    </section>
+
+    <section class="slide backup">
+      <p class="kicker">Backup · clocks</p>
+      <h2>Do not upsample mixed rates onto one grid</h2>
+      <p class="lede">Sensors must share a clock or fusion leaks. Naive concat makes the slow channel sparse and the fast channel explode.</p>
+      <div class="body">
+        <div class="ph">
+          <p>Same lesson as two geometries: don’t destroy the inductive bias to make the batch look rectangular.</p>
+          <p>Fuse on a coarser grid, or keep multi-rate tokens. Don’t interpolate telemetry onto the audio clock.</p>
+        </div>
+      </div>
+      <div class="intent"><b>HM substance, not her question on a title.</b> Spoken path already has dual views; this is the rate version.</div>
+      <div class="meta"><span>Backup</span><span class="sn"></span></div>
+    </section>
+
+    <section class="slide backup">
+      <p class="kicker">Backup · two tools</p>
+      <h2>LDDBM vs the VLM — different jobs</h2>
+      <p class="lede">Don’t pick an ideology.</p>
+      <div class="body">
+        <div class="ph">
+          <p><strong>LDDBM:</strong> modality translation in a shared latent (BCAI Haifa collab — research; I don’t claim it shipped in a BU).</p>
+          <p><strong>VLM:</strong> language + image context, questions about a series. Event detect may want a native encoder. Choose by the frozen suite, not by papers.</p>
+        </div>
+      </div>
+      <div class="intent"><b>If they ask Bosch papers / fusion alternatives.</b></div>
+      <div class="meta"><span>Backup</span><span class="sn"></span></div>
+    </section>
+
+    <section class="slide backup">
+      <p class="kicker">Backup · irregular</p>
+      <h2>Irregular sampling is a first-class case</h2>
+      <p class="lede">Sensors drop. Fusion without a shared clock is leakage.</p>
+      <div class="body">
+        <div class="ph">
+          <p>Completion + masking lineage (~70% discriminative, ~85% compute) — only if they go industrial telemetry.</p>
+          <p>One slide, not a paper recap. Sep 7 can promote this.</p>
+        </div>
+      </div>
+      <div class="intent"><b>Q&amp;A / community talk.</b></div>
+      <div class="meta"><span>Backup</span><span class="sn"></span></div>
+    </section>
+
+    <section class="slide backup">
+      <p class="kicker">Backup · Stage C</p>
+      <h2>What actually happened</h2>
+      <p class="lede">Gold traces, then RL. Letter-GRPO on saturated MCQ was a no-op.</p>
+      <div class="body">
+        <div class="ph">
+          <ul>
+            <li>Letter GRPO: 0.795 vs SFT 0.796 — ~90% of groups had zero reward-std.</li>
+            <li>Reasoning-format GRPO: −11 pp (confident wrong chains).</li>
+            <li>C-RS (SFT on gold TR rationales) then C-RL2: 9B TSExam <strong>0.9316</strong>. TSRBench barely moved (+1.2 inline).</li>
+          </ul>
+          <p>Don’t say “GRPO is how we got SOTA.”</p>
+        </div>
+      </div>
+      <div class="intent"><b>If they push RL.</b> Spoken path already said in progress.</div>
+      <div class="meta"><span>Backup</span><span class="sn"></span></div>
+    </section>
+
+    <section class="slide backup">
+      <p class="kicker">Backup · eval</p>
+      <h2>Parse-miss is not accuracy</h2>
+      <p class="lede">A right letter in a wrong wrapper is a reliability bug. Promote this if the talk runs fast.</p>
+      <div class="body">
+        <div class="ph">
+          <p>Schema / format failures tracked separately from TSExam / TSRBench scores.</p>
+          <p>Two eval bugs caught on thinking models: thinking never engaged; wrong EOS → runaway. Thinking-ON zero-shot <strong>destroys</strong> TSRBench (9B 0.166 vs 0.417 OFF). Don’t claim CoT as a free win.</p>
+        </div>
+      </div>
+      <div class="intent"><b>Only backup worth promoting if the room is fast</b> (map). Map also listed multivariate extra — next slide.</div>
+      <div class="meta"><span>Backup</span><span class="sn"></span></div>
+    </section>
+
+    <section class="slide backup">
+      <p class="kicker">Backup · multivariate</p>
+      <h2>The data contract in one picture</h2>
+      <p class="lede">Spoken path already has the ravel bug. This is the fallback they may ask about.</p>
+      <div class="body">
+        <div class="grid2">
+          <div class="card mine">
+            <p class="lab">Dual collator</p>
+            <h3>N charts + N delays</h3>
+            <p>Named series, one marker each. Matches how the model was trained.</p>
+          </div>
+          <div class="card">
+            <p class="lab">Mismatch fallback</p>
+            <h3>One stacked figure</h3>
+            <p>Older ChatTS eval path if marker counts disagree. TSRBench text often assumes one combined image — this model is per-series.</p>
+          </div>
+        </div>
+      </div>
+      <div class="intent"><b>Q&amp;A after slide 13.</b> Don’t flatten <code>[C,T]</code> under a TSExam <code>ts</code> key.</div>
+      <div class="meta"><span>Backup</span><span class="sn"></span></div>
+    </section>
+
+  </div>
+  <div class="bar"><i id="fill"></i></div>
+
+  <script>
+    const slides = [...document.querySelectorAll(".slide")];
+    const pos = document.getElementById("pos");
+    const fill = document.getElementById("fill");
+    const mode = document.getElementById("mode");
+    let i = 0;
+    let showBackup = false;
+
+    function visible() {
+      return slides.filter(s => showBackup || !s.classList.contains("backup"));
+    }
+    function render() {
+      const v = visible();
+      if (i >= v.length) i = v.length - 1;
+      if (i < 0) i = 0;
+      slides.forEach(s => s.classList.remove("on"));
+      v[i].classList.add("on");
+      pos.textContent = (i + 1) + " / " + v.length;
+      fill.style.width = ((i + 1) / v.length * 100) + "%";
+      v.forEach((s, idx) => {
+        const sn = s.querySelector(".sn");
+        if (sn) sn.textContent = (idx + 1) + " / " + v.length;
+      });
+    }
+    function go(d) {
+      i = Math.max(0, Math.min(visible().length - 1, i + d));
+      render();
+    }
+    document.addEventListener("keydown", (e) => {
+      if (["ArrowRight", "ArrowDown", "PageDown", " "].includes(e.key)) { e.preventDefault(); go(1); }
+      if (["ArrowLeft", "ArrowUp", "PageUp", "Backspace"].includes(e.key)) { e.preventDefault(); go(-1); }
+      if (e.key === "Home") { i = 0; render(); }
+      if (e.key === "End") { i = visible().length - 1; render(); }
+      if (e.key === "l" || e.key === "L") {
+        document.body.classList.toggle("layout");
+        mode.textContent = document.body.classList.contains("layout") ? "NOTES" : "PRESENT";
+      }
+      if (e.key === "b" || e.key === "B") {
+        const cur = visible()[i];
+        showBackup = !showBackup;
+        const v = visible();
+        const idx = v.indexOf(cur);
+        i = idx >= 0 ? idx : Math.min(i, v.length - 1);
+        render();
+      }
+    });
+    document.getElementById("deck").addEventListener("click", (e) => {
+      if (e.target.closest("a")) return;
+      go(e.clientX > window.innerWidth * 0.28 ? 1 : -1);
+    });
+    render();
+  </script>
+</body>
+</html>
