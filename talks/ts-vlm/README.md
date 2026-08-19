@@ -17,7 +17,7 @@
 
 | # | Contribution | What to say |
 |---|--------------|-------------|
-| **1 Data** | Open repos as substrate (TSExam, ChatTS, CaTS) — the work is **improving** them, especially **synthetic** captions and **added patterns** | Not “I downloaded three datasets.” |
+| **1 Data** | Open repos as substrate (TSExam, ChatTS, CaTS). **Improve TSExam / ChatTS** — synthetic captions and added patterns. **CaTS used as-is** (helped the mix, not the only driver) | Not “I downloaded three datasets.” Not “I rewrote CaTS.” |
 | **2 Arch** | **Dual tower**: chart + delay embedding into one LLM | Complementary views, not a bigger ViT on one plot. **N series → N markers → N dual views** (don’t flatten channels). |
 | **3 Train** | LLaVA-inspired, **own three-stage recipe** | **A** perception: what a time series is and its components · **B** reasoning: QA + **reasoning traces** · **C** post-adaptation (**in progress**): encourage good answers, discourage bad ones |
 | **4 Results** | Same **official protocol** on each of TSExam, ChatTS, TSRBench: **SOTA or on par**; **first** to show that triple | TSRBench is where **proprietary** still wins. **Quote 8B** for TSExam (**0.926**) / TSRBench (**~45.6%**); **27B** for ChatTS cat. Don’t lead with 9B/27B as better on the north star. LLaTiSA reports **HiTSR**, not these three. Numbers: facts file (`grpo` §21–28). |
@@ -36,7 +36,7 @@
 
 ## Senior bar (Bosch)
 
-**~1 slide per minute** · **24 spoken slides**.
+**~1 slide per minute** · **25 spoken slides**.
 
 Not: paper tour, student/lab-PI, FinTech analogies, claiming Haifa papers shipped, **replaying the HM Q&A on slides**, **any forecast-head framing**.
 
@@ -54,28 +54,29 @@ Shabnam’s bar: **BU transfer**. Results prove the stack; last three slides are
 | 2 | Problem | What I mean by reasoning | A model that can **see** a series and **answer** about it — describe, compare, explain |
 | 3 | Problem | What I actually eval | TSExam · ChatTS · TSRBench — one authentic question each. Not captions as a third column. |
 | 4 | Related | How people do TS *reasoning* | Three families: **text-LLM** · **native TS-MLLM** · **chart VLM** (incl. plot+table dual-view). **This work:** two geometries, two towers |
-| 5 | Related | Series as text tokens | [Time-MQA](https://arxiv.org/abs/2503.01875): QA over numbers + text context |
-| 6 | Related | Native TS into the LLM | [ChatTS](https://arxiv.org/abs/2412.03104) patch-MLP; [OpenTSLM](https://arxiv.org/abs/2510.02410) SoftPrompt/Flamingo. One series encoder. If they push “two views already exist”: [LLaTiSA](https://arxiv.org/abs/2604.17295) is plot+**table**, one VLM — not delay DINOv3 |
-| 7 | Spine | Four contributions | Data · dual tower · three-stage recipe · three-benchmark results |
-| 8 | Data | Substrate: open repos | TSExam, ChatTS, CaTS — starting point, not the contribution |
-| 9 | Data | What I changed | Synthetic **captions**, **added patterns**, other hardening of those repos |
-| 10 | Arch | Dual tower | **One** reasoner, **two** views — not two models, not one plot |
-| 11 | Arch | Why two views | Delay **throws away amplitude** (ChatTS num collapses); chart keeps axes. Native ViT **cannot** learn delay. Complementary categories. They will hear high vs low frequency without a FAQ slide. |
-| 12 | Arch | What I implemented | Towers, collator, merge, DDP — *I* verbs. Multivariate: **N series = N markers = N dual views**. Student ChatTS stored `[C, T]`; TSExam used `ts1`/`ts2`. Mixing them + `.ravel()` **concatenated channels in time** — one fake univariate. Caught in the collator, not a bigger model. |
-| 13 | Train | Own recipe, LLaVA as ancestor | Three stages. Not “we followed LLaVA.” |
-| 14 | Train | Stage A — perception | Teach *what a time series is* and its **components** (LLM frozen) |
-| 15 | Train | Stage B — reasoning | QA + **reasoning traces** — how to answer about a series |
-| 16 | Train | Stage C — post-adaptation | In progress: upweight good responses, downweight bad ones |
-| 17 | Results | Three benchmarks | TSExam · ChatTS · TSRBench — first to be at/near SOTA on **all three** official protocols |
-| 18 | Results | TSRBench vs proprietary | Open model; second to giant closed systems; still headroom |
-| 19 | Results | How I know it isn’t fake | Kill a mix that helped the average and hurt the hard **reasoning** slice; missing primitives, not more buckets |
-| 20 | Results | Scale | 0.8B to choose; **8B still TSExam/TSRBench ceiling**; 27B wins ChatTS; don’t mix unlabeled |
-| 21 | Transfer | 6-month bakeoff | One frozen **reasoning** task suite on their sensors, then scale — not a giant pretrain |
-| 22 | Transfer | Extra vision is a hypothesis | Ablate the camera on that suite |
-| 23 | Transfer | Success is use, not a paper | vLLM 9B dual **parity gate** — a unit can run it. Don’t quote her “business impact” line. Don’t slide 122B. |
-| 24 | Close | Four takeaways = four contributions | Data · dual tower · see-then-reason(-then-adapt) · three-bench results + transfer |
+| 5 | Related | Series as text tokens | [Time-MQA](https://arxiv.org/abs/2503.01875) dumps digits in the prompt. Dive: [OpenTSLM](https://arxiv.org/abs/2510.02410) **Fig 17–18** — extra tokens in the LLM explode with N and L (SoftPrompt). Digit text is worse: 12-lead 10s ECG → **80k tokens**, **>100 GB**, OOM; models repeat/count; GPT-4o **2.95** F1 as text vs **10.83** as plot. Do **not** sell Flamingo on this slide. |
+| 6 | Related | Patch, encode, feed the LLM | [ChatTS](https://arxiv.org/abs/2412.03104) / [OpenTSLM](https://arxiv.org/abs/2510.02410): windows → encoder → extra tokens. Respect it (beats digits; many people use this). Tax: you **leave the VLM stack** — no pretrained ViT, no VLM instruction-tuning, next backbone drop is not a free upgrade. Still one 1D geometry. Do **not** unpack LLaTiSA here (slide 4 board 3; if they push, slide 12). |
+| 7 | Spine | Four contributions | 2×2, **challenge first**: Data = toy / domain-locked / scarce · Arch = two views × N channels · Train = what, how long, when to stop · Results = beat them on their official benches. No numbers. Close still repeats the four contributions. |
+| 8 | Data | Substrate: what’s in the repos | Stacked. **TSExam:** 11 base objects, 3 compositions, length 128, optional lagged/Granger pair. **ChatTS:** 4/7/3/19 attribute pool + 567 metrics → exact series; UTS + MTS-shape/local + Evol-Instruct Q&amp;A. **CaTS:** 11 real domains, triplet = numeric crop + metadata + plot, ~16k captions. Ignore benches. CaTS = use. |
+| 9 | Data | Captions (shipped) | TSEXAMPP: gold by construction. One example. Attributes from the generator, no LLM labeler. The caption is the gold answer. |
+| 10 | Data | Reasoning (ongoing) | Two examples: lagged pair, flipped pair. Each has a **gold answer** and a **gold trace**. More operators still being added. Don’t unpack Stage C. |
+| 11 | Arch | Dual tower | **One** reasoner, **two** views — not two models, not one plot |
+| 12 | Arch | Why two views | Delay **throws away amplitude** (ChatTS num collapses); chart keeps axes. Native ViT **cannot** learn delay. Complementary categories. They will hear high vs low frequency without a FAQ slide. |
+| 13 | Arch | What I implemented | Towers, collator, merge, DDP — *I* verbs. Multivariate: **N series = N markers = N dual views**. Student ChatTS stored `[C, T]`; TSExam used `ts1`/`ts2`. Mixing them + `.ravel()` **concatenated channels in time** — one fake univariate. Caught in the collator, not a bigger model. |
+| 14 | Train | Own recipe, LLaVA as ancestor | Three stages. Not “we followed LLaVA.” |
+| 15 | Train | Stage A — perception | Teach *what a time series is* and its **components** (LLM frozen) |
+| 16 | Train | Stage B — reasoning | QA + **reasoning traces** — how to answer about a series |
+| 17 | Train | Stage C — post-adaptation | In progress: upweight good responses, downweight bad ones |
+| 18 | Results | Three benchmarks | TSExam · ChatTS · TSRBench — first to be at/near SOTA on **all three** official protocols |
+| 19 | Results | TSRBench vs proprietary | Open model; second to giant closed systems; still headroom |
+| 20 | Results | How I know it isn’t fake | Kill a mix that helped the average and hurt the hard **reasoning** slice; missing primitives, not more buckets |
+| 21 | Results | Scale | 0.8B to choose; **8B still TSExam/TSRBench ceiling**; 27B wins ChatTS; don’t mix unlabeled |
+| 22 | Transfer | 6-month bakeoff | One frozen **reasoning** task suite on their sensors, then scale — not a giant pretrain |
+| 23 | Transfer | Extra vision is a hypothesis | Ablate the camera on that suite |
+| 24 | Transfer | Success is use, not a paper | vLLM 9B dual **parity gate** — a unit can run it. Don’t quote her “business impact” line. Don’t slide 122B. |
+| 25 | Close | Four takeaways = four contributions | Data · dual tower · see-then-reason(-then-adapt) · three-bench results + transfer |
 
-**24 slides.** IC identity is a 10s spoken line on the title, not a slide. If the room is slow, drop 20 or merge 22–23. If it runs fast, parse-miss is the only backup worth promoting.
+**25 slides.** IC identity is a 10s spoken line on the title, not a slide. If the room is slow, drop 21 or merge 23–24. If it runs fast, parse-miss is the backup worth promoting.
 
 **Takeaways (draft):** (1) Open data is not enough — synthetic captions and patterns are the work. (2) One reasoner, two views — different geometries, not two models. (3) Perception, then reasoning traces, then (in progress) preference. (4) One stack, three benchmarks, open weights vs giant proprietary — then transfer to sensors.
 

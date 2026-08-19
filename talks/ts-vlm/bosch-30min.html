@@ -111,6 +111,57 @@
       color: var(--accent);
       margin-bottom: .25rem;
     }
+    .cost-stack {
+      display: flex;
+      flex-direction: column;
+      gap: .55rem;
+      height: 100%;
+      min-height: 0;
+    }
+    .cost-stack .viz {
+      height: auto;
+      flex: 1.45;
+      min-height: 0;
+    }
+    .cost-stack .viz.short { flex: 1; }
+    .body.fill {
+      flex: 1;
+      min-height: 0;
+      display: flex;
+      flex-direction: column;
+    }
+    .split {
+      display: grid;
+      grid-template-columns: 1.05fr 0.95fr;
+      gap: .85rem;
+      height: 100%;
+      min-height: 0;
+    }
+    .split .viz {
+      height: auto;
+      min-height: 0;
+    }
+    .split .stack {
+      display: flex;
+      flex-direction: column;
+      gap: .65rem;
+      min-height: 0;
+    }
+    .split .stack .card { flex: 1; }
+    .repo-stack {
+      display: flex;
+      flex-direction: column;
+      gap: .65rem;
+      height: 100%;
+      min-height: 0;
+    }
+    .repo-stack .card {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+    .repo-stack .card p { font-size: .92rem; }
 
     .task-stack {
       display: flex;
@@ -202,6 +253,17 @@
       align-content: start;
     }
     .grid2 { grid-template-columns: 1fr 1fr; }
+    .grid2.quad {
+      grid-template-rows: 1fr 1fr;
+      align-content: stretch;
+      align-items: stretch;
+    }
+    .grid2.quad .card {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      padding: 1.15rem 1.25rem;
+    }
     .grid3 { grid-template-columns: 1fr 1fr 1fr; }
     .grid4 { grid-template-columns: 1fr 1fr 1fr 1fr; }
     .card {
@@ -226,6 +288,15 @@
       line-height: 1.2;
     }
     .card p { margin: 0; color: var(--muted); font-size: .98rem; line-height: 1.4; }
+    .card .hit {
+      margin-top: .55rem;
+      padding-top: .5rem;
+      border-top: 1px solid var(--line);
+      font-size: .9rem;
+      color: var(--muted);
+      line-height: 1.35;
+    }
+    .card.mine .hit { color: var(--layout); }
     .card img.thumb {
       display: block;
       width: 100%;
@@ -423,7 +494,7 @@
 <body>
   <div class="hud">
     <span class="chip mode" id="mode">PRESENT</span>
-    <span class="chip" id="pos">1 / 24</span>
+    <span class="chip" id="pos">1 / 25</span>
     <span>← → · L notes · B backups</span>
   </div>
   <div class="deck" id="deck">
@@ -534,53 +605,80 @@
             <p class="lab">1 · Text</p>
             <h3>Series as tokens</h3>
             <p>Dump numbers + context into a language model. Time-MQA.</p>
+            <p class="hit">Shortcoming: OpenTSLM’s analysis — serializing a series as text is costly. Context dies; shape is not a first-class object.</p>
           </div>
           <div class="card">
             <img class="thumb" src="assets/slide4-patch.png" alt="Series split into patches and encoded">
             <p class="lab">2 · Native TS</p>
             <h3>A series encoder</h3>
-            <p>Patch-MLP or SoftPrompt into the LLM. ChatTS, OpenTSLM. One encoder.</p>
+            <p>Patch-MLP or SoftPrompt into the LLM. ChatTS, OpenTSLM. The option many people use.</p>
+            <p class="hit">Shortcoming: does not ride VLM stacks. The LLM has to be adapted to latent time-series tokens.</p>
           </div>
-          <div class="card">
+          <div class="card mine">
             <img class="thumb" src="assets/slide4-charttable.png" alt="Same series as a plot and a numeric table">
             <p class="lab">3 · Chart VLM</p>
             <h3>Plot, sometimes + table</h3>
-            <p>One VLM on rendered views. Includes LLaTiSA (plot + numeric table).</p>
+            <p>One VLM on rendered views. LLaTiSA is plot + numeric table — still one VLM.</p>
+            <p class="hit">Our bet: reuse vision. We use two geometries (chart + delay), not plot+table.</p>
           </div>
         </div>
-        <p class="fn"><strong style="color:var(--ink)">This work:</strong> two <em>geometries</em>, two ViTs, one reasoner.</p>
       </div>
-      <div class="intent"><b>Job:</b> landscape in 60s. Walk left→right. Don’t argue yet.</div>
+      <div class="intent"><b>Job:</b> landscape in 60s. OpenTSLM critique lives on board 1, not 2. Board 3 = our family; delay vs table is later. If they push “two views already exist”: LLaTiSA is plot+table, one VLM — not this slide, not delay DINOv3.</div>
       <div class="meta"><span>Related</span><span class="sn"></span></div>
     </section>
 
     <!-- 6 -->
     <section class="slide">
       <p class="kicker">Related · text</p>
-      <h2>Values as text tokens</h2>
-      <p class="lede">Time-MQA: question answering over numbers plus text context. The series never becomes a visual object.</p>
-      <div class="body">
-        <div class="ph">
-          <p>Language is the right <em>output</em> interface. Raw values as the <em>input</em> tokens are expensive, weak on shape, and die on context length.</p>
-          <p>I keep the LLM head. I do not serialize the waveform as the vision.</p>
+      <h2>Tokens in the context die on length</h2>
+      <p class="lede">Time-MQA dumps digits into the prompt. OpenTSLM measured the cost — even <em>learned</em> tokens in the LLM explode. Digit strings are denser still.</p>
+      <div class="body fill">
+        <div class="cost-stack">
+          <figure class="viz">
+            <img src="assets/slide5-fig17.png" alt="OpenTSLM Fig 17: SoftPrompt memory grows with N and L; Flamingo stays flat">
+            <figcaption><span class="lab">OpenTSLM Fig 17</span> SoftPrompt = extra tokens in the transformer. Memory grows with N and L. Llama OOM at L = 10k.</figcaption>
+          </figure>
+          <figure class="viz short">
+            <img src="assets/slide5-fig18.png" alt="OpenTSLM Fig 18: VRAM vs total series size, SoftPrompt rising, Flamingo flat">
+            <figcaption><span class="lab">OpenTSLM Fig 18</span> Same curve vs total size N × L. Text is worse: 12-lead 10s ECG → 80k tokens, &gt;100 GB, OOM. Models repeat the prompt or start counting.</figcaption>
+          </figure>
         </div>
       </div>
-      <div class="intent"><b>Job:</b> kill family 1 as an input. Honest: you still want language. One paper name is enough.</div>
+      <div class="intent"><b>Job:</b> kill family 1. Figs 17–18 are SoftPrompt vs Flamingo, not Gruver digits — say that. Text punch: 80k / count / GPT-4o 2.95 vs plot 10.83. Do not sell Flamingo here; next slide is native TS.</div>
       <div class="meta"><span>Related</span><span class="sn"></span></div>
     </section>
 
     <!-- 7 -->
     <section class="slide">
-      <p class="kicker">Related · native TS · chart VLMs</p>
-      <h2>One series encoder — or one VLM on two images</h2>
-      <p class="lede">ChatTS (patch-MLP) and OpenTSLM (SoftPrompt / Flamingo) put a <em>native</em> series encoder into the LLM. Still one geometry.</p>
-      <div class="body">
-        <div class="ph">
-          <p>If the room says “two visual views already exist”: <strong>LLaTiSA</strong> is plot + <em>numeric table</em> into one Qwen3-VL. Same VLM, two images of different <em>kinds</em>. They eval HiTSR, not TSExam / ChatTS / TSRBench.</p>
-          <p>This work: chart ViT + <strong>delay DINOv3</strong> — two geometries, not plot+table.</p>
+      <p class="kicker">Related · native TS</p>
+      <h2>Patch, encode, feed the LLM</h2>
+      <p class="lede">ChatTS, OpenTSLM. The usual native-TS fix for token explosion — and the option many people use.</p>
+      <div class="body fill">
+        <div class="split">
+          <figure class="viz">
+            <img src="assets/slide6-patch.png" alt="Series cut into windows, encoded, stuffed into the LLM as extra tokens">
+            <figcaption><span class="lab">ChatTS · OpenTSLM</span> Patch-MLP or SoftPrompt. Flamingo is the same family with cross-attention.</figcaption>
+          </figure>
+          <div class="stack">
+            <div class="card">
+              <p class="lab">What you get</p>
+              <h3>Compressed, numeric</h3>
+              <p>Beats dumping digits. Local temporal structure stays in the patches.</p>
+            </div>
+            <div class="card">
+              <p class="lab">The tax</p>
+              <h3>You leave the VLM stack</h3>
+              <p>No pretrained ViT. No VLM instruction-tuning. The next backbone drop is not a free upgrade — you maintain a series encoder.</p>
+            </div>
+            <div class="card">
+              <p class="lab">Still one view</p>
+              <h3>1D windows, not a picture</h3>
+              <p>The LLM must learn a new token type. Shape is not something vision already knows how to see.</p>
+            </div>
+          </div>
         </div>
       </div>
-      <div class="intent"><b>Job:</b> respect native TS-MLLMs. Don’t claim “nobody uses two visual views.” Don’t dunk on LLaTiSA; distinguish geometries vs table.</div>
+      <div class="intent"><b>Job:</b> respect the family; don’t dunk ChatTS. Punch is the tax: leave VLM advances on the table. Do not unpack LLaTiSA here (slide 4 board 3; if they push, slide 11). Close spoken: I keep the LLM head; I put the series where a VLM already sees.</div>
       <div class="meta"><span>Related</span><span class="sn"></span></div>
     </section>
 
@@ -588,78 +686,123 @@
     <section class="slide">
       <p class="kicker">This work</p>
       <h2>Four contributions</h2>
-      <p class="lede">The rest of the talk is this spine. Not a paper tour.</p>
-      <div class="body">
-        <div class="grid4">
+      <p class="lede">The rest of the talk is this spine. Each cell is the hard part, not the slogan.</p>
+      <div class="body fill">
+        <div class="grid2 quad">
           <div class="card mine">
             <p class="lab">1 · Data</p>
-            <h3>Improve the repos</h3>
-            <p>Synthetic captions, added patterns — not “I downloaded three datasets.”</p>
+            <h3>Toy, domain-locked, or scarce</h3>
+            <p>Public TS–text is exam-easy, medical-narrow, or thin on captions and reasoning. I extend TSExam and ChatTS; CaTS I use as-is.</p>
           </div>
           <div class="card mine">
             <p class="lab">2 · Arch</p>
-            <h3>Dual tower</h3>
-            <p>Chart + delay into one LLM. N series → N dual views.</p>
+            <h3>Two views × N channels</h3>
+            <p>Chart and delay, many series, one LLM. The hard part is making every view and every channel survive — not drawing a second plot.</p>
           </div>
           <div class="card mine">
             <p class="lab">3 · Train</p>
-            <h3>Own 3-stage recipe</h3>
-            <p>See, then reason, then (in progress) prefer.</p>
+            <h3>What, how long, when to stop</h3>
+            <p>Which data and which task at each stage, for how long, and a gate that says it worked. Own recipe, not a copied schedule.</p>
           </div>
           <div class="card mine">
             <p class="lab">4 · Results</p>
-            <h3>Three official benches</h3>
-            <p>SOTA or on par on the triple. Proprietary still wins TSRBench.</p>
+            <h3>Beat them on their benches</h3>
+            <p>One stack, official protocol on TSExam, ChatTS, and TSRBench — against the methods that own each. Numbers later.</p>
           </div>
         </div>
       </div>
-      <div class="intent"><b>Job:</b> signpost. Close will repeat these four. ~40s.</div>
+      <div class="intent"><b>Job:</b> signpost as four challenges. Don’t unpack captions, collator, stage gates, or 0.926. Proprietary TSRBench wait for 18. ~40s.</div>
       <div class="meta"><span>Spine</span><span class="sn"></span></div>
     </section>
 
     <!-- 9 -->
     <section class="slide">
       <p class="kicker">Contribution 1 · data</p>
-      <h2>Open repos are the substrate</h2>
-      <p class="lede">TSExam, ChatTS, CaTS — starting point, not the contribution.</p>
-      <div class="body">
-        <div class="grid3">
+      <h2>What’s in the three repos</h2>
+      <p class="lede">The series and their attributes — not the exam protocol. Next slide is what I built on top.</p>
+      <div class="body fill">
+        <div class="repo-stack">
           <div class="card">
-            <p class="lab">TSExam</p>
-            <h3>Exam MCQ</h3>
-            <p>Held-out HF protocol. Fast internal gate.</p>
+            <p class="lab">TSExam · Cai et al. 2024</p>
+            <h3>Controlled synthetic objects, composed</h3>
+            <p>11 base objects: linear / exp / log trend, constant, white noise, random walk, sine / saw / square, MA, AR. Combined additively, multiplicatively, or concatenated; length 128. Some items are a lagged or Granger pair. Encodes pattern, noise, anomaly, similarity, causality — generators, not sensors.</p>
+            <p class="hit">I extend this.</p>
           </div>
           <div class="card">
-            <p class="lab">ChatTS</p>
-            <h3>QA + numeric</h3>
-            <p>Official categorical / numerical metrics.</p>
+            <p class="lab">ChatTS · Xie et al. VLDB 2025</p>
+            <h3>Attribute pool → exact series</h3>
+            <p>4 trend · 7 seasonality · 3 noise · 19 local fluctuations, combinable, with amplitudes and positions. A GPT selector picks a subset given one of 567 metric names. Alignment is univariate descriptions plus multivariate shape / local correlation; Evol-Instruct then writes Q&amp;As from that pool. Still generated, not a sensor.</p>
+            <p class="hit">I extend this.</p>
           </div>
           <div class="card">
-            <p class="lab">CaTS</p>
-            <h3>Messy real signal</h3>
-            <p>Expert-audited domains for perception.</p>
+            <p class="lab">CaTS · Zhou, Yu et al.</p>
+            <h3>Real windows + context</h3>
+            <p>11 domains: air quality, borders, crime, demography, injuries, COVID, CO2, diet, Walmart, retail, agriculture. Each sample is a triplet — numeric crop, metadata (units, place, time span, mean / min / max), and a line plot. ~16k oracle captions on those triplets. Rose Yu’s data, not mine.</p>
+            <p class="hit">I use this as-is.</p>
           </div>
         </div>
       </div>
-      <div class="intent"><b>Job:</b> name the three. Next slide is what <em>you</em> changed.</div>
+      <div class="intent"><b>Job:</b> data attributes from the papers, stacked. Ignore benches (no n=746, no ChatTS A/B, no CaTS 910 MCQ). CaTS = use. Slide 9 is the delta.</div>
       <div class="meta"><span>Data</span><span class="sn"></span></div>
     </section>
 
     <!-- 10 -->
     <section class="slide">
-      <p class="kicker">Contribution 1 · data</p>
-      <h2>What I changed</h2>
-      <p class="lede">Instruction-only never taught the model to see. Captions and new pattern families did.</p>
-      <div class="body">
-        <div class="ph">
-          <ul>
-            <li><strong>Synthetic captions</strong> from per-series gold features (templates, no LLM labeler) — Stage A bootstrap.</li>
-            <li><strong>Added patterns / operators</strong> the benches actually test (including temporal-relation families after an audit).</li>
-            <li>CaTS into the mix when templates were too clean. Quality of the mix beat “more buckets.”</li>
-          </ul>
+      <p class="kicker">Contribution 1 · data · captions</p>
+      <h2>Gold by construction</h2>
+      <p class="lede">Shipped first. Attributes are read off the generator — not measured from the array, no LLM labeler. The caption <em>is</em> the gold answer.</p>
+      <div class="body fill">
+        <div class="split">
+          <figure class="viz">
+            <img src="assets/slide9-caption.png" alt="Linear trend plus a sine wave with light noise">
+            <figcaption><span class="lab">TSEXAMPP · additive</span> Linear trend + sine, then gaussian white noise. Same objects as slide 8.</figcaption>
+          </figure>
+          <div class="stack">
+            <div class="card mine">
+              <p class="lab">Gold caption</p>
+              <h3>What the model should say</h3>
+              <p>“An upward linear trend plus a sine wave with period ~32 and amplitude ~2.5, with gaussian white noise.”</p>
+            </div>
+            <div class="card">
+              <p class="lab">Why it’s gold</p>
+              <h3>Generator, not a labeler</h3>
+              <p>Trend direction, period, amplitude, noise process — all from the object’s parameters. Template + randomization. Deterministic render.</p>
+            </div>
+          </div>
         </div>
       </div>
-      <div class="intent"><b>Job:</b> contribution 1 in I verbs. 50+ configs stuck ~61.8% TSExam until captions — one number if you have time, not a table.</div>
+      <div class="intent"><b>Job:</b> one caption example, the contract. 61.8% until captions is Stage A if you have a spare sentence. Do not start reasoning on this slide.</div>
+      <div class="meta"><span>Data</span><span class="sn"></span></div>
+    </section>
+
+    <!-- 10b -->
+    <section class="slide">
+      <p class="kicker">Contribution 1 · data · reasoning</p>
+      <h2>Then questions — still on</h2>
+      <p class="lede">Same generators, new items. Each carries a gold answer and a gold trace. More operators still being added.</p>
+      <div class="body fill">
+        <div class="task-stack">
+          <div class="task">
+            <img src="assets/slide9-lag.png" alt="Two series, one a lagged copy of the other">
+            <div class="copy">
+              <p class="lab">Lagged pair</p>
+              <h3>Is series 2 a lagged version of series 1?</h3>
+              <p class="q">Gold: yes — lag in 30–45.</p>
+              <p class="opts">Trace: ts2 = ts1 shifted by 36. Known because we injected the lag.</p>
+            </div>
+          </div>
+          <div class="task">
+            <img src="assets/slide9-flip.png" alt="A series and its sign-flipped copy">
+            <div class="copy">
+              <p class="lab">Flipped pair</p>
+              <h3>Are these flipped versions of each other?</h3>
+              <p class="q">Gold: yes.</p>
+              <p class="opts">Trace: ts2 ≈ −ts1. The trace is the “why” Stage B and C train on.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="intent"><b>Job:</b> two reasoning examples + gold + trace. Ongoing — don’t pretend TR-v2 is finished. Don’t unpack C-RS here.</div>
       <div class="meta"><span>Data</span><span class="sn"></span></div>
     </section>
 
