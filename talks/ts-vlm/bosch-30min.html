@@ -130,6 +130,11 @@
       display: flex;
       flex-direction: column;
     }
+    .body.fill > .viz.arch {
+      height: auto;
+      flex: 1;
+      min-height: 0;
+    }
     .split {
       display: grid;
       grid-template-columns: 1.05fr 0.95fr;
@@ -313,6 +318,36 @@
     }
     .card.mine .lab { color: var(--accent); }
     .card.dim { opacity: .72; }
+
+    .grid3.stages {
+      align-items: stretch;
+      height: 100%;
+    }
+    .grid3.stages .card {
+      display: flex;
+      flex-direction: column;
+      padding: 1.15rem 1.2rem;
+    }
+    .card .aim {
+      color: var(--ink);
+      font-size: 1.02rem;
+      line-height: 1.35;
+    }
+    .kv {
+      margin-top: .75rem;
+      padding-top: .6rem;
+      border-top: 1px solid var(--line);
+    }
+    .kv span {
+      display: block;
+      font-family: var(--mono);
+      font-size: 10px;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: .28rem;
+    }
+    .card.dim .kv span { color: var(--muted); }
 
     .statrow {
       display: grid;
@@ -779,7 +814,7 @@
     <section class="slide">
       <p class="kicker">Contribution 1 · data · reasoning</p>
       <h2>Then questions — still on</h2>
-      <p class="lede">Same generators, new items. Each carries a gold answer and a gold trace. More operators still being added.</p>
+      <p class="lede">Same objects, new questions. Each carries a gold answer and a gold trace. More operators still being added.</p>
       <div class="body fill">
         <div class="task-stack">
           <div class="task">
@@ -792,17 +827,17 @@
             </div>
           </div>
           <div class="task">
-            <img src="assets/slide9-flip.png" alt="A series and its sign-flipped copy">
+            <img src="assets/slide9-order.png" alt="Three concatenated regimes: trend, then sine, then flat">
             <div class="copy">
-              <p class="lab">Flipped pair</p>
-              <h3>Are these flipped versions of each other?</h3>
-              <p class="q">Gold: yes.</p>
-              <p class="opts">Trace: ts2 ≈ −ts1. The trace is the “why” Stage B and C train on.</p>
+              <p class="lab">Segment order</p>
+              <h3>Which order matches the plot?</h3>
+              <p class="q">Gold: upward trend → sine → flat.</p>
+              <p class="opts">Trace: concatenated those three objects. Known because we built the series.</p>
             </div>
           </div>
         </div>
       </div>
-      <div class="intent"><b>Job:</b> two reasoning examples + gold + trace. Ongoing — don’t pretend TR-v2 is finished. Don’t unpack C-RS here.</div>
+      <div class="intent"><b>Job:</b> lag = injection contract; tid 210 = TR-targeted pattern. Don’t say TSRBench scores. Don’t unpack Stage C.</div>
       <div class="meta"><span>Data</span><span class="sn"></span></div>
     </section>
 
@@ -811,23 +846,12 @@
       <p class="kicker">Contribution 2 · architecture</p>
       <h2>One reasoner. Two views.</h2>
       <p class="lede">Not two models. Not a bigger ViT on one plot.</p>
-      <div class="body">
-        <div class="towers">
-          <div class="tower-col">
-            <div class="node"><p class="lab">Input</p><b>Time series</b><span>Univariate or N named series</span></div>
-            <div class="grid2" style="gap:.55rem">
-              <div class="node"><p class="lab">Chart</p><b>Line plot</b><span>Native Qwen ViT · frozen</span></div>
-              <div class="node"><p class="lab">Delay</p><b>Embedding image</b><span>DINOv3 + merger</span></div>
-            </div>
-          </div>
-          <div class="plus">→</div>
-          <div class="merge">
-            <div class="node"><p class="lab">Projectors</p><b>Fuse in token space</b><span>M-RoPE · dual collator</span></div>
-            <div class="node"><p class="lab">Reasoner</p><b>One LLM</b><span>LoRA when the stage says so</span></div>
-          </div>
-        </div>
+      <div class="body fill">
+        <figure class="viz arch">
+          <img src="assets/slide11-arch.png" alt="Dual tower: each series marker expands to a chart span through frozen Qwen ViT then a delay span through DINOv3, interleaved in the question">
+        </figure>
       </div>
-      <div class="intent"><b>Job:</b> the picture they remember. Why two views is the next slide. Don’t implement yet.</div>
+      <div class="intent"><b>Job:</b> the picture they remember. Per marker: chart then delay, one decoder. Why two views is next. Don’t unpack collator bugs or say hijack. M-RoPE type-ids stay off this slide (Q35 only).</div>
       <div class="meta"><span>Arch</span><span class="sn"></span></div>
     </section>
 
@@ -835,63 +859,84 @@
     <section class="slide">
       <p class="kicker">Contribution 2 · architecture</p>
       <h2>Why two views — measured</h2>
-      <p class="lede">Complementary categories. They will hear high vs low frequency without a FAQ slide.</p>
-      <div class="body">
-        <div class="grid3">
-          <div class="card">
-            <p class="lab">Delay alone</p>
-            <h3>ChatTS numerical collapses</h3>
-            <p>Scale-invariant on purpose. ~0.17–0.35 vs ~0.71 with the chart.</p>
+      <p class="lede">Three 8B ablations. Complementary failures, not a bigger ViT.</p>
+      <div class="body fill">
+        <div class="task-stack">
+          <div class="task">
+            <img src="assets/slide12-num.png" alt="ChatTS numerical: delay 0.35, chart 0.71, dual 0.79">
+            <div class="copy">
+              <p class="lab">Delay alone</p>
+              <h3>Numerical collapses</h3>
+              <p class="q">ChatTS A num: delay 0.35 · chart 0.71 · dual 0.79. Scale-invariant on purpose. B matches.</p>
+            </div>
           </div>
-          <div class="card">
-            <p class="lab">Chart alone</p>
-            <h3>Keeps axes</h3>
-            <p>Wins noise and pattern. Weaker on anomaly and causality.</p>
+          <div class="task">
+            <img src="assets/slide12-cats.png" alt="TSExam: delay wins anomaly 0.82 vs 0.56, chart wins noise 0.96 vs 0.76">
+            <div class="copy">
+              <p class="lab">By category</p>
+              <h3>Different winners</h3>
+              <p class="q">Anomaly: delay 0.82 vs chart 0.56. Noise: chart 0.96 vs delay 0.76. Same 8B, same data.</p>
+            </div>
           </div>
-          <div class="card mine">
-            <p class="lab">Native ViT ≠ delay</p>
-            <h3>Cannot LoRA it into DINO</h3>
-            <p>qwendelay 0.601 vs DINO 0.831. Second geometry needs a second tower.</p>
+          <div class="task">
+            <img src="assets/slide12-tower.png" alt="Same delay images: native ViT 0.601 vs DINOv3 0.831">
+            <div class="copy">
+              <p class="lab">Native ViT ≠ delay</p>
+              <h3>Cannot LoRA it into DINO</h3>
+              <p class="q">Same delay images. qwendelay 0.601 vs DINOv3 0.831. Second geometry needs a second tower.</p>
+            </div>
           </div>
         </div>
-        <p class="fn">Dual 8B beats every 32B single-tower we ran on TSExam-full. Not “a unique snowflake in the literature” — a measured pair of inductive biases.</p>
       </div>
-      <div class="intent"><b>Job:</b> evidence, not aesthetics. High/low frequency maps itself. Do not replay HM questions by name.</div>
+      <div class="intent"><b>Job:</b> three measured ablations, 8B only. Don’t mix 32B 0.17 into row 1. Dual 8B vs 32B 0.886/0.849 is a spare sentence, not a fourth panel. Don’t replay HM questions.</div>
       <div class="meta"><span>Arch</span><span class="sn"></span></div>
     </section>
 
     <!-- 13 -->
     <section class="slide">
       <p class="kicker">Contribution 2 · architecture</p>
-      <h2>What I implemented</h2>
-      <p class="lede">Towers, collator, merge, DDP. Multivariate is a contract, not a reshape.</p>
-      <div class="body">
-        <div class="ph">
-          <p><strong>N series = N markers = N dual views.</strong> Each named channel gets its own chart and its own delay.</p>
-          <p>Student ChatTS stored <code style="font-family:var(--mono);font-size:.95em">[C, T]</code> and split per channel. TSExam used <code style="font-family:var(--mono);font-size:.95em">ts</code> / <code style="font-family:var(--mono);font-size:.95em">ts1</code> / <code style="font-family:var(--mono);font-size:.95em">ts2</code>. Mixing them and <code style="font-family:var(--mono);font-size:.95em">.ravel()</code> concatenated channels <em>in time</em> — one fake univariate. Delay geometry was garbage.</p>
-          <p>I caught it in the collator. Not by training a bigger model.</p>
-        </div>
+      <h2>N series. N markers. N dual views.</h2>
+      <p class="lede">Multivariate is a contract, not a reshape. I caught it in the collator.</p>
+      <div class="body fill">
+        <figure class="viz arch">
+          <img src="assets/slide13-ravel.png" alt="Correct: each named series gets its own chart and delay. Wrong: ravel concatenates channels in time into one fake univariate">
+        </figure>
       </div>
-      <div class="intent"><b>Job:</b> IC verbs + the format bug in one minute. Stacked-chart fallback on marker mismatch stays backup. Not a fifth contribution.</div>
+      <div class="intent"><b>Job:</b> one picture, one minute. Contract vs .ravel(). Don’t list towers/DDP. Stacked-chart fallback stays backup. Not a fifth contribution.</div>
       <div class="meta"><span>Arch</span><span class="sn"></span></div>
     </section>
 
     <!-- 14 -->
     <section class="slide">
       <p class="kicker">Contribution 3 · training</p>
-      <h2>Own recipe. LLaVA as ancestor.</h2>
-      <p class="lede">Three stages. Not “we followed LLaVA.”</p>
-      <div class="body">
-        <div class="flow">
-          <div class="node"><p class="lab">A</p><b>Perception</b><span>What a series is · components · LLM frozen</span></div>
-          <div class="arrow">→</div>
-          <div class="node"><p class="lab">B</p><b>Reasoning</b><span>QA + traces · LLM LoRA</span></div>
-          <div class="arrow">→</div>
-          <div class="node"><p class="lab">C</p><b>Preference</b><span>In progress · upweight good answers</span></div>
+      <h2>See, then reason, then prefer</h2>
+      <p class="lede">Same shape as LLaVA — the document is a time series. Not their schedule.</p>
+      <div class="body fill">
+        <div class="grid3 stages">
+          <div class="card">
+            <p class="lab">A · locked</p>
+            <h3>Perception</h3>
+            <p class="aim">What a series is — trend, season, noise.</p>
+            <p class="kv"><span>Data</span> Gold captions from the generator, ChatTS align captions, CaTS as-is.</p>
+            <p class="kv"><span>How</span> Delay-tower LoRA. LLM frozen.</p>
+          </div>
+          <div class="card mine">
+            <p class="lab">B · locked</p>
+            <h3>Reasoning</h3>
+            <p class="aim">How to answer about a series.</p>
+            <p class="kv"><span>Data</span> Exam MCQ, ChatTS QA, numeric. Traces on the exam mix.</p>
+            <p class="kv"><span>How</span> Merge A. LoRA the language model.</p>
+          </div>
+          <div class="card dim">
+            <p class="lab">C · in progress</p>
+            <h3>Prefer</h3>
+            <p class="aim">Upweight good answers, downweight bad ones.</p>
+            <p class="kv"><span>Data</span> Gold TR traces — same generators as the data slides.</p>
+            <p class="kv"><span>How</span> Still the language model. Working on 9B; not how 8B won the three-bench.</p>
+          </div>
         </div>
-        <p class="fn">Align, then teach the language model to answer. Same shape as LLaVA; the document is a time series, and stage C is not a finished RL paper.</p>
       </div>
-      <div class="intent"><b>Job:</b> curriculum as a design. Don’t tell GRPO mechanics here.</div>
+      <div class="intent"><b>Job:</b> curriculum board: data + how per stage. 61.8% waits for 15. GRPO waits for 17. Don’t unpack ICL-UCR.</div>
       <div class="meta"><span>Train</span><span class="sn"></span></div>
     </section>
 
@@ -899,44 +944,101 @@
     <section class="slide">
       <p class="kicker">Contribution 3 · Stage A</p>
       <h2>Perception — what a time series is</h2>
-      <p class="lede">Train vision and alignment. Freeze the LLM. Teach components, not answers yet.</p>
-      <div class="body">
-        <div class="ph">
-          <p>Instruction-only: 50+ configs, TSExam stuck at <strong>~61.8%</strong>. The model could talk. It could not see.</p>
-          <p>Captions from gold features, then CaTS, unlocked Stage B. Decouple <em>how to see</em> from <em>how to answer</em>.</p>
+      <p class="lede">Freeze the LLM. Train the delay tower on captions. Components, not exam letters.</p>
+      <div class="body fill">
+        <div class="split">
+          <figure class="viz">
+            <img src="assets/slide15-freeze.png" alt="Stage A: chart ViT frozen, delay DINOv3 trains, LLM frozen, caption is the target">
+            <figcaption><span class="lab">What is allowed to learn</span> Chart ViT already sees plots, so it stays frozen. Stage A is still perception: name what the series is.</figcaption>
+          </figure>
+          <div class="stack">
+            <div class="card mine">
+              <p class="lab">The stall</p>
+              <h3>~61.8%</h3>
+              <p>Instruction-only, 50+ configs. The model could talk. It could not see.</p>
+            </div>
+            <div class="card">
+              <p class="lab">The task</p>
+              <h3>Name the components</h3>
+              <p>Gold captions, ChatTS align, CaTS as-is. Trend, season, noise — not A/B/C.</p>
+            </div>
+            <div class="card">
+              <p class="lab">Then Stage B</p>
+              <h3>Seeing first, answers later</h3>
+              <p>Decouple how to see from how to answer. Stage B is where letters start.</p>
+            </div>
+          </div>
         </div>
       </div>
-      <div class="intent"><b>Job:</b> Stage A is load-bearing. One number. Don’t wander into caption 9-field 0.72 unless asked.</div>
+      <div class="intent"><b>Job:</b> Stage A is load-bearing. One number: 61.8%. Freeze diagram is the how. Don’t wander into caption 9-field 0.72 unless asked. Don’t steal 0.926 from results.</div>
       <div class="meta"><span>Train</span><span class="sn"></span></div>
     </section>
 
     <!-- 16 -->
     <section class="slide">
       <p class="kicker">Contribution 3 · Stage B</p>
-      <h2>Reasoning — QA plus traces</h2>
-      <p class="lede">Merge A. LoRA the language model. Teach it how to answer about a series.</p>
-      <div class="body">
-        <div class="ph">
-          <p>Mix: exam MCQ, ChatTS QA, numeric questions, caption holdout, temporal-relation families.</p>
-          <p>Traces are part of the recipe — how to get to the letter, not only the letter. This is the stage that owns the three-bench numbers.</p>
+      <h2>Reasoning — how to answer about a series</h2>
+      <p class="lede">Merge A. LoRA the language model. Teach it how to answer.</p>
+      <div class="body fill">
+        <div class="split">
+          <figure class="viz">
+            <img src="assets/slide16-unfreeze.png" alt="Stage B: both visual towers frozen after merging A, language model LoRA trains, target is an answer">
+            <figcaption><span class="lab">What is allowed to learn</span> The language model always LoRAs. On the 8B generalist, vision stays frozen; 9B/27B also LoRA the delay tower.</figcaption>
+          </figure>
+          <div class="stack">
+            <div class="card mine">
+              <p class="lab">Merge A</p>
+              <h3>Vision stays</h3>
+              <p>Stage A is merged in. On the 8B generalist, vision stays frozen. 9B/27B also LoRA the delay tower.</p>
+            </div>
+            <div class="card">
+              <p class="lab">The task</p>
+              <h3>Questions, not captions</h3>
+              <p>Exam MCQ, ChatTS QA, numeric. Letters and numbers — not “what is this series.”</p>
+            </div>
+            <div class="card">
+              <p class="lab">Traces</p>
+              <h3>Why, then the letter</h3>
+              <p>Exam mix: how to get to the answer. TSRBench mix did not need traces.</p>
+            </div>
+          </div>
         </div>
       </div>
-      <div class="intent"><b>Job:</b> Stage B = the reasoner. ICL-UCR tradeoff is backup (helps ICL, costs TSRBench pred/decision).</div>
+      <div class="intent"><b>Job:</b> Stage B = the reasoner. Freeze invert of 15. Don’t quote 0.926. ICL-UCR is backup. GRPO waits for 17.</div>
       <div class="meta"><span>Train</span><span class="sn"></span></div>
     </section>
 
     <!-- 17 -->
     <section class="slide">
       <p class="kicker">Contribution 3 · Stage C</p>
-      <h2>Post-adaptation — in progress</h2>
-      <p class="lede">Upweight good responses. Downweight bad ones. Not the SOTA story.</p>
-      <div class="body">
-        <div class="ph">
-          <p>Idea: after SFT, prefer answers that are actually right — including gold reasoning traces, not format theater.</p>
-          <p>Status: working recipe on 9B (gold traces, then RL). Early letter-only preference on a saturated model was a no-op. Don’t take this as “GRPO is how we got the three-bench result.”</p>
+      <h2>Prefer — only if the why is true</h2>
+      <p class="lede">If every rollout is already right, GRPO does nothing. Gold traces first.</p>
+      <div class="body fill">
+        <div class="split">
+          <figure class="viz">
+            <img src="assets/slide17-prefer.png" alt="Letter GRPO on eight identical correct answers has no gradient. Gold traces then SFT is what worked.">
+            <figcaption><span class="lab">In progress on 9B</span> Not how the 8B scores were won. GRPO after gold traces is boxing, not a new reasoner.</figcaption>
+          </figure>
+          <div class="stack">
+            <div class="card mine">
+              <p class="lab">The stall</p>
+              <h3>No contrast, no gradient</h3>
+              <p>Letter GRPO on a saturated SFT: ~90% of groups had zero reward-std. 0.795 vs 0.796.</p>
+            </div>
+            <div class="card">
+              <p class="lab">The miss</p>
+              <h3>Format is not a why</h3>
+              <p>Rewarding a reasoning wrapper made wrong traces more confident. −11 pp.</p>
+            </div>
+            <div class="card">
+              <p class="lab">What worked</p>
+              <h3>Gold traces, then box</h3>
+              <p>SFT on generator TR traces. GRPO after that teaches format. Accuracy already moved.</p>
+            </div>
+          </div>
         </div>
       </div>
-      <div class="intent"><b>Job:</b> honest C. Don’t hide it; don’t lead with it. Mechanics on backup.</div>
+      <div class="intent"><b>Job:</b> honest C. Prefer needs disagreement; traces have to be true. Don’t put 0.9316 as the three-bench. Don’t say GRPO is how 8B won. Mechanics on backup.</div>
       <div class="meta"><span>Train</span><span class="sn"></span></div>
     </section>
 

@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Slide 9: TSExam caption + two reasoning items (TSEXAMPP)."""
+"""Slide 9–10: TSExam caption + lag pair + TR segment-order (tid 210)."""
 from pathlib import Path
 
 import matplotlib
@@ -9,7 +9,6 @@ import numpy as np
 
 MUTED = "#b7a99a"
 ACCENT = "#d4783c"
-TEAL = "#7eb8a8"
 GOLD = "#e8c07a"
 PAPER = "#1c1814"
 SPINE = "#3a322b"
@@ -61,22 +60,24 @@ def lag_pair():
     save(fig, "slide9-lag.png")
 
 
-def flip_pair():
-    rng = np.random.default_rng(2)
-    ts1 = 2.2 * np.sin(2 * np.pi * T / 22) + 0.04 * T
-    ts2 = -ts1 + rng.normal(0, 0.12, N)
+def segment_order():
+    """TSEXAMPP tid 210: concatenate LinearTrend → SineWave → Constant."""
+    n1, n2, n3 = 28, 58, 42
+    trend = np.linspace(0.0, 4.2, n1)
+    sine = 2.2 * np.sin(2 * np.pi * np.arange(n2) / 38.0) + trend[-1]
+    flat = np.full(n3, sine[-1])
+    y = np.concatenate([trend, sine, flat])
+    rng = np.random.default_rng(3)
+    y = y + rng.normal(0, 0.16, N)
     fig, ax = plt.subplots(figsize=(9.2, 2.05), facecolor=PAPER)
     style_ax(ax)
-    ax.plot(ts1, color=GOLD, lw=1.45, label="ts1")
-    ax.plot(ts2, color=TEAL, lw=1.45, label="ts2")
-    ax.legend(
-        loc="upper right", frameon=False, fontsize=8, labelcolor=MUTED,
-        handlelength=1.4,
-    )
-    save(fig, "slide9-flip.png")
+    ax.plot(y, color=GOLD, lw=1.45)
+    for x in (n1 - 0.5, n1 + n2 - 0.5):
+        ax.axvline(x, color=SPINE, lw=1.0, alpha=0.95)
+    save(fig, "slide9-order.png")
 
 
 if __name__ == "__main__":
     caption_series()
     lag_pair()
-    flip_pair()
+    segment_order()

@@ -59,14 +59,14 @@ Shabnam’s bar: **BU transfer**. Results prove the stack; last three slides are
 | 7 | Spine | Four contributions | 2×2, **challenge first**: Data = toy / domain-locked / scarce · Arch = two views × N channels · Train = what, how long, when to stop · Results = beat them on their official benches. No numbers. Close still repeats the four contributions. |
 | 8 | Data | Substrate: what’s in the repos | Stacked. **TSExam:** 11 base objects, 3 compositions, length 128, optional lagged/Granger pair. **ChatTS:** 4/7/3/19 attribute pool + 567 metrics → exact series; UTS + MTS-shape/local + Evol-Instruct Q&amp;A. **CaTS:** 11 real domains, triplet = numeric crop + metadata + plot, ~16k captions. Ignore benches. CaTS = use. |
 | 9 | Data | Captions (shipped) | TSEXAMPP: gold by construction. One example. Attributes from the generator, no LLM labeler. The caption is the gold answer. |
-| 10 | Data | Reasoning (ongoing) | Two examples: lagged pair, flipped pair. Each has a **gold answer** and a **gold trace**. More operators still being added. Don’t unpack Stage C. |
-| 11 | Arch | Dual tower | **One** reasoner, **two** views — not two models, not one plot |
-| 12 | Arch | Why two views | Delay **throws away amplitude** (ChatTS num collapses); chart keeps axes. Native ViT **cannot** learn delay. Complementary categories. They will hear high vs low frequency without a FAQ slide. |
-| 13 | Arch | What I implemented | Towers, collator, merge, DDP — *I* verbs. Multivariate: **N series = N markers = N dual views**. Student ChatTS stored `[C, T]`; TSExam used `ts1`/`ts2`. Mixing them + `.ravel()` **concatenated channels in time** — one fake univariate. Caught in the collator, not a bigger model. |
-| 14 | Train | Own recipe, LLaVA as ancestor | Three stages. Not “we followed LLaVA.” |
-| 15 | Train | Stage A — perception | Teach *what a time series is* and its **components** (LLM frozen) |
-| 16 | Train | Stage B — reasoning | QA + **reasoning traces** — how to answer about a series |
-| 17 | Train | Stage C — post-adaptation | In progress: upweight good responses, downweight bad ones |
+| 10 | Data | Reasoning (ongoing) | Lagged pair (injection contract) + **segment order** (tid 210: concat trend → sine → flat). Gold answer and gold trace. Don’t unpack Stage C or quote TSRBench scores. |
+| 11 | Arch | Dual tower | Paper figure matched to `grpo`: matplotlib chart → frozen Qwen ViT+merger (image, **≤114 cap**) · delay embed 256² → DINOv3+merger (video t=1, **64 tok**). Each `<ts>` = chart span then delay span, interleaved in the question. **N series = N dual views.** No M-RoPE type-ids (Q35-only). |
+| 12 | Arch | Why two views | Stacked 8B ablations, all left–right bars. (1) ChatTS num: delay **0.35** / chart **0.71** / dual **0.79**. (2) Anom delay **0.82** vs chart **0.56**; noise chart **0.96** vs delay **0.76**. (3) Same delay images: qwendelay **0.601** vs DINOv3 **0.831**. Don’t mix 32B 0.17. Dual-beats-32B (0.886 vs 0.849) is a spare sentence. |
+| 13 | Arch | What I implemented | One picture: **N series = N markers = N dual views** vs `.ravel()` gluing channels in time (fake univariate, garbage delay). Caught in the collator. Not towers/DDP laundry. |
+| 14 | Train | Own recipe, LLaVA as ancestor | Three columns from `grpo` YAMLs: **A** gold captions + ChatTS align + CaTS, delay-tower LoRA, LLM frozen · **B** exam MCQ / ChatTS QA / numeric; traces on the exam mix (0.926), caption holdout on the TSRBench mix (45.6%) · **C** gold TR traces, 9B, not the 8B three-bench. 61.8% and GRPO stay on 15/17. |
+| 15 | Train | Stage A — perception | Freeze diagram + **61.8%** stall. Captions (gold / ChatTS align / CaTS), delay-tower LoRA, LLM frozen. Don’t quote 0.926 or caption 0.72. |
+| 16 | Train | Stage B — reasoning | Freeze invert of 15: LLM LoRA always; **8B generalist freezes vision**, 9B/27B also LoRA DINO. Questions (exam / ChatTS / numeric). Traces on the exam mix only. Don’t quote 0.926. ICL-UCR backup. |
+| 17 | Train | Stage C — post-adaptation | Letter GRPO no-op (zero group-std). Format GRPO −11 pp. Gold TR traces first, then boxing. 9B in progress. Not the 8B three-bench. Don’t quote 0.9316 as the headline. |
 | 18 | Results | Three benchmarks | TSExam · ChatTS · TSRBench — first to be at/near SOTA on **all three** official protocols |
 | 19 | Results | TSRBench vs proprietary | Open model; second to giant closed systems; still headroom |
 | 20 | Results | How I know it isn’t fake | Kill a mix that helped the average and hurt the hard **reasoning** slice; missing primitives, not more buckets |
