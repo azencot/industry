@@ -1,6 +1,6 @@
 # Log — 2026-08-19 — Bosch next-round invite (Joy)
 
-**Status:** **Moving forward.** Availability **sent 2026-08-19.** **Waiting on Joy** to schedule.  
+**Status:** **Moving forward.** Availability **sent 2026-08-19.** Agenda **received 2026-08-20** — [`2026-08-20_technical-agenda.md`](2026-08-20_technical-agenda.md). Confirm the date; coding after confirm.  
 **From:** **Joy Galia Meyouhas**, Senior Recruitment Partner  
 **HM:** Shabnam Ghaffarzadegan (on the prior call; not on this email as quoted)  
 **Role they used in this email:** **Sr. Research Scientist — Multimodal Foundational Models**  
@@ -22,7 +22,7 @@ No separate science hour beforehand. The HM screen’s “coding + deep dive” 
 
 **Timing:** 30 min talk + Q&A + coding walkthrough in 60 min is tight. Stop the talk on time (leave ~25–30 min for Q&A + code). Panel Q&A **is** the technical — one-model / high-low-freq live there (backup slides). Don’t run the deck to the bell.
 
-Unknown until Joy books: exact split, who is on the panel, language/stack of the take-home. Don’t ping.
+**Superseded 2026-08-20:** split is now **25 talk + 20 previous-work Q&A + 15 coding discuss**. Coding sent after date confirm (not “two days prior”). Still unknown: who is on the panel, language/stack of the take-home. Don’t ping unless the slot conflicts (≥1 hour prior).
 
 ---
 
@@ -36,16 +36,13 @@ Offered for **technical interview and presentation** (Pacific):
 | **Tue 2026-08-25** | 10:00 AM–3:00 PM PT | Preferred |
 | **Wed 2026-08-26** | 10:00 AM–3:00 PM PT | Flexible |
 
-No calendar hold yet. **Wait for Joy.** Don’t chase the same day. Nearest live loop stays **Apple Health HM Fri 2026-08-21, 11:05–11:50 AM PDT**.
+No calendar hold was on file as of 2026-08-19. **2026-08-20** agenda email reads like a calendar invite — confirm/Accept; paste date/time into [`2026-08-20_technical-agenda.md`](2026-08-20_technical-agenda.md). Nearest live loop stays **Apple Health HM Fri 2026-08-21, 11:05–11:50 AM PDT**.
 
 ---
 
 ## Immediate next actions
 
-1. **Wait** for Joy to schedule. No follow-up today.
-2. Optional while waiting: **30-min presentation** — layout started in [`talks/ts-vlm/`](../../../talks/ts-vlm/). Apple HM Friday is the nearer deadline.
-3. **Do not** start a generic LeetCode campaign for Bosch. Coding work starts when the take-home arrives (two days before that slot).
-4. Reloc to Sunnyvale stays **in-play**. Comp still after **level/scope**. TTD is closed — if they ask competing processes, Apple Health HM is the other live loop.
+Superseded — see [`2026-08-20_technical-agenda.md`](2026-08-20_technical-agenda.md). Confirm the date; don’t start coding until the exercise arrives; Apple HM Friday is still nearer.
 
 ---
 

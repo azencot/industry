@@ -60,7 +60,7 @@ They conferred. **Yes — advancing (2026-08-19).** Joy’s invite replaced the 
 | Stage | What they named |
 |-------|-----------------|
 | **This call** | Fit (done) |
-| **Next** | **One 1h technical:** 30-min presentation + panel Q&A + take-home (sent 2 days prior, discussed in-hour) |
+| **Next** | **One 1h technical:** 25 min talk + 20 min previous-work Q&A + 15 min coding discuss ([`2026-08-20_technical-agenda.md`](2026-08-20_technical-agenda.md)) |
 
 Not Amazon Live Code. Presentation default = VLM flagship. Take-home: wait for the prompt. Depth from this file — not a forecasting drill, not Apple Health scripts. Details: [`2026-08-19_next-round-invite.md`](2026-08-19_next-round-invite.md).
 
@@ -136,15 +136,15 @@ ImagenTime pocket if they go one step deeper: STFT won on long periodic / high-f
 
 Positive: she spent the call on **role taste and problem taste**. You hit the seat (IC, research+eng), didn’t overclaim Bosch productization, didn’t reject reloc, and they **named a next stage** (coding + deep dive) rather than a vague “we’ll be in touch.”
 
-**2026-08-19:** Joy confirmed **pass**. Next is **one 1h technical** (presentation + take-home nested under it — indent was flattened in the first paste). Reloc is still required. Public band is still tight.
+**2026-08-20:** Joy sent the hour split: **25 talk + 20 previous-work Q&A + 15 coding discuss**. Coding after date confirm. Reloc still required.
 
 ---
 
 ## Immediate next actions
 
-1. **Wait** for Joy — availability already sent (Mon–Wed 8/24–26, 10am–3pm PT; Mon/Tue preferred). [`2026-08-19_next-round-invite.md`](2026-08-19_next-round-invite.md). Don’t ping.  
-2. Nearer deadline: **Apple Health HM Fri 2026-08-21 11:05–11:50 PDT**. Optional while waiting: 30-min Bosch presentation outline (VLM flagship).  
-3. **Do not** start a Bosch coding campaign until the take-home arrives (two days before that slot). Technical hour uses this debrief’s depth rewrites. **Do not** reopen Chronos-vs-LightGBM.  
+1. **Confirm the Bosch date** (Accept Teams). Paste date/time into [`2026-08-20_technical-agenda.md`](2026-08-20_technical-agenda.md). Don’t ping unless conflict (≥1 hour prior).  
+2. Nearer deadline: **Apple Health HM Fri 2026-08-21 11:05–11:50 PDT**. Bosch talk is the existing 23-slide map; **hard stop at 25 min**.  
+3. **Do not** start a Bosch coding campaign until the take-home arrives (after date confirm). Technical Q&A uses this debrief’s depth rewrites. **Do not** reopen Chronos-vs-LightGBM.  
 4. Treat **Sunnyvale relocation** as in-play. Don’t reverse it in writing.
 
 ---
@@ -155,7 +155,7 @@ Positive: she spent the call on **role taste and problem taste**. You hit the se
 @GenAI/interviews/bosch-rtc-tsfm/2026-08-19_next-round-invite.md
 @GenAI/interviews/bosch-rtc-tsfm/2026-08-13_hm-screen-debrief.md
 @GenAI/interviews/bosch-rtc-tsfm/2026-08-12_interview-prep.md
-Bosch advancing after HM screen (Shabnam + Joy) 2026-08-13. Joy invite 2026-08-19; availability sent; waiting on Joy.
+Bosch advancing after HM screen (Shabnam + Joy) 2026-08-13. Joy agenda 2026-08-20: **25 min talk + 20 min previous-work Q&A + 15 min coding discuss**. Confirm date.
 Offered Mon–Wed 2026-08-24–26, 10:00 AM–3:00 PM PT (Mon/Tue preferred) for technical + presentation.
 Spine = heterogeneous representation layer for sensor+vision FMs; success = business impact / transfer.
 You said: IC; research+eng; fine with hybrid; they require Sunnyvale reloc (did not reject); comp after level/scope; don’t know if Bosch papers shipped.

@@ -16,7 +16,7 @@ Personal workspace for industry job prep: Amazon FinTech interviews, general for
 | [`GenAI/`](GenAI/) | Generative AI / LLM role interviews and prep (not forecasting) | When targeting GenAI roles |
 | [`Amazon_SCOT/`](Amazon_SCOT/) | SCOT relationship track: contacts, collab, contribution pitch | Before Boris / Mengfei / SCOT calls |
 | [`code/`](code/) | LeetCode solutions (Python); `_practice` = scratch attempts | Coding prep, timed drills |
-| [`talks/`](talks/) | Dual-use talks (HTML decks) | Bosch 30-min cut now; community talks later — not company-loop notes. Ongoing TS-VLM lit: [`talks/lit-search.md`](talks/lit-search.md) |
+| [`talks/`](talks/) | Dual-use talks (HTML decks) | Bosch 25-min cut now; community talks later — not company-loop notes. Ongoing TS-VLM lit: [`talks/lit-search.md`](talks/lit-search.md) |
 | [`.cursor/skills/`](.cursor/skills/) | Repeatable prep workflows (`/mock-lp`, `/timed-code`, `/forecasting`, etc.) | When running a structured drill |
 
 ---
@@ -47,7 +47,7 @@ Personal workspace for industry job prep: Amazon FinTech interviews, general for
 - **Purpose:** Generative AI / LLM role interviews and prep — systems, eval, RAG/agents/tradeoffs; also **multimodal / TSFM** research-scientist roles that are not forecasting-AS loops
 - **Not** forecasting (use [`Forecasting/`](Forecasting/)); **not** FinTelligence formal loop scaffolding (use [`Amazon_FinTech/`](Amazon_FinTech/))
 - **Details:** [`GenAI/INDEX.md`](GenAI/INDEX.md)
-- **Company / call prep:** [`GenAI/interviews/`](GenAI/interviews/) — Apple Health AIML: recruiter done **2026-08-12**; **HM screen Fri 2026-08-21, 11:05–11:50 AM PDT** with Shirley Ren ([`debrief`](GenAI/interviews/apple-health-aiml/2026-08-12_recruiter-debrief.md) · [`HM prep`](GenAI/interviews/apple-health-aiml/2026-08-12_hm-screen-prep.md)); **Bosch RTC-NA:** **advancing** after HM **2026-08-13** — availability sent **2026-08-19** (Mon–Wed 8/24–26, 10am–3pm PT; Mon/Tue preferred); **waiting on Joy**; next = **one 1h technical** (30-min presentation + Q&A + take-home discussed in that hour); Sunnyvale **reloc required** ([`invite`](GenAI/interviews/bosch-rtc-tsfm/2026-08-19_next-round-invite.md) · [`HM debrief`](GenAI/interviews/bosch-rtc-tsfm/2026-08-13_hm-screen-debrief.md)); **talk:** [`talks/ts-vlm/bosch-30min.html`](talks/ts-vlm/bosch-30min.html)
+- **Company / call prep:** [`GenAI/interviews/`](GenAI/interviews/) — Apple Health AIML: recruiter done **2026-08-12**; **HM screen Fri 2026-08-21, 11:05–11:50 AM PDT** with Shirley Ren ([`debrief`](GenAI/interviews/apple-health-aiml/2026-08-12_recruiter-debrief.md) · [`HM prep`](GenAI/interviews/apple-health-aiml/2026-08-12_hm-screen-prep.md)); **Bosch RTC-NA:** **advancing** after HM **2026-08-13** — availability sent **2026-08-19**; **agenda 2026-08-20**: **25 min talk + 20 min previous-work Q&A + 15 min coding discuss** (coding after date confirm; Teams); Sunnyvale **reloc required** ([`agenda`](GenAI/interviews/bosch-rtc-tsfm/2026-08-20_technical-agenda.md) · [`HM debrief`](GenAI/interviews/bosch-rtc-tsfm/2026-08-13_hm-screen-debrief.md)); **talk:** [`talks/ts-vlm/bosch-30min.html`](talks/ts-vlm/bosch-30min.html) (25-min hard stop)
 - **Session notes:** [`GenAI/notes/`](GenAI/notes/)
 - **Related skill:** `/ml-deep-dive`
 

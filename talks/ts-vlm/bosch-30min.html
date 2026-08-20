@@ -378,6 +378,50 @@
     }
     .stat .d { color: var(--muted); font-size: .95rem; margin-top: .35rem; line-height: 1.35; }
 
+    .grid3.benches {
+      align-items: stretch;
+      height: 100%;
+    }
+    .grid3.benches .card {
+      display: flex;
+      flex-direction: column;
+      padding: 1rem 1.05rem 1.05rem;
+    }
+    .grid3.benches .card .n {
+      font-family: var(--sans);
+      font-size: clamp(1.55rem, 2.6vw, 2.15rem);
+      font-weight: 600;
+      letter-spacing: -.03em;
+      line-height: 1;
+      color: var(--ink);
+    }
+    .grid3.benches table.nums {
+      margin-top: .7rem;
+      font-size: .86rem;
+    }
+    .grid3.benches table.nums th,
+    .grid3.benches table.nums td {
+      padding: .32rem 0;
+    }
+    .grid3.benches table.nums td:last-child {
+      text-align: right;
+      font-variant-numeric: tabular-nums;
+      font-family: var(--mono);
+      font-size: .82rem;
+    }
+    .grid3.benches tr.mine td {
+      color: var(--accent);
+      font-weight: 600;
+    }
+    .grid3.benches tr.closed td:last-child { color: var(--warn); }
+    .grid3.benches .note {
+      margin-top: auto;
+      padding-top: .55rem;
+      font-size: .82rem;
+      color: var(--muted);
+      line-height: 1.35;
+    }
+
     .flow {
       display: flex;
       align-items: stretch;
@@ -1046,76 +1090,117 @@
     <section class="slide">
       <p class="kicker">Contribution 4 · results</p>
       <h2>One stack. Three official protocols.</h2>
-      <p class="lede">First known open stack at or near SOTA on TSExam, ChatTS, and TSRBench together. LLaTiSA reports HiTSR — different board.</p>
-      <div class="body">
-        <div class="statrow">
-          <div class="stat">
+      <p class="lede">Open on par with the published boards. Closed still ahead on TSRBench. LLaTiSA reports HiTSR — different board.</p>
+      <div class="body fill">
+        <div class="grid3 benches">
+          <div class="card">
+            <p class="lab">TSExam · n=746</p>
             <div class="n">0.926</div>
-            <div class="u">TSExam · 8B</div>
-            <div class="d">HF n=746 · full Stage B</div>
+            <table class="nums">
+              <tbody>
+                <tr class="mine"><td>Our 8B</td><td>0.926</td></tr>
+                <tr class="closed"><td>GPT-4o</td><td>0.87</td></tr>
+                <tr><td>Gemini-1.5-Pro</td><td>0.76</td></tr>
+                <tr><td>MiniCPM-7B</td><td>0.55</td></tr>
+              </tbody>
+            </table>
+            <p class="note">Paper, plots, round 0, weighted by category n. Not a GPT-4o re-run on our harness.</p>
           </div>
-          <div class="stat">
-            <div class="n">on par</div>
-            <div class="u">ChatTS · 8B / 27B</div>
-            <div class="d">8B matches 14B paper numerical; 27B wins cat (~0.92 / 0.90)</div>
+          <div class="card">
+            <p class="lab">ChatTS · cat A / B</p>
+            <div class="n">0.92 / 0.90</div>
+            <table class="nums">
+              <tbody>
+                <tr class="mine"><td>Our 27B</td><td>0.92 / 0.90</td></tr>
+                <tr><td>ChatTS-14B</td><td>0.89 / 0.86</td></tr>
+                <tr class="closed"><td>GPT-4o vision</td><td>0.61 / 0.47</td></tr>
+              </tbody>
+            </table>
+            <p class="note">Paper Table 3 overall cat. Our 8B already matches ChatTS-14B on numerical.</p>
           </div>
-          <div class="stat">
+          <div class="card">
+            <p class="lab">TSRBench · n=4,125</p>
             <div class="n">45.6%</div>
-            <div class="u">TSRBench · 8B</div>
-            <div class="d">Official overall · n=4,125 · no-ICL</div>
+            <table class="nums">
+              <tbody>
+                <tr class="closed"><td>GPT-5</td><td>55.6%</td></tr>
+                <tr class="mine"><td>Our 8B</td><td>45.6%</td></tr>
+                <tr><td>Qwen3-VL-32B</td><td>44.9%</td></tr>
+                <tr><td>TimeOmni-7B</td><td>36.7%</td></tr>
+              </tbody>
+            </table>
+            <p class="note">Best open is a wash with the 32B chart VLM. Do not quote TimeOmni 49.4 — that is event prediction.</p>
           </div>
         </div>
       </div>
-      <div class="intent"><b>Job:</b> quote 8B for TSExam / TSRBench; 27B only for ChatTS cat. Don’t lead with 9B 0.9316 as the north star.</div>
+      <div class="intent"><b>Job:</b> published baselines, not our 32B FT. TSExam: GPT-4o/Gemini/MiniCPM from AutonLab Table 6 round 0 (weighted). ChatTS: Table 3 cat vs ChatTS-14B and GPT-4o vision. Quote 8B TSExam/TSRBench, 27B ChatTS cat. Don’t claim we re-ran GPT-4o.</div>
       <div class="meta"><span>Results</span><span class="sn"></span></div>
     </section>
 
     <!-- 19 -->
     <section class="slide">
       <p class="kicker">Contribution 4 · results</p>
-      <h2>TSRBench — open on par, proprietary ahead</h2>
-      <p class="lede">The north star is still where giant closed systems win. That is the headroom, not a dodge.</p>
-      <div class="body">
-        <div class="ph" style="padding:.85rem 1rem">
-          <table class="nums">
-            <thead>
-              <tr><th>System</th><th>Overall</th><th></th></tr>
-            </thead>
-            <tbody>
-              <tr><td>GPT-5 (text + vision)</td><td class="closed">55.6%</td><td>Closed</td></tr>
-              <tr><td><strong>This work · 8B dual</strong></td><td class="hi">45.6%</td><td>Open · official protocol</td></tr>
-              <tr><td>Qwen3-VL-32B (paper)</td><td>44.9%</td><td>Open chart VLM</td></tr>
-              <tr><td>TimeOmni-1-7B</td><td>36.7%</td><td>Do not quote 49.4 — that is EP</td></tr>
-              <tr><td>ChatTS-14B</td><td>33.5%</td><td>Native TS-MLLM</td></tr>
-            </tbody>
-          </table>
+      <h2>TSRBench — the closed gap is reasoning</h2>
+      <p class="lede">Open on par overall. Perception is solved. The 10-point hole to GPT-5 is the hard slice.</p>
+      <div class="body fill">
+        <div class="grid2 quad">
+          <div class="card">
+            <p class="lab">Perception</p>
+            <h3>0.87</h3>
+            <p>Charts and delay already see. Not where we lose.</p>
+          </div>
+          <div class="card">
+            <p class="lab">Prediction</p>
+            <h3>0.50</h3>
+            <p>Event prediction is strong. Forecasting is the drag inside this group.</p>
+          </div>
+          <div class="card">
+            <p class="lab">Decision</p>
+            <h3>0.37</h3>
+            <p>Qualitative and quantitative choices. Still thin.</p>
+          </div>
+          <div class="card mine">
+            <p class="lab">Reasoning</p>
+            <h3>0.29</h3>
+            <p>1,710 items. Etiological 0.20, temporal-relation 0.27. GPT-5 is 55.6% overall — this is the gap.</p>
+          </div>
         </div>
       </div>
-      <div class="intent"><b>Job:</b> second to closed, on par with 32B open. Full table is backup. Don’t mix unlabeled campaigns.</div>
+      <div class="intent"><b>Job:</b> overall ranking already on 18. Here: four groups, reasoning is the hole. Don’t quote TimeOmni 49.4. Don’t claim 9B/27B beat 8B on this board.</div>
       <div class="meta"><span>Results</span><span class="sn"></span></div>
     </section>
 
     <!-- 20 -->
     <section class="slide">
       <p class="kicker">Contribution 4 · rigor</p>
-      <h2>How I know it isn’t fake</h2>
-      <p class="lede">I killed a mix that helped the average and hurt the hard reasoning slice.</p>
-      <div class="body">
-        <div class="grid2">
-          <div class="card">
-            <p class="lab">What looked fine</p>
-            <h3>Overall moved</h3>
-            <p>Temporal-relation buckets in the mix. Average didn’t complain.</p>
-          </div>
-          <div class="card mine">
-            <p class="lab">What I watched</p>
-            <h3>The hard slice dropped</h3>
-            <p>TR ~5 pp vs control. Missing primitives, not “need more buckets.”</p>
+      <h2>I killed a mix that helped the average</h2>
+      <p class="lede">The target slice dropped five points. Missing primitives — not more buckets.</p>
+      <div class="body fill">
+        <div class="split">
+          <figure class="viz">
+            <img src="assets/slide20-kill.png" alt="Same mix: reasoning average 29.5 to 31.2 and AR/IR plus 7 points looked like a win; temporal relation 26.9 to 21.9 hit the kill gate">
+            <figcaption><span class="lab">That mix vs its control</span> Not the 0.27 on the last slide. A later experiment that would have made the hole worse.</figcaption>
+          </figure>
+          <div class="stack">
+            <div class="card">
+              <p class="lab">What looked fine</p>
+              <h3>Average +1.8 pp</h3>
+              <p>AR and IR each jumped about seven points. Easy to ship after the GPU was already spent.</p>
+            </div>
+            <div class="card mine">
+              <p class="lab">What I watched</p>
+              <h3>TR 26.9 → 21.9</h3>
+              <p>The slice I built the data for. −5 pp gate, written before the run. Kill.</p>
+            </div>
+            <div class="card">
+              <p class="lab">The diagnosis</p>
+              <h3>Missing primitives</h3>
+              <p>Stopped stacking buckets. Audited operators. Rebuilt the generators — not another TR dump.</p>
+            </div>
           </div>
         </div>
-        <p class="fn">Stopped stacking. Audited operators. Rebuilt generators. Extra epochs still climb TSExam while TSRBench saturates — reasoning group stuck until the data contract is right.</p>
       </div>
-      <div class="intent"><b>Job:</b> Ownership + Dive Deep in one minute. Highest-signal story. Leave air for the panel.</div>
+      <div class="intent"><b>Job:</b> Ownership + Dive Deep in one minute. 26.9→21.9 is this experiment, not slide 19’s 0.27 champion. Don’t quote 0.926 / 45.6. Don’t unpack ICL. Extra epochs (TSExam climbs, TSRBench saturates ~0.44, reasoning stuck) is a spare sentence. Don’t mention student / 0.8B unless asked. Don’t say TR-v2 closed the GPT-5 gap.</div>
       <div class="meta"><span>Results</span><span class="sn"></span></div>
     </section>
 
@@ -1123,110 +1208,185 @@
     <section class="slide">
       <p class="kicker">Contribution 4 · scale</p>
       <h2>Small to choose. 8B still the ceiling.</h2>
-      <p class="lede">Don’t mix unlabeled campaigns. Bigger is not automatically better on the north star.</p>
-      <div class="body">
-        <div class="grid4">
-          <div class="card">
-            <p class="lab">0.8B</p>
-            <h3>Choose the recipe</h3>
-            <p>Fast pilots. Not the external hook.</p>
-          </div>
-          <div class="card mine">
-            <p class="lab">8B dual</p>
-            <h3>TSExam / TSRBench</h3>
-            <p>Headline ceiling. Quote this.</p>
-          </div>
-          <div class="card">
-            <p class="lab">27B dual</p>
-            <h3>ChatTS cat</h3>
-            <p>Wins the language-heavy board. Not TSRBench.</p>
-          </div>
-          <div class="card dim">
-            <p class="lab">9B</p>
-            <h3>Stage C · serve</h3>
-            <p>vLLM port. Don’t lead with it as better.</p>
+      <p class="lede">Bigger is not automatically better on the north star. These are different campaigns — not one ranking.</p>
+      <div class="body fill">
+        <div class="split">
+          <figure class="viz">
+            <img src="assets/slide21-scale.png" alt="Not a size ladder: 0.8B chooses the recipe, 8B is still the TSExam and TSRBench quote, 27B wins ChatTS categorical. 9B and 27B TSRBench about 0.41 to 0.43.">
+            <figcaption><span class="lab">9B is not a bigger win</span> Stage C and the serve port live there. It does not take TSRBench.</figcaption>
+          </figure>
+          <div class="stack">
+            <div class="card">
+              <p class="lab">0.8B</p>
+              <h3>Choose the recipe</h3>
+              <p>Fast pilots. Kill mixes. Not the external hook.</p>
+            </div>
+            <div class="card mine">
+              <p class="lab">8B dual</p>
+              <h3>Quote this</h3>
+              <p>TSExam and TSRBench. The numbers you already saw. Still the ceiling.</p>
+            </div>
+            <div class="card">
+              <p class="lab">27B dual</p>
+              <h3>ChatTS cat</h3>
+              <p>The language-heavy board. Not TSRBench.</p>
+            </div>
           </div>
         </div>
       </div>
-      <div class="intent"><b>Job:</b> drop this slide if the room is slow. Do not slide 122B. 9B/27B do <em>not</em> beat 8B on TSRBench (~0.41–0.43).</div>
+      <div class="intent"><b>Job:</b> stop “so go bigger.” Punch is 9B/27B TSRBench ~0.41–0.43 vs the 8B north star. Don’t re-quote 0.926 / 45.6 / 0.92 as if this were 18. Don’t put 0.9316. Don’t slide 122B. Don’t steal vLLM 100/100 from 24. Drop if the room is slow.</div>
       <div class="meta"><span>Results</span><span class="sn"></span></div>
     </section>
 
     <!-- 22 -->
     <section class="slide">
-      <p class="kicker">Transfer · 6 months</p>
-      <h2>A frozen reasoning suite on their sensors</h2>
-      <p class="lede">Then scale. Not a giant pretrain on day one.</p>
-      <div class="body">
-        <div class="ph">
-          <ol>
-            <li>Clocks, sensor list, label taxonomy, what “unknown” means.</li>
-            <li>One frozen task suite that looks like this talk: see, then answer.</li>
-            <li>Bake encodings on that suite. Pretrain scale comes after the contract is real.</li>
-          </ol>
+      <p class="kicker">Transfer</p>
+      <h2>If it admits an image, the stack transfers</h2>
+      <p class="lede">Chart and delay here. A spectrogram on a vibration or a mic. Same VLM.</p>
+      <div class="body fill">
+        <div class="split">
+          <figure class="viz">
+            <img src="assets/slide22-render.png" alt="The same series rendered as a line chart, a delay embedding, and an STFT spectrogram — three images a VLM can see">
+            <figcaption><span class="lab">Swap the renderer</span> If you can make an image, this stack can see it.</figcaption>
+          </figure>
+          <div class="stack">
+            <div class="card mine">
+              <p class="lab">The contract</p>
+              <h3>An image is enough</h3>
+              <p>Pretrained ViT, same curriculum. You do not leave the VLM stack.</p>
+            </div>
+            <div class="card">
+              <p class="lab">This talk</p>
+              <h3>Chart + delay</h3>
+              <p>Two geometries of a series. Amplitude and trend; topology.</p>
+            </div>
+            <div class="card">
+              <p class="lab">Other sensors</p>
+              <h3>STFT when frequency is the physics</h3>
+              <p>A mic, a shaker. Still an image. Still questions about what it shows.</p>
+            </div>
+          </div>
         </div>
       </div>
-      <div class="intent"><b>Job:</b> your 6-month plan in your language. Don’t parrot the posting. Don’t quote “business impact.”</div>
+      <div class="intent"><b>Job:</b> method transfers; not a 6-month program nobody asked for. Don’t claim dual-tower on Bosch sensors. Don’t replay her high/low-freq question. ImagenTime STFT vs delay is a spare sentence. Camera and serve are backup (B). Don’t parrot classify/describe/fuse. Don’t upsample mixed rates. Close is next.</div>
       <div class="meta"><span>Transfer</span><span class="sn"></span></div>
     </section>
 
     <!-- 23 -->
     <section class="slide">
-      <p class="kicker">Transfer</p>
-      <h2>Extra vision is a hypothesis</h2>
-      <p class="lede">Ablate the camera on that same frozen suite. Ship the cheaper model until it pays.</p>
-      <div class="body">
-        <div class="grid2">
-          <div class="card">
-            <p class="lab">Series only</p>
-            <h3>Default</h3>
-            <p>Dual tower on the signal. No camera until a slice moves.</p>
+      <p class="kicker">Close</p>
+      <h2>Four things I want you to keep</h2>
+      <p class="lede">Same spine as the board at the start.</p>
+      <div class="body fill">
+        <div class="grid2 quad">
+          <div class="card mine">
+            <p class="lab">1 · Data</p>
+            <h3>Open repos are not enough</h3>
+            <p>Captions and patterns you can trust. I extend TSExam and ChatTS; CaTS I use as-is.</p>
           </div>
-          <div class="card">
-            <p class="lab">Series + image</p>
-            <h3>Test, don’t preach</h3>
-            <p>Time alignment required. Fusion without a shared clock leaks.</p>
+          <div class="card mine">
+            <p class="lab">2 · Arch</p>
+            <h3>One reasoner — more views if they pay</h3>
+            <p>Chart and delay here. Another geometry is another tower, not another model. Not plot+table.</p>
+          </div>
+          <div class="card mine">
+            <p class="lab">3 · Train</p>
+            <h3>See, then reason, then prefer</h3>
+            <p>Perception first. Questions next. Preference is in progress — and only if the why is true.</p>
+          </div>
+          <div class="card mine">
+            <p class="lab">4 · Results</p>
+            <h3>Three official benches — then an image</h3>
+            <p>Open on par; proprietary still ahead on the hard slice. If a sensor admits an image, the stack transfers.</p>
           </div>
         </div>
       </div>
-      <div class="intent"><b>Job:</b> fusion without religion. If slow, merge with 24.</div>
-      <div class="meta"><span>Transfer</span><span class="sn"></span></div>
+      <div class="intent"><b>Job:</b> ~45s bookend of the four-contributions board. No new numbers. Don’t quote 0.926 / 45.6 again. Don’t mention vLLM or a 6-month plan. Last spoken line: happy to go to architecture, data, or eval in Q&amp;A. Stop. Slides 24–25 are panel only — do not walk them in the 25 min.</div>
+      <div class="meta"><span>Takeaways</span><span class="sn"></span></div>
     </section>
 
     <!-- 24 -->
     <section class="slide">
-      <p class="kicker">Transfer</p>
-      <h2>Success is whether a unit can run it</h2>
-      <p class="lede">Not a paper count. A parity gate: the served model is the trained model.</p>
-      <div class="body">
-        <div class="ph">
-          <p>I ported the 9B dual stack to vLLM. <strong>100 / 100</strong> greedy answer parity vs Hugging Face on a local TSExam gate.</p>
-          <p>That is the transfer test I already ran on my stack. Same bar on their sensors: freeze eval, serve what you trained, watch the slice.</p>
+      <p class="kicker">Panel</p>
+      <h2>One model for a mic and for telemetry?</h2>
+      <p class="lede">Yes — one backbone. Not one renderer, not one rate.</p>
+      <div class="body fill">
+        <div class="split">
+          <figure class="viz">
+            <img src="assets/slide24-onemodel.png" alt="Do not use one patch size or upsample mixed rates onto one grid. STFT for a mic or shaker, chart plus delay for slow series, into one VLM">
+            <figcaption><span class="lab">Unified architecture</span> Language still has BPE. Vision still has patches. Same bet here.</figcaption>
+          </figure>
+          <div class="stack">
+            <div class="card mine">
+              <p class="lab">The FM bet</p>
+              <h3>Share the backbone</h3>
+              <p>One VLM. I would not recant into a zoo of specialists as the default.</p>
+            </div>
+            <div class="card">
+              <p class="lab">The miss people make</p>
+              <h3>Unification at the wrong layer</h3>
+              <p>STFT when frequency is the physics. Chart and delay when it isn’t. Bake off vs two specialists on the task that matters.</p>
+            </div>
+            <div class="card">
+              <p class="lab">The leak</p>
+              <h3>Do not upsample</h3>
+              <p>Clocks must agree. Do not interpolate telemetry onto the audio grid. Fuse coarser, or keep multi-rate tokens.</p>
+            </div>
+          </div>
         </div>
       </div>
-      <div class="intent"><b>Job:</b> use, not NeurIPS. Do not slide 122B. Don’t quote her business-impact line.</div>
-      <div class="meta"><span>Transfer</span><span class="sn"></span></div>
+      <div class="intent"><b>Panel only.</b> Not the 25-min talk. Don’t say this is her HM question. Don’t claim this VLM already runs STFT. ImagenTime STFT vs delay is a spare sentence. Don’t upsample. Don’t a 6-month program.</div>
+      <div class="meta"><span>Panel</span><span class="sn"></span></div>
     </section>
 
     <!-- 25 -->
     <section class="slide">
-      <p class="kicker">Close</p>
-      <h2>Four things I want you to keep</h2>
-      <div class="body">
-        <div class="ph">
-          <ol>
-            <li><strong>Data</strong> — open repos are not enough. Synthetic captions and added patterns are the work.</li>
-            <li><strong>Dual tower</strong> — one reasoner, two geometries. Not two models. Not plot+table.</li>
-            <li><strong>See, then reason</strong> — then (in progress) prefer. Don’t skip perception.</li>
-            <li><strong>Three benches, then transfer</strong> — open weights vs giant proprietary; a frozen suite on sensors; a unit that can run it.</li>
-          </ol>
+      <p class="kicker">Panel</p>
+      <h2>When do you add a scene camera?</h2>
+      <p class="lede">When the series looks fine and the room does not.</p>
+      <div class="body fill">
+        <div class="split">
+          <figure class="viz">
+            <img src="assets/slide25-camera.png" alt="Camera helps when vibration looks normal but the housing is cracked. It cheats when a warning light is already on, so the model never has to use the knock.">
+            <figcaption><span class="lab">I have not run this VLM with a webcam</span> The test is train without the camera, then with it. Keep the cheaper one if they match.</figcaption>
+          </figure>
+          <div class="stack">
+            <div class="card">
+              <p class="lab">Two different pictures</p>
+              <h3>The series vs the room</h3>
+              <p>This talk already turns the signal into a plot. A camera is a picture of the scene — a crack, a pose, a part that is not in the waveform.</p>
+            </div>
+            <div class="card mine">
+              <p class="lab">Add it</p>
+              <h3>When sensor-only is wrong</h3>
+              <p>Vibration still in-band, housing cracked. Train both. Keep the camera only if the picture actually fixes those errors.</p>
+            </div>
+            <div class="card">
+              <p class="lab">Leave it off</p>
+              <h3>When the frame is the answer</h3>
+              <p>Warning light, smoke, the broken bit already in view. Then the model reads the label off the wall and never uses the mic. If the frame is late, you often just see the aftermath.</p>
+            </div>
+          </div>
         </div>
       </div>
-      <div class="intent"><b>Job:</b> ~45s. Last line spoken: happy to go to architecture, data, or eval in Q&amp;A. Stop.</div>
-      <div class="meta"><span>Takeaways</span><span class="sn"></span></div>
+      <div class="intent"><b>Panel only.</b> Substance: camera ≠ another plot of the 1-D signal; add when the scene has a fact the series doesn’t; drop when the frame is the label. Don’t say “slice / fusion leaks / religion.” Don’t claim a webcam run. Don’t parrot fuse. Don’t name the HM screen.</div>
+      <div class="meta"><span>Panel</span><span class="sn"></span></div>
     </section>
 
     <!-- BACKUPS -->
+    <section class="slide backup">
+      <p class="kicker">Backup · serve</p>
+      <h2>Serve the model you trained</h2>
+      <p class="lede">Not a paper count. A parity gate: the served answers match the trained ones.</p>
+      <div class="body">
+        <div class="ph">
+          <p>I ported the 9B dual stack through an inference engine (vLLM — the server, not “vision LLM”). <strong>100 / 100</strong> greedy answer parity vs Hugging Face on a local TSExam gate.</p>
+          <p>9B is the serve vehicle, not the north-star quote. 8B still owns TSExam / TSRBench on this talk.</p>
+        </div>
+      </div>
+      <div class="intent"><b>Panel if they ask how it runs.</b> Not on the spoken path. Don’t quote her business-impact line. Don’t slide 122B.</div>
+      <div class="meta"><span>Backup</span><span class="sn"></span></div>
+    </section>
     <section class="slide backup">
       <p class="kicker">Backup · numbers</p>
       <h2>Labeled by campaign. Don’t mix.</h2>
@@ -1261,7 +1421,7 @@
           <p>Bake off vs two specialists on a <em>frozen</em> task. Don’t recant into a zoo. Don’t religiously insist on one giant net.</p>
         </div>
       </div>
-      <div class="intent"><b>If they replay the HM “one model?” question.</b> Pair with the next backup on mixed rates.</div>
+      <div class="intent"><b>Deeper than panel 24.</b> Bake off vs specialists if they push the zoo.</div>
       <div class="meta"><span>Backup</span><span class="sn"></span></div>
     </section>
 
@@ -1275,7 +1435,7 @@
           <p>Fuse on a coarser grid, or keep multi-rate tokens. Don’t interpolate telemetry onto the audio clock.</p>
         </div>
       </div>
-      <div class="intent"><b>HM substance, not her question on a title.</b> Spoken path already has dual views; this is the rate version.</div>
+      <div class="intent"><b>Deeper than panel 24.</b> Rate version of two geometries. Don’t upsample.</div>
       <div class="meta"><span>Backup</span><span class="sn"></span></div>
     </section>
 

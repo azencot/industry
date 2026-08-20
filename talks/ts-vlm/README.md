@@ -1,10 +1,10 @@
 # Talk — multimodal time-series VLMs
 
-**Working deck:** [`bosch-30min.html`](bosch-30min.html) — synced to the spoken map (2026-08-19). Open in a browser. **← →** or click · **L** speaker notes · **B** backup slides (hidden by default; **24** spoken). Facts still win if a number drifts.
+**Working deck:** [`bosch-30min.html`](bosch-30min.html) — synced to the spoken map (2026-08-19). Open in a browser. **← →** or click · **L** speaker notes · **B** backup slides (hidden by default; **23** spoken + **2** panel). Facts still win if a number drifts.
 
 | | |
 |---|---|
-| **Now** | Bosch RTC-NA — **one 1h technical**: 30-min talk + panel Q&A + take-home discussion. Invite: [`../../GenAI/interviews/bosch-rtc-tsfm/2026-08-19_next-round-invite.md`](../../GenAI/interviews/bosch-rtc-tsfm/2026-08-19_next-round-invite.md) |
+| **Now** | Bosch RTC-NA — **one 1h technical**: **25 min** talk + **20 min** previous-work Q&A + **15 min** coding discuss. Agenda: [`../../GenAI/interviews/bosch-rtc-tsfm/2026-08-20_technical-agenda.md`](../../GenAI/interviews/bosch-rtc-tsfm/2026-08-20_technical-agenda.md). **Hard stop on slide 23.** |
 | **Later** | Israeli AI community, Seattle area — **2026-09-07**. Same spine; extra lineage / results / open problems. Do **not** fork a second deck until Bosch is locked. |
 | **Facts** | [`.cursor/skills/debrief/vlm_multimodal_project.md`](../../.cursor/skills/debrief/vlm_multimodal_project.md) |
 | **Bosch fit** | [`../../GenAI/interviews/bosch-rtc-tsfm/2026-08-13_hm-screen-debrief.md`](../../GenAI/interviews/bosch-rtc-tsfm/2026-08-13_hm-screen-debrief.md) |
@@ -24,29 +24,29 @@
 
 | | |
 |---|---|
-| **Bosch** | Don’t parrot detect/classify/describe/fuse. Don’t replay the HM screen. Transfer slides are *your* 6-month plan, in your language. |
-| **HM questions (Shabnam)** | **Do not address them as her questions** on the spoken path. Substance lives in the dual tower. If they ask by name, that’s **panel Q&A after the talk** (and maybe the only technical, if the next hold is one hour). Explicit “one model / mixed rates” stays **backup**. |
+| **Bosch** | Don’t parrot detect/classify/describe/fuse. Don’t replay the HM screen. Transfer is **method**, not a 6-month program: if a sensor admits an image (chart, delay, STFT), it enters this VLM. Serve is backup. Panel slides 24–25 if they ask one-model / camera. |
+| **HM questions (Shabnam)** | **Do not address them as her questions** on the 25-min path. If they ask in the 20-min Q&A: **24** one backbone ≠ one renderer; **25** scene camera is a third stream. Don’t name her. |
 | **Related work (main)** | TS / multimodal **reasoning** interfaces: (1) series as **text tokens** ([Time-MQA](https://arxiv.org/abs/2503.01875)); (2) **native TS encoder** into an LLM ([ChatTS](https://arxiv.org/abs/2412.03104), [OpenTSLM](https://arxiv.org/abs/2510.02410)); (3) **chart VLMs** — including **dual-view plot+table** ([LLaTiSA](https://arxiv.org/abs/2604.17295)), still one VLM. **This work:** two *geometries* (chart ViT + delay DINOv3). Lit: [`../lit-search.md`](../lit-search.md). Do **not** mention forecast FMs. |
 
 ## How this is built
 
 1. Spoken map (locked).
 2. HTML matches this map; copy/numbers from the facts file.
-3. **Sep 7 extend** without densifying the 30-min path.
+3. **Sep 7 extend** without densifying the Bosch 25-min path.
 
 ## Senior bar (Bosch)
 
-**~1 slide per minute** · **25 spoken slides**.
+**~1 slide per minute** · **23 spoken slides** + **2 panel**.
 
 Not: paper tour, student/lab-PI, FinTech analogies, claiming Haifa papers shipped, **replaying the HM Q&A on slides**, **any forecast-head framing**.
 
-Shabnam’s bar: **BU transfer**. Results prove the stack; last three slides are what you’d do next.
+Shabnam’s bar: **BU transfer**. Results prove the stack; the last transfer slide is how the idea moves — if a sensor admits an image, it enters this VLM. One-model and camera wait for the panel (24–25).
 
 **Do not use their verb list on the problem slides.** Reciting “classify, describe, fuse” reads as you read the posting. Let MCQ / caption / QA + dual vision do the mapping.
 
 **Stage C:** on the spoken path as *in progress* — idea + status, not a finished RL paper. Don’t lead with it; don’t hide it.
 
-## Spoken map (30 min · ~1 min / slide)
+## Spoken map (Bosch **25 min** · ~1 min / slide · 23 slides already fit)
 
 | # | Beat | Slide | Job |
 |---|------|-------|-----|
@@ -67,17 +67,17 @@ Shabnam’s bar: **BU transfer**. Results prove the stack; last three slides are
 | 15 | Train | Stage A — perception | Freeze diagram + **61.8%** stall. Captions (gold / ChatTS align / CaTS), delay-tower LoRA, LLM frozen. Don’t quote 0.926 or caption 0.72. |
 | 16 | Train | Stage B — reasoning | Freeze invert of 15: LLM LoRA always; **8B generalist freezes vision**, 9B/27B also LoRA DINO. Questions (exam / ChatTS / numeric). Traces on the exam mix only. Don’t quote 0.926. ICL-UCR backup. |
 | 17 | Train | Stage C — post-adaptation | Letter GRPO no-op (zero group-std). Format GRPO −11 pp. Gold TR traces first, then boxing. 9B in progress. Not the 8B three-bench. Don’t quote 0.9316 as the headline. |
-| 18 | Results | Three benchmarks | TSExam · ChatTS · TSRBench — first to be at/near SOTA on **all three** official protocols |
-| 19 | Results | TSRBench vs proprietary | Open model; second to giant closed systems; still headroom |
-| 20 | Results | How I know it isn’t fake | Kill a mix that helped the average and hurt the hard **reasoning** slice; missing primitives, not more buckets |
-| 21 | Results | Scale | 0.8B to choose; **8B still TSExam/TSRBench ceiling**; 27B wins ChatTS; don’t mix unlabeled |
-| 22 | Transfer | 6-month bakeoff | One frozen **reasoning** task suite on their sensors, then scale — not a giant pretrain |
-| 23 | Transfer | Extra vision is a hypothesis | Ablate the camera on that suite |
-| 24 | Transfer | Success is use, not a paper | vLLM 9B dual **parity gate** — a unit can run it. Don’t quote her “business impact” line. Don’t slide 122B. |
-| 25 | Close | Four takeaways = four contributions | Data · dual tower · see-then-reason(-then-adapt) · three-bench results + transfer |
+| 18 | Results | Three benchmarks | **Our 8B** TSExam **0.926** vs paper GPT-4o **0.87** / Gemini **0.76** / MiniCPM **0.55** (plots, round 0, weighted). **Our 27B** ChatTS cat **0.92 / 0.90** vs ChatTS-14B **0.89 / 0.86** and GPT-4o vision **0.61 / 0.47** (Table 3). TSRBench: GPT-5 **55.6** · Our 8B **45.6** · Qwen3-VL-32B **44.9** · TimeOmni-7B **36.7**. Don’t claim a GPT-4o re-run. Don’t quote TimeOmni 49.4. |
+| 19 | Results | TSRBench groups | Perception **0.87** · prediction **0.50** · decision **0.37** · reasoning **0.29**. Closed gap is the hard slice, not perception. |
+| 20 | Results | How I know it isn’t fake | Kill a mix that helped the average and hurt TR: avg **29.5→31.2**, AR/IR **+7**, TR **26.9→21.9**. Missing primitives, not more buckets. Not the 0.27 on 19. |
+| 21 | Results | Scale | 0.8B to choose; **8B still TSExam/TSRBench ceiling**; 27B wins ChatTS; 9B/27B TSRBench **~0.41–0.43**. Don’t mix unlabeled. Don’t slide 122B. Drop if slow. |
+| 22 | Transfer | Image renderers | If a sensor admits an image, the VLM stack transfers. Chart + delay here; **STFT** on a mic/shaker. Not a 6-month plan. Don’t claim a Bosch run. |
+| 23 | Close | Four takeaways = four contributions | Data · one reasoner, **more views if they pay** · see-then-reason(-then-adapt) · three benches, then an image. No new numbers. |
+| 24 | Panel | One model? | Shared backbone, **different renderers**. Not one patch. Don’t upsample. Don’t claim STFT is already in this VLM. |
+| 25 | Panel | Scene camera? | Picture of the **room**, not another plot of the signal. Add when sensor-only is wrong (crack, in-band vibration). Leave off when the frame is the label (warning light). Train both; keep the cheaper if they match. |
 
-**25 slides.** IC identity is a 10s spoken line on the title, not a slide. If the room is slow, drop 21 or merge 23–24. If it runs fast, parse-miss is the backup worth promoting.
+**23 spoken + 2 panel.** Bosch: **hard stop on 23** (25 min). If the room is slow, drop 21. If it runs fast, do **not** promote backups — leave the 20 min for previous-work Q&A. Sep 7 can go longer.
 
-**Takeaways (draft):** (1) Open data is not enough — synthetic captions and patterns are the work. (2) One reasoner, two views — different geometries, not two models. (3) Perception, then reasoning traces, then (in progress) preference. (4) One stack, three benchmarks, open weights vs giant proprietary — then transfer to sensors.
+**Takeaways (draft):** (1) Open data is not enough — synthetic captions and patterns are the work. (2) One reasoner — more views if they pay; another geometry is another tower, not another model. (3) Perception, then reasoning traces, then (in progress) preference. (4) One stack, three official benches — then if it admits an image, the stack transfers.
 
-Backup (Q&A / technical hour): full numbers table; **one backbone vs two specialists**; **don’t upsample mixed rates**; LDDBM vs VLM; irregular sampling; Stage C mechanics; parse-miss; multivariate format (`ts1`/`ts2` vs ChatTS `[C,T]`; ChatTS eval fallback to one stacked chart on marker mismatch).
+Backup (Q&A / technical hour): full numbers table; **serve the trained model** (vLLM 9B 100/100 — the server, not “vision LLM”); **one backbone vs two specialists**; **don’t upsample mixed rates**; LDDBM vs VLM; irregular sampling; Stage C mechanics; parse-miss; multivariate format (`ts1`/`ts2` vs ChatTS `[C,T]`; ChatTS eval fallback to one stacked chart on marker mismatch).

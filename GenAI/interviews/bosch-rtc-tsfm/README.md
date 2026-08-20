@@ -9,12 +9,12 @@
 | **HM** | **Shabnam Ghaffarzadegan** (CR/RHI1-NA) — Lead / Senior RS, audio + multimodal sensor FMs |
 | **HR on thread** | **Joy Galia Meyouhas** (Senior Recruitment Partner) · GS/HRS-PAC-NA |
 | **HM screen** | **Done 2026-08-13** (Shabnam + Joy). Debrief: [`2026-08-13_hm-screen-debrief.md`](2026-08-13_hm-screen-debrief.md). **Passed.** |
-| **Next (2026-08-19)** | **Waiting on Joy.** One **1h technical**: 30-min presentation + panel Q&A + take-home (sent 2 days prior, discussed in that hour). Availability: Mon–Wed **2026-08-24–26**, 10:00 AM–3:00 PM PT (Mon/Tue preferred). Log: [`2026-08-19_next-round-invite.md`](2026-08-19_next-round-invite.md). |
+| **Next (2026-08-20)** | **1h technical** — **25 min** conference talk + **20 min** previous-work Q&A + **15 min** coding discuss. Coding sent **after date confirm**. Confirm the calendar slot. Agenda: [`2026-08-20_technical-agenda.md`](2026-08-20_technical-agenda.md). Availability offered: Mon–Wed **2026-08-24–26**, 10:00 AM–3:00 PM PT. |
 | **Location** | Sunnyvale, CA — **hybrid**; **relocation required** (stated on the call; not rejected) |
 | **Comp (public, both reqs)** | Base **$165K–$195K** + corporate bonus + LTI (ask recruiter; not FAANG RSUs) |
-| **Talk (30 min)** | Layout in [`talks/ts-vlm/`](../../../talks/ts-vlm/) — HTML deck; Sep 7 community talk extends the same spine |
+| **Talk (25 min Bosch / Sep 7 longer)** | Layout in [`talks/ts-vlm/`](../../../talks/ts-vlm/) — HTML deck; Bosch hard-stops at 25; Sep 7 extends the same spine |
 
-JDs are nearly identical. On calls, use **Multimodal Foundational Models**. Do not correct anyone to “Senior TSFM.” Joy’s 2026-08-19 email said **Sr. Research Scientist** — don’t fight the title.
+JDs are nearly identical. On calls, use **Multimodal Foundational Models**. Do not correct anyone to “Senior TSFM.” Title on the thread has flipped Sr. / RS — don’t fight it.
 
 ## Active thread
 
@@ -24,7 +24,8 @@ JDs are nearly identical. On calls, use **Multimodal Foundational Models**. Do n
 | **2026-08-12** | HM email invite | [`2026-08-12_hm-invite.md`](2026-08-12_hm-invite.md) — **Shabnam**; Teams; **background + interest** |
 | **2026-08-13** | **HM screen — Shabnam + Joy** | Fit done. They confer. If yes: **coding + deep dive**. Debrief: [`2026-08-13_hm-screen-debrief.md`](2026-08-13_hm-screen-debrief.md). Reloc required. |
 | **2026-08-19** | **Joy: moving forward** | **One 1h technical** (presentation + take-home nested under it). [`2026-08-19_next-round-invite.md`](2026-08-19_next-round-invite.md). |
-| **2026-08-19** | **Availability sent** | Mon–Wed 8/24–26, 10am–3pm PT; Mon/Tue preferred. Offered for technical + presentation. **Waiting on Joy.** |
+| **2026-08-19** | **Availability sent** | Mon–Wed 8/24–26, 10am–3pm PT; Mon/Tue preferred. Offered for technical + presentation. |
+| **2026-08-20** | **Joy: technical agenda** | **25 + 20 + 15.** Coding after date confirm. Teams. [`2026-08-20_technical-agenda.md`](2026-08-20_technical-agenda.md). |
 
 ## Role in one line
 
@@ -36,7 +37,7 @@ IC research scientist building **multimodal foundation models** over industrial 
 |--------|-------------|--------------|-----------------|
 | **Shabnam Ghaffarzadegan** | **HM** — Lead/Senior RS, CR/RHI1-NA | Posted this req; audio analytics / SoundSee → multimodal sensor FMs | [LinkedIn](https://www.linkedin.com/in/shabnam-ghaffarzadegan-42142a93) · [Bosch expert](https://www.bosch.com/research/about-bosch-research/our-research-experts/shabnam-ghaffarzadegan/) |
 | **Shir** | Contact at **BCAI** (Haifa) | Asked if you applied; likely the intro. Don’t narrate a Shir–Shabnam mix-up. | — |
-| **Joy Galia Meyouhas** | Senior Recruitment Partner | Logistics: auth, comp, hybrid; stated **reloc required**; **2026-08-19** sent next-round invite | — |
+| **Joy Galia Meyouhas** | Senior Recruitment Partner | Logistics: auth, comp, hybrid; stated **reloc required**; **2026-08-20** sent technical agenda (25+20+15) | — |
 | **GS/HRS-PAC-NA** | HR / recruiting alias on the invite | Same org as Joy | — |
 
 **Bosch papers (BCAI Haifa, not this Sunnyvale team):** Synth-FAR (TMLR 2026), LDDBM modality translation (NeurIPS 2025), edge-attribute graph gen / traffic scenes (TMLR 2025). Use in “why Bosch.” Don’t imply you already sit on Shabnam’s team.
