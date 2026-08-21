@@ -1,9 +1,9 @@
 # 3C — Most impactful LLM training run (detail)
 
-**Resume (2026-08-12):** read through **§3 Architecture**. Next pass starts at **§4 Curriculum**. Do not restart from §1 unless the spoken paragraph is cold.
+**Spoken pass (2026-08-20 drill):** [`2026-08-20_training-run-drill.md`](2026-08-20_training-run-drill.md). Say §1 once Friday morning; do not restart the tables.
 
 **For:** HM screen with Shirley Ren · Fri 2026-08-21  
-**Spoken 2–3 min lives in** [`2026-08-12_hm-screen-prep.md`](2026-08-12_hm-screen-prep.md) §3C. **This file is the pull-thread.**  
+**Spoken 2–3 min is §1 below** (also pointed from [`2026-08-12_hm-screen-prep.md`](2026-08-12_hm-screen-prep.md) §3C). **This file is the pull-thread.**  
 **Sources:** [`Amazon_FinTech/vlm-technical-cheat-sheet.md`](../../../Amazon_FinTech/vlm-technical-cheat-sheet.md), [`Amazon_FinTech/anchor-cheat-sheet.md`](../../../Amazon_FinTech/anchor-cheat-sheet.md), [`.cursor/skills/debrief/vlm_multimodal_project.md`](../../../.cursor/skills/debrief/vlm_multimodal_project.md), repo `azencot-group/TSLMTSEXAM` branch **`iucc_cluster`** (as of 2026-08-12).  
 **Do not** lead with FinTech bridges. Frame: **representing time series so an LLM can use them.**
 
@@ -18,7 +18,7 @@
 
 ## 1. Spoken 2–3 min (memorize this, not the tables)
 
-> The problem I actually train on is that an LLM does not *see* a time series if you dump numbers into context. I represent each series two ways — a line chart for trend and amplitude, and a delay-embedding image for dynamical structure — and fuse both into the LLM. Training is two-stage: Stage A aligns vision with the language model frozen; Stage B teaches the LM to answer. All of it is LoRA on multi-GPU DDP, config-first sweeps, gated by a cheap eval before the expensive north star. I proved the recipe on Qwen3-VL-8B — stock **0.62 → ~0.90** on TSExam, TSRBench **~0.40 → ~0.45**. Current runs are Qwen3.5 **9B and 27B** with the same stack; 27B fine-tune lands **~0.92** TSExam, near the 8B champion. When a synthetic mix was supposed to fix temporal reasoning and instead dropped TR **26.9 → 21.9**, I killed it and went back to data generation. The lesson I would bring: architecture plus data plus an honest gate beat more GPU hours on a bad mix.
+> The problem I actually train on is that an LLM does not *see* a time series if you dump numbers into context. I represent each series two ways — a line chart for trend and amplitude, and a delay-embedding image for dynamical structure — and fuse both into the LLM. I owned the dual routing, the collator, and the recipe. Training is two-stage: Stage A aligns vision with the language model frozen; Stage B teaches the LM to answer. LoRA, multi-GPU DDP, config-first sweeps. I don’t promote on loss: cheap TSExam, then a TSRBench slice, then the full north star, gates set before the run. I proved the recipe on Qwen3-VL-8B — stock **0.62 → ~0.90** on TSExam, TSRBench **~0.40 → ~0.45**. Current runs are Qwen3.5 **9B and 27B** with the same stack; 27B fine-tune lands **~0.92** TSExam, near the 8B champion. When a synthetic mix was supposed to fix temporal reasoning and instead dropped TR **26.9 → 21.9**, I killed it and went back to data generation. The lesson I would bring: architecture plus data plus an honest gate beat more GPU hours on a bad mix.
 
 Then stop. Let her pull.
 
@@ -204,7 +204,9 @@ TSRBench overall had plateaued ~**46%**; reasoning ~**29%**. Targeted **TR**. Bu
 | Pretrain honesty? | Fine-tune / adapter / curriculum at 9B–27B. Not GPT-scale pretrain. |
 | 9B/27B vs 8B champion? | 27B FT TSExam **0.921 ≈ 0.926**. 8B still leads some TSRBench perception. Zero-shot 27B TSRBench **ties** the 8B champion — FT is not a free win. |
 | 27B on-device? | 9B/27B were iteration and ceiling, not a Watch proposal. Then freeze / probe / distill. |
-| Isn’t images a hack? | Bet on a visual prior. If a native TS encoder wins on their series, that’s the same scientific question. |
+| Why kill if average up? | Pre-declared gate: −5 pp on TR. Average up **is** the failure mode. More of the same synth is doubling down. Later epochs + TR-CoT still left reasoning ~0.27–0.30. |
+| Was the 5 pp an eval bug? | Same harness / adapter chain / parse-miss. Mix-only B: val looked fine (shared generator); real TSExam **0.826 → 0.714**. Don’t dump the whole bug list. |
+| Isn’t images a hack? | Steal a visual prior, not a law of nature. One view **loses** information (delay num 0.17 vs chart 0.71 vs dual 0.79). Native TS encoder is more honest if they have the data. Don’t die on matplotlib. Never “images keep all information.” Don’t dunk on TS-encoder maturity (RelCon / their encoder paper). |
 | Year-one on health signals? | Learn *their* series and eval. Compare encoder families. Don’t port matplotlib. |
 
 ---
@@ -226,6 +228,9 @@ TSRBench overall had plateaued ~**46%**; reasoning ~**29%**. Targeted **TR**. Bu
 - Mixing 0.8B / 8B / 9B / 27B numbers in one sentence
 - Claiming 9B/27B beat the 8B champion on TSRBench
 - FinTech / TTD / forecasting as the lead
+- “Developing and leading a project” (PI). Name-dropping **her** workshop paper unprompted
+- “Images keep all information.” “TS encoders aren’t mature / losses aren’t locked”
+- Kill as confusion (“could be a bug / need deeper understanding”) instead of a **pre-declared gate**
 
 ---
 

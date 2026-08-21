@@ -17,7 +17,8 @@
 |------|------|-------|
 | **2026-08-12** | Recruiter phone (~**10 min**) — **Tyler** | Cleared soft gate. Full loop briefed. Debrief: [`2026-08-12_recruiter-debrief.md`](2026-08-12_recruiter-debrief.md) |
 | **2026-08-20** | Group briefing + why-Apple-Health drill | Briefing: [`2026-08-20_shirley-group-briefing.md`](2026-08-20_shirley-group-briefing.md) · drill: [`2026-08-20_why-apple-health-drill.md`](2026-08-20_why-apple-health-drill.md) — locked 50s; never “company doesn’t matter” |
-| **2026-08-21** | **HM screen — Shirley Ren** | **Fri 11:05–11:50 AM PDT**, Webex. **Fit**. Prep: [`2026-08-12_hm-screen-prep.md`](2026-08-12_hm-screen-prep.md) · group briefing: [`2026-08-20_shirley-group-briefing.md`](2026-08-20_shirley-group-briefing.md) · training-run: [`2026-08-12_hm-3c-training-run.md`](2026-08-12_hm-3c-training-run.md) |
+| **2026-08-20** | LLM training-run drill (5 Q) | [`2026-08-20_training-run-drill.md`](2026-08-20_training-run-drill.md) — run not a project; TR 26.9 → 21.9; never “images keep all information” |
+| **2026-08-21** | **HM screen — Shirley Ren** | **Fri 11:05–11:50 AM PDT**, Webex. **Fit**. Prep: [`2026-08-12_hm-screen-prep.md`](2026-08-12_hm-screen-prep.md) · group briefing: [`2026-08-20_shirley-group-briefing.md`](2026-08-20_shirley-group-briefing.md) · why-Apple: [`2026-08-20_why-apple-health-drill.md`](2026-08-20_why-apple-health-drill.md) · training-run: [`2026-08-12_hm-3c-training-run.md`](2026-08-12_hm-3c-training-run.md) · drill: [`2026-08-20_training-run-drill.md`](2026-08-20_training-run-drill.md) |
 
 ## Loop (from Tyler)
 

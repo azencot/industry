@@ -58,19 +58,20 @@ Covered: what Shirley’s group publishes (RelCon, speech-FM transfer, TS-reason
 
 ## Open questions
 
-- None for the HM **fit** topics. Training-run 2–3 min still needs a spoken pass if not done today (detail: [`2026-08-12_hm-3c-training-run.md`](2026-08-12_hm-3c-training-run.md)).
+- None for the three HM **fit** topics. Training-run spoken pass: [`2026-08-20_training-run-drill.md`](2026-08-20_training-run-drill.md).
 - Do **not** prep the 5-interview on-site before this call.
 
 ---
 
 ## Next session (Fri morning, 15 min — then stop)
 
-Skim three HM topics + locked 50s above + kill-decision sentence (TR synth 26.9 → 21.9). Join Webex **after 10:55 AM PDT**. After the call: write `2026-08-21_hm-screen-debrief.md`.
+Skim locked 50s above + locked training-run 2–3 min ([`2026-08-20_training-run-drill.md`](2026-08-20_training-run-drill.md)) + kill sentence (TR synth 26.9 → 21.9). Join Webex **after 10:55 AM PDT**. After the call: write `2026-08-21_hm-screen-debrief.md`.
 
 **Handoff prompt**
 
 ```
 @GenAI/interviews/apple-health-aiml/2026-08-20_why-apple-health-drill.md
+@GenAI/interviews/apple-health-aiml/2026-08-20_training-run-drill.md
 @GenAI/interviews/apple-health-aiml/2026-08-20_shirley-group-briefing.md
 @GenAI/interviews/apple-health-aiml/2026-08-12_hm-screen-prep.md
 HM screen was Fri 2026-08-21 with Shirley Ren. Write 2026-08-21_hm-screen-debrief.md from the call notes; do not invent.

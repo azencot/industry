@@ -4,7 +4,8 @@
 **Call:** Fri 2026-08-21, 11:05–11:50 AM PDT with **Shirley Ren** — fit, not a paper quiz  
 **Use:** understand the group so “why this team” is a choice. Do **not** name-drop papers unless she goes there.  
 **Spoken scripts / three HM topics:** [`2026-08-12_hm-screen-prep.md`](2026-08-12_hm-screen-prep.md)  
-**Why-Apple-Health drill (2026-08-20):** [`2026-08-20_why-apple-health-drill.md`](2026-08-20_why-apple-health-drill.md)
+**Why-Apple-Health drill (2026-08-20):** [`2026-08-20_why-apple-health-drill.md`](2026-08-20_why-apple-health-drill.md)  
+**Training-run drill (2026-08-20):** [`2026-08-20_training-run-drill.md`](2026-08-20_training-run-drill.md)
 
 ---
 
@@ -95,9 +96,9 @@ If she says PPG or accel, she means **these device series**, not a UCR line char
 
 **Appendix worth knowing:** GPT-4o plot **resolution** moves etiological reasoning a lot (small 0.41 → square 0.56 → wide 0.61 vs tokenization 0.32). Plotting works but is hyperparameter-fragile → they argue a **native TS encoder** is the honest inductive bias.
 
-**Your disagreement, 20s then stop:**
+**Your disagreement, 30s then stop** (drill 2026-08-20 — never “images keep all information”; don’t dunk on TS-encoder maturity):
 
-> Images were a way to steal a visual prior when the LLM couldn’t see the series. A native TS encoder is the more honest bias if you have the data. I wouldn’t die on matplotlib. I’d compare encoder families — native TS, visual, speech-FM transfer — with the same eval gate. Same bottleneck: the model does not perceive the series until you represent it.
+> Images were a way to steal a visual prior when the LLM couldn’t see the series — not because plots are the true representation. One view still loses information; that’s why I used two. A native TS encoder is the more honest bias if you have the data. I wouldn’t reprint charts on PPG. I’d compare encoder families — native TS, visual, speech-FM transfer — with the same eval gate. Same bottleneck: the model does not perceive the series until you represent it.
 
 Overlap if it comes up naturally: reasoning in language over series, perception first, two-stage alignment, LoRA, CoT data. Do not lead with “your paper used Mistral-7B.” Honest limits (keep in your head): intern-scale, public/synthetic series, UCR proxy, 7B is not on-Watch — same class of limits as TSExam/TSRBench for you.
 
@@ -161,6 +162,7 @@ What the feature is (public): spoken personalized motivation from workout data +
 | “The company doesn’t matter” / academic shopping labs | Question same, **setting** different |
 | Passion / narrative / “the work you are doing” | Tourist or paper-audition |
 | “I don’t know yet” with no year-one next sentence | Pair with: their series, their eval, ablate encoders |
+| “Images keep all information” / “TS encoders aren’t mature” | One view loses information; don’t dunk on RelCon / their encoder; don’t port matplotlib |
 
 ### Questions (pick 2)
 

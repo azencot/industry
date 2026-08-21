@@ -192,7 +192,7 @@ If using Cursor: drill from this file + the VLM project note; IC framing only.
 
 **Morning (15 min, not a study block):**
 
-- Skim the three HM topics + kill-decision sentence + two questions.
+- Skim the three HM topics + locked why-Apple 50s + locked training-run 2–3 min + kill-decision sentence (TR 26.9 → 21.9).
 - 60s intro once.
 - Water, quiet room, phone on DND.
 
@@ -284,7 +284,7 @@ It’s a **disambiguation** question: tourist vs someone who picked *this* resea
 
 ### C. Most impactful LLM training run (core of the call)
 
-**Detail (numbers, ablations, bugs, 9B/27B):** [`2026-08-12_hm-3c-training-run.md`](2026-08-12_hm-3c-training-run.md) — memorize §1 spoken; pull from the rest.
+**Detail (numbers, ablations, bugs, 9B/27B):** [`2026-08-12_hm-3c-training-run.md`](2026-08-12_hm-3c-training-run.md) — memorize §1 spoken; pull from the rest. **Drill 2026-08-20:** [`2026-08-20_training-run-drill.md`](2026-08-20_training-run-drill.md) — run not a project; no her paper; no “images keep all information.”
 
 **Pick one run and stick to it:** multimodal Qwen3.5 VLM fine-tune / curriculum at **9B ↔ 27B** (dual visual encodings → LLM). Frame honestly as **major multimodal training run you owned**, not multi-trillion-token pretrain-from-scratch. Cite the **8B** campaign for the measured champion and most ablations.
 
@@ -368,8 +368,8 @@ The story’s vulnerability: *“same problem, health is just downstream”* can
 
 Keep §3C one-liners. Extra under this story:
 
-**“Isn’t rendering series as images a hack?”**  
-> It’s a bet on a pretrained visual prior, not a law of nature. It paid off when a single view wasn’t enough. If a native encoder wins on their signals, that’s the right call — same scientific question.
+**“Isn’t rendering series as images a hack?”** (drill 2026-08-20: never “keep all information”; don’t dunk on TS-encoder maturity)  
+> Images were a way to steal a visual prior when the LLM couldn’t see the series — not because plots are the true representation. One view still loses information; that’s why I used two. A native TS encoder is the more honest bias if you have the data. I wouldn’t reprint charts on PPG. I’d compare encoder families on your signals with the same eval gate.
 
 **“You only fine-tuned. We need foundation-scale training.”**  
 > Honest: I owned multimodal training runs at 9B/27B — curriculum, LoRA, DDP, eval gates — not pretrain-from-scratch. The muscle is designing the run and gating it, not claiming GPT-scale pretrain.
@@ -399,6 +399,8 @@ Comp: only if she raises it — factors already named by Tyler (experience, inte
 | Impact at scale / millions of users / “safe AI” as the lead | Device-resident series; privacy as a **representation** constraint |
 | “The company doesn’t matter” | Question same; **setting** different; this seat in Seattle |
 | Passion / “work you are doing” / reprinting the VLM | Year one: *their* series, *their* eval, ablate encoder families |
+| “Leading a project” / name-dropping her workshop paper | One **run**: numbers + kill; two-stage only if **she** goes there |
+| “Images keep all information” / “TS encoders aren’t mature” | One view loses information; compare encoder families; don’t port matplotlib |
 
 ---
 
