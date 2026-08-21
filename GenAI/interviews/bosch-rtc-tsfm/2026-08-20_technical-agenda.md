@@ -1,11 +1,22 @@
 # Log — 2026-08-20 — Bosch technical agenda (Joy)
 
-**Status:** Agenda **received.** Confirm the calendar date (if this is a Teams invite, **Accept**). Coding arrives **after date confirmation**.  
+**Status:** **Rescheduled.** **Thu 2026-08-27, 10:00–11:00 AM PT** (1h; confirm exact clock on Teams). **No overlap** with Apple Tue 8/25 1:35–2:20 PM PDT. Coding should arrive **now that the date is set**.  
 **From:** Joy (Senior Recruitment Partner)  
 **Role they used:** **AI Research Scientist — Multimodal Foundational Models** (matches the HM req; Aug 19 said “Sr.” — don’t fight either)  
 **Prior:** [`2026-08-19_next-round-invite.md`](2026-08-19_next-round-invite.md) · [`2026-08-13_hm-screen-debrief.md`](2026-08-13_hm-screen-debrief.md)
 
-Paste did **not** include date/time or the Teams URL. Pull those from the calendar item and add them here.
+---
+
+## Slot (locked 2026-08-21)
+
+| | |
+|--|--|
+| **When** | **Thu 2026-08-27, 10:00–11:00 AM PT** |
+| **What** | 1h technical: 25 talk + 20 previous-work Q&A + 15 coding discuss |
+| **Where** | Microsoft Teams — Accept the invite; join from that link |
+| **vs Apple** | Apple tech screen is **Tue 8/25 1:35–2:20 PM PDT**. **No collision.** |
+
+If the Teams item shows a different start minute, paste it here and use the invite, not this table.
 
 ---
 
@@ -53,19 +64,16 @@ Deck: [`talks/ts-vlm/bosch-30min.html`](../../../talks/ts-vlm/bosch-30min.html) 
 
 ## Coding implication
 
-15 min is a **walkthrough**, not a live problem from scratch. They send the exercise **after you confirm the date** — could be earlier than “two days prior.”
-
-**Do not** start a generic LeetCode campaign. Work the take-home when it arrives. Q&A (20) is research; coding (15) is the exercise.
+15 min is a **walkthrough**, not a live problem from scratch. Date is now **set** — expect the take-home. Work it when it arrives (after Apple Tue is fine; don’t start a generic LeetCode campaign). Q&A (20) is research; coding (15) is the exercise.
 
 ---
 
 ## Immediate next actions
 
-1. **Confirm the date** (Accept the Teams invite). Paste date/time + join link into this file. Don’t ping Joy unless the slot conflicts — then **≥1 hour prior**.
-2. Nearer live loop: **Apple Health HM Fri 2026-08-21, 11:05–11:50 PDT**. Bosch talk is optional until that’s done; the 25-min path is already the 23-slide map.
-3. **Teams** installed; join from the invite, not a scavenged URL.
-4. **Do not** start Bosch coding until the exercise arrives.
-5. Reloc / level-scope / don’t fight the title — unchanged.
+1. **Accept Teams** for Thu 8/27 10:00–11:00 AM PT. If the invite clock differs, this file follows the invite.
+2. **Apple first:** Tue **8/25 1:35–2:20 PM PDT** (Feng Zhu). Don’t mix Watch scripts into this talk.
+3. When the **coding exercise** arrives, do that — not a LeetCode campaign.
+4. Talk = existing 23-slide map, **hard stop on 23**. Reloc / level-scope / don’t fight the title — unchanged.
 
 ---
 
@@ -98,5 +106,5 @@ Deck: [`talks/ts-vlm/bosch-30min.html`](../../../talks/ts-vlm/bosch-30min.html) 
 @GenAI/interviews/bosch-rtc-tsfm/2026-08-20_technical-agenda.md
 @GenAI/interviews/bosch-rtc-tsfm/2026-08-13_hm-screen-debrief.md
 @talks/ts-vlm/README.md
-Bosch 1h technical agenda locked (Joy 2026-08-20): **25 min talk + 20 min previous-work Q&A + 15 min coding discuss**. Confirm date (paste if missing). Coding arrives after confirm — do not start LeetCode. Talk = existing 23-slide map, hard stop on 23; drop 21 if slow; 24–25 panel only. Conference-style research, not a CV. Teams. Apple Health HM Fri 2026-08-21 still nearer. Reloc in-play. Don’t fight title.
+Bosch 1h technical **Thu 2026-08-27, 10:00–11:00 AM PT** (Joy reschedule). Agenda: **25 min talk + 20 min previous-work Q&A + 15 min coding discuss**. Accept Teams. Coding should arrive now. Talk = 23-slide map, hard stop on 23. Apple Health tech screen is Tue 8/25 — no collision. Reloc in-play. Don’t fight title. Don’t mix Apple Health scripts.
 ```

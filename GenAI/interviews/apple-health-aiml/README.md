@@ -19,14 +19,17 @@
 | **2026-08-20** | Group briefing + why-Apple-Health drill | Briefing: [`2026-08-20_shirley-group-briefing.md`](2026-08-20_shirley-group-briefing.md) · drill: [`2026-08-20_why-apple-health-drill.md`](2026-08-20_why-apple-health-drill.md) — locked 50s; never “company doesn’t matter” |
 | **2026-08-20** | LLM training-run drill (5 Q) | [`2026-08-20_training-run-drill.md`](2026-08-20_training-run-drill.md) — run not a project; TR 26.9 → 21.9; never “images keep all information” |
 | **2026-08-21** | Pre-call notes (stack + glossary) | [`2026-08-21_pre-call-notes.md`](2026-08-21_pre-call-notes.md) — RelCon ~3.9M not 1B params; IMU/PPG/longitudinal; LLM hire = language layer |
-| **2026-08-21** | **HM screen — Shirley Ren** | **Fri 11:05–11:50 AM PDT**, Webex. **Fit**. Prep: [`2026-08-12_hm-screen-prep.md`](2026-08-12_hm-screen-prep.md) · group briefing: [`2026-08-20_shirley-group-briefing.md`](2026-08-20_shirley-group-briefing.md) · why-Apple: [`2026-08-20_why-apple-health-drill.md`](2026-08-20_why-apple-health-drill.md) · training-run: [`2026-08-12_hm-3c-training-run.md`](2026-08-12_hm-3c-training-run.md) · drill: [`2026-08-20_training-run-drill.md`](2026-08-20_training-run-drill.md) |
+| **2026-08-21** | **HM screen — Shirley Ren** | Done. Scheduled as **fit**; ran **extremely technical**. Debrief: [`2026-08-21_hm-screen-debrief.md`](2026-08-21_hm-screen-debrief.md) |
+| **2026-08-21** | Tyler: **advancing** to tech screen | **Scheduled Tue 2026-08-25, 1:35–2:20 PM PDT**, Webex, **Feng Zhu**. Spoken LLM training + multimodality; CoderPad = template. Confirm availability. Invite: [`2026-08-21_tech-screen-invite.md`](2026-08-21_tech-screen-invite.md) · prep: [`2026-08-21_tech-screen-prep.md`](2026-08-21_tech-screen-prep.md). |
+| **2026-08-21** | Group PDFs | [`papers/`](papers/) — RelCon, speech-FM, TS-LLM, Feng **periodicity/mood**. Index: [`papers/README.md`](papers/README.md). Do not name-drop. |
+| **2026-08-21** | Org graph (Sapiro / Giryes / Kimmel) | [`2026-08-21_sapiro-giryes-org.md`](2026-08-21_sapiro-giryes-org.md) — Shirley↔Sapiro = Health AI collab + senior sponsor, **not** a proven report line; Raja = Apple AI Research / Koltun / speech, **not** this req |
 
 ## Loop (from Tyler)
 
 | Stage | Format | Focus |
 |-------|--------|--------|
 | 1. HM screen | 45 min · **fit** | Interest in health AI; interest in Apple; most impactful LLM training run (**no coding**) |
-| 2. Tech screen | 45 min | Depth: LLM training + multimodal fundamentals |
+| 2. Tech screen | 45 min | **Locked 2026-08-21:** depth check on **LLM training** + **multimodality fundamentals** (spoken; **no coding**) |
 | 3. Virtual on-site | 5 interviews | (1) LLM training + infra · (2) multimodal arch + TS encoding · (3) research rigor · (4) tech leadership / systems · (5) health domain + applied ML judgement |
 
 **Timeline:** ~**3–4 weeks** end-to-end once moving.
@@ -42,6 +45,8 @@ Research lead for **multimodal / representation models** over **health & fitness
 | Person | Role signal | Why relevant | LinkedIn |
 |--------|-------------|--------------|----------|
 | **Shirley Ren** | **HM** — Senior ML Manager / PE, Health & Fitness | Sensor FMs, LLMs, fitness/health features; pubs on TS reasoning w/ LLMs, multimodal sensor fusion | [shirley-you-ren-uw](https://www.linkedin.com/in/shirley-you-ren-uw) |
+| **Guillermo Sapiro** | Distinguished Engineer — **Health AI** (also Princeton faculty) | Co-supervised 2023 AHMS **heart-rate** paper with Shirley; thanked as senior sponsor on an Apple AIML LLM paper. **Not** confirmed as her manager. Org note: [`2026-08-21_sapiro-giryes-org.md`](2026-08-21_sapiro-giryes-org.md) | [guillermo-sapiro-356a8b286](https://www.linkedin.com/in/guillermo-sapiro-356a8b286) |
+| **Feng Zhu** | **Tech screen** — Applied RS, Health AI | Wearables / sequential / representation. Mood-periodicity paper with Shirley; thanked on TS-LLM paper. Interviewer **Tue 8/25**. | [feng-zhu-304069aa](https://www.linkedin.com/in/feng-zhu-304069aa) |
 
 ### Public LinkedIn — verify before outreach (peer / org signal)
 
@@ -51,8 +56,8 @@ Apple rarely labels **Health AIML** vs **Health AI** cleanly; prefer Tyler / HM 
 |--------|-------------|--------------|----------|
 | **Vincent Chan** | Eng Manager, Health AIML / Health AI | Posts hiring multimodal LLMs/VLMs / Applied RS | [vincentmchan](https://www.linkedin.com/in/vincentmchan) |
 | **Jaya Narain** | Senior Research Scientist, Health AI | Multimodal TS, health; coauthor with Shirley on several papers | [jaya-narain-5b6b0963](https://www.linkedin.com/in/jaya-narain-5b6b0963) |
-| **Feng Zhu** | Applied Research Scientist, Health AI | Wearables / sequential / representation learning | [feng-zhu-304069aa](https://www.linkedin.com/in/feng-zhu-304069aa) |
 | **Jens Behrmann** | Senior Research Scientist, Health AI | Foundational health ML; often Zurich-leaning | [jens-behrmann-3b4239151](https://www.linkedin.com/in/jens-behrmann-3b4239151) |
 | **Aditya Nair** | Senior MLE, Apple Health (Seattle) | Local org signal | [anair111](https://www.linkedin.com/in/anair111) |
+| **Raja Giryes** | TAU prof; Apple **RS on sabbatical** (Jul 2025–) | Public: **Apple AI Research** / **Vladlen Koltun**; ICASSP 2026 **speech** speculative decoding. **Not** Health AIML. Historical: Sapiro postdoc (Duke 2014–15) | [raja-giryes-0818935](https://www.linkedin.com/in/raja-giryes-0818935) |
 
-**Outreach:** Do **not** cold-email Shirley mid-loop unless Tyler suggests it. After HM screen, ask her or Tyler whom to meet next.
+**Outreach:** Do **not** email Shirley or Feng mid-loop. Tyler owns scheduling. **Kimmel → Sapiro:** scientific intro only — ask Ron *whether now vs after tech screen*; do not lobby Shirley. **Raja:** wrong org for this req. Detail: [`2026-08-21_sapiro-giryes-org.md`](2026-08-21_sapiro-giryes-org.md).

@@ -2,6 +2,8 @@
 
 **When:** 2026-08-20 (prep session for HM screen)  
 **Call:** Fri 2026-08-21, 11:05–11:50 AM PDT with **Shirley Ren** — fit, not a paper quiz  
+**PDFs (local):** [`papers/README.md`](papers/README.md) — RelCon, speech-FM, TS-LLM, Feng periodicity. Read to understand; **do not name-drop**.
+
 **Use:** understand the group so “why this team” is a choice. Do **not** name-drop papers unless she goes there.  
 **Spoken scripts / three HM topics:** [`2026-08-12_hm-screen-prep.md`](2026-08-12_hm-screen-prep.md)  
 **Why-Apple-Health drill (2026-08-20):** [`2026-08-20_why-apple-health-drill.md`](2026-08-20_why-apple-health-drill.md)  

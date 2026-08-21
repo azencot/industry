@@ -9,7 +9,7 @@
 | **HM** | **Shabnam Ghaffarzadegan** (CR/RHI1-NA) — Lead / Senior RS, audio + multimodal sensor FMs |
 | **HR on thread** | **Joy Galia Meyouhas** (Senior Recruitment Partner) · GS/HRS-PAC-NA |
 | **HM screen** | **Done 2026-08-13** (Shabnam + Joy). Debrief: [`2026-08-13_hm-screen-debrief.md`](2026-08-13_hm-screen-debrief.md). **Passed.** |
-| **Next (2026-08-20)** | **1h technical** — **25 min** conference talk + **20 min** previous-work Q&A + **15 min** coding discuss. Coding sent **after date confirm**. Confirm the calendar slot. Agenda: [`2026-08-20_technical-agenda.md`](2026-08-20_technical-agenda.md). Availability offered: Mon–Wed **2026-08-24–26**, 10:00 AM–3:00 PM PT. |
+| **Next** | **Thu 2026-08-27, 10:00–11:00 AM PT** — 1h technical: **25 min** talk + **20 min** previous-work Q&A + **15 min** coding discuss. Teams. Coding should arrive now. Agenda: [`2026-08-20_technical-agenda.md`](2026-08-20_technical-agenda.md). |
 | **Location** | Sunnyvale, CA — **hybrid**; **relocation required** (stated on the call; not rejected) |
 | **Comp (public, both reqs)** | Base **$165K–$195K** + corporate bonus + LTI (ask recruiter; not FAANG RSUs) |
 | **Talk (25 min Bosch / Sep 7 longer)** | Layout in [`talks/ts-vlm/`](../../../talks/ts-vlm/) — HTML deck; Bosch hard-stops at 25; Sep 7 extends the same spine |
@@ -26,6 +26,7 @@ JDs are nearly identical. On calls, use **Multimodal Foundational Models**. Do n
 | **2026-08-19** | **Joy: moving forward** | **One 1h technical** (presentation + take-home nested under it). [`2026-08-19_next-round-invite.md`](2026-08-19_next-round-invite.md). |
 | **2026-08-19** | **Availability sent** | Mon–Wed 8/24–26, 10am–3pm PT; Mon/Tue preferred. Offered for technical + presentation. |
 | **2026-08-20** | **Joy: technical agenda** | **25 + 20 + 15.** Coding after date confirm. Teams. [`2026-08-20_technical-agenda.md`](2026-08-20_technical-agenda.md). |
+| **2026-08-21** | **Rescheduled** | **Thu 2026-08-27, 10:00–11:00 AM PT.** No overlap with Apple Tue 8/25. |
 
 ## Role in one line
 
