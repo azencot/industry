@@ -75,7 +75,7 @@ Group facts if they go there (don’t volunteer papers): [`2026-08-20_shirley-gr
 | Skip | Why |
 |------|-----|
 | Full 5-interview on-site bank | Tyler: this screen is the next gate |
-| Coding campaign | Not briefed |
+| LeetCode / HF-stack tourism | Not briefed. Study code is **nanoGPT-scale** + a toy multimodal forward, then **speak** |
 | RelCon / Workout Buddy / Feng’s mood paper name-drop | HM didn’t go there; don’t start a paper quiz |
 | PI / “my students” / associate professor lead | Prior loop + this HM open |
 | “Images keep all information” | Contradicts your ablation |
@@ -83,18 +83,172 @@ Group facts if they go there (don’t volunteer papers): [`2026-08-20_shirley-gr
 
 ---
 
-## Until Tuesday
+## Practice plan — 3-day bootcamp (Fri night → Mon), Tue = retrieval
 
-Daily **45–75 min**, speak don’t only read:
+Tyler locked a **45 min spoken** screen: LLM training + multimodality fundamentals. **No pad.** Code is how you *learn* tensor shapes; you will not type in Webex.
 
-1. Training-run **2–3 min** + kill sentence (TR 26.9 → 21.9) out loud once.
-2. Encodings bakeoff **30–40s** including wearable transfer / missingness.
-3. **One** general SFT/NLL question from the two notes files.
-4. TSRBench healthcare pocket once.
+**Study object:** equations ↔ architecture ↔ training decision ↔ a small implementation. **Your VLM run is evidence**, mapped at the end of a block — not the textbook. Do **not** open ImagenFew / OpenTSLM / TSEXAMPP / Bosch / RelCon cover-to-cover / LeetCode.
 
-Stop when those four are clean. Do **not** start on-site interview 4–5.
+**Calendar (today is Fri 2026-08-21):**
 
-**Tue:** 15 min skim; join Webex **after 1:25 PM PDT** (no more than 10 min early). Fallback phone if Webex dies: **425-606-7471**.
+| When | ChatGPT day | Hours | Mix |
+|------|-------------|-------|-----|
+| **Fri night** | Day 1A — pipeline + attention | ~2 | **Pipeline locked** (tokenizer vs `E`, RoPE ≠ `M`, parallel CE, AdamW). Attn: \(Y=AV\) locked; **implement** [`code/day1_attention.py`](code/day1_attention.py) `FromMemory` if continuing. Debrief: [`../../notes/2026-08-21_llm-pipeline-attn-lockin.md`](../../notes/2026-08-21_llm-pipeline-attn-lockin.md) |
+| **Sat** | Day 1B — training mechanics + nanoGPT | ~4 | AdamW/amp/DDP + CE shift + speak |
+| **Sun** | Day 2 — multimodal | ~5 | three fusion families + toy `MultiModalLM` + wearables Q12 |
+| **Mon** | Day 3 — SFT + debug + mock | ~4 | `-100` labels, broken Attention, **12 questions aloud** |
+| **Tue AM** | retrieval only | 15 min | Q1, Q6, Q10, Q12; then stop |
+
+Skip: RLHF/DPO internals, obscure Transformer variants, scaling-law papers. SentencePiece = **2 min** of tradeoffs, not a tokenizer paper.
+
+SFT judgment notes (Day 3): [`../../notes/2026-08-20_llm-training-judgments.md`](../../notes/2026-08-20_llm-training-judgments.md) · [`../../notes/2026-08-21_sft-starting-pitfalls.md`](../../notes/2026-08-21_sft-starting-pitfalls.md)
+
+**Pass a block when:** you can name every tensor shape, say why the design exists, and name the failure if you drop it.
+
+---
+
+### Day 1 — LLM training end-to-end
+
+**Goal:** raw text → updated parameter, with shapes.
+
+#### 1A (Fri) — reconstruct the pipeline, no notes after the first pass
+
+```
+text → tokenizer (BPE) → input_ids [B, T]
+     → token emb + position (learned or RoPE on Q/K)
+     → N × (pre-norm → MHA → residual → pre-norm → SwiGLU FFN → residual)
+     → final RMSNorm → lm_head → logits [B, T, V]
+     → shift: predict token t+1 from t
+     → CE → backward → AdamW
+```
+
+Must be able to **say**, not recite a list: BPE vs char (compression vs messy splits); embeddings + **RoPE on Q/K** (not a 3rd add in modern LLMs); Q/K/V; **1/√d_k**; causal mask **M**; softmax; multi-head (several subspaces, concat, `W_O`); pre-norm vs post-norm (trainability); LayerNorm vs **RMSNorm** (no mean-center, scale only — LLaMA/Qwen); FFN vs **SwiGLU**; residuals; tied embeddings (lm_head = emb.T, optional); next-token CE.
+
+**Attention (derive on paper):**
+
+\[
+Q=XW_Q,\; K=XW_K,\; V=XW_V,\quad
+A=\mathrm{softmax}\!\left(\frac{QK^\top}{\sqrt{d_k}}+M\right),\quad Y=AV
+\]
+
+| Term | Why it exists |
+|------|----------------|
+| \(1/\sqrt{d_k}\) | Dot products grow like \(d_k\); without it softmax saturates, gradients die |
+| \(M\) (causal) | Upper triangle \(-\infty\) so token \(t\) cannot see \(>t\). **This is what makes it a LM**, not a bidirectional encoder |
+| softmax | Turns scores into a distribution over keys; one token can mix many |
+| heads | Each head is \(d_k=d/h\); concat → \(W_O\). Different heads specialize |
+| RoPE | Rotate Q/K by position so \(q_i^\top k_j\) depends on \(i-j\); relative, extrapolates better than learned abs pos |
+
+Memory: attention maps are \(\mathcal{O}(B H T^2)\) (or \(\mathcal{O}(BT^2)\) if you materialize). **Compute still \(\mathcal{O}(T^2 d)\)** even with FlashAttention (IO-aware tiling; does not change the asymptotic). Long context is expensive because of **T²**, not because of V.
+
+**Code (Fri + Sat):** [karpathy/nanoGPT `model.py`](https://github.com/karpathy/nanoGPT/blob/master/model.py) — `CausalSelfAttention` + `GPT.forward` loss. Local: [`code/day1_attention.py`](code/day1_attention.py). Trace:
+
+```
+input_ids [B,T] → wte → [B,T,C] → blocks → ln_f → lm_head → logits [B,T,V]
+loss = CE(logits[:, :-1], targets[:, 1:])   # or labels = ids[:, 1:], logits[:, :-1]
+```
+
+Implement `CausalSelfAttention.forward` from memory (QKV reshape, scale, causal mask, softmax, concat). Explain every shape. Close the file and redraw.
+
+#### 1B (Sat) — training mechanics (~2h) then speak (~30 min)
+
+Know **what it does to the update**, not the PyTorch flag list:
+
+| Knob | Interview sentence |
+|------|-------------------|
+| AdamW + weight decay | Decoupled decay on weights (not Adam’s L2-in-m). Bias/norm often no decay |
+| warmup + cosine | First steps would spike if LR is full; cosine → near-zero. Too high LR = loss spike / collapse |
+| grad accum | Fake larger batch: sum (or mean-consistent) grads over micro-steps, then step. Clip **after** accum |
+| grad clip | Global-norm cap; NaN/explode defense |
+| bf16 vs fp16 vs fp32 | bf16 = fp32 range, less precision; no loss-scale. fp16 needs **loss scaling**. fp32 wasteful. Qwen-class expects **bf16** |
+| batch vs T | Memory ~ activations; T² attention. Tokens/step = B × T × world |
+| pad vs pack | Pad = mask pads in attn + labels `-100`. Pack = concat docs; **block the boundary** or doc B is in doc A’s loss. Files ≠ tokens |
+| DDP / FSDP / ZeRO | DDP = replica + allreduce grads. FSDP/ZeRO = shard params/grads/opt. 7B doesn’t fit → bf16 + LoRA / checkpointing / shard / smaller T |
+| ckpt vs grad ckpt | Save weights vs recompute activations in backward (save memory, extra compute) |
+| FlashAttention | Same math, better HBM traffic; still T² compute |
+
+**Sat speak (timer, no notes):** Why causal mask? Why bf16? LR too high? Why warmup? 7B doesn’t fit one GPU? Train ↓ val ↑ — what do you look at?
+
+---
+
+### Day 2 (Sun) — multimodality
+
+Largest fraction of prep. Canonical drawing:
+
+```
+signal/image → modality encoder → projector → modality tokens ─┐
+text → tokenizer → embeddings ─────────────────────────────────┴→ LLM → out
+```
+
+**Three families:**
+
+1. **Encoder + projector + concat (LLaVA).** \(z_v\in\mathbb{R}^{d_v}\mapsto Wz_v\in\mathbb{R}^{d_{\mathrm{LLM}}}\), scatter/concat into the LM sequence. Projector exists because **dims and spaces differ**. Frozen encoder + train projector = Stage 1; then LM LoRA = Stage 2.
+2. **Cross-attention (Flamingo).** \(Q=X_{\text{text}}W_Q\), \(K,V=X_{\text{mod}}W_{K,V}\). Text length stays T; cost \(\mathcal{O}(T\cdot T_{\text{mod}})\) per layer instead of \(\mathcal{O}((T+T_{\text{mod}})^2)\). Better when the second stream is long or you want a **bottleneck**. Worse: extra params, modality can be ignored if gates collapse.
+3. **Unified tokens.** Patch/quantize the signal so it is the same Transformer. Honest if you have the data; you **train the encoder**.
+
+**Training strategies to speak:** frozen vs joint encoder; frozen LLM; LoRA; staged align → instruct; **CLIP contrastive** \(s_{ij}=z_i^{\text{img}}\cdot z_j^{\text{txt}}/\tau\) + in-batch negatives (alignment, **no decoder**); SFT on chats; modality imbalance; missing modalities; paired vs unpaired.
+
+**Code:** [`code/day2_multimodal.py`](code/day2_multimodal.py) (write Sun). Interrogate: shapes; where RoPE/positions go; attn mask; do image tokens attend to future text?; **labels after inserting vision tokens** (vision positions `-100`); multi-image; freeze encoder; LoRA LLM; where grad flows.
+
+**Apple translation (do not skip):** PPG/ECG/IMU/sleep/text, **asynchronous, irregular, missing**. Concat vs cross-attn vs native TS encoder — bake off under **one eval gate**. Do **not** reprint matplotlib on PPG. This is Q12.
+
+CLIP math: [transformers `clip_loss`](https://github.com/huggingface/transformers/blob/v4.51.3/src/transformers/models/clip/modeling_clip.py). Concat scatter: [LLaVA `modeling_llava.py`](https://github.com/huggingface/transformers/blob/main/src/transformers/models/llava/modeling_llava.py). Skim Feng PDF abstract only if Q12 is already clean.
+
+---
+
+### Day 3 (Mon) — SFT + debug + mock
+
+**Stack:** pretrain → (domain CPT) → instruction SFT → (preference) → deploy/eval. **Do not** jump to RL.
+
+Chat → loss: template (Qwen ChatML) then `labels = -100` on user/system, values on assistant (+ EOS). Why: otherwise the **question owns CE**.
+
+Review: LoRA/QLoRA; forgetting; mix/replay; contamination; “loss fine, decode garbage” → **diff train tokens vs inference template** (BOS/EOS, thinking, padding, masking, tokenizer, LR, `do_sample`).
+
+**Debug (~1h):** broken Attention (no scale, no causal, not multi-head); wrong pad mask; SFT labels; off-by-one CE; detached vision; accidentally frozen; NaNs; train/eval mismatch. [`code/day3_broken_attention.py`](code/day3_broken_attention.py) (write Mon).
+
+**Mock 2–3h, no notes — 12 questions:**
+
+1. Transformer LLM from raw text.
+2. Derive scaled dot-product; each term.
+3. Why RoPE and RMSNorm.
+4. 8B, not enough GPU memory.
+5. Pretrain vs SFT.
+6. Add images to a pretrained LM.
+7. Concat tokens vs cross-attention.
+8. Align two independently pretrained modalities.
+9. Text gets better, second modality ignored. Why.
+10. Continuous sensor into an LLM.
+11. Multimodal loss NaN — debug.
+12. ECG, PPG, IMU, sleep, text; **most examples are a subset**. Training strategy. **Spend real time.** Missingness + mix + health.
+
+Your run (kill, gates, 0.62→0.90) is **one example inside Q1/Q5**, not a separate lecture. Pockets (TSRBench, why-Apple) only if pulled.
+
+**Questions to ask him (pick 2):** (1) first 3-month gate — bakeoff vs harness vs language prototype? (2) what wearable failure kills a model if a public bench moved?
+
+### Tue morning — 15 min, then stop
+
+Say Q1 spine, Q6 concat, Q10 sensor, Q12 missingness. Join Webex **after 1:25 PM PDT**. Fallback: **425-606-7471**.
+
+---
+
+## Local code (study, not the screen)
+
+| File | Day |
+|------|-----|
+| [`code/day1_attention.py`](code/day1_attention.py) | 1 — causal MHA + CE shift |
+| [`code/day2_multimodal.py`](code/day2_multimodal.py) | 2 — projector concat (Sun) |
+| [`code/day3_broken_attention.py`](code/day3_broken_attention.py) | 3 — find the bugs (Mon) |
+
+External: [nanoGPT `model.py`](https://github.com/karpathy/nanoGPT/blob/master/model.py) (read Sat, don’t vendor HF).
+
+---
+
+## How to practice (method)
+
+- Close the notes and **speak**. If you cannot say the shape, you did not finish.
+- Code until you can **interrogate** it (mask, labels, freeze). Then stop coding.
+- Map your numbers **last**.
+- Timed drills with me: I play Feng on the 12 questions. Day 2–3. Tonight is 1A, not a mock.
 
 ---
 

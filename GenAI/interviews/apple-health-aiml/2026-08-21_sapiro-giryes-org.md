@@ -26,21 +26,20 @@ Shared coauthor **Gregory Darnell** sits on both the HR paper and **RelCon** (wi
 
 ---
 
-## Ron Kimmel → Sapiro
+## Ron Kimmel → Sapiro (and to you)
 
-Real, old, high-status scientific relationship — **not** an Apple org edge.
+**Ron → Guillermo:** real, old, high-status science — geodesic active contours / minimal surfaces (Caselles, Kimmel, Sapiro); Helmholtz Test-of-Time (ICCV) for the 1995 paper. Not an Apple reporting edge.
 
-- Joint work from the 1990s: geodesic active contours / minimal surfaces (Caselles, Kimmel, Sapiro). Helmholtz **Test-of-Time** (ICCV) for the 1995 geodesic-active-contours paper.
-- Scholar still lists Kimmel among Sapiro’s close coauthors.
-- Kimmel: Technion CS (Montreal Chair). Sapiro: Princeton + Apple DE.
+**Ron → you (locked 2026-08-21):** not a weak ask. He was on your **PhD committee**, followed the work after, and was a **promotion letter writer**. He thinks highly of you. That is a legitimate academic referral, not a cold LinkedIn intro.
 
-Asking Ron for a **scientific intro to Guillermo** is plausible **if you already have a real relationship with Ron**. It is **not** a backchannel to Shirley’s hiring committee unless Guillermo chooses to mention you.
+**What to do:** **Write Ron this weekend.** Consult him; do not instruct him to lobby Shirley. If he is willing to note you to **Guillermo**, that is the right target (DE, Health AI overlap). Guillermo may or may not sit on this req — a scientific note from Ron still helps if Sapiro is later on a panel or a skip-level reader.
 
-**Timing (this week):** you just passed her HM; Tyler is booking the tech screen. A “please help Omri get Shirley’s job” note to Sapiro can look like going **over the HM’s head**. Safer:
+**Timing:** HM is already passed. A senior scientific note *after* a positive HM is a normal academic-to-industry move. Do **not** wait for an offer. Send Ron now; let him choose whether to write Guillermo **now** or **after Tue 8/25**.
 
-1. Ask Ron *whether* a low-key scientific hello to Guillermo is useful **now**, vs after the tech screen / if Guillermo might interview.
-2. If Ron writes, the ask should be **scientific interest in Health AI**, not “lobby Shirley.”
-3. Do **not** have Ron email Shirley.
+**Hard rules:**
+1. Ron emails **Guillermo** (or advises you to wait) — **not Shirley**, not Feng, not Tyler.
+2. The note is “I have known Omri’s science since his PhD; he is interviewing with Health AIML” — **not** “please hire him onto Shirley’s req.”
+3. Do **not** name-drop Ron or Guillermo on Tuesday with Feng.
 
 ---
 
@@ -63,7 +62,7 @@ Do **not** ask Raja to ping Shirley for this loop. Optional only if you already 
 
 | Do | Don’t |
 |----|--------|
-| Reply to **Tyler** with tech-screen availability | Email Shirley |
-| If Ron is close: ask *whether* to intro Guillermo, scientific not lobbying | “Ron, please tell Shirley to hire me” |
-| Treat Sapiro as possible **on-site / skip-level interviewer** later | Name-drop Sapiro or Kimmel on the tech screen |
+| **Email Ron this weekend** (PhD committee / promotion letter — real) | Email Shirley or Feng |
+| Ask Ron to consider a note to **Guillermo**, scientific not lobbying | “Please tell Shirley to hire me” |
+| Let Ron choose now vs after Tue 8/25 | Name-drop Ron or Sapiro on the tech screen |
 | Keep Raja as AI-Research/speech context | Treat Raja as Health AIML access |
