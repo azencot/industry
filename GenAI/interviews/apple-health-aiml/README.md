@@ -16,7 +16,8 @@
 | Date | What | Notes |
 |------|------|-------|
 | **2026-08-12** | Recruiter phone (~**10 min**) — **Tyler** | Cleared soft gate. Full loop briefed. Debrief: [`2026-08-12_recruiter-debrief.md`](2026-08-12_recruiter-debrief.md) |
-| **2026-08-21** | **HM screen — Shirley Ren** | **Fri 11:05–11:50 AM PDT**, Webex. **Fit**. Prep: [`2026-08-12_hm-screen-prep.md`](2026-08-12_hm-screen-prep.md) · training-run detail: [`2026-08-12_hm-3c-training-run.md`](2026-08-12_hm-3c-training-run.md) |
+| **2026-08-20** | Group briefing + why-Apple-Health drill | Briefing: [`2026-08-20_shirley-group-briefing.md`](2026-08-20_shirley-group-briefing.md) · drill: [`2026-08-20_why-apple-health-drill.md`](2026-08-20_why-apple-health-drill.md) — locked 50s; never “company doesn’t matter” |
+| **2026-08-21** | **HM screen — Shirley Ren** | **Fri 11:05–11:50 AM PDT**, Webex. **Fit**. Prep: [`2026-08-12_hm-screen-prep.md`](2026-08-12_hm-screen-prep.md) · group briefing: [`2026-08-20_shirley-group-briefing.md`](2026-08-20_shirley-group-briefing.md) · training-run: [`2026-08-12_hm-3c-training-run.md`](2026-08-12_hm-3c-training-run.md) |
 
 ## Loop (from Tyler)
 

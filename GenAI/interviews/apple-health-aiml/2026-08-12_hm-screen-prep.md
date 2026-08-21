@@ -9,7 +9,7 @@
 
 **Independent check (2026-08-12):** an Apple scientist said the HM chat is **mostly fit**, not a coding exercise. Matches Tyler. Prep **only** the three topics.
 
-**Her public signal (use carefully — don’t name-drop papers unless natural):** sensor foundation models, LLMs for health/fitness, shipped fitness/health features; research adjacent to **time-series reasoning with LLMs**, multimodal sensor fusion, wearable motion FMs. Your multimodal + TS story is on-theme.
+**Her public signal (use carefully — don’t name-drop papers unless natural):** sensor foundation models, LLMs for health/fitness; research adjacent to **time-series reasoning with LLMs**, multimodal sensor fusion, wearable motion FMs. Group briefing (papers, sensors, shipped-work attribution): [`2026-08-20_shirley-group-briefing.md`](2026-08-20_shirley-group-briefing.md). Your multimodal + TS story is on-theme. **Workout Buddy** is a LinkedIn shipped claim, not a paper with her name — do not name-drop it.
 
 **Your goal:** She leaves thinking: *genuinely wants health AI at Apple, can own multimodal LLM training end-to-end, IC depth not lab-PI, worth advancing to tech screen.*
 
@@ -106,7 +106,7 @@ Also rehearse the **curriculum in 30s:** Stage A = see the series (vision/alignm
 
 ### Sat Aug 15 — sharpen topic 1 without a JD rewrite (~45 min)
 
-Stay on **topic 1** (interest in health AI), but the answer is **TS representations for LLMs**; health is downstream. Read **abstracts only** so you can say “same problem class,” not “I became a health person.” Do **not** open with “I read your paper.”
+Stay on **topic 1** (interest in health AI), but the answer is **TS representations for LLMs**; health is downstream. Source of truth for group papers / sensors / attribution: [`2026-08-20_shirley-group-briefing.md`](2026-08-20_shirley-group-briefing.md). Read **abstracts only** so you can say “same problem class,” not “I became a health person.” Do **not** open with “I read your paper.”
 
 | Piece | Why it maps to you | Your bridge if it comes up |
 |-------|--------------------|----------------------------|
@@ -275,7 +275,12 @@ It’s a **disambiguation** question: tourist vs someone who picked *this* resea
 **If she probes “so you just want a well-resourced lab?”**  
 > Resourcing isn’t the discriminator. The discriminator is where the signals are and what the eval is allowed to be. That’s Apple Health AIML for this problem; it wouldn’t be a generic FM lab.
 
-**Avoid:** Watch internals; IP fishing; “I love Apple products”; a second JD-shaped health pitch; excitement as the lead.
+**If she probes “why Apple Health vs Google Health?”** (drill 2026-08-20: do **not** say the company doesn’t matter)  
+> I won’t pretend the core question is unique to Apple. Representing wearable series so a model can use them is the same class of problem there or here. What I’m choosing is the setting: the series already live on the device, this team looks like the foundational representation layer rather than a health chatbot, and privacy / on-device change how you build that representation. I’m in Seattle; this seat is that problem — not the logo.
+
+**Avoid:** Watch internals; IP fishing; “I love Apple products”; a second JD-shaped health pitch; excitement as the lead; **impact at scale / millions of users / safe-AI slogans** (generic); “I’m an academic, the company doesn’t matter.”
+
+**Locked ~50s combining health AI + Apple** (after 2026-08-20 drill): [`2026-08-20_why-apple-health-drill.md`](2026-08-20_why-apple-health-drill.md).
 
 ### C. Most impactful LLM training run (core of the call)
 
@@ -391,6 +396,9 @@ Comp: only if she raises it — factors already named by Tyler (experience, inte
 | Generic Apple fan pitch | Devices + foundational TS/multimodal layer, not gadgets |
 | Forecasting-company story as lead | Forecasting is one use of a series; lead with TS → LLM representations |
 | Dumping paper list | One training-run narrative + offer depth |
+| Impact at scale / millions of users / “safe AI” as the lead | Device-resident series; privacy as a **representation** constraint |
+| “The company doesn’t matter” | Question same; **setting** different; this seat in Seattle |
+| Passion / “work you are doing” / reprinting the VLM | Year one: *their* series, *their* eval, ablate encoder families |
 
 ---
 
