@@ -401,6 +401,7 @@ Comp: only if she raises it — factors already named by Tyler (experience, inte
 | Passion / “work you are doing” / reprinting the VLM | Year one: *their* series, *their* eval, ablate encoder families |
 | “Leading a project” / name-dropping her workshop paper | One **run**: numbers + kill; two-stage only if **she** goes there |
 | “Images keep all information” / “TS encoders aren’t mature” | One view loses information; compare encoder families; don’t port matplotlib |
+| “RelCon is too small / they need a billion-param IMU FM” | ~4M is on-device perception. LLM hire is the **language** layer |
 
 ---
 

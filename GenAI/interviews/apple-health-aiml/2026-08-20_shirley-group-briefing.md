@@ -39,6 +39,7 @@ Close collaborators on papers: **Jaya Narain**, **Maxwell Xu**, **Haraldur Hallg
 
 | Term | What | How measured | Typical use |
 |------|------|--------------|-------------|
+| **IMU** | Inertial measurement unit — motion chip | Accel + gyro (sometimes magnetometer) | Device motion/rotation. RelCon uses the **accel** stream of the Watch IMU |
 | **Accel** | Accelerometry — 3-axis acceleration of the device, usually in *g* | MEMS accelerometer in Watch (or other IMUs). Often ~25–100 Hz. **25 Hz = 25 samples/s** → 10 s window = 250 samples/axis | Motion motifs: walk / run / swim / sit. RelCon is trained on this. Cheap, always-on |
 | **HR** | Heart rate (bpm). Usually a **derived** series, not the raw waveform | Computed from PPG (Watch back, or AirPods in-ear). One number every few seconds; sometimes HRV | Effort / Training Load; Workout Buddy language |
 | **PPG** | Photoplethysmography — **raw optical pulse waveform** behind HR | LEDs into skin; photodiode measures reflected light. Blood volume pulses with each beat | HR, HRV, rhythm morphology. High-fidelity, **power-hungry** |
@@ -49,7 +50,9 @@ Close collaborators on papers: **Jaya Narain**, **Maxwell Xu**, **Haraldur Hallg
 
 **Gait regression:** gait = how you walk. Regression = predict a **number**, not a class. HAR says `walking` vs `running`. Gait regression says stride velocity **1.32 m/s** or **double support time** (fraction of stride with both feet on the ground — rises when walking is cautious). RelCon’s claim is a frozen motion FM that transfers to **both** activity classification and gait numbers — walking mechanics, not only activity ID. Apple Health already surfaces related walking metrics (speed, double support, asymmetry).
 
-If she says PPG or accel, she means **these device series**, not a UCR line chart. Dual visual encodings would not drop in. Transferable idea: which representation preserves the structure that matters (motifs in accel, pulse morphology in PPG, slower trends in HR).
+**Longitudinal:** same **users over time** (personal baselines, missing days, slow trends) — not a one-off public clip. That is the setting contrast vs UCR / TSExam.
+
+If she says PPG, IMU, or accel, she means **these device series**, not a UCR line chart. Dual visual encodings would not drop in. Transferable idea: which representation preserves the structure that matters (motifs in accel, pulse morphology in PPG, slower trends in HR).
 
 ---
 
@@ -62,8 +65,10 @@ If she says PPG or accel, she means **these device series**, not a UCR line char
 - Wearable accel labels are scarce; an HAR-only model does not transfer to gait metrics.
 - Time series as **motifs** (arm-swing of walking repeats). Learnable distance for motif similarity + **rotation invariance** (watch upside-down, loose strap).
 - **Relative** contrastive loss: walking closer to running than to yoga — not hard yes/no pairs (vs SimCLR augmentations / REBAR hard positives).
-- Scale: **1 billion segments**, **87,376** participants.
+- Scale: **1 billion segments**, **87,376** participants — that is **data**, not weights.
+- Encoder: 1D **ResNet-34**, **~3.9M parameters**, 256-d embedding (2.56 s of 100 Hz 3-axis accel). Small **on purpose** (always-on IMU). Do not analogize to 7B/27B.
 - Frozen backbone + small head on distinct tasks: HAR **and** gait regression.
+- **REBAR** (Xu et al., ICLR 2024) is a **contrastive recipe** for picking positives, not an Apple billion-param FM. RelCon cites it as a pair-construction baseline.
 
 ### Speech FMs on wearables
 
@@ -147,6 +152,8 @@ What the feature is (public): spoken personalized motivation from workout data +
 
 **Why Apple (not a fan letter):** the series already live on the device; Health AIML is building the foundational TS / multimodal layer, not a chatbot wrapper; privacy / on-device are constraints on the *representation*. 9B/27B were iteration scale, not an on-Watch proposal.
 
+**Why hire LLM training if RelCon is ~4M:** different **layer**. RelCon-class = compact always-on perception. This seat = representation → **language** (their TS encoder → Mistral-7B; speech-FM probes; fitness-LLM features under PCC). Do not walk in arguing they need a billion-param IMU encoder.
+
 ### Anti-patterns
 
 | Don’t | Why |
@@ -154,7 +161,8 @@ What the feature is (public): spoken personalized motivation from workout data +
 | “I love Workout Buddy / I have an Apple Watch” | Tourist |
 | “I’d port matplotlib onto PPG” | Didn’t hear the sensor |
 | “I’m a health-ML person now” | You aren’t |
-| Reciting RelCon’s 1B segments | Paper quiz; this is fit |
+| Reciting RelCon’s 1B segments or **3.9M** | Paper quiz; this is fit. 1B = data; ~4M = weights. Don’t volunteer |
+| “RelCon is too small; you need a billion-param FM” | IMU encoder is small on purpose. LLM hire is the **language** layer |
 | 27B on-device | Product uses iPhone + PCC |
 | Forecasting as the lead | They moved past forecast-only TS-LLMs |
 | Attributing Workout Buddy as *her paper* | LinkedIn shipped claim, not authorship |
