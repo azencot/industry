@@ -60,7 +60,9 @@ Group facts if they go there (don’t volunteer papers): [`2026-08-20_shirley-gr
 
 **TSRBench ≠ finance.** 4,125 / 15 tasks / 14 domains. Healthcare is in it (**ECG-QA**, **PTB-XL** on decision-making). Also industrial / river sensors / weather / energy. Honest: public ECG ≠ Watch PPG/IMU.
 
-**Product:** still **no consumer ship**. Bosch irregular/noisy → generative adaptation (**ImagenFew** / irregular sampling), not a Watch feature.
+**Product:** still **no consumer ship**. Bosch irregular/noisy → generative adaptation (**ImagenFew** / irregular sampling), not a Watch feature. **Guillermo (private — do not cite):** team is applied ML with a **~1 year product** target. If Feng asks research vs product:
+
+> Research toward a defined product target — advanced ML that has to land in about a year, not an open-ended FM lab. I pick a representation, gate it, kill what doesn’t transfer. I have not shipped a Watch feature; the industry pressure I have felt is messy data changing the model.
 
 **Why this seat (only if asked):** locked 50s in [`2026-08-20_why-apple-health-drill.md`](2026-08-20_why-apple-health-drill.md). **Never** “impact at scale.”
 

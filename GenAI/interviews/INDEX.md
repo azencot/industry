@@ -4,7 +4,7 @@ Exploratory and formal conversations with generative-AI employers. Separate from
 
 | Company | Contact | Next | Prep |
 |---------|---------|------|------|
-| **Apple — Health AIML** | **Feng Zhu** (tech screen) · Shirley Ren (HM) · Tyler · **Sapiro follow-up sent** | **Tue 2026-08-25, 1:35–2:20 PM PDT** Webex. Day 1A+1B locked; **Day 2 = multimodal**. CoderPad = ignore. Do not chase Guillermo. | [`apple-health-aiml/`](apple-health-aiml/) — [Sapiro sent](apple-health-aiml/2026-08-22_kimmel-sapiro-outreach.md) · [prep](apple-health-aiml/2026-08-21_tech-screen-prep.md) · [Day 1B](../notes/2026-08-22_llm-training-mechanics-lockin.md) · [HM debrief](apple-health-aiml/2026-08-21_hm-screen-debrief.md) |
+| **Apple — Health AIML** | **Feng Zhu** (tech screen) · Shirley Ren (HM) · Tyler · **Sapiro replied** | **Tue 2026-08-25, 1:35–2:20 PM PDT** Webex. Day 1A+1B locked; **Day 2 = multimodal**. CoderPad = ignore. No third email to Guillermo. | [`apple-health-aiml/`](apple-health-aiml/) — [Sapiro replied](apple-health-aiml/2026-08-22_kimmel-sapiro-outreach.md) · [prep](apple-health-aiml/2026-08-21_tech-screen-prep.md) · [Day 1B](../notes/2026-08-22_llm-training-mechanics-lockin.md) · [HM debrief](apple-health-aiml/2026-08-21_hm-screen-debrief.md) |
 | **Bosch RTC-NA — multimodal FM** | **Shabnam Ghaffarzadegan** (HM) · **Joy Galia Meyouhas** (recruiter) | **Thu 2026-08-27, 10:00–11:00 AM PT** — 25 talk + 20 Q&A + 15 coding discuss (Teams) | [`bosch-rtc-tsfm/`](bosch-rtc-tsfm/) — [agenda](bosch-rtc-tsfm/2026-08-20_technical-agenda.md) · [HM debrief](bosch-rtc-tsfm/2026-08-13_hm-screen-debrief.md) |
 
 After each call: drop prep/debrief in that company’s folder (`YYYY-MM-DD_*.md`) and add a row to [`../INDEX.md`](../INDEX.md) session log.

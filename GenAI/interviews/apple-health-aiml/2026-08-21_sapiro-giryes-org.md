@@ -20,7 +20,9 @@
 | NeurIPS 2022 Apple list | Same HR workshop paper with the same author set. |
 | ICLR 2025 [Do LLMs “know” internally…](https://proceedings.iclr.cc/paper_files/paper/2025/file/ca6980a3dba7fb3e4e66925656dba68b-Paper-Conference.pdf) (Heo et al.; **Shirley Ren**, Miller, Narain, …) | Internship at **Apple AIML**. Acknowledgements: thanks **Guillermo Sapiro** for “unwavering support and guidance.” Sponsor/senior-scientist signal, not a byline. |
 
-**Honest read:** they work in the **same Health AI / Health & Fitness cluster**. Sapiro is **more senior** (Distinguished Engineer; “leads Health AI”). Shirley is the **line manager** for this req. Public sources do **not** prove he is her skip-level manager vs a scientific Distinguished Engineer who co-supervises papers with her group. Do not tell interviewers “Sapiro is Shirley’s boss.”
+**Private lock (Guillermo email, 2026-08-22 — do not quote on loop):** Shirley and her team **used to report to him**; he **switched teams after a reorganization**. That **confirms** a former manager / skip line. He is **not** her current manager. Do **not** tell interviewers “Sapiro is / was Shirley’s boss.”
+
+**Public-only read (still true for anyone who hasn’t seen the email):** they work in the **same Health AI / Health & Fitness cluster**. Sapiro is **more senior** (Distinguished Engineer; “leads Health AI”). Shirley is the **line manager** for this req. Public papers still do not prove a current report line.
 
 Shared coauthor **Gregory Darnell** sits on both the HR paper and **RelCon** (with Shirley) — one more edge in that cluster.
 
@@ -32,9 +34,9 @@ Shared coauthor **Gregory Darnell** sits on both the HR paper and **RelCon** (wi
 
 **Ron → you (locked 2026-08-21):** not a weak ask. He was on your **PhD committee**, followed the work after, and was a **promotion letter writer**. He thinks highly of you. That is a legitimate academic referral, not a cold LinkedIn intro.
 
-**What happened (2026-08-22):** Ron mailed `guillermo.sapiro@gmail.com` (“dear friend and colleague”; contact anytime). **Omri sent the follow-up the same day** — sent text in [`2026-08-22_kimmel-sapiro-outreach.md`](2026-08-22_kimmel-sapiro-outreach.md). Guillermo may or may not sit on this req.
+**What happened (2026-08-22):** Ron mailed `guillermo.sapiro@gmail.com`. Omri follow-up sent. **Guillermo replied the same day** — former report line + product/~1-year applied-ML texture. Omri asked one research-vs-product clarification. Full thread: [`2026-08-22_kimmel-sapiro-outreach.md`](2026-08-22_kimmel-sapiro-outreach.md). He is **not** currently on this req as Shirley’s manager.
 
-**What to do now:** wait. Do not chase before Tue 8/25. If he offers a call: science + group texture, not “please ping Shirley.”
+**What to do now:** wait for that one clarification if it comes. **No third email.** If a call happens later: science + group texture, not “please ping Shirley.”
 
 **Hard rules:**
 1. You / Ron → **Guillermo only** — **not Shirley**, not Feng, not Tyler.
@@ -62,7 +64,6 @@ Do **not** ask Raja to ping Shirley for this loop. Optional only if you already 
 
 | Do | Don’t |
 |----|--------|
-| **Wait** — follow-up already sent ([`2026-08-22_kimmel-sapiro-outreach.md`](2026-08-22_kimmel-sapiro-outreach.md)) | Email Shirley or Feng; chase Guillermo before Tue |
-| Keep it scientific; you are in process, not asking him to intervene | “Please tell Shirley to hire me” |
-| One note; do not chase before Tue 8/25 | Name-drop Ron or Sapiro on the tech screen |
-| Keep Raja as AI-Research/speech context | Treat Raja as Health AIML access |
+| **Stop** — he replied; one clarification already sent ([`2026-08-22_kimmel-sapiro-outreach.md`](2026-08-22_kimmel-sapiro-outreach.md)) | Third email; email Shirley or Feng |
+| Use his texture privately: applied ML, ~1 year product target | Quote him, or say “I heard this from a DE” |
+| Keep Raja as AI-Research/speech context | Name-drop Ron or Sapiro on the tech screen |
