@@ -94,7 +94,7 @@ Tyler locked a **45 min spoken** screen: LLM training + multimodality fundamenta
 | When | ChatGPT day | Hours | Mix |
 |------|-------------|-------|-----|
 | **Fri night** | Day 1A — pipeline + attention | ~2 | **Pipeline locked** (tokenizer vs `E`, RoPE ≠ `M`, parallel CE, AdamW). Attn: \(Y=AV\) locked; **implement** [`code/day1_attention.py`](code/day1_attention.py) `FromMemory` if continuing. Debrief: [`../../notes/2026-08-21_llm-pipeline-attn-lockin.md`](../../notes/2026-08-21_llm-pipeline-attn-lockin.md) |
-| **Sat** | Day 1B — training mechanics + nanoGPT | ~4 | AdamW/amp/DDP + CE shift + speak |
+| **Sat** | Day 1B — training mechanics + nanoGPT | ~4 | **Mostly locked** — \(\eta\) vs \(\lambda\); \(m\)/\(v\); fp16 scale; pack `-100`. Re-say \(\beta_1,\beta_2\) + 7B order if needed. Debrief: [`../../notes/2026-08-22_llm-training-mechanics-lockin.md`](../../notes/2026-08-22_llm-training-mechanics-lockin.md) |
 | **Sun** | Day 2 — multimodal | ~5 | three fusion families + toy `MultiModalLM` + wearables Q12 |
 | **Mon** | Day 3 — SFT + debug + mock | ~4 | `-100` labels, broken Attention, **12 questions aloud** |
 | **Tue AM** | retrieval only | 15 min | Q1, Q6, Q10, Q12; then stop |
