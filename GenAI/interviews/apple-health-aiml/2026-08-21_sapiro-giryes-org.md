@@ -32,13 +32,13 @@ Shared coauthor **Gregory Darnell** sits on both the HR paper and **RelCon** (wi
 
 **Ron → you (locked 2026-08-21):** not a weak ask. He was on your **PhD committee**, followed the work after, and was a **promotion letter writer**. He thinks highly of you. That is a legitimate academic referral, not a cold LinkedIn intro.
 
-**What to do:** **Write Ron this weekend.** Consult him; do not instruct him to lobby Shirley. If he is willing to note you to **Guillermo**, that is the right target (DE, Health AI overlap). Guillermo may or may not sit on this req — a scientific note from Ron still helps if Sapiro is later on a panel or a skip-level reader.
+**What happened (2026-08-22):** Ron mailed `guillermo.sapiro@gmail.com` (“dear friend and colleague”; contact anytime). **Omri sent the follow-up the same day** — sent text in [`2026-08-22_kimmel-sapiro-outreach.md`](2026-08-22_kimmel-sapiro-outreach.md). Guillermo may or may not sit on this req.
 
-**Timing:** HM is already passed. A senior scientific note *after* a positive HM is a normal academic-to-industry move. Do **not** wait for an offer. Send Ron now; let him choose whether to write Guillermo **now** or **after Tue 8/25**.
+**What to do now:** wait. Do not chase before Tue 8/25. If he offers a call: science + group texture, not “please ping Shirley.”
 
 **Hard rules:**
-1. Ron emails **Guillermo** (or advises you to wait) — **not Shirley**, not Feng, not Tyler.
-2. The note is “I have known Omri’s science since his PhD; he is interviewing with Health AIML” — **not** “please hire him onto Shirley’s req.”
+1. You / Ron → **Guillermo only** — **not Shirley**, not Feng, not Tyler.
+2. The note is “Ron introduced us; I am in process with Health AIML” — **not** “please hire me onto Shirley’s req.”
 3. Do **not** name-drop Ron or Guillermo on Tuesday with Feng.
 
 ---
@@ -62,7 +62,7 @@ Do **not** ask Raja to ping Shirley for this loop. Optional only if you already 
 
 | Do | Don’t |
 |----|--------|
-| **Email Ron this weekend** (PhD committee / promotion letter — real) | Email Shirley or Feng |
-| Ask Ron to consider a note to **Guillermo**, scientific not lobbying | “Please tell Shirley to hire me” |
-| Let Ron choose now vs after Tue 8/25 | Name-drop Ron or Sapiro on the tech screen |
+| **Wait** — follow-up already sent ([`2026-08-22_kimmel-sapiro-outreach.md`](2026-08-22_kimmel-sapiro-outreach.md)) | Email Shirley or Feng; chase Guillermo before Tue |
+| Keep it scientific; you are in process, not asking him to intervene | “Please tell Shirley to hire me” |
+| One note; do not chase before Tue 8/25 | Name-drop Ron or Sapiro on the tech screen |
 | Keep Raja as AI-Research/speech context | Treat Raja as Health AIML access |
