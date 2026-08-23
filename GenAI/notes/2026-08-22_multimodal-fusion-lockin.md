@@ -17,7 +17,7 @@
 | Xattn (Flamingo) | Text is Q, modality is K/V. Length stays \(T\). Cost \(\mathcal{O}(T\cdot T_{\mathrm{mod}})\). **Resample** to fixed latents = bottleneck. Gated: \(\gamma\sim 0\) → modality unused. |
 | Unified | Same Transformer sees patched/quantized signal. You **train** that encoder. Vocab expansion is plumbing, not the fusion site. Native TS encoder + projector + concat into Mistral = **family 1 with an honest encoder**. |
 | Causal + labels | Early vision does **not** see later text; later text **does** see vision. Loss on **answer** tokens only. Vision (and usually prompt) = `-100`. |
-| Forget `-100` | Distinctive leak is \(\mathrm{vis}_i\rightarrow\mathrm{vis}_{i+1}\) (or repeated `<image>` id), not last-vis→first-text. That bridge remains when vision *labels* are `-100`. |
+| Forget `-100` | Distinctive **CE** leak is \(\mathrm{vis}_i\rightarrow\mathrm{vis}_{i+1}\) (or repeated `<image>` id). Causal already stops last-vis from attending forward. After `-100`, **first-text still attends to last-vis**. |
 | When xattn | Long \(T_{\mathrm{mod}}\) (video / hours of IMU/PPG) or you want a latent bottleneck. |
 | When concat | Small \(T_{\mathrm{mod}}\) (chart ~114 + delay 64), reuse the pretrained LM. **Your stack.** |
 
@@ -28,7 +28,7 @@
 - Projector: do not stop at “dims don’t match.” Equal width still needs a learned basis.
 - Unified ≠ “fusion at the dictionary.”
 - Concat family failure is \(T_{\mathrm{mod}}\) / \(T^2\) (or ignore patches) — **not** the `-100` label bug (that is any insert-token recipe).
-- `-100` on vision does **not** remove last-vis→first-text.
+- `-100` on vision does **not** stop first-text from attending to last-vis. Last-vis attending forward is causal, not labels.
 - Do **not** pick concat “because it stops a text shortcut.”
 
 ## Decisions / artifacts updated
