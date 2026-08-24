@@ -83,8 +83,8 @@ One defect each. Do **not** hunt missing \(W_O\) (none of the stubs have it).
 
 ## Open questions
 
-- Q12 20s landing, out loud, once. Then stop until Tue AM.
+- Q12 20s landing, out loud, once (binning summaries ≠ native-Hz resample). Then stop until Tue AM.
 
 ## Next session
 
-> Speak **Q12** from [`2026-08-23_day2-multimodal-recap.md`](2026-08-23_day2-multimodal-recap.md) §9 (window-align, mix subsets, no charts on PPG, concat vs bottleneck). Do not reopen Q1–Q11 unless a sentence slips. Then **Tue AM retrieval only**: Q1 spine, Q6 concat, Q10 encodings, Q12 missingness. Join Webex after 1:25 PM PDT. Do not open RelCon or Bosch.
+> Speak **Q12** from [`2026-08-23_day2-multimodal-recap.md`](2026-08-23_day2-multimodal-recap.md) §9. Periodicity pocket (do not name-drop): [`../interviews/apple-health-aiml/papers/README.md`](../interviews/apple-health-aiml/papers/README.md). Do not reopen Q1–Q11 unless a sentence slips. **Tue AM retrieval only**: Q1 spine (RMSNorm + AdamW), Q6 insert, Q10 encodings, Q12 missingness. Optional 5 kills if a sentence is mushy: no train decode; RoPE \(R_{j-i}\); FlashAttention in the 8B order; Stage A = caption next-token not CLIP; NaN = all-\(-\infty\) row first. Join Webex after 1:25 PM PDT. Do not open RelCon or Bosch.

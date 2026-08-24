@@ -175,6 +175,8 @@ ECG, PPG, IMU, sleep, text. Most examples are a **subset**. Streams are async. D
 
 **Window, not a shared clock.** Align on a sample / window (this workout, this night). Each variate keeps its own Hz. Do not resample IMU@100 Hz and nightly sleep onto one timestep grid.
 
+**Binning summaries ≠ that resample.** HealthKit-style **events** (a bpm, a step count) can be collapsed to one scalar per hour/day: **mean** on rates, **sum** on counts, empty = missing. That is a *chosen summary representation* (periodicity paper). Q12’s kill is forcing **native-rate** IMU and nightly sleep onto one timestep. If you already decided “hourly HR / daily steps,” binning is the representation — say so, and keep empty bins.
+
 **Encode what is present.** One encoder per stream (or a family you bake off) → projector → tokens only for sensors that exist. Do **not** synthesize a fake complete tensor. Do **not drop** incomplete rows — that keeps the compliant / healthier cohort. **Mix on purpose:** IMU-only, PPG+text, sleep+HR, full set. Same loss: task / answer tokens, not “reconstruct the absent PPG.”
 
 **Concat vs bottleneck.** Concat if \(T_{\mathrm{mod}}\) is small (summary / resampled latents). Hours of IMU/PPG → cross-attn or a fixed latent set, or you buy \((T+T_{\mathrm{mod}})^2\).
@@ -215,6 +217,7 @@ Do not name RelCon, Feng’s mood paper, or Workout Buddy.
 - Do not pick concat to “stop a text shortcut.”
 - CLIP still does retrieval; it does not generate.
 - Q12: “don’t impute” is not “drop the row.” Charts are a kill, not a preference.
+- Hourly/daily **binning** of HealthKit events ≠ resampling 100 Hz IMU onto sleep’s grid.
 - Q9: name the failure, then the fix.
 
 ---
@@ -223,4 +226,4 @@ Do not name RelCon, Feng’s mood paper, or Workout Buddy.
 
 Day 2 taught: families, CLIP, scatter forward, two masks, Q12 (on paper), Q9. Day 3 taught SFT + mock Q1–Q11. **Q12 still not spoken.**
 
-**Next:** 20s Q12 landing from §9. Then Tue AM retrieval (Q1, Q6, Q10, Q12) and stop. Do not open RelCon or Bosch. Day 3 lock-in: [`2026-08-24_day3-sft-mock.md`](2026-08-24_day3-sft-mock.md).
+**Next:** Speak Q12 from §9 (include binning ≠ resample if it comes up). Then Tue AM retrieval only. Periodicity pocket: [`../interviews/apple-health-aiml/papers/README.md`](../interviews/apple-health-aiml/papers/README.md). Day 3 lock-in: [`2026-08-24_day3-sft-mock.md`](2026-08-24_day3-sft-mock.md). Do not open RelCon or Bosch.

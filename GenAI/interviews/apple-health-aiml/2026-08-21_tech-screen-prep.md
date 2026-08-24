@@ -52,7 +52,7 @@ Bakeoff line (30s):
 
 Group facts if they go there (don’t volunteer papers): [`2026-08-20_shirley-group-briefing.md`](2026-08-20_shirley-group-briefing.md). RelCon **~3.9M params**, 1B **segments**. LLM seat = **language layer**.
 
-**Feng Zhu angle:** his public paper with this group is multimodal wearable streams + **naturalistic missingness** + periodicity vs a deep TS model. If he pulls “your benches aren’t Watch data,” land on missingness / longitudinal / don’t reprint charts on PPG — not a paper recap of his mood work.
+**Feng Zhu angle:** his public paper with this group is multimodal wearable **summaries** + **naturalistic missingness** + periodicity vs a deep TS model. Pocket: [`papers/README.md`](papers/README.md). If he pulls “your benches aren’t Watch data,” land on missingness / longitudinal / don’t reprint charts on PPG — **not** Table 1. Binning HealthKit events to hourly/daily (mean/sum, empty stays missing) ≠ resampling IMU@100 Hz onto sleep.
 
 ---
 
