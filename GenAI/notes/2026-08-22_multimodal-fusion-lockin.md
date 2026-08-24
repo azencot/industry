@@ -34,17 +34,15 @@
 ## Decisions / artifacts updated
 
 - [x] this file; prep calendar Sun line; `GenAI/INDEX.md`; `GenAI/interviews/INDEX.md`
-- [ ] `day2_multimodal.py` — not started
-- [ ] CLIP \(s_{ij}\`, Q12 — not started
+- [x] CLIP + Q12 + Q9 taught (2026-08-23). Readable recap: [`2026-08-23_day2-multimodal-recap.md`](2026-08-23_day2-multimodal-recap.md)
+- [x] `day2_multimodal.py` — scatter path shaped; concat impl left blank
 - [ ] `day1_attention.py` FromMemory — still open
 - [ ] AGENTS.md — no change
 
 ## Open questions
 
-- CLIP score + in-batch negatives + what contrastive cannot teach vs Stage-B SFT.
-- Toy concat forward (shapes, RoPE, mask, `-100`).
-- Wearables Q12 (async / missing / don’t reprint charts on PPG).
+- Day 2 recap is the recall object. Monday = Day 3 SFT + 12 Q.
 
-## Next session (one prompt for session B)
+## Next session (Day 3)
 
-> Read `GenAI/notes/2026-08-22_multimodal-fusion-lockin.md`. Families + labels + concat-vs-xattn are locked. Resume **Day 2**: CLIP \(s_{ij}\) (Q6), then toy concat forward, then wearables Q12. Do not reopen projector/families unless they slip. Do not open RelCon or Bosch.
+> Read `GenAI/notes/2026-08-23_day2-multimodal-recap.md` if fusion is mushy (15 min max). Then **Day 3**: SFT template / `-100` on the question, broken Attention, 12 questions aloud. Do not reopen RelCon or Bosch.

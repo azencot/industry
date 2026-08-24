@@ -5,8 +5,8 @@ Tyler locked **spoken** LLM training + multimodality. These files are for **shap
 | File | When | What |
 |------|------|------|
 | [`day1_attention.py`](day1_attention.py) | Fri/Sat | Causal MHA + next-token CE. Trace, then fill `CausalSelfAttentionFromMemory`. |
-| `day2_multimodal.py` | Sun | Projector concat into an LM. Not written yet. |
-| `day3_broken_attention.py` | Mon | Bugs to find. Not written yet. |
+| `day2_multimodal.py` | Sun | Projector scatter/concat. Shapes + `-100` vs causal. |
+| `day3_broken_attention.py` | Mon | Find the bugs. Name the failure, then run. |
 
 External read (Sat): [karpathy/nanoGPT `model.py`](https://github.com/karpathy/nanoGPT/blob/master/model.py) — `CausalSelfAttention` and `GPT.forward` (the `cross_entropy` call).
 
