@@ -28,6 +28,7 @@ JDs are nearly identical. On calls, use **Multimodal Foundational Models**. Do n
 | **2026-08-19** | **Availability sent** | Mon–Wed 8/24–26, 10am–3pm PT; Mon/Tue preferred. Offered for technical + presentation. |
 | **2026-08-20** | **Joy: technical agenda** | **25 + 20 + 15.** Coding after date confirm. Teams. [`2026-08-20_technical-agenda.md`](2026-08-20_technical-agenda.md). |
 | **2026-08-21** | **Rescheduled** | **Thu 2026-08-27, 10:00–11:00 AM PT.** No overlap with Apple Tue 8/25. |
+| **2026-08-24** | **Take-home in progress** | Data + SmolLM FT done locally. Debrief: [`2026-08-24_take-home-debrief.md`](2026-08-24_take-home-debrief.md). TODO: [`code_assignment/TODO.md`](code_assignment/TODO.md). |
 
 ## Role in one line
 

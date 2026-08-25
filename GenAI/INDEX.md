@@ -55,6 +55,7 @@ Related skill (shared with FinTech depth practice): **`/ml-deep-dive`**.
 | 2026-08-19 | Bosch next-round invite (Joy) | [`interviews/bosch-rtc-tsfm/2026-08-19_next-round-invite.md`](interviews/bosch-rtc-tsfm/2026-08-19_next-round-invite.md) — **one 1h technical**; availability sent |
 | 2026-08-20 | Bosch technical agenda (Joy) | [`interviews/bosch-rtc-tsfm/2026-08-20_technical-agenda.md`](interviews/bosch-rtc-tsfm/2026-08-20_technical-agenda.md) — **25 min talk + 20 min previous-work Q&A + 15 min coding discuss**; Teams |
 | 2026-08-21 | Bosch technical **rescheduled** | [`interviews/bosch-rtc-tsfm/2026-08-20_technical-agenda.md`](interviews/bosch-rtc-tsfm/2026-08-20_technical-agenda.md) — **Thu 2026-08-27, 10:00–11:00 AM PT**; no overlap with Apple Tue 8/25 |
+| 2026-08-24 | Bosch coding take-home (in progress) | [`interviews/bosch-rtc-tsfm/2026-08-24_take-home-debrief.md`](interviews/bosch-rtc-tsfm/2026-08-24_take-home-debrief.md) — SmolLM-135M + TinyShakespeare in their Hydra template; 500-step val/loss **4.23**; generation helper still missing |
 
 ---
 

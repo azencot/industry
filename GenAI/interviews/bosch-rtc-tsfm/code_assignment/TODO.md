@@ -32,9 +32,9 @@ Eval is the part they grade. Train a short run so the loop is real; the write-up
 - [x] YAML: `configs/data/tinyshakespeare.yaml`, `configs/model/smollm.yaml`
 - [x] Experiment: `configs/experiment/smollm_tinys.yaml` — `val/loss` checkpoint, `early_stopping: null`, `val_check_interval` (max_steps would skip epoch-end val)
 - [x] Train: `uv run src/train.py experiment=smollm_tinys` — ckpt under `logs/train/runs/2026-08-24_18-33-05/checkpoints/` (`last.ckpt`, `epoch_000.ckpt`). **Do not zip logs.**
-- [x] Local commits (do not push origin): `212c29b` datamodule · `5bf69f8` tokenize · `78186e0` SmolLM module + data/model configs. Experiment YAML still **untracked** in the assignment repo — commit it there from Terminal.
+- [x] Local commits (do not push origin): `212c29b` datamodule · `5bf69f8` tokenize · `78186e0` SmolLM module + data/model configs · `34f5740` experiment. Eval helper **in progress** (`test_step` calls `_generate_and_score` — **method still missing**).
 
-**Now:** generation eval (PPL already logged in `test_step`; add `generate` + a reference metric + pretrained vs FT table). Assignment `main` is 3 commits ahead of Ivan’s origin — do not `git push` that remote.
+**Now (after Apple Tue):** implement `_generate_and_score`, `eval.py` CLI, pretrained vs FT table. Assignment `main` is 4 ahead of Ivan’s origin — do not `git push` that remote.
 
 ---
 
@@ -62,7 +62,7 @@ Mirror `src/models/mnist_module.py`. Hydra instantiates the class from YAML (`_t
 - [x] `AutoModelForCausalLM.from_pretrained` in `setup` (not `__init__`)
 - [x] `_shared_step` → train/val/test; log `*/loss` and `*/ppl`
 - [x] `configure_optimizers`: AdamW via Hydra `_partial_`; `scheduler: null`
-- [ ] Optional `generate()` helper for eval (greedy or low-temp). `torch.no_grad()`, not every train step
+- [ ] `_generate_and_score` (called from `test_step` when `batch_idx < 2` — **not implemented yet**; will crash)
 - [x] No `SimpleDenseNet` / `net:` block
 
 `compile` in YAML is `torch.compile`, left **false**.
@@ -79,7 +79,7 @@ Mirror `src/models/mnist_module.py`. Hydra instantiates the class from YAML (`_t
 - [x] Callbacks: `val/loss` / `min`; early stopping off for the short run
 - [x] Trainer: `cpu`; `max_steps=500`; `val_check_interval=100`; `limit_val_batches=8`
 - [x] Run: `uv run src/train.py experiment=smollm_tinys`
-- [x] `.ckpt` at `logs/train/runs/2026-08-24_18-33-05/checkpoints/` (gitignored; exclude from zip)
+- [x] `.ckpt` at `logs/train/runs/2026-08-24_18-37-18/checkpoints/` (500-step; use this). 100-step run: `18-33-05`. Gitignored; exclude from zip.
 
 NTP loss: `out.loss` only. Don’t add a second CE.
 
@@ -89,9 +89,9 @@ NTP loss: `out.loss` only. Don’t add a second CE.
 
 They said: training-aligned NTP is the objective; **at least one sequence-generation metric**; optional reference-based metric. You may eval **off-the-shelf HF weights** (no ckpt). Report **test**.
 
-- [ ] **PPL / NLL** on val and test (teacher forcing). Baseline = pretrained SmolLM, same split
-- [ ] **Generation quality** (required): from a prompt (start of a test chunk or a fixed Shakespeare line), `model.generate(...)`, log decoded strings
-- [ ] **Reference metric** (do this; they marked it optional but it is the easy win): ROUGE-L or chrF of the continuation vs the held-out next tokens. Not BLEU-as-translation-quality theater — say in the README that it is a noisy proxy on literary text
+- [x] **PPL / NLL** logged in `test_step` (teacher forcing). Still need a **pretrained vs FT** table on test
+- [ ] **Generation quality** — `test_step` calls `_generate_and_score` for `batch_idx < 2`; **method missing**
+- [ ] **ROUGE-L** vs held-out continuation (noisy on verse; say so)
 - [ ] `test_step` logs the metrics so `uv run src/eval.py data=tinyshakespeare model=smollm ckpt_path=...` just works (same pattern as MNIST)
 - [ ] Also run eval **without** FT (load HF weights, skip ckpt or a “pretrained” path) so the 15-min table is pretrained vs FT
 - [ ] Save a few generated samples in a small `outputs/samples.md` (text only, not weights)
@@ -161,7 +161,7 @@ zip -r omri-azencot-bosch-coding.zip lightning-hydra-uv-template -x "*.DS_Store"
 1. [x] `feat: add TinyShakespeare datamodule`
 2. [x] `feat: tokenize TinyShakespeare batches`
 3. [x] `feat: add SmolLM Lightning module; config: data and model`
-4. [ ] `feat: add smollm_tinys experiment` (file exists, not committed in the assignment repo yet)
+4. [x] `feat: add smollm_tinys experiment` (`34f5740`)
 5. [x] short train + checkpoint (local `logs/`; do not commit weights)
 6. [ ] `feat: generation eval (PPL + ROUGE-L / samples)`
 7. [ ] `docs: how to train and evaluate`

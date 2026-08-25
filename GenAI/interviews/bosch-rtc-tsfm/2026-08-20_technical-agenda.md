@@ -70,10 +70,10 @@ Deck: [`talks/ts-vlm/bosch-30min.html`](../../../talks/ts-vlm/bosch-30min.html) 
 
 ## Immediate next actions
 
-1. **Accept Teams** for Thu 8/27 10:00–11:00 AM PT. If the invite clock differs, this file follows the invite.
-2. **Apple first:** Tue **8/25 1:35–2:20 PM PDT** (Feng Zhu). Don’t mix Watch scripts into this talk.
-3. When the **coding exercise** arrives, do that — not a LeetCode campaign.
-4. Talk = existing 23-slide map, **hard stop on 23**. Reloc / level-scope / don’t fight the title — unchanged.
+1. **Apple first:** Tue **8/25 1:35–2:20 PM PDT** (Feng Zhu). Don’t mix Watch scripts into this talk.
+2. After Apple: finish Bosch eval (`_generate_and_score` is **called but missing**). Debrief: [`2026-08-24_take-home-debrief.md`](2026-08-24_take-home-debrief.md).
+3. Talk = existing 23-slide map, **hard stop on 23**. Reloc / level-scope / don’t fight the title — unchanged.
+4. Thu 8/27 Teams: 25 + 20 + 15 coding walkthrough. Zip the **assignment** repo without logs/weights.
 
 ---
 
@@ -106,5 +106,5 @@ Deck: [`talks/ts-vlm/bosch-30min.html`](../../../talks/ts-vlm/bosch-30min.html) 
 @GenAI/interviews/bosch-rtc-tsfm/2026-08-20_technical-agenda.md
 @GenAI/interviews/bosch-rtc-tsfm/2026-08-13_hm-screen-debrief.md
 @talks/ts-vlm/README.md
-Bosch 1h technical **Thu 2026-08-27, 10:00–11:00 AM PT** (Joy reschedule). Agenda: **25 min talk + 20 min previous-work Q&A + 15 min coding discuss**. Accept Teams. Coding should arrive now. Talk = 23-slide map, hard stop on 23. Apple Health tech screen is Tue 8/25 — no collision. Reloc in-play. Don’t fight title. Don’t mix Apple Health scripts.
+Bosch 1h technical **Thu 2026-08-27, 10:00–11:00 AM PT**. Agenda: **25 min talk + 20 min previous-work Q&A + 15 min coding discuss**. Take-home debrief: [`2026-08-24_take-home-debrief.md`](2026-08-24_take-home-debrief.md). Code at `~/bosch-rtc-coding/lightning-hydra-uv-template`. Apple Feng is **Tue 8/25 first**. Talk = 23-slide map, hard stop on 23. Reloc in-play. Don’t fight title. Don’t mix Apple Health scripts.
 ```
