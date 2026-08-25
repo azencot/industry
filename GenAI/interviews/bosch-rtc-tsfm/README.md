@@ -9,7 +9,8 @@
 | **HM** | **Shabnam Ghaffarzadegan** (CR/RHI1-NA) — Lead / Senior RS, audio + multimodal sensor FMs |
 | **HR on thread** | **Joy Galia Meyouhas** (Senior Recruitment Partner) · GS/HRS-PAC-NA |
 | **HM screen** | **Done 2026-08-13** (Shabnam + Joy). Debrief: [`2026-08-13_hm-screen-debrief.md`](2026-08-13_hm-screen-debrief.md). **Passed.** |
-| **Next** | **Thu 2026-08-27, 10:00–11:00 AM PT** — 1h technical: **25 min** talk + **20 min** previous-work Q&A + **15 min** coding discuss. Teams. Coding should arrive now. Agenda: [`2026-08-20_technical-agenda.md`](2026-08-20_technical-agenda.md). |
+| **Next** | **Thu 2026-08-27, 10:00–11:00 AM PT** — 1h technical: **25 min** talk + **20 min** previous-work Q&A + **15 min** coding discuss. Teams. Agenda: [`2026-08-20_technical-agenda.md`](2026-08-20_technical-agenda.md). |
+| **Coding take-home** | PDF + original zip: [`code_assignment/`](code_assignment/). **Working copy (not in this repo):** `~/bosch-rtc-coding/lightning-hydra-uv-template` — edits/commits happen there; discussion stays here. |
 | **Location** | Sunnyvale, CA — **hybrid**; **relocation required** (stated on the call; not rejected) |
 | **Comp (public, both reqs)** | Base **$165K–$195K** + corporate bonus + LTI (ask recruiter; not FAANG RSUs) |
 | **Talk (25 min Bosch / Sep 7 longer)** | Layout in [`talks/ts-vlm/`](../../../talks/ts-vlm/) — HTML deck; Bosch hard-stops at 25; Sep 7 extends the same spine |

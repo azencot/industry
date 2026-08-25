@@ -64,7 +64,7 @@ Deck: [`talks/ts-vlm/bosch-30min.html`](../../../talks/ts-vlm/bosch-30min.html) 
 
 ## Coding implication
 
-15 min is a **walkthrough**, not a live problem from scratch. Date is now **set** — expect the take-home. Work it when it arrives (after Apple Tue is fine; don’t start a generic LeetCode campaign). Q&A (20) is research; coding (15) is the exercise.
+15 min is a **walkthrough**, not a live problem from scratch. Take-home is in. PDF/zip stay in [`code_assignment/`](code_assignment/). **Working copy is outside this repo:** `~/bosch-rtc-coding/lightning-hydra-uv-template` (own `.git`; zip that folder). Discussion here; do not commit the working tree into `industry`. Q&A (20) is research; coding (15) is the exercise.
 
 ---
 
