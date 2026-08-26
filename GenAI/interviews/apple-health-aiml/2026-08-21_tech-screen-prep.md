@@ -1,6 +1,6 @@
 # Prep — Apple Health AIML tech screen (45 min)
 
-**Status:** **Done — Tue 2026-08-25.** Debrief: [`2026-08-25_tech-screen-debrief.md`](2026-08-25_tech-screen-debrief.md). Wait for Tyler.  
+**Status:** **Done — Tue 2026-08-25.** Debrief: [`2026-08-25_tech-screen-debrief.md`](2026-08-25_tech-screen-debrief.md). Advanced: [`2026-08-26_virtual-onsite-invite.md`](2026-08-26_virtual-onsite-invite.md).  
 **Format (Tyler 2026-08-21, locked):** **45 min** spoken **depth check** on **LLM training** + **multimodality fundamentals**.  
 **Coding:** **No.** Invite lists CoderPad — **ignore** (same HM template). Don’t grind LeetCode.  
 **Confirm:** reply to Tyler that you are available — template in [`2026-08-21_tech-screen-invite.md`](2026-08-21_tech-screen-invite.md).  

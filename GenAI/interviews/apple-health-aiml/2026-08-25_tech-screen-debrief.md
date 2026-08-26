@@ -7,7 +7,7 @@
 **Prior:** [`2026-08-21_tech-screen-prep.md`](2026-08-21_tech-screen-prep.md) · HM: [`2026-08-21_hm-screen-debrief.md`](2026-08-21_hm-screen-debrief.md)  
 **Memory:** captured same afternoon; **first ML question forgotten** — add if it comes back.
 
-**Do not email Shirley.** Tyler owns next. **No third email to Guillermo.** Do not name-drop RelCon / mood paper / Workout Buddy on later loops either.
+**Do not email Shirley.** Tyler owns process. **No third email to Guillermo.** Do not name-drop RelCon / mood paper / Workout Buddy on later loops either. **Next:** virtual on-site [`2026-08-26_virtual-onsite-invite.md`](2026-08-26_virtual-onsite-invite.md).
 
 ---
 
@@ -84,11 +84,11 @@ If on-site “research vs product”: early research to pick the representation;
 
 ## Next
 
-- Wait for **Tyler**. Do not email Feng or Shirley.
+- **On-site scheduled.** Confirm availability: [`2026-08-26_virtual-onsite-invite.md`](2026-08-26_virtual-onsite-invite.md). Do not email Feng, Shirley, or the five interviewers.
 - If a first question comes back, append it here.
-- If **on-site**: slot (2) multimodal + TS encoding = his three challenges. Drill Q12 + caption eval ≠ CE/ROUGE + LM frozen in A. Slot (1) training: run + kill, not the 2–3 min stack tour.
+- Slot (2) multimodal + TS encoding = his three challenges. Drill Q12 + caption eval ≠ CE/ROUGE + LM frozen in A. Slot (1) training: run + kill, not the 2–3 min stack tour.
 - Bosch Thu 8/27 is a **separate** track. Do not mix Watch scripts into Sunnyvale.
 
-## Next session (if advancing)
+## Next session (on-site)
 
-> Read this debrief. On-site multimodal slot = Feng’s three: arch, no data, encoder. Speak Q12 (subset rows, mix, no charts on PPG). Caption eval = generations + **task** gate, not ROUGE. Do not reopen RelCon. Do not email Shirley.
+> Read this debrief. On-site multimodal slot = Feng’s three: arch, no data, encoder. Speak Q12 (subset rows, mix, no charts on PPG). Caption eval = generations + **task** gate, not ROUGE. Do not reopen RelCon. Do not email Shirley. Confirm the five Webex slots.
