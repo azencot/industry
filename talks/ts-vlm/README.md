@@ -2,6 +2,8 @@
 
 **Working deck:** [`bosch-30min.html`](bosch-30min.html) — synced to the spoken map (2026-08-19). Open in a browser. **← →** or click · **L** speaker notes · **B** backup slides (hidden by default; **23** spoken + **2** panel). Facts still win if a number drifts.
 
+**What to say (plain, ~1 min/slide):** [`2026-08-26_bosch-speaker-notes.md`](2026-08-26_bosch-speaker-notes.md) — use this tomorrow; **L** is still the short director “Job” line.
+
 | | |
 |---|---|
 | **Now** | Bosch RTC-NA — **one 1h technical**: **25 min** talk + **20 min** previous-work Q&A + **15 min** coding discuss. Agenda: [`../../GenAI/interviews/bosch-rtc-tsfm/2026-08-20_technical-agenda.md`](../../GenAI/interviews/bosch-rtc-tsfm/2026-08-20_technical-agenda.md). **Hard stop on slide 23.** |
@@ -24,8 +26,8 @@
 
 | | |
 |---|---|
-| **Bosch** | Don’t parrot detect/classify/describe/fuse. Don’t replay the HM screen. Transfer is **method**, not a 6-month program: if a sensor admits an image (chart, delay, STFT), it enters this VLM. Serve is backup. Panel slides 24–25 if they ask one-model / camera. |
-| **HM questions (Shabnam)** | **Do not address them as her questions** on the 25-min path. If they ask in the 20-min Q&A: **24** one backbone ≠ one renderer; **25** scene camera is a third stream. Don’t name her. |
+| **Bosch** | Don’t parrot detect/classify/describe/fuse. Don’t replay the HM screen. Transfer is **method**, not a 6-month program: if a sensor admits an image (chart, delay, STFT), it enters this VLM. Serve is backup. Panel slides 24–25 if they ask one-model / mixed rates. |
+| **HM questions (Shabnam)** | **Do not address them as her questions** on the 25-min path. If they ask in the 20-min Q&A: **24** one backbone ≠ one renderer; **25** clocks align, don’t upsample. Don’t name her. |
 | **Related work (main)** | TS / multimodal **reasoning** interfaces: (1) series as **text tokens** ([Time-MQA](https://arxiv.org/abs/2503.01875)); (2) **native TS encoder** into an LLM ([ChatTS](https://arxiv.org/abs/2412.03104), [OpenTSLM](https://arxiv.org/abs/2510.02410)); (3) **chart VLMs** — including **dual-view plot+table** ([LLaTiSA](https://arxiv.org/abs/2604.17295)), still one VLM. **This work:** two *geometries* (chart ViT + delay DINOv3). Lit: [`../lit-search.md`](../lit-search.md). Do **not** mention forecast FMs. |
 
 ## How this is built
@@ -40,7 +42,7 @@
 
 Not: paper tour, student/lab-PI, FinTech analogies, claiming Haifa papers shipped, **replaying the HM Q&A on slides**, **any forecast-head framing**.
 
-Shabnam’s bar: **BU transfer**. Results prove the stack; the last transfer slide is how the idea moves — if a sensor admits an image, it enters this VLM. One-model and camera wait for the panel (24–25).
+Shabnam’s bar: **BU transfer**. Results prove the stack; the last transfer slide is how the idea moves — if a sensor admits an image, it enters this VLM. One-model and mixed-rate clocks wait for the panel (24–25).
 
 **Do not use their verb list on the problem slides.** Reciting “classify, describe, fuse” reads as you read the posting. Let MCQ / caption / QA + dual vision do the mapping.
 
@@ -74,7 +76,7 @@ Shabnam’s bar: **BU transfer**. Results prove the stack; the last transfer sli
 | 22 | Transfer | Image renderers | If a sensor admits an image, the VLM stack transfers. Chart + delay here; **STFT** on a mic/shaker. Not a 6-month plan. Don’t claim a Bosch run. |
 | 23 | Close | Four takeaways = four contributions | Data · one reasoner, **more views if they pay** · see-then-reason(-then-adapt) · three benches, then an image. No new numbers. |
 | 24 | Panel | One model? | Shared backbone, **different renderers**. Not one patch. Don’t upsample. Don’t claim STFT is already in this VLM. |
-| 25 | Panel | Scene camera? | Picture of the **room**, not another plot of the signal. Add when sensor-only is wrong (crack, in-band vibration). Leave off when the frame is the label (warning light). Train both; keep the cheaper if they match. |
+| 25 | Panel | High- vs low-freq? | Clocks must agree. Don’t upsample telemetry onto audio. STFT for the mic; chart+delay for slow series; fuse coarser. Same backbone as 24, different rates. Don’t claim this VLM already runs STFT. |
 
 **23 spoken + 2 panel.** Bosch: **hard stop on 23** (25 min). If the room is slow, drop 21. If it runs fast, do **not** promote backups — leave the 20 min for previous-work Q&A. Sep 7 can go longer.
 

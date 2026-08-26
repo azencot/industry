@@ -1342,34 +1342,34 @@
     <!-- 25 -->
     <section class="slide">
       <p class="kicker">Panel</p>
-      <h2>When do you add a scene camera?</h2>
-      <p class="lede">When the series looks fine and the room does not.</p>
+      <h2>High- and low-frequency sensors, one model</h2>
+      <p class="lede">Clocks must agree. Do not upsample telemetry onto the audio grid.</p>
       <div class="body fill">
         <div class="split">
           <figure class="viz">
-            <img src="assets/slide25-camera.png" alt="Camera helps when vibration looks normal but the housing is cracked. It cheats when a warning light is already on, so the model never has to use the knock.">
-            <figcaption><span class="lab">I have not run this VLM with a webcam</span> The test is train without the camera, then with it. Keep the cheaper one if they match.</figcaption>
+            <img src="assets/slide25-rates.png" alt="Naive path upsamples telemetry onto the audio clock, then concatenates: sparse slow channel and an exploding sequence. The right path encodes STFT for the mic and chart-plus-delay for slow telemetry, then one VLM at different rates.">
+            <figcaption><span class="lab">Same backbone as 24</span> STFT for the fast channel; chart and delay for the slow one. Fuse on a coarser grid. This VLM has not run STFT yet.</figcaption>
           </figure>
           <div class="stack">
             <div class="card">
-              <p class="lab">Two different pictures</p>
-              <h3>The series vs the room</h3>
-              <p>This talk already turns the signal into a plot. A camera is a picture of the scene — a crack, a pose, a part that is not in the waveform.</p>
+              <p class="lab">The trap</p>
+              <h3>One shared sample clock</h3>
+              <p>Audio at tens of kHz, telemetry at a few Hz. Upsample the slow stream and it is sparse; keep everything at audio rate and the sequence explodes.</p>
             </div>
             <div class="card mine">
-              <p class="lab">Add it</p>
-              <h3>When sensor-only is wrong</h3>
-              <p>Vibration still in-band, housing cracked. Train both. Keep the camera only if the picture actually fixes those errors.</p>
+              <p class="lab">Do this</p>
+              <h3>Native rate, then fuse</h3>
+              <p>STFT or short windows for the mic. Chart plus delay, or coarse patches, for the slow series. Cross-attend or pool onto a coarser time grid.</p>
             </div>
             <div class="card">
-              <p class="lab">Leave it off</p>
-              <h3>When the frame is the answer</h3>
-              <p>Warning light, smoke, the broken bit already in view. Then the model reads the label off the wall and never uses the mic. If the frame is late, you often just see the aftermath.</p>
+              <p class="lab">Same as 24</p>
+              <h3>One architecture, not one renderer</h3>
+              <p>Shared VLM. Different tokenizers. Alignment is a clock problem, not a patch-size problem.</p>
             </div>
           </div>
         </div>
       </div>
-      <div class="intent"><b>Panel only.</b> Substance: camera ≠ another plot of the 1-D signal; add when the scene has a fact the series doesn’t; drop when the frame is the label. Don’t say “slice / fusion leaks / religion.” Don’t claim a webcam run. Don’t parrot fuse. Don’t name the HM screen.</div>
+      <div class="intent"><b>Panel only.</b> Substance: don’t upsample telemetry onto audio; STFT vs delay; fuse coarser / cross-attend; same backbone, different rates. Don’t claim this VLM already runs STFT. Don’t title it as her question. Don’t name the HM screen.</div>
       <div class="meta"><span>Panel</span><span class="sn"></span></div>
     </section>
 
@@ -1435,7 +1435,7 @@
           <p>Fuse on a coarser grid, or keep multi-rate tokens. Don’t interpolate telemetry onto the audio clock.</p>
         </div>
       </div>
-      <div class="intent"><b>Deeper than panel 24.</b> Rate version of two geometries. Don’t upsample.</div>
+      <div class="intent"><b>Deeper than panel 25.</b> Same clocks point; keep if they want more than the figure.</div>
       <div class="meta"><span>Backup</span><span class="sn"></span></div>
     </section>
 
