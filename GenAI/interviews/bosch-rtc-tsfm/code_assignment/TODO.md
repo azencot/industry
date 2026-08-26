@@ -32,9 +32,9 @@ Eval is the part they grade. Train a short run so the loop is real; the write-up
 - [x] YAML: `configs/data/tinyshakespeare.yaml`, `configs/model/smollm.yaml`
 - [x] Experiment: `configs/experiment/smollm_tinys.yaml` — `val/loss` checkpoint, `early_stopping: null`, `val_check_interval` (max_steps would skip epoch-end val)
 - [x] Train: `uv run src/train.py experiment=smollm_tinys` — ckpt under `logs/train/runs/2026-08-24_18-33-05/checkpoints/` (`last.ckpt`, `epoch_000.ckpt`). **Do not zip logs.**
-- [x] Local commits (do not push origin): `212c29b` datamodule · `5bf69f8` tokenize · `78186e0` SmolLM module + data/model configs · `34f5740` experiment. Eval helper **in progress** (`test_step` calls `_generate_and_score` — **method still missing**).
+- [x] Local commits (do not push origin). Shipped **2026-08-26**: blocks, gen eval, README, zip ~6.1MB. Quote [`../2026-08-26_take-home-submit.md`](../2026-08-26_take-home-submit.md).
 
-**Now (after Apple Tue):** implement `_generate_and_score`, `eval.py` CLI, pretrained vs FT table. Assignment `main` is 4 ahead of Ivan’s origin — do not `git push` that remote.
+**Now:** Thu 8/27 walkthrough only. Assignment `main` is ahead of Ivan’s origin — do not `git push` that remote.
 
 ---
 

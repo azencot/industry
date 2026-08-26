@@ -1,5 +1,7 @@
 # Debrief — 2026-08-24 — Bosch coding take-home (in progress)
 
+**Superseded 2026-08-26:** submitted. Quote numbers and walkthrough from [`2026-08-26_take-home-submit.md`](2026-08-26_take-home-submit.md). This file is the line-wise WIP log.
+
 **Type:** Take-home implementation in their Lightning–Hydra–uv template (not a live code drill)  
 **When:** Mon 2026-08-24 afternoon–evening PT (into Tue AM notes)  
 **Loop:** [`README.md`](README.md) · agenda [`2026-08-20_technical-agenda.md`](2026-08-20_technical-agenda.md)  
