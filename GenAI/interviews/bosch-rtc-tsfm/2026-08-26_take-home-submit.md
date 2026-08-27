@@ -31,6 +31,36 @@ Line-wise numbers (pretrained ~5.74 NLL / PPL ~310; 500-step val 4.23 on 8 batch
 
 ---
 
+## Discussion (15 min — NTP vs generation)
+
+The experiments highlight several differences between intrinsic language-model evaluation and generation evaluation.
+
+The clearest improvement from fine-tuning is in **held-out next-token likelihood**. The best validation checkpoint achieves substantially lower test loss and perplexity than the pretrained model, showing successful adaptation to TinyShakespeare.
+
+At the same time, **sequence-level metrics improve only slightly**. Likely reasons:
+
+1. The training objective optimizes next-token likelihood rather than ROUGE-L or BERTScore directly.
+2. Small changes in token probabilities do not necessarily change the greedy argmax sequence.
+3. Open-ended generation admits many valid continuations, while ROUGE-L and BERTScore compare the model output against only one reference continuation.
+4. TinyShakespeare is very small relative to a 135M-parameter model, making overfitting likely.
+
+The **degradation in test perplexity at step 330** supports the last point and motivates checkpoint selection based on validation performance rather than simply using the final training step.
+
+### Possible improvements
+
+With additional time:
+
+- Tune learning rate and training duration using validation loss.
+- Evaluate generation over a larger number of held-out prompts.
+- Report a repetition or diversity metric to quantify the repetitive behavior visible in greedy generations.
+- Compare greedy decoding with sampling-based decoding for qualitative analysis.
+- Use multiple random seeds to quantify training variance.
+- Explore stronger generation evaluation methods that are less dependent on a single reference continuation.
+
+The current implementation focuses on correctness, reproducibility, and a clear comparison between the pretrained and fine-tuned models.
+
+---
+
 ## What shipped (assignment repo)
 
 - `TINYSDataModule`: Karpathy blocks — raw text 80/10/10, encode, `block_size=256`, no pad.
@@ -62,8 +92,8 @@ Line-wise numbers (pretrained ~5.74 NLL / PPL ~310; 500-step val 4.23 on 8 batch
 2. Lines → blocks so context crosses verse; split **text** then tokenize (no leak).  
 3. `training_step` = `self.model(**batch)`; labels = `input_ids`.  
 4. Table: 0 → **116 best** → last 165/330 overfits.  
-5. Gen: half-block greedy; ROUGE barely moves; samples loop.  
-6. More time: sampling, longer train with early stop on val, LoRA if needed.
+5. Gen: half-block greedy; ROUGE/BERTScore barely move — NTP ≠ one-reference generation (Discussion above).  
+6. More time: val-tuned lr/duration, more prompts, repetition metric, sampling vs greedy, seeds, less single-reference gen eval.
 
 No Apple Watch / RelCon. Reloc in-play. Don’t fight the title.
 
@@ -76,5 +106,5 @@ Talk hard-stop 23 slides; then coding walkthrough with the table above. Deck: [`
 ```
 @GenAI/interviews/bosch-rtc-tsfm/2026-08-26_take-home-submit.md
 @talks/ts-vlm/bosch-30min.html
-Bosch Thu 8/27 10:00 AM PT: 25 talk + 20 Q&A + 15 coding. Quote block-wise best @ step 116 (test PPL 28.99). last 165/330 worse. Do not recap the zip. Do not mix Apple scripts.
+Bosch Thu 8/27 10:00 AM PT: 25 talk + 20 Q&A + 15 coding. Quote block-wise best @ step 116 (test PPL 28.99). last 165/330 worse. NTP moved; ROUGE/BERTScore barely. Val ckpt not last. Do not recap the zip. Do not mix Apple scripts.
 ```

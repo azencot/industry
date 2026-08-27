@@ -71,7 +71,7 @@ Deck: [`talks/ts-vlm/bosch-30min.html`](../../../talks/ts-vlm/bosch-30min.html) 
 ## Immediate next actions
 
 1. Take-home **submitted** (2026-08-26). Numbers + 15-min spine: [`2026-08-26_take-home-submit.md`](2026-08-26_take-home-submit.md).
-2. Talk = existing 23-slide map, **hard stop on 23**. Reloc / level-scope / don’t fight the title — unchanged.
+2. Talk = existing 23-slide map, **hard stop on 23**. Reloc / level-scope / don’t fight the title — unchanged. **20 min previous work:** [`2026-08-26_previous-work-qa.md`](2026-08-26_previous-work-qa.md) (LDDBM + ImagenTime; skip CV).
 3. Thu 8/27 Teams: 25 + 20 + 15 coding walkthrough. Quote **best @ 116**, not last.ckpt. Don’t mix Apple scripts.
 
 ---

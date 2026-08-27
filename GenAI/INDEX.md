@@ -58,7 +58,8 @@ Related skill (shared with FinTech depth practice): **`/ml-deep-dive`**.
 | 2026-08-20 | Bosch technical agenda (Joy) | [`interviews/bosch-rtc-tsfm/2026-08-20_technical-agenda.md`](interviews/bosch-rtc-tsfm/2026-08-20_technical-agenda.md) — **25 min talk + 20 min previous-work Q&A + 15 min coding discuss**; Teams |
 | 2026-08-21 | Bosch technical **rescheduled** | [`interviews/bosch-rtc-tsfm/2026-08-20_technical-agenda.md`](interviews/bosch-rtc-tsfm/2026-08-20_technical-agenda.md) — **Thu 2026-08-27, 10:00–11:00 AM PT**; no overlap with Apple Tue 8/25 |
 | 2026-08-24 | Bosch coding take-home (in progress) | [`interviews/bosch-rtc-tsfm/2026-08-24_take-home-debrief.md`](interviews/bosch-rtc-tsfm/2026-08-24_take-home-debrief.md) — line-wise WIP; superseded by submit debrief |
-| 2026-08-26 | Bosch coding take-home **submitted** | [`interviews/bosch-rtc-tsfm/2026-08-26_take-home-submit.md`](interviews/bosch-rtc-tsfm/2026-08-26_take-home-submit.md) — block-wise; best @ **116** test PPL **28.99**; train/eval match; zip ~6.1MB; walkthrough Thu 8/27 |
+| 2026-08-26 | Bosch coding take-home **submitted** | [`interviews/bosch-rtc-tsfm/2026-08-26_take-home-submit.md`](interviews/bosch-rtc-tsfm/2026-08-26_take-home-submit.md) — block-wise; best @ **116** test PPL **28.99**; NTP vs gen discussion + improvements logged; walkthrough Thu 8/27 |
+| 2026-08-26 | Bosch previous-work Q&A notes | [`interviews/bosch-rtc-tsfm/2026-08-26_previous-work-qa.md`](interviews/bosch-rtc-tsfm/2026-08-26_previous-work-qa.md) — 20 min: LDDBM / Synth-FAR / edge graphs + ImagenTime; skip the rest of the CV |
 
 ---
 

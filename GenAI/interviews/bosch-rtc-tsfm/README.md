@@ -14,6 +14,7 @@
 | **Location** | Sunnyvale, CA — **hybrid**; **relocation required** (stated on the call; not rejected) |
 | **Comp (public, both reqs)** | Base **$165K–$195K** + corporate bonus + LTI (ask recruiter; not FAANG RSUs) |
 | **Talk (25 min Bosch / Sep 7 longer)** | Layout in [`talks/ts-vlm/`](../../../talks/ts-vlm/) — HTML deck; Bosch hard-stops at 25; Sep 7 extends the same spine |
+| **Previous-work Q&A (20 min)** | Generative + Haifa Bosch only: [`2026-08-26_previous-work-qa.md`](2026-08-26_previous-work-qa.md). Lead **LDDBM**. Don’t walk the CV. |
 
 JDs are nearly identical. On calls, use **Multimodal Foundational Models**. Do not correct anyone to “Senior TSFM.” Title on the thread has flipped Sr. / RS — don’t fight it.
 
@@ -29,7 +30,7 @@ JDs are nearly identical. On calls, use **Multimodal Foundational Models**. Do n
 | **2026-08-20** | **Joy: technical agenda** | **25 + 20 + 15.** Coding after date confirm. Teams. [`2026-08-20_technical-agenda.md`](2026-08-20_technical-agenda.md). |
 | **2026-08-21** | **Rescheduled** | **Thu 2026-08-27, 10:00–11:00 AM PT.** No overlap with Apple Tue 8/25. |
 | **2026-08-24** | **Take-home in progress** | Line-wise WIP. [`2026-08-24_take-home-debrief.md`](2026-08-24_take-home-debrief.md). |
-| **2026-08-26** | **Take-home submitted** | Block-wise; best @ 116, test PPL 28.99; train/eval match. [`2026-08-26_take-home-submit.md`](2026-08-26_take-home-submit.md). Zip from `~/bosch-rtc-coding/` — not this repo. |
+| **2026-08-26** | **Take-home submitted** | Block-wise; best @ 116, test PPL 28.99; train/eval match. NTP vs gen discussion in [`2026-08-26_take-home-submit.md`](2026-08-26_take-home-submit.md). Zip from `~/bosch-rtc-coding/` — not this repo. |
 
 ## Role in one line
 
