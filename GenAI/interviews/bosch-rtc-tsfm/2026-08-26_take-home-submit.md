@@ -56,6 +56,7 @@ With additional time:
 - Compare greedy decoding with sampling-based decoding for qualitative analysis.
 - Use multiple random seeds to quantify training variance.
 - Explore stronger generation evaluation methods that are less dependent on a single reference continuation.
+- To move ROUGE/BERTScore a lot on this protocol: kill greedy loops (no-repeat n-gram or sampling if collapse), and score a shorter continuation (16–32 tokens) as a diagnostic. More NTP steps will not; one ~128-token gold suffix is a hard ceiling.
 
 The current implementation focuses on correctness, reproducibility, and a clear comparison between the pretrained and fine-tuned models.
 
@@ -93,7 +94,7 @@ The current implementation focuses on correctness, reproducibility, and a clear 
 3. `training_step` = `self.model(**batch)`; labels = `input_ids`.  
 4. Table: 0 → **116 best** → last 165/330 overfits.  
 5. Gen: half-block greedy; ROUGE/BERTScore barely move — NTP ≠ one-reference generation (Discussion above).  
-6. More time: val-tuned lr/duration, more prompts, repetition metric, sampling vs greedy, seeds, less single-reference gen eval.
+6. More time: val-tuned lr/duration, more prompts, repetition metric, sampling vs greedy, seeds, less single-reference gen eval. To move ROUGE a lot: stop greedy loops + shorter continuation; not more NTP.
 
 No Apple Watch / RelCon. Reloc in-play. Don’t fight the title.
 
