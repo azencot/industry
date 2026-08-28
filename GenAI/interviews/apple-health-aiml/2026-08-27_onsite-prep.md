@@ -31,8 +31,8 @@ Bosch is **done**. Do not mix Sunnyvale scripts.
 
 | When | Block | Hours |
 |------|-------|-------|
-| **Thu PM** (if energy) | **A** Chung-Cheng: \(M=P+G+O+A\) + parallelism families | 2–3 |
-| **Fri 8/28** | **A** finish + **35 min infra mock** | ~4 |
+| **Thu PM** (if energy) | skipped / leftover — full Block A is **today** | — |
+| **Fri 8/28** | **A** entire Chung-Cheng path **A1–A7 + Close** | ~6.5. Sheet has mocks every block. Compress: skip extra A1 arithmetic + second A7; **never skip Close** |
 | **Sat 8/29** | **B** Yujie + Haraldur: wearable representation **design problems** | ~4. Skim abstracts only: RelCon, Periodicity, Beyond Sensor Data. **Do not name-drop** |
 | **Sun 8/30** | **D** two-project hostile defense | ~4 |
 | **Mon 8/31** | **C** Vincent: 5-min structured answers | ~3 |
@@ -41,7 +41,7 @@ Bosch is **done**. Do not mix Sunnyvale scripts.
 | **Thu 9/3** | **Vincent mock** only | ~2 |
 | **Fri 9/4** | **LIVE** Vincent 11:05 | Join after 10:55 |
 
-**Compress:** never skip Fri infra mock or Tuesday’s Wed-order mocks. Cut a fourth 45 if behind — keep Jonathan at 30 min.
+**Compress:** never skip Fri **Close** mock (35 min) or Tuesday’s Wed-order mocks. Cut a fourth 45 if behind — keep Jonathan at 30 min.
 
 **Effort:** Chung-Cheng ~30% · Yujie+Haraldur ~40% · Jonathan (rigor/pad) ~15% · Vincent ~15%.
 
@@ -67,9 +67,9 @@ Skip unless a mock fails: RoPE derivation, RMSNorm, FlashAttention internals, Re
 
 ## How to practice
 
-Teach the day’s **new** material, then mock in that person’s voice. Start **Block A**.
+Teach the day’s **new** material, then mock in that person’s voice.
 
-Tonight: parallelism families + 45% util order. Not RoPE.
+**Fri:** open [`2026-08-27_onsite-chung-cheng.md`](2026-08-27_onsite-chung-cheng.md) at **Friday Block A**. Do A1→Close in order. Speak every mock. Not RoPE.
 
 ---
 
@@ -82,5 +82,5 @@ Wed night: `2026-09-02_onsite-day1-debrief.md`. Fri: `2026-09-04_onsite-day2-deb
 ```
 @GenAI/interviews/apple-health-aiml/2026-08-27_onsite-prep.md
 @GenAI/interviews/apple-health-aiml/2026-08-27_onsite-chung-cheng.md
-Start Block A: DDP vs FSDP vs tensor vs pipeline; 30B @ 128 GPUs, 45% util, diagnosis order. Do not re-teach RoPE. Then 35-min Chung-Cheng mock. IC verbs. Do not name AXLearn.
+Start Friday Block A in 2026-08-27_onsite-chung-cheng.md: A1 memory through A7, interleaved mocks, then 35-min Close. Do not re-teach RoPE. IC verbs. Do not name AXLearn.
 ```
