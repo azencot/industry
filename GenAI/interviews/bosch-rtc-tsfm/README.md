@@ -9,7 +9,7 @@
 | **HM** | **Shabnam Ghaffarzadegan** (CR/RHI1-NA) — Lead / Senior RS, audio + multimodal sensor FMs |
 | **HR on thread** | **Joy Galia Meyouhas** (Senior Recruitment Partner) · GS/HRS-PAC-NA |
 | **HM screen** | **Done 2026-08-13** (Shabnam + Joy). Debrief: [`2026-08-13_hm-screen-debrief.md`](2026-08-13_hm-screen-debrief.md). **Passed.** |
-| **Next** | **Thu 2026-08-27, 10:00–11:00 AM PT** — 1h technical: **25 min** talk + **20 min** previous-work Q&A + **15 min** coding discuss. Teams. Agenda: [`2026-08-20_technical-agenda.md`](2026-08-20_technical-agenda.md). |
+| **Technical hour** | **Done 2026-08-27.** Debrief: [`2026-08-27_technical-debrief.md`](2026-08-27_technical-debrief.md). Teams app failed → browser. Talk through 21; 22–23 unsaid. **Wait for Joy.** |
 | **Coding take-home** | PDF + original zip: [`code_assignment/`](code_assignment/). **Working copy (not in this repo):** `~/bosch-rtc-coding/lightning-hydra-uv-template` — edits/commits happen there; discussion stays here. |
 | **Location** | Sunnyvale, CA — **hybrid**; **relocation required** (stated on the call; not rejected) |
 | **Comp (public, both reqs)** | Base **$165K–$195K** + corporate bonus + LTI (ask recruiter; not FAANG RSUs) |
@@ -31,6 +31,7 @@ JDs are nearly identical. On calls, use **Multimodal Foundational Models**. Do n
 | **2026-08-21** | **Rescheduled** | **Thu 2026-08-27, 10:00–11:00 AM PT.** No overlap with Apple Tue 8/25. |
 | **2026-08-24** | **Take-home in progress** | Line-wise WIP. [`2026-08-24_take-home-debrief.md`](2026-08-24_take-home-debrief.md). |
 | **2026-08-26** | **Take-home submitted** | Block-wise; best @ 116, test PPL 28.99; train/eval match. NTP vs gen discussion in [`2026-08-26_take-home-submit.md`](2026-08-26_take-home-submit.md). Zip from `~/bosch-rtc-coding/` — not this repo. |
+| **2026-08-27** | **1h technical** | Talk through 21; Q&A (freq, TSRBench, synthetic, DINO); coding (blocks, pad leftover). [`2026-08-27_technical-debrief.md`](2026-08-27_technical-debrief.md). **Wait for Joy.** |
 
 ## Role in one line
 

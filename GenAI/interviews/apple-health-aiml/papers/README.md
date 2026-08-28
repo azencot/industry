@@ -1,6 +1,6 @@
 # Group papers (local PDFs)
 
-PDFs of Shirley’s Health AI / Health & Fitness public papers. **Read to understand the stack. Do not name-drop on the tech screen** unless Feng goes there.
+PDFs of Shirley’s Health AI / Health & Fitness public papers. **Read to understand the stack. Do not name-drop** on loop unless they go there.
 
 Spoken briefing (no paper quiz): [`../2026-08-20_shirley-group-briefing.md`](../2026-08-20_shirley-group-briefing.md).
 
@@ -10,6 +10,8 @@ Spoken briefing (no paper quiz): [`../2026-08-20_shirley-group-briefing.md`](../
 | [`2509.00221v3.pdf`](2509.00221v3.pdf) | **Speech FMs** generalize to wearable TS tasks | **Narain**, Aldeneh, **Ren** | Steal a pretrained encoder under scarcity (HuBERT / wav2vec 2.0 probes). |
 | [`2409.11376v2.pdf`](2409.11376v2.pdf) | **Towards Time-Series Reasoning with LLMs** | Chow, Gardiner, Hallgrímsson, Xu, **Ren** (thanks: Vincent Chan, **Feng Zhu**) | Closest to your bet: patch TS encoder → Mistral, two-stage, perception first. |
 | [`25_Leveraging_Periodicity_for_.pdf`](25_Leveraging_Periodicity_for_.pdf) | **Leveraging Periodicity** — multi-modal mood pattern models | **Narain**, Sun, Elachqar, Hallgrímsson, **Zhu**, **Ren** | **Feng’s paper.** 12 wearable streams, naturalistic **missingness**, periodicity + GBDT beat a deep TS model. |
+
+**On-site skim (abstracts only, Sat Block B):** RelCon + Periodicity (local) + [Beyond Sensor Data](https://machinelearning.apple.com/research/beyond-sensor) (Yujie; no local PDF). Cultural: SSL FMs **and** simple engineered reps when the latter is more robust. Do not recap tables on loop.
 
 **Bakeoff** = compare a few candidates under **one** eval/gate, then keep or kill. Not three separate papers. Not an ablation (ablation = drop a piece of *one* model).
 

@@ -7,7 +7,7 @@
 
 **Source of truth for numbers:** private repo [`azencot-group/TSLMTSEXAM`](https://github.com/azencot-group/TSLMTSEXAM) branch **`grpo`**, `RUN_SUMMARY.md` through **§28 (2026-08-10)**. Do **not** quote `main` (frozen 2026-06-30) or mix unlabeled campaigns.
 
-Last updated: 2026-08-19
+Last updated: 2026-08-27
 
 ---
 
@@ -45,6 +45,8 @@ LLMs do not use raw numeric tokens well. **One rendering loses information.**
 **Dual tower** feeds both in parallel. Empirically: dual 8B **beats every 32B single-tower** on TSExam-full (0.886 vs 0.849); dual ChatTS numerical **matches ChatTS-14B paper** (0.787). Native ViT **cannot** be LoRA’d into a delay encoder (`qwendelay` 0.601 vs DINO 0.831). Complementary by TSExam category: delay wins anomaly + causality; chart wins noise + pattern.
 
 **Implementation note (Q&A, not a title):** DINOv3 rides Qwen’s video stream (`t=1`); native ViT stays on the image stream and is never LoRA’d.
+
+**DINO objective (lock — missed on Bosch 2026-08-27):** Self-distillation, not SimCLR. Two views; student vs **EMA teacher**; CE on softmax (teacher centered/sharpened); no labels. DINOv3 = that family. You **load pretrained**, then Stage A **LoRA on delay images**. “Zero-shot” = SSL init, not “the tower is never trained.” Image → tokens: patches → ViT tokens → merger/projector → LLM.
 
 **Design principle:** Decouple *how to see* from *how to answer* — Stage A captions transfer to Stage B QA.
 

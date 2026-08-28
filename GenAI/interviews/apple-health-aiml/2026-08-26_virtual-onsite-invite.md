@@ -1,6 +1,6 @@
 # Log — 2026-08-26 — Apple Health AIML virtual on-site (Tyler + schedule)
 
-**Status:** **Scheduled — confirm availability** on the interview-plan email. **Wed 2026-09-02** (3 slots) + **Fri 2026-09-04** (2 slots), Webex. Five 45-min conversations.  
+**Status:** **Scheduled.** Updated **2026-08-27**: Wed now **4** slots (Jonathan added 2:05); Fri is **Vincent only** (Jaya dropped). Still 5 × 45 min. Webex.  
 **From:** **Tyler** (foci) + Apple interview-plan email (calendar; sender may be a scheduling template, not Tyler)  
 **Role:** Machine Learning Research Scientist — Health AIML (Shirley Ren HM)  
 **Prior:** Feng tech screen [`2026-08-25_tech-screen-debrief.md`](2026-08-25_tech-screen-debrief.md) · recruiter loop map [`2026-08-12_recruiter-debrief.md`](2026-08-12_recruiter-debrief.md)  
@@ -16,7 +16,7 @@ The **virtual on-site** — full hiring loop over Webex. Same weight as an in-pe
 
 | | |
 |--|--|
-| **Format** | **5 × 45 min** conversations, split across two days |
+| **Format** | **5 × 45 min** · **Wed 9/2 four slots** + **Fri 9/4 Vincent only** |
 | **Foci (Tyler, locked 2026-08-26)** | Same five themes he briefed 2026-08-12 — now reconfirmed in email |
 | **Person ↔ theme** | **Not mapped.** Do not guess who owns which slot |
 | **CoderPad** | Every slot lists “On-Demand Assessment: CoderPad” — **same template** as HM and Feng. Tyler’s foci are spoken themes, not five pad rounds. Guillermo (private): SWE coding is **role-dependent**. One coding-flavored slot is plausible; treating all five as LeetCode is wrong. Do **not** ask each interviewer. Optional: one format question to Tyler after you confirm |
@@ -130,41 +130,59 @@ You offered **Wed 9/2** and **Thu 9/3**. They booked **Wed 9/2** + **Fri 9/4** (
 
 “Next Available” on the Friday lines is scheduler language, not a status about you.
 
-### Schedule (PDT)
+### Schedule (PDT) — **updated 2026-08-27**
 
 | Day | Time | Invite name | Public ID (do **not** quiz / email / connect mid-loop) | LinkedIn |
 |-----|------|-------------|--------------------------------------------------------|----------|
-| **Wed 2026-09-02** | 10:05–10:50 AM | **Yujie** | **Yujie Li** — best match. Senior MLE, Seattle; headline Apple health AI; wearable behavior FM | [yujie-li-37457742](https://www.linkedin.com/in/yujie-li-37457742) |
-| Wed 2026-09-02 | 1:05–1:50 PM | **Chung-Cheng** | **Chung-Cheng Chiu** — best match. Principal RE, Apple AI/ML (Mountain View); foundation models, **not** Health. Unique given name; likely LLM/infra cross-org | [chung-cheng-chiu-34968a34](https://www.linkedin.com/in/chung-cheng-chiu-34968a34) |
-| Wed 2026-09-02 | 3:05–3:50 PM | **Haraldur** | **Haraldur Hallgrímsson** — Senior Applied RS, Health AI, Seattle. RelCon / TS-LLM / periodicity | [haraldurhallgrimsson](https://www.linkedin.com/in/haraldurhallgrimsson) |
-| **Fri 2026-09-04** | 10:05–10:50 AM | **Jaya** | **Jaya Narain** — Senior RS, Health AI. RelCon / speech-FM / periodicity | [jaya-narain-5b6b0963](https://www.linkedin.com/in/jaya-narain-5b6b0963) |
-| Fri 2026-09-04 | 11:05–11:50 AM | **Vincent** | **Vincent Chan** — Eng Manager, Health AIML. Posts hiring multimodal LLMs/VLMs | [vincentmchan](https://www.linkedin.com/in/vincentmchan) |
+| **Wed 2026-09-02** | 10:05–10:50 AM | **Yujie** | **Yujie Li** — best match. Senior MLE, Seattle; Apple health AI; wearable behavior FM | [yujie-li-37457742](https://www.linkedin.com/in/yujie-li-37457742) |
+| Wed 2026-09-02 | 1:05–1:50 PM | **Chung-Cheng** | **Chung-Cheng Chiu** — best match. Principal RE, Apple AI/ML (Mountain View); AFM / AXLearn. **Not** Health | [chung-cheng-chiu-34968a34](https://www.linkedin.com/in/chung-cheng-chiu-34968a34) |
+| Wed 2026-09-02 | **2:05–2:50 PM** | **Jonathan** | **Jonathan (Jamie) Bourim** — Applied Research Engineer, Health AI, **Seattle**. SWE/ARE; pad is the base case | [jonathan-bourim](https://www.linkedin.com/in/jonathan-bourim) |
+| Wed 2026-09-02 | 3:05–3:50 PM | **Haraldur** | **Haraldur Hallgrímsson** — Senior Applied RS, Health AI, Seattle | [haraldurhallgrimsson](https://www.linkedin.com/in/haraldurhallgrimsson) |
+| **Fri 2026-09-04** | 11:05–11:50 AM | **Vincent** | **Vincent Chan** — Eng Manager, Health AIML | [vincentmchan](https://www.linkedin.com/in/vincentmchan) |
 
-Yujie / Chung-Cheng are **first-name matches**, not calendar-confirmed last names. Treat as the public person you would prepare against; if the Webex tile says otherwise, discard. Do **not** name-drop papers or LinkedIn posts.
+**Dropped (was Fri 10:05):** **Jaya**. Not on this panel unless details change again.
 
-**Gaps Wed:** ~2h15 after Yujie (10:50 → 1:05); ~1h15 after Chung-Cheng (1:50 → 3:05). **Fri:** back-to-back Jaya → Vincent.
+First-name matches except Haraldur/Vincent. If the Webex tile disagrees, discard. Do **not** name-drop papers or LinkedIn posts.
 
-**Not on the panel (this email):** Shirley, Feng, Tyler. They can still appear if details change.
+**Practice map:** [`2026-08-27_onsite-prep.md`](2026-08-27_onsite-prep.md). Treat **Bourim** as the SWE/pad slot (Guillermo: programming is role-dependent) plus leftover rigor.
+
+**Gaps Wed:** ~2h15 after Yujie (10:50 → 1:05). Then **tight:** Chung-Cheng 1:50 → Jonathan 2:05 (15 min) → Haraldur 3:05 (15 min after 2:50). Eat in the long morning gap. **Fri:** one slot.
+
+**Not on the panel:** Shirley, Feng, Tyler, **Jaya**.
 
 ---
 
-## Confirm (send on the interview-plan email)
+## Schedule change email (received 2026-08-27)
+
+> Hello Omri,
+>
+> Here is the latest change to your interview schedule:
+>
+> Wednesday, September 2, 2026 — Webex
+> 10:05–10:50 Yujie · 1:05–1:50 Chung-Cheng · **2:05–2:50 Jonathan** · 3:05–3:50 Haraldur
+>
+> Friday, September 4, 2026 — Webex
+> 11:05–11:50 Vincent
+>
+> (CoderPad listed on every slot — same template.)
+
+---
+
+## Confirm (if they still want a reply)
 
 ```
 Hi,
 
-Thank you — I confirm I’m available for the interview plan as scheduled:
+Thank you — I confirm I’m available for the updated plan:
 
 Wednesday, September 2, 2026 (PDT)
 • 10:05–10:50 AM — Yujie
 • 1:05–1:50 PM — Chung-Cheng
+• 2:05–2:50 PM — Jonathan
 • 3:05–3:50 PM — Haraldur
 
 Friday, September 4, 2026 (PDT)
-• 10:05–10:50 AM — Jaya
 • 11:05–11:50 AM — Vincent
-
-I look forward to meeting the team.
 
 Best,
 Omri
@@ -176,10 +194,10 @@ Optional, **once**, to Tyler (not on the plan email, not to interviewers): wheth
 
 ## Immediate next actions
 
-1. **Reply today** confirming the five slots (template above).
-2. Do **not** email Shirley, Feng, Yujie, Chung-Cheng, Haraldur, Jaya, or Vincent.
-3. Prep the **five Tyler themes**. Existing depth: Feng debrief, HM debrief, training-run drill, why-Apple-Health drill, group briefing. Full on-site bank starts after confirm.
-4. Bosch Thu 8/27 stays a **separate** track. Do not mix Watch scripts into Sunnyvale.
+1. Reply on the change email if they asked you to confirm the new times.
+2. Do **not** email Shirley, Feng, or the five (Yujie, Chung-Cheng, Jonathan, Haraldur, Vincent).
+3. Prep sheets: [`2026-08-27_onsite-prep.md`](2026-08-27_onsite-prep.md). Jonathan: [`2026-08-27_onsite-jonathan.md`](2026-08-27_onsite-jonathan.md).
+4. Bosch is a **separate** track.
 
 ---
 
@@ -187,8 +205,7 @@ Optional, **once**, to Tyler (not on the plan email, not to interviewers): wheth
 
 ```
 @GenAI/interviews/apple-health-aiml/2026-08-26_virtual-onsite-invite.md
-@GenAI/interviews/apple-health-aiml/2026-08-25_tech-screen-debrief.md
-@GenAI/interviews/apple-health-aiml/2026-08-21_hm-screen-debrief.md
-@GenAI/interviews/apple-health-aiml/README.md
-Apple Health AIML virtual on-site scheduled Wed 2026-09-02 (Yujie, Chung-Cheng, Haraldur) + Fri 2026-09-04 (Jaya, Vincent). Confirm availability on the plan email. Tyler locked five spoken themes; CoderPad on every slot is the same template as HM/Feng. Do not email Shirley or interviewers. Do not map people to themes.
+@GenAI/interviews/apple-health-aiml/2026-08-27_onsite-prep.md
+@GenAI/interviews/apple-health-aiml/2026-08-27_onsite-jonathan.md
+Apple onsite updated 2026-08-27: Wed Yujie / Chung-Cheng / Jonathan Bourim 2:05 / Haraldur; Fri Vincent only. Jaya dropped. Treat Bourim as SWE/pad. Do not email interviewers.
 ```

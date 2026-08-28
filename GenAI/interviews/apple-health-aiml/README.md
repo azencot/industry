@@ -26,7 +26,8 @@
 | **2026-08-22** | Ron → Guillermo; **Guillermo replied** | Ron mailed `guillermo.sapiro@gmail.com`. Omri wrote; Guillermo replied same day: former report line; team = **applied ML / ~1-year product**; loop = ML + SWE (role-dep.) + fit. Omri asked one research-vs-product clarification. Log: [`2026-08-22_kimmel-sapiro-outreach.md`](2026-08-22_kimmel-sapiro-outreach.md). **No third email.** |
 | **2026-08-25** | **Tech screen — Feng Zhu** | Done. Spoken attention + KV cache; add-modality (project + concat/xattn + staged); caption eval = CE/ROUGE; multivariate = separators. His challenges: **arch / no data / encoder**. Mix **80/20 research**, early. Debrief: [`2026-08-25_tech-screen-debrief.md`](2026-08-25_tech-screen-debrief.md) |
 | **2026-08-26** | Tyler: **advancing** to virtual on-site | 5 × 45 min. Foci locked (same as Aug 12 brief). Availability sent: Wed 9/2 + Thu 9/3, 10 AM–4 PM PT, flexible. Log: [`2026-08-26_virtual-onsite-invite.md`](2026-08-26_virtual-onsite-invite.md) |
-| **2026-08-26** | Virtual on-site **scheduled** | **Wed 2026-09-02** 10:05 / 1:05 / 3:05 PM PDT — **Yujie**, **Chung-Cheng**, **Haraldur**. **Fri 2026-09-04** 10:05 / 11:05 AM PDT — **Jaya**, **Vincent**. Webex. CoderPad on every slot = same template as HM/Feng. **Confirm availability** on the plan email. Do not email Shirley or interviewers. |
+| **2026-08-26** | Virtual on-site **scheduled** | Then **updated 2026-08-27:** Wed **Yujie / Chung-Cheng / Jonathan 2:05 / Haraldur**; Fri **Vincent 11:05 only**. **Jaya dropped.** Log: [`2026-08-26_virtual-onsite-invite.md`](2026-08-26_virtual-onsite-invite.md) |
+| **2026-08-27** | On-site **practice plan** | People sheets: Yujie / Chung-Cheng / **Bourim** / Haraldur / Vincent. Infra + wearable tokens. Hub: [`2026-08-27_onsite-prep.md`](2026-08-27_onsite-prep.md) |
 
 ## Loop (from Tyler)
 
@@ -52,10 +53,10 @@ Research lead for **multimodal / representation models** over **health & fitness
 | **Guillermo Sapiro** | Distinguished Engineer — **Health AI** (also Princeton faculty) | Co-supervised 2023 AHMS **heart-rate** paper with Shirley; thanked as senior sponsor on an Apple AIML LLM paper. **Private (2026-08-22):** Shirley’s team **used to report to him**; he **switched teams after a reorg**. Not her current manager. Do not name-drop. Org: [`2026-08-21_sapiro-giryes-org.md`](2026-08-21_sapiro-giryes-org.md) | [guillermo-sapiro-356a8b286](https://www.linkedin.com/in/guillermo-sapiro-356a8b286) |
 | **Feng Zhu** | **Tech screen (done)** — Applied RS, Health AI | Wearables / sequential / representation. Mood-periodicity paper with Shirley; thanked on TS-LLM paper. Interviewer **Tue 8/25**. Not on the on-site panel (this invite) | [feng-zhu-304069aa](https://www.linkedin.com/in/feng-zhu-304069aa) |
 | **Yujie Li** (best match) | **On-site Wed 9/2 10:05 AM PDT** | Headline **Apple health AI**; Senior MLE, Seattle. Wearable behavior FM coauthor (ICML 2025). Invite says **Yujie** only | [yujie-li-37457742](https://www.linkedin.com/in/yujie-li-37457742) |
-| **Chung-Cheng Chiu** (best match) | **On-site Wed 9/2 1:05 PM PDT** | Principal Research Engineer, **Apple AI/ML** (Mountain View) — foundation models / Apple Intelligence, **not** Health AIML. Unique given name; likely cross-org LLM/infra interviewer. Invite says **Chung-Cheng** only | [chung-cheng-chiu-34968a34](https://www.linkedin.com/in/chung-cheng-chiu-34968a34) |
-| **Haraldur Hallgrímsson** | **On-site Wed 9/2 3:05 PM PDT** | Senior Applied RS, Health AI, Seattle. RelCon / TS-LLM / periodicity. Sensor FMs; public Watch hypertension / AirPods calories posts. Invite says **Haraldur** only | [haraldurhallgrimsson](https://www.linkedin.com/in/haraldurhallgrimsson) |
-| **Jaya Narain** | **On-site Fri 9/4 10:05 AM PDT** | Senior RS, Health AI. RelCon / speech-FM / periodicity. Invite says **Jaya** | [jaya-narain-5b6b0963](https://www.linkedin.com/in/jaya-narain-5b6b0963) |
-| **Vincent Chan** | **On-site Fri 9/4 11:05 AM PDT** | Eng Manager, Health AIML / Health AI. Thanked on TS-LLM. Posts hiring multimodal LLMs/VLMs on this team. Invite says **Vincent** | [vincentmchan](https://www.linkedin.com/in/vincentmchan) |
+| **Chung-Cheng Chiu** (best match) | **On-site Wed 9/2 1:05 PM PDT** | Principal Research Engineer, **Apple AI/ML** (Mountain View) — AFM / AXLearn, **not** Health AIML. Invite says **Chung-Cheng** only | [chung-cheng-chiu-34968a34](https://www.linkedin.com/in/chung-cheng-chiu-34968a34) |
+| **Jonathan Bourim** | **On-site Wed 9/2 2:05 PM PDT** | Applied Research Engineer, Health AI, **Seattle**. SWE/ARE; treat pad as base case. Invite says **Jonathan** | [jonathan-bourim](https://www.linkedin.com/in/jonathan-bourim) |
+| **Haraldur Hallgrímsson** | **On-site Wed 9/2 3:05 PM PDT** | Senior Applied RS, Health AI, Seattle. RelCon / TS-LLM / periodicity | [haraldurhallgrimsson](https://www.linkedin.com/in/haraldurhallgrimsson) |
+| **Vincent Chan** | **On-site Fri 9/4 11:05 AM PDT** | Eng Manager, Health AIML. Thanked on TS-LLM. Invite says **Vincent** | [vincentmchan](https://www.linkedin.com/in/vincentmchan) |
 
 ### Public LinkedIn — verify before outreach (peer / org signal)
 
@@ -63,6 +64,7 @@ Apple rarely labels **Health AIML** vs **Health AI** cleanly; prefer Tyler / HM 
 
 | Person | Role signal | Why relevant | LinkedIn |
 |--------|-------------|--------------|----------|
+| **Jaya Narain** | **Was** Fri 10:05 — **dropped 2026-08-27** | Senior RS, Health AI. RelCon / speech-FM / periodicity. Off this panel unless details change | [jaya-narain-5b6b0963](https://www.linkedin.com/in/jaya-narain-5b6b0963) |
 | **Jens Behrmann** | Senior Research Scientist, Health AI | Foundational health ML; often Zurich-leaning | [jens-behrmann-3b4239151](https://www.linkedin.com/in/jens-behrmann-3b4239151) |
 | **Aditya Nair** | Senior MLE, Apple Health (Seattle) | Local org signal | [anair111](https://www.linkedin.com/in/anair111) |
 | **Raja Giryes** | TAU prof; Apple **RS on sabbatical** (Jul 2025–) | Public: **Apple AI Research** / **Vladlen Koltun**; ICASSP 2026 **speech** speculative decoding. **Not** Health AIML. Historical: Sapiro postdoc (Duke 2014–15) | [raja-giryes-0818935](https://www.linkedin.com/in/raja-giryes-0818935) |
