@@ -361,7 +361,7 @@ Attention is about O(T^2 * d). One 4000-token sequence next to 100s, pad-to-max 
 
 ### Data pipeline
 
-storage -> CPU preprocess -> tokenize -> batch -> H2D -> GPU.
+storage -> CPU preprocess -> tokenize -> batch -> H2D (host to device copy) -> GPU.
 
 If the GPU waits for data, more GPUs do nothing. Offline tokenize, shard the dataset, workers, prefetch, pinned memory, async H2D, keep Python off the hot path.
 
@@ -376,11 +376,17 @@ Your collator / packing is IC evidence for "data pipeline for packed multimodal 
 1. Explain activation checkpointing. Cost? What memory term?
    Target: A down, compute up; not disk ckpt; not O.
 
+   Spoken lock (2026-08-28): Save a few activations (often the input to a block / every k layers), recompute the rest in backward. A down, compute up. P, G, O unchanged. Not a disk checkpoint. Can look like lower MFU because extra FLOPs are real work, just not "more model."
+
 2. Highly variable sequence lengths — memory and tokens/s?
    Target: T^2; pad-to-max; packing/bucketing; your -100 leak story if asked how packing fails.
 
+   Spoken lock (2026-08-28): Pad-to-max is the wrong default — attention is ~T^2, so one long sequence next to shorts blows A and tokens/s (you compute on pad). Prefer bucketing, packing, varlen kernels; trim T only if the science allows. Packing: labels -100 / splice mask or doc B leaks into doc A's CE (collator you owned).
+
 3. GPUs periodically idle. First fork.
    Target: input vs straggler vs sync vs ckpt pause — not "FlashAttention."
+
+   Spoken lock (2026-08-28): Idle waves are not a weak GEMM and not FlashAttention. Fork: input (CPU / H2D), straggler (fast ranks wait), sync (.item() / barrier), disk ckpt pause. If the GPU waits for data or disk, more GPUs do not help — scale the host pipeline or shard ckpt. Then profile; don't prescribe FSDP.
 
 ---
 
