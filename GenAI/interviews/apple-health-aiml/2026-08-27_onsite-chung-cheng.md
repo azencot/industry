@@ -72,6 +72,10 @@ A (activations): grows with batch B, sequence length T, hidden size d, number of
 
 Attn tiles: the B x heads x T x T score matrix. Hit it with FlashAttention (not linear-time attention).
 
+FlashAttention is still the usual softmax attention: every query attends to every key, so compute stays about T^2. It just never materializes that T x T matrix in GPU memory — tiled kernels + online softmax, less HBM traffic. Same math, cheaper memory movement.
+
+Linear-time attention is a different algorithm. It avoids the T x T comparison, so compute and memory scale about like T (times hidden size), not T^2. Typical tricks: a kernel/feature map instead of softmax (Performer-style), a low-rank or compressed K/V (Linformer-style), a sliding window (local, not full), or a recurrent/state update (RWKV / linear RNN family). You change the model, not just the kernel. Do not say Flash is linear-time. Do not recite those paper names unless he does.
+
 Effective batch too big to fit: gradient accumulation.
 
 Optional: fp32 master weights on top of bf16 P (implementation-dependent).
@@ -104,11 +108,17 @@ Attack map (say this, not ZeRO trivia):
 1. 8B doesn't fit on one GPU. Diagnose, then propose an order.
    Target: split P+G+O+A; 8B state about 96 GB already; 7B order; do not lead with FSDP if LoRA + smaller T + Flash + checkpoint A might suffice.
 
+   Spoken lock (2026-08-28): Check device memory first. 8B, bf16 P and G, fp32 Adam m/v is about 16+16+64 ≈ 96 GB before activations — does not fit on 80 GB as a full replica. That is optimizer state, not activations. Do not fork P vs G vs A as three equal guesses; O is ~4x P, G ≈ P, A has not shown up. If adapters are allowed: LoRA (kills most of O), then shrink T or microbatch + accum, then Flash, then checkpoint A. Do not lead with FSDP on one GPU — sharding needs a fleet. If I must train all 8B: add GPUs, FSDP last. If it later OOMs in the first forward after LoRA, then A: Flash, checkpoint, smaller T.
+
 2. Which of those tools does not reduce optimizer memory?
    Target: FlashAttention and activation checkpointing. They hit A / attn tiles.
 
+   Spoken lock (2026-08-28): O is AdamW m + v, usually fp32 (8 bytes/param vs 2 for bf16 P). LoRA/QLoRA cuts how many params you update, so G and O shrink with the trainable set (QLoRA also shrinks frozen P via 4-bit — that's P, not O). Flash, grad accum, and activation checkpointing do not touch O — they hit A / attn tiles / microbatch. FSDP/ZeRO does reduce per-device O (shard, not shrink the optimizer). Don't say "those tools never help memory"; they help the wrong term.
+
 3. Follow-up: why is O often larger than P?
    Target: two fp32 moments vs one bf16 weight tensor.
+
+   Spoken lock (2026-08-28): AdamW stores m and v, usually fp32 — 8 bytes/param vs 2 for bf16 P, so O is about 4x P. Not "more updates"; same step, fatter tensors. (fp32 master weights would be extra P storage, not O.)
 
 ---
 
@@ -165,11 +175,17 @@ When FSDP all-gather is worse than pipeline: slow fabric, tiny compute per layer
 1. Walk DDP vs FSDP on 4 GPUs. What is replicated? What collective?
    Target: DDP: 4 copies of full P, all-reduce G. FSDP: each rank about 1/4 of P, G, O; all-gather P per layer; reduce-scatter G.
 
+   Spoken lock (2026-08-28): DDP — every GPU has full P, G, O; batch is split so A is per-GPU microbatch. After backward, all-reduce G (not P) so every replica takes the same Adam step and P stays identical. Use when that replica fits. FSDP — each GPU keeps 1/n of P, G, O on the same index cuts. Before a layer, all-gather P, GEMM, drop the extra; grads reduce-scatter. Still data parallel. Peak still includes full W for the current layer. ZeRO-1/2/3 is what you shard (O, then G, then P) — don't open with the stages.
+
 2. Why not always FSDP?
    Target: if it fits, DDP can win on comm and complexity.
 
+   Spoken lock (2026-08-28): FSDP trades extra collectives (and complexity) for less per-device state. If the model already fits, DDP is often simpler and faster. Do not say "FSDP is better."
+
 3. FSDP all-gather every layer — when pipeline instead?
    Target: comm-bound gathers vs shipping activations along depth; bubble vs tax.
+
+   Spoken lock (2026-08-28): When all-gather of P dominates step time (slow fabric, fat W, skinny GEMM per layer) — FSDP tax. Pipeline instead keeps each stage's layers resident and ships activations (and backward grads) to the next stage, which can be cheaper than rebuilding full W every layer. Cost: bubble / stragglers; fill with microbatches. Not "pipeline is deeper FSDP." Profile comm vs compute first.
 
 ---
 
