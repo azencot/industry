@@ -407,11 +407,17 @@ NaNs at 20k steps (not first-step overflow): skip "just lower LR" as the whole a
 1. Week-long 128-GPU run. Design ckpt/recovery.
    Target: sharded; what you save; frequency vs I/O; resume; don't gather to rank 0.
 
+   Spoken lock (2026-08-28): State is hundreds of GB because O is fat — do not gather to rank 0. Each rank writes its shard (P, O, step, RNG, scheduler, scaler). Watch pause time, disk bandwidth, capacity. Frequency: lose hours not days on a crash, without making I/O the job — 8-12/day is a plausible order, not a law. Two copies: rolling last-consistent shards to **resume** (even if val dipped); a separate **best-val** keep for selection. Don't resume from "best val" if that skips steps. Resume world size may differ — say you'd check the format.
+
 2. Dies at 80%. What do you do tomorrow morning?
    Target: last good ckpt; don't re-download the world; check val; find the failing step.
 
+   Spoken lock (2026-08-28): Resume the last **consistent** shard set, not best-val. Don't restart from step 0. Then diagnose the crash: data (new long T, pad/pack, -100 miss) vs numerics (fp16 loss scale; bf16 usually no scale) vs infra (disk, NCCL, OOM, corrupt ckpt). Find the failing step / rank / batch. Val on the resumed ckpt tells if the run was already sick.
+
 3. NaNs after 20k steps.
    Target: not "FSDP." Isolate data vs numerics vs resume vs packing.
+
+   Spoken lock (2026-08-28): Not first-step overflow, not "I'd use FSDP." Isolate: which rank / layer / shard; data (longer T, different mix, -100 miss -> huge CE); fp16 loss scale (bf16 usually skip); LR / wd / clip after a schedule boundary; corrupt resume. Bisect step and the batch. Same instinct as TR mix: don't trust train NLL alone.
 
 ---
 
@@ -489,3 +495,111 @@ Don't claim 122B MoE as a result. Scale probe; letter-A bias; don't slide.
 Don't recite the FlashAttention paper. Exact attn, less HBM, still T^2.
 
 Don't mix activation ckpt with disk ckpt. A vs reliability.
+
+---
+
+## LLM training (spoken; Day 1B still the lock)
+
+Source for knobs: GenAI/notes/2026-08-22_llm-training-mechanics-lockin.md. Do not restudy RoPE. Infra (DDP/FSDP/TP) is A1-A6 above. This section is the **optimizer / data / SFT** layer if he leaves systems.
+
+### A. One step
+
+raw text -> tokenize -> pack/batch -> input_ids [B, T] -> Transformer -> logits [B, T, V] -> next-token CE -> backward -> accum -> clip (after accum) -> AdamW -> LR schedule -> val -> ckpt.
+
+Training computes all positions in the packed window in parallel. Causal mask blocks future tokens. Loss:
+
+L = - sum over t of log p(x_{t+1} | x_<=t)
+
+tokens/step = microbatch * accum * T * n_gpu (DP world).
+
+### B. AdamW
+
+m = beta1 * m + (1-beta1) * g     (beta1 ~ 0.9; most weight on the past — do not flip 1-beta)
+
+v = beta2 * v + (1-beta2) * g^2   (beta2 ~ 0.999)
+
+Then bias-correct to m_hat, v_hat. Update (sketch):
+
+theta <- theta - lr * m_hat / (sqrt(v_hat) + eps) - lr * lambda * theta
+
+Weight decay is **decoupled**: the lambda * theta term is **outside** m, v. Not a per-sample loss weight. No decay on bias / RMSNorm.
+
+Why AdamW: adaptive per-param scale + momentum; Transformers have heterogeneous gradient sizes. SGD can work; AdamW is the reliable default. v is **not** SGD velocity.
+
+O is these m, v (usually fp32) — that is why O ~ 4x bf16 P.
+
+### C. Warmup
+
+Warmup **is** eta(t) ramping from ~0 to peak, then usually cosine decay. Not "tune the weights until a scheduler starts."
+
+Why: early g, m, v are garbage; full LR wrecks the first steps.
+
+Mental model: warmup = stability, peak LR = fast learning, decay = refine.
+
+Early loss spike: LR too high, too little warmup, init, numerics, a bad batch, grad norm. Not "FSDP."
+
+Cosine is common, not uniquely optimal. Don't overclaim.
+
+### D. Accum and clip
+
+Microbatch = what fits one fwd/bwd. Global batch ~ microbatch * accum * DP world size.
+
+Clip **after** accum, before step — global grad norm: if ||g|| > c, rescale to c. Spikes and catastrophic steps. Not a substitute for bad LR / bad data / broken loss.
+
+DDP follow-up: you can skip all-reduce on intermediate microbatches (no_sync) and sync once around the step — fewer collectives. Huge accum: tiny GEMMs, more sequential microsteps, fewer Adam steps for a fixed token budget if you define the run that way. Accum cuts peak **A**, not total FLOPs, and not O.
+
+Do not automatically maximize global batch: less noise, maybe higher LR, fewer updates per token budget; too large can hurt. Objective decides (same as B vs T).
+
+### E. bf16 / fp16 / loss scale
+
+bf16: exponent like fp32 (wide range), skinny mantissa. Preferred on modern GPUs. Usually **no** loss scale.
+
+fp16: small exponent — grads underflow to 0. Loss scale: L' = S * L, backward, **unscale** in fp32, then Adam. Inf/NaN => S too big, skip, cut S. fp16 exponent is 5 **bits**, not "5 digits."
+
+Optional fp32 master: one Adam step; bf16 P is a cast for GEMMs so tiny updates don't vanish in the mantissa. Many bf16 stacks skip the master and keep O in fp32.
+
+### F. Packing vs padding
+
+Pad: rectangular batch. Attn mask: don't attend to pad. Loss mask: don't CE on invalid tokens (labels -100).
+
+Pack: concat shorts to fill T. **EOS alone does not isolate docs.** Need -100 and/or **block attention at the splice** or doc B is in doc A's CE. Files != tokens. Your collator.
+
+T^2: doubling T is much more expensive than doubling B. Longer T also grows A and padding sensitivity.
+
+### G. Mix, quality, SFT
+
+The optimizer sees E_{x ~ p_train}[loss]. Sampling weights **are** the objective. A small high-quality domain that boosts one bench and hurts general: lower its sample weight, replay general data, fewer steps / smaller LR, LoRA, mixture schedule.
+
+More tokens != better: dups, bad synth, eval contamination, formatting that dominates SFT.
+
+Pretrain / continued pretrain / SFT: same autoregressive CE. Different data shape, mask, LR, duration. Do not say SFT is a different LM loss.
+
+Completion-only: attend to the prompt; CE only on assistant tokens (prompt labels -100). Attend != loss.
+
+Chat template wrong: train NLL can look fine, generation dies. Debug: raw -> template -> tokens -> labels -> decode the training sample.
+
+EOS: when to stop. Packing + bad EOS => endless gen or leak into the next sample.
+
+### H. LoRA / QLoRA / forgetting
+
+W = W0 + B A, W0 frozen, A/B low rank. Hits trainable P, G, and especially O.
+
+QLoRA: frozen base in 4-bit (P storage on forward); adapters higher precision. 4-bit is a **P** win; O shrinks because you still only train adapters.
+
+Catastrophic forgetting: smaller LR, fewer steps, replay, LoRA, freeze, broader mix.
+
+### I. What to trust
+
+Don't pick the ckpt on train NLL. Val (and task metrics). Hold out test. Train down / val up: **eval bug or mix first**, then overfit. Too-high LR usually wrecks **train** too. Task flat + NLL down = mixture NLL is not the task (your 27B vs TSRBench story).
+
+NaNs / spikes: first non-finite — data batch, acts, logits, loss, grads, then the update. Same fork as Mock A6 Q3.
+
+Track tokens/s, step time, grad norm, LR, stalls — not only loss. Numerically healthy and system-efficient.
+
+### J. Follow-ups to drill (after Close)
+
+Why warmup / AdamW / bf16 / clip. Why not max batch. Context doubles. Loss up, eval down. Bad mix. LoRA vs full FT. Unstable only after 20k steps. What you checkpoint. Optimization vs infra bottleneck.
+
+Depth example — why accum? Desired global batch didn't fit. Does it cut total compute? No; peak A. Comm? DDP can delay all-reduce until the step. Huge accum? Tiny kernels, longer step, fewer updates per token budget.
+
+Your run as evidence at the end: two-stage, DDP, LoRA, pack -100, TR kill on val/slice not train average.
