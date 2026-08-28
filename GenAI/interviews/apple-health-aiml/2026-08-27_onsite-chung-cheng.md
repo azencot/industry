@@ -241,44 +241,88 @@ Spoken: "Fit state with FSDP; if a layer still doesn't fit, tensor-split on NVLi
 1. 128 accelerators, 30B. How might you combine axes — and why not 128-way DP?
    Target: 30B state about 360 GB replicated; must shard and/or TP/PP; pick an example product that multiplies to 128; TP on the fast domain.
 
+   Spoken lock (2026-08-28): 30B is about 360 GB of P+G+O before A, so DDP on 80 GB is out. Shard with FSDP 8- or 16-way (~45 or ~22 GB state per GPU) and check shards + A + one gathered layer W still fit — not "all layers at once." Do not 128-way DP/FSDP: replica doesn't fit, and 128-way collectives + tiny batches dominate. If one layer still doesn't fit, TP on NVLink (e.g. TP 8 x FSDP 16 = 128, or TP 4 x PP 4 x FSDP 8). Fast interconnect is placement, not the reason for TP. Pipeline if depth or FSDP gather tax dominates; fill with microbatches.
+
 2. 2x GPUs, 1.4x speedup. Why?
    Target: Amdahl; comm fraction; smaller GEMMs; collective latency; pipeline bubble; straggler; dataloader not scaled.
 
+   Spoken lock (2026-08-28): Amdahl — serial / sync / input / bubble don't shrink 2x. Compute per GPU drops; comm does not vanish and often **grows** (more ranks, longer collectives, maybe crossing nodes) — not "comm stays the same." Smaller per-GPU GEMMs (worse MFU); collective **latency**; pipeline bubble; straggler; dataloader not scaled. Profile step time: compute vs comm vs input vs sync. Don't prescribe FSDP.
+
+   Amdahl (don't call the fraction P — that's weights): f = parallel share of 1-GPU time T. T(N) = T * ((1-f) + f/N). Speedup S(N) = 1 / ((1-f) + f/N). Ceiling S → 1/(1-f). Comm/input/sync sit in (1-f); adding ranks can **raise** that bucket.
+
 3. Increase B or T?
    Target: no universal. Tokens/step = B * T * n_gpu. Attention is about O(T^2 * d). Long context is a T^2 tax; bigger B is often cheaper if the task doesn't need long T. Objective + memory decide.
+
+   Spoken lock (2026-08-28): No universal — objective first. Tokens/step = B * T * n_gpu. Attention compute (and naive attn memory) is ~T^2; B is roughly linear in A and splits cleanly with DDP. If the task does not need longer context, raise B (or accum). If it does (long docs / long history), you pay the T^2 tax; packing/bucketing before padding. A still grows with B, so linear is not "free." Don't raise T just to look like a long-context model.
 
 ---
 
 ## A4 — Runtime: compute vs communication
 
+A training step is one optimizer update: forward, backward, (maybe accum), clip, Adam, zero. Wall-clock for that step is not "the GEMMs." Split it:
+
 Step time = compute + comm + input + sync + ckpt/other.
 
-Add GPUs -> per-device compute shrinks; comm does not vanish. Comm as a fraction of step time grows. 8 to 64 is not 8x. That is the whole 64-GPU question.
+- Compute: GPU math — mainly GEMMs (xW, attention). This is what MFU is trying to capture.
+- Comm: NCCL collectives — DDP all-reduce G, FSDP all-gather P / reduce-scatter G, TP activation all-reduce. Waiting for a collective counts here even if the SM looks "busy."
+- Input: CPU decode, collate, copy host-to-device. GPU sits idle if the next batch is not there.
+- Sync: barriers, logging that pulls a scalar to CPU (.item()), stragglers (fast ranks wait for the slow one).
+- Ckpt/other: pausing to write shards, allocator stalls, fragmentation.
 
-Overlap: bad = compute then a blocking collective. Better = hide all-reduce/all-gather behind backward of another layer. Goal: comm under useful FLOPs.
+You do not need a profiler dump in the interview. You need to name which bucket you would look at first.
 
-Throughput for training: tokens/s (not "latency of one sample"). Latency = time for one op / step.
+### Why 8 GPUs fine, 64 GPUs not 8x
 
-MFU is roughly useful model FLOPs / peak hardware FLOPs. Do not memorize a formula. Low MFU is not "buy FlashAttention." It flags a regime:
+On one GPU, almost all of step time can be compute. Add data-parallel ranks: each GPU gets a smaller slice of the global batch (or you keep per-GPU batch and grow global batch — different choice). Per-GPU GEMM shrinks. Collectives do not go away: you still all-reduce a full G (DDP) or all-gather each layer (FSDP). More ranks -> longer rings/trees, more chance you leave NVLink and hit the network. Comm's share of the step grows. That is Amdahl: f (parallel GEMMs) / N drops; (1-f) (comm, input, sync) does not shrink the same way and can get worse.
 
-- GPUs idle in waves: look at input, straggler, barrier, ckpt pause.
-- Comm dominates step time: look at parallelism, topology, collective size, overlap, too-small per-GPU work.
-- GPUs busy, MFU still low: kernels, tiny GEMMs, bad shapes, extra recompute (act-ckpt), unfused attn, host .item().
-- Huge padding: packing / bucketing / varlen.
+So "64 GPUs, about 4x not 8x" is the default physics, not a mysterious bug. Investigate where the extra time went vs the 8-GPU run (same model, same per-GPU batch if you can). Don't open with "I'd switch to FSDP."
 
-Diagnosis order (30B, 128 accelerators, 45% util) — say this:
+2x GPUs -> 1.4x is the same story at small N (Mock A3 Q2).
 
-1. Compute-bound vs communication-bound (MFU vs collective time).
-2. Profile step breakdown (fwd / bwd / opt / wait).
-3. Input (decode, H2D, host stall).
-4. Collectives (FSDP tax).
-5. Per-device microbatch too small.
-6. Padding / real tokens (ragged T).
-7. Activation checkpoint — extra compute, can look like low "useful" MFU.
-8. Kernel / attention impl.
-9. Host-device sync.
+### Overlap (hiding comm)
 
-Compare to the 8-GPU run that was healthy. Do not spray tools until the profile names the class.
+Bad schedule: finish all compute, then a blocking all-reduce. Step time = compute + comm, added.
+
+Better: start communicating G for layer i+1 while you still compute backward of layer i (DDP bucketing / async all-reduce). FSDP can overlap all-gather of the next unit with compute of the current one, if the implementation allows it.
+
+Goal: comm under useful FLOPs so wall-clock is about max(compute, comm), not the sum. If overlap is broken, you pay both. You would not claim you implemented this at 128 GPUs; you would ask for the profile: wait time vs kernel time.
+
+### Throughput vs latency vs utilization vs MFU
+
+Don't mix these four.
+
+- Latency: time for one step (or one collective). Users care in serving; in training the product metric is usually tokens/s (samples/s times T, or packed tokens).
+- Throughput: tokens/s (or samples/s). Scale-out should raise this; if it doesn't, something in the split above ate the win.
+- GPU utilization (nvidia-smi / "45% util"): fraction of time the chip is doing something. Idle waves -> input, straggler, barrier, ckpt. High util + bad training is possible: the GPU is busy copying, waiting on NCCL, or running tiny kernels.
+- MFU (model FLOPs utilization) is about (FLOPs the model should need for those tokens) / (peak GPU FLOPs times time). Do not memorize a paper formula. It asks: of the chip's math peak, how much was useful Transformer work? 20-40% is common at small scale; 45% util in the drill is "the job looks sick," not a magic constant.
+
+Low MFU is a flag, not a prescription. FlashAttention can raise MFU if the problem was unfused T x T attn. It does nothing if the GPU is waiting on the dataloader.
+
+### Four regimes (read the symptom, then the bucket)
+
+GPUs idle in waves (util drops to 0, then spikes): not a weak GEMM. Input (workers, H2D, tokenize), straggler, barrier, ckpt pause. More GPUs make this worse if the host pipeline wasn't scaled.
+
+Comm dominates step time (NCCL wait much larger than GEMM): parallelism choice (FSDP tax every layer, TP across slow links, 128-way DP), topology, huge collectives, no overlap, per-GPU batch too small (all-reduce of G costs the same, compute vanished). This is the 8-to-64 question.
+
+GPUs busy, MFU still low: the chip is working but not on fat model FLOPs — tiny GEMMs (small B or T), bad shapes, padding (compute on pad tokens), extra recompute from activation checkpointing, naive attn, Python .item() every step. Not "add FSDP."
+
+Huge padding: lengths 100, 120, 4000 padded to 4000. You pay T^2 on garbage. Packing / bucketing / varlen. Your -100 collator story if he asks how packing fails.
+
+### Diagnosis order (30B, 128 acc, 45% util) — say this
+
+Compare to a healthy smaller run (8 GPU) when you have one. Same global recipe if possible.
+
+1. Compute-bound vs communication-bound. Look at MFU vs time in collectives. Names the fork.
+2. Profile step breakdown: fwd vs bwd vs opt vs wait. Wait is the tell.
+3. Input: decode, H2D, host stall — idle waves.
+4. Collectives: FSDP all-gather tax, DDP all-reduce size, TP on the wrong domain.
+5. Per-device microbatch too small — Amdahl + tiny GEMMs.
+6. Padding / real tokens per step (ragged T).
+7. Activation checkpoint — extra compute; can lower MFU while saving A. Don't confuse with "slow comm."
+8. Kernel / attention: fused vs materializing T x T.
+9. Host-device sync (.item(), logging).
+
+Do not spray tools until the profile names the class. Your evidence at the end: you have diagnosed fit vs throughput on jobs you owned (DDP, LoRA), not 128-GPU FSDP.
 
 ---
 
