@@ -4,7 +4,7 @@
 **Who (private):** Senior MLE, Seattle; headline Apple health AI. Coauthor [Beyond Sensor Data / WBM](https://machinelearning.apple.com/research/beyond-sensor) — 2.5B hours, 162k people, **tokenization + architecture**, 57 health tasks. CV / representation background.  
 **Hub:** [`2026-08-27_onsite-prep.md`](2026-08-27_onsite-prep.md)
 
-**Opens Wednesday.** First two minutes: encoding → stay here. Labels / 162k / missingness → Haraldur sheet (**5**).
+**Opens Wednesday.** First two minutes: encoding → stay here. Labels / 162k / missingness → Haraldur **H3 / H7**.
 
 Do **not** name WBM / ICML. Do **not** force TS-as-image onto PPG. Do **not** only talk PPG@100 Hz / IMU@50 Hz.
 

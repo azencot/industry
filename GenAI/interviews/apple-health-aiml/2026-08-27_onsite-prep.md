@@ -33,7 +33,7 @@ Bosch is **done**. Do not mix Sunnyvale scripts.
 |------|-------|-------|
 | **Thu PM** (if energy) | skipped / leftover — full Block A is **today** | — |
 | **Fri 8/28** | **A** entire Chung-Cheng path **A1–A7 + Close** | ~6.5. Sheet has mocks every block. Compress: skip extra A1 arithmetic + second A7; **never skip Close** |
-| **Sat 8/29** | **B** Yujie + Haraldur: wearable representation **design problems** | ~4. Skim abstracts only: RelCon, Periodicity, Beyond Sensor Data. **Do not name-drop** |
+| **Sat 8/29** | **B** Yujie + Haraldur: wearable **design problems** | ~4. Yujie timescales; Haraldur sheet **H1, H3, H4, H7 + Mock H**. Abstracts only. **Do not name-drop** |
 | **Sun 8/30** | **D** two-project hostile defense | ~4 |
 | **Mon 8/31** | **C** Vincent: 5-min structured answers | ~3 |
 | **Tue 9/1** | Repair + **Wed-order mocks**: Yujie → Chung-Cheng → Jonathan (30 min) → Haraldur | ~4. Stop by 7. Do not run four full 45s |
