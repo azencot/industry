@@ -201,6 +201,14 @@ Before mentioning architecture, define: (1) target, (2) label source, (3) predic
 
 Week-level target lock (2026-08-29): start from daily behavioral aggregates + periodic features + GBDT. Not a Transformer, not raw IMU patches. Escalate only if the tree loses on the slices that matter.
 
+Spoken Case A (2026-08-29):
+
+First take: (1) health event next week yes/no; (2) label source = train + test data; (3) prediction time = a week; (4) horizon = a week; (5) inputs = previous six months; (6) population = Apple Watch users; (7) action depends, might trigger healthcare intervention; (8) costs depend, FP or FN might be costly; (9) split so there is no dist shift: current vs unseen data; (10) accuracy, precision, recall, F1.
+
+Miss: restated the prompt. Label source is how Y is generated, not "the dataset." Confused t with Delta. Six months is the window, not the modality inventory. "Watch users" is not a population. "Depends" is not an action or a cost. Split should match the generalization claim, not "avoid shift." Do not open with accuracy on a sparse event.
+
+Lock: I'd lock Y first — say hospitalization in the next 7 days from EHR, not "a health event." Score at a fixed t, using only data available then; horizon is [t, t+7d]. Inventory IMU / HR / sleep / intermittent PPG and wear; PPG may be train-only. Population: consumer Watch, and I need new-user and known-user claims separately. Working action: a follow-up prompt, so FP is costly. Split: participant-disjoint and a temporal holdout, not a random window cut. I would not lead with accuracy — prevalence, PPV at tau, and calibration. Then daily aggregates + GBDT, not a Transformer.
+
 Case B: "Predict today's sleep quality."
 
 Ask: before sleep? during sleep? after waking? self-reported quality or physiological proxy? Notice how the ML problem changes completely.
