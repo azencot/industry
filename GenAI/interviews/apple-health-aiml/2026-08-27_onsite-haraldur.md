@@ -12,6 +12,8 @@ Do not name RelCon / periodicity paper / Workout Buddy / his LinkedIn posts. Do 
 
 Posture in one line: I want to know not only whether the sophisticated model wins, but what it learned, under which data assumptions, and whether that advantage survives the distribution we actually deploy on.
 
+Target profile: can reason about wearable ML from representation learning all the way to robust deployment.
+
 ---
 
 ## Saturday Block B — how to use this file
@@ -20,7 +22,7 @@ He might run Health Domain & Applied ML Judgment, or wearable representation / S
 
 Chain: wearable data -> representation -> training objective -> downstream model -> evaluation -> deployment shift -> product decision.
 
-Weight (if you have a full day): ~30% health metrics + applied judgment; ~25% missingness + shift; ~20% wearable SSL / representation; ~15% longitudinal + personalization; ~10% fusion / LLM details.
+Weight (if you have a full day): ~30% health evaluation + applied judgment; ~25% missingness + shift + robustness; ~20% wearable representation / SSL; ~15% longitudinal + personalization; ~10% foundation-model / multimodal architecture details. Broader than a pure health-judgment prep; narrower than a generic multimodal interview.
 
 Today (Sat, shared with Yujie, ~4h total): do H1, H3, H4, H7, then Mock H. Skip H9 unless a mock fails. Abstracts only — RelCon, Periodicity, Beyond Sensor Data — do not name-drop.
 
@@ -32,98 +34,380 @@ If unclear how he opens: start with task and data; let him pull architecture or 
 
 First I'd define the deployment setting — target, who acts, when the prediction is made, what history exists then, missingness, operating point, cost of FP vs FN. I'd put a strong statistical / tree / classical TS baseline on the table before I decide whether representation learning buys anything.
 
-Then bakeoff. Not: Transformer + multimodal LLM.
+Then bakeoff. Do not jump to Transformer / foundation model / LLM.
 
 ---
 
 ## H1 — Deployment, then the data regime
 
-Before a model: what is the target; who uses it; at what time; what data exist at that moment; what horizon; what action; FP vs FN cost; screening vs monitoring vs recommendation vs intervention.
+### Start with the deployment problem
 
-"Before choosing the model, I'd define the deployment setting because the target, available history, acceptable errors, and eval protocol all depend on how the prediction will be used."
+Before choosing an architecture, clarify:
 
-Modalities differ in rate, noise, missingness, power, semantics, relevant horizon:
+- What exactly is the target?
+- Who are the users?
+- At what time is the prediction made?
+- What data are available at that moment?
+- What prediction horizon matters?
+- What action follows the prediction?
+- What are the costs of FP and FN?
+- Is this screening, monitoring, recommendation, or intervention?
 
-- IMU: dense, high-Hz, motion.
-- PPG: waveform physiology, quality-sensitive.
-- HR / HRV: lower-rate derived.
-- Sleep / workouts / steps / mobility: minute to day.
-- Behavioral summaries: hour / day / week.
-- Text, self-report, clinical labels.
+Strong answer style:
 
-Core question (same as Yujie): what temporal scale does the task require? Sleep next night != 5-year risk != 10 s gait.
+"Before choosing the model, I'd define the deployment setting because the target, available history, acceptable errors, and evaluation protocol all depend on how the prediction will be used."
 
-Three families (do not force one across all scales):
+### Wearable data — know the regime
 
-Raw / local: signal -> patch/window -> encoder -> latent. Keeps fine detail; expensive, noisy, long T, data-hungry.
+Possible modalities: accelerometer / IMU; PPG; heart rate; HRV; sleep; workouts; steps; mobility; behavioral summaries; text / self-report; clinical labels.
 
-Aggregate / behavioral: daily steps, resting HR, sleep duration, periodic features, rolling stats. Compact, often aligned with longitudinal outcomes, robust, cheap. Loses waveform; depends on what you engineered.
+They differ in sampling rate, noise, missingness, power cost, temporal semantics, and the relevant downstream horizon.
 
-Hierarchical: raw -> local encoder -> minute/hour latent -> day latent -> longitudinal model. Do not dump 100 Hz IMU for a year into one Transformer. 100 Hz is 360k samples/hour — not one LLM token per sample. Compress: patch / conv / local encoder -> few latents -> higher model. Tradeoff: compression vs information loss.
+IMU: dense, high frequency, motion-heavy.
 
-For every encoding ask: preserved; discarded; token/compute cost; inductive bias; temporal scale; missingness robustness; task transfer.
+PPG: rich physiology, higher-frequency waveform, quality sensitive.
 
-When to use an LLM: not the default for low-level sensing. Split perception / representation / longitudinal reasoning / language interface. Native encoder for 1-2. LLM if you need semantic context, instructions, summaries, heterogeneous text. "I would not feed raw high-Hz sensing into an LLM unless evidence showed it helped."
+HR / HRV: lower-rate derived physiological signal.
 
-Async clocks: IMU 100 Hz, HR 1 Hz, sleep every few minutes — do not resample onto the fastest clock. Encode each at native/local rate, compress, align on a latent timeline, then fuse.
+Sleep / workouts / steps / mobility: minute to day.
 
-Irregular: missing != zero. (x, t) or (x, delta_t); time embeddings, mask, event models. Don't open with neural ODEs unless he goes there.
+Behavioral summaries: hour / day / week.
+
+Text, self-report, clinical labels: different noise and delay.
+
+Core question (same as Yujie): what temporal scale does the task require? That should drive representation choice. Sleep next night != 5-year risk != 10 s gait.
+
+### Raw / local vs aggregate vs hierarchical
+
+Do not force one representation across all temporal scales.
+
+Raw / local signal model:
+
+raw signal -> patch/window -> sensor encoder -> latent representation
+
+Pros: preserves fine temporal detail; can discover features; useful for waveform-level tasks.
+
+Cons: expensive; noisy; long sequences; data hungry.
+
+A patch is tokenize-then-learn. A 100 Hz IMU patch of 1 s is still the waveform (100 samples -> one latent). The model can still see shape, transients, cadence.
+
+Aggregate / behavioral features:
+
+Examples: daily steps; resting HR; sleep duration; workout duration; periodic features; rolling statistics.
+
+Pros: compact; interpretable; often aligned with longitudinal health outcomes; robust; cheap.
+
+Cons: loses waveform detail; depends on feature engineering.
+
+Aggregation is not one operator. Match the quantity:
+
+- Totals: sum — steps, calories, minutes asleep.
+- Levels: mean or median — HR, HRV, cadence. Median if outliers or holes.
+- Extremes: min / max — peak HR, longest sedentary bout.
+- Variability: std, IQR — irregularity, not the mean.
+- Clock / routine: mean by hour-of-day, day-of-week, a few Fourier bins.
+- Wear: hours observed, fraction worn. Never treat missing as 0 and then average.
+
+Do not average 100 Hz IMU into one daily number and call it a representation. If the task is longitudinal (mood, risk, next-night sleep), start with behavioral aggregates + GBDT. If the task is local physiology (gait, arrhythmia, a workout bout), patch the raw window.
+
+Hierarchical representation:
+
+raw signal -> local encoder -> minute/hour latent -> day-level latent -> longitudinal model
+
+Often a strong architecture for long wearable histories.
+
+### What information does each representation preserve?
+
+For every encoding, ask:
+
+1. What information is preserved?
+2. What information is discarded?
+3. What is the token / compute cost?
+4. What inductive bias is introduced?
+5. What temporal scale is represented?
+6. How robust is it to missingness?
+7. Does it transfer across tasks?
+
+This is the main framework for representation discussion.
+
+### Sensor token budget
+
+Raw 100 Hz stream: 100 samples/sec = 360,000 samples/hour. Cannot naively map each sample to one LLM token.
+
+Need: raw signal -> patch / conv / local encoder -> compressed latent tokens -> higher-level model.
+
+Main tradeoff: compression vs information loss.
+
+### Asynchronous modalities
+
+Example: IMU 100 Hz, HR 1 Hz, sleep every several minutes.
+
+Do not force everything onto 100 Hz. That creates huge sequences, artificial interpolation, and unnecessary duplication.
+
+Possible approach: encode each modality at native/local resolution -> compress -> align on a latent timeline -> cross-attend / fuse.
+
+### Irregular sampling
+
+Missing observation != zero.
+
+Possible representation: (x_i, t_i) or (x_i, delta_t_i) or explicit event times.
+
+Potential approaches: time embeddings; interpolation + mask; event-based models; irregular-aware encoders. Neural ODE / continuous-time models only if he goes there. Do not overcomplicate unless asked.
+
+### When to use an LLM
+
+Do not default to an LLM for low-level sensing.
+
+Separate: (1) perception, (2) representation, (3) longitudinal reasoning, (4) language interface.
+
+Native sensor model may handle 1-2.
+
+LLM may help with combining semantic context, instruction following, summaries, heterogeneous modalities, natural language interaction.
+
+Strong answer: "I would not feed raw high-frequency sensing directly into an LLM unless evidence showed that was beneficial."
 
 ---
 
 ## H2 — SSL, contrastive, distillation
 
-Typical health: unlabeled wearable >> labeled outcomes.
+### Why SSL
 
-large unlabeled corpus -> SSL encoder -> frozen probe and/or light FT -> downstream.
+Typical health setting: unlabeled wearable data >> labeled health outcomes.
 
-Objectives you might name: contrastive, masked reconstruct, future predict, temporal consistency, cross-modal align, distill. The question is not "which paper." It is: what invariances and structure should the objective encode?
+Pipeline: large unlabeled corpus -> SSL encoder -> frozen probe / fine-tune -> downstream tasks.
 
-Contrastive (InfoNCE sketch): pull z and z+ together, push z against other z_j, temperature tau. The science is the **positive**. Wearable: is watch rotation an invariance? Small jitter OK? Crop still the same bout? Time-warp destroy cadence? Different intensity still "same"? Does the aug preserve physiology? "An SSL augmentation is a modeling assumption about invariance." Do not copy ImageNet crops.
+Possible objectives: contrastive learning; masked reconstruction; future prediction; temporal consistency; cross-modal alignment; knowledge distillation.
 
-Binary same/not-same can be too crude (nearly equivalent vs related vs unrelated). Prefer similarity grounded in signal semantics or downstream invariances — do not name RelCon.
+The key question is not "what SSL algorithm do you know?"
 
-Cross-modal distill: rich teacher at train (e.g. PPG), cheap student at deploy (e.g. IMU), paired sync data. Ask: what is actually predictable across modalities (physiology vs activity)? Missing teacher? Participant/device shift?
+It is: what invariances and structure should the objective encode?
 
-Eval an FM: many tasks; low-label curves (1% / 5% / 10% / 100%); linear probe and FT; unseen participants; device; missingness; timescale transfer. Linear probe asks: is the information already in the frozen z? If all gains need full FT, the representation is less universal than claimed. Negative transfer: report task slices, not only the mean.
+### Contrastive learning
 
-100x unlabeled spine: SSL with domain invariances; frozen probe; label-efficiency curve; light FT; participant holdout; device/missingness stress; **same-label-budget simple baseline**. If the FM loses at realistic labels, keep the simple model.
+Generic form: z_i = E(x_i)
+
+InfoNCE-like objective:
+
+L_i = -log [ exp(sim(z_i, z_i+) / tau) / sum_j exp(sim(z_i, z_j) / tau) ]
+
+Focus on positive construction, not the formula.
+
+Wearable questions:
+
+- Is rotation an invariant? (watch orientation)
+- Is small temporal jitter acceptable?
+- Is crop preserving semantics? Same bout?
+- Can time warping destroy cadence?
+- Should different intensity levels count as similar?
+- Does augmentation preserve physiology?
+
+Strong line: "An SSL augmentation is a modeling assumption about invariance."
+
+Do not copy image augmentations blindly.
+
+### Relative / domain-aware similarity
+
+Binary positive/negative pairing may be too crude.
+
+Two sensor windows may be: nearly equivalent; related but not identical; unrelated.
+
+A relative / domain-aware objective can represent a richer geometry.
+
+Potential answer: "Generic contrastive learning can impose the wrong equivalence classes. For wearable signals I would prefer similarity definitions grounded in signal semantics or downstream invariances."
+
+Do not name RelCon.
+
+### Cross-modal distillation
+
+Useful setup: rich modality at training -> teacher; cheap / widely available modality -> student.
+
+Example: PPG teacher -> accelerometer student.
+
+Use synchronized paired data to align representations.
+
+Potential deployment advantage: train with rich modality, deploy with cheaper modality only.
+
+Questions to ask:
+
+- What information is predictable cross-modally?
+- Does the student learn physiology or just activity?
+- What happens under missing teacher data?
+- Does transfer survive participant / device shift?
+
+Wearable views are not a photo-caption pair. IMU does not substitute for PPG. Alignment only transfers what is actually shared.
+
+### Foundation model evaluation
+
+Do not call it useful because it is large.
+
+Test: multiple downstream tasks; low-label regimes; linear probe; frozen encoder; full fine-tune; unseen participants; device shift; missingness; temporal scale transfer.
+
+A foundation model should demonstrate transfer.
+
+### Linear probe vs fine-tune
+
+Linear probe: freeze representation, train a simple head. Question: is useful information already present in the frozen z?
+
+Fine-tuning: allows the encoder to adapt.
+
+If all gains appear only after full fine-tuning, the pretrained representation may be less universal than claimed.
+
+### Label efficiency
+
+One strong reason for sensor pretraining: performance as a function of labeled data — 1% / 5% / 10% / 100%.
+
+If the pretrained representation greatly helps at 1-10% labels, that is meaningful evidence.
+
+Do not only compare full-data accuracy.
+
+### Negative transfer
+
+A foundation model may improve some tasks and hurt others.
+
+Possible reasons: wrong invariances; temporal-scale mismatch; compressed away an important feature; modality mismatch; domain shift.
+
+Report task slices, not only the mean.
+
+### 100x unlabeled IMU — answer spine
+
+SSL pretrain; domain-appropriate invariances; frozen representation evaluation; label-efficiency curves; fine-tune; participant holdout; device / missingness stress tests; compare to a strong simple baseline on the same label budget.
+
+If the FM loses at realistic labels, keep the simple model.
+
+### PPG on 20%, IMU on 95%
+
+Possible design: paired PPG/IMU cross-modal pretraining; PPG teacher; IMU student; IMU-only SSL on the remaining unpaired mass; deploy IMU if needed; verify knowledge transfer on downstream tasks.
 
 ---
 
 ## H3 — Missingness (architecture and statistics)
 
-Do not drop incomplete rows (IMU-only, HR+sleep, PPG+IMU, all).
+### Architecture
 
-Architecture: variable set (only present modality tokens) or fixed slots (learned missing token, presence mask, modality ID). Do not encode missing as zero. Distinguish measurement is zero from measurement is unavailable.
+Suppose examples contain: IMU only; HR + sleep; PPG + IMU; all modalities.
 
-Stats — three questions:
+Do not drop incomplete rows.
 
-1. Can the model technically run with holes?
-2. Is missingness informative? P(M | X, Y) often != P(M): not worn, battery, illness, adherence, contact, behavior.
-3. Will missingness **shift**? P_train(M) != P_deploy(M) — firmware, battery, adherence, illness. A model that used availability as a shortcut dies.
+Possible handling:
 
-Informative missingness is a signal **and** a shortcut risk. Eval is not "can it impute." It is: does performance hold when the missingness **process** changes.
+A. Variable-length modality set: include only present modality tokens. Pack what you have. Like packing vs pad-to-max: only real tokens, modality ID, time, attention over what exists.
 
-Stress tests (not only naturally missing test data): drop random channels; drop a high-value channel; longer holes; lower wear time; change which modalities exist; sparse-user slice. Plot performance vs missingness severity. Compare **curves**, not only the average.
+B. Fixed slots: learned missing token; presence mask; modality identity embedding. Same length every row. Simple batching. The dummy can become a shortcut for the missingness process.
 
-"Most users don't wear continuously": first plot performance vs wear time. Then natural missingness, explicit availability, dropout in train, robust aggregates, uncertainty, sparse-user subgroup, and whether sparse use **correlates with the label**.
+Do not blindly encode missing as zero.
+
+Architecture should distinguish "measurement is zero" from "measurement is unavailable."
+
+Your lock: pack present modalities with IDs, not pad missing streams to a fixed slot. Add a small availability / wear-time vector so absence is explicit but not a fake waveform. Train with modality dropout so any subset works. Do not treat another sensor as a substitute view of the missing one. Then stress-test when the missingness process changes — that is the kill, not whether the forward pass accepts holes.
+
+### Missingness as a statistical issue
+
+Do not stop at masking.
+
+Three questions:
+
+A. Can the model technically handle missing data?
+
+B. Is missingness informative? Often P(M | X, Y) != P(M). Reasons: device not worn; battery; illness; behavior; activity; adherence; poor sensor contact.
+
+C. Will missingness shift? P_train(M) != P_deploy(M). Firmware, battery, adherence, illness. This can break a model that learned availability shortcuts.
+
+Informative missingness is a signal and a shortcut risk.
+
+Eval is not "can it impute." It is: does performance hold when the missingness process changes.
+
+### Missingness stress tests
+
+Do not evaluate only on naturally missing test data.
+
+Create controlled tests:
+
+- remove random channels
+- remove specific high-value channels
+- increase missing duration
+- simulate lower wear time
+- change modality availability pattern
+- evaluate sparse-user subset
+
+Plot performance vs missingness severity. Compare robustness curves, not only average performance.
+
+### Most users don't wear continuously
+
+First quantify: performance vs wear time.
+
+Then consider: natural missingness; explicit availability; missingness-aware training; modality dropout; robust aggregate features; uncertainty; sparse-user subgroup; whether sparse use itself correlates with the target.
 
 ---
 
 ## H4 — Baselines, periodicity, kill the deep model
 
-Do not assume deep > simple.
+### Simple baselines are high priority
 
-Ladder: population mean / heuristic -> rolling stats -> periodic features -> linear / logistic -> LightGBM / XGBoost -> classical TS -> pretrained sensor encoder -> FM.
+Do not assume deep model > simple model.
 
-What earns the complex model: label efficiency, transfer, robustness, personalization, **hard slices**, reusable z, scaling. Not "+0.5% average."
+Build a baseline ladder:
 
-Periodicity (method, do not name the paper): circadian / daily / weekly. Hour-of-day, day-of-week, Fourier, seasonal averages, periodic embeddings. Why GBDT + periodic features can beat a Transformer: right inductive bias, lower sample complexity, less overfit, explicit structure under sparse observations; the deep model has to rediscover the clock.
+1. population mean / simple heuristic
+2. rolling statistics
+3. periodic features
+4. logistic regression / linear model
+5. LightGBM / XGBoost
+6. conventional / classical time-series model
+7. pretrained sensor encoder
+8. foundation model
 
-Transformer 0.91 -> 0.92 AUROC over LightGBM but **dies under missingness**: look at deploy missingness, operating point, calibration, subgroups, compute, maintenance. Often keep the robust baseline; or hybrid / fallback / route on missingness.
+Classical TS means statistical series models, not a third tree: seasonal naive, ETS / Holt-Winters, SARIMA, STL + a simple residual model, maybe Kalman / state-space. Use that rung when the task is the series (next-night sleep, resting-HR trajectory). Skip or treat as weak when the task is a label from messy wear — periodicity + GBDT already ate the clock. Do not open with ARIMA on raw IMU.
 
-Kill the deep model when: no real gain vs simple; gain vanishes on the slices that matter; missingness brittle; worse calibration; too much compute/latency; unstable; shortcut; no label-efficiency win.
+Question: what earns the complex model the right to exist?
+
+Possible benefits: label efficiency; transfer across tasks; better robustness; personalization; improved difficult slices; reusable representation; scaling benefit.
+
+Do not justify it with "average metric improved 0.5%."
+
+### Periodicity
+
+Wearable behavior often contains circadian, daily, and weekly structure.
+
+Possible features: hour-of-day statistics; day-of-week statistics; Fourier / spectral features; seasonal averages; periodic embeddings.
+
+Why can explicit periodic features work well? They inject known structure directly and may be robust under sparse observations.
+
+"Why might LightGBM + periodic features beat a Transformer?"
+
+Themes: correct inductive bias; lower sample complexity; less overfitting; explicit handling of sparse data; easier optimization; the deep model has to rediscover known periodic structure.
+
+Do not name the paper.
+
+### Transformer 0.91 -> 0.92 over LightGBM but dies under missingness
+
+Reason from: deployment missingness; operating point; calibration; subgroup behavior; compute; maintenance cost.
+
+Likely: the robust baseline may be preferable.
+
+Could consider: hybrid; fallback; ensemble; missingness-specific routing.
+
+### AUROC
+
+AUROC = Area Under the ROC curve (ROC = receiver operating characteristic). ROC: sweep the score threshold; x = FPR = FP/(FP+TN), y = TPR = TP/(TP+FN). AUROC is the area under that curve.
+
+Equation worth saying: AUROC = P(s+ > s-) + 0.5 P(tie). Same number as the Mann-Whitney rank statistic: average over every positive-negative pair of 1 if the positive scores higher, 0.5 if tied. Integral form is just area under TPR vs FPR — do not open with that.
+
+Intuitively: pick one random positive and one random negative. AUROC is the chance the model scores the positive higher. 0.5 = coin flip ranking; 1.0 = every positive above every negative. It is threshold-free ranking quality, not "accuracy at the cutoff we would ship." It ignores calibration (0.9 vs 0.2 can rank the same as 0.51 vs 0.49) and ignores the FP/FN costs at one operating point. So 0.91 -> 0.92 means the deep model is slightly better at ordering people, not that it is the right deploy model — especially if the ranking collapses under missingness or the threshold you actually use does not move.
+
+If they say "AUC," ask or assume AUROC — PR-AUC is a different curve.
+
+### When should you kill the deep model?
+
+Examples:
+
+- no meaningful gain over simple baseline
+- gain disappears on important slices
+- poor missingness robustness
+- calibration worse
+- compute / latency too high
+- unstable deployment behavior
+- performance depends on a shortcut
+- label-efficiency benefit absent
 
 Your TR mix kill is the story: average up, slice down -> killed. Same instinct.
 
@@ -131,81 +415,244 @@ Your TR mix kill is the story: average up, slice down -> killed. Same instinct.
 
 ## H5 — Longitudinal and personalization
 
-Seconds: waveform. Minutes: bouts. Hours: sleep/sessions. Days: behavioral state. Weeks/months: trend. Years: personal baseline.
+### Timescales
 
-Local encode -> compress -> hierarchical aggregate -> longitudinal model.
+Seconds: waveform morphology.
 
-Observation ~ population + personal baseline + deviation + noise. "70 bpm" may mean less than "+15 vs this person."
+Minutes: activity bouts.
 
-Levers: personal norm, participant embedding, few-shot adapt, calibration, state memory, hierarchical models. Beware memorizing the person.
+Hours: sleep / activity sessions.
 
-Cold start: population first; adapt as days accrue; confidence with history; personalized thresholds only after a baseline. Always split **new user** vs **known user**.
+Days: behavioral state.
 
-Would you personalize? Possibly: population -> personal baseline -> adapt. Define min history, new-user eval, leakage, robustness.
+Weeks / months: trend.
+
+Years: personal baseline / health evolution.
+
+Do not tokenize every raw sample across one year.
+
+Think: local encoding -> compression -> hierarchical aggregation -> longitudinal model.
+
+### Personalization
+
+Health signals vary substantially across individuals.
+
+Useful decomposition:
+
+observation = population component + personal baseline + deviation from personal baseline + noise
+
+Often "70 bpm" may be less informative than "+15 bpm above this person's baseline."
+
+Possible approaches: personal normalization; participant embedding; few-shot adaptation; personalized calibration; state memory; hierarchical models.
+
+Beware participant memorization.
+
+### Cold start
+
+If using personalization: what happens for a new user?
+
+Need a strategy: population model initially; gradually adapt; confidence increases with history; personalized thresholds after sufficient baseline.
+
+Always distinguish existing-user prediction vs new-user generalization.
+
+### Would you personalize?
+
+Possibly.
+
+Use: population model -> personal baseline -> personal calibration / adaptation.
+
+But define: cold start; minimum history; new-user evaluation; leakage risk; robustness.
 
 ---
 
 ## H6 — Splits and leakage
 
-Start from the deployment claim.
+Very high priority. Random window split can be wrong. Choose based on deployment.
 
-Participant-disjoint: new-user generalization.
+### Participant-disjoint split
 
-Temporal (past train, future test): future prediction for people you already saw.
+Train users != test users. Tests new-user generalization.
 
-Often you need both. Always say what claim you are making.
+### Temporal split
 
-Window overlap: train 00:00-00:30 and test 00:10-00:40 share 20 min — performance lies. Split **before** cutting windows, or enforce a gap.
+Past -> train, future -> test. Tests future prediction for existing users.
 
-Other leaks: future in preprocess; norm using test/future stats; participant or device or site ID; label-derived features; overlapping windows; eval contamination; repeats of the same event.
+### Both
 
-How do you know it isn't user ID: participant holdout; ID probe; within- vs cross-person; device holdout; temporal gen; personal norm.
+Depends on product use case. Always ask: what generalization claim am I making?
+
+How would you split a longitudinal wearable dataset? Start from the deployment goal. New-user deployment: participant-disjoint. Future prediction: temporal. Need both: participant + temporal constraints. Also prevent overlapping window leakage.
+
+### Window overlap leakage
+
+Example: train 00:00-00:30 and test 00:10-00:40 share 20 minutes. This can inflate performance dramatically.
+
+Safer: split before creating overlapping windows, or enforce temporal separation.
+
+### Other leakage sources
+
+Check: future information in preprocessing; normalization using test / future statistics; participant ID; device / site ID; label-derived features; overlapping windows; downstream test contamination; repeated measurements from the same event.
+
+### How do you know it learned physiology rather than user ID?
+
+Test: participant-disjoint holdout; participant-ID probe; normalization; within-person vs cross-person tests; device holdout; temporal generalization.
 
 ---
 
 ## H7 — Labels, metrics, prevalence, calibration, operating point
 
-Ask what the label **is**: clinician, diagnosis, self-report, questionnaire, device proxy, EHR, lab, inferred. Noise, delay, subjectivity, bad proxy, adjudication. Capacity can fit label noise. Levers: repeats, confidence weights, adjudicated subset, robust loss, sensitivity analysis.
+### Health label quality
 
-Self-report as target: inconsistent, temporal mismatch, missing, selection. Repeated measures, tighter target, high-quality val subset, uncertainty.
+Labels may come from: clinician annotation; diagnosis; self-report; questionnaire; device-derived proxy; EHR; lab result; inferred label.
+
+Ask: what exactly does this label represent?
+
+Problems: noise; delay; subjective self-report; imperfect proxy; adjudication inconsistencies.
+
+More model capacity can fit label noise better.
+
+Potential actions: repeated labels; confidence weighting; adjudicated subset; robust loss; sensitivity analysis.
+
+### Self-report as the target
+
+Concerns: subjective labels; inconsistent reporting; temporal mismatch; missing labels; selection bias.
+
+Possible actions: repeated measures; robust target definition; high-quality validation subset; label-confidence modeling; report uncertainty.
+
+### Health metrics
 
 Do not default to accuracy.
 
-Sensitivity = TP / (TP+FN). Specificity = TN / (TN+FP). PPV = TP / (TP+FP). NPV = TN / (TN+FN). Also AUROC, AUPRC, calibration.
+Sensitivity = TP / (TP + FN).
 
-AUROC 0.95 — ship? No. Need deploy prevalence, threshold, sens/spec, PPV/NPV, calibration, subgroups, FP/FN cost.
+Specificity = TN / (TN + FP).
 
-PPV depends on prevalence. Rare event + pretty ROC => many false positives.
+PPV / precision = TP / (TP + FP).
 
-AUPRC: more honest on the positive class when rare. AUROC is not useless; it can look strong when PPV is poor.
+NPV = TN / (TN + FN).
 
-Discrimination: rank high vs low risk. Calibration: p=0.8 means about 80% of similar cases are positive. Reliability diagram, calibration error, temperature scaling. Health risk often needs calibration, not only ranking.
+Also: AUROC; AUPRC; calibration.
 
-Operating point: score > tau. Tau trades sensitivity vs specificity. Low-cost nudge: FP more OK. Intrusive alert: FP burden may be unacceptable. Best model in the **region that matters**, not best global AUC.
+### Prevalence
 
-FN: missed condition / missed chance. FP: worry, alert fatigue, lost trust, extra follow-up. Metrics from consequences.
+Very important. PPV depends on prevalence.
+
+Rare outcome: even good sensitivity / specificity can yield many false positives.
+
+"AUROC = 0.95. Ready to ship?"
+
+No. I need deployment prevalence, operating threshold, sensitivity, specificity, PPV/NPV, calibration, subgroup performance, and the cost of FP/FN.
+
+### AUPRC vs AUROC
+
+For rare outcomes, AUPRC can be more informative because it focuses on positive-class precision / recall behavior.
+
+Do not say AUROC is useless. Say: it can look strong even when positive predictive value is poor under severe imbalance.
+
+### Calibration
+
+Discrimination: can the model rank high-risk above low-risk?
+
+Calibration: does predicted probability correspond to real frequency?
+
+If p = 0.8, then approximately 80% of similar predictions should be positive under good calibration.
+
+Possible tools: reliability diagram; calibration error; temperature scaling.
+
+Health risk estimates often need calibration, not only ranking.
+
+### Operating point
+
+Predict positive if score > tau.
+
+Changing tau trades sensitivity vs specificity.
+
+Correct tau depends on downstream action.
+
+Low-cost passive suggestion: false positives may be tolerable.
+
+High-stakes / intrusive alert: false positive burden may be unacceptable.
+
+Strong question: which model is best at the operating region that matters? Not: which has the best global AUC.
+
+### FP / FN cost
+
+Always connect metric choice to consequence. What happens downstream when the model is wrong?
+
+FN: missed condition / missed opportunity.
+
+FP: unnecessary concern; alert fatigue; loss of trust; unnecessary follow-up.
+
+Applied judgment means selecting metrics from consequences.
 
 ---
 
 ## H8 — Shift, shortcuts, does it use the sensor
 
-Shifts: device gen, firmware, placement, geography, season, demographics, behavior, adherence, prevalence, missingness, clinical vs consumer.
+### Distribution shift
 
-New watch, performance drops: signal dist, calibration, sample rate, noise, preprocess, firmware, derived features, subgroups. Then recalibrate, adapt, FT, align z, or hold out new-device **in development**.
+Possible shifts: new device generation; firmware; sensor placement; geography; season; demographics; behavior; adherence; prevalence; missingness; clinical vs consumer population.
 
-Shortcuts: participant, device, site, missingness, metadata — instead of physiology. Tests: participant holdout, new-device holdout, metadata ablation, modality shuffle, temporal shift, ID probe.
+You cannot assume the test distribution is permanent.
 
-Does it use the sensor: remove modality; zero it; shuffle across examples; time-shift. If the number barely moves, it is ignoring that stream. Stronger than attention plots.
+### Device shift
+
+"New watch generation causes performance drop."
+
+Investigate: signal distribution; calibration; sampling rate; sensor noise; preprocessing; firmware; derived features; subgroup effects.
+
+Possible actions: recalibration; domain adaptation; fine-tuning; representation alignment; new-device holdout during development.
+
+New hardware generation breaks performance — walk: signal distribution -> preprocessing -> representation -> calibration -> task performance. Compare device-specific slices. Then recalibration, fine-tuning, domain adaptation, retraining, or a compatibility layer.
+
+### Shortcut learning
+
+The model may exploit participant identity, device type, site, missingness, or metadata instead of physiology.
+
+Test using: participant holdout; new-device holdout; metadata ablation; modality shuffle; temporal shift; participant-ID probe.
+
+### Does the model use the sensor?
+
+Behavioral interventions:
+
+1. remove modality
+2. zero modality
+3. shuffle modality between examples
+4. time-shift modality
+
+If performance barely changes, the model may be ignoring that signal.
+
+This is stronger evidence than attention visualization.
 
 ---
 
 ## H9 — Fusion only if he pulls architecture (Yujie can leak)
 
-Early / token: project, concat, shared Transformer. Rich interactions; T explodes; T^2.
+If the interview shifts toward architecture, know three levels.
 
-Cross-attn: query stream attends to sensor. Separation, long secondary stream; extra machinery; modality can be ignored.
+### Early / token fusion
 
-Late: separate then combine. Modular, missing-modality easier; weaker early interaction.
+Project modality tokens -> concat -> shared Transformer.
+
+Pros: rich interactions; simple conceptually.
+
+Cons: sequence explosion; quadratic attention cost.
+
+### Cross-attention
+
+Text / query stream attends to sensor stream.
+
+Pros: modality separation; controllable fusion; useful for a long secondary stream.
+
+Cons: extra architecture; modality may be ignored.
+
+### Late fusion
+
+Separate predictors / representations -> combine later.
+
+Pros: modular; robust; easier missing-modality handling.
+
+Cons: weaker early interactions.
 
 Encoder bakeoff on IMU/PPG: same gate, no matplotlib on PPG. He coauthored native TS-LLM — Yujie's hour can leak here.
 
@@ -213,60 +660,70 @@ Encoder bakeoff on IMU/PPG: same gate, no matplotlib on PPG. He coauthored nativ
 
 ## Answer spine (almost every prompt)
 
-1. Deployment: who, when, action.
-2. Data: modalities, scales, labels, missingness.
-3. Strongest simple baseline.
-4. Representation: raw / aggregate / pretrained / hierarchical.
-5. Train: supervised / SSL / distill / multimodal.
-6. Split: participant / time / device.
-7. Metrics from product cost.
-8. Stress: missingness / shift / sparse users.
-9. Mechanism: ablate / shuffle / probe.
-10. Scale only if justified. State kill criteria.
+1. Define deployment: who, when, what action.
+2. Define data: modalities, temporal scales, labels, missingness.
+3. Define baseline: what is the strongest simple model?
+4. Choose representation: raw, aggregate, pretrained, hierarchical.
+5. Choose training: supervised, SSL, distillation, multimodal.
+6. Design split: participant / temporal / device.
+7. Choose metrics from product consequences.
+8. Stress test: missingness / shift / sparse users.
+9. Check mechanism: ablate / shuffle / probe.
+10. Scale only if justified.
+11. State kill criteria.
 
-If he is in **applied judgment** mode, lead: deploy -> metrics -> label quality -> missingness -> robustness -> baseline -> model.
+If he is in applied judgment mode, lead: deployment -> metrics -> data quality -> missingness -> robustness -> baseline -> model.
 
-If he is in **representation / FM** mode, lead: signal physics -> timescale -> representation -> SSL -> transfer -> missingness -> eval.
+If he is in representation / FM mode, lead: signal physics -> temporal scale -> representation -> SSL objective -> transfer -> missingness -> evaluation.
+
+If unclear: start with the task and data, then let him pull you toward architecture or product judgment.
 
 ---
 
 ## Four stories (90s each, IC)
 
-A. Representation bakeoff: hypothesis -> encodings -> one fails -> kill / redirect. Dual views: one encoding loses information — not "I reprint charts."
+Story A — representation bakeoff: initial hypothesis -> compare encodings -> one fails -> kill / redirect -> lesson. Dual views: one encoding loses information — not "I reprint charts."
 
-B. Irregular / messy: observation process, missingness, eval, robustness. ImagenFew / Bosch noisy data changed the **generative** model, not a Watch ship.
+Story B — irregular / messy data: observation process, missingness, evaluation, robustness. ImagenFew / Bosch noisy data changed the generative model, not a Watch ship.
 
-C. Simple baseline changed the interpretation. TR mix: average up, slice down -> killed.
+Story C — simple baseline challenge: a time when a simple baseline changed your interpretation. TR mix: average up, slice down -> killed.
 
-D. Best average != best practical choice. Same kill.
+Story D — applied decision: best average metric != best practical choice. Same kill.
 
-Rigor if he goes there: strongest alternative; falsifying experiment; why this baseline; seeds / CIs; if the main ablation flips; simplest explanation of the gain; more params vs better z.
+### Scientific rigor follow-ups
 
-Ablations: drop modality; shuffle; random encoder; frozen encoder; handcrafted features; matched params/compute; no personalization; no missingness features; shorter history.
+Even if mapped to health judgment, expect scientific follow-ups.
+
+Be ready for: strongest alternative explanation; what experiment falsifies your hypothesis; why this baseline; how many seeds; confidence intervals; what happens if your main ablation reverses; what is the simplest explanation of the gain; is it more parameters or a better representation.
+
+### Strong ablations
+
+For a multimodal / wearable system: remove modality; shuffle modality; random encoder; frozen encoder; simple handcrafted features; matched parameter baseline; matched compute baseline; no personalization; no missingness features; shorter history.
+
+Use ablations to identify mechanism.
 
 ---
 
 ## Predicted / Haraldur-style (speak these)
 
 1. Predict X from six months of wearable data — start (H1).
-2. Population vs personalized; cold start (H5).
-3. 100x unlabeled — SSL then probe then same-budget baseline (H2).
-4. Contrastive augs for IMU (H2).
+2. You have 100x more unlabeled IMU than labeled outcomes (H2).
+3. Contrastive augs for IMU — what is invariant (H2).
+4. PPG exists for 20%, IMU for 95% — teacher / student (H2).
 5. Missingness after a Watch OS update (H3).
-6. When would you not train an FM (H4).
-7. Participant vs time splits; overlap leak (H6).
-8. Screening nudge vs intrusive alert — calibration and tau (H7).
-9. Benches aren't Watch data — transfer: longitudinal, missing days, multi-stream; not UCR plots.
-10. Encoder bakeoff IMU/PPG — same gate; no PPG plots (H9).
-11. AUROC 0.95 — ship? (H7).
-12. Transformer +0.01 AUC, dies under missingness — which model (H4).
-13. Sparse wear (H3).
-14. PPG on 20%, IMU on 95% — teacher/student (H2).
-15. Self-report target (H7).
-16. New hardware gen (H8).
-17. Why periodic features can beat DL (H4).
-18. When to kill the deep model (H4).
-19. Physiology vs user ID (H6).
+6. Most users don't wear continuously (H3).
+7. Transformer +0.01 AUC, dies under missingness — which model (H4).
+8. Why might periodic features outperform deep learning (H4).
+9. When would you not train an FM / when do you kill the deep model (H4).
+10. Population vs personalized; cold start; would you personalize (H5).
+11. How would you split a longitudinal wearable dataset (H6).
+12. How do you know it learned physiology rather than user ID (H6).
+13. AUROC 0.95 — ship? (H7).
+14. Screening nudge vs intrusive alert — calibration and tau (H7).
+15. Self-report is the target (H7).
+16. New hardware generation breaks performance (H8).
+17. Benches aren't Watch data — transfer: longitudinal, missing days, multi-stream; not UCR plots.
+18. Encoder bakeoff IMU/PPG — same gate; no PPG plots (H9).
 
 ---
 
@@ -302,20 +759,28 @@ Play shipped-product scientist. You have not shipped.
 
 30-35: your Q — how they eval robustness (not "did you write RelCon").
 
+Interviewer follow-ups to expect: why; what is the deployment assumption; what is your baseline; what could leak; what happens under missingness; how do you know the model uses the sensor; what metric matters; how would this fail on a new device; when would you kill it.
+
 ---
 
 ## Full-day Haraldur-only (if Sat/Sun has extra)
 
-Block 1 (75): H7 — AUROC 0.95 ship-or-not.
+Block 1 (75): health evaluation — sensitivity, specificity, PPV/NPV, AUROC, AUPRC, prevalence, calibration, threshold. Practice: AUROC 0.95 — ship or not.
 
-Block 2 (75): H3 — IMU-only, HR+sleep, no PPG, sparse wear, new device; for each: arch + train + eval.
+Block 2 (75): missingness + shift — IMU-only, HR+sleep, no PPG, sparse wear, new device. For each: architecture + training + evaluation.
 
-Block 3 (60): H2 — SSL, augs, distill, probes, label curves.
+Block 3 (60): wearable representation / SSL — contrastive, augs, masked modeling, cross-modal distill, linear probes, label efficiency.
 
-Block 4 (60): H5 — hour / day / year; new vs established user.
+Block 4 (60): longitudinal + personalization — one hour, one day, one year, new user, established user.
 
-Block 5 (45): H4 — for each problem: simple baseline, tree/stats, deep, what gain justifies complexity.
+Block 5 (45): simple baseline challenge — for each problem name: simplest credible baseline; stronger tree/statistical model; deep model; what gain would justify complexity.
 
-Block 6 (45): H6 — participant, temporal, overlap, device shortcut, future leak, self-report noise.
+Block 6 (45): leakage + rigor — participant split, temporal split, overlapping windows, device shortcut, future leakage, self-report noise.
 
 Block 7 (90): mock above with why / deploy / baseline / leak / missingness / uses-the-sensor / metric / new device / kill.
+
+### Two-day version
+
+Day 1 morning: health metrics + calibration + prevalence. Midday: missingness + deployment shift. Afternoon: longitudinal + personalization. Evening: 45-min mock.
+
+Day 2 morning: SSL + sensor representation. Midday: simple baselines + FM evaluation. Afternoon: leakage + robustness + scientific ablations. Evening: 45-min mock + repair weakest topics.
