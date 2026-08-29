@@ -13,7 +13,7 @@
 
 | When | Person | Sheet |
 |------|--------|--------|
-| Wed 10:05 | **Yujie Li** | [`2026-08-27_onsite-yujie.md`](2026-08-27_onsite-yujie.md) — four modules: temporal object → tokens → fusion → bakeoff |
+| Wed 10:05 | **Yujie Li** | [`2026-08-27_onsite-yujie.md`](2026-08-27_onsite-yujie.md) — four modules: encode TS → multimodal arch → clocks → diagnose / bakeoff |
 | Wed 1:05 | **Chung-Cheng Chiu** | [`2026-08-27_onsite-chung-cheng.md`](2026-08-27_onsite-chung-cheng.md) — parallelism + profiling. **Largest study delta** |
 | Wed **2:05** | **Jonathan Bourim** | [`2026-08-27_onsite-jonathan.md`](2026-08-27_onsite-jonathan.md) — SWE/ARE; most plausible **pad** + rigor leftover |
 | Wed 3:05 | **Haraldur Hallgrímsson** | [`2026-08-27_onsite-haraldur.md`](2026-08-27_onsite-haraldur.md) — most Apple-Health-specific. **Do not assume DL wins** |
@@ -33,7 +33,7 @@ Bosch is **done**. Do not mix Sunnyvale scripts.
 |------|-------|-------|
 | **Thu PM** (if energy) | skipped / leftover — full Block A is **today** | — |
 | **Fri 8/28** | **A** entire Chung-Cheng path **A1–A7 + Close** | ~6.5. Sheet has mocks every block. Compress: skip extra A1 arithmetic + second A7; **never skip Close** |
-| **Sat 8/29** | **B** Yujie + Haraldur: wearable **design problems** | ~4. Both **four-module** sheets. Yujie leftover: Session 1 cases (same IMU, different horizons). Haraldur leftover: Module 2 case + Module 4 ship. Abstracts only. **Do not name-drop** |
+| **Sat 8/29** | **B** Yujie + Haraldur: wearable **design problems** | ~4. Yujie leftover: **Module 1 encodings** (3 encodings × 4 questions). Haraldur leftover: Module 2 case + Module 4 ship. Abstracts only. **Do not name-drop** |
 | **Sun 8/30** | **D** two-project hostile defense | ~4 |
 | **Mon 8/31** | **C** Vincent: 5-min structured answers | ~3 |
 | **Tue 9/1** | Repair + **Wed-order mocks**: Yujie → Chung-Cheng → Jonathan (30 min) → Haraldur | ~4. Stop by 7. Do not run four full 45s |

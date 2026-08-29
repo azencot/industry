@@ -1,683 +1,851 @@
 # On-site — Yujie Li (Wed 10:05 PDT)
 
-Track: multimodal architecture and time-series encoding (behavioral, not only 100 Hz). Conf: high.
+Track: Tyler #2 — multimodal architecture and time-series encoding. Conf: high.
 
 Who (private): Senior MLE, Seattle; headline Apple health AI. Coauthor Beyond Sensor Data / WBM — 2.5B hours, 162k people, tokenization + architecture, 57 health tasks. CV / representation background. Hub: 2026-08-27_onsite-prep.md
 
-Opens Wednesday. First two minutes: encoding → stay here. Labels / 162k / missingness / ship → Haraldur (four modules: problem, representation, evidence, decision).
+Opens Wednesday. First two minutes: encoding / architecture → stay here. Labels / 162k / missingness-as-shortcut / ship / PPV / calibration → Haraldur.
 
-Do not name WBM / ICML. Do not force TS-as-image onto PPG. Do not only talk PPG at 100 Hz / IMU at 50 Hz. Do not recite 2.5B hours — she wrote it.
+Health / wearables are an important application context. This is NOT primarily a health-domain interview.
 
-Do not spend another hour on LLaVA, Flamingo, generic projector vs cross-attention, or image-language architectures. You already know those ideas.
+Do not name WBM / ICML. Do not recite 2.5B hours. Do not force matplotlib onto PPG. Do not say images keep all information.
 
-The goal is to show you can reason about: what a token should mean for wearable / time-series data; how temporal scale changes the representation; how heterogeneous modalities should be encoded; where and when modalities should fuse; how to handle long histories; how to handle asynchronous and missing streams; how to choose among representations scientifically.
+---
 
-Central question: "What is the right representation of this signal for the task I actually care about?"
+## Primary goal
 
-One sentence to remember: the representation should be derived from the temporal scale and information requirements of the task; I would only scale an encoding after a controlled bakeoff shows that the information it preserves actually matters.
+Demonstrate that you can design and reason about multimodal architectures involving time series.
+
+The core questions are:
+
+- How should continuous signals become model tokens?
+- Which encoder is appropriate?
+- How do heterogeneous modalities interact?
+- When should fusion occur?
+- How do different clocks and temporal resolutions interact?
+- How should time itself be represented?
+- When should representations be shared versus modality-specific?
+- How do we know the model really uses each modality?
+- How do we choose among competing architectures?
+
+Do not spend much time on: basic LLaVA mechanics; basic Flamingo mechanics; deriving vanilla attention; generic CLIP explanations; health metrics such as PPV / calibration; product operating thresholds. You know enough of those. Use LLaVA / Flamingo only as architectural reference points.
+
+The emphasis is: TIME SERIES + MULTIMODAL REPRESENTATION + FUSION + TEMPORAL STRUCTURE.
+
+One sentence to remember: I'd separate the problem into representation, temporal alignment, and fusion: first make each modality compact without discarding task-relevant information, then decide at what temporal and semantic level the modalities actually need to interact.
 
 ---
 
 ## Four modules
 
-MODULE 1 — DEFINE THE TEMPORAL OBJECT
+MODULE 1 — ENCODE THE TIME SERIES
 
-MODULE 2 — TURN TIME SERIES INTO USEFUL TOKENS
+MODULE 2 — DESIGN THE MULTIMODAL ARCHITECTURE
 
-MODULE 3 — FUSE HETEROGENEOUS MODALITIES
+MODULE 3 — HANDLE TIME, CLOCKS, ALIGNMENT, AND MISSINGNESS
 
-MODULE 4 — CHOOSE THE REPRESENTATION WITH EVIDENCE
+MODULE 4 — TRAIN, DIAGNOSE, AND CHOOSE BETWEEN ARCHITECTURES
 
-The four mental models:
+The four mental frameworks:
 
-1. TEMPORAL OBJECT: task horizon + signal resolution + context horizon
+1. ENCODING: information preserved + information discarded + token count + inductive bias
 
-2. TOKENIZATION: information preserved + information discarded + token cost + inductive bias
+2. ARCHITECTURE: where does each modality get encoded? + where do modalities interact? + what information bottleneck exists?
 
-3. FUSION: what needs interaction + when it needs interaction + how expensive that interaction is
+3. TEMPORAL STRUCTURE: sampling rate + physical time + alignment precision + relevant task timescale
 
-4. REPRESENTATION DECISION: hypothesis -> controlled bakeoff -> slice analysis -> scaling decision
+4. MODEL SELECTION: hypothesis -> controlled experiment -> failure analysis -> scale or kill
 
 ---
 
 ## Saturday / how to use this file
 
-Sat leftover after Haraldur Module 1: Yujie Session 1 (temporal object cases) then Session 2 encodings if time. Abstracts only. Do not name-drop WBM.
+Start at Module 1. Largest learning block. Practice: given a series, propose 3 encodings and compare them with the four questions. Wearable cases are one application, not the only ones — Session 6 uses audio + telemetry + text on purpose.
 
-If she opens with encoding, stay on tokens and clocks. If she opens with labels / population / ship, hand off in your head to Haraldur and still answer — but do not turn her hour into AUROC-0.95.
-
----
-
-## Module 1 — Define the temporal object
-
-Core question: Before choosing an encoder, what temporal phenomenon am I modeling?
-
-### Why this matters
-
-A time series does not have one natural representation. The correct representation depends heavily on the temporal scale of the question.
-
-Example: the same IMU stream could support 2-second gesture detection; 30-second activity recognition; 30-minute workout characterization; daily activity summary; 6-month health prediction. These are different modeling problems. A representation that is excellent for one may destroy the information required by another.
-
-Sleep next night != 5-year diabetes risk != a 10 s gait motif.
-
-### 1.1 Three timescales
-
-For every problem, identify:
-
-A. SIGNAL RESOLUTION — how quickly is the raw process sampled?
-
-IMU: 100 Hz. PPG: tens to hundreds of Hz. Heart rate: seconds. Sleep: minutes. Daily behavior: hours / days.
-
-B. LOCAL PHENOMENON SCALE — how long is the pattern of interest?
-
-Heartbeat: < 1 second. Gait cycle: ~1 second. Activity episode / bout: minutes. Sleep stage: minutes. Workout: tens of minutes.
-
-C. TASK CONTEXT HORIZON — how much history is required to make the decision?
-
-Activity classification: seconds. Sleep quality: hours. Weekly health state: days / weeks. Longitudinal risk: months.
-
-These three scales do NOT have to match.
-
-### 1.2 Local detail vs long-range context
-
-This is a central architectural tension. High temporal resolution preserves detail. But high resolution across long context creates huge sequences.
-
-IMU at 100 Hz: 1 second = 100 samples; 1 hour = 360,000 samples; 1 day = 8.64 million samples.
-
-Therefore raw high-frequency signal + long context cannot normally be handled as a flat token stream. You need temporal compression. Do not dump 100 Hz IMU for 3 years into one Transformer.
-
-### 1.3 Hierarchical temporal modeling
-
-Default mental model for long wearable histories:
-
-raw signal -> local encoder -> short-timescale latent -> coarser aggregation -> longitudinal representation
-
-Example: IMU 100 Hz -> 2-second patches -> activity latents -> minute representation -> hour representation -> daily behavioral representation.
-
-This lets different layers specialize in different temporal scales.
-
-Key question: "What information can safely be compressed at each level?"
-
-### 1.4 Behavioral tokens
-
-For long-term wearable modeling, the useful "token" may not be a raw sensor patch.
-
-It may represent: a sleep episode; a workout; a resting-HR summary; a mobility event; a daily activity profile; a circadian pattern; an exercise bout; a behavioral state.
-
-This is important. Instead of one token = one raw sample, consider one token = one semantically meaningful event or temporal unit.
-
-This dramatically changes context length, interpretability, model efficiency, and inductive bias.
-
-A behavioral token is a person-scale event or day summary, not a 100 Hz sample. Different semantic clocks than PPG / IMU / ECG.
-
-### 1.5 Event-based vs grid-based time
-
-GRID-BASED REPRESENTATION. Example: every hour [HR, steps, sleep, activity, ...].
-
-Pros: easy alignment; simple batching; standard Transformer input.
-
-Cons: artificial discretization; many empty bins; slow modalities get repeated; timing precision lost. Missing cells explode length.
-
-EVENT-BASED REPRESENTATION. Example: 08:05 workout starts; 08:47 workout ends; 23:10 sleep begins; 07:03 sleep ends.
-
-Pros: sparse; natural for irregular events; preserves timing.
-
-Cons: more complicated modeling; event semantics must be defined (what you chose to name); variable sequence length.
-
-Do not assume regular binning is always correct. Do not resample every stream onto the fastest clock.
-
-### Module 1 practice
-
-Case A: You have one year of IMU, HR, sleep, and workout history. Predict next-week health state.
-
-Answer: (1) which temporal scales matter, (2) which raw information can be compressed, (3) what should the tokens mean, (4) where should the hierarchy change resolution.
-
-Week-level lock (same instinct as Haraldur): daily / event behavioral tokens + a simple baseline first, not a flat 100 Hz year.
-
-Case B: Same signals, but target becomes "Detect a 5-second movement abnormality." How does the entire representation change?
-
-Case C: Same target, but history increases from 1 day to 1 year. What changes?
-
-Also walk three years of mixed history — her predicted open — with the same four questions.
-
-Pass condition: for any time-series problem, you naturally identify signal resolution + phenomenon scale + context horizon before choosing an encoder.
+If she opens with tokens / encoders / fusion, stay. If she opens with labels / prevalence / ship, answer briefly and do not turn the hour into Haraldur Module 1.
 
 ---
 
-## Module 2 — Turn time series into useful tokens
+## Module 1 — Encode the time series
 
-Core question: How should continuous or irregular signals become discrete model representations?
+Core question: How should a continuous time series become a sequence of representations that a multimodal model can use?
 
-Mental model: for every encoding ask (1) what information is preserved, (2) what information is discarded, (3) what is the token cost, (4) what inductive bias is introduced.
+This should be the largest learning module.
 
-This is the most important framework for this interview. Fifth check: what temporal scale does the downstream question require?
+### 1.1 Start from the raw object
 
-### 2.1 Numeric text serialization
+Suppose x in R^(T x C), where T = time samples and C = channels.
 
-Example: "72, 73, 76, 81, 85, ..."
+Examples: univariate heart rate; multivariate 3-axis accelerometer; very multivariate industrial telemetry.
 
-Advantages: trivial integration with LLM; no new encoder required; works for very short / simple sequences.
+Before choosing an encoder ask: sampling frequency? number of channels? regular or irregular? context length? local vs global patterns? absolute scale important? frequency-domain information important?
 
-Problems: poor token efficiency; tokenizer not designed for numeric structure; decimals and magnitudes can fragment unpredictably; weak inductive bias for continuity; long sequences consume huge context.
+Do not start with "I'll use a Transformer."
 
-Good answer: useful as a baseline for short / simple data. Poor default for dense wearable signals. This is the "text dump" family from the HM screen — not your bet for Watch streams.
+### 1.2 Point-wise tokens
 
-### 2.2 Fixed patches
+Simplest representation: one timestamp -> one token.
 
-Split sequence into windows: x_1...x_T -> patch_1 ... patch_N. Then patch_i -> linear projection / CNN / local encoder -> token_i.
+x_t in R^C -> linear projection -> z_t in R^d
 
-Benefits: reduces sequence length; preserves local structure; straightforward Transformer integration.
+Advantages: minimal information loss; simple.
 
-Key design parameter: PATCH SIZE.
+Problems: huge sequence length; poor efficiency; little local inductive bias.
 
-Small patches: preserve fine detail; many tokens.
+For high-rate signals this quickly becomes impossible. Example: 100 Hz * 1 hour = 360,000 tokens. Not reasonable for ordinary Transformer attention.
 
-Large patches: compact; lose local structure.
+### 1.3 Patch tokens
 
-This is a rate-distortion-style tradeoff. A 1 s IMU patch at 100 Hz is still the waveform (100 samples -> one latent).
+Group P timesteps: [x_t, ..., x_(t+P-1)] -> projection / encoder -> one token.
 
-### 2.3 Convolutional front end
+Then token count N ~= T / P.
 
-Use local convolutions to filter noise, detect local motifs, downsample, and produce a latent sequence.
+This is analogous to ViT patches but in time.
 
-Example: 100 Hz IMU -> strided conv -> 25 Hz latent -> further temporal compression.
+Understand the patch-size tradeoff.
 
-Advantages: strong local inductive bias; efficient; natural for waveform data.
+SMALL P: preserves fine detail; precise temporal localization; many tokens; high compute.
 
-Potential limitation: fixed local receptive field unless deeper / hierarchical.
+LARGE P: strong compression; cheaper; can destroy high-frequency structure; worse event localization.
 
-### 2.4 Learned sensor encoder
+Patch size is therefore not merely a hyperparameter. It defines the temporal resolution visible to the backbone.
 
-A modality-specific encoder might be: CNN; temporal Transformer; state-space model; hybrid conv + attention; pretrained sensor foundation model.
+### 1.4 Patch encoder options
 
-Output: z_m in R^(T_m x d_m). Then optionally project z_m -> R^(T_m x d_common).
+A patch does not have to be flattened and linearly projected.
 
-Important question: should each modality have its own encoder, a shared encoder, or a shared backbone + modality adapters?
+Possible:
 
-Use separate encoders when signal physics differ strongly. Use shared structure when representations are sufficiently related and data supports learning common features.
+A. linear projection — cheap, minimal prior
 
-Patched native encoder = honest inductive bias if you have the data. That is the family you would bake off against text and images — not "I would plot PPG."
+B. 1D CNN — strong local temporal prior
 
-### 2.5 Aggregate / statistical tokens
+C. small Transformer — more flexible
 
-Instead of raw patches, compute mean, variance, quantiles, trend, spectral energy, periodic statistics, activity duration, sleep summary. Then encode these summaries as tokens / features.
+D. state-space / recurrent encoder — potentially efficient for long signals
 
-This can be highly competitive for long-horizon tasks.
+E. spectral encoder — explicit frequency-domain structure
 
-Do NOT treat feature engineering as primitive. It encodes strong prior knowledge. If the outcome lives in a statistic you did not compute, the model cannot invent it.
+Important interview question: "What does the encoder assume about the signal?"
 
-### 2.6 Frequency-domain representation
+### 1.5 Convolutional downsampling
 
-For periodic or oscillatory signals, STFT / FFT / wavelets can expose structure that is difficult in the raw time domain.
+Useful pipeline: raw signal -> conv -> nonlinearity -> stride / downsample -> latent sequence.
 
-Examples: cadence; respiration-like periodicity; gait frequency; vibration patterns.
+Why convolution can be useful: local translation equivariance; efficient; good local waveform processing; hierarchical receptive field; built-in temporal compression.
 
-Possible pipeline: raw signal -> STFT -> time-frequency patches -> encoder.
+You should be able to compare explicit non-overlapping patches vs learned strided convolution.
 
-Tradeoff: frequency representation can make periodic structure explicit but may lose some temporal precision.
+### 1.6 Multivariate series
 
-When should I use it? When the phenomenon is naturally spectral or local periodicity matters. Do not name the periodicity paper if this leaks into Haraldur's hour.
+Suppose x_t in R^C. There are several ways to tokenize.
 
-### 2.7 Image / chart representation
+A. CHANNELS TOGETHER — one token per time patch containing all C channels. Pros: cross-channel relationships available immediately. Cons: fixed channel set; harder missing-channel handling.
 
-You know this well. Use it carefully.
+B. CHANNEL-SEPARATE TOKENS — token for (channel, time-patch). Pros: flexible; explicit channel identity. Cons: sequence grows by factor C.
 
-Potential advantage: exploit strong pretrained visual models; visual prior can capture shape / trend.
+C. CHANNEL ENCODER FIRST — encode channels locally, then produce a joint temporal token.
 
-Problems: rendering choices become inductive bias; possible information loss; inefficient representation; likely inappropriate for raw high-rate PPG / IMU.
+Tradeoff depends on whether channel interactions are local and strong, or heterogeneous and loosely related.
 
-Strong answer: images can be a useful representation baseline or transfer strategy, but I would not assume they are the natural representation for wearable waveforms.
+This applies beyond health: sensors; industrial telemetry; finance; climate; scientific measurements.
 
-Do not say "images keep all information." You used two views because one encoding loses information. Images were a stolen visual prior when the LM could not see a short series — not because plots are the true object. Year one: same eval gate, compare encoder families on their IMU / PPG / longitudinal signals. I would not port matplotlib onto PPG.
+### 1.7 Channel identity
 
-### 2.8 Discrete / quantized tokens
+If channels become separate tokens, the model needs to distinguish them.
 
-Continuous signal can be mapped to discrete codes: x -> encoder -> codebook -> token IDs.
+Typical representation: z = content embedding + channel embedding + time embedding.
 
-Potential benefits: compatible with token-based generative modeling; compact; shared vocabulary possible.
+This parallels modality embeddings in multimodal models.
 
-Risks: quantization error; codebook collapse; arbitrary discretization; information bottleneck.
+Question: should channel identity be a learned categorical ID, or encode physical metadata such as units, sensor type, spatial location? This can matter for transfer.
 
-Important question: does the discrete vocabulary capture meaningful sensor states?
+Multivariate is not "just concat" without identity and time (Feng leftover).
 
-"Just quantize everything into a Transformer" is a hypothesis, not a default. Bake it off (Module 4).
+### 1.8 Numeric text serialization
 
-### 2.9 Time information
+Represent values as text: "2.31, 2.27, 2.36, ..."
 
-For regularly sampled patches, relative position may be enough.
+Potential benefits: direct use of pretrained LLM; no new encoder; sometimes surprisingly strong for small datasets.
 
-For irregular data, the model needs actual timing information.
+Weaknesses: terrible token efficiency; tokenizer artifacts; magnitude structure poorly represented; context explosion; weak continuity bias.
 
-Possible inputs: timestamp; delta time; time-of-day; day-of-week; elapsed time since previous event.
+Treat as a useful baseline. Not a natural default for dense signals. This is the HM-screen "text dump" family.
 
-Do not assume token position == physical time. For irregular streams, position 20 and position 21 might be 1 second apart or 3 hours apart.
+### 1.9 Discretization / tokenizer
 
-Multivariate is not "just concat" without modality identity and time (Feng leftover).
+Alternative: continuous value -> quantization -> discrete symbol. Or: patch -> VQ encoder -> codebook ID.
 
-### 2.10 Normalization
+Now time series becomes something more analogous to language.
 
-Sensor modalities differ greatly in scale.
+Benefits: discrete generative modeling; compact symbolic vocabulary; potentially common backbone.
 
-Need to think about: global normalization; per-channel normalization; per-user normalization; per-window normalization.
+Risks: quantization error; codebook collapse; semantic meaning of tokens unclear; task-relevant information may disappear.
 
-Each changes information.
+Important conceptual question: "What information must the tokenizer preserve?"
 
-Example: per-window centering may remove absolute baseline. That could be good for activity classification. But terrible if absolute resting HR is clinically meaningful.
+"Just quantize everything into a Transformer" is a hypothesis. Bake it off in Module 4.
 
-Normalization is part of the representation.
+### 1.10 Frequency domain
 
-### 2.11 Token budget
+For signals with oscillatory structure: x(t) -> FFT / STFT / wavelet -> spectral representation.
 
-Every representation should have a token-budget calculation.
+Useful when periodicity matters; frequency components are physically meaningful; local spectra matter.
 
-12 months of daily tokens: ~365 tokens. Easy.
+STFT gives time x frequency. Now you can patch a spectrogram, use a CNN, use a ViT, or build a dedicated time-frequency encoder.
 
-12 months of hourly tokens: ~8,760 tokens. Possible but substantial.
+Tradeoff: time resolution vs frequency resolution.
 
-12 months of 1-minute tokens: ~525,000 tokens. Not reasonable for ordinary Transformer context.
+Do not claim STFT is universally better. It exposes one useful inductive bias. Do not name the periodicity paper if this leaks into Haraldur's hour.
 
-Three years of 100 Hz IMU is not a token plan. Temporal compression must match context horizon.
+### 1.11 Image / chart representation
 
-If the budget is tight, drop the finest clock first on streams the task does not need at that resolution — not "drop PPG because it is annoying."
+Your existing work fits here.
 
-Device gens can change sample rate. Do not assume one patch size survives a new watch. Recompute tokens / hour and whether the local encoder still sees the phenomenon scale.
+Time series -> rendering -> vision encoder -> visual tokens.
 
-### Module 2 practice
+Why it can work: exploit pretrained visual representations; shape / trend appears visually; bypass need for training a TS encoder from scratch.
 
-For each of these tasks, choose an encoding:
+Why it can fail: renderer decides what information survives; numerical precision can be lost; token / compute efficiency may be poor; not natural for raw dense signals.
 
-A. 30-second activity recognition
+Important framing: "Image encoding is a transfer strategy, not necessarily the natural representation of the time series."
 
-B. sleep-stage prediction
+Your own ablations are useful evidence here. Do not say images keep all information. You used two views because one encoding loses information. Images were a stolen visual prior when the LM could not see a short series. Year one: same eval gate, compare encoder families on their streams. I would not port matplotlib onto PPG.
 
-C. one-week health prediction
+### 1.12 Delay / state-space representations
 
-D. one-year longitudinal behavioral modeling
+A time-series sample can also be mapped into a representation like [x_t, x_(t-tau), x_(t-2tau), ...].
 
-E. anomaly detection from PPG
+Potential benefit: expose dynamics / state geometry.
 
-For each answer: (1) token definition, (2) patch / time scale, (3) normalization, (4) positional / time encoding, (5) token count, (6) information lost, (7) simplest baseline.
+This is another example of representation = inductive bias.
 
-Then compare: numeric text; patches; conv encoder; aggregate features; spectral representation; discrete tokens. Images only if the series is short and you are stealing a visual prior — say so.
+Useful interview point. Different encodings expose different properties:
 
-Pass condition: you can compare representations using information + token cost + inductive bias rather than saying "Transformers usually work well."
+- raw: local values
+- spectral: frequency
+- delay: dynamics / state
+- chart: shape / trend
+- patch: learned local structure
+
+### 1.13 Normalization is part of encoding
+
+Options: global normalization; channel-wise normalization; per-series normalization; per-window normalization; instance normalization.
+
+These are NOT equivalent.
+
+Per-series normalization removes absolute scale. Good if shape matters and scales vary arbitrarily. Bad if absolute level carries information (example: resting HR).
+
+Potential question: "Why did the model fail after normalization?" Because preprocessing may have removed the predictive feature.
+
+### 1.14 Time-series encoding framework
+
+For every encoding candidate ask exactly four questions:
+
+1. What information does it preserve?
+2. What information does it lose?
+3. How many tokens does it produce?
+4. What inductive bias does it impose?
+
+Example — STFT. Preserves: local frequency structure. Loses / transforms: some temporal precision and raw phase depending on representation. Tokens: depends on window / hop / frequency bins. Bias: periodicity / spectral patterns matter.
+
+Example — chart. Preserves: visual shape / trend. Loses: numerical precision, depending on rendering. Tokens: vision patch count. Bias: visual structure transfers.
+
+Pass condition for Module 1: given any time series, you can propose 3 plausible encodings and compare them using information, token count, inductive bias, and task requirements.
 
 ---
 
-## Module 3 — Fuse heterogeneous modalities
+## Module 2 — Design the multimodal architecture
 
-Core question: After each modality has a sensible representation, where and how should they interact?
+Core question: Once each modality has a representation, how should the representations interact?
 
-Mental model: fusion depends on (1) temporal alignment, (2) relative sequence lengths, (3) information interaction required, (4) missingness, (5) computational budget.
+Do not reduce this to concat vs cross-attention. There are more architectural decisions.
 
-### 3.1 Do not fuse raw clocks blindly
+### 2.1 Modality-specific encoders
 
-Example: IMU = 100 Hz; HR = 1 Hz; sleep = minutes.
+Architecture: x_A -> E_A -> z_A; x_B -> E_B -> z_B; x_C -> E_C -> z_C.
 
-Bad default: upsample everything to 100 Hz and concatenate.
+Useful when modalities differ strongly. Examples: image, audio, time series, text. Or: PPG, IMU, sleep / events.
 
-Why bad: huge redundant sequence; slow channels become staircases; no new information is created; compute explodes.
+Pros: encoder optimized for signal physics; easy use of pretrained modality models.
 
-Better: encode each stream at a meaningful native / local resolution.
+Cons: many parameters; representation spaces may not align; harder scaling with many modalities.
 
-### 3.2 Multirate encoding
+### 2.2 Shared encoder
 
-Example: IMU -> high-rate encoder -> 1 token / several seconds. HR -> lower-rate encoder -> 1 token / tens of seconds. Sleep -> event representation. Then align at a coarser latent level.
+Alternative: x_A, x_B, x_C -> shared encoder.
 
-This is likely one of the most important design ideas to articulate.
+Possible if modalities have similar structure or are transformed into a common representation. Need modality identity embeddings.
 
-### 3.3 Early fusion
+Benefits: parameter sharing; potentially better transfer; simpler architecture.
 
-Example: [z_IMU, z_HR, z_sleep] -> shared Transformer.
+Risks: incompatible modalities interfere; one modality dominates; shared representation may be too restrictive.
 
-Advantages: rich interaction; simple unified modeling.
+Important question: "What structure is actually shareable?"
 
-Disadvantages: large joint sequence; expensive (T^2); modalities can interfere; difficult when clocks differ strongly.
+### 2.3 Shared backbone + modality adapters
 
-Use when token counts are manageable, fine cross-modal interaction matters, and alignment is reasonably clear.
+Middle ground: modality-specific front end -> common latent dimension -> shared Transformer.
 
-### 3.4 Cross-attention
+Example: IMU -> conv encoder, PPG -> conv encoder, HR -> projection, then a shared temporal backbone.
 
-One modality attends to another. Example: Q = longitudinal behavioral tokens; K,V = sensor tokens.
+This is often a strong multimodal design. Front end handles signal-specific physics. Backbone learns shared higher-level relationships.
 
-Advantages: avoids concatenating everything; allows selective information retrieval; preserves modality structure. Useful when one stream is very long, modalities differ in resolution, or fusion should happen selectively.
+### 2.4 Projector
 
-Risk: the model can learn to ignore the secondary modality. Need utilization tests.
+If z_m in R^(T_m x d_m) and the shared model expects d, use P_m: R^d_m -> R^d.
 
-This is the Flamingo-shaped idea applied to sensors — do not spend the hour on Flamingo.
+But dimensionality is only part of the issue. The projector also helps adapt representation geometry, not merely tensor shape.
 
-### 3.5 Late fusion
+This is the more sophisticated way to discuss LLaVA-style projectors. Do not spend the hour on LLaVA mechanics.
 
-Separate modality representations z_IMU, z_PPG, z_sleep, then combine: concat / MLP / ensemble / higher-level Transformer.
+### 2.5 Early token fusion
 
-Advantages: modular; easy missing-modality handling; easier debugging.
+Concatenate [z_A ; z_B ; z_text], then shared self-attention.
 
-Disadvantages: may lose fine-grained interactions.
+Benefit: every token can interact with every other token.
 
-Good baseline. Do not dismiss it.
+Cost: attention scales with total tokens (T_A + T_B + T_text)^2.
 
-### 3.6 Fusion level
+Problem: a long sensor stream can swamp text / context.
 
-Critical question: at what level should modalities meet?
+Also need: modality embeddings; time encodings; correct masking.
 
-Raw PPG + raw IMU? Possibly useful for local physiological-motion artifact handling.
+### 2.6 Cross-attention
 
-Sleep summary + millisecond PPG? Probably not directly.
+Keep representations separate.
 
-Possible hierarchy: RAW LEVEL for tightly synchronized signals; EVENT LEVEL for activity / workout episodes; DAY LEVEL for longitudinal behavior.
+Example: Q = language / context, K,V = time-series representation. Or: Q = latent bottleneck, K,V = each modality.
 
-The right answer may involve MULTIPLE fusion levels.
+Benefits: controlled interaction; avoid putting all tokens in the same sequence; supports different lengths; useful with pretrained frozen backbones.
 
-### 3.7 Alignment
+Costs: additional modules; fusion happens only at chosen layers; modality may be ignored.
 
-Different streams may not be perfectly synchronized.
+Important design dimension: WHERE do you insert cross-attention? Every layer? Sparse layers? Only top layers?
 
-Possible approaches: explicit timestamp alignment; temporal windows; nearest-neighbor matching; interpolation; cross-attention using time embeddings; learned latent alignment.
+Earlier fusion: more low-level interaction. Later fusion: strong modality specialization.
 
-Do not create false precision. If HR is sampled every minute, aligning it to a specific 10-ms IMU sample may be meaningless.
+This is the Flamingo-shaped idea applied to sensors — use it as a reference point, do not recap Flamingo.
 
-### 3.8 Missing modalities
+### 2.7 Latent bottleneck / resampler
 
-Architecture should naturally support subsets.
+Important architecture to understand conceptually.
 
-Options: omit unavailable tokens; learned missing embedding; explicit availability indicators; modality-specific masks.
+Long modality sequence z_1 ... z_10000. Instead of feeding all 10,000 tokens, use M learned latent queries q_1 ... q_M that cross-attend to the modality.
 
-Training: preserve natural missingness, plus potentially use modality dropout.
+Output: M latent tokens, where M << 10000.
 
-Goal: the model should not assume every modality is always present.
+This is Perceiver / Q-Former / resampler-style thinking.
 
-If she stays on architecture, pack present tokens and add availability. If she stays on "is missingness a shortcut / do we ship," that is Haraldur.
+Why useful: fixed token budget; compress variable-length modalities; reduce LLM context cost.
 
-### 3.9 Modality identity
+Main risk: information bottleneck.
 
-If tokens enter shared space, the model should generally know their source.
+Question: how large should M be? Empirical tradeoff between compression and retained task information.
 
-Possible: z = content_embedding + modality_embedding + time_embedding.
+### 2.8 Hierarchical fusion
 
-This helps distinguish an IMU token from an HR token from a sleep token, especially when dimensions are projected into a common space.
+Not all modalities need to fuse at once.
 
-### 3.10 Modality neglect
+Example: high-rate A + high-rate B -> local multimodal encoder -> event representation. Then events + text + low-rate context -> higher-level model.
 
-Suppose text or behavioral summaries predict most of the label. Then the model may ignore richer sensor data.
+This creates multiple fusion scales. Useful when modalities interact differently at different levels.
 
-Test: remove modality; shuffle modality; time-shift modality. If output barely changes, fusion may be nominal rather than real.
+### 2.9 Bidirectional vs causal encoding
 
-This should be part of architecture evaluation. Stronger than attention plots.
+A sensor encoder does not automatically need causal masking.
 
-### 3.11 Longitudinal + local fusion
+If encoding an observed historical window, bidirectional attention may be fine.
 
-Useful design pattern: LOCAL SENSOR ENCODERS -> LOCAL MULTIMODAL FUSION -> BEHAVIORAL / EVENT TOKENS -> LONGITUDINAL MODEL.
+If doing streaming / online inference, causal encoding may be required.
 
-Example: IMU + HR during a workout -> workout representation. Then workout tokens + sleep tokens + daily behavior -> month-level model.
+Then the language decoder can still be causal.
 
-This is much more plausible than one giant flat sequence.
+Architecture can therefore contain a bidirectional modality encoder + a causal language decoder. Important distinction.
 
-### Module 3 practice
+### 2.10 Frozen vs trainable encoders
 
-You have IMU 100 Hz; HR 1 Hz; intermittent PPG; sleep stages; workouts; one year of history. Design the architecture.
+Options:
 
-Do it in layers: (1) native modality encoders, (2) local compression, (3) temporal alignment, (4) fusion level, (5) behavioral token creation, (6) longitudinal model, (7) missing modality handling.
+A. freeze modality encoder — cheap; preserves pretrained features; less overfitting
 
-Then change assumptions.
+B. train projector only — LLaVA-like alignment stage
 
-Change A: PPG exists only during workouts.
+C. LoRA / adapter encoder
 
-Change B: target depends strongly on beat-level PPG morphology.
+D. full fine-tuning
 
-Change C: target is weekly behavioral health state.
+E. joint training from scratch
 
-Change D: IMU becomes unavailable for 50% of users.
+Decision depends on: amount of paired data; domain shift; encoder quality; compute; required specialization.
 
-Change E: you need inference on-device.
+Your IC evidence: LoRA on the delay-image tower, freeze vs train, dual-stream collator. Say I, not we.
 
-Pass condition: you can move the fusion point up or down the hierarchy depending on where cross-modal interaction is actually needed.
+### 2.11 Alignment objectives
+
+Different ways to align modalities.
+
+CONTRASTIVE: matched representations close.
+
+GENERATIVE: predict one modality / text conditioned on another.
+
+MATCHING: binary matched / mismatched objective.
+
+DISTILLATION: teacher modality -> student modality.
+
+JOINT TASK LOSS: let the downstream supervised objective create alignment.
+
+These create different representations. Do not assume contrastive alignment is always necessary. Do not name RelCon.
+
+### 2.12 Multimodal instruction tuning
+
+Once the modality representation is understandable to the LLM: input modality; User: "Describe..."; Assistant: ...
+
+Teach not merely representation alignment, but how to USE the modality while following instructions.
+
+For this interview: know it, but do not spend excessive time on LLaVA mechanics.
+
+### 2.13 Architecture framework
+
+For a multimodal architecture ask:
+
+1. What does each modality encoder do?
+2. Which parameters are shared?
+3. Where do modalities first interact?
+4. How often can they interact?
+5. Is there an information bottleneck?
+6. How many tokens enter the shared backbone?
+7. Which components are frozen / trainable?
+8. What objective creates alignment?
+
+Pass condition for Module 2: given three modalities, you can design at least three distinct architectures and explain their computational and representational tradeoffs.
 
 ---
 
-## Module 4 — Choose the representation with evidence
+## Module 3 — Handle time, clocks, alignment, and missingness
 
-Core question: There are many plausible encodings. How do I decide which one to use?
+Core question: Multimodal time series are not just multiple arrays. They occupy physical time.
 
-Mental model: HYPOTHESIS -> CONTROLLED BAKEOFF -> SLICE ANALYSIS -> SCALING DECISION.
+This should be a major focus.
 
-This is where you should lean into scientific judgment.
+### 3.1 Index != time
 
-### 4.1 Do not argue architectures philosophically
+For regularly sampled data, token index approximates time.
 
-Question: should I use text serialization, a native sensor encoder, or an image representation?
+For irregular data, token 11 and token 12 could be 10 ms apart or 6 hours apart.
 
-Weak answer: "Native time-series encoders are better because they preserve structure."
+Therefore sequence position alone may not encode physical timing.
 
-Better: "I would identify what each representation claims to preserve, then compare them under a matched experimental setup."
+Need potentially: absolute timestamp; delta time; elapsed time; time-of-day; periodic encoding.
 
-Your HM-screen three families (text / patched native / images) fit here as hypotheses, not as a 2–3 min recap of Shirley.
+### 3.2 Multiple clocks
 
-### 4.2 Define representation hypotheses
+Example: audio 16 kHz; IMU 100 Hz; HR 1 Hz; event log irregular.
 
-TEXT HYPOTHESIS: numeric serialization is sufficient because the task depends on coarse values and sequences are short.
+Naive approach: upsample everything to the fastest clock. Usually bad.
 
-PATCHED ENCODER HYPOTHESIS: local temporal motifs matter and should be learned natively.
+Why: sequence explosion; duplicated slow measurements; artificial interpolation; compute wasted; no new information.
 
-IMAGE HYPOTHESIS: pretrained visual priors provide useful shape representations despite rendering loss.
+Better: encode each modality at its useful native rate. Then fuse representations.
 
-AGGREGATE HYPOTHESIS: the long-horizon task depends mostly on stable behavioral statistics.
+### 3.3 Two types of alignment
 
-Each is testable.
+Important distinction.
 
-### 4.3 Controlled bakeoff
+PHYSICAL ALIGNMENT: do observations occur at the same time?
 
-Hold fixed as much as practical: train / validation / test split; downstream task; training data; evaluation; compute budget; decoder / head; parameter budget when possible.
+SEMANTIC ALIGNMENT: do they describe the same underlying event / state?
 
-Compare representations.
+Example: IMU spike at t; heart-rate response may occur at t + delta. Exact timestamp equality is not necessarily the correct alignment.
 
-Measure: task performance; training compute; inference cost; token count; robustness; label efficiency.
+Cross-attention can help learn soft temporal correspondence.
 
-Also: token utilization / throughput; linear probe of the representation. Caption eval is not CE / ROUGE (Feng leftover) if a language head appears.
+### 3.4 Hard alignment
 
-Year one on this team: same eval gate, compare encoder families on their streams.
+Examples: bin everything into 1-minute intervals; nearest-neighbor match; interpolate.
 
-### 4.4 Slice by temporal characteristics
+Benefits: simple; fixed tensors; easy batching.
 
-Average score can hide why an encoding works.
+Costs: introduces assumptions; can blur events; can create fake data.
 
-Create slices: short vs long horizon; periodic vs non-periodic task; dense vs sparse data; high vs low sampling rate; full vs missing modalities; waveform-sensitive vs aggregate-sensitive task.
+Use when alignment tolerance is scientifically justified.
 
-Then ask: which representation wins where? You may discover no single representation dominates.
+### 3.5 Soft alignment
 
-### 4.5 Information-loss ablations
+Encode each stream independently with time information. Then cross-attention, or attention restricted to a temporal neighborhood.
 
-If using compression, vary patch size: 1 sec; 5 sec; 30 sec; 5 min. Observe performance. This reveals which temporal resolution actually matters.
+This allows learned associations across clocks.
 
-Similarly, history length: 1 day; 1 week; 1 month; 6 months. This tests whether long context carries useful signal.
+Potentially: attention score depends on content similarity + time-distance bias. Conceptually useful even if implementation differs.
 
-### 4.6 Match representation cost
+### 3.6 Time encodings
 
-If one encoding produces 100 tokens and another 10,000, an accuracy comparison alone is incomplete.
+Potential components:
 
-Measure performance vs token budget / compute. Potentially plot accuracy vs FLOPs or accuracy vs token count. This makes representation efficiency explicit.
+POSITION: order in sequence.
 
-A 2% gain at 10x token count is not automatically better.
+ABSOLUTE TIME: timestamp.
 
-### 4.7 Label efficiency
+DELTA TIME: time since previous observation.
 
-A pretrained representation may be valuable even if full-data performance gains are modest.
+CALENDAR / PERIODIC: hour, day, season.
 
-Evaluate 1% / 5% / 10% / 25% / 100% labels. If a pretrained sensor encoder wins strongly with limited labels, that can justify it.
+These answer different questions. Do not conflate positional encoding with physical-time encoding.
 
-### 4.8 Transfer
+### 3.7 Irregular series
 
-A representation intended to be foundational should work across multiple tasks, multiple temporal scales, different participants, different signal quality, and possibly different devices.
+Representation can be (x_i, t_i) or (x_i, delta_i).
 
-Do not call it a foundation representation based on one downstream benchmark. Do not recite 162k / 57 tasks as if you ran them.
+Possible models: time-aware attention; event Transformers; interpolation + mask; continuous-time models; neural ODE-style approaches; decay mechanisms.
 
-### 4.9 Simple baseline
+You do NOT need deep knowledge of every approach.
 
-For every fancy representation include a strong cheap baseline. Example: daily behavioral features + LightGBM.
+Know the design issue: the model must know observation times and distinguish "no measurement" from "measurement equals zero."
 
-If that matches a huge model, ask: what is the complex representation adding? Potential answers: transfer; low-label performance; difficult task slices; multi-task reuse; richer outputs. If none: do not scale it.
+Don't open with neural ODEs unless she goes there.
 
-### 4.10 Know when to scale
+### 3.8 Missing modality
 
-Do NOT start with the largest model.
+Example: sample A text + IMU; sample B text + PPG; sample C IMU only.
 
-Suggested progression: small controlled experiments -> identify promising representation -> stress-test -> scale only the winner.
+Do not discard samples.
 
-Define kill criteria. Kill an encoding if: no gain over simple baseline; gains disappear under matched compute; only improves easy slices; token cost is excessive; missingness robustness is poor; transfer benefit absent.
+Architectural choices: (A) variable modality set — include only available streams; (B) learned missing token; (C) availability mask; (D) modality dropout during training.
 
-Your TR mix kill and dual-view ablation are the IC stories: average up / slice down; one encoding loses information.
+Need modality identity as well.
+
+If she stays on architecture, pack present tokens. If she stays on "is missingness a shortcut / do we ship," that is Haraldur.
+
+### 3.9 Partial missingness within a stream
+
+Separate from an entire missing modality.
+
+Example: PPG exists from 0–10 min and 20–30 min, but not 10–20 min.
+
+Representation should preserve observation mask / time gap. Do not necessarily interpolate everything.
+
+### 3.10 Temporal resolution of fusion
+
+Important question: at what time resolution should modalities interact?
+
+Example: audio + IMU may require sub-second fusion. HR + sleep: minute-scale fusion may be enough. Sensor + clinical note: possibly event / day-level fusion.
+
+Fusion rate should be dictated by the phenomenon.
+
+### 3.11 Causality
+
+If the model predicts the future, do not allow future sensor tokens to leak through alignment or interpolation.
+
+For offline understanding tasks, bidirectional modality context may be acceptable.
+
+Always ask: is this offline representation, or online forecasting?
+
+### 3.12 Clocks framework
+
+For multimodal temporal data ask:
+
+1. What is each modality's native rate?
+2. What timing precision matters for the task?
+3. Is hard synchronization scientifically meaningful?
+4. Should fusion be hard-aligned or learned?
+5. How are gaps represented?
+6. Is the model causal?
+
+Pass condition for Module 3: given asynchronous modalities, you do not immediately resample. You reason from the required temporal precision and interaction.
+
+---
+
+## Module 4 — Train, diagnose, and choose between architectures
+
+Core question: How do we know one multimodal architecture is actually better?
+
+This module combines training strategy with architectural science.
+
+### 4.1 Build a representation bakeoff
+
+Suppose candidates: (A) numeric text, (B) patched native encoder, (C) chart / image, (D) spectral representation.
+
+Do not debate from intuition alone.
+
+Keep fixed: train / test data; downstream task; language backbone where applicable; training budget; evaluation protocol.
+
+Measure: task quality; token count; FLOPs; latency; memory; label efficiency; robustness.
+
+HM-screen three families (text / patched native / images) are hypotheses here, not a 2–3 min recap of Shirley. Caption eval is not CE / ROUGE (Feng leftover) if a language head appears.
+
+### 4.2 Separate encoding from fusion
+
+Do not change everything simultaneously.
+
+Experiment 1: same fusion, different encoders.
+
+Experiment 2: same encoders, different fusion.
+
+Otherwise you cannot tell why the model improved.
+
+### 4.3 Information bottleneck sweep
+
+If using patch size P or M resampler tokens, sweep compression.
+
+Example: M = 8, 32, 128, 512.
+
+Ask: when does performance saturate? This tells you how much modality information is actually needed.
+
+Your cls_only vs patches (~64x compression, about -6 pp) is IC evidence for this sweep. Say I.
+
+### 4.4 Token-cost curves
+
+Compare performance vs number of modality tokens.
+
+A representation giving +0.5% quality at 20x token cost may not be attractive. This is especially important when fusing with an LLM.
+
+### 4.5 Pretraining / freezing bakeoff
+
+Compare: frozen encoder + projector vs encoder LoRA vs full encoder fine-tune vs joint training.
+
+This answers: does adaptation matter? And: where does improvement come from?
+
+### 4.6 Alignment objective bakeoff
+
+Could compare: task loss only vs contrastive + task vs generative alignment + task.
+
+Do not automatically add more losses. Check whether the alignment objective improves actual downstream behavior.
+
+### 4.7 Modality neglect
+
+Critical multimodal failure. Model nominally receives A and B but predicts almost entirely from A.
+
+Test: REMOVE B; SHUFFLE B; TIME-SHIFT B; REPLACE B WITH NOISE.
+
+If quality barely changes, B is not meaningfully used.
+
+Attention visualization alone is not enough.
+
+### 4.8 Modality dominance
+
+One modality may dominate due to: easier optimization; larger token count; stronger pretrained encoder; more informative labels; larger embedding scale.
+
+Things to inspect: gradient norms by encoder; embedding norms; ablations; learning curves; modality-specific performance.
+
+Potential interventions: balanced sampling; normalization; modality dropout; auxiliary objectives; architectural bottleneck.
+
+### 4.9 Representation scale mismatch
+
+Suppose ||z_image|| ~= 2 and ||z_sensor|| ~= 100. This can affect shared attention / fusion.
+
+Need: projection; normalization; initialization; possibly learned scaling.
+
+Multimodal alignment is numerical as well as semantic.
+
+### 4.10 Training stages
+
+Possible staged setup:
+
+STAGE 1: train projector / alignment; freeze large backbones.
+
+STAGE 2: unfreeze / LoRA shared model; perform multimodal instruction / task training.
+
+STAGE 3: domain / task specialization.
+
+But do not present staged training as mandatory. Alternative: joint end-to-end training when enough data / compute exist.
+
+Your Stage A then B (caption prior, then task) is the IC story. I owned the recipe and the gate.
+
+### 4.11 Paired vs unpaired data
+
+Some modalities may be jointly observed only rarely.
+
+Example: lots of IMU; lots of text; small paired IMU-text set.
+
+Possible strategy: unimodal pretraining + paired alignment + multimodal task tuning.
+
+Architecture / training strategy should exploit all data, not only fully paired samples.
+
+### 4.12 Scale after representation is validated
+
+Before making the model much larger, ask whether scaling fixes the real limitation.
+
+If encoding discarded important information, a larger LLM cannot recover it.
+
+If fusion ignores a modality, a larger LLM may ignore it even better.
+
+Important line: "Model scale cannot recover information removed by representation."
+
+27B != TSRBench unless the representation and gate earned it.
+
+### 4.13 Failure-diagnosis framework
+
+If a multimodal model performs poorly, inspect:
+
+1. INPUT REPRESENTATION — did encoding preserve information?
+2. MODALITY ENCODER — does each encoder produce useful features?
+3. ALIGNMENT — are embeddings compatible?
+4. FUSION — can information actually cross modalities?
+5. OBJECTIVE — does the loss require multimodal use?
+6. DATA — are examples solvable from one modality alone?
+7. OPTIMIZATION — do gradients reach each component?
+
+This is a much better answer than immediately changing architecture.
 
 ### Module 4 practice
 
-Bakeoff case: four candidate encodings — (A) numeric text, (B) native patches, (C) chart / image, (D) daily behavioral tokens.
+Case 1: native TS encoder beats chart representation. Ask why. Design experiments to determine whether the gain is from information preservation, token count, architecture, pretraining, or optimization.
 
-Design an experiment. Answer: (1) hypothesis for each, (2) common downstream model, (3) matched data, (4) compute / token controls, (5) evaluation tasks, (6) temporal slices, (7) missingness slices, (8) label-efficiency test, (9) kill criteria.
+Case 2: dual modality beats single modality by 2%. Test shuffled second modality; missing second modality; parameter-matched control.
 
-Then: what result would convince you to choose each representation?
+Case 3: cross-attention underperforms concatenation. Potential reasons: cross-attention inserted too late; insufficient capacity; modality ignored; fusion needs low-level interaction; optimization issue.
 
-Pass condition: you can turn architecture debate into a controlled scientific experiment.
+Case 4: performance improves as patch size increases until P=64 and then falls. Interpretation: compression initially removes redundancy, then begins removing task-relevant information.
 
----
-
-## The most important integrated case
-
-Practice this repeatedly:
-
-We have one year of wearable data: IMU at 100 Hz; intermittent PPG; HR; sleep; workouts; behavioral summaries. We want a model that supports several downstream health tasks. Design the representation and architecture.
-
-Your reasoning should be:
-
-STEP 1 — DEFINE TASK SCALES. Which tasks require seconds, minutes, days, months?
-
-STEP 2 — DEFINE LOCAL REPRESENTATIONS. IMU: local patches / native encoder. PPG: local physiological encoder. HR: lower-rate temporal encoding. Sleep / workouts: event representations.
-
-STEP 3 — TEMPORAL COMPRESSION. raw -> local latent -> events / behavioral tokens.
-
-STEP 4 — FUSE AT APPROPRIATE LEVELS. Fine fusion only where needed. Coarse fusion for longitudinal reasoning.
-
-STEP 5 — REPRESENT TIME. Physical timestamps / delta time / periodic information.
-
-STEP 6 — HANDLE MISSINGNESS. Availability-aware architecture.
-
-STEP 7 — LONGITUDINAL MODEL. Operate on a compact behavioral / event-level sequence.
-
-STEP 8 — DEFINE BASELINE. Engineered behavioral features + simple model.
-
-STEP 9 — BAKEOFF. Native vs aggregate vs alternative representations.
-
-STEP 10 — SCALE WINNER ONLY AFTER EVIDENCE.
-
-Also run the same spine on three years — that is the likely open.
+Pass condition for Module 4: you can diagnose a multimodal result using experiments rather than architecture preference.
 
 ---
 
-## Likely Yujie-style questions
+## Integrated architecture cases
 
-Q1. What is a token in a one-year (or three-year) wearable record?
+These should be the bulk of your actual practice.
 
-Q2. How would you represent IMU at 100 Hz together with daily sleep summaries?
+Case A — audio + telemetry + text. Inputs: audio at 16 kHz; machine telemetry at 10 Hz; maintenance notes. Task: answer questions about machine condition. Design: audio encoder? telemetry encoder? text model? fusion level? alignment? token compression? Then ask: would you resample telemetry to 16 kHz? No. Why? This is useful because it removes you from the health setting.
 
-Q3. Why not resample everything onto one common clock?
+Case B — video + time series. Inputs: video; accelerometer; GPS. Task: understand physical activity. Questions: image / video patches vs IMU patches; timestamp alignment; shared latent space; cross-attention vs joint tokens; different clock rates.
 
-Q4. When should I use raw signals versus behavioral aggregates?
+Case C — wearable health. Inputs: PPG; IMU; HR; sleep; text / self-report. Use health as one application of the same architectural principles.
 
-Q5. How would you choose patch size?
+Case D — industrial sensor foundation model. 100 heterogeneous channels; different rates; many missing channels; years of data. Question: shared encoder or per-sensor encoder? How do you tokenize channel / time? How do you avoid sequence explosion?
 
-Q6. How do you represent irregular observation times?
+Case E — multimodal forecasting. Historical numerical sequence + text events + images / context. Task: forecast future numerical trajectory. Question: at what point do modalities fuse? Does the future decoder need direct access to every modality?
 
-Q7. At what level should PPG and IMU fuse?
+These cases make your reasoning general rather than Apple-Health-specific.
 
-Q8. How would your architecture change for a 5-second target versus a 6-month target?
+---
 
-Q9. How do you know a compressed representation did not discard important information?
+## Likely Yujie questions
 
-Q10. Why might a behavioral-token model beat a raw-sensor model?
+Q1. How would you encode a continuous time series for an LLM?
 
-Q11. How would you compare a native time-series encoder against numeric text serialization?
+Q2. What are the tradeoffs between patching and discretization?
 
-Q12. What would make you choose an image representation?
+Q3. How would you decide patch size?
 
-Q13. If one modality is absent for most users, how should fusion change?
+Q4. When is a convolutional encoder preferable to direct patch projection?
 
-Q14. How would you model a year of history without an enormous context?
+Q5. How would you handle multivariate series with hundreds of channels?
 
-Q15. How would you evaluate whether longer context genuinely helps?
+Q6. Would you use one encoder per modality or a shared encoder?
 
-Q16. What should be shared across modality encoders?
+Q7. How would you combine time series and text?
 
-Q17. When would you use a common encoder versus modality-specific encoders?
+Q8. When would you concatenate modality tokens versus use cross-attention?
 
-Q18. How would you exploit millions of unlabeled sensor hours?
+Q9. Why would you introduce a latent resampler?
 
-Q19. What experiment tells you whether a representation is truly transferable?
+Q10. How do you choose the number of latent modality tokens?
 
-Q20. You get a 2% gain but 10x token count. Is it better?
+Q11. How do you handle two modalities sampled at very different rates?
 
-Q21. Sampling rate changes across device gens. What happens to your tokens?
+Q12. Why not just resample everything to the same frequency?
 
-Q22. Concat vs cross-attn vs native encoder — one discriminating experiment.
+Q13. How do you encode irregular observation times?
 
-Q23. Token budget: what do you drop first?
+Q14. How do you distinguish positional encoding from physical-time encoding?
 
-Q24. Feng leftover: caption eval != CE / ROUGE; multivariate != just concat without identity / time.
+Q15. Where should multimodal fusion happen?
+
+Q16. When should fusion happen at multiple levels?
+
+Q17. How would you train when only a small subset of samples has all modalities?
+
+Q18. How do you tell whether the model actually uses modality B?
+
+Q19. Why might cross-attention fail?
+
+Q20. Why might early fusion fail?
+
+Q21. What happens if one modality produces 100x more tokens than another?
+
+Q22. How would you prevent one modality from dominating?
+
+Q23. How would you compare native TS encoding against image encoding?
+
+Q24. What information might STFT expose that raw patches do not?
+
+Q25. When would discretizing time series into tokens make sense?
+
+Q26. Would you freeze the modality encoder?
+
+Q27. What does staged multimodal training buy you?
+
+Q28. Can a larger LLM compensate for a poor time-series encoder?
+
+Q29. How would you design a multimodal representation bakeoff?
+
+Q30. How would you diagnose a model whose multimodal validation loss improves but whose downstream TS reasoning does not?
+
+Also keep: sampling rate changes across device gens; token budget — what do you drop first.
 
 ---
 
 ## Recommended practice schedule
 
-The goal is ~35% learning, ~65% active design practice.
+Allocate approximately 40% learning / review, 60% architecture exercises.
 
-Session 1 — Temporal object, ~75 min. 30 min learning: temporal scales; event vs grid; hierarchical modeling; behavioral tokens. 45 min cases: same signal, different prediction horizons. Practice redesigning representation when task scale changes.
+Session 1 — Time-series encoding, ~2 hours. Learn / review: patches; convolutional downsampling; multivariate tokenization; continuous vs discrete tokens; STFT / spectral representations; normalization; physical-time encoding. Practice: given 5 time series, propose 3 encodings each. For every encoding explicitly say: preserves; loses; token cost; inductive bias.
 
-Session 2 — Encoding, ~90 min. 40 min learning: patches; conv encoders; aggregate representations; frequency domain; discrete tokens; time encoding; normalization. 50 min: encode five different time-series tasks from scratch.
+Session 2 — Multimodal architectures, ~2 hours. Review: modality-specific encoders; shared encoders; adapters / projectors; early fusion; cross-attention; latent bottlenecks / resamplers; hierarchical fusion. Practice: design 3 architectures for the SAME problem. Example: audio + telemetry + text. Architecture A: joint tokens. Architecture B: cross-attention. Architecture C: hierarchical / resampler. Then compare.
 
-Session 3 — Fusion, ~90 min. 30 min learning: multirate streams; fusion levels; early vs cross vs late fusion; missingness; alignment. 60 min: IMU + PPG + HR + sleep architecture exercise. Continuously change assumptions.
+Session 3 — Time + alignment, ~90 min. Review: physical vs positional time; multiple clocks; hard vs soft alignment; irregular sampling; causality. Practice: 16 kHz audio + 100 Hz IMU + 1 Hz signal + irregular events. Design fusion without naive global resampling.
 
-Session 4 — Representation bakeoff, ~75 min. 20 min review: controlled experimentation. 55 min: design representation comparisons. Force yourself to define hypothesis, control, slices, cost metric, kill criterion.
+Session 4 — Training + failure modes, ~90 min. Review: frozen vs trainable encoders; staged training; alignment objectives; missing modalities; modality dominance; modality neglect. Practice diagnosis: "Model ignores sensor." "Cross-attention fails." "More modality tokens hurt." "Joint training destabilizes pretrained LLM."
 
-Session 5 — Integrated mock, 45–60 min. One evolving design problem. No trivia. The interviewer keeps changing target horizon, modality availability, token budget, device constraints, dataset size. You continually adapt the architecture.
+Session 5 — Representation bakeoff, ~60 min. Compare: numeric text; patch encoder; STFT; chart / image; discrete codes. Define: hypothesis; controlled experiment; metrics; token budget; ablations; kill criterion.
 
-Mock (35 min) — first Wednesday slot. Broad: add PPG + IMU + behavioral history. Drill: tokenize three years. Scenario: matched bakeoff, no matplotlib on PPG.
+Session 6 — Yujie mock, 45–60 min. One evolving architecture problem. Example: "We have audio, several time-series sensors, and text." Then progressively: rates differ by 1000x; half modalities missing; text model is pretrained; sensor data abundant; paired text / sensor data scarce; need long history; model ignores sensor; inference budget tight. Adapt the architecture each time.
+
+First Wednesday slot is this mock shape, not a health-metrics hour.
 
 ---
 
 ## What to memorize
 
-Very little.
+Only four frameworks.
 
-Framework 1 — TEMPORAL OBJECT: signal resolution + local phenomenon scale + context horizon.
+Framework 1 — TIME-SERIES ENCODING: information preserved + information lost + token count + inductive bias.
 
-Framework 2 — REPRESENTATION: information preserved + information lost + token cost + inductive bias.
+Framework 2 — MULTIMODAL ARCHITECTURE: encoder per modality -> projection / common representation -> fusion location -> shared backbone / decoder.
 
-Framework 3 — FUSION: what needs interaction + at what temporal level + at what computational cost.
+Framework 3 — TEMPORAL FUSION: native rate -> local encoding -> temporal compression -> alignment -> fusion.
 
-Framework 4 — DECISION: hypothesis -> controlled bakeoff -> slice analysis -> scale or kill.
+Framework 4 — DIAGNOSIS: representation -> encoder -> alignment -> fusion -> objective -> data -> optimization.
 
 ---
 
 ## Final pass condition
 
-You are ready when Yujie can give you a sensor / time-series problem you have never seen before and you naturally reason:
+You are ready when Yujie can give you an unfamiliar multimodal problem and you naturally ask:
 
-1. What temporal phenomenon am I trying to capture?
-2. What is the raw sampling scale?
-3. How much context does the task require?
-4. What should one token represent?
-5. What information can I safely compress?
-6. Which information cannot be lost?
-7. Should modalities meet locally or only after compression?
-8. How do I represent physical time?
-9. How do I handle missing / asynchronous streams?
-10. What is the strongest simple representation baseline?
-11. What experiment distinguishes the candidate encodings?
-12. Does the additional representation complexity earn its cost?
+1. What is each modality mathematically?
+2. What information needs to survive encoding?
+3. What temporal resolution does the task require?
+4. How many tokens will each representation generate?
+5. Which encoder biases are useful?
+6. Which parts of the architecture should be modality-specific?
+7. Which parts should be shared?
+8. Where should modalities interact?
+9. Do they need exact synchronization?
+10. How should physical time be represented?
+11. How should missing modalities be handled?
+12. What information bottleneck am I introducing?
+13. What objective will make modalities align?
+14. How will I test whether the model actually uses each modality?
+15. What controlled experiment would choose between the candidate architectures?
 
 ---
 
 ## Traps
 
-Don't replay Shirley's 2–3 min encodings as the whole hour. Use clocks + token cost + timescale.
+Don't replay Shirley's 2–3 min encodings as the whole hour. Use the four encoding questions.
 
-Don't make LLaVA vs Flamingo the hour. Wearable token design.
+Don't make LLaVA vs Flamingo the hour. Use them as reference points for projector and cross-attention.
 
 Don't say images keep all information. Own ablation.
 
@@ -685,8 +853,10 @@ Don't recite 2.5B hours / 162k / 57 tasks.
 
 Don't name WBM / ICML.
 
-Don't force matplotlib / VLM images onto PPG.
+Don't force matplotlib onto PPG.
 
-Don't dump 100 Hz for three years into one Transformer.
+Don't resample every stream onto the fastest clock.
 
-Don't hand her Haraldur's AUROC-0.95 ship question unless she pulls labels / missingness / product.
+Don't let a larger LLM "fix" a bad encoder.
+
+Don't turn her hour into PPV / calibration / ship unless she pulls it.
