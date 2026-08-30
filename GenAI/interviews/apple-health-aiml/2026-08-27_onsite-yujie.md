@@ -595,6 +595,14 @@ For multimodal temporal data ask:
 
 Pass condition for Module 3: given asynchronous modalities, you do not immediately resample. You reason from the required temporal precision and interaction.
 
+### Spoken (2026-08-29) — Module 3 pass condition
+
+First take: each stream has its own encoder; keep encodings temporally related, not necessarily the same timestep; for health, same event is more realistic; do not drop irregular events when missing; each stream encodes a timestamp or time delta; then fuse with concat / xattn.
+
+Miss: never said the fail line — I would not resample to the fastest clock. "Temporally related" did not split hard bins vs soft / learned alignment. Overfit to health: audio + machine telemetry may need tighter physical sync; precision comes from the task. Time is usually a token embedding (t, Δt, hour-of-day), not "the encoder knows how." Missing ≠ 0; do not interpolate holes away. Fusion rate (100 ms vs bout vs day) is a third knob. If you forecast, no future through the aligner.
+
+Lock: Each stream stays on its native clock with its own encoder. I would not upsample to 16 kHz. Tokens get t or Δt so index is not time. I align to the event the task cares about, not necessarily the same sample index. Gaps stay as missing, not zero. Then concat or xattn at that fusion rate.
+
 ---
 
 ## Module 4 — Train, diagnose, and choose between architectures
@@ -733,6 +741,14 @@ This is a much better answer than immediately changing architecture.
 
 Case 1: native TS encoder beats chart representation. Ask why. Design experiments to determine whether the gain is from information preservation, token count, architecture, pretraining, or optimization.
 
+Spoken Case 1 (2026-08-29):
+
+First take: information — train a TS decoder to recover the signal; vary chart resolutions. Token count — compare performance across token counts via different TS encoder dims vs different chart resolutions. Pretraining — zero-shot TS enc vs chart, then FT both.
+
+Miss: token count is not encoder hidden dim. Chart res is rendering, not N. Zero-shot TS is meaningless if the TS encoder has no prior. Skipped architecture (same fusion / head, only swap encoder) and optimization (same data, steps, LR, seeds).
+
+Lock: Hold fusion and the head fixed; swap only the encoder. Information: reconstruct the series from native latents; for the chart, recover numbers / high-freq from the image and raise render resolution — if the gap closes, the renderer threw information away. Token count: match N into the same backbone (sweep P or M vs ViT patches / image size / merge); plot quality vs N. Pretraining: only zero-shot if both have a prior; then freeze+probe vs FT. If the chart only looks good with a pretrained ViT and the TS encoder is random, the native win may be in-domain training. Same train recipe so it is not just optimization.
+
 Case 2: dual modality beats single modality by 2%. Test shuffled second modality; missing second modality; parameter-matched control.
 
 Case 3: cross-attention underperforms concatenation. Potential reasons: cross-attention inserted too late; insufficient capacity; modality ignored; fusion needs low-level interaction; optimization issue.
@@ -765,19 +781,81 @@ These cases make your reasoning general rather than Apple-Health-specific.
 
 Q1. How would you encode a continuous time series for an LLM?
 
+Spoken Q1 (2026-08-29):
+
+First take: multiple ways — (1) one token per sample, (2) patchify and encode, (3) TS as an image, (4) state-space / delay, (5) STFT.
+
+Miss: a menu, not an LLM answer. Skipped numeric text (the trivial LLM baseline). Did not reject point-wise on token count. No preserve / lose / N / bias, no projector / resampler, no bakeoff, no task pick.
+
+Lock: Text-of-numbers is a short-series baseline, not the default (no new encoder, terrible N, weak continuity). Reject one token per sample on anything dense — 100 Hz × 1 hour = 360k. Default if local structure matters: patch, native encoder, project to d_LLM (or resample to M tokens). Chart → ViT only if the series is short and I am stealing a visual prior — not "images keep the numbers," not raw PPG. STFT if the object is spectral; delay / state if the object is dynamics. Tokens get modality + time IDs. Then a matched-N bakeoff (Case 1). Do not open with a Transformer on 360k samples.
+
 Q2. What are the tradeoffs between patching and discretization?
+
+Spoken Q2 (2026-08-29):
+
+First take: patching reduces N = T/P; too wide loses info, too small too many tokens. Discretization: pick bins and how many; loses info (span); fits LLM better because tokens are discrete. Binning every numeric value is very costly, too many tokens.
+
+Miss: treated both as N-reduction. Patching groups time; the patch is still a continuous vector. Discretization is a codebook bottleneck (quantization error, collapse, clipped range), not P. "Fits the LLM" is only for token-ID generative modeling — an LLM can take continuous patch embeddings via a projector. Per-sample bins are still ~T tokens.
+
+Lock: Patching is time-resolution vs token count; the patch stays a real vector you project. Discretization is a vocabulary bottleneck — useful for discrete generative TS, bad if I need the actual values. I would not bin every sample. If I discretize, I VQ the patches and I ask what the codebook must preserve.
 
 Q3. How would you decide patch size?
 
+Spoken Q3 (2026-08-29):
+
+First take: decide from signal nature and the effect in question; high freq → smaller P; long event → wider P; ablate task vs multiple P; if larger P does not change results, take the minimal token count.
+
+Miss: long event ≠ wide patch. A 30-minute workout is context; P should match the local pattern, then pool. High-Hz IMU does not force small P unless the task uses that freq. P should be stated in seconds, then converted to samples (device rate can change).
+
+Lock: P is the backbone’s clock. Set it from the phenomenon the task needs, not from T or from how long the record is. Sweep P; quality rises while you strip redundancy, then falls when you eat the event (Case 4). On the plateau, take the fewest tokens. A long horizon gets hierarchy, not a 30-minute patch.
+
 Q4. When is a convolutional encoder preferable to direct patch projection?
+
+Spoken Q4 (2026-08-29):
+
+First take: conv is locally translation equivariant; may use fewer params than a dense proj; conv can be trained separately; direct proj has to deal with noisy and huge data.
+
+Miss: "trained separately" is true of any front end, not conv vs linear. Direct proj is not uniquely stuck with huge noisy data — it is the minimal prior. Dense flatten of a fat patch is what blows params; a small-P linear map can be cheaper than a deep conv.
+
+Lock: Linear proj is a flat map of the patch — cheapest prior; use it when P is already small or data is scarce. Conv front end when local motifs and shift-equivariance matter, and I want shared filters plus stride to compress. Bake off both under the same N and the same backbone.
 
 Q5. How would you handle multivariate series with hundreds of channels?
 
+Spoken Q5 (2026-08-29):
+
+First take: (1) split channels → univariate, no seq explosion, but no cross-channel interaction. (2) encode multivariate [P, C] → d; info loss but cross-channel rep.
+
+Miss: inverted the token math. Split multiplies N by C — that is the explosion. Channels together keeps N = T/P; the cost is a fat P×C → d bottleneck and a fixed channel set. Skipped group-then-joint and channel IDs / metadata.
+
+Lock: If I split 200 channels I multiply N by 200. I’d keep channels in the patch or in small groups so N stays T/P, accept a P×C→d bottleneck, and mask missing sensors. I’d only tokenize channels separately when I need to drop them independently or their physics don’t share a patch. Channel identity (and units / type / location) if tokens are separate.
+
 Q6. Would you use one encoder per modality or a shared encoder?
+
+Spoken Q6 (2026-08-29):
+
+First take: shared if paired data, shareable bias, low mem, fewer components. One encoder per modality if physics-adapted, strong pretrained, modalities very different, no shared bias, no paired data.
+
+Miss: paired data is not the fork. A shared encoder needs shareable structure + IDs; unpaired unimodal batches are enough. Pairing is for alignment. "No pairs ⇒ separate" is backwards — scarce pairs is when you unimodal-pretrain specialists, then a small paired align stage. Skipped the 2.3 middle.
+
+Lock: Share a backbone only if the structure is shareable, with IDs — mem and simplicity, not pairing. If physics or pretrained specialists disagree, separate fronts. Default draw: specific encoders, project, shared Transformer.
 
 Q7. How would you combine time series and text?
 
+Spoken Q7 (2026-08-29):
+
+First take: (1) concat TS tokens after enc → proj with text tokens; (2) xattn, text = Q, TS = K/V.
+
+Miss: named the two fusions (that is Q8) without the pipeline. Did not say encode/compress first, modality + time IDs, resampler if N is huge, or neglect test.
+
+Lock: Q7 is the stack, not the fork. Encode the series at a useful rate, project to d_LLM, add modality + time IDs, then fuse with text. Do not concat raw 100 Hz with words. Cheap stage: freeze LLM, train projector. Then LoRA if needed. Ablate the series so it is not a text-only model. How they fuse is Q8.
+
 Q8. When would you concatenate modality tokens versus use cross-attention?
+
+Spoken Q8 (2026-08-29):
+
+Same two designs as the Q7 first take. Logged here as the when / tax, not a second architecture menu.
+
+Lock: Concat after project — full mix, cost (N_ts+N_text)^2, sensor can swamp text. Use when N_ts is already small (behavioral / resampled / daily). Xattn, text = Q, TS = K/V — cost ~ N_text*N_ts, LLM does not self-attend 10k sensor tokens; fail is neglect (shuffle / drop TS). If even that is too many tokens, M latent queries (Q9), then concat or xattn those M.
 
 Q9. Why would you introduce a latent resampler?
 
