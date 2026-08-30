@@ -253,6 +253,32 @@ Example — chart. Preserves: visual shape / trend. Loses: numerical precision, 
 
 Pass condition for Module 1: given any time series, you can propose 3 plausible encodings and compare them using information, token count, inductive bias, and task requirements.
 
+### Spoken (2026-08-29) — Module 1 drill
+
+Q1. One hour of 100 Hz, 3-axis IMU. Three encodings with preserves / loses / token count / inductive bias. Which for 5-second activity vs next-week state?
+
+First take: patch — preserves temporal structure, loses a bit of info, N = T/P, neighborhood matters. STFT — preserves freq, loses temporal info, tokens P*F, bias = wide freq range. Chart — preserves numerical range, loses high-freq detail, N = image tokens, bias = numerical range and structure.
+
+Miss: no task pick. "Loses a bit" is not an answer. STFT does not throw time away (time–frequency tradeoff). Chart flipped: rendering loses precision, keeps shape; bias is a visual prior. One hour is 360,000 samples — say the number. 3-axis: channels together vs per-axis tokens.
+
+Lock: (1) 2 s patches, channels together — keeps local waveform, loses intra-patch freq and finer localization, ~1800 tokens/hour, local stationarity. (2) STFT — keeps local spectrum, trades time vs freq resolution, frames × bins, periodicity is the object. (3) Chart — keeps shape, loses numerical precision, vision-token count, stolen visual prior. Reject point-wise (360k tokens). Five-second activity: small P or conv (0.2–2 s). Next-week state: daily / event aggregates or hierarchy, not a flat hour of IMU. Chart only as a short-series transfer baseline.
+
+Q2. P = 10 vs P = 1000 on that IMU. What clock does the backbone see? When does the large patch destroy the task?
+
+First take: 5 s = 500 steps; P=10 → 50 tokens, P=1000 → 1 token. Next-week: 360k*7, so P=1000 is ok and P=10 is too many. P=1k destroys when it leaves too few tokens.
+
+Miss: 360k*7 is 7 hours, not a week. A week of 100 Hz is 360k*24*7 if worn continuously — still huge at P=1000 (~60k tokens). The kill is not token count. P=1000 is a 10 s clock; a 5 s event is smeared inside one patch. Next-week state is not a flat patched week.
+
+Lock: Phenomenon scale vs patch scale. P=1000 means the backbone sees 10 s blobs. Next week: compress to days / events, then a small model.
+
+Q3. Z-score each 2-second window. When right, when did you delete the feature?
+
+First take: wrong if the feature is periodic at 2 s and z-score kills the trend.
+
+Miss: the corpse is mean and energy (level / intensity), not "periodicity." Shape inside the window survives.
+
+Lock: Per-window z-score sets that 2 s mean to 0 and std to 1. Right when the task is waveform shape and people / devices have different scales. Wrong if the feature is how hard they moved, absolute accel, or a baseline you need across windows.
+
 ---
 
 ## Module 2 — Design the multimodal architecture
@@ -419,6 +445,22 @@ For a multimodal architecture ask:
 8. What objective creates alignment?
 
 Pass condition for Module 2: given three modalities, you can design at least three distinct architectures and explain their computational and representational tradeoffs.
+
+### Spoken (2026-08-29) — Module 2 pass condition
+
+First take: (1) sep enc + concat — physics-aware / pretrained vs more params and handling; concat is simple and full mix vs quadratic in seq len. (2) sep enc + xattn — cost T*T_mod; more params; partial interaction. (3) shared rep + concat — fewer params, aligned rep; needs paired data and modality IDs.
+
+Miss: did not instantiate the three streams or token math. Xattn con is neglect + chosen layers, not "more params"; cost is Tq*Tkv, not a vague T*T_mod. Shared-encoder con is not paired data — it is shareable structure; unpaired unimodal data can still work with IDs. Real cons: physics clash, dominance, tight shared space. Skipped the 2.3 middle (specific fronts → project → shared backbone) and the resampler bottleneck.
+
+Lock: Instantiate audio 16 kHz + 10 Hz telemetry + text. Native-encode each; do not resample telemetry to 16 kHz.
+
+Arch 1 — separate physics-aware encoders + concat: full mix, cost (T1+T2+T3)^2, need modality ID + time + mask + projectors. Long sensor stream can swamp text. First interaction = first shared self-attn. Token count into the backbone = sum of all modality tokens.
+
+Arch 2 — separate encoders + cross-attn: cost about Tq*Tkv, so you do not put 10k sensor tokens into LLM self-attn. Interaction only at the layers you insert (early = low-level mix, late = specialist encoders). Real failure: B is ignored. Test: shuffle / drop B.
+
+Arch 3 — shared backbone + concat only if structure is shareable, with IDs. Not "needs paired data."
+
+Default I would actually draw: modality-specific fronts, project, shared Transformer; resampler (M queries, M << T) if LLM context is the tax. Information bottleneck is then explicit.
 
 ---
 
