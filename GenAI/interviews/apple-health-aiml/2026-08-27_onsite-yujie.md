@@ -765,6 +765,28 @@ These should be the bulk of your actual practice.
 
 Case A — audio + telemetry + text. Inputs: audio at 16 kHz; machine telemetry at 10 Hz; maintenance notes. Task: answer questions about machine condition. Design: audio encoder? telemetry encoder? text model? fusion level? alignment? token compression? Then ask: would you resample telemetry to 16 kHz? No. Why? This is useful because it removes you from the health setting.
 
+Spoken integrated Case A (2026-08-30):
+
+Opening first take: separate towers for audio and telemetry; normal LLM text tokens. Patch / encode / aggregate 16 kHz audio, perhaps with a pretrained STFT-based encoder. Encode telemetry patches [T, C] jointly because channel-separate tokens multiply length. Keep encoders separate because signal structure differs. Put time in patches. Use text-query cross-attention over sensor K/V; concat only if the sensor sequence can be compressed safely; resample only if events survive.
+
+Follow-up: 24 hours, failure at 14:32:04, audio precursor at 14:31:57. First take switched to event tokens containing signal + timestamps / delta-time, retaining local irregularities and ignoring normal periods. Correctly chose text Q and audio + telemetry K/V with cost about T_text * (T_audio + T_telemetry), but did not compute raw counts or distinguish hard vs soft alignment.
+
+Challenge: a slow 30-minute drift also causes failures and replacing audio with noise changes little. Updated representation to coarse aggregated normal coverage + fine event tokens; selected soft alignment; proposed remove / zero / random / shuffle audio. Diagnosis order: data -> optimization -> fusion -> encoder.
+
+Factual correction: zero replacement is OOD and not strong evidence. Prefer the valid missing path, cross-example shuffle, or time-shift. Raw scale: audio = 16,000 * 86,400 = 1.3824B samples; telemetry = 10 * 86,400 = 864K timestamps x 20 = 17.28M values.
+
+Missing decision: make the information bottleneck explicit. Coarse tokens preserve complete-day coverage / slow drift; fine tokens preserve anomalies. Do not irreversibly discard all local latents before seeing the query. Sweep the coarse / fine or resampler budget.
+
+Spoken lock: I would use separate native encoders: an audio front end, likely spectral or convolutional, and a multichannel telemetry encoder. I would not resample telemetry to 16 kHz. Each produces timestamped local latents. I would preserve the day at two resolutions: coarse tokens for full coverage and slow drift, plus fine tokens around candidate events. Because the audio precursor and telemetry response are seven seconds apart, I would keep physical timestamps and use soft alignment, with text as Q and the timestamped sensor memory as K/V. If memory is too large, I would sweep a resampler budget rather than discard all normal intervals. To test audio use, I would remove, shuffle, and time-shift it; then probe the audio encoder before blaming fusion or optimization.
+
+Rapid checks:
+
+1. Correct: upsampling 10 Hz telemetry to 16 kHz bloats the sequence with invented / repeated values; retain native-rate encoders. Add: compress locally, timestamp the resulting latents, then fuse.
+
+2. Miss: soft alignment is not variable-length bins. Hard alignment forces shared bins / nearest matches before fusion. Soft alignment keeps independently timestamped streams and learns correspondence, optionally with a time-distance bias or local window. Choose soft here because the meaningful response is delayed by seven seconds, not primarily because of token count.
+
+3. Partial: unchanged output after time-shifting audio suggests aligned audio is ignored. Check whether the task is solvable from audio with an audio-only probe, then verify the encoder preserves the feature and whether gradients reach it. Do not jump first to an unspecified cross-attention parameter.
+
 Case B — video + time series. Inputs: video; accelerometer; GPS. Task: understand physical activity. Questions: image / video patches vs IMU patches; timestamp alignment; shared latent space; cross-attention vs joint tokens; different clock rates.
 
 Case C — wearable health. Inputs: PPG; IMU; HR; sleep; text / self-report. Use health as one application of the same architectural principles.

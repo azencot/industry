@@ -337,6 +337,18 @@ Do not spray tools until the profile names the class. Your evidence at the end: 
 3. Follow-up: GPUs busy but MFU 20%. Where do you not start?
    Target: not "add FSDP." Kernels, shapes, padding, recompute, unfused attn.
 
+### Spoken integrated incident (2026-08-30)
+
+Prompt: full-fine-tune a 30B Transformer with AdamW in bf16 on 8 x 80 GB GPUs. It OOMs before the first step. Account for memory, decide whether 8 GPUs are enough, choose parallelism, then diagnose why 8 -> 64 GPUs gives only 4x throughput at fixed global tokens/step.
+
+First take: 30B needs P 60 GB + G 60 GB + O 240 GB = 360 GB before A. Eight GPUs may be enough depending on the bottleneck. Proposed LoRA if allowed, otherwise FSDP / ZeRO; proposed smaller B/T, accumulation, Flash, checkpointing, then FSDP / ZeRO on A. Estimated A as B x H x d_h x T^2 and concluded 45 GB sharded state + 16 GB A fits. Recalled all-gather for P but not reduce-scatter for G; said the highest FSDP level shards A. For scaling, decomposed step time into GEMM + communication + input + sync + checkpoint, but preferred TP unless non-GEMM time dominated.
+
+Factual correction: FSDP does not shard activations. It shards P/G/O. Around a layer it all-gathers that layer's P, computes, releases the full copy, and reduce-scatters G; O remains sharded. Peak also contains the gathered layer, A, and temporary buffers. B x H x d_h x T^2 is not total activation memory; FlashAttention does not materialize the T x T score matrix. H=8 and d_h=64 implies d=512, not a plausible 30B model.
+
+Missing decision: LoRA was forbidden by full FT. With fixed global tokens, 64 GPUs get less local work, so GEMMs shrink and MFU can fall while FSDP collectives cross more ranks / nodes. Profile compute, FSDP all-gather / reduce-scatter, input / H2D, synchronization / stragglers, and checkpoint pauses before changing parallelism. TP only if a layer does not fit, usually inside NVLink. Pipeline if depth or repeated FSDP gather traffic dominates and shipping activations is cheaper.
+
+Spoken lock: The 30B state is about 360 GB, so eight-way FSDP leaves roughly 45 GB per GPU before activations. Around each layer, FSDP all-gathers that layer's parameters, computes, releases the full copy, and reduce-scatters its gradients; optimizer state remains sharded. It does not shard activations. At 64 GPUs with fixed global tokens, I would profile compute, communication, input, and waiting separately. Smaller local work can lower MFU while cross-node all-gathers and reduce-scatters become more expensive. I add TP only if a layer does not fit; I consider pipeline if depth or FSDP gather traffic dominates.
+
 ---
 
 ## A5 — Flash, checkpoint A, accum, packing, input
@@ -418,6 +430,20 @@ NaNs at 20k steps (not first-step overflow): skip "just lower LR" as the whole a
    Target: not "FSDP." Isolate data vs numerics vs resume vs packing.
 
    Spoken lock (2026-08-28): Not first-step overflow, not "I'd use FSDP." Isolate: which rank / layer / shard; data (longer T, different mix, -100 miss -> huge CE); fp16 loss scale (bf16 usually skip); LR / wd / clip after a schedule boundary; corrupt resume. Bisect step and the batch. Same instinct as TR mix: don't trust train NLL alone.
+
+### Spoken incident continuation (2026-08-30)
+
+Prompt: rank 37 reports NaNs at step 20,143. Sharded checkpoints exist every two hours plus a separate best-validation checkpoint. Choose a resume point, verify consistency, reproduce the failure, and find the earliest corruption.
+
+First take: resume last consistent, not best-val, to continue the run rather than skip steps. Verify by recovering eval and checking non-NaN P/G/A. Check data by replaying batches / outliers / normalization; numerics by fp16 loss scale and overflow; optimizer by warmup / schedule; distributed by network / communication. Inspect in that order.
+
+Follow-up first take: recompute A in a forward pass as a consistency test; save another checkpoint at the failing step and use saved RNG to reproduce; inspect batch -> forward -> loss -> backward for first NaN; finite loss + non-finite G suggests a bad backward component, perhaps division by zero in normalization.
+
+Factual correction: a checkpoint consistency test asks whether the save is transactionally complete, not whether the loaded model produces finite activations. Verify every expected rank shard exists, all shards report the same global step / world size, sizes and checksums pass, optimizer / scheduler / RNG metadata agree, and an atomic completion manifest exists. Do not save a new recovery checkpoint after state becomes non-finite.
+
+Missing decision: restore the last completed checkpoint, RNG, and sampler state; log batch IDs and replay to the failing step. Running the step twice is comparable only after resetting to the same state and deterministic execution. Instrument input -> activations -> logits -> loss -> gradients -> optimizer update. If forward and loss are finite but layer 42 first emits a non-finite gradient, focus on its incoming gradient, saved / recomputed activations, backward op, mixed-precision scaling / unscale order, and fused kernels. LayerNorm has epsilon; do not jump to division by zero. Network faults usually produce errors / hangs, not silently valid NaNs.
+
+Spoken lock: I resume the last atomically completed shard set, not best-validation. I verify all shards share the same step and metadata and pass the checkpoint manifest. Then I restore RNG and sampler state and replay while logging batch IDs. I instrument input, activations, logits, loss, gradients, and the optimizer update to find the first non-finite tensor. If forward and loss are finite but layer 42 first produces a non-finite gradient, I focus on that backward operation, its incoming gradient and saved activations, mixed-precision scaling, and any fused kernel — not immediately on the LR or network.
 
 ---
 

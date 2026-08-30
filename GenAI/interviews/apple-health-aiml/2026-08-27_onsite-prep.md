@@ -15,7 +15,7 @@
 |------|--------|--------|
 | Wed 10:05 | **Yujie Li** | [`2026-08-27_onsite-yujie.md`](2026-08-27_onsite-yujie.md) — four modules: encode TS → multimodal arch → clocks → diagnose / bakeoff |
 | Wed 1:05 | **Chung-Cheng Chiu** | [`2026-08-27_onsite-chung-cheng.md`](2026-08-27_onsite-chung-cheng.md) — parallelism + profiling. **Largest study delta** |
-| Wed **2:05** | **Jonathan Bourim** | [`2026-08-27_onsite-jonathan.md`](2026-08-27_onsite-jonathan.md) — SWE/ARE; most plausible **pad** + rigor leftover |
+| Wed **2:05** | **Jonathan Bourim** | [`2026-08-27_onsite-jonathan.md`](2026-08-27_onsite-jonathan.md) — primary map: **research depth + rigor**; small pad contingency |
 | Wed 3:05 | **Haraldur Hallgrímsson** | [`2026-08-27_onsite-haraldur.md`](2026-08-27_onsite-haraldur.md) — most Apple-Health-specific. **Do not assume DL wins** |
 | Fri 11:05 | **Vincent Chan** | [`2026-08-27_onsite-vincent.md`](2026-08-27_onsite-vincent.md) — 6-month program, discriminating experiments |
 
@@ -43,7 +43,7 @@ Bosch is **done**. Do not mix Sunnyvale scripts.
 
 **Compress:** never skip Fri **Close** mock (35 min) or Tuesday’s Wed-order mocks. Cut a fourth 45 if behind — keep Jonathan at 30 min.
 
-**Effort:** Chung-Cheng ~30% · Yujie+Haraldur ~40% · Jonathan (rigor/pad) ~15% · Vincent ~15%.
+**Effort:** Chung-Cheng ~30% · Yujie+Haraldur ~40% · Jonathan (rigor; small pad contingency) ~15% · Vincent ~15%.
 
 Skip unless a mock fails: RoPE derivation, RMSNorm, FlashAttention internals, RelCon cover-to-cover, LeetCode.
 

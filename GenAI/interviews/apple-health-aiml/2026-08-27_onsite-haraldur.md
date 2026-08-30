@@ -739,6 +739,32 @@ Your answer should change when the evidence changes.
 
 Pass condition: you do not automatically choose the highest-performing model. You can explain (1) what evidence matters, (2) what tradeoff matters, (3) what additional experiment would change your decision.
 
+### Spoken integrated case (2026-08-30)
+
+Opening: predict "health deterioration during the next week" from six months of Watch data. Turn it into a precise ML problem, then choose a first model and evaluation.
+
+First take: customer is the Watch user and output is for personal knowledge; label may be user report, so consider an expert-created set; prediction time is the end of six months and horizon is one week; target is event yes/no or deterioration level. Proposed precision, recall, and AUROC based on FP/FN severity, then deferred representation because the answer was long.
+
+Miss: did not make Y, action, or error cost concrete. "Train + test data" is not a label source; six months is a rolling lookback, not the prediction time. Skipped population detail, split, first model, prevalence, PPV, and calibration.
+
+Follow-up assumptions: hospitalization in the next 7 days from linked clinical records; non-emergency clinician-review queue; consumer Watch users including unseen users; HR, sleep, workouts, steps, IMU-derived activity, intermittent PPG, and wear indicators.
+
+First design take: modality-specific native-rate encoders, no resampling, pack available streams with IDs, modality dropout, local patching then hierarchy, target 2K–4K tokens over a two-week lookback. Split each user's six months into consecutive train / val / test and slide two-week input windows. For hospitalization, said FP should be avoided and "lowest precision." Proposed an autoencoder anomaly score as the baseline.
+
+Miss: overbuilt before establishing the strongest simple model and silently changed the six-month lookback to two weeks. Time-only segments leak participant identity and do not test unseen users. "Lowest precision" was inverted. A reconstruction anomaly detector is not the strongest baseline when supervised labels exist.
+
+Lock: For a week-level target, start with daily behavioral aggregates, periodic features, wear indicators, and LightGBM. The hierarchical encoder is the challenger. Use participant-disjoint evaluation for new users with temporal ordering / holdout; do not randomly split overlapping windows.
+
+Decision update: deep hierarchy AUROC 0.92 vs LightGBM 0.90; prevalence 1%; same users leaked across train/test; sparse-wear AUROC deep 0.74 vs LightGBM 0.86; sparse users are 40%; clinician capacity is 100 alerts per 10,000 per week.
+
+First take: participant / future leakage may invalidate the gain, especially for a rare event; use participant splits and sparse-wear training; choose LightGBM; set a threshold around 0.8 because it is above the deep model's 0.74, even if that produces 120 alerts.
+
+Factual correction: 0.74 and 0.86 are AUROCs, not score thresholds. AUROC is threshold-free ranking quality. Rarity does not itself make 0.92 unreal; it makes AUROC insufficient because PPV may be poor. Tau is the score cutoff: alert if s > tau. Choose tau on validation data to satisfy the 100 / 10,000 (top 1%) queue capacity, then report sensitivity, PPV, and calibration there. Precision / PPV = TP / (TP + FP). Recall / sensitivity = TP / (TP + FN).
+
+Evidence lock: identity — participant-disjoint test and participant-ID probe. Wear shortcut — stratify by wear, ablate availability features, and impose controlled missingness shifts. Capacity — parameter / compute-matched control with the same split, data, and head.
+
+Spoken lock: I would choose LightGBM now because 40% of deployment is sparse and it remains at 0.86 there, while the deep model falls to 0.74. Before treating the two-point IID gain as real, I would rerun a participant-disjoint temporal evaluation, probe user identity, ablate wear indicators, and use matched-capacity controls. I would not derive the threshold from AUROC. I would choose it on validation data to respect the 100-alert capacity, then compare sensitivity, PPV, and calibration at that operating point.
+
 ---
 
 ## How the four modules connect
