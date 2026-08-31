@@ -4,7 +4,7 @@ Assume: [Jonathan (Jamie) Bourim](https://www.linkedin.com/in/jonathan-bourim) �
 
 Assumed focus: Tyler #3 — RESEARCH DEPTH & SCIENTIFIC RIGOR.
 
-This person assignment is a working hypothesis, not an official mapping. CoderPad appears on every invite, so it is weak evidence of a coding interview. Keep a 5–10 minute code/debug contingency, but do not center preparation on the collator.
+This person assignment is a working hypothesis, not an official mapping. CoderPad appears on every invite, so it is weak evidence of a coding interview. Keep a 5–10 minute code/debug contingency, but do not center preparation on the collator. Drill bank: [`coding/`](coding/).
 
 Hub: 2026-08-27_onsite-prep.md
 

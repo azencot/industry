@@ -47,6 +47,8 @@ Bosch is **done**. Do not mix Sunnyvale scripts.
 
 Skip unless a mock fails: RoPE derivation, RMSNorm, FlashAttention internals, RelCon cover-to-cover, LeetCode.
 
+**Coding contingency** (do not replace person mocks): [`coding/`](coding/) — 6 high-ROI primitives (alignment, patchify, xattn, trie, sliding stats, XGBoost features). Open the problem file only; `*_solution.py` after. Not LeetCode.
+
 **Abstracts only** (method-level; no recap on loop): [`papers/README.md`](papers/README.md) + [Beyond Sensor Data](https://machinelearning.apple.com/research/beyond-sensor). Cultural signal: this team will use **SSL FMs and GBDT** when the latter is more robust.
 
 ---
