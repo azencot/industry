@@ -8,3 +8,6 @@ __pycache__/
 
 # Confidential NeurIPS submission (anonymous / do not distribute)
 Amazon_SCOT/papers/neurips2026_kgo_koopman_generative_operator.pdf
+
+# Bosch take-home template (local zip; do not commit)
+GenAI/interviews/bosch-rtc-tsfm/code_assignment/lightning-hydra-uv-template.zip
