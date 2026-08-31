@@ -72,6 +72,7 @@ Load from [`.cursor/skills/`](.cursor/skills/) when the user invokes or the task
 | `mock-lp` | LP / behavioral practice |
 | `timed-code` | Timed LeetCode simulation |
 | `ml-deep-dive` | ML/LLM technical depth practice |
+| `follow-up-mock` | 15-min hard follow-up (mid-conversation; Yujie / Chung-Cheng / on-site) |
 | `forecasting` | Industry forecasting system design / tradeoff drills |
 | `debrief` | Post-mock or post-interview write-up |
 | `log-timed-drill` | Logging a finished timed-code result to INDEX + prep-plan |
