@@ -28,6 +28,7 @@
 | **2026-08-26** | Tyler: **advancing** to virtual on-site | 5 × 45 min. Foci locked (same as Aug 12 brief). Availability sent: Wed 9/2 + Thu 9/3, 10 AM–4 PM PT, flexible. Log: [`2026-08-26_virtual-onsite-invite.md`](2026-08-26_virtual-onsite-invite.md) |
 | **2026-08-26** | Virtual on-site **scheduled** | Then **updated 2026-08-27:** Wed **Yujie / Chung-Cheng / Jonathan 2:05 / Haraldur**; Fri **Vincent 11:05 only**. **Jaya dropped.** Log: [`2026-08-26_virtual-onsite-invite.md`](2026-08-26_virtual-onsite-invite.md) |
 | **2026-08-27** | On-site **practice plan** | People sheets: Yujie / Chung-Cheng / **Bourim** / Haraldur / Vincent. Infra + wearable tokens. Hub: [`2026-08-27_onsite-prep.md`](2026-08-27_onsite-prep.md) |
+| **2026-08-30** | Behavioral **5 cards** | Speakable stories (disagreement / failure / ambiguity / kill / Bosch collab). [`2026-08-30_behavioral-stories.md`](2026-08-30_behavioral-stories.md) — Vincent + anyone who pulls judgment. Not Amazon LP scripts. |
 
 ## Loop (from Tyler)
 

@@ -34,14 +34,19 @@ Keep the winner. That **is** leadership.
 
 ---
 
-## Four IC stories (<90s each)
+## Five IC stories (<90s each)
 
-| Story | Line |
-|-------|------|
-| Kill / sunk cost | Synth TR mix; average up; TR **26.9 → 21.9**; killed |
-| Evidence redirect | Dual vs one view; delay-only numbers collapsed |
-| Disagreement | 27B FT ~0.92 TSExam does **not** own TSRBench vs 8B — wrong north star |
-| Hard system | Dual routing, collator, A→B merge, DDP — **I** designed/trained/gated |
+Full cards + spoken: [`2026-08-30_behavioral-stories.md`](2026-08-30_behavioral-stories.md). Do not use Amazon LP scripts.
+
+| Card | Line |
+|------|------|
+| 1 Disagreement | ImagenTime: collaborators said 1D→2D too expensive; invertibility + POC; +58% / +132% |
+| 2 Wrong hypothesis | Delay-only ChatTS num **~0.17** vs chart **~0.71** vs dual **~0.79** — changed own mind |
+| 3 Ambiguity | After the kill: three-regime audit (domain / operators / formats); 0.8B +2.3 pp; 8B WIP |
+| 4 Kill / sunk cost | Synth TR mix; average up; TR **26.9 → 21.9**; killed |
+| 5 Collaboration | Bosch Haifa **LDDBM** — latent bridge; not a student 8B run; no ship claim |
+
+**27B vs 8B north star** is a follow-up inside eval judgment, not the disagreement card. Dual routing / collator stays as a *system* answer if they ask what you built, not a behavioral story.
 
 ---
 

@@ -17,7 +17,7 @@
 | Wed 1:05 | **Chung-Cheng Chiu** | [`2026-08-27_onsite-chung-cheng.md`](2026-08-27_onsite-chung-cheng.md) — parallelism + profiling. **Largest study delta** |
 | Wed **2:05** | **Jonathan Bourim** | [`2026-08-27_onsite-jonathan.md`](2026-08-27_onsite-jonathan.md) — primary map: **research depth + rigor**; small pad contingency |
 | Wed 3:05 | **Haraldur Hallgrímsson** | [`2026-08-27_onsite-haraldur.md`](2026-08-27_onsite-haraldur.md) — most Apple-Health-specific. **Do not assume DL wins** |
-| Fri 11:05 | **Vincent Chan** | [`2026-08-27_onsite-vincent.md`](2026-08-27_onsite-vincent.md) — 6-month program, discriminating experiments |
+| Fri 11:05 | **Vincent Chan** | [`2026-08-27_onsite-vincent.md`](2026-08-27_onsite-vincent.md) — 6-month program, discriminating experiments. Stories: [`2026-08-30_behavioral-stories.md`](2026-08-30_behavioral-stories.md) |
 
 **Jaya** was Fri 10:05 — **dropped**. No prep sheet.
 
