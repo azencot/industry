@@ -506,83 +506,301 @@ Senior-IC framing:
 
 ---
 
-5. Collaboration / impact — Bosch, benchmark success to real sensor data
+5. Cross-functional collaboration — Bosch Haifa / real-world modality translation
 
-What it should demonstrate: Cross-functional technical collaboration. Responding when a research result does not survive contact with real data. Using domain expertise from collaborators to change the modeling assumptions, not just tune the existing solution.
+WHAT THIS SHOULD DEMONSTRATE
+Cross-functional collaboration across different technical expertise. I brought the
+generative-modeling perspective; Bosch brought deep knowledge of the sensor system
+and its real-world failure modes. I listened when their evidence challenged my
+modeling assumptions, translated their operational constraints into an ML problem,
+and worked with them toward a solution neither side would have reached independently.
 
-Card
 
-CONTEXT. In a collaboration with Bosch Center for AI, we were working on modality translation: learn to generate one modality from another even when the source and target have different representations. I designed much of the modeling framework around a latent diffusion bridge, with modality-specific encoders and a shared generative translation mechanism.
+CARD
 
-TENSION. On standard research benchmarks, the approach worked very well. But when we moved toward real Bosch sensor data, the behavior degraded. The benchmark formulation implicitly assumed much cleaner paired observations than Bosch actually sees. Their data could be irregularly sampled, noisy, partially observed, and imperfectly aligned. So we had a method that looked strong scientifically but was not yet robust to the distribution the industrial collaborators actually cared about.
+CONTEXT.
+I had an ongoing research collaboration with the Bosch Center for AI in Haifa around
+modality translation: given observations in one modality, generate the corresponding
+signal in another modality.
 
-MY ACTION. Instead of treating this as a hyperparameter problem, I worked with the Bosch side to understand how the deployment distribution differed from our benchmark assumptions. That changed the modeling question. We needed the generative model to represent not only modality translation, but also the corruption and observation process around the signal.
+I was responsible for much of the generative-modeling side. We developed a latent
+diffusion bridge framework with modality-specific representations and a shared
+generative translation mechanism. On standard research benchmarks, the approach
+worked very well.
 
-I extended the approach using ideas from our work on irregular, noisy, and missing time-series generation: explicitly train under incomplete and corrupted observations, preserve timing information rather than assuming a clean common grid, and evaluate under controlled levels of missingness/noise that reflected the failure modes Bosch was seeing.
+The Bosch researchers had a different kind of expertise. They understood the actual
+sensor systems, how the measurements were collected, and the failure modes that
+appear in industrial data.
 
-The important collaboration point was that I could not infer those failure modes from the benchmark. Bosch understood the sensor/data distribution; I understood how to turn those constraints into changes in the generative formulation. The resulting solution came from combining those two views.
 
-WHY. The original model had optimized the wrong abstraction boundary. We had treated modality translation as A → B under clean paired observations. The real problem was closer to partial/noisy/irregular observations of A → a useful estimate of B. Once we changed the problem statement, the modeling changes became much more natural.
+TENSION.
+When we moved from the clean research benchmarks to Bosch's real sensor data,
+performance degraded substantially.
 
-RESULT. The robustness extensions substantially improved behavior on the real Bosch setting, and the resulting approach became a strong internal baseline for the company. I would distinguish that from claiming a shipped product: what I observed was that the method became useful enough to serve as a reference point for subsequent internal work. The research direction also produced the modality-translation and irregular-time-series work we published around this collaboration.
+My initial instinct was to view this mainly as a model-generalization problem:
+perhaps we needed a stronger model, different regularization, or better training.
 
-REFLECTION. The lesson was that benchmark generalization and deployment generalization are different claims. Today, when I start an industry-facing research problem, I ask much earlier: what assumptions in the benchmark are violated by the actual data-generating process? I would build those stress distributions into evaluation before optimizing the architecture.
+But discussions with the Bosch researchers changed that diagnosis.
 
-Spoken (~90s)
+They helped us understand that the real data violated assumptions that were almost
+invisible in the benchmarks. Measurements could be irregularly sampled, noisy,
+partially observed, and only imperfectly aligned across modalities.
 
-One collaboration that changed how I think about applied research was with Bosch Center for AI.
+That meant our abstraction itself was incomplete.
 
-We were working on modality translation—generating one modality from another when the source and target may have very different representations. I designed much of the modeling framework around a latent diffusion bridge, and on standard research benchmarks it worked very well.
+We had been thinking approximately:
 
-Then we tried to move closer to real Bosch sensor data, and the behavior degraded.
+    clean modality A -> modality B
 
-That was actually the useful part of the collaboration. The benchmark assumed much cleaner paired observations than Bosch sees in practice. Their signals could be irregularly sampled, noisy, partially missing, and imperfectly aligned. So technically we had solved clean A-to-B translation, while their actual problem was closer to corrupted, partially observed A-to-B translation.
+whereas the actual problem was closer to:
 
-I worked with the Bosch researchers to characterize that gap rather than just tune the existing model. They had the domain knowledge about how the sensor distribution failed; I could translate those failure modes into modeling assumptions.
+    partial + noisy + irregular observations of A
+                    ->
+             useful estimate of B
 
-I brought in ideas from our work on irregular and missing time-series generation: train explicitly under incomplete observations, preserve timing information instead of forcing everything onto a clean common grid, and stress-test the model under controlled missingness and noise.
+That distinction changed what I thought we needed to solve.
 
-That materially improved behavior on the Bosch setting, and the resulting method became a strong internal baseline for subsequent work.
 
-What I like about this example is that neither side had the complete answer. I had a generative framework that looked strong on benchmarks; Bosch had the evidence showing where its assumptions broke. The useful solution came from combining those two.
+MY ACTION.
+I worked with the Bosch researchers to translate what they were observing in the
+sensor pipeline into concrete modeling assumptions.
 
-The lesson I took is that benchmark generalization and deployment generalization are different claims. Now, in an applied collaboration, one of my first questions is: which assumptions in our benchmark are violated by the actual data-generating process?
+Rather than treating "the Bosch data is harder" as one generic domain-shift problem,
+I tried to separate the sources of mismatch:
 
-If they lean in
+- irregular sampling,
+- missing observations,
+- measurement noise,
+- and imperfect temporal correspondence.
 
-The central technical transition is:
+On my side, I connected those constraints to our work on generative modeling of
+irregular, noisy, and partially observed time series.
 
-Initial problem
-clean paired source → target
+The important technical shift was that I stopped treating preprocessing as something
+that should simply clean the industrial data until it looked like the benchmark.
 
-Actual Bosch problem
-irregular / missing / noisy / imperfectly observed source → target
+For example, forcing irregular observations onto a clean regular grid can hide the
+fact that some measurements were never observed and can create artificial temporal
+precision.
 
-The collaboration changed the problem formulation, not merely the hyperparameters.
+Instead, we adapted the modeling formulation so that the observation process itself
+was part of the problem: what was observed, when it was observed, and what information
+was actually missing.
 
-Keep three claims distinct:
+Throughout this process, I kept going back to the Bosch researchers with a concrete
+translation:
 
-1. LDDBM/general translation framework worked on research benchmarks.
-2. Real Bosch data exposed assumptions that those benchmarks did not stress.
-3. Robustness work targeting those assumptions improved the industrial setting.
+    "If this is what the sensor is doing, then this is the assumption our model is
+     currently making, and this is the experiment that should tell us whether that
+     mismatch matters."
 
-Do not imply that LDDBM itself automatically solved irregular sampling unless that is literally what the experiments showed.
+That gave us a shared technical language despite coming from different sides of the
+problem.
 
-Follow-ups
 
-They ask	You say
-What did you personally contribute?	I designed much of the generative translation framework, and when transfer broke, I helped reformulate the problem around the actual observation process and connected it to our work on irregular/missing/noisy generation.
-What did Bosch contribute?	They exposed the gap I could not see from academic benchmarks: the actual sensor distribution and which assumptions failed in practice. That changed the modeling problem.
-Why didn’t your original model work?	It had been validated under cleaner pairing and observation assumptions. The real data violated those assumptions through irregular sampling, missingness, noise, and alignment issues.
-How did you diagnose that rather than just guessing?	Compare performance as we introduce the real-data characteristics separately—missingness, irregularity, noise/alignment—and identify which perturbations reproduce the degradation.
-Why not just preprocess everything onto a regular grid?	That’s a baseline, but interpolation can erase information, create artificial certainty, or distort event timing. I wanted the model to represent observation time and missingness rather than hide them entirely in preprocessing.
-What was the impact?	The robustness work improved behavior on the Bosch setting and became a strong internal baseline for subsequent work. I would call that internal research impact rather than claim a product deployment I didn’t observe.
-What did you learn about collaboration?	Domain experts often know where the assumptions break before they know what model should replace them. My role was to convert those deployment failures into testable modeling changes.
-What would you do differently now?	Build a deployment-style stress suite at the beginning: missingness, irregularity, noise, alignment shift, and held-out real distributions—not after the benchmark model is already optimized.
+WHY.
+The key realization was that neither group had the complete diagnosis independently.
 
-Senior-IC framing
+I understood the generative model and knew which assumptions it relied on.
 
-“I brought a general modeling framework that looked strong on benchmarks. Bosch exposed where its assumptions broke on real sensor distributions. Rather than treating that as tuning, I worked backward from those deployment failures, changed the problem formulation, and incorporated irregularity, missingness, and noise into the generative model. The resulting approach improved the real-data behavior and became a strong internal baseline.”
+The Bosch researchers understood the physical data-generation and measurement
+process much better than I did.
+
+If I had treated their observations merely as noisy data that needed preprocessing,
+I would have optimized the wrong abstraction.
+
+And if we had only described the sensor problems operationally, without translating
+them into model assumptions, it would have been difficult to know what to change.
+
+The collaboration worked because we connected those two views.
+
+
+RESULT.
+The robustness extensions substantially improved performance in the Bosch setting,
+and the approach became a strong internal research baseline for subsequent work.
+
+The collaboration also influenced my broader research direction. It helped motivate
+work on modality translation and on generative modeling when time-series observations
+are irregular, noisy, or incomplete.
+
+I am careful about how I describe the impact: this was a research collaboration, so
+I would not claim a Bosch product deployment that I did not observe. The concrete
+impact I can defend is that we turned a method that looked strong on clean benchmarks
+but struggled on their real data into a substantially more useful approach for their
+setting.
+
+
+REFLECTION.
+The biggest thing I took from that collaboration is that benchmark generalization and
+deployment generalization are different claims.
+
+It also changed how I work with domain experts.
+
+When someone who understands the data-generating process tells me that a model is
+failing in a particular way, I don't treat that as an implementation detail outside
+the ML problem. I try to translate it into:
+
+    What assumption is my model making?
+    Which real-world constraint violates it?
+    What experiment would distinguish that explanation?
+
+For me, that is the value of cross-functional work: not simply dividing tasks between
+people with different expertise, but allowing expertise from another function to
+change the technical problem I think I am solving.
+
+
+======================================================================
+SPOKEN VERSION — ~90 SECONDS
+======================================================================
+
+"One of my best examples of cross-functional collaboration is a long-running project
+with researchers at the Bosch Center for AI in Haifa.
+
+We were working on modality translation: generating one sensor modality from another.
+I brought much of the generative-modeling perspective, and we developed a latent
+diffusion approach that performed very well on standard research benchmarks. The
+Bosch researchers, though, understood the actual sensor systems and industrial data
+far better than I did.
+
+When we moved to their real data, performance degraded substantially. My initial
+instinct was to think of it as a model-generalization problem. But working through the
+failures with Bosch changed my diagnosis. Their data violated assumptions that were
+almost invisible in our benchmarks: sampling was irregular, measurements could be
+missing or noisy, and modalities weren't always perfectly synchronized.
+
+So I reformulated the problem. Instead of asking how to make their data look like our
+clean benchmark, I started treating the observation process itself as part of the
+modeling problem. I connected what Bosch was seeing to our work on irregular and
+partially observed time series, and we translated each operational issue into a
+modeling assumption and a testable intervention.
+
+That substantially improved the approach on the Bosch setting and made it a strong
+internal research baseline for subsequent work.
+
+The part I value most is that neither side could have reached the same diagnosis
+alone. I understood the model assumptions; Bosch understood what the sensors were
+actually doing. The solution came from translating between those two views.
+
+That experience changed how I approach cross-functional work. Domain expertise isn't
+something I collect after designing the model. I want it early enough that it can
+change the problem I think I'm solving."
+
+
+======================================================================
+IF THEY ASK: "WHAT DID YOU PERSONALLY DO?"
+======================================================================
+
+"My contribution was primarily on the modeling side. I helped design the generative
+translation framework, and when it struggled on the Bosch data, I worked directly
+through the mismatch between the assumptions in our model and the properties Bosch
+was seeing in the sensor pipeline.
+
+The important part wasn't simply tuning the model. I translated issues like irregular
+sampling, missing observations, noise, and imperfect alignment into changes in the
+generative formulation and into experiments we could use to test those explanations."
+
+
+======================================================================
+IF THEY ASK: "WHAT DID BOSCH CONTRIBUTE THAT YOU COULDN'T?"
+======================================================================
+
+"They had knowledge I simply didn't have: how the sensors and data-collection process
+behaved in practice.
+
+Looking only at the ML benchmark, I could see that performance had degraded. They
+could explain why certain assumptions behind the benchmark didn't correspond to the
+real measurement process.
+
+That distinction mattered because otherwise I might have spent time increasing model
+capacity or tuning optimization when the more fundamental problem was that our
+observation model was wrong."
+
+
+======================================================================
+IF THEY ASK: "WHAT WAS DIFFICULT ABOUT THE CROSS-FUNCTIONAL PART?"
+======================================================================
+
+"The difficulty was that initially we described the same failure at different levels.
+
+From my side, I was thinking in terms of distribution shift, representation, and
+generative-model assumptions. From their side, the issues were concrete properties
+of the sensor pipeline: this measurement arrives irregularly, this channel can
+disappear, these two signals aren't actually synchronized as cleanly as the benchmark
+assumes.
+
+The useful step was translating between those descriptions. Once we could say,
+'This sensor behavior violates this particular modeling assumption,' we could design
+an experiment rather than just discuss the failure qualitatively."
+
+
+======================================================================
+IF THEY ASK: "WAS THERE A DISAGREEMENT?"
+======================================================================
+
+"I wouldn't characterize it as a major interpersonal disagreement. It was more an
+initial difference in diagnosis.
+
+My first instinct was to approach the degradation as a modeling/generalization
+problem. Their knowledge of the sensor system made it clear that some of the problem
+was more fundamental: the clean observation assumptions in our research setup did
+not hold.
+
+The important thing was that I changed my technical view based on their evidence
+rather than trying to force the real data into the abstraction I had started with."
+
+
+======================================================================
+IF THEY ASK: "HOW DID YOU BUILD TRUST WITH THE OTHER GROUP?"
+======================================================================
+
+"I think the most useful thing was not pretending to know their domain better than
+they did.
+
+When they described a sensor issue, my job wasn't to immediately prescribe an ML
+solution. I tried to understand the constraint precisely and then translate it back
+into the assumptions of our model.
+
+And in the other direction, I tried to make our modeling choices concrete enough
+that they could challenge them. That created a much better loop than each group
+working independently and exchanging results at the end."
+
+
+======================================================================
+IF THEY ASK: "WHAT WOULD YOU DO DIFFERENTLY?"
+======================================================================
+
+"I would involve the real observation process earlier.
+
+We initially had strong benchmark results before fully stress-testing assumptions
+like missingness, irregular sampling, noise, and imperfect alignment.
+
+Today, especially for sensor or health data, I would define those deployment
+conditions alongside the benchmark from the beginning and make them part of the
+evaluation matrix.
+
+That would expose assumption failures much earlier."
+
+
+======================================================================
+IF THEY ASK: "WHAT WAS THE IMPACT?"
+======================================================================
+
+"The robustness work substantially improved the approach in the Bosch setting, and
+the resulting method became a strong internal research baseline for subsequent work.
+
+I wouldn't claim downstream product impact that I didn't directly observe. The impact
+I can defend is that Bosch brought us a real-data failure that our benchmark did not
+capture, and together we turned that failure into a better modeling formulation and
+a substantially stronger approach for their setting."
+
+
+======================================================================
+ONE-LINE L5 CROSS-FUNCTIONAL TAKEAWAY
+======================================================================
+
+"The strongest cross-functional collaborations I've had are not ones where different
+groups simply divide the work. They're ones where another group's expertise changes
+my technical understanding of the problem."
 
 ---
 
