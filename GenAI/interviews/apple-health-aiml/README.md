@@ -30,6 +30,7 @@
 | **2026-08-27** | On-site **practice plan** | People sheets: Yujie / Chung-Cheng / **Bourim** / Haraldur / Vincent. Infra + wearable tokens. Hub: [`2026-08-27_onsite-prep.md`](2026-08-27_onsite-prep.md) |
 | **2026-08-30** | Behavioral **5 cards** | Speakable stories (disagreement / failure / ambiguity / kill / Bosch collab). [`2026-08-30_behavioral-stories.md`](2026-08-30_behavioral-stories.md) — Vincent + anyone who pulls judgment. Not Amazon LP scripts. |
 | **2026-08-31** | High-ROI **coding** (6 problems) | Pad contingency + slot (2) primitives. Problem then `*_solution.py`. [`coding/`](coding/). Not LeetCode; not [`code/`](code/) tech-screen worksheets. |
+| **2026-09-01** | Chung-Cheng **30-min** final review | Diagnose-first infra (memory / collectives / scaling / token explosion). [`2026-09-01_onsite-chung-cheng-training-infra.md`](2026-09-01_onsite-chung-cheng-training-infra.md) |
 
 ## Loop (from Tyler)
 

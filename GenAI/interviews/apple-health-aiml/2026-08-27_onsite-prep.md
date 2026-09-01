@@ -14,7 +14,7 @@
 | When | Person | Sheet |
 |------|--------|--------|
 | Wed 10:05 | **Yujie Li** | [`2026-08-27_onsite-yujie.md`](2026-08-27_onsite-yujie.md) — four modules: encode TS → multimodal arch → clocks → diagnose / bakeoff |
-| Wed 1:05 | **Chung-Cheng Chiu** | [`2026-08-27_onsite-chung-cheng.md`](2026-08-27_onsite-chung-cheng.md) — parallelism + profiling. **Largest study delta** |
+| Wed 1:05 | **Chung-Cheng Chiu** | [`2026-08-27_onsite-chung-cheng.md`](2026-08-27_onsite-chung-cheng.md) — parallelism + profiling. **Largest study delta**. Tue 9/1 30-min: [`2026-09-01_onsite-chung-cheng-training-infra.md`](2026-09-01_onsite-chung-cheng-training-infra.md) |
 | Wed **2:05** | **Jonathan Bourim** | [`2026-08-27_onsite-jonathan.md`](2026-08-27_onsite-jonathan.md) — primary map: **research depth + rigor**; small pad contingency |
 | Wed 3:05 | **Haraldur Hallgrímsson** | [`2026-08-27_onsite-haraldur.md`](2026-08-27_onsite-haraldur.md) — most Apple-Health-specific. **Do not assume DL wins** |
 | Fri 11:05 | **Vincent Chan** | [`2026-08-27_onsite-vincent.md`](2026-08-27_onsite-vincent.md) — 6-month program, discriminating experiments. Stories: [`2026-08-30_behavioral-stories.md`](2026-08-30_behavioral-stories.md) |
@@ -36,7 +36,7 @@ Bosch is **done**. Do not mix Sunnyvale scripts.
 | **Sat 8/29** | **B** Yujie + Haraldur: wearable **design problems** | ~4. Yujie leftover: **Module 1 encodings** (3 encodings × 4 questions). Haraldur leftover: Module 2 case + Module 4 ship. Abstracts only. **Do not name-drop** |
 | **Sun 8/30** | **D** two-project hostile defense | ~4 |
 | **Mon 8/31** | **C** Vincent: 5-min structured answers | ~3 |
-| **Tue 9/1** | Repair + **Wed-order mocks**: Yujie → Chung-Cheng → Jonathan (30 min) → Haraldur | ~4. Stop by 7. Do not run four full 45s |
+| **Tue 9/1** | Repair + Chung-Cheng **30-min final review** + **Wed-order mocks**: Yujie → Chung-Cheng → Jonathan (30 min) → Haraldur | ~4. Stop by 7. Review: [`2026-09-01_onsite-chung-cheng-training-infra.md`](2026-09-01_onsite-chung-cheng-training-infra.md). Do not run four full 45s |
 | **Wed 9/2** | **LIVE** 10:05 / 1:05 / **2:05** / 3:05 | Join after 9:55, 12:55, 1:55, 2:55. Eat in the **morning** gap |
 | **Thu 9/3** | **Vincent mock** only | ~2 |
 | **Fri 9/4** | **LIVE** Vincent 11:05 | Join after 10:55 |
@@ -72,6 +72,8 @@ Skip unless a mock fails: RoPE derivation, RMSNorm, FlashAttention internals, Re
 Teach the day’s **new** material, then mock in that person’s voice.
 
 **Fri:** open [`2026-08-27_onsite-chung-cheng.md`](2026-08-27_onsite-chung-cheng.md) at **Friday Block A**. Do A1→Close in order. Speak every mock. Not RoPE.
+
+**Tue 9/1:** 30-min Chung-Cheng final review first — [`2026-09-01_onsite-chung-cheng-training-infra.md`](2026-09-01_onsite-chung-cheng-training-infra.md) — then Wed-order mocks. Reason, do not recap tool names.
 
 ---
 

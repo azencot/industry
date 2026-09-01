@@ -6,6 +6,8 @@ Who (private): Principal RE, Apple AI/ML (Mountain View). AFM reports; AXLearn a
 
 Hub: 2026-08-27_onsite-prep.md
 
+Tue 9/1 30-min review: [`2026-09-01_onsite-chung-cheng-training-infra.md`](2026-09-01_onsite-chung-cheng-training-infra.md) — failure → bottleneck → dominant term → intervention → tradeoff → measure again. Not a restudy of A1–A7.
+
 Sound like: "First I'd establish whether this is a model-state memory, activation, communication, or input-throughput problem."
 
 Not: names of four libraries, or a definition of gradient checkpointing.
