@@ -30,9 +30,9 @@ Two habits:
 | 3 | Masked cross-attention | 35 | [`03_cross_attention.py`](03_cross_attention.py) · [`03_cross_attention_solution.py`](03_cross_attention_solution.py) |
 | 4 | Trie for event / token sequences | 25 | [`04_trie.py`](04_trie.py) · [`04_trie_solution.py`](04_trie_solution.py) |
 | 5 | Sliding mean + variance | 25 | [`05_sliding_stats.py`](05_sliding_stats.py) · [`05_sliding_stats_solution.py`](05_sliding_stats_solution.py) |
-| 6 | XGBoost on engineered temporal features | 30–40 | [`06_xgboost_features.py`](06_xgboost_features.py) · [`06_xgboost_features_solution.py`](06_xgboost_features_solution.py) |
+| 6 | XGBoost on engineered temporal features | 30–40 | [`06_xgboost_features.py`](06_xgboost_features.py) · [`06_xgboost_features_solution.py`](06_xgboost_features_solution.py) (sklearn `XGBClassifier`) · [`06_xgboost_features_solution_native.py`](06_xgboost_features_solution_native.py) (`xgb.train` + `DMatrix`) |
 
-Problems 1, 2 (plain), 4, 5: stdlib. 2 (torch) / 3: PyTorch. 6: NumPy; XGBoost optional for the fit smoke test.
+Problems 1, 2 (plain), 4, 5: stdlib. 2 (torch) / 3: PyTorch. 6: NumPy; XGBoost optional for the fit smoke test. Native API is the one to prefer on a pad if they ask for XGBoost itself rather than sklearn.
 
 ## Modeling one-liners (say these after the code)
 
