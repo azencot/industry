@@ -48,11 +48,30 @@ import torch.nn as nn
 class CrossAttention(nn.Module):
     def __init__(self, d_model):
         super().__init__()
-        raise NotImplementedError
+        
+        self.wq = nn.Linear(d_model, d_model)
+        self.wk = nn.Linear(d_model, d_model)
+        self.wv = nn.Linear(d_model, d_model)
 
     def forward(self, q, kv, mask=None):
-        raise NotImplementedError
+        # q in [B, Tq, d_model], kv in [B, Tk, d_model]
 
+        # map q and kv to Q, K, V
+        Q = self.wq(q)              # Q in [B, Tq, d_model]
+        K = self.wk(kv)             # K in [B, Tk, d_model]
+        V = self.wv(kv)             # V in [B, Tk, d_model]
+
+        # compute attn scores
+        QKTn = Q @ K.transpose(-2, -1) / math.sqrt(Q.shape[-1])     # QKTn in [B, Tq, Tk]
+        if mask is not None:
+            QKTn = QKTn.masked_fill(~mask[:, None, :], float("-inf"))
+        A = torch.softmax(QKTn, dim=-1)                             # A in [B, Tq, Tk]
+
+        # compute weighted sum
+        Y = A @ V                   # Y in [B, Tq, d_model]
+
+        return Y
+        
 
 if __name__ == "__main__":
     torch.manual_seed(0)
