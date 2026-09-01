@@ -40,21 +40,36 @@ from __future__ import annotations
 
 class TrieNode:
     def __init__(self):
-        raise NotImplementedError
-
+        self.tokens = {}
+        self.last_token = False
 
 class Trie:
     def __init__(self):
-        raise NotImplementedError
+        self.root = TrieNode()
 
     def insert(self, sequence):
-        raise NotImplementedError
+        currNode = self.root
+        for token in sequence:
+            if token not in currNode.tokens:
+                currNode.tokens[token] = TrieNode()
+            currNode = currNode.tokens[token]
+        currNode.last_token = True
 
     def contains(self, sequence):
-        raise NotImplementedError
+        currNode = self.root
+        for token in sequence:
+            if token not in currNode.tokens:
+                return False
+            currNode = currNode.tokens[token]
+        return currNode.last_token
 
     def starts_with(self, prefix):
-        raise NotImplementedError
+        currNode = self.root
+        for token in prefix:
+            if token not in currNode.tokens:
+                return False
+            currNode = currNode.tokens[token]
+        return True
 
 
 if __name__ == "__main__":
