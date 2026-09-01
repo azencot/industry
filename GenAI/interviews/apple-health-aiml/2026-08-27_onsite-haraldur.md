@@ -621,7 +621,7 @@ A 1-point average gain can be extremely valuable or meaningless depending on whe
 
 Suppose the model produces score s. Prediction: positive if s > tau.
 
-Changing tau changes sensitivity vs specificity. The correct threshold depends on the downstream action.
+Changing tau changes sensitivity (recall, true positive rate) vs specificity (true negative rate). The correct threshold depends on the downstream action.
 
 Therefore compare models at the operating region that matters, not only global AUROC.
 
