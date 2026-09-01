@@ -39,25 +39,7 @@ from __future__ import annotations
 
 
 def patchify(x, patch_size, stride):
-    T, P, S = len(x), patch_size, stride
-
-    assert S > 0 and P > 0
-
-    # idea: traverse x with stride S; append patches into ret
-    ret = []
-    for i in range(0, T, S):
-        # there are less than P items remaining
-        if T - i < P:
-            # # if padding is needed
-            # ze = [0] * len(x[0])
-            # ret.append(x[i:] + [ze for _ in range(P - (T - i))])
-
-            break
-
-        # append the i-th patch to ret
-        ret.append(x[i:i+P])
-
-    return ret
+    raise NotImplementedError
 
 
 def patchify_torch(x, patch_size, stride):

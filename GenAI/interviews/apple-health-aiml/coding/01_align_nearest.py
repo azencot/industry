@@ -32,20 +32,8 @@ from __future__ import annotations
 
 
 def align_nearest(times_a, times_b, max_delta):
-    # Advance ib while B[ib+1] is strictly closer. Then gate on max_delta.
-    # Tie-break: '<' keeps the earlier index; '<=' would keep the later.
-    ib = 0
-    n_b = len(times_b)
-    ret = []
-    for t in times_a:
-        while ib + 1 < n_b and abs(times_b[ib + 1] - t) < abs(times_b[ib] - t):
-            ib += 1
-        if n_b and abs(times_b[ib] - t) <= max_delta:
-            ret.append(ib)
-        else:
-            ret.append(None)
-    return ret
-            
+    raise NotImplementedError
+
 
 if __name__ == "__main__":
     got = align_nearest(

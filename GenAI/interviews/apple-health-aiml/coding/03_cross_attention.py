@@ -48,32 +48,10 @@ import torch.nn as nn
 class CrossAttention(nn.Module):
     def __init__(self, d_model):
         super().__init__()
-        
-        self.wq = nn.Linear(d_model, d_model)
-        self.wk = nn.Linear(d_model, d_model)
-        self.wv = nn.Linear(d_model, d_model)
-
-        self.d_model = d_model
+        raise NotImplementedError
 
     def forward(self, q, kv, mask=None):
-        # q in [B, Tq, d_model], kv in [B, Tk, d_model], mask in [B, Tk]
-        
-        # obtain Q, K, V
-        Q = self.wq(q)      # [B, Tq, d_model]
-        K = self.wk(kv)     # [B, Tk, d_model]
-        V = self.wv(kv)     # [B, Tk, d_model]
-
-        # compute attention scores
-        QKT = (Q @ K.transpose(-2, -1)) / math.sqrt(self.d_model)         # [B, Tq, Tk]
-        if mask is not None:
-            QKT = QKT.masked_fill(~mask[:, None, :], float("-inf"))   
-        A = torch.softmax(QKT, dim=-1)                                  # [B, Tq, Tk]
-
-        # compute weighted sum
-        Y = A @ V           # [B, Tq, d_model]
-
-        # return Y
-        return Y
+        raise NotImplementedError
 
 
 if __name__ == "__main__":
