@@ -8,6 +8,8 @@ This person assignment is a working hypothesis, not an official mapping. CoderPa
 
 Hub: 2026-08-27_onsite-prep.md
 
+Tue 9/1 rigor mock: [`2026-09-01_onsite-jonathan-research-rigor.md`](2026-09-01_onsite-jonathan-research-rigor.md) — Q1–Q4 spoken. **Q5 missed live:** researcher degrees of freedom (pre-specified hypothesis / kill criteria vs post-hoc story). Do not answer “we evaluated on many datasets.”
+
 Do not email. Do not ask if he is Bourim. Use IC verbs. Do not name-drop Apple papers. Do not claim ImagenFew or Bosch was an Apple / Watch product.
 
 One sentence to remember: Don't defend the method; defend exactly what the evidence allows you to conclude.

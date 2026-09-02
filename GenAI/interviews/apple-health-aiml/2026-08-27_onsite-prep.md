@@ -14,8 +14,8 @@
 | When | Person | Sheet |
 |------|--------|--------|
 | Wed 10:05 | **Yujie Li** | [`2026-08-27_onsite-yujie.md`](2026-08-27_onsite-yujie.md) — four modules: encode TS → multimodal arch → clocks → diagnose / bakeoff |
-| Wed 1:05 | **Chung-Cheng Chiu** | [`2026-08-27_onsite-chung-cheng.md`](2026-08-27_onsite-chung-cheng.md) — parallelism + profiling. **Largest study delta**. Tue 9/1 30-min: [`2026-09-01_onsite-chung-cheng-training-infra.md`](2026-09-01_onsite-chung-cheng-training-infra.md) |
-| Wed **2:05** | **Jonathan Bourim** | [`2026-08-27_onsite-jonathan.md`](2026-08-27_onsite-jonathan.md) — primary map: **research depth + rigor**; small pad contingency |
+| Wed 1:05 | **Chung-Cheng Chiu** | [`2026-08-27_onsite-chung-cheng.md`](2026-08-27_onsite-chung-cheng.md) — parallelism + profiling. **Largest study delta**. Tue 9/1 30-min: [`2026-09-01_onsite-chung-cheng-training-infra.md`](2026-09-01_onsite-chung-cheng-training-infra.md) · challenging mock: [`2026-09-01_onsite-chung-cheng-challenging-practice.md`](2026-09-01_onsite-chung-cheng-challenging-practice.md) (Q5 missed: global batch) |
+| Wed **2:05** | **Jonathan Bourim** | [`2026-08-27_onsite-jonathan.md`](2026-08-27_onsite-jonathan.md) — primary map: **research depth + rigor**; small pad contingency. Tue 9/1 mock: [`2026-09-01_onsite-jonathan-research-rigor.md`](2026-09-01_onsite-jonathan-research-rigor.md) (Q5 missed: degrees of freedom) |
 | Wed 3:05 | **Haraldur Hallgrímsson** | [`2026-08-27_onsite-haraldur.md`](2026-08-27_onsite-haraldur.md) — most Apple-Health-specific. **Do not assume DL wins** |
 | Fri 11:05 | **Vincent Chan** | [`2026-08-27_onsite-vincent.md`](2026-08-27_onsite-vincent.md) — 6-month program, discriminating experiments. Stories: [`2026-08-30_behavioral-stories.md`](2026-08-30_behavioral-stories.md) |
 
@@ -73,7 +73,7 @@ Teach the day’s **new** material, then mock in that person’s voice.
 
 **Fri:** open [`2026-08-27_onsite-chung-cheng.md`](2026-08-27_onsite-chung-cheng.md) at **Friday Block A**. Do A1→Close in order. Speak every mock. Not RoPE.
 
-**Tue 9/1:** 30-min Chung-Cheng final review first — [`2026-09-01_onsite-chung-cheng-training-infra.md`](2026-09-01_onsite-chung-cheng-training-infra.md) — then Wed-order mocks. Reason, do not recap tool names.
+**Tue 9/1:** 30-min Chung-Cheng final review first — [`2026-09-01_onsite-chung-cheng-training-infra.md`](2026-09-01_onsite-chung-cheng-training-infra.md) — then Wed-order mocks. Reason, do not recap tool names. Challenging mock logged: [`2026-09-01_onsite-chung-cheng-challenging-practice.md`](2026-09-01_onsite-chung-cheng-challenging-practice.md) — speak Q5 once (global batch 128→1024) before the live hour. Jonathan rigor mock: [`2026-09-01_onsite-jonathan-research-rigor.md`](2026-09-01_onsite-jonathan-research-rigor.md) — speak Q5 once (pre-specified hypothesis / kill criteria, not “many datasets”).
 
 ---
 

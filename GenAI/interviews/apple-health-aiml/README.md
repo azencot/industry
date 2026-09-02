@@ -31,6 +31,8 @@
 | **2026-08-30** | Behavioral **5 cards** | Speakable stories (disagreement / failure / ambiguity / kill / Bosch collab). [`2026-08-30_behavioral-stories.md`](2026-08-30_behavioral-stories.md) — Vincent + anyone who pulls judgment. Not Amazon LP scripts. |
 | **2026-08-31** | High-ROI **coding** (6 problems) | Pad contingency + slot (2) primitives. Problem then `*_solution.py`. [`coding/`](coding/). Not LeetCode; not [`code/`](code/) tech-screen worksheets. |
 | **2026-09-01** | Chung-Cheng **30-min** final review | Diagnose-first infra (memory / collectives / scaling / token explosion). [`2026-09-01_onsite-chung-cheng-training-infra.md`](2026-09-01_onsite-chung-cheng-training-infra.md) |
+| **2026-09-01** | Chung-Cheng **challenging mock** | Q1–Q4 spoken; **Q5 missed** (global batch / optimizer steps). [`2026-09-01_onsite-chung-cheng-challenging-practice.md`](2026-09-01_onsite-chung-cheng-challenging-practice.md) |
+| **2026-09-01** | Jonathan **rigor mock** | Q1–Q4 spoken; **Q5 missed** (researcher degrees of freedom). [`2026-09-01_onsite-jonathan-research-rigor.md`](2026-09-01_onsite-jonathan-research-rigor.md) |
 
 ## Loop (from Tyler)
 

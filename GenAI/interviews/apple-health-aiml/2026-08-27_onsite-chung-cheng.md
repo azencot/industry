@@ -8,6 +8,8 @@ Hub: 2026-08-27_onsite-prep.md
 
 Tue 9/1 30-min review: [`2026-09-01_onsite-chung-cheng-training-infra.md`](2026-09-01_onsite-chung-cheng-training-infra.md) — failure → bottleneck → dominant term → intervention → tradeoff → measure again. Not a restudy of A1–A7.
 
+Tue 9/1 challenging mock: [`2026-09-01_onsite-chung-cheng-challenging-practice.md`](2026-09-01_onsite-chung-cheng-challenging-practice.md) — Q1–Q4 spoken. **Q5 missed live:** 8→64 GPUs with fixed microbatch/accum/token budget silently 8×s global batch and cuts optimizer updates. Recalc global batch before blaming the network. Q2: same per-GPU microbatch → wait-time, not “less compute per GPU.”
+
 Sound like: "First I'd establish whether this is a model-state memory, activation, communication, or input-throughput problem."
 
 Not: names of four libraries, or a definition of gradient checkpointing.
