@@ -17,7 +17,7 @@
 | Tue 1:05 | **Yujie Li** | [`2026-08-27_onsite-yujie.md`](2026-08-27_onsite-yujie.md) — four modules: encode TS → multimodal arch → clocks → diagnose / bakeoff |
 | Tue 2:05 | **Chung-Cheng Chiu** | [`2026-08-27_onsite-chung-cheng.md`](2026-08-27_onsite-chung-cheng.md) — parallelism + profiling. **Largest study delta**. Tue 9/1 30-min: [`2026-09-01_onsite-chung-cheng-training-infra.md`](2026-09-01_onsite-chung-cheng-training-infra.md) · challenging mock: [`2026-09-01_onsite-chung-cheng-challenging-practice.md`](2026-09-01_onsite-chung-cheng-challenging-practice.md) (Q5 missed: global batch) |
 | Tue 3:05 | **Haraldur Hallgrímsson** | [`2026-08-27_onsite-haraldur.md`](2026-08-27_onsite-haraldur.md) — most Apple-Health-specific. **Do not assume DL wins** |
-| Tue 4:05 | **Vincent Chan** | [`2026-08-27_onsite-vincent.md`](2026-08-27_onsite-vincent.md) — 6-month program, discriminating experiments. Last of five. Stories: [`2026-08-30_behavioral-stories.md`](2026-08-30_behavioral-stories.md) |
+| Tue 4:05 | **Vincent Chan** | [`2026-08-27_onsite-vincent.md`](2026-08-27_onsite-vincent.md) — **practice day** (Blocks 0–9): whole-system design, population fail, data/privacy, budget, research process, Bosch, deployment. Last of five. Stories: [`2026-08-30_behavioral-stories.md`](2026-08-30_behavioral-stories.md) |
 
 **Jaya** was Fri 10:05 — **dropped**. No prep sheet.
 
@@ -40,7 +40,8 @@ Bosch is **done**. Do not mix Sunnyvale scripts.
 | **Wed 9/2** | **Rest** (sick). Confirm the reschedule email | No new bootcamp |
 | **Thu 9/3 – Fri 9/4** | Recovery + leftover Q5s only if energy | Chung-Cheng global batch; Jonathan degrees of freedom. Light |
 | **Sat 9/5** | **Live-order mocks**: Jonathan (30) → Yujie → Chung-Cheng | ~4. Stop by 7. Do not run five full 45s |
-| **Sun 9/6** | Haraldur + Vincent mock | ~3. Stories once |
+| **Sun 9/6** | Haraldur mock | ~2. Stories once if pulled |
+| **when energy** | **Vincent practice day** — full sheet Blocks 0–9 | ~6. Do not squeeze onto Haraldur day |
 | **Mon 9/7** | Community talk day. **Light only** — 20-min skim, early bed | Do not cram. Talk: [`talks/ts-vlm/`](../../../talks/ts-vlm/) |
 | **Tue 9/8** | **LIVE** 11:05 / 1:05 / 2:05 / 3:05 / 4:05 | Join after 10:55, 12:55, 1:55, 2:55, 3:55. Eat in the **lunch** gap (11:50–1:05) |
 

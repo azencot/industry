@@ -34,6 +34,7 @@
 | **2026-09-01** | Chung-Cheng **challenging mock** | Q1–Q4 spoken; **Q5 missed** (global batch / optimizer steps). [`2026-09-01_onsite-chung-cheng-challenging-practice.md`](2026-09-01_onsite-chung-cheng-challenging-practice.md) |
 | **2026-09-01** | Jonathan **rigor mock** | Q1–Q4 spoken; **Q5 missed** (researcher degrees of freedom). [`2026-09-01_onsite-jonathan-research-rigor.md`](2026-09-01_onsite-jonathan-research-rigor.md) |
 | **2026-09-02** | On-site **rescheduled** (sick) | **Tue 2026-09-08** all five, Webex. Jonathan 11:05 → Yujie 1:05 → Chung-Cheng 2:05 → Haraldur 3:05 → Vincent 4:05. Same panel. Confirm: [`2026-08-26_virtual-onsite-invite.md`](2026-08-26_virtual-onsite-invite.md) |
+| **2026-09-03** | Vincent **practice day** | Whole-system design, not 6-month FM script. Blocks 0–9 (~6h). [`2026-08-27_onsite-vincent.md`](2026-08-27_onsite-vincent.md) |
 
 ## Loop (from Tyler)
 
