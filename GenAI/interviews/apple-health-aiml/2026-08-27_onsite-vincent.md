@@ -1507,4 +1507,4 @@ collect, and here is how that evidence changes the system design."
 
 ---
 
-Stories (Blocks 5–6): [`2026-08-30_behavioral-stories.md`](2026-08-30_behavioral-stories.md) · Hub: [`2026-08-27_onsite-prep.md`](2026-08-27_onsite-prep.md)
+Stories (Blocks 5–6): [`2026-08-30_behavioral-stories.md`](2026-08-30_behavioral-stories.md) · Hub: [`2026-08-27_onsite-prep.md`](2026-08-27_onsite-prep.md) · Mock log: [`2026-09-03_onsite-vincent-practice.md`](2026-09-03_onsite-vincent-practice.md)

@@ -16,6 +16,8 @@ Default length: **~90 seconds**. Stop. If they lean in, add WHY + REFLECTION onl
 | **3** | Leadership under ambiguity | VLM, after the kill | Three-regime reasoning audit → sequenced plan |
 | **4** | Kill / tradeoff | VLM synthetic TR mix | Average up, target slice down → do not promote |
 | **5** | Collaboration / impact | Bosch Haifa · LDDBM | Cross-org modality translation, not a student run |
+| **A** | Mentorship (60s backup) | VLM collator / multivariate | Technical unblock; they keep ownership. Not “my student.” |
+| **B** | Deadline (60s backup) | ImagenTime NeurIPS | Scope cut; representation screen before full 2D stack |
 
 **Do not tell #3 and #4 as the same anecdote.** #4 is the kill. #3 starts *after* it (one sentence handoff).
 
@@ -36,7 +38,7 @@ Default length: **~90 seconds**. Stop. If they lean in, add WHY + REFLECTION onl
 
 | Person | Most likely cards |
 |--------|-------------------|
-| **Vincent** | 1, 3, 4 (leadership = discriminating experiment + kill) |
+| **Vincent** | 1, 3, 4 (leadership = discriminating experiment + kill). **A/B** if mentorship or deadline |
 | **Jonathan** | 2, 4 (claim vs evidence) |
 | **Haraldur** | 4, 5 (slice gates; messy sensors; don’t assume DL) |
 | **Yujie** | 2 (encoding bakeoff) |
@@ -813,5 +815,44 @@ my technical understanding of the problem."
 | 3 | After the kill, fog → three regimes → formats before domain; +2.3 pp 0.8B, 8B WIP |
 | 4 | Average + AR/IR up; TR 26.9→21.9; pre-declared −5 pp; killed |
 | 5 | Haifa, not Sunnyvale; latent bridge + contrastive/predictive; NeurIPS 2025; no ship claim |
+| A | Ravel killed delay geometry → invariant + they own the test |
+| B | NeurIPS: cut full 1D stack; screen then one 2D POC |
 
-Practice: read each spoken block aloud once. Vincent mock: 1 or 4 first; keep 3 as the sequel to 4 if they ask “what happened after.”
+Practice: read each spoken block aloud once. Vincent mock: 1 or 4 first; keep 3 as the sequel to 4 if they ask “what happened after.” Sunday 9/6: speak A and B once (60s). Do not polish them into fifth and sixth 90s cards.
+
+---
+
+## Backup A — 60s — helping someone succeed (not a student-supervision story)
+
+Use if asked: “Tell me about helping a colleague grow” / “coaching” / “mentorship.”  
+**Hard rule:** do **not** open with PI, lab, or “my student.” The plot is a **technical block** you identified, a method you changed, ownership you left with them, and a result they produced.
+
+**CONTEXT.** On the multimodal VLM stack, a collaborator was debugging why delay-embedding features looked wrong on multivariate series. Their loader flattened a `[C, T]` array into one long univariate. Delay geometry became garbage; dual-tower numbers on those tasks were noise.
+
+**TENSION.** The obvious move was for me to take the collator and “just fix it.” That would have been faster for the next run and would have taught them nothing about the invariant.
+
+**ACTION.** I showed the failure with one example: ravel concatenates channels in time, so the delay image is not a trajectory in R^C. I wrote the invariant we needed — *N series → N markers → N chart + N delay, channels stay channels* — and asked them to own the loader patch and a unit test that fails on ravel. I did not merge a silent fix.
+
+**RESULT.** They landed the collator test. Multivariate delay stopped being a hidden confound. Later bakeoffs on those tasks became interpretable.
+
+**REFLECTION.** Helping was changing the representation contract and giving them the test, not taking the file.
+
+If they push “were they your student?”: *They were a collaborator on the codebase. The same move would apply to anyone stuck on a silent data bug. I do not treat this as management.*
+
+---
+
+## Backup B — 60s — deadline / execution under pressure
+
+Use if asked: “difficult deadline” / “too much to do” / “how do you cut scope.”
+
+**CONTEXT.** ImagenTime, NeurIPS cycle. We wanted one generative framework from short series to 17k steps. The conventional path was a stronger native 1D diffusion stack *and* the 2D image-space bet. There was not time or compute to do both at full fidelity.
+
+**TENSION.** Shipping two incomplete stacks would have produced two weak papers’ worth of evidence and no discriminating comparison. The quality bar I cared about was: can we recover the series, and does 2D win at small scale?
+
+**ACTION.** I cut the full 1D diffusion campaign. I kept a VAE baseline, a cheap representation screen (line plots and GAF died; delay/STFT-like survived invertibility), and one small 2D proof-of-concept. Full training only after those gates.
+
+**RESULT.** The 2D path survived and became the paper. We did not get a polished 1D SOTA in that cycle. That was the cut.
+
+**REFLECTION.** The deadline was met by **killing work that could not falsify the bet**, not by working longer on everything. If I redid it, I would pre-declare the screen as a kill criterion in writing even earlier.
+
+Do not merge this with card 1. Card 1 is the disagreement. This card is **what you did not build** so the deadline held.

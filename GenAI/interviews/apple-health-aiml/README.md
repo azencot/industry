@@ -29,12 +29,14 @@
 | **2026-08-26** | Virtual on-site **scheduled** | Then **updated 2026-08-27:** Wed **Yujie / Chung-Cheng / Jonathan 2:05 / Haraldur**; Fri **Vincent 11:05 only**. **Jaya dropped.** Log: [`2026-08-26_virtual-onsite-invite.md`](2026-08-26_virtual-onsite-invite.md) |
 | **2026-08-27** | On-site **practice plan** | People sheets: Yujie / Chung-Cheng / **Bourim** / Haraldur / Vincent. Infra + wearable tokens. Hub: [`2026-08-27_onsite-prep.md`](2026-08-27_onsite-prep.md) |
 | **2026-08-30** | Behavioral **5 cards** | Speakable stories (disagreement / failure / ambiguity / kill / Bosch collab). [`2026-08-30_behavioral-stories.md`](2026-08-30_behavioral-stories.md) — Vincent + anyone who pulls judgment. Not Amazon LP scripts. |
-| **2026-08-31** | High-ROI **coding** (6 problems) | Pad contingency + slot (2) primitives. Problem then `*_solution.py`. [`coding/`](coding/). Not LeetCode; not [`code/`](code/) tech-screen worksheets. |
+| **2026-08-31** | High-ROI **coding** (now 8) | Pad contingency + slot (2) primitives. #7 intervals · #8 streaming top-k added 2026-09-03. [`coding/`](coding/). Not LeetCode; not [`code/`](code/) tech-screen worksheets. |
 | **2026-09-01** | Chung-Cheng **30-min** final review | Diagnose-first infra (memory / collectives / scaling / token explosion). [`2026-09-01_onsite-chung-cheng-training-infra.md`](2026-09-01_onsite-chung-cheng-training-infra.md) |
 | **2026-09-01** | Chung-Cheng **challenging mock** | Q1–Q4 spoken; **Q5 missed** (global batch / optimizer steps). [`2026-09-01_onsite-chung-cheng-challenging-practice.md`](2026-09-01_onsite-chung-cheng-challenging-practice.md) |
 | **2026-09-01** | Jonathan **rigor mock** | Q1–Q4 spoken; **Q5 missed** (researcher degrees of freedom). [`2026-09-01_onsite-jonathan-research-rigor.md`](2026-09-01_onsite-jonathan-research-rigor.md) |
 | **2026-09-02** | On-site **rescheduled** (sick) | **Tue 2026-09-08** all five, Webex. Jonathan 11:05 → Yujie 1:05 → Chung-Cheng 2:05 → Haraldur 3:05 → Vincent 4:05. Same panel. Confirm: [`2026-08-26_virtual-onsite-invite.md`](2026-08-26_virtual-onsite-invite.md) |
 | **2026-09-03** | Vincent **practice day** | Whole-system design, not 6-month FM script. Blocks 0–9 (~6h). [`2026-08-27_onsite-vincent.md`](2026-08-27_onsite-vincent.md) |
+| **2026-09-03** | Vincent mock **in progress** | Block 0 spoken. Log: [`2026-09-03_onsite-vincent-practice.md`](2026-09-03_onsite-vincent-practice.md) |
+| **2026-09-03** | **4-day final plan** (second cycle) | Fri 9/4–Mon 9/7. Transfer, not recall. [`2026-09-03_four-day-final-plan.md`](2026-09-03_four-day-final-plan.md). Friday: [`chung-cheng advanced`](2026-09-04_chung-cheng-advanced.md) · [`haraldur advanced`](2026-09-04_haraldur-advanced.md) · coding #7/#8 |
 
 ## Loop (from Tyler)
 
