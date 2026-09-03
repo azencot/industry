@@ -1,10 +1,10 @@
-# On-site — Yujie Li (Wed 10:05 PDT)
+# On-site — Yujie Li (Tue 9/8 1:05 PDT)
 
 Track: Tyler #2 — multimodal architecture and time-series encoding. Conf: high.
 
 Who (private): Senior MLE, Seattle; headline Apple health AI. Coauthor Beyond Sensor Data / WBM — 2.5B hours, 162k people, tokenization + architecture, 57 health tasks. CV / representation background. Hub: 2026-08-27_onsite-prep.md
 
-Opens Wednesday. First two minutes: encoding / architecture → stay here. Labels / 162k / missingness-as-shortcut / ship / PPV / calibration → Haraldur.
+Second slot (after Jonathan). First two minutes: encoding / architecture → stay here. Labels / 162k / missingness-as-shortcut / ship / PPV / calibration → Haraldur.
 
 Health / wearables are an important application context. This is NOT primarily a health-domain interview.
 

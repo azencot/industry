@@ -95,7 +95,7 @@ Not a disaster: they got a real talk, real Q&A on freq / TSRBench / data, and a 
 ## Immediate next
 
 1. Wait. No chase email same day.  
-2. Apple virtual on-site **Wed 9/2** — DINO pocket above is reusable there too.  
+2. Apple virtual on-site **Tue 9/8** — DINO pocket above is reusable there too.  
 3. If Bosch advances: one-pager of 22–23 unsaid (image renderer transfer + four takeaways) only if they offer another slot.
 
 ```

@@ -1,4 +1,4 @@
-# On-site — Jonathan Bourim (Wed 2:05 PDT)
+# On-site — Jonathan Bourim (Tue 9/8 11:05 PDT)
 
 Assume: [Jonathan (Jamie) Bourim](https://www.linkedin.com/in/jonathan-bourim) — Applied Research Engineer, Health AI, Seattle. Self-describes as a software engineer.
 

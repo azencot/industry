@@ -1,6 +1,6 @@
-# On-site — Vincent Chan (Fri 11:05 PDT)
+# On-site — Vincent Chan (Tue 9/8 4:05 PDT)
 
-**Track:** technical leadership / system thinking + multimodal **strategy**. **Conf:** medium-high. Last slot.  
+**Track:** technical leadership / system thinking + multimodal **strategy**. **Conf:** medium-high. Last of five same day — energy, not a fresh Friday morning.  
 **Who (private):** Eng Manager, Health AIML. Recruits multimodal LLMs / fusion / VLMs / TS. Stats PhD (Wisconsin); menstrual-cycle patent. Thanked on TS-LLM.  
 **Hub:** [`2026-08-27_onsite-prep.md`](2026-08-27_onsite-prep.md)
 

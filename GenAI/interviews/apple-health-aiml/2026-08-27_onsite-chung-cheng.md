@@ -1,4 +1,4 @@
-# On-site — Chung-Cheng Chiu (Wed 1:05 PDT)
+# On-site — Chung-Cheng Chiu (Tue 9/8 2:05 PDT)
 
 Track: LLM training and infrastructure. Conf: very high.
 

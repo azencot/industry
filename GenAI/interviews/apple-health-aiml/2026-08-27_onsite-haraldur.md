@@ -1,6 +1,6 @@
-# On-site — Haraldur Hallgrímsson (Wed 3:05 PDT)
+# On-site — Haraldur Hallgrímsson (Tue 9/8 3:05 PDT)
 
-Track: health / applied ML / wearable TS. Conf: very high. Most Apple-Health-specific Wednesday hour.
+Track: health / applied ML / wearable TS. Conf: very high. Most Apple-Health-specific hour.
 
 Who (private): Senior Applied RS, Health AI, Seattle. RelCon, TS-LLM, periodicity. Public: sensor FMs to Watch hypertension / AirPods calories (modeling and infra). Hub: 2026-08-27_onsite-prep.md
 

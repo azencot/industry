@@ -33,6 +33,7 @@
 | **2026-09-01** | Chung-Cheng **30-min** final review | Diagnose-first infra (memory / collectives / scaling / token explosion). [`2026-09-01_onsite-chung-cheng-training-infra.md`](2026-09-01_onsite-chung-cheng-training-infra.md) |
 | **2026-09-01** | Chung-Cheng **challenging mock** | Q1–Q4 spoken; **Q5 missed** (global batch / optimizer steps). [`2026-09-01_onsite-chung-cheng-challenging-practice.md`](2026-09-01_onsite-chung-cheng-challenging-practice.md) |
 | **2026-09-01** | Jonathan **rigor mock** | Q1–Q4 spoken; **Q5 missed** (researcher degrees of freedom). [`2026-09-01_onsite-jonathan-research-rigor.md`](2026-09-01_onsite-jonathan-research-rigor.md) |
+| **2026-09-02** | On-site **rescheduled** (sick) | **Tue 2026-09-08** all five, Webex. Jonathan 11:05 → Yujie 1:05 → Chung-Cheng 2:05 → Haraldur 3:05 → Vincent 4:05. Same panel. Confirm: [`2026-08-26_virtual-onsite-invite.md`](2026-08-26_virtual-onsite-invite.md) |
 
 ## Loop (from Tyler)
 
@@ -40,7 +41,7 @@
 |-------|--------|--------|
 | 1. HM screen | 45 min · **fit** | Interest in health AI; interest in Apple; most impactful LLM training run (**no coding**) |
 | 2. Tech screen | 45 min | **Locked 2026-08-21:** depth check on **LLM training** + **multimodality fundamentals** (spoken; **no coding**) |
-| 3. Virtual on-site | **5 × 45 min** · Webex · **Wed 9/2 + Fri 9/4** | Tyler **locked 2026-08-26:** (1) LLM training & infrastructure · (2) multimodal architecture & time-series encoding · (3) research depth & scientific rigor · (4) technical leadership & system thinking · (5) health domain & applied ML judgment. Person ↔ theme **not mapped**. CoderPad on invites = template (same as HM/Feng) |
+| 3. Virtual on-site | **5 × 45 min** · Webex · **Tue 9/8** (all five) | Tyler **locked 2026-08-26:** (1) LLM training & infrastructure · (2) multimodal architecture & time-series encoding · (3) research depth & scientific rigor · (4) technical leadership & system thinking · (5) health domain & applied ML judgment. Person ↔ theme **not mapped**. CoderPad on invites = template (same as HM/Feng) |
 
 **Timeline:** ~**3–4 weeks** end-to-end once moving. You are in the last block.
 
@@ -57,11 +58,11 @@ Research lead for **multimodal / representation models** over **health & fitness
 | **Shirley Ren** | **HM** — Senior ML Manager / PE, Health & Fitness | Sensor FMs, LLMs, fitness/health features; pubs on TS reasoning w/ LLMs, multimodal sensor fusion | [shirley-you-ren-uw](https://www.linkedin.com/in/shirley-you-ren-uw) |
 | **Guillermo Sapiro** | Distinguished Engineer — **Health AI** (also Princeton faculty) | Co-supervised 2023 AHMS **heart-rate** paper with Shirley; thanked as senior sponsor on an Apple AIML LLM paper. **Private (2026-08-22):** Shirley’s team **used to report to him**; he **switched teams after a reorg**. Not her current manager. Do not name-drop. Org: [`2026-08-21_sapiro-giryes-org.md`](2026-08-21_sapiro-giryes-org.md) | [guillermo-sapiro-356a8b286](https://www.linkedin.com/in/guillermo-sapiro-356a8b286) |
 | **Feng Zhu** | **Tech screen (done)** — Applied RS, Health AI | Wearables / sequential / representation. Mood-periodicity paper with Shirley; thanked on TS-LLM paper. Interviewer **Tue 8/25**. Not on the on-site panel (this invite) | [feng-zhu-304069aa](https://www.linkedin.com/in/feng-zhu-304069aa) |
-| **Yujie Li** (best match) | **On-site Wed 9/2 10:05 AM PDT** | Headline **Apple health AI**; Senior MLE, Seattle. Wearable behavior FM coauthor (ICML 2025). Invite says **Yujie** only | [yujie-li-37457742](https://www.linkedin.com/in/yujie-li-37457742) |
-| **Chung-Cheng Chiu** (best match) | **On-site Wed 9/2 1:05 PM PDT** | Principal Research Engineer, **Apple AI/ML** (Mountain View) — AFM / AXLearn, **not** Health AIML. Invite says **Chung-Cheng** only | [chung-cheng-chiu-34968a34](https://www.linkedin.com/in/chung-cheng-chiu-34968a34) |
-| **Jonathan Bourim** | **On-site Wed 9/2 2:05 PM PDT** | Applied Research Engineer, Health AI, **Seattle**. SWE/ARE; treat pad as base case. Invite says **Jonathan** | [jonathan-bourim](https://www.linkedin.com/in/jonathan-bourim) |
-| **Haraldur Hallgrímsson** | **On-site Wed 9/2 3:05 PM PDT** | Senior Applied RS, Health AI, Seattle. RelCon / TS-LLM / periodicity | [haraldurhallgrimsson](https://www.linkedin.com/in/haraldurhallgrimsson) |
-| **Vincent Chan** | **On-site Fri 9/4 11:05 AM PDT** | Eng Manager, Health AIML. Thanked on TS-LLM. Invite says **Vincent** | [vincentmchan](https://www.linkedin.com/in/vincentmchan) |
+| **Yujie Li** (best match) | **On-site Tue 9/8 1:05 PM PDT** | Headline **Apple health AI**; Senior MLE, Seattle. Wearable behavior FM coauthor (ICML 2025). Invite says **Yujie** only | [yujie-li-37457742](https://www.linkedin.com/in/yujie-li-37457742) |
+| **Chung-Cheng Chiu** (best match) | **On-site Tue 9/8 2:05 PM PDT** | Principal Research Engineer, **Apple AI/ML** (Mountain View) — AFM / AXLearn, **not** Health AIML. Invite says **Chung-Cheng** only | [chung-cheng-chiu-34968a34](https://www.linkedin.com/in/chung-cheng-chiu-34968a34) |
+| **Jonathan Bourim** | **On-site Tue 9/8 11:05 AM PDT** | Applied Research Engineer, Health AI, **Seattle**. SWE/ARE; treat pad as base case. Invite says **Jonathan**. **Opens** the day | [jonathan-bourim](https://www.linkedin.com/in/jonathan-bourim) |
+| **Haraldur Hallgrímsson** | **On-site Tue 9/8 3:05 PM PDT** | Senior Applied RS, Health AI, Seattle. RelCon / TS-LLM / periodicity | [haraldurhallgrimsson](https://www.linkedin.com/in/haraldurhallgrimsson) |
+| **Vincent Chan** | **On-site Tue 9/8 4:05 PM PDT** | Eng Manager, Health AIML. Thanked on TS-LLM. Invite says **Vincent**. Last of five same day | [vincentmchan](https://www.linkedin.com/in/vincentmchan) |
 
 ### Public LinkedIn — verify before outreach (peer / org signal)
 
