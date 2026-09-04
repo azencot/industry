@@ -35,9 +35,29 @@ Follow-ups (think, then check the solution file):
 
 from __future__ import annotations
 
+from collections import defaultdict
+
 
 def duration_by_type(events):
-    raise NotImplementedError
+    by_type = defaultdict(list)
+    for start, end, etype in events:
+        by_type[etype].append((start, end))
+
+    ret = {}
+    for etype, intervals in by_type.items():
+        intervals.sort()
+        total = 0
+        run_start, run_end = intervals[0]
+        for start, end in intervals[1:]:
+            if start <= run_end:
+                if end > run_end:
+                    run_end = end
+            else:
+                total += run_end - run_start
+                run_start, run_end = start, end
+        total += run_end - run_start
+        ret[etype] = total
+    return ret
 
 
 if __name__ == "__main__":
