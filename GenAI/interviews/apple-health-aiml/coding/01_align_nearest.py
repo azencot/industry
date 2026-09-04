@@ -32,7 +32,22 @@ from __future__ import annotations
 
 
 def align_nearest(times_a, times_b, max_delta):
-    raise NotImplementedError
+    ret = []
+
+    if not times_b:
+        return [None] * len(times_a)
+
+    i, m = 0, len(times_b)
+    for ta in times_a:
+        while i + 1 < m and abs(times_b[i + 1] - ta) < abs(times_b[i] - ta):
+            i += 1
+
+        if abs(times_b[i] - ta) <= max_delta:
+            ret.append(i)
+        else:
+            ret.append(None)
+
+    return ret
 
 
 if __name__ == "__main__":
