@@ -34,15 +34,52 @@ from __future__ import annotations
 
 
 def sliding_stats(x, k):
-    raise NotImplementedError
+    n = len(x)
+    if k <= 0 or k > n:
+        return []
 
+    win_sum = sum(x[:k])                                # O(k)
+    win_sq_sum = sum(val*val for val in x[:k])          # O(k)
+    ret = []
+    for i in range(n-k+1):   
+        m = win_sum / k                                 # O(n)
+        ret.append((m, win_sq_sum / k - m*m))           # O(1)
+
+        if i < n - k:
+            old, new = x[i], x[i+k]
+            win_sum += new - old
+            win_sq_sum += new*new - old*old
+
+    return ret
+
+
+from collections import deque
 
 class RollingStats:
     def __init__(self, k):
-        raise NotImplementedError
+        self.k = k
+        self.q = deque()
+
+        self.win_sum = 0
+        self.win_sq_sum = 0
 
     def add(self, x):
-        raise NotImplementedError
+        self.q.append(x)
+        self.win_sum += x
+        self.win_sq_sum += x*x
+        
+        if len(self.q) > self.k:
+            old = self.q.popleft()
+
+            self.win_sum -= old
+            self.win_sq_sum -= old*old
+
+        elif len(self.q) < self.k:
+            return None    
+
+        m = self.win_sum / self.k
+        return m, self.win_sq_sum / self.k - m * m
+        
 
 
 if __name__ == "__main__":

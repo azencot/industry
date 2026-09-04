@@ -151,13 +151,7 @@ Group predictions into bins:
 0.9 - 1.0
 
 
-For each bin compare:
-
-average predicted probability
-
-versus
-
-observed event frequency.
+For each bin compare: average predicted probability versus observed event frequency.
 
 
 Perfect calibration would approximately follow:
@@ -169,9 +163,7 @@ predicted 80% -> observed ~80%
 
 Another useful metric:
 
-Brier score
-
-= mean squared error between probability and outcome.
+Brier score = mean squared error between probability and outcome.
 
 
 Lower is better.
@@ -239,26 +231,13 @@ So threshold selection is a TRADEOFF.
 
 Suppose the model is a first-stage wearable screening system.
 
-An alert says:
+An alert says: "We detected something unusual. Consider taking an ECG."
 
-"We detected something unusual.
-Consider taking an ECG."
-
-
-The downstream action is:
-
-cheap
-non-invasive
-low risk
-
+The downstream action is: cheap; non-invasive; low risk
 
 You may choose a relatively LOW threshold.
 
-Why?
-
-You prefer catching more possible cases.
-
-Sensitivity matters strongly.
+Why? You prefer catching more possible cases. Sensitivity matters strongly.
 
 
 Now imagine instead that a positive prediction automatically
@@ -267,17 +246,9 @@ triggers an expensive or invasive procedure.
 
 Then false positives are much more costly.
 
-You may require:
+You may require: higher specificity; higher precision; and potentially a higher threshold.
 
-higher specificity
-higher precision
-and potentially a higher threshold.
-
-
-KEY PRINCIPLE:
-
-THE THRESHOLD SHOULD FOLLOW THE DECISION COST,
-NOT CONVENTION.
+KEY PRINCIPLE: THE THRESHOLD SHOULD FOLLOW THE DECISION COST, NOT CONVENTION.
 
 
 =================================================
@@ -388,27 +359,10 @@ precision and recall directly.
 11. PRECISION-RECALL CURVE
 =================================================
 
-PR curve plots:
+PR curve plots: Precision versus Recall / Sensitivity as the threshold changes.
 
-Precision
-
-versus
-
-Recall / Sensitivity
-
-
-as the threshold changes.
-
-
-Recall asks:
-
-"How many true cases did I catch?"
-
-
-Precision asks:
-
-"How many of my alerts were real?"
-
+Recall asks: "How many true cases did I catch?"
+Precision asks: "How many of my alerts were real?"
 
 This makes PR curves particularly informative when:
 

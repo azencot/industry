@@ -32,9 +32,7 @@ step_time ≈ max(compute, comm)   if they overlap
           + input / straggler / checkpoint
 ```
 
-If compute per GPU is large and comm is hidden, GPUs scale. If you shard so aggressively that each unit’s GEMM is tiny, **launch + all-gather latency** dominates and you see:
-
-GPUs alternate compute and idle.
+If compute per GPU is large and comm is hidden, GPUs scale. If you shard so aggressively that each unit’s GEMM is tiny, **launch + all-gather latency** dominates and you see: GPUs alternate compute and idle.
 
 ### Volume vs latency
 
