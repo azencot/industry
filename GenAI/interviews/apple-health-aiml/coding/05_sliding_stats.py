@@ -34,24 +34,7 @@ from __future__ import annotations
 
 
 def sliding_stats(x, k):
-    # edge case
-    n = len(x)
-    if k <= 0 or k > n:
-        return []
-
-    m = sum(x[:k]) / k
-    v = sum((val-m)**2 for val in x[:k]) / k
-
-    got = [(m, v)]
-    for i in range(1, n - k + 1):
-        pm, pv = got[-1]
-
-        m = (pm * k - x[i-1] + x[i+k-1]) / k
-        v = (pv * k - (x[i-1] - pm)**2 + (x[i+k-1] - m)**2) / k
-
-        got.append((m, v))
-
-    return got    
+    raise NotImplementedError
 
 
 class RollingStats:
