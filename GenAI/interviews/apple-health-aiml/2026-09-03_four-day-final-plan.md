@@ -167,7 +167,7 @@ This is **not** a learning day.
 
 | Block | Min | Do |
 |-------|-----|-----|
-| 1 Five-interviewer retrieval | 45 | No notes. Write the headings below. ~8 min each. Then check notes **only** for holes. |
+| 1 Five-interviewer retrieval | 45 | No notes. Write the headings below. ~8 min each. Then check notes **only** for holes. Also recall **one** question to ask each person ([`2026-09-05_questions-for-interviewers.md`](2026-09-05_questions-for-interviewers.md) “If time is almost gone”). |
 | 2 Mini-loop | 2 h | 5 × ~20 min + 5-min breaks. **Random order.** One main Q + 2–3 follow-ups. Stop. |
 | 3 Behavioral rapid fire | 30 | Hear the prompt, *then* pick the story. Tests selection, not memorization. |
 | 4 Weakness patch | 30 | Only what failed in the mini-loop. No new concepts. |

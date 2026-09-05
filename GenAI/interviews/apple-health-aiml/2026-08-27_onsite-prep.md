@@ -2,7 +2,8 @@
 
 **Status:** Active. Live **Tue 2026-09-08** (Jonathan 11:05 → Yujie 1:05 → Chung-Cheng 2:05 → Haraldur 3:05 → Vincent 4:05). Same five. **Jaya dropped.** Rescheduled 2026-09-02 (sick).  
 **This week:** [`2026-09-03_four-day-final-plan.md`](2026-09-03_four-day-final-plan.md) (second cycle — transfer, not recall).  
-**Invite:** [`2026-08-26_virtual-onsite-invite.md`](2026-08-26_virtual-onsite-invite.md) (updated 2026-09-02)
+**Invite:** [`2026-08-26_virtual-onsite-invite.md`](2026-08-26_virtual-onsite-invite.md) (updated 2026-09-02)  
+**Questions to ask them (pick 1–2 / slot):** [`2026-09-05_questions-for-interviewers.md`](2026-09-05_questions-for-interviewers.md)
 
 **Biggest adjustment:** less LLaVA/Flamingo review, more **wearable tokens + infra diagnosis**. Screen already covered attn, KV cache, concat vs xattn.
 
@@ -19,6 +20,7 @@
 | Tue 2:05 | **Chung-Cheng Chiu** | [`2026-08-27_onsite-chung-cheng.md`](2026-08-27_onsite-chung-cheng.md) — parallelism + profiling. **Largest study delta**. Tue 9/1 30-min: [`2026-09-01_onsite-chung-cheng-training-infra.md`](2026-09-01_onsite-chung-cheng-training-infra.md) · challenging mock: [`2026-09-01_onsite-chung-cheng-challenging-practice.md`](2026-09-01_onsite-chung-cheng-challenging-practice.md) (Q5 missed: global batch) |
 | Tue 3:05 | **Haraldur Hallgrímsson** | [`2026-08-27_onsite-haraldur.md`](2026-08-27_onsite-haraldur.md) — most Apple-Health-specific. **Do not assume DL wins**. Fri 9/4 Lesson 1 mock: [`2026-09-04_onsite-second-cycle-mocks.md`](2026-09-04_onsite-second-cycle-mocks.md) |
 | Tue 4:05 | **Vincent Chan** | [`2026-08-27_onsite-vincent.md`](2026-08-27_onsite-vincent.md) — **practice day** (Blocks 0–9). Mock log (in progress): [`2026-09-03_onsite-vincent-practice.md`](2026-09-03_onsite-vincent-practice.md) — Block 0 spoken. Last of five. Stories: [`2026-08-30_behavioral-stories.md`](2026-08-30_behavioral-stories.md) |
+| Tue last 3–5 min | **All five** | [`2026-09-05_questions-for-interviewers.md`](2026-09-05_questions-for-interviewers.md) — 5 options each, interview order; pick 1–2. Do not name-drop papers |
 
 **Jaya** was Fri 10:05 — **dropped**. No prep sheet.
 
