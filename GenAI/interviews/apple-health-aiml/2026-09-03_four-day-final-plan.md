@@ -132,6 +132,8 @@ Run Saturday mocks in-session (`/follow-up-mock` Vincent then Yujie) rather than
 
 **Sat 9/5 Vincent basic 5Q spoken.** Repeat lock: n=20 ≠ OOD; no disclaimer-ship. Remaining Case #1 injections: gestures, latency, new device. Then Case #2. Do not restart Blocks 1–9.
 
+**Sat 9/5 Jonathan 3Q spoken.** DoF/TR-mix kill is paid. Sunday Block 1 is the **three ImagenFew claims only**. Do not redo Q5.
+
 ---
 
 ## Sunday 9/6 — rigor + context switch (~4.5–5.5 h)

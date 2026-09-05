@@ -8,7 +8,7 @@ This person assignment is a working hypothesis, not an official mapping. CoderPa
 
 Hub: 2026-08-27_onsite-prep.md
 
-Tue 9/1 rigor mock: [`2026-09-01_onsite-jonathan-research-rigor.md`](2026-09-01_onsite-jonathan-research-rigor.md) — Q1–Q4 spoken. **Q5 missed live:** researcher degrees of freedom (pre-specified hypothesis / kill criteria vs post-hoc story). Do not answer “we evaluated on many datasets.”
+Tue 9/1 rigor mock: [`2026-09-01_onsite-jonathan-research-rigor.md`](2026-09-01_onsite-jonathan-research-rigor.md) — Q1–Q4 spoken. **Q5 missed live** (DoF / hill-climbing). Sat 9/5 3Q: [`2026-09-04_onsite-second-cycle-mocks.md`](2026-09-04_onsite-second-cycle-mocks.md) — **DoF now spoken** (TR mix 26.9→21.9 kill). Dual +0.08 still needs drop/shuffle delay. Window split ≠ subjects.
 
 Do not email. Do not ask if he is Bourim. Use IC verbs. Do not name-drop Apple papers. Do not claim ImagenFew or Bosch was an Apple / Watch product.
 

@@ -15,8 +15,9 @@ Sheets stay sheets. This file is what was *spoken*.
 | Fri 9/4 | **Yujie** Blocks 1–5 | **Logged below** | Live Q→A→feedback. Did **not** answer Q5 as asked. |
 | Fri 9/4 | **Haraldur** Lesson 1 | **Logged below** | Se/Sp/PPV, prevalence, AUROC, Brier, accuracy trap. Next: participant-disjoint / leakage, not another metric quiz. |
 | Sat 9/5 | **Vincent** basic 5Q | **Logged below** | Wellness nudge, not diagnosis. Repeat: n=20 ≠ OOD; no disclaimer-ship. Remaining Case #1: gestures, latency, new device. Case #2 still open. |
+| Sat 9/5 | **Jonathan** 3Q | **Logged below** | Dual +0.08 needs drop/shuffle delay. Window ≠ subject. **DoF spoken** (TR mix kill). |
 | Sat 9/5 | Yujie Block 14 / 11 | Open | Do **not** redo Blocks 1–5. |
-| Sun 9/6 | Jonathan 3-claim + DoF | Open | Speak the 9/1 hill-climbing miss. |
+| Sun 9/6 | Jonathan ImagenFew 3-claim | Open | DoF is done. Still speak the three ImagenFew claims. |
 | Sun 9/6 | Mixed interviewer | Open | Infer dimension. |
 | Mon 9/7 | Mini-loop | Open | Retrieval only. |
 
@@ -293,17 +294,59 @@ _(append)_
 
 ---
 
-## Jonathan — 3-claim defense + degrees of freedom (Sun 9/6)
+## Jonathan — 3Q dual / splits / DoF (Sat 2026-09-05)
 
-Open. Speak the 9/1 miss: exploratory vs confirmatory; held-out confirmation; kill criteria. Do not fake pre-registration.
+**Slot:** Tue 9/8 11:05 PDT.  
+**Sheet:** [`2026-08-27_onsite-jonathan.md`](2026-08-27_onsite-jonathan.md) · 9/1: [`2026-09-01_onsite-jonathan-research-rigor.md`](2026-09-01_onsite-jonathan-research-rigor.md)  
+**Constraint:** not a project recap. Claim → evidence → alternative → experiment → narrow.
 
-### MY ANSWER
+Covered: dual +0.08 complementarity; ImagenFew window vs subject; researcher degrees of freedom (9/1 Q5). **Not covered:** ImagenFew three-claim defense (image-space scarcity / within-2D rep / robustness).
 
-_(append)_
+### Scorecard
 
-### CORRECTION
+| Q | Topic | Verdict | One-line |
+|---|-------|---------|----------|
+| 1 | Dual 0.17 / 0.71 / 0.79 | Tokens/HP hit; kill incomplete | Dual +0.08: matched tokens + CI on **dual−chart**. **Drop/shuffle delay** is the complementarity kill. Real jump is **0.17→0.71**. |
+| 2 | Data-efficient — which unit? | Hit | Window split ≠ subjects. Interpolation; possible same-trajectory leak. |
+| 3 | Hill-climbing vs hypothesis | Hit (the 9/1 miss) | Gates before the run; TR mix killed on the **intended** slice. Exploratory hole → confirmatory mix. |
 
-_(append)_
+---
+
+### Q1 — Second stream adds information?
+
+**Prompt.** Delay-only ≈0.17, chart ≈0.71, dual ≈0.79. Two alternatives that also produce +0.08; one experiment that kills complementarity. No ablation list.
+
+**MY ANSWER.** (1) HP sensitivity (seed, LR, schedule, temperature, DE HPs). Experiment: sweep around 0.79, CIs; if they swallow 0.08, kill. (2) More tokens: chart+DE almost 2×. Experiment: chart | DE | dual at the same token budget; if the gain remains, complementarity is real.
+
+**CORRECTION.** Both are real. Interval on **dual − chart**, same protocol. Matched tokens is the stronger “more stuff” test. **Narrow first:** the jump that needs a story is **0.17→0.71**, not +0.08. **Missing kill:** drop or **time-shuffle delay**, keep chart, matched budget. If 0.79 does not move, there is no complementarity.
+
+---
+
+### Q2 — ImagenFew data-efficient wrt which unit?
+
+**Prompt.** Windows vs trajectories vs subjects. Allowed claim in each. What dies if only windows were held out?
+
+**MY ANSWER.** Efficient wrt random windows. Allowed: generalize to other windows from the same dist. Cannot claim held-out trajectories or subjects — windows can come from test traj/subjects.
+
+**CORRECTION.** Lock is right. Say **interpolation / within-trajectory**. Same-series windows can leak identity. Do not underclaim if trajectory/subject tables exist — match sentence to table. Data-efficient also means **vs a baseline at the same window budget**.
+
+---
+
+### Q3 — Degrees of freedom / hill-climbing
+
+**Prompt.** Many knobs. Hypothesis-driven vs hill-climbing. Not “many datasets.” Exploratory vs confirmatory, one kill you used, one negative that changed the method.
+
+**MY ANSWER.** Multimodal was weak on TSRBench TR. I built a synthetic TR-operator slice. Before train+eval I set gates: −3 pp overall, −5 pp on a single task. After: overall +2.1 pp, some tasks +7 pp, but the TR slice I cared about went 26.9→21.9. Clear kill: hit the gate **and** the task I made the data for got worse.
+
+**CORRECTION.** This is the 9/1 Q5 answer. **I** set gates before the run; **I** killed when the intended slice fell. TSRBench failure **generated** the hypothesis; this mix **tested** it. Do not fake full pre-registration; do say you did **not** remix until TR went up. Direction on TR beats “hit −5.” After the kill, do not promote another mix on the same eval used to invent the recipe. Do not add “many datasets.”
+
+---
+
+### Spoken restitch (Jonathan — 90s)
+
+I don’t claim the delay tower adds information from +0.08 until that gap survives matched tokens and a drop or shuffle of delay; the chart vs delay jump is the main representation result. Window-level scarcity supports other windows from a similar process, not held-out people. On the TR mix I predeclared kill gates, the target slice fell 26.9 to 21.9, and I killed the additive mix — that is how I separate a test from hill-climbing.
+
+**Sunday leftover:** three ImagenFew claims only (image-space under scarcity; rep within 2D; persists across regimes). DoF is paid.
 
 ---
 
