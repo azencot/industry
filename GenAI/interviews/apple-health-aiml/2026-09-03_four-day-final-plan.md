@@ -7,7 +7,7 @@
 | Day | Date | Focus | Hours | Materials |
 |-----|------|-------|-------|-----------|
 | Fri | 9/4 | Deepen risk: Chung-Cheng + Haraldur + coding #7 | 5–6 | [`2026-09-04_chung-cheng-advanced.md`](2026-09-04_chung-cheng-advanced.md) · [`2026-09-04_haraldur-advanced.md`](2026-09-04_haraldur-advanced.md) · [`coding/07_merge_intervals.py`](coding/07_merge_intervals.py) |
-| Sat | 9/5 | Whole-system: Vincent + Yujie + coding #8 | 5–6 | Vincent sheet for the *framework only* · Yujie sheet Module 3–4 · [`coding/08_topk_window.py`](coding/08_topk_window.py) |
+| Sat | 9/5 | Whole-system: Vincent + Yujie + coding #8 | 5–6 | Vincent sheet for the *framework only* · [`2026-09-05_yujie-advanced.md`](2026-09-05_yujie-advanced.md) · [`coding/08_topk_window.py`](coding/08_topk_window.py) |
 | Sun | 9/6 | Jonathan defense + mixed mock + backup cards | 4.5–5.5 | Jonathan sheet + [`2026-09-01_onsite-jonathan-research-rigor.md`](2026-09-01_onsite-jonathan-research-rigor.md) Q5 · stories |
 | Mon | 9/7 | Retrieval + mini-loop + stop | **≤4** | Headings only. No new concepts. |
 
@@ -102,8 +102,8 @@ If you skip to a tool name, interrupt yourself.
 | 2 Vincent Case #2 | 45 | Fixed annual compute/data budget. Choose among 4× model, 4× data, higher sensor rate, new modality, better labels. Marginal value. |
 | 3 Vincent leadership | 35 | Cards 1, 4, 3, 5. Compression. “What did YOU do?” Do not rewrite stories. |
 | Break | 20–30 | |
-| 4 Yujie architecture | 60 | PPG 128 / IMU 50 / HR 1 / sleep events / occasional text / workout audio. Then inject A–H. Each change: information → tokens → alignment → fusion → training → evidence. |
-| 5 Yujie ablation | 40 | “How do you know?” Matched token budget, shuffle, corrupt, missingness curves. |
+| 4 Yujie architecture | 60 | [`2026-09-05_yujie-advanced.md`](2026-09-05_yujie-advanced.md) **Block 14 only** (Blocks 1–5 spoken Fri 9/4). PPG 128 / IMU 50 / HR 1 / sleep events / occasional text / workout audio. Then inject constraints. Each change: information → tokens → alignment → fusion → training → evidence. |
+| 5 Yujie ablation | 40 | Same file, Block 11. “How do you know?” Matched token budget, shuffle, corrupt, missingness curves. |
 | 6 Coding #8 | 30 | [`coding/08_topk_window.py`](coding/08_topk_window.py) from blank. |
 
 ### Saturday Case #1 injections (in order)
@@ -126,7 +126,9 @@ Audio dominates tokens · PPG short transients · async clocks · modality drop 
 
 **Do not** open Yujie Module 1 encoding menu. That is first-cycle.
 
-Run Saturday mocks in-session (`/follow-up-mock` Vincent then Yujie) rather than reading a key.
+Run Saturday mocks in-session (`/follow-up-mock` Vincent then Yujie) rather than reading a key. Log spoken answers in [`2026-09-04_onsite-second-cycle-mocks.md`](2026-09-04_onsite-second-cycle-mocks.md).
+
+**Fri 9/4 Yujie Blocks 1–5 already spoken.** Saturday Yujie is **Block 14 + 11 only**. Do not redo 1–5. Still owe a 60s P×C / missing-channel / subject-z-score answer.
 
 ---
 

@@ -2,6 +2,8 @@
 
 Track: Tyler #2 — multimodal architecture and time-series encoding. Conf: high.
 
+Fri 9/4 Blocks 1–5 mock: [`2026-09-04_onsite-second-cycle-mocks.md`](2026-09-04_onsite-second-cycle-mocks.md) — physical time ≠ token index; Q5 P×C still unpaid. Do not redo 1–5; Saturday is Block 14/11.
+
 Who (private): Senior MLE, Seattle; headline Apple health AI. Coauthor Beyond Sensor Data / WBM — 2.5B hours, 162k people, tokenization + architecture, 57 health tasks. CV / representation background. Hub: 2026-08-27_onsite-prep.md
 
 Second slot (after Jonathan). First two minutes: encoding / architecture → stay here. Labels / 162k / missingness-as-shortcut / ship / PPV / calibration → Haraldur.

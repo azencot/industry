@@ -15,7 +15,7 @@
 | When | Person | Sheet |
 |------|--------|--------|
 | Tue 11:05 | **Jonathan Bourim** | [`2026-08-27_onsite-jonathan.md`](2026-08-27_onsite-jonathan.md) — **opens**. Primary map: **research depth + rigor**; small pad contingency. Tue 9/1 mock: [`2026-09-01_onsite-jonathan-research-rigor.md`](2026-09-01_onsite-jonathan-research-rigor.md) (Q5 missed: degrees of freedom) |
-| Tue 1:05 | **Yujie Li** | [`2026-08-27_onsite-yujie.md`](2026-08-27_onsite-yujie.md) — four modules: encode TS → multimodal arch → clocks → diagnose / bakeoff |
+| Tue 1:05 | **Yujie Li** | [`2026-08-27_onsite-yujie.md`](2026-08-27_onsite-yujie.md) — four modules: encode TS → multimodal arch → clocks → diagnose / bakeoff. Second cycle: [`2026-09-05_yujie-advanced.md`](2026-09-05_yujie-advanced.md). Fri 9/4 mock: [`2026-09-04_onsite-second-cycle-mocks.md`](2026-09-04_onsite-second-cycle-mocks.md) |
 | Tue 2:05 | **Chung-Cheng Chiu** | [`2026-08-27_onsite-chung-cheng.md`](2026-08-27_onsite-chung-cheng.md) — parallelism + profiling. **Largest study delta**. Tue 9/1 30-min: [`2026-09-01_onsite-chung-cheng-training-infra.md`](2026-09-01_onsite-chung-cheng-training-infra.md) · challenging mock: [`2026-09-01_onsite-chung-cheng-challenging-practice.md`](2026-09-01_onsite-chung-cheng-challenging-practice.md) (Q5 missed: global batch) |
 | Tue 3:05 | **Haraldur Hallgrímsson** | [`2026-08-27_onsite-haraldur.md`](2026-08-27_onsite-haraldur.md) — most Apple-Health-specific. **Do not assume DL wins** |
 | Tue 4:05 | **Vincent Chan** | [`2026-08-27_onsite-vincent.md`](2026-08-27_onsite-vincent.md) — **practice day** (Blocks 0–9). Mock log (in progress): [`2026-09-03_onsite-vincent-practice.md`](2026-09-03_onsite-vincent-practice.md) — Block 0 spoken. Last of five. Stories: [`2026-08-30_behavioral-stories.md`](2026-08-30_behavioral-stories.md) |
@@ -34,8 +34,8 @@ Bosch is **done**. Do not mix Sunnyvale scripts.
 
 | When | Block | Hours |
 |------|-------|-------|
-| **Fri 9/4** | Chung-Cheng + Haraldur advanced + coding #7 | 5–6. [`chung-cheng`](2026-09-04_chung-cheng-advanced.md) · [`haraldur`](2026-09-04_haraldur-advanced.md) · [`coding/07_merge_intervals.py`](coding/07_merge_intervals.py) |
-| **Sat 9/5** | Vincent constraint-injection + Yujie edge cases + coding #8 | 5–6. Do **not** continue Vincent sheet Blocks 1–9 |
+| **Fri 9/4** | Chung-Cheng + Haraldur advanced + coding #7 | 5–6. [`chung-cheng`](2026-09-04_chung-cheng-advanced.md) · [`haraldur`](2026-09-04_haraldur-advanced.md) · [`coding/07_merge_intervals.py`](coding/07_merge_intervals.py). **Mock log:** [`2026-09-04_onsite-second-cycle-mocks.md`](2026-09-04_onsite-second-cycle-mocks.md) |
+| **Sat 9/5** | Vincent constraint-injection + Yujie edge cases + coding #8 | 5–6. [`yujie advanced`](2026-09-05_yujie-advanced.md). Do **not** continue Vincent sheet Blocks 1–9 |
 | **Sun 9/6** | Jonathan 3-claim defense + mixed mock + stories A/B | 4.5–5.5. Speak the 9/1 degrees-of-freedom miss |
 | **Mon 9/7** | Retrieval + mini-loop + **stop** | **≤4**. Also TS-VLM community talk — do not full-cram both |
 | **Tue 9/8** | **LIVE** 11:05 / 1:05 / 2:05 / 3:05 / 4:05 | Join after 10:55, 12:55, 1:55, 2:55, 3:55. Eat in the **lunch** gap (11:50–1:05) |
