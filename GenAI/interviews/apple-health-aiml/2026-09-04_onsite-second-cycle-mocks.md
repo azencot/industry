@@ -14,7 +14,7 @@ Sheets stay sheets. This file is what was *spoken*.
 | Fri 9/4 | Chung-Cheng | In-sheet | Q1–Q5 in [`2026-09-04_chung-cheng-advanced.md`](2026-09-04_chung-cheng-advanced.md). Worst: Q3 global batch / steps at fixed tokens. Do not recopy. |
 | Fri 9/4 | **Yujie** Blocks 1–5 | **Logged below** | Live Q→A→feedback. Did **not** answer Q5 as asked. |
 | Fri 9/4 | **Haraldur** Lesson 1 | **Logged below** | Se/Sp/PPV, prevalence, AUROC, Brier, accuracy trap. Next: participant-disjoint / leakage, not another metric quiz. |
-| Sat 9/5 | Vincent constraint-injection | Open | New cardiac case. Do **not** continue first-cycle Blocks 1–9. |
+| Sat 9/5 | **Vincent** basic 5Q | **Logged below** | Wellness nudge, not diagnosis. Repeat: n=20 ≠ OOD; no disclaimer-ship. Remaining Case #1: gestures, latency, new device. Case #2 still open. |
 | Sat 9/5 | Yujie Block 14 / 11 | Open | Do **not** redo Blocks 1–5. |
 | Sun 9/6 | Jonathan 3-claim + DoF | Open | Speak the 9/1 hill-climbing miss. |
 | Sun 9/6 | Mixed interviewer | Open | Infer dimension. |
@@ -196,19 +196,86 @@ I would not treat Watch notification and clinic anticoagulation as one classifie
 
 ---
 
-## Vincent — constraint-injection (Sat 9/5)
+## Vincent — basic 5Q, cardiac nudge (Sat 2026-09-05)
 
-Open. New cardiac early-detection, broad population. Framework: objective → population → data → labels → baseline → model → eval → deploy → monitor. Inject; **modify, do not restart.**
+**Slot:** Tue 9/8 4:05 PDT.  
+**Sheet:** [`2026-08-27_onsite-vincent.md`](2026-08-27_onsite-vincent.md) · Thu log: [`2026-09-03_onsite-vincent-practice.md`](2026-09-03_onsite-vincent-practice.md)  
+**Constraint:** new case, not Block 0 recap. No transformer open. IC.
 
-Do not restudy [`2026-08-27_onsite-vincent.md`](2026-08-27_onsite-vincent.md) Blocks 1–9. First-cycle log stays [`2026-09-03_onsite-vincent-practice.md`](2026-09-03_onsite-vincent-practice.md).
+Covered: frame the product, near-chance ⇏ FM, n=20 slice, EHR blocked, XGBoost vs +1.5 deep. **Not covered:** gesture collision, deploy latency, new device generation, Case #2 4× budget.
 
-### MY ANSWER
+### Scorecard
 
-_(append)_
+| Q | Topic | Verdict | One-line |
+|---|-------|---------|----------|
+| 1 | Decision / pop / FP-FN | Hit product, miss costs/axes | One nudge. **FP not negligible.** Design **for** age / body / wear-device-gesture, not “product is high-BMI.” |
+| 2 | AUROC 0.52 ⇒ FM? | Hit no-scale | 0.52 → **Y, signal, eval bug**. Residual only if simple model is already useful. |
+| 3 | 20 high-BMI positives, 0.55 | Repeat miss | **n=20 ≠ OOD.** CI / person units. **Hold or fallback. No disclaimer-ship.** |
+| 4 | EHR link blocked | Claim right, gates inverted | Weaker \(Y\) and weaker claim. Gates fail ⇒ don’t ship, not “then use self-report.” No “<10%.” |
+| 5 | XGBoost 0.78 vs deep 0.795 | Hit | Ship the robust simple model. Deep only if **operating point + sparse-wear floor** move. |
 
-### CORRECTION
+**Strongest:** don’t scale at chance; prefer XGBoost when deep dies on wear.  
+**Weakest:** **disclaimer / legal-as-product**; **n=20 as shift**; **FP cheap because ignore**. Same Block 2 misses as Thu.
 
-_(append)_
+---
+
+### Q1 — Early cardiac detection, broad population
+
+**Prompt.** Leadership wants Watch early cardiac detection for everyone. ~90s: decision, when it fires, who acts, FP vs FN. One product. Three population axes. No model.
+
+**MY ANSWER.** Wellness recommendations from cardiac detection. Pop: Watch users 20–99. Alert on every positive. FP negligible (user can ignore); FN high. \(Y\) mostly self-report. Axes: age; product attends to high BMI; note people with past history.
+
+**CORRECTION.** One nudge is right — do not say “cardiac detection” next to self-report. **FP is alert fatigue**, not free. FN = no alert when the condition is present (missed suggestion), not “they take the alert seriously.” Name **when** (daily vs continuous vs post-workout). Watch wearers are already selected. **Design for** age, **body characteristics** (include the range; do not target high BMI), **wear / device / gestures that mimic**. Past history needs a permissible source.
+
+**Axes restitch (spoken after the miss).** The population is Watch wearers, which is already selected. I would design for age, because prevalence and signal change across adulthood; for body characteristics, because the optical path is not the same for every wrist; and for wear and device generation, including gestures that can mimic the target. I would not restrict the product to high-BMI or to people with a known history — those are slices I must **measure**.
+
+---
+
+### Q2 — XGBoost AUROC ~0.52; colleague wants a Watch FM
+
+**Prompt.** Scale up? Three checks first? When would you add complexity?
+
+**MY ANSWER.** No. 0.52 ≈ chance: no signal or ill-defined problem. Want baseline to work on some of the population and fail a slice before going complex. Track AUROC/Se/Sp/PPV on slices; if all poor, bugs/data; if some work, debug poor slices (norm, scale, features); then maybe complex.
+
+**CORRECTION.** No-scale is the lock. Three checks: **(1) \(Y\) / leakage / horizon** — self-report noise, wrong window, future in features; 0.52 can be the **ceiling**. **(2) Watch signal** — prevalence, wear, PPG quality, majority baseline. **(3) Eval bug** — participant split. Slice tables on **predeclared** axes after that. Do not hunt a lucky slice. Complexity only if the simple model is **already useful** and you can name what it cannot capture.
+
+---
+
+### Q3 — Overall 0.78; high-BMI 20 positives, AUROC 0.55; OOD / encoder / disclaimer
+
+**Prompt.** Is 20 positives OOD? What before you conclude worse? Block, disclaimer-ship, or hold?
+
+**MY ANSWER.** Compute high-BMI size and prevalence vs other subgroups. Se/Sp/PPV; if prevalence small, factor that in. If the whole group is small, cannot conclude — need more participants. Consult legal on disclaimer-ship; opt for that if allowed.
+
+**CORRECTION.** **20 positives ≠ OOD.** Estimation, not shift. Need independent **people**, **CI**, **same units old vs new**. Wide interval ⇒ cannot conclude. **Disclaimer-ship is the miss.** Legal = collect/claim, not a footnote on a failed slice. **Hold** or **fall back**. Do not start a new encoder.
+
+---
+
+### Q4 — EHR link blocked; Watch + self-report remain
+
+**Prompt.** Kill the product? What \(Y\)? What claim is illegal? Who, for which uncertainty?
+
+**MY ANSWER.** Don’t kill immediately. Eval sensors + self-report Se/Sp/PPV + CI; predefine kill gates. If gates not met, use self-report as GT. Cannot claim true cardiac condition; switch to general wellness on profile. Only users with uncertainty <10%.
+
+**CORRECTION.** Don’t kill the **nudge**; kill the **clinical claim**. Self-report **is** \(Y\) once EHR is gone. If gates **fail**, **don’t ship** — gates are not a prelude to “then use self-report.” No invented **<10%**. Privacy = link/claim; label partner = can self-report be \(Y\) for a nudge. Optional consented ECG panel if allowed, not a silent EHR substitute.
+
+---
+
+### Q5 — XGBoost 0.78 vs deep 0.795, deep dies on sparse wear
+
+**Prompt.** Which ship? What would take the 1.5 points? One sentence on sparse-wear users.
+
+**MY ANSWER.** Ship features+XGBoost even if CIs are tiny: simpler, cheaper, robust to sparse wear. Slice both models; if some slices are extremely strong for deep, reconsider while fixing poor slices (e.g. dropout sensor data for sparse wear).
+
+**CORRECTION.** Ship XGBoost. +1.5 AUROC does not pay for a failed **sparse-wear** Watch population. Take deep only if **PPV / alerts per user-week at τ** move **and** a **predeclared sparse-wear floor** holds (plus latency/battery). Do not flip because one slice is strong. **Dropout** is train-time missingness for the deep model, not a ship reason. Prefer **route**: XGBoost when wear is sparse.
+
+---
+
+### Spoken restitch (Vincent — 90s)
+
+I’d define a wellness nudge, not a cardiac diagnosis: when it fires, who acts, FP is alert fatigue. Population is Watch wearers; I design for age, body characteristics, and wear/device/gestures, and I measure those slices — I don’t target only high BMI. Near-chance XGBoost means I check labels, horizon, leakage, and whether the Watch can support the decision; I don’t start a foundation model. Twenty positives is uncertainty, not OOD; I don’t conclude, don’t disclaimer-ship, I hold or fall back. If EHR won’t link, the claim dies and self-report is the nudge label, with gates on that product. I’d ship features plus XGBoost at +1.5 AUROC if the deep model fails sparse wear; I only take deep if the operating point and that floor both move.
+
+**Still open today:** gesture-collision injection; deploy latency; new device generation; Case #2 (4× budget). Do not restart Blocks 1–9.
 
 ---
 

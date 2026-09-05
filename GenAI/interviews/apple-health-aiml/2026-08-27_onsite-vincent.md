@@ -4,6 +4,8 @@
 **Who (private):** Eng Manager, Health AIML. Recruits multimodal LLMs / fusion / VLMs / TS. Stats PhD (Wisconsin); menstrual-cycle patent. Thanked on TS-LLM.  
 **Hub:** [`2026-08-27_onsite-prep.md`](2026-08-27_onsite-prep.md)
 
+Sat 9/5 basic 5Q: [`2026-09-04_onsite-second-cycle-mocks.md`](2026-09-04_onsite-second-cycle-mocks.md) — still **n=20 ≠ OOD**; **no disclaimer-ship**; FP is alert fatigue; ship XGBoost when deep dies on sparse wear. Do not restart Blocks 1–9.
+
 He cares whether you can turn an **ambiguous multimodal-health objective into a research program**, not RoPE.
 
 IC verbs. **Not** “I’d facilitate consensus.” **Not** associate professor / my lab. Why-Apple only if pulled: [`2026-08-20_why-apple-health-drill.md`](2026-08-20_why-apple-health-drill.md) — never “impact at scale.”

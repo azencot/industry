@@ -130,6 +130,8 @@ Run Saturday mocks in-session (`/follow-up-mock` Vincent then Yujie) rather than
 
 **Fri 9/4 Yujie Blocks 1–5 already spoken.** Saturday Yujie is **Block 14 + 11 only**. Do not redo 1–5. Still owe a 60s P×C / missing-channel / subject-z-score answer.
 
+**Sat 9/5 Vincent basic 5Q spoken.** Repeat lock: n=20 ≠ OOD; no disclaimer-ship. Remaining Case #1 injections: gestures, latency, new device. Then Case #2. Do not restart Blocks 1–9.
+
 ---
 
 ## Sunday 9/6 — rigor + context switch (~4.5–5.5 h)
