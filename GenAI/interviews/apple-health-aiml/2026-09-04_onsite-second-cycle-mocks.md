@@ -13,6 +13,7 @@ Sheets stay sheets. This file is what was *spoken*.
 |------|--------|--------|-------|
 | Fri 9/4 | Chung-Cheng | In-sheet | Q1–Q5 in [`2026-09-04_chung-cheng-advanced.md`](2026-09-04_chung-cheng-advanced.md). Worst: Q3 global batch / steps at fixed tokens. Do not recopy. |
 | Fri 9/4 | **Yujie** Blocks 1–5 | **Logged below** | Live Q→A→feedback. Did **not** answer Q5 as asked. |
+| Fri 9/4 | **Haraldur** Lesson 1 | **Logged below** | Se/Sp/PPV, prevalence, AUROC, Brier, accuracy trap. Next: participant-disjoint / leakage, not another metric quiz. |
 | Sat 9/5 | Vincent constraint-injection | Open | New cardiac case. Do **not** continue first-cycle Blocks 1–9. |
 | Sat 9/5 | Yujie Block 14 / 11 | Open | Do **not** redo Blocks 1–5. |
 | Sun 9/6 | Jonathan 3-claim + DoF | Open | Speak the 9/1 hill-climbing miss. |
@@ -111,6 +112,87 @@ Do not leave PPG+HR as one KV bag. Separate xattn per modality, or **fixed laten
 ### Spoken restitch (Yujie — 90s)
 
 I encode each modality at its native rate. I do not upsample HR to 128 Hz: that multiplies tokens without new measurements and invents a fake grid. Patch duration has to be shorter than the event I care about, or the event is in the recording and the encoder cannot see it. Token count is not information; audio at 16 kHz is ~125× PPG samples in 30 min, so it gets its own encoder and a **hard token cap**. Fusion for QA is text as Q, sensors as KV — that does not stop PPG drowning HR. I compress the wide stream to a fixed latent budget, or I prefix the tiny one. Positions are not time: I put timestamps on tokens. If a modality looks unused I check representation, fusion, and whether the eval even needs it — shuffle and drop, not only attention maps. I do not flatten 20 IMU channels into one patch unless layout is fixed; missing or shuffled channels break that. Subject-wise z-score can delete the health baseline I wanted.
+
+---
+
+## Haraldur — Lesson 1 metrics (Fri 2026-09-04, ~25 min)
+
+**Slot:** Tue 9/8 3:05 PDT.  
+**Sheet:** [`2026-09-01_onsite-haraldur-health-evaluation.md`](2026-09-01_onsite-haraldur-health-evaluation.md) · person: [`2026-08-27_onsite-haraldur.md`](2026-08-27_onsite-haraldur.md)  
+**Constraint:** no encoder menu, no RelCon. Press who is sick, who got an alarm, prevalence, ship.
+
+Covered: screening vs clinic, Se/Sp → PPV arithmetic, AUROC vs ship, Brier / reliability, always-negative accuracy. **Not covered:** participant-disjoint split / leakage.
+
+### Scorecard
+
+| Q | Topic | Verdict | One-line |
+|---|-------|---------|----------|
+| 1 | Watch notify vs clinic anticoagulation | Hit, incomplete | Different problem. Watch still needs PPV / alert rate; **do not copy τ**. |
+| 2 | Se/Sp 90/90 at 50% vs 1% | Arithmetic miss | **TP = 0.9 × sick.** A: PPV 90%. B: **≈8.3%**. Name **prevalence**. |
+| 3 | AUROC 0.95 on enriched set | Ranking hit, ship soft | **No.** Product slide: PPV@τ, alerts/user-week, eval prevalence — not AUROC+. |
+| 4 | Brier / reliability / show \(p\) | Hit | Brier = mean \((p-y)^2\), \(y\in\{0,1\}\). Bin on **predicted** \(p\). Don’t show raw \(p\). |
+| 5 | Accuracy 99% at 1% prevalence | Hit | Always-neg baseline. PPV **undefined**, not 0. |
+
+**Strongest:** screening ≠ clinic; Se/Sp ≠ PPV; always-negative accuracy.  
+**Weakest:** **0.9 × N_sick** under pressure; **explicit no-ship**; PPV with **zero alarms**.
+
+---
+
+### Q1 — Same model, Watch notify vs clinic anticoagulation
+
+**Prompt.** Rare arrhythmia. Watch: push + 30 s ECG user may skip. Clinic: confirmatory tool that can start anticoagulation discussion. Same ML problem? Which error is expensive? Which metric first? Do not list six metrics.
+
+**MY ANSWER.** Not the same problem: different population (Watch users vs patients) and different outcome (cheap suggestive ECG vs confirmatory). Watch: FN expensive → report sensitivity first. Clinic: FP expensive → report precision.
+
+**CORRECTION.** Different **population, action, and Y** is the lock. Watch is not FN-only: users skip and disable noisy alerts — report **PPV and alerts per user-week** with sensitivity. Clinic: **specificity and PPV**, not precision alone. **Same cutoff is illegal**; consumer Watch is low prevalence, clinic is enriched. Name **prevalence** as the mechanism and **who labels Y**.
+
+---
+
+### Q2 — 90/90 Se/Sp; PPV at 50% vs 1%
+
+**Prompt.** A: 1,000 people, 50% prevalence. B: 10,000 people, 1%. TP, FP, PPV both. What did 90/90 fail to tell?
+
+**MY ANSWER.** A: TP=500, FP=50, PPV=500/550=10/11. B: TP=100, FP=990, PPV=100/1090=10/109. 90/90 does not say how often positives are correct (or how many FPs).
+
+**CORRECTION.** Structure right. **TP = 0.9 × sick**, not the prevalence count. A: TP=**450**, FP=50, PPV=**90%**. B: TP=**90**, FP=990, PPV=90/1080≈**8.3%**. 90/90 is silent on **prevalence**: a 10% FPR at 1% is 990 FPs vs 90 TPs.
+
+---
+
+### Q3 — AUROC 0.95 on enriched test; Watch PPV ≈8%; ship?
+
+**Prompt.** Colleague: ranking is excellent, ship the notification. What does AUROC not tell? Three numbers on the slide instead of 0.95.
+
+**MY ANSWER.** AUROC is ranking, not Se/Sp/PPV or the threshold. Put those on the slide (plus AUROC). Also unknown calibration; measure in bins or Brier. Did not say no to ship in the first sentence.
+
+**CORRECTION.** **No.** 0.95 on ~50% event rate plus Watch PPV ≈8% is a notification users ignore. AUROC is also silent on **eval prevalence**. Product three: **PPV at declared τ**, **alerts per user-week**, **eval prevalence**. Calibration is a fourth if scores are shown or used as risk — do not bury the ship call.
+
+---
+
+### Q4 — Brier, reliability diagram, show \(p\) on the Watch?
+
+**Prompt.** Formula; x/y and how you bin; why AUROC 0.95 can still be uncalibrated; show \(p\) to the user?
+
+**MY ANSWER.** Brier = sum of squared diff prediction vs outcome; lower better. Bins e.g. 0–0.1; mean outcome vs mean prediction; diagonal ideal. AUROC does not constrain output values; “80%” is not 80 prevalence. Do not share \(p\), especially uncalibrated — unnecessary alarm, can be harmful.
+
+**CORRECTION.** Brier is **mean** \((p_i-y_i)^2\) with \(y_i\in\{0,1\}\), not distance to true P. Reliability: **bin on predicted \(p\)**; x = mean \(p\), y = mean \(y\). Empty high-\(p\) bins are common at 1% prevalence. Say **personal risk**, not population prevalence. Even if calibrated, this product is usually a **binary alert at τ**, not a percent.
+
+---
+
+### Q5 — Accuracy 99% at ~1% prevalence
+
+**Prompt.** Useful? Trivial baseline? Se and PPV under that baseline? Slide instead of 99%?
+
+**MY ANSWER.** Probably not. Always-negative has 99% accuracy and is the baseline. Se=0, PPV=0. Put Se and PPV on the slide.
+
+**CORRECTION.** Always-negative is the lock. Se=0 is exact. **PPV is undefined** (TP=FP=0), not 0. NPV=99%, Sp=100%. Se+PPV is the right swap for 99%; still pair PPV with **τ** and **eval prevalence**.
+
+---
+
+### Spoken restitch (Haraldur — 90s)
+
+I would not treat Watch notification and clinic anticoagulation as one classifier. Screening: don’t miss, but report PPV and alerts per user-week at the Watch prevalence, and pick τ there. 90% Se and 90% Sp at 1% prevalence is about 90 TP and 990 FP, PPV ≈ 8% — that is why I do not ship on 90/90 or AUROC 0.95 from an enriched set. AUROC is ranking only. Brier is mean squared error of \(p\) vs a 0/1 label; reliability bins on predicted \(p\). I do not put an uncalibrated percent on the Watch. 99% accuracy at 1% prevalence is the always-negative baseline; sensitivity is 0 and PPV is undefined because there are no alarms.
+
+**Next drill:** participant-disjoint split / leakage. Not another metric quiz.
 
 ---
 

@@ -37,7 +37,7 @@
 | **2026-09-03** | Vincent **practice day** | Whole-system design, not 6-month FM script. Blocks 0–9 (~6h). [`2026-08-27_onsite-vincent.md`](2026-08-27_onsite-vincent.md) |
 | **2026-09-03** | Vincent mock **in progress** | Block 0 spoken. Log: [`2026-09-03_onsite-vincent-practice.md`](2026-09-03_onsite-vincent-practice.md) |
 | **2026-09-03** | **4-day final plan** (second cycle) | Fri 9/4–Mon 9/7. Transfer, not recall. [`2026-09-03_four-day-final-plan.md`](2026-09-03_four-day-final-plan.md). Friday: [`chung-cheng advanced`](2026-09-04_chung-cheng-advanced.md) · [`haraldur advanced`](2026-09-04_haraldur-advanced.md) · coding #7/#8. Saturday Yujie: [`2026-09-05_yujie-advanced.md`](2026-09-05_yujie-advanced.md) |
-| **2026-09-04** | Second-cycle **mock hub** | Spoken mocks toward Tue 9/8. [`2026-09-04_onsite-second-cycle-mocks.md`](2026-09-04_onsite-second-cycle-mocks.md) — Yujie B1–5 logged (physical time miss; Q5 answered as collapse). Append Vincent / Jonathan / mixed / mini-loop here. |
+| **2026-09-04** | Second-cycle **mock hub** | Spoken mocks toward Tue 9/8. [`2026-09-04_onsite-second-cycle-mocks.md`](2026-09-04_onsite-second-cycle-mocks.md) — Yujie B1–5; **Haraldur Lesson 1** (TP=0.9×sick miss; say no to ship). Append Vincent / Jonathan / mixed / mini-loop here. |
 
 ## Loop (from Tyler)
 

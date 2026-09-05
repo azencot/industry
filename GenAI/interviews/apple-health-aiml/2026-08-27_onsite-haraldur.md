@@ -2,6 +2,8 @@
 
 Track: health / applied ML / wearable TS. Conf: very high. Most Apple-Health-specific hour.
 
+Fri 9/4 Lesson 1 mock: [`2026-09-04_onsite-second-cycle-mocks.md`](2026-09-04_onsite-second-cycle-mocks.md) — TP = 0.9×sick under pressure; say **no** to ship on AUROC; PPV undefined if no alarms. Next: participant-disjoint / leakage, not another metric quiz.
+
 Who (private): Senior Applied RS, Health AI, Seattle. RelCon, TS-LLM, periodicity. Public: sensor FMs to Watch hypertension / AirPods calories (modeling and infra). Hub: 2026-08-27_onsite-prep.md
 
 Cultural signal (do not recap papers): this group will keep periodic features + GBDT when they beat a deep TS model under missingness shift. SSL motion FMs exist too (~3.9M encoder, 1B segments — not 1B params).
