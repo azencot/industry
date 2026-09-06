@@ -39,6 +39,7 @@
 | **2026-09-03** | **4-day final plan** (second cycle) | Fri 9/4–Mon 9/7. Transfer, not recall. [`2026-09-03_four-day-final-plan.md`](2026-09-03_four-day-final-plan.md). Friday: [`chung-cheng advanced`](2026-09-04_chung-cheng-advanced.md) · [`haraldur advanced`](2026-09-04_haraldur-advanced.md) · coding #7/#8. Saturday Yujie: [`2026-09-05_yujie-advanced.md`](2026-09-05_yujie-advanced.md) |
 | **2026-09-04** | Second-cycle **mock hub** | Spoken mocks toward Tue 9/8. [`2026-09-04_onsite-second-cycle-mocks.md`](2026-09-04_onsite-second-cycle-mocks.md) — Yujie; Haraldur L1; Vincent basic; **Jonathan 3Q** (DoF/TR kill spoken). Append mixed / mini-loop here. |
 | **2026-09-05** | **Questions for interviewers** | Last 3–5 min of each slot. 5 options × 5 people, Tue 9/8 order. [`2026-09-05_questions-for-interviewers.md`](2026-09-05_questions-for-interviewers.md) — pick 1–2; no paper name-drop |
+| **2026-09-06** | **Tuesday full mock** (live order) | [`2026-09-06_tuesday-full-mock.md`](2026-09-06_tuesday-full-mock.md) — S1–S5 complete |
 
 ## Loop (from Tyler)
 

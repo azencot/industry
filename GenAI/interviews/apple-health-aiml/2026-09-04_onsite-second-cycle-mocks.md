@@ -17,6 +17,7 @@ Sheets stay sheets. This file is what was *spoken*.
 | Sat 9/5 | **Vincent** basic 5Q | **Logged below** | Wellness nudge, not diagnosis. Repeat: n=20 ≠ OOD; no disclaimer-ship. Remaining Case #1: gestures, latency, new device. Case #2 still open. |
 | Sat 9/5 | **Jonathan** 3Q | **Logged below** | Dual +0.08 needs drop/shuffle delay. Window ≠ subject. **DoF spoken** (TR mix kill). |
 | Sat 9/5 | Yujie Block 14 / 11 | Open | Do **not** redo Blocks 1–5. |
+| Sun 9/6 | **Tuesday full mock** | **Day file** | [`2026-09-06_tuesday-full-mock.md`](2026-09-06_tuesday-full-mock.md) — S1–S5 complete. Do not duplicate here. |
 | Sun 9/6 | Jonathan ImagenFew 3-claim | Open | DoF is done. Still speak the three ImagenFew claims. |
 | Sun 9/6 | Mixed interviewer | Open | Infer dimension. |
 | Mon 9/7 | Mini-loop | Open | Retrieval only. |
