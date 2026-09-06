@@ -46,12 +46,40 @@ import torch.nn as nn
 
 
 class CrossAttention(nn.Module):
-    def __init__(self, d_model):
+    def __init__(self, d_model, H):
         super().__init__()
-        raise NotImplementedError
+
+        self.d = d_model // H
+        self.H = H
+        
+        self.wq = nn.Linear(d_model, d_model)
+        self.wk = nn.Linear(d_model, d_model)
+        self.wv = nn.Linear(d_model, d_model)
+        self.wo = nn.Linear(d_model, d_model)
 
     def forward(self, q, kv, mask=None):
-        raise NotImplementedError
+        # q in [B, Tq, d_model], kv in [B, Tk, d_model]
+
+        Q = self.wq(q)          # [B, Tq, d_model]
+        K = self.wk(kv)         # [B, Tk, d_model]
+        V = self.wv(kv)         # [B, Tk, d_model]
+
+        # view for multihead
+        Q = Q.view(-1, Q.shape[1], self.H, self.d).transpose(1, 2)      # [B, H, Tq, d]
+        K = K.view(-1, K.shape[1], self.H, self.d).transpose(1, 2)      # [B, H, Tk, d]
+        V = V.view(-1, V.shape[1], self.H, self.d).transpose(1, 2)      # [B, H, Tk, d]
+
+        QKT = Q @ K.transpose(-2, -1) / math.sqrt(self.d)   # [B, H, Tq, Tk]
+
+        if mask is not None:
+            QKT = QKT.masked_fill(~mask[:, None, None, :], float("-inf"))
+
+        A = torch.softmax(QKT, dim=-1)
+
+        Y = A @ V               # [B, H, Tq, d]
+        Y = Y.transpose(1, 2).contiguous().view(-1, Y.shape[2], self.d*self.H)
+
+        return self.wo(Y)
 
 
 if __name__ == "__main__":
