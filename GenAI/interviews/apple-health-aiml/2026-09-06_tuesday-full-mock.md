@@ -4,7 +4,8 @@ Live-order simulation of **Tue 2026-09-08**. One file for the day. Append after 
 
 **Order:** Jonathan 11:05 → Yujie 1:05 → Chung-Cheng 2:05 → Haraldur 3:05 → Vincent 4:05 PDT  
 **Rule:** no per-question feedback; critique at session end. ~30 min/slot (live is 45).  
-**Hub:** [`2026-08-27_onsite-prep.md`](2026-08-27_onsite-prep.md)
+**Hub:** [`2026-08-27_onsite-prep.md`](2026-08-27_onsite-prep.md)  
+**Mon 9/7 addendum:** Vincent mini-loop (~15 min) logged after Session 5.
 
 | # | Person | Status | Clock | Notes |
 |---|--------|--------|-------|-------|
@@ -26,7 +27,7 @@ Live-order mock **complete** (all five started; several stopped before 45 min). 
 | Yujie | Task scope; native Hz; duration curve; no zero-fill | Patch length **is** resolution. Classification ≠ canned text Q. |
 | Chung-Cheng | A vs P/G/O; FSDP comm tax; match batch | `global_batch = mb × world × accum` (512 not 256). |
 | Haraldur | 1/6; two products; no-ship; people split; XGBoost | FP not cheap. Slide = PPV@τ + alerts/week + eval prevalence. |
-| Vincent | Language bet; people split; shuffle/zero; **n=20 ≠ OOD, no disclaimer** | Kill in month one; 5% above *which* chance; cut production months while n=20. |
+| Vincent | Language bet; people split; shuffle/zero; **n=20 ≠ OOD, no disclaimer** | Kill in month one; 5% above *which* chance; cut production months while n=20. **Mon 9/7:** uncertainty → cheapest falsifier, not a 4-week pipeline. |
 
 ---
 
@@ -407,8 +408,92 @@ Stopped on request before answering Q4 (5% above which chance; what to cut in mo
 
 ---
 
-## Day complete
+## Day complete (Sun 9/6)
 
-All five Tuesday slots mocked 2026-09-06. File is the day’s log. Mon 9/7 is retrieval + mini-loop + stop, not another five-hour loop.
+All five Tuesday slots mocked 2026-09-06. File is the day’s log.
+
+---
+
+## Mon 9/7 — Vincent mini-loop (~15 min, stopped)
+
+**When:** Mon 2026-09-07 · technical leadership & system thinking  
+**Slot:** Tue 9/8 4:05 PDT (last of five)  
+**Sheet:** [`2026-08-27_onsite-vincent.md`](2026-08-27_onsite-vincent.md)
+
+Stopped on request mid-Q4 (personalized “harder than typical”; majority-vote over history). Treat Q4 as **unanswered** in the room. Score for the completed segment: **~6.5/10**.
+
+**You** lines close to spoken. Critique separate.
+
+### Scorecard
+
+| | |
+|--|--|
+| Opening product questions | **Hit.** Output, population, data, labels, prediction time, error costs — right instinct. |
+| Constraint update | **Partial.** Four weeks → use existing data, skip collection. Then a week-by-week pipeline (labels → encoders → XGBoost → eval). |
+| Minimum viable experiment | **Miss.** “Activity efficient?” defined from HR; XGBoost vs 50% random; 60% = go. Circular target, weak baseline, arbitrary gate. |
+| Labels | **Miss.** SSL / generative “improve labels” does not create ground truth. Sparse labels as proxy was the recovery; the techniques stay for representations / pseudo-labels, not Y. |
+| Population | **Partial.** All Watch wearers is the product aspiration. First experimental cohort should be a well-defined activity/slice where labels and sensor quality are strongest. |
+| Accepting challenges | **Hit.** Did not defend every first choice. |
+| Q4 (harder than typical) | **Unanswered.** Stopped at majority vote over history + feedback. |
+
+**Strongest:** define the product before the architecture; simplify when the clock is four weeks; want signal before a multimodal LM.  
+**Tuesday risk:** “what pipeline can I finish in four weeks?” instead of “what uncertainty do I kill?” Random is not the baseline. Do not define Y from the same HR you feed the model.
+
+### Exchanges
+
+**Q1.** Watch sensors → personalized explanations/answers about recent health and fitness. Research scientist: technically viable, what to build. From the beginning.
+
+**You.** Define the product first: output, population, data, labels, prediction time and horizon, cost of errors. Wellness chatbot, text out. Population as wide as possible (all Watch wearers, ages, BMI). Data: PPG, IMU, derived HR, plus user text (menu or free). Predict when the user asks; recent 30–60 min covering walk/run/cycle; horizon a few hours. Labels via self-report; FP vs FN underspecified. Viability via a one-month program: collect, clean, basic multimodal (sensor encoders + pretrained LM). Objective NTP. Phase goal: does the LM perceive sensor values/segments, and can it do basic reasoning. Basic Q&A for that phase.
+
+**Hit + miss.** Opening questions are the lock. Then you filled every slot (all-comers, 30–60 min, one-month collect+model) before a central uncertainty. Eventual population ≠ first cohort.
+
+**Q2.** Historical Watch data exists; labels sparse/inconsistent. Product wants viability evidence in **four weeks**, not a collection campaign. Narrow the problem. Minimum viable experiment.
+
+**You.** Use available data; skip collection. A few days improving labels (manual, SSL, or generative). Then a week of basic encoders. Then a week of XGBoost on sensor features for classification of what you want to extract. Final week eval. Goal: convince there is signal a baseline can extract. Results 15–25% better than random.
+
+**Miss.** Four weeks became a waterfall (labels → encoders → XGBoost → eval). SSL/gen do not mint ground truth. Random + 15–25% is not a decision criterion. The question was the cheapest falsifier of the biggest uncertainty, not a four-week build plan.
+
+**Q3.** SSL/gen are not ground truth for whether the sensor contains the thing you care about. “15–25% better than random” — better on what, why is random the baseline? Single narrow capability, baseline, specific yes vs stop.
+
+**You.** Agreed, far from ideal. Would also collect better self-report labels; given time, treat sparse labels as best proxy; still improve via manual + those techniques. Random is right because it is “not using the signal”; if XGBoost beats it, signal exists and a more complex model can do better. Narrow task: “Was the activity efficient or not?” Binary. Decide true/false from whether HR follows the known pattern for that activity. Baseline still features + XGBoost vs 50% random. 60%+ at four weeks → invest.
+
+**Miss.** Three stacked: (1) Y from HR + HR features = circular; (2) random is a weak lower bound — beat heuristic / population threshold / personalized history / logistic / XGBoost; the LM has to earn complexity; (3) 60% is arbitrary. “Better than not using the signal” does not license the multimodal language stack.
+
+**Q4.** “Activity efficient” is a bad first capability (circular). 60% vs 50% is uninformative if a heuristic already gets 58%. New question: **“Did this workout look harder than what is typical for this user?”** Historical Watch per user, sparse explicit feedback. Target, simplest meaningful baseline, evidence you are not just rediscovering HR thresholds.
+
+**You.** Baseline a majority vote over historical information and the feedback…
+
+**Unanswered.** Stopped here.
+
+### Spoken restitch — Q4 (unanswered in the room)
+
+“Harder than typical for this user is a personalized deviation, not a global class. I build a per-user baseline from historical workouts of the same type: expected physiological response given workload (pace/power, HR, duration, recovery) and context. The target is whether this workout’s response sits unusually high on *that user’s* distribution. First model is not deep: standardized residuals, or a small regression of expected HR from workload and history. Sparse explicit ‘felt unusually hard’ is an **external** check, not the HR-derived label. Success is not beat-random. I compare a population threshold, the user’s historical mean, and the simple personalized model. I want a richer sensor representation to improve held-out **future-workout** prediction of the feedback signal, with intervals and consistency across workout types. If the simple personalized baseline matches the complex model, I do not need the multimodal language stack for this capability. If richer features move the external feedback and the gain survives future-workout eval, I have evidence beyond a fixed HR cutoff. If feedback is too sparse I narrow the claim: I can detect personalized physiological deviation; I will not claim subjective difficulty until an independent label ties that deviation to perceived hardness.”
+
+### Spoken restitch — four-week go/no-go (worst miss)
+
+“Given four weeks I am not prototyping the chatbot. The uncertainty is: do Watch signals contain enough **personalized** information to support answers beyond summaries and heuristics? I pick one narrow capability with the best independent label, freeze a small participant-disjoint eval set, and put heuristic and feature baselines on the board in the first days. Then I test whether learned sensor representations add anything, especially where the simple baseline fails. If they don’t, I stop before the language model. If they do, multimodal fusion is worth investigating. The go number is on the task metric and product-relevant slices, not an arbitrary lift over chance. If the premise fails in week one, I stop — I do not discover that in week four.”
+
+### Corrections to keep
+
+- **Uncertainty, not pipeline.** “Evidence in four weeks” → what must I eliminate, cheapest experiment whose result changes the decision. Not week-1 labels / week-2 encoders / week-3 XGBoost / week-4 eval.
+- **Independent Y.** If the label is an HR rule, beating that rule with HR features is tautology. Manual labels only help if the annotator can actually see the target.
+- **Meaningful baseline.** Heuristic, population threshold, personalized history, logistic, XGBoost, then encoder. Random is the floor, not the competitor. The sophisticated model earns its cost.
+- **Gate from the decision.** “What result would change ship / kill / reformulate?” not “10 pp above chance.”
+- **Cohort vs product pop.** Broad Watch wearers is the product. First falsification is a slice where labels and sensors are strongest; if it fails there, broadening will not save it.
+- **SSL/gen.** Representations, pseudo-labels, denoising, data efficiency — not ground truth for an unobserved outcome.
+
+### Framework (say this shape)
+
+Product decision → central uncertainty → cheapest falsifier → simple meaningful baseline → success/kill criterion → only then add complexity.
+
+### One-line for Tuesday
+
+Not “what can I build?” — “what is the most important uncertainty, and what is the cheapest experiment whose result would actually change my decision?”
+
+---
+
+## Day complete (through Mon 9/7)
+
+Sunday S1–S5 logged. Monday Vincent mini-loop logged above. Remaining Monday: retrieval + other mini-loop slots + stop — not another five-hour loop.
 
 ---

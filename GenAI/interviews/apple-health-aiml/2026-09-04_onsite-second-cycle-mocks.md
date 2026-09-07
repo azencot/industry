@@ -20,7 +20,8 @@ Sheets stay sheets. This file is what was *spoken*.
 | Sun 9/6 | **Tuesday full mock** | **Day file** | [`2026-09-06_tuesday-full-mock.md`](2026-09-06_tuesday-full-mock.md) — S1–S5 complete. Do not duplicate here. |
 | Sun 9/6 | Jonathan ImagenFew 3-claim | Open | DoF is done. Still speak the three ImagenFew claims. |
 | Sun 9/6 | Mixed interviewer | Open | Infer dimension. |
-| Mon 9/7 | Mini-loop | Open | Retrieval only. |
+| Mon 9/7 | **Vincent** product/system | **Day file** | [`2026-09-06_tuesday-full-mock.md`](2026-09-06_tuesday-full-mock.md) — ~15 min; circular HR / random / 60%; Q4 unanswered. Do not duplicate here. |
+| Mon 9/7 | Mini-loop (other four) | Open | Retrieval + remaining slots. |
 
 ---
 

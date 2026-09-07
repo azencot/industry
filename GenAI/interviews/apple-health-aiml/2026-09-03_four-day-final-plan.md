@@ -169,6 +169,8 @@ Attack: compute, architecture, sampling, leakage, where it stops generalizing.
 
 This is **not** a learning day.
 
+Vincent mini-loop (~15 min) logged in [`2026-09-06_tuesday-full-mock.md`](2026-09-06_tuesday-full-mock.md). Lock: uncertainty → cheapest falsifier, not a 4-week pipeline. Do not redo the wellness-chatbot design tonight.
+
 | Block | Min | Do |
 |-------|-----|-----|
 | 1 Five-interviewer retrieval | 45 | No notes. Write the headings below. ~8 min each. Then check notes **only** for holes. Also recall **one** question to ask each person ([`2026-09-05_questions-for-interviewers.md`](2026-09-05_questions-for-interviewers.md) “If time is almost gone”). |
