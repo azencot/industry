@@ -169,7 +169,7 @@ Attack: compute, architecture, sampling, leakage, where it stops generalizing.
 
 This is **not** a learning day.
 
-Vincent mini-loop (~15 min) logged in [`2026-09-06_tuesday-full-mock.md`](2026-09-06_tuesday-full-mock.md). Lock: uncertainty → cheapest falsifier, not a 4-week pipeline. Do not redo the wellness-chatbot design tonight.
+Vincent mini-loop (~15 min) and Haraldur mini-loop (~30 min) logged in [`2026-09-06_tuesday-full-mock.md`](2026-09-06_tuesday-full-mock.md). Vincent lock: uncertainty → cheapest falsifier. Haraldur lock: Y ≠ report ≠ EHR; don’t pick the label window from Se; threshold → model → product. Do not redo those designs tonight.
 
 | Block | Min | Do |
 |-------|-----|-----|

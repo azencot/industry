@@ -5,7 +5,7 @@ Live-order simulation of **Tue 2026-09-08**. One file for the day. Append after 
 **Order:** Jonathan 11:05 → Yujie 1:05 → Chung-Cheng 2:05 → Haraldur 3:05 → Vincent 4:05 PDT  
 **Rule:** no per-question feedback; critique at session end. ~30 min/slot (live is 45).  
 **Hub:** [`2026-08-27_onsite-prep.md`](2026-08-27_onsite-prep.md)  
-**Mon 9/7 addendum:** Vincent mini-loop (~15 min) logged after Session 5.
+**Mon 9/7 addendum:** Vincent (~15 min) and Haraldur (~30 min) mini-loops logged after Session 5.
 
 | # | Person | Status | Clock | Notes |
 |---|--------|--------|-------|-------|
@@ -26,7 +26,7 @@ Live-order mock **complete** (all five started; several stopped before 45 min). 
 | Jonathan | TR kill 26.9→21.9 with gates | Problem/hypothesis, not architecture. DoF: post-hoc audit is a diagnosis. |
 | Yujie | Task scope; native Hz; duration curve; no zero-fill | Patch length **is** resolution. Classification ≠ canned text Q. |
 | Chung-Cheng | A vs P/G/O; FSDP comm tax; match batch | `global_batch = mb × world × accum` (512 not 256). |
-| Haraldur | 1/6; two products; no-ship; people split; XGBoost | FP not cheap. Slide = PPV@τ + alerts/week + eval prevalence. |
+| Haraldur | 1/6; two products; no-ship; people split; XGBoost | FP not cheap. Slide = PPV@τ + alerts/week + eval prevalence. **Mon 9/7:** Y ≠ report ≠ EHR; don’t pick the label window from Se; threshold → model → product. |
 | Vincent | Language bet; people split; shuffle/zero; **n=20 ≠ OOD, no disclaimer** | Kill in month one; 5% above *which* chance; cut production months while n=20. **Mon 9/7:** uncertainty → cheapest falsifier, not a 4-week pipeline. |
 
 ---
@@ -492,8 +492,113 @@ Not “what can I build?” — “what is the most important uncertainty, and w
 
 ---
 
+## Mon 9/7 — Haraldur mini-loop (~30 min, stopped)
+
+**When:** Mon 2026-09-07 · health domain & applied ML judgment  
+**Slot:** Tue 9/8 3:05 PDT  
+**Sheet:** [`2026-08-27_onsite-haraldur.md`](2026-08-27_onsite-haraldur.md)
+
+Stopped on request before answering Q8 (missingness vs population shift vs informative missingness). Treat Q8 as **unanswered**. Score for the completed segment: **~7/10** (better than the Vincent mini-loop).
+
+**You** lines close to spoken. Critique separate.
+
+### Scorecard
+
+| | |
+|--|--|
+| Opening framework | **Hit.** Product → pop → data → labels → time/horizon → error costs → constraints. Logistic + XGBoost first. |
+| Adapt timescale | **Hit.** Dropped monthly when told illness is days, not a month. |
+| PPV arithmetic | **Hit.** 1% / 92% Se / 94% Sp → ~1/8 (true ≈ 13.4% = 1/7.5). |
+| Eval vocabulary | **Hit.** Se/Sp/PPV, prevalence, calibration, CIs, participant-disjoint. |
+| Labels | **Miss.** Widen window around self-report is a robustness *experiment*, not the label. Chose window from sensitivity. EHR as “ground truth.” Usage frequency → biological window. |
+| Observation window | **Miss.** 30–60 min for 24h respiratory-onset is too short vs 24–72h + personal baseline. |
+| Threshold vs product | **Miss.** Locked 95% Se / would not change τ at PPV ≈ 13%. Disclaimer instead of reformulating the claim. |
+| Se/Sp + PPV | **Slip.** Cannot hold Se, Sp, and prevalence fixed and independently raise PPV. Need a better frontier (e.g. Sp at 90% Se). |
+| Q8 | **Unanswered.** |
+
+**Strongest:** framing; abandon monthly; 1/8 PPV; Se/Sp/PPV/calibration as the eval set.  
+**Tuesday risk:** promoting self-report/EHR to Y; picking the endpoint from model Se; “I will not change the threshold.”
+
+### Exchanges
+
+**Q1.** Watch signals, early respiratory illness before the user notices. HR, activity, sleep, extra streams, longitudinal, imperfect labels. Formulate before a model.
+
+**You.** Product, pop, data, labels, prediction time, horizon, error costs, production. Notify high risk. Broad pop later; first age bands with real prevalence. Historical sensors. Labels weak: link EHR, expert manual. Predict monthly, 12 alerts, horizon one month. FP cheaper than FN (follow-up test vs never addressed). Eval: Se 95%, Sp 90%, precision depends on prevalence. Baselines: logistic, features + XGBoost.
+
+**Hit + miss.** Framework and baselines lock. Monthly is the wrong timescale for “before they notice.” FP-cheap is the Sunday miss again — a health notification is not free because a test exists.
+
+**Q2.** Illness develops faster; continuous Watch; useful warning 1–2 days before onset. Reformulate time, window, horizon, label. No EHR for most; noisy self-report.
+
+**You.** Multiple predictions per day if cheap. Notify only positives. Observation last 30–60 min. Predict at window end. Horizon next 24h. Self-report as internal eval; scarce EHR as external validation.
+
+**Partial.** Timescale update is correct. 30–60 min is likely too short for resting-HR / sleep / activity / recovery deviation. Self-report ≠ internal gold; EHR ≠ automatic external gold.
+
+**Q3.** Self-report delayed 0–3 days or never. Model predicts onset in next 24h. How does noise affect train/eval? Risk of learning reporting, not physiology.
+
+**You.** Noise → spurious relations. Never-reporters: not much to do. For lagged reports: shift the positive label forward and backward so onset spans multiple days.
+
+**Partial.** Window expansion is a robustness test. It is not automatically the right Y. Never-report is informative missingness / selection, not “nothing to do.”
+
+**Q4.** Three windows: onset day only; −2/+1; −3/+3. Which is defensible? How does the small EHR-linked subset tell biology vs fitting self-report?
+
+**You.** Choose the window from sensitivity scores and CIs. Then validate with EHR as ground truth: compare actual event times to the window; estimate how common the shift is.
+
+**Miss.** Do not choose Y from which definition makes Se best. That optimizes the endpoint around the model. EHR is a clinical reference standard on a **selected** 5% (care-seeking), not ground truth for all Watch users.
+
+**Q5.** Don’t pick the window from model Se. EHR-linked is 5% and selected. How to use it without treating it as perfect GT for everybody? What evidence that you detect **pre**-illness physiology, not post-onset physiology before they report?
+
+**You.** From EHR, average Δt event→report as the min window for heavy Watch users. Widen with lower wear frequency up to −3/+1 days.
+
+**Miss.** Wear frequency can correlate with reporting, health, age, SES, completeness. It does not tell you when biology started. Do not map usage → label window. Pre vs post onset needs an independent clock (care-seeking lag characterization + clinically plausible progression + sensitivity analysis), not a usage-conditioned window.
+
+**Q6.** Retrospective participant-disjoint: Se 92%, Sp 94%, AUROC 0.96. Cohort prevalence 8%; deploy prevalence ~1% at a prediction point. Ready for prospective pilot? Extra numbers.
+
+**You.** Also prevalence, precision, calibration — whether the operating point is useful.
+
+**Hit.** Right extra numbers. AUROC on an 8% set does not license a 1% product.
+
+**Q7.** At 1% with 92/94, what PPV? If most alerts are FP: change threshold, product, or model? How decide.
+
+**You.** PPV ≈ 1/8. Severe illness, FN costly, would **not** change the threshold. Change product with a disclaimer that some notified users don’t have it, if testing is cheap/non-invasive; else wellness notification. Change the model if another baseline keeps Se/Sp inside 95% CIs and raises PPV a lot.
+
+**Hit + miss.** 1/8 is excellent (10k points: 100 sick, TP 92, FP ≈ 594, PPV ≈ 13.4%). Then locked τ too early. Disclaimer does not buy utility. Sequence is threshold (is there a useful point on this curve?) → model (does a new frontier move Sp at fixed Se?) → product/pop/claim/kill. PPV is determined by Se, Sp, prevalence — you cannot hold Se/Sp and lift PPV.
+
+**Q8.** Prospective: complete wear good; intermittent wear low Se and worse calibration; intermittent wear more common in some ages. Missing-data vs population-shift vs informative missingness? What before changing the model. **Unanswered.**
+
+### Spoken restitch — labels / window (worst miss)
+
+“I would not infer biological onset from self-report or EHR. Both are imperfect observations: biology → detectable physiology → symptoms → report → clinical record. Before a window I characterize timing disagreement on the linked subset and use domain knowledge of progression. Then I run sensitivity analyses across plausible windows. If the conclusion hinges on an arbitrary window, the endpoint is not identified. I do not pick the window that maximizes sensitivity. EHR is a clinical reference on a selected care-seeking slice, not GT for all Watch wearers, and wear frequency is not a biological clock.”
+
+### Spoken restitch — PPV / threshold (second miss)
+
+“At 1% with 92% Se and 94% Sp, PPV is about 1 in 8. That is not a ship number for a ‘you may be getting ill’ claim. First I look at the existing curve: is there a point with acceptable alert burden if I give a little Se. Then I ask whether a better model moves specificity at a fixed Se, or Se at a fixed alerts/user/week. If the frontier still cannot support the claim, I narrow the population, soften to a baseline-change wellness nudge, or kill. I do not freeze 95% Se, and I do not fix poor PPV with a disclaimer.”
+
+### Spoken restitch — Q8 if it comes back
+
+“I would not change the model first. Stratify jointly by wear completeness and age so they are not confounded. On complete-data users, synthetically mask using intermittent missingness patterns — if performance collapses, information loss explains part of the gap. Then compare age at matched missingness; a remaining gap is shift or another subgroup failure. Test whether the missingness pattern itself predicts the outcome or reporting — if yes, missingness is informative. Only then: missingness features / dropout, subgroup calibration, or different product behavior when data quality is insufficient.”
+
+### Corrections to keep
+
+- **Y is latent.** Self-report ≠ symptom onset ≠ biological onset ≠ EHR timestamp (care-seeking / test / coded diagnosis).
+- **Don’t optimize the endpoint around Se.** Independent definition, then train, then eval. Alternate windows = sensitivity analysis.
+- **EHR ≠ GT for everybody.** Selected 5%; use to characterize disagreement, not to copy a window onto all wearers.
+- **Wear time ≠ biology.** Do not set the label window from usage frequency.
+- **Window follows the phenomenon.** 24–72h + personal baseline is more plausible than 30–60 min for this claim.
+- **Threshold → model → product.** Then pop / claim / kill. Disclaimer is not a product.
+- **PPV is not a free knob** given Se, Sp, and prevalence. Compare Sp@Se or Se@alert-rate.
+
+### Framework (say this shape)
+
+Health claim → what exactly is Y → how is Y observed → errors/biases in that observation → information at prediction time → who must generalize → operating point that supports the product → what happens to a real user when wrong.
+
+### One-line for Tuesday
+
+What exactly is the health claim, how do I observe the outcome, and does my evaluation support the decision the product will actually make?
+
+---
+
 ## Day complete (through Mon 9/7)
 
-Sunday S1–S5 logged. Monday Vincent mini-loop logged above. Remaining Monday: retrieval + other mini-loop slots + stop — not another five-hour loop.
+Sunday S1–S5 logged. Monday Vincent + Haraldur mini-loops logged above. Remaining Monday: retrieval + other mini-loop slots + stop — not another five-hour loop.
 
 ---
