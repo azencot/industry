@@ -29,30 +29,13 @@ Follow-ups:
 
 from __future__ import annotations
 
-from collections import deque
-import heapq
 
-# idea: use a heap with values (timestamp, anomaly_score); this will guarantess that top elements need to be removed if len(heap) > k
 class TopKWindow:
     def __init__(self, k, window):
-        self.k = k
-        self.window = window
-        
-        self.q = deque()
-        # self.h = []
+        raise NotImplementedError
 
     def add(self, timestamp, score):
-        # make the deque valid again, remove all expired events
-        while len(self.q) > 0:
-            if timestamp - self.q[0][0] > self.window:
-                self.q.popleft()
-            else:
-                break
-        
-        # add element
-        self.q.append((timestamp, score))
-
-        return heapq.nlargest(self.k, self.q, key=lambda x: (x[1], x[0]))
+        raise NotImplementedError
 
 
 if __name__ == "__main__":
