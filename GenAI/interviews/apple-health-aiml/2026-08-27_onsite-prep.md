@@ -2,6 +2,7 @@
 
 **Status:** Active. Live **Tue 2026-09-08** (Jonathan 11:05 → Yujie 1:05 → Chung-Cheng 2:05 → Haraldur 3:05 → Vincent 4:05). Same five. **Jaya dropped.** Rescheduled 2026-09-02 (sick).  
 **This week:** [`2026-09-03_four-day-final-plan.md`](2026-09-03_four-day-final-plan.md) (second cycle — transfer, not recall).  
+**Tonight / AM:** [`2026-09-07_mock-weaknesses.md`](2026-09-07_mock-weaknesses.md) — last correction sheet; not another mock.  
 **Invite:** [`2026-08-26_virtual-onsite-invite.md`](2026-08-26_virtual-onsite-invite.md) (updated 2026-09-02)  
 **Questions to ask them (pick 1–2 / slot):** [`2026-09-05_questions-for-interviewers.md`](2026-09-05_questions-for-interviewers.md)
 

@@ -23,6 +23,7 @@ Sheets stay sheets. This file is what was *spoken*.
 | Mon 9/7 | **Vincent** product/system | **Day file** | [`2026-09-06_tuesday-full-mock.md`](2026-09-06_tuesday-full-mock.md) — ~15 min; circular HR / random / 60%; Q4 unanswered. Do not duplicate here. |
 | Mon 9/7 | **Haraldur** respiratory / labels | **Day file** | Same file — ~30 min; 1/8 PPV; window-from-Se; τ locked; Q8 unanswered. Do not duplicate here. |
 | Mon 9/7 | Mini-loop (other three) | Open | Retrieval + remaining slots. |
+| Mon 9/7 | **Last correction sheet** | **New file** | [`2026-09-07_mock-weaknesses.md`](2026-09-07_mock-weaknesses.md) — first 20 s; not another mock. |
 
 ---
 

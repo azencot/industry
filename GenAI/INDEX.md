@@ -66,6 +66,7 @@ Related skill (shared with FinTech depth practice): **`/ml-deep-dive`**.
 | 2026-09-06 | Apple Health AIML Tuesday full mock (day file) | [`interviews/apple-health-aiml/2026-09-06_tuesday-full-mock.md`](interviews/apple-health-aiml/2026-09-06_tuesday-full-mock.md) — S1–S5 complete (live order) |
 | 2026-09-07 | Apple Health AIML Vincent mini-loop | Same file — ~15 min; circular HR target / random baseline; Q4 unanswered; lock: uncertainty → cheapest falsifier |
 | 2026-09-07 | Apple Health AIML Haraldur mini-loop | Same file — ~30 min; 1/8 PPV hit; label window from Se; τ locked; Q8 unanswered |
+| 2026-09-07 | Apple Health AIML last correction sheet | [`interviews/apple-health-aiml/2026-09-07_mock-weaknesses.md`](interviews/apple-health-aiml/2026-09-07_mock-weaknesses.md) — 20 recurring first-formulation misses; first 20 s; five mantras |
 | 2026-08-12 | Bosch RTC-NA TSFM interview prep | [`interviews/bosch-rtc-tsfm/2026-08-12_interview-prep.md`](interviews/bosch-rtc-tsfm/2026-08-12_interview-prep.md) — multimodal TSFM (beyond forecasting); Sunnyvale hybrid |
 | 2026-08-12 | Bosch HM invite (Shabnam) | [`interviews/bosch-rtc-tsfm/2026-08-12_hm-invite.md`](interviews/bosch-rtc-tsfm/2026-08-12_hm-invite.md) — **Multimodal FM** req; **Thu 2026-08-13 3:15–3:45 PM PDT** Teams fit |
 | 2026-08-13 | Bosch HM screen (Shabnam + Joy) | [`interviews/bosch-rtc-tsfm/2026-08-13_hm-screen-debrief.md`](interviews/bosch-rtc-tsfm/2026-08-13_hm-screen-debrief.md) — fit; reloc required; they confer; if yes → **coding + deep dive** |

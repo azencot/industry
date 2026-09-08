@@ -171,6 +171,8 @@ This is **not** a learning day.
 
 Vincent mini-loop (~15 min) and Haraldur mini-loop (~30 min) logged in [`2026-09-06_tuesday-full-mock.md`](2026-09-06_tuesday-full-mock.md). Vincent lock: uncertainty → cheapest falsifier. Haraldur lock: Y ≠ report ≠ EHR; don’t pick the label window from Se; threshold → model → product. Do not redo those designs tonight.
 
+Last read: [`2026-09-07_mock-weaknesses.md`](2026-09-07_mock-weaknesses.md). Option A (30 min) or B (60 min), then **stop**.
+
 | Block | Min | Do |
 |-------|-----|-----|
 | 1 Five-interviewer retrieval | 45 | No notes. Write the headings below. ~8 min each. Then check notes **only** for holes. Also recall **one** question to ask each person ([`2026-09-05_questions-for-interviewers.md`](2026-09-05_questions-for-interviewers.md) “If time is almost gone”). |

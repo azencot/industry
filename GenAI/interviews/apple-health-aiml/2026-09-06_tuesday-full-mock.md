@@ -5,7 +5,8 @@ Live-order simulation of **Tue 2026-09-08**. One file for the day. Append after 
 **Order:** Jonathan 11:05 → Yujie 1:05 → Chung-Cheng 2:05 → Haraldur 3:05 → Vincent 4:05 PDT  
 **Rule:** no per-question feedback; critique at session end. ~30 min/slot (live is 45).  
 **Hub:** [`2026-08-27_onsite-prep.md`](2026-08-27_onsite-prep.md)  
-**Mon 9/7 addendum:** Vincent (~15 min) and Haraldur (~30 min) mini-loops logged after Session 5.
+**Mon 9/7 addendum:** Vincent (~15 min) and Haraldur (~30 min) mini-loops logged after Session 5.  
+**Last sheet:** [`2026-09-07_mock-weaknesses.md`](2026-09-07_mock-weaknesses.md)
 
 | # | Person | Status | Clock | Notes |
 |---|--------|--------|-------|-------|
@@ -599,6 +600,6 @@ What exactly is the health claim, how do I observe the outcome, and does my eval
 
 ## Day complete (through Mon 9/7)
 
-Sunday S1–S5 logged. Monday Vincent + Haraldur mini-loops logged above. Remaining Monday: retrieval + other mini-loop slots + stop — not another five-hour loop.
+Sunday S1–S5 logged. Monday Vincent + Haraldur mini-loops logged above. Last correction sheet: [`2026-09-07_mock-weaknesses.md`](2026-09-07_mock-weaknesses.md). Then stop.
 
 ---

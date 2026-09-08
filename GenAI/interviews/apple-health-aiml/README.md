@@ -42,6 +42,7 @@
 | **2026-09-06** | **Tuesday full mock** (live order) | [`2026-09-06_tuesday-full-mock.md`](2026-09-06_tuesday-full-mock.md) — S1–S5 complete |
 | **2026-09-07** | Vincent **mini-loop** | Same file. ~15 min, stopped on Q4. Do not build a 4-week pipeline; kill the uncertainty. Circular HR label; random is not the baseline. |
 | **2026-09-07** | Haraldur **mini-loop** | Same file. ~30 min, stopped on Q8. Y ≠ report ≠ EHR; don’t pick the window from Se; threshold → model → product. 1/8 PPV was right. |
+| **2026-09-07** | **Last correction sheet** | [`2026-09-07_mock-weaknesses.md`](2026-09-07_mock-weaknesses.md) — not knowledge; slow the first 20 s. Read this, not another mock. |
 
 ## Loop (from Tyler)
 
