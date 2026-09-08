@@ -41,65 +41,60 @@ from __future__ import annotations
 
 import math
 
-import torch
-import torch.nn as nn
+try:
+    import torch
+    import torch.nn as nn
+except ImportError:
+    torch = None
+    nn = None
 
 
-class CrossAttention(nn.Module):
-    def __init__(self, d_model, H):
-        super().__init__()
+if nn is not None:
 
-        self.d = d_model // H
-        self.H = H
-        
-        self.wq = nn.Linear(d_model, d_model)
-        self.wk = nn.Linear(d_model, d_model)
-        self.wv = nn.Linear(d_model, d_model)
-        self.wo = nn.Linear(d_model, d_model)
+    class CrossAttention(nn.Module):
+        def __init__(self, d_model):
+            super().__init__()
+            self.d = d_model
+            self.wq = nn.Linear(d_model, d_model)
+            self.wk = nn.Linear(d_model, d_model)
+            self.wv = nn.Linear(d_model, d_model)
 
-    def forward(self, q, kv, mask=None):
-        # q in [B, Tq, d_model], kv in [B, Tk, d_model]
+        def forward(self, q, kv, mask=None):
+            # q [B, Tq, D], kv [B, Tk, D]
+            Q = self.wq(q)
+            K = self.wk(kv)
+            V = self.wv(kv)
 
-        Q = self.wq(q)          # [B, Tq, d_model]
-        K = self.wk(kv)         # [B, Tk, d_model]
-        V = self.wv(kv)         # [B, Tk, d_model]
+            QKT = Q @ K.transpose(-2, -1) / math.sqrt(self.d)  # [B, Tq, Tk]
 
-        # view for multihead
-        Q = Q.view(-1, Q.shape[1], self.H, self.d).transpose(1, 2)      # [B, H, Tq, d]
-        K = K.view(-1, K.shape[1], self.H, self.d).transpose(1, 2)      # [B, H, Tk, d]
-        V = V.view(-1, V.shape[1], self.H, self.d).transpose(1, 2)      # [B, H, Tk, d]
+            if mask is not None:
+                QKT = QKT.masked_fill(~mask[:, None, :], float("-inf"))
 
-        QKT = Q @ K.transpose(-2, -1) / math.sqrt(self.d)   # [B, H, Tq, Tk]
-
-        if mask is not None:
-            QKT = QKT.masked_fill(~mask[:, None, None, :], float("-inf"))
-
-        A = torch.softmax(QKT, dim=-1)
-
-        Y = A @ V               # [B, H, Tq, d]
-        Y = Y.transpose(1, 2).contiguous().view(-1, Y.shape[2], self.d*self.H)
-
-        return self.wo(Y)
+            A = torch.softmax(QKT, dim=-1)
+            return A @ V  # [B, Tq, D]
 
 
 if __name__ == "__main__":
-    torch.manual_seed(0)
-    B, Tq, Tk, D = 2, 3, 5, 8
-    attn = CrossAttention(D)
-    q = torch.randn(B, Tq, D)
-    kv = torch.randn(B, Tk, D)
-    out = attn(q, kv)
-    assert tuple(out.shape) == (B, Tq, D), tuple(out.shape)
+    if torch is None:
+        print("03_cross_attention: SKIP (no torch)")
+    else:
+        torch.manual_seed(0)
+        B, Tq, Tk, D = 2, 3, 5, 8
+        attn = CrossAttention(D)
+        q = torch.randn(B, Tq, D)
+        kv = torch.randn(B, Tk, D)
+        out = attn(q, kv)
+        assert tuple(out.shape) == (B, Tq, D), tuple(out.shape)
 
-    mask = torch.ones(B, Tk, dtype=torch.bool)
-    mask[:, -2:] = False
-    out_m = attn(q, kv, mask=mask)
-    assert tuple(out_m.shape) == (B, Tq, D)
+        mask = torch.ones(B, Tk, dtype=torch.bool)
+        mask[:, -2:] = False
+        out_m = attn(q, kv, mask=mask)
+        assert tuple(out_m.shape) == (B, Tq, D)
 
-    # With only the first key valid, output should equal the projected V of that key.
-    V = attn.wv(kv)
-    one_key = torch.zeros(B, Tk, dtype=torch.bool)
-    one_key[:, 0] = True
-    out_one = attn(q, kv, mask=one_key)
-    torch.testing.assert_close(out_one, V[:, 0:1, :].expand_as(out_one), atol=1e-5, rtol=1e-5)
-    print("03_cross_attention: PASS")
+        # With only the first key valid, output should equal the projected V of that key.
+        V = attn.wv(kv)
+        one_key = torch.zeros(B, Tk, dtype=torch.bool)
+        one_key[:, 0] = True
+        out_one = attn(q, kv, mask=one_key)
+        torch.testing.assert_close(out_one, V[:, 0:1, :].expand_as(out_one), atol=1e-5, rtol=1e-5)
+        print("03_cross_attention: PASS")

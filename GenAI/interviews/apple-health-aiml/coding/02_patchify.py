@@ -39,12 +39,19 @@ from __future__ import annotations
 
 
 def patchify(x, patch_size, stride):
-    raise NotImplementedError
+    P, T, S = patch_size, len(x), stride
+    assert S > 0 and P > 0
+
+    ret = []
+    for i in range(0, T - P + 1, S):
+        ret.append(x[i:i + P])
+    return ret
 
 
 def patchify_torch(x, patch_size, stride):
-    """x: torch.Tensor [T, C] -> [N, P, C]. Optional."""
-    raise NotImplementedError
+    """x: torch.Tensor [T, C] -> [N, P, C]."""
+    # unfold time: [T, C] -> [N, C, P] -> [N, P, C]
+    return x.unfold(0, patch_size, stride).permute(0, 2, 1)
 
 
 if __name__ == "__main__":

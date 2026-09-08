@@ -29,13 +29,22 @@ Follow-ups:
 
 from __future__ import annotations
 
+from collections import deque
+import heapq
 
 class TopKWindow:
     def __init__(self, k, window):
-        raise NotImplementedError
+        self.k = k
+        self.window = window
+        self.q = deque()
 
     def add(self, timestamp, score):
-        raise NotImplementedError
+        self.q.append((timestamp, score))
+
+        while len(self.q) > 0 and timestamp - self.q[0][0] > self.window:
+            self.q.popleft()
+
+        return heapq.nlargest(self.k, self.q, key=lambda x: (x[1], x[0]))
 
 
 if __name__ == "__main__":

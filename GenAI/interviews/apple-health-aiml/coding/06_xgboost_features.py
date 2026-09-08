@@ -50,8 +50,55 @@ from __future__ import annotations
 import numpy as np
 
 
+def _stats5(x):
+    if len(x) == 0:
+        return [0.0, 0.0, 0.0, 0.0, 0.0]
+    return [
+        float(np.mean(x)),
+        float(np.std(x)),
+        float(np.min(x)),
+        float(np.max(x)),
+        float(np.median(x)),
+    ]
+
+
 def extract_features(episode):
-    raise NotImplementedError
+    accel = np.asarray(episode["accel"], dtype=float)
+    hr = np.asarray(episode["hr"], dtype=float)
+    ts = np.asarray(episode["timestamps"], dtype=float)
+    feat = []
+
+    if accel.ndim == 1:
+        accel = accel.reshape(-1, 1)
+
+    if len(accel) == 0:
+        feat.extend([0.0] * 20)  # 15 axis + 3 mag + 2 diffs
+    else:
+        for c in range(3):
+            col = accel[:, c] if c < accel.shape[1] else []
+            feat.extend(_stats5(col))
+        mag = np.sqrt((accel ** 2).sum(axis=1))
+        feat.extend([float(np.mean(mag)), float(np.std(mag)), float(np.max(mag))])
+        if len(mag) > 1:
+            d = np.diff(mag)
+            feat.extend([float(np.mean(np.abs(d))), float(np.std(d))])
+        else:
+            feat.extend([0.0, 0.0])
+
+    feat.extend(_stats5(hr))
+
+    if len(hr) >= 2 and len(ts) == len(hr):
+        t = ts - ts[0]
+        t_c = t - np.mean(t)
+        den = float(np.sum(t_c * t_c))
+        slope = float(np.sum(t_c * (hr - np.mean(hr))) / den) if den > 0 else 0.0
+    else:
+        slope = 0.0
+    feat.append(slope)
+
+    duration = float(ts[-1] - ts[0]) if len(ts) >= 2 else 0.0
+    feat.extend([duration, float(len(accel)), float(len(hr))])
+    return np.asarray(feat, dtype=float)
 
 
 if __name__ == "__main__":
