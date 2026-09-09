@@ -1,6 +1,6 @@
 # Prep — Apple Health AIML virtual on-site (hub)
 
-**Status:** Active. Live **Tue 2026-09-08** (Jonathan 11:05 → Yujie 1:05 → Chung-Cheng 2:05 → Haraldur 3:05 → Vincent 4:05). Same five. **Jaya dropped.** Rescheduled 2026-09-02 (sick).  
+**Status:** Virtual on-site **Tue 2026-09-08 all five done** — wait. Day wrap: [`2026-09-08_onsite-debrief.md`](2026-09-08_onsite-debrief.md). Jonathan: [`2026-09-08_onsite-jonathan-debrief.md`](2026-09-08_onsite-jonathan-debrief.md). Yujie: [`2026-09-08_onsite-yujie-debrief.md`](2026-09-08_onsite-yujie-debrief.md). Chung-Cheng not written up. Haraldur / Vincent thin in the day wrap. **Jaya dropped.**  
 **This week:** [`2026-09-03_four-day-final-plan.md`](2026-09-03_four-day-final-plan.md) (second cycle — transfer, not recall).  
 **Tonight / AM:** [`2026-09-07_mock-weaknesses.md`](2026-09-07_mock-weaknesses.md) — last correction sheet; not another mock.  
 **Invite:** [`2026-08-26_virtual-onsite-invite.md`](2026-08-26_virtual-onsite-invite.md) (updated 2026-09-02)  
@@ -16,11 +16,11 @@
 
 | When | Person | Sheet |
 |------|--------|--------|
-| Tue 11:05 | **Jonathan Bourim** | [`2026-08-27_onsite-jonathan.md`](2026-08-27_onsite-jonathan.md) — **opens**. Primary map: **research depth + rigor**; small pad contingency. Tue 9/1 mock: [`2026-09-01_onsite-jonathan-research-rigor.md`](2026-09-01_onsite-jonathan-research-rigor.md) (Q5 missed: degrees of freedom). Sat 9/5 3Q: [`2026-09-04_onsite-second-cycle-mocks.md`](2026-09-04_onsite-second-cycle-mocks.md) — DoF now spoken (TR mix kill) |
-| Tue 1:05 | **Yujie Li** | [`2026-08-27_onsite-yujie.md`](2026-08-27_onsite-yujie.md) — four modules: encode TS → multimodal arch → clocks → diagnose / bakeoff. Second cycle: [`2026-09-05_yujie-advanced.md`](2026-09-05_yujie-advanced.md). Fri 9/4 mock: [`2026-09-04_onsite-second-cycle-mocks.md`](2026-09-04_onsite-second-cycle-mocks.md) |
-| Tue 2:05 | **Chung-Cheng Chiu** | [`2026-08-27_onsite-chung-cheng.md`](2026-08-27_onsite-chung-cheng.md) — parallelism + profiling. **Largest study delta**. Tue 9/1 30-min: [`2026-09-01_onsite-chung-cheng-training-infra.md`](2026-09-01_onsite-chung-cheng-training-infra.md) · challenging mock: [`2026-09-01_onsite-chung-cheng-challenging-practice.md`](2026-09-01_onsite-chung-cheng-challenging-practice.md) (Q5 missed: global batch) |
-| Tue 3:05 | **Haraldur Hallgrímsson** | [`2026-08-27_onsite-haraldur.md`](2026-08-27_onsite-haraldur.md) — most Apple-Health-specific. **Do not assume DL wins**. Fri 9/4 Lesson 1 mock: [`2026-09-04_onsite-second-cycle-mocks.md`](2026-09-04_onsite-second-cycle-mocks.md) |
-| Tue 4:05 | **Vincent Chan** | [`2026-08-27_onsite-vincent.md`](2026-08-27_onsite-vincent.md) — **practice day** (Blocks 0–9). Thu log: [`2026-09-03_onsite-vincent-practice.md`](2026-09-03_onsite-vincent-practice.md). Sat 9/5 basic: [`2026-09-04_onsite-second-cycle-mocks.md`](2026-09-04_onsite-second-cycle-mocks.md) — n=20 ≠ OOD; no disclaimer-ship. Last of five. Stories: [`2026-08-30_behavioral-stories.md`](2026-08-30_behavioral-stories.md) |
+| Tue 11:05 | **Jonathan Bourim** | **Done.** Live = ImagenFew rigor (1D→2D, DE, EDM, eval fairness, constraints). [`2026-09-08_onsite-jonathan-debrief.md`](2026-09-08_onsite-jonathan-debrief.md). Prep leftover: [`2026-08-27_onsite-jonathan.md`](2026-08-27_onsite-jonathan.md) |
+| Tue 1:05 | **Yujie Li** | **Done.** Live ≠ encoding sheet. [`2026-09-08_onsite-yujie-debrief.md`](2026-09-08_onsite-yujie-debrief.md). Prep leftover: [`2026-08-27_onsite-yujie.md`](2026-08-27_onsite-yujie.md) |
+| Tue 2:05 | **Chung-Cheng Chiu** | **Done.** Hour not written up. Prep leftover: [`2026-08-27_onsite-chung-cheng.md`](2026-08-27_onsite-chung-cheng.md) |
+| Tue 3:05 | **Haraldur Hallgrímsson** | **Done.** Lived as **time-series representations** (details not recovered). Thin: [`2026-09-08_onsite-debrief.md`](2026-09-08_onsite-debrief.md). Prep leftover: [`2026-08-27_onsite-haraldur.md`](2026-08-27_onsite-haraldur.md) |
+| Tue 4:05 | **Vincent Chan** | **Done.** Infra for fitness team (self-weak) + menstrual onset; ~15 min over. Thin: [`2026-09-08_onsite-debrief.md`](2026-09-08_onsite-debrief.md). Prep leftover: [`2026-08-27_onsite-vincent.md`](2026-08-27_onsite-vincent.md) |
 | Tue last 3–5 min | **All five** | [`2026-09-05_questions-for-interviewers.md`](2026-09-05_questions-for-interviewers.md) — 5 options each, interview order; pick 1–2. Do not name-drop papers |
 
 **Jaya** was Fri 10:05 — **dropped**. No prep sheet.
@@ -81,7 +81,7 @@ Skip unless a mock fails: RoPE derivation, RMSNorm, FlashAttention internals, Re
 
 ## After live day
 
-Tue night: `2026-09-08_onsite-debrief.md`.
+Logged: [`2026-09-08_onsite-debrief.md`](2026-09-08_onsite-debrief.md) (day wrap) · [`2026-09-08_onsite-jonathan-debrief.md`](2026-09-08_onsite-jonathan-debrief.md) · [`2026-09-08_onsite-yujie-debrief.md`](2026-09-08_onsite-yujie-debrief.md). Recover Chung-Cheng and Haraldur probes if they come back. Do not email interviewers.
 
 ## Hand-off
 

@@ -38,10 +38,10 @@ Default length: **~90 seconds**. Stop. If they lean in, add WHY + REFLECTION onl
 
 | Person | Most likely cards |
 |--------|-------------------|
-| **Vincent** | 1, 3, 4 (leadership = discriminating experiment + kill). **A/B** if mentorship or deadline |
+| **Vincent** | **Live 9/8:** infra + menstrual product, not the card list. Thin: [`2026-09-08_onsite-debrief.md`](2026-09-08_onsite-debrief.md). Prep leftover: 1, 3, 4; **A/B** if mentorship or deadline |
 | **Jonathan** | 2, 4 (claim vs evidence) |
 | **Haraldur** | 4, 5 (slice gates; messy sensors; don’t assume DL) |
-| **Yujie** | 2 (encoding bakeoff) |
+| **Yujie** | **Live 9/8: system thinking, not Card 2.** ImagenTime (method others used) + Bosch-lite + students decompose. Debrief: [`2026-09-08_onsite-yujie-debrief.md`](2026-09-08_onsite-yujie-debrief.md). **Vincent: do not replay 1 or 5-lite** |
 | **Chung-Cheng** | usually none — stay on infra |
 
 ---

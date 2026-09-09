@@ -1,5 +1,9 @@
 # On-site — Vincent Chan (Tue 9/8 4:05 PDT)
 
+**Live 2026-09-08:** background, then **infra for the Apple fitness team** (self-weak: program not systems) then **predict menstrual onset** (data / labels / PoC / metrics / split); ran **~15 min over**. Thin: [`2026-09-08_onsite-debrief.md`](2026-09-08_onsite-debrief.md). Keep the cards below as unused prep.
+
+**Yujie already ran system thinking (1:05).** ImagenTime most of her hour; Bosch-lite; students decompose; non-reports via their manager; distillation as ambiguity. Do **not** replay Cards 1 or 5-lite. Use **#4 then #3**; collab = full Card 5; mentorship = **A**. Debrief: [`2026-09-08_onsite-yujie-debrief.md`](2026-09-08_onsite-yujie-debrief.md).
+
 **Track:** technical leadership / system thinking + multimodal **strategy**. **Conf:** medium-high. Last of five same day — energy, not a fresh Friday morning.  
 **Who (private):** Eng Manager, Health AIML. Recruits multimodal LLMs / fusion / VLMs / TS. Stats PhD (Wisconsin); menstrual-cycle patent. Thanked on TS-LLM.  
 **Hub:** [`2026-08-27_onsite-prep.md`](2026-08-27_onsite-prep.md)

@@ -1,5 +1,7 @@
 # On-site — Yujie Li (Tue 9/8 1:05 PDT)
 
+**Live 2026-09-08:** she ran **system thinking**, not this encoding sheet. Log: [`2026-09-08_onsite-yujie-debrief.md`](2026-09-08_onsite-yujie-debrief.md). Keep the modules below as unused prep, not as what happened.
+
 Track: Tyler #2 — multimodal architecture and time-series encoding. Conf: high.
 
 Fri 9/4 Blocks 1–5 mock: [`2026-09-04_onsite-second-cycle-mocks.md`](2026-09-04_onsite-second-cycle-mocks.md) — physical time ≠ token index; Q5 P×C still unpaid. Do not redo 1–5; Saturday is Block 14/11.

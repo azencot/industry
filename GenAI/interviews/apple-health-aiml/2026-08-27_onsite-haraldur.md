@@ -1,5 +1,7 @@
 # On-site — Haraldur Hallgrímsson (Tue 9/8 3:05 PDT)
 
+**Live 2026-09-08:** hour felt good; object was **time-series representations**, not the PPV / ship sheet. Details not recovered same evening. Thin: [`2026-09-08_onsite-debrief.md`](2026-09-08_onsite-debrief.md). Keep the modules below as unused prep.
+
 Track: health / applied ML / wearable TS. Conf: very high. Most Apple-Health-specific hour.
 
 Fri 9/4 Lesson 1 mock: [`2026-09-04_onsite-second-cycle-mocks.md`](2026-09-04_onsite-second-cycle-mocks.md) — TP = 0.9×sick under pressure; say **no** to ship on AUROC; PPV undefined if no alarms. Next: participant-disjoint / leakage, not another metric quiz.

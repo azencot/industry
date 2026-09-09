@@ -26,6 +26,8 @@ Pick **1–2** per person. Do not dump all five. If they already answered it whi
 
 ## 1. Jonathan — 11:05–11:50 PDT
 
+**Live 2026-09-08:** asked **two** questions — (1) what is most important to work on for **healthcare**; (2) how work **splits between eng and research**. Close to options 3 and 5. **His answers not recovered** — log tonight if they come back. Debrief: [`2026-09-08_onsite-jonathan-debrief.md`](2026-09-08_onsite-jonathan-debrief.md). Do not email him.
+
 **Seat:** Applied Research Engineer, Health AI, Seattle. Self-describes as a software engineer. Opens the day.
 
 No public papers. Ask about current work, product interest, and the research→code path. Your hook: dual-tower collator, staged training, eval gates — you have lived the engineering of a multimodal run.
@@ -65,6 +67,8 @@ No public papers. Ask about current work, product interest, and the research→c
 ---
 
 ## 2. Yujie — 1:05–1:50 PDT
+
+**Live 2026-09-08:** **no time for questions.** She ran system thinking (ImagenTime, collab, non-reports, decompose, ambiguity). Debrief: [`2026-09-08_onsite-yujie-debrief.md`](2026-09-08_onsite-yujie-debrief.md). Do not email her.
 
 **Seat:** Senior MLE, Seattle; health AI. Public work: wearable **behavioral** foundation model — tokenize long irregular series, bake off architectures, complementary to a raw-sensor (PPG) model. Earlier: computer vision (image–text, 3D).
 
@@ -106,6 +110,8 @@ Senior questions: encoding, fusion, evidence that both views are used. Do not re
 
 ## 3. Chung-Cheng — 2:05–2:50 PDT
 
+**Live 2026-09-08:** hour not written up; questions asked (if any) not recovered. Do not email him.
+
 **Seat:** Principal RE, Apple AI/ML (Mountain View). Cross-org, **not** Health. Public: large-scale FM training, modular hardware-agnostic trainer, Apple Intelligence FMs; earlier speech/ASR (end-to-end listen-attend-spell, spectrogram augmentation).
 
 Senior questions: diagnosis at scale, modularity when the *input* stops being text, on-device vs server. Do not ask “do you use AXLearn.” Do not volunteer AFM.
@@ -146,6 +152,8 @@ Senior questions: diagnosis at scale, modularity when the *input* stops being te
 
 ## 4. Haraldur — 3:05–3:50 PDT
 
+**Live 2026-09-08:** ran **time-series representations**; details and closing questions not recovered. Thin: [`2026-09-08_onsite-debrief.md`](2026-09-08_onsite-debrief.md). Do not email him.
+
 **Seat:** Senior Applied RS, Health AI, Seattle. Public: motion/sensor FMs, TS-reasoning with LLMs, multimodal mood/periodicity work; LinkedIn (do not cite) on sensor FMs contributing to Watch hypertension notifications and AirPods calorie estimation.
 
 Keep questions **applied and concrete** — labels, robustness, operating points — not a three-year agenda.
@@ -185,6 +193,8 @@ Keep questions **applied and concrete** — labels, robustness, operating points
 ---
 
 ## 5. Vincent — 4:05–4:50 PDT
+
+**Live 2026-09-08:** overtime (~15 min). Threads were fitness infra + menstrual onset, not this Q list. Thin: [`2026-09-08_onsite-debrief.md`](2026-09-08_onsite-debrief.md). Do not email him.
 
 **Seat:** Eng Manager, Health AIML. Recruits multimodal LLMs / fusion / VLMs. Stats PhD. Named on a cycle-tracking/prediction patent (HR + calendar-like signals). Thanked on the TS-LLM paper. Last of five — energy; this is the program question.
 

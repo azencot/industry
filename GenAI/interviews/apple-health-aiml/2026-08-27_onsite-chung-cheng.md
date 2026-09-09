@@ -1,5 +1,7 @@
 # On-site — Chung-Cheng Chiu (Tue 9/8 2:05 PDT)
 
+**Live 2026-09-08:** hour happened; **not written up**. Append if it comes back (bottleneck vs tool names; global batch). Day wrap: [`2026-09-08_onsite-debrief.md`](2026-09-08_onsite-debrief.md).
+
 Track: LLM training and infrastructure. Conf: very high.
 
 Who (private): Principal RE, Apple AI/ML (Mountain View). AFM reports; AXLearn author (arXiv:2507.05411). Cross-org, not Health.
