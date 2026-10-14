@@ -100,9 +100,13 @@ Headline for yourself: they want a principal who **owns scientific ML on physica
 
 ## 3. Spoken scripts
 
-### 90-second intro
+### Intro (~2 min)
 
-> I build machine learning that starts from dynamical systems theory, mostly operator methods, and ends as a model you can train and evaluate. The model has to simulate a process forward — faster, or with less data, than treating the dynamics as a black box. When real trajectories are scarce, I use generative models for that same job, so you get a distribution of outcomes rather than one guess. I have a PhD from the Technion and publish in NeurIPS, ICML, and ICLR. I’m a US permanent resident, based in Seattle, looking for a full-time hands-on principal role. This seat fits because Simcenter is making that same move: take structure from the physical system and turn it into a model that runs in place of a slow solver. I have done that for dynamics.
+Do not open with “I’m an associate professor.” Prior loops heard the title as managerial. Start on the work. If she asks what you do now: associate professor, looking for a hands-on principal IC role, based in Seattle.
+
+> The common thread in my research has been learning representations and models of complex dynamical systems. A substantial part of my earlier work was on Koopman operators and learning representations in which nonlinear dynamics become easier to model. More recently, I’ve worked extensively on generative and probabilistic modeling of dynamics, particularly for time series, including irregularly sampled systems. Over the last year I’ve also worked on multimodal models, specifically how to make a foundation model use temporal and dynamical information rather than only text and images. That’s one reason I find this Siemens role interesting. Scientific machine learning and AI for simulation bring these areas together. Siemens already has PhysicsAI and RomAI for learning physical systems, and the executable-twin work connects simulation with agents. The question that interests me is how those agents reason about physical dynamics, generalize across systems and operating conditions, and know when a learned model is reliable enough for a decision — with the physical model checking the decision. That is the natural next step for me: dynamical systems, generative modeling, and the recent multimodal work.
+
+If she jumps in early, stop after PhysicsAI and RomAI. The last two sentences repeat the question.
 
 ### Why Siemens / why this role (20–30s)
 
@@ -177,6 +181,7 @@ Avoid: solver or PINN trivia, compensation first, and anything that sounds like 
 | Avoid | Do |
 |-------|-----|
 | “I run a lab / I supervise students…” | “I designed the model and owned the experiments and the eval…” |
+| Opening with “I’m an associate professor” | Start on the work. Title only if she asks your current role, then hands-on principal IC |
 | Opening as a time-series forecasting researcher | Koopman and learned simulation first. Forecasting is the pocket in §3 |
 | Opening on the vision-language stack or Apple Health | Dynamical systems and reduced-order simulation |
 | “My work is PhysicsAI” or quoting 1000× as your result | PhysicsAI is their geometric-DL product. RomAI / reduced-order dynamics is the bridge. The 1000× figure is Siemens’ claim |
