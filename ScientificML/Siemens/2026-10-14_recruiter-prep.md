@@ -108,6 +108,22 @@ Do not open with “I’m an associate professor.” Prior loops heard the title
 
 If she jumps in early, stop after PhysicsAI and RomAI. The last two sentences repeat the question.
 
+### Three beats for Danielle
+
+Do not recite these on top of the intro. Pull one when she asks.
+
+**Science** — if she wants the short version of the work:
+
+> I’ve spent much of my career modeling complex dynamical systems, from Koopman representations to generative and probabilistic models.
+
+**Seniority** — if she asks about level, scope, or leadership. Say it, then the second sentence. “Leading researchers” alone reads as a people-manager pitch, and this seat is a hands-on principal.
+
+> As a professor I’ve been responsible not only for developing methods, but for identifying research directions, leading researchers and collaborations, and taking ambiguous problems from an initial idea through successful research outcomes. The role I want is still hands-on: I lead the science and the collaborations, not a people-manager seat.
+
+**Motivation** — if she asks why Siemens, or why leave academia:
+
+> What attracts me to Siemens is the opportunity to take this kind of scientific ML beyond papers and have it become part of real simulation and engineering systems.
+
 ### Why Siemens / why this role (20–30s)
 
 > PhysicsAI and the rest of that Simcenter line take a physical system and learn a model so engineers do not rerun the expensive solver. I do the same kind of thing with operator methods: the structure I put in is how the process evolves. I want that work where the model has to land in a product, inside a company that owns the physical systems. I’m in Washington, so the hybrid setup matches where I live.
