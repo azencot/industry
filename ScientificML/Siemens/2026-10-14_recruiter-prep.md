@@ -6,7 +6,7 @@
 **Referral:** **Danielle Robinson** — she sent the resume. Different person. Do not recite her loop notes.  
 **Format:** Brief recruiter call — your experience, an overview of the opportunity, your questions.
 
-**Your goal:** clear the soft gate. Leave her able to say: *hands-on scientific-ML IC, learned dynamical systems and simulation, PhD, Seattle / Washington, available full-time, genuinely wants this seat.* Time series is a pocket if she asks, not the opener.
+**Your goal:** clear the soft gate. Leave her able to say: *hands-on IC who puts dynamical systems theory, mostly operator methods, into practical ML; same bet as Simcenter; PhD; Seattle; wants this seat.* Time series is a pocket if she asks, not the opener.
 
 Thread: [`2026-10-14_recruiter-correspondence.md`](2026-10-14_recruiter-correspondence.md). Hub: [`README.md`](README.md).
 
@@ -37,11 +37,16 @@ ChatGPT’s priority order is right in spirit. Two corrections: there is no sing
 | Skip unless curious | [Feb 2026 digital-enterprise post](https://blog.siemens.com/2026/02/ai-and-the-digital-twin-combine-to-supercharge-the-digital-enterprise/) | — | Exists. The reduced-order point is clearer on RomAI and the Sep 2026 post. |
 | Hub, don’t read end to end | [Engineering data science and AI](https://www.siemens.com/en-us/products/simcenter/engineering-data-science-ai/) | 2 min | One map: PhysicsAI, RomAI, reduced-order modeling, executable twins. |
 
-### How your work maps — say this only if she asks what you do
+### How your work maps
+
+**Identity:** you put dynamical systems theory and practice — mostly the operator literature — into machine learning someone can train and evaluate.
+
+**Where that matches Simcenter:** the portfolio’s bet is the same shape. Physical structure goes into a learned model so you do not rerun the expensive solver. PhysicsAI is the shape-and-mesh version of that bet. RomAI is the dynamics version (“AI with dynamic system theory”). You match the bet, and you match the dynamics product more than the mesh product.
 
 | Your research | Say | Do not say |
 |---------------|-----|------------|
-| Koopman / learned dynamics | A representation where a nonlinear process evolves in a simpler way, so the reduced model is fast enough to run. | “I built PhysicsAI” or “I do geometric deep learning on CAD.” |
+| Operator / dynamical systems → ML | Same move as Simcenter: structure from the physical system, then a model that runs. Yours is how a process evolves. | “My work is PhysicsAI” or “I do geometric deep learning on CAD.” |
+| Koopman, if she asks what the operator part is | A representation where a nonlinear process evolves in a simpler way, so the reduced model is fast enough to run. | A theory lecture. |
 | Generative models | When real trajectories are short, a generator is a simulator, and it gives you a **distribution**, not one guess. | “My diffusion papers are their uncertainty-quantification product.” |
 | Time series | Forecasting and representation for sensor-like series, with an eval gate. Second pillar. | Opening the call as a forecasting researcher. |
 
@@ -89,7 +94,7 @@ Headline for yourself: they want a principal who **owns scientific ML on physica
 | PI title reads managerial | Designed, implemented, trained, ablated, killed. |
 | Traveling, no cell | Already explained. Teams is the plan. Do not re-negotiate the link. |
 
-**One sentence for yourself:** AI4simulation and dynamical models are the lead; time series is the second pillar; Washington hybrid matches Seattle.
+**One sentence for yourself:** I put dynamical systems theory, mostly operator methods, into practical ML. That is Simcenter’s bet. PhysicsAI does it for shape; I have done it for dynamics.
 
 ---
 
@@ -97,21 +102,27 @@ Headline for yourself: they want a principal who **owns scientific ML on physica
 
 ### 90-second intro
 
-> I’m an applied ML scientist working on scientific machine learning for dynamical systems. The problem I care about is simulation that is too expensive or too data-hungry to run the way industry needs it. My main line is Koopman and operator models: learn a representation of the dynamics so a complex process can be rolled forward quickly and still be checked against the real behavior. When there are not enough real trajectories, I use generative models as the simulator, which also gives a distribution over outcomes rather than a single guess. I have a PhD from the Technion and publish in NeurIPS, ICML, and ICLR. I’m a US permanent resident, based in Seattle, looking for a full-time hands-on principal role. This seat fits because it is scientific ML for physical systems — surrogate and reduced-order simulation that has to become something engineering can run.
+> I build machine learning that starts from dynamical systems theory, mostly operator methods, and ends as a model you can train and evaluate. The model has to simulate a process forward — faster, or with less data, than treating the dynamics as a black box. When real trajectories are scarce, I use generative models for that same job, so you get a distribution of outcomes rather than one guess. I have a PhD from the Technion and publish in NeurIPS, ICML, and ICLR. I’m a US permanent resident, based in Seattle, looking for a full-time hands-on principal role. This seat fits because Simcenter is making that same move: take structure from the physical system and turn it into a model that runs in place of a slow solver. I have done that for dynamics.
 
 ### Why Siemens / why this role (20–30s)
 
-> Siemens already ships this idea: high-fidelity simulation is the reference, and a learned reduced model is what runs fast enough for design exploration or next to the real asset. That is the scientific problem I have been on — learned dynamics, not a generic language model. I want that work inside a company that owns the physical systems. I’m in Washington, so the hybrid setup matches where I live.
+> PhysicsAI and the rest of that Simcenter line take a physical system and learn a model so engineers do not rerun the expensive solver. I do the same kind of thing with operator methods: the structure I put in is how the process evolves. I want that work where the model has to land in a product, inside a company that owns the physical systems. I’m in Washington, so the hybrid setup matches where I live.
 
 ### Recent work (45–60s, only if she asks)
 
 > A line I keep coming back to is simulation from learned dynamics. Earlier that was Koopman and operator models of sequential processes. More recently I treated generation itself as the simulator: when you do not have enough real series, a generative model has to produce trajectories you would actually trust, including very long ones. In parallel I have been strict about evaluation — baselines first, ablations, and killing a mix when a slice gets worse. That is the working style I would bring: hypothesis, experiment, and a decision the team can act on.
 
-If she asks about deep learning at scale, add one sentence on multimodal training (PyTorch, multi-GPU, eval gates) as evidence you can run heavy experiments. Do not make the VLM the job pitch.
-
 ### Time series in one breath (only if she asks)
 
 > Time series shows up as forecasting, as generative models for short and long series, and as irregular sampling. I start from a baseline and I change the representation only when the baseline loses on the decision metric.
+
+### Multimodal reasoning (only if she asks about language, agents, or recent work beyond dynamics)
+
+The VLM is the layer **above** the twin. Simcenter already simulates a state and checks a what-if against physics. Their executable-twin writeup adds agents that are supposed to name a cause and prescribe an action. Your project is practice at that interface for series: more than one view of the same process, a question in, an answer out, and an eval that rejects a fluent wrong answer.
+
+> I have also trained multimodal models that answer questions about a series — classify, give a number, explain a temporal relation — and I only keep a change when the answer is right, not when the loss drops. In a Simcenter setting I would put that above the twin, not inside it. The reasoner can propose a decision. The physics model accepts or rejects it. A language model that invents the physics is the failure mode their own writeup warns about.
+
+**Research question, for a scientist later — not for Danielle.** Do not teach the LLM physics. Teach it to query a world model. PhysicsAI and RomAI already predict; the executable-twin writeup already claims what-if and a prescribed action. The open problems are grounding (the proposal has to obey the physics), generalization to a new objective without a new training run, and uncertainty (use the cheap surrogate, or pay for the solver, or abstain). You have not built the thermal-management loop. Do not describe it as a system you have. Do not ask Danielle whether the team connects foundation models to PhysicsAI or RomAI. Save that for the hiring manager.
 
 ---
 
