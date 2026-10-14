@@ -2,7 +2,7 @@
 
 Personal workspace for industry job prep: Amazon FinTech interviews, general forecasting-role practice, generative AI role prep, Amazon SCOT relationship/contribution prep, LeetCode, and compounding interview artifacts.
 
-**New session?** Read in order: this file → [`AGENTS.md`](AGENTS.md) → active track INDEX (`Amazon_FinTech`, `Forecasting`, `GenAI`, or `Amazon_SCOT`).
+**New session?** Read in order: this file → [`AGENTS.md`](AGENTS.md) → active track INDEX (`Amazon_FinTech`, `Forecasting`, `GenAI`, `ScientificML`, or `Amazon_SCOT`).
 
 ---
 
@@ -14,6 +14,7 @@ Personal workspace for industry job prep: Amazon FinTech interviews, general for
 | [`Amazon_FinTech/`](Amazon_FinTech/) | Role-specific prep: plan, stories, debriefs, mocks, CV | Before FinTech interview work |
 | [`Forecasting/`](Forecasting/) | General industry forecasting practice (not SCOT) | When targeting forecasting AS roles |
 | [`GenAI/`](GenAI/) | Generative AI / LLM role interviews and prep (not forecasting) | When targeting GenAI roles |
+| [`ScientificML/`](ScientificML/) | Scientific ML / physical-AI principal AS roles (not forecasting, not GenAI) | Siemens and similar loops |
 | [`Amazon_SCOT/`](Amazon_SCOT/) | SCOT relationship track: contacts, collab, contribution pitch | Before Boris / Mengfei / SCOT calls |
 | [`code/`](code/) | LeetCode solutions (Python); `_practice` = scratch attempts | Coding prep, timed drills |
 | [`talks/`](talks/) | Dual-use talks (HTML decks) | Bosch 25-min cut now; community talks later — not company-loop notes. Ongoing TS-VLM lit: [`talks/lit-search.md`](talks/lit-search.md) |
@@ -50,6 +51,15 @@ Personal workspace for industry job prep: Amazon FinTech interviews, general for
 - **Company / call prep:** [`GenAI/interviews/`](GenAI/interviews/) — Apple Health AIML: recruiter **2026-08-12**; HM screen **2026-08-21** Shirley Ren — [`HM debrief`](GenAI/interviews/apple-health-aiml/2026-08-21_hm-screen-debrief.md); tech screen **2026-08-25** Feng Zhu — [`debrief`](GenAI/interviews/apple-health-aiml/2026-08-25_tech-screen-debrief.md); **virtual on-site Tue 2026-09-08 all five done** — day wrap [`onsite debrief`](GenAI/interviews/apple-health-aiml/2026-09-08_onsite-debrief.md) · [Jonathan](GenAI/interviews/apple-health-aiml/2026-09-08_onsite-jonathan-debrief.md) · [Yujie](GenAI/interviews/apple-health-aiml/2026-09-08_onsite-yujie-debrief.md); hub: [`onsite hub`](GenAI/interviews/apple-health-aiml/2026-08-27_onsite-prep.md); **Bosch RTC-NA:** technical hour **done 2026-08-27** — wait ([`debrief`](GenAI/interviews/bosch-rtc-tsfm/2026-08-27_technical-debrief.md) · [`HM debrief`](GenAI/interviews/bosch-rtc-tsfm/2026-08-13_hm-screen-debrief.md)); Sunnyvale **reloc required**
 - **Session notes:** [`GenAI/notes/`](GenAI/notes/)
 - **Related skill:** `/ml-deep-dive`
+
+---
+
+## ScientificML (scientific machine learning roles)
+
+- **Purpose:** Principal / senior applied scientist roles centered on scientific ML for physical systems — surrogates, operator learning, simulation, industrial time series
+- **Not** forecasting-AS loops ([`Forecasting/`](Forecasting/)); **not** GenAI / LLM loops ([`GenAI/`](GenAI/))
+- **Active:** **Siemens** Principal Applied Scientist (Job ID 523023, Washington hybrid) — recruiter **Danielle Chandler**, referral **Danielle Robinson**. Recruiter screen **Thu 2026-10-15** (Teams). Prep: [`ScientificML/Siemens/2026-10-14_recruiter-prep.md`](ScientificML/Siemens/2026-10-14_recruiter-prep.md)
+- **Details:** [`ScientificML/INDEX.md`](ScientificML/INDEX.md)
 
 ---
 

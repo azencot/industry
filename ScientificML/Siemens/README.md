@@ -1,0 +1,57 @@
+# Siemens — Principal Applied Scientist
+
+| | |
+|---|---|
+| **Role** | [Principal Applied Scientist](https://jobs.siemens.com/en_US/externaljobs/JobDetail/523023?source=Indeed) |
+| **Job ID** | 523023 |
+| **Org** | Data & Artificial Intelligence · Research & Development · Siemens Corporation |
+| **Level** | Experienced professional · senior **IC** (principal owns a capability area inside the pod) |
+| **Recruiter** | **Danielle Chandler** · [danielle.chandler.ext@siemens.com](mailto:danielle.chandler.ext@siemens.com) — `.ext` address |
+| **Referral** | **Danielle Robinson** (works at Siemens; sent the resume; gave the loop shape below) |
+| **Location** | **Any Siemens location in Washington** · **hybrid** |
+| **Posted** | 2026-09-17 |
+| **Status** | **Recruiter screen Thu 2026-10-15.** Microsoft **Teams**, not a cell call (abroad, no cell service). Exact clock time is the calendar invite. Tonight: read RomAI, PhysicsAI, executable twin — [`2026-10-14_recruiter-prep.md`](2026-10-14_recruiter-prep.md) §0a. |
+| **Comp (public JD)** | Base **$167,178–$226,236** + target incentive **15%** of base. Do not open with this. |
+
+## Active thread
+
+| Date | What | Notes |
+|------|------|-------|
+| **2026-10-14** | Chandler outreach | Resume via **Danielle Robinson**. Calendar link for a brief call: experience, overview of the opportunity, questions. |
+| **2026-10-14** | Omri reply | Happy to talk. No cell network while traveling; asked for Google Meet or Zoom. |
+| **2026-10-14** | Omri follow-up | Invite is a **Teams** link, not a phone call. “See you soon.” |
+| **2026-10-14** | Prep | [`2026-10-14_recruiter-prep.md`](2026-10-14_recruiter-prep.md). Full emails: [`2026-10-14_recruiter-correspondence.md`](2026-10-14_recruiter-correspondence.md). |
+
+## Loop (private — Danielle Robinson, 2026-10-14)
+
+Do **not** quote this back as “I heard your loop is…”. Use it to prepare. Ask the recruiter what the process is.
+
+| Stage | What Robinson said |
+|-------|--------------------|
+| This call | **High-level** overview of the team and of your work |
+| Later interviews | **ML breadth**, **ML depth**, **ML system design** |
+| Role focus | **Scientific machine learning** |
+| Why you | **AI4simulation** background is what they are looking for. **Time series** projects also exist. |
+
+## Role in one line
+
+Hands-on principal IC who owns a scientific capability — perception, language and agents, **time series**, control, planning, or **evaluation** — from an ambiguous industrial problem through hypothesis, experiment, and a model that runs in production with engineers and PMs.
+
+JD preferred center for this seat, per Robinson: **scientific ML for physical systems** (surrogate modeling, operator learning, physics-informed ML, geometry-aware ML, differentiable simulation, AI for semiconductor/EDA), plus industrial domains and time series.
+
+## People
+
+| Person | Role signal | Notes |
+|--------|-------------|--------|
+| **Danielle Chandler** | Recruiter (external address) | Process owner for this screen. Teams. |
+| **Danielle Robinson** | Siemens employee; referrer | Do not narrate her tips on the call. Two different Danielles. |
+
+Hiring manager not named yet.
+
+## Track boundary
+
+| Put here | Do not use as the lead |
+|----------|------------------------|
+| Operator learning, dynamical models, simulation, time series under physical constraints | Apple Health VLM scripts, Chronos-vs-LightGBM bakeoff, FinTech doc-IE |
+
+Shared profile: [`.cursor/skills/debrief/omri_azencot_experience.md`](../../.cursor/skills/debrief/omri_azencot_experience.md).
