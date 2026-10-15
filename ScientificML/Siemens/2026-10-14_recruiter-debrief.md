@@ -64,11 +64,20 @@ Chandler still said STAR is in this screen. Prepare both. Robinson is describing
 
 ## Practice before that screen
 
-Thu 15 through Sun 18. Three drills. Depth and system design wait for the three-hour loop.
+Phone screen is **Mon 2026-10-19** or **Tue 2026-10-20**. Files and the full drill list: [`coding/README.md`](coding/README.md). Open the problem file only. Do not open `*_solution.py` until your file runs.
 
-1. **Live coding that runs.** Write it in a file, run a few asserts, fix the failure out loud. A short LeetCode is only for that muscle. The screen questions are ML.
-2. **Three implementations, narrating shapes.**
-   - **DataLoader:** variable-length sequences, a `collate_fn`, batch tensor out.
-   - **Padding:** pad to the longest item in the batch, and a mask that is 0 on pads.
-   - **Attention:** `Q K^T / sqrt(d)`, mask, softmax, times `V`. Say what the mask does to a pad token.
-3. **STAR, four stories, only if time remains after the code runs.** Ambiguous scientific problem. A method you killed. A result with a number. Work with engineers. IC verbs. Do not lead with the lab.
+About **80–85%** of the coding time is these PyTorch problems. **15–20%** is easy Python (lists, dicts, two pointers, a sliding window) so the live-coding muscle stays warm. No DP, graphs, or obscure APIs.
+
+On every problem: state shapes, state assumptions, code without a Python loop when a tensor op will do, write 2–4 asserts, run them, fix the failure out loud.
+
+| Day | Date | Do |
+|-----|------|----|
+| 1 | **Thu 15** | **01 collate done** (runs; mask via broadcast). Still padding, padding mask, masked mean / loss, Dataset. Files 02–04, 13. |
+| 2 | **Fri 16** | Scaled dot-product attention, padding mask, causal mask, multi-head shapes. Files 05–08. One timed attention from scratch. |
+| 3 | **Sat 17** | `nn.Module`, train loop, eval loop, pairwise similarity, masked cross-entropy. Files 09–12, 15. One or two easy Python problems. |
+| 4 | **Sun 18** | Two 40–45 min mocks. Mock 1: variable-length batch + mask. Mock 2: attention. No solution file open. |
+| Screen morning | **Mon or Tue** | From memory only: collate, padding mask, attention, one training loop. Then 20–30 min ML breadth. No new topic. |
+
+STAR still belongs on this screen (Chandler). Four stories, after the code runs: ambiguous scientific problem, a method you killed, a result with a number, work with engineers. IC verbs. Do not lead with the lab.
+
+Before you walk in, you can write these without docs or autocomplete: custom `Dataset`, `collate_fn`, pad, padding mask, masked mean, masked loss, scaled dot-product attention, causal mask, padding+causal, multi-head reshape, a small `nn.Module`, train loop, eval loop, batched pairwise similarity, sliding-window time-series `Dataset`.

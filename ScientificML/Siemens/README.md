@@ -22,6 +22,7 @@
 | **2026-10-14** | Omri follow-up | Invite is a **Teams** link, not a phone call. “See you soon.” |
 | **2026-10-14** | Prep | [`2026-10-14_recruiter-prep.md`](2026-10-14_recruiter-prep.md). Full emails: [`2026-10-14_recruiter-correspondence.md`](2026-10-14_recruiter-correspondence.md). |
 | **2026-10-14** | **Recruiter screen — Chandler** | Org, not the seat. Advancing. Debrief: [`2026-10-14_recruiter-debrief.md`](2026-10-14_recruiter-debrief.md). |
+| **2026-10-15** | Phone-screen coding drills | PyTorch stubs + solutions. [`coding/`](coding/). Schedule in the [debrief](2026-10-14_recruiter-debrief.md). |
 
 ## Loop (Chandler, 2026-10-14 — the schedule)
 
