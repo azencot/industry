@@ -13,10 +13,21 @@ multi-head scores [B, H, Tq, Tk], i.e. shape [B, 1, 1, T].
 
 Build the [B, T] mask with torch.arange and broadcasting. No row loop.
 """,
+import torch
 
 def lengths_to_mask(lengths, tmax=None, valid_true=True):
-    raise NotImplementedError
+    if tmax is None:
+        tmax = int(lengths.max())
+
+    grid = torch.arange(tmax)[None, :]  # [1, tmax]
+    row_lengths = lengths[:, None]      # [B, 1]
+    mask = grid < row_lengths
+
+    if valid_true == False:
+        mask = ~mask
+
+    return mask
 
 
 def attention_key_mask(mask):
-    raise NotImplementedError
+    return mask[:, None, None, :]
