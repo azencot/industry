@@ -72,7 +72,7 @@ On every problem: state shapes, state assumptions, code without a Python loop wh
 
 | Day | Date | Do |
 |-----|------|----|
-| 1 | **Thu 15** | **01–04 done.** Still file 13 (`Dataset`). Then speak three stories from the [bank](2026-10-15_behavioral-story-bank.md): **A ImagenTime, B dual-tower, C TR kill.** |
+| 1 | **Thu 15** | **Coding done** (01–04, 13). Speak three stories from the [bank](2026-10-15_behavioral-story-bank.md): **A ImagenTime, B dual-tower, C TR kill.** |
 | 2 | **Fri 16** | Scaled dot-product attention, padding mask, causal mask, multi-head shapes. Files 05–08. One timed attention from scratch. |
 | 3 | **Sat 17** | `nn.Module`, train loop, eval loop, pairwise similarity, masked cross-entropy. Files 09–12, 15. One or two easy Python problems. |
 | 4 | **Sun 18** | Two 40–45 min mocks. Mock 1: variable-length batch + mask. Mock 2: attention. No solution file open. |

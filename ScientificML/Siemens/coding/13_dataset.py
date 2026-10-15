@@ -17,10 +17,12 @@ from torch.utils.data import Dataset
 
 class TensorPairs(Dataset):
     def __init__(self, xs, ys):
-        raise NotImplementedError
+        assert len(xs) == len(ys)
+        self.xs = xs
+        self.ys = ys
 
     def __len__(self):
-        raise NotImplementedError
+        return len(self.xs)
 
     def __getitem__(self, index):
-        raise NotImplementedError
+        return (self.xs[index], self.ys[index])

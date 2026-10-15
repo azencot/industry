@@ -22,7 +22,7 @@ Open the **problem** file only. Do not open `*_solution.py` until your file runs
 
 | Day | Date | Files |
 |-----|------|-------|
-| 1 | Thu 15 | **01–04 done.** Still 13. Stories A–C are in the [behavioral bank](../2026-10-15_behavioral-story-bank.md), not in this folder. |
+| 1 | Thu 15 | **01–04 and 13 done.** Stories A–C are in the [behavioral bank](../2026-10-15_behavioral-story-bank.md). |
 | 2 | Fri 16 | 05–08. End with attention from scratch, timed. |
 | 3 | Sat 17 | 09–12, 15. Then one easy Python problem, not from this folder. |
 | 4 | Sun 18 | Two 40–45 min mocks. No solution file. Mock 1 = 01+03. Mock 2 = 05+06. |
@@ -44,7 +44,7 @@ Open the **problem** file only. Do not open `*_solution.py` until your file runs
 | 10 | One training epoch | [`10_train_loop.py`](10_train_loop.py) · [`10_train_loop_solution.py`](10_train_loop_solution.py) | |
 | 11 | Eval loop | [`11_eval_loop.py`](11_eval_loop.py) · [`11_eval_loop_solution.py`](11_eval_loop_solution.py) | |
 | 12 | Batched dot, cosine, Euclidean | [`12_pairwise.py`](12_pairwise.py) · [`12_pairwise_solution.py`](12_pairwise_solution.py) | |
-| 13 | `Dataset` of tensor pairs | [`13_dataset.py`](13_dataset.py) · [`13_dataset_solution.py`](13_dataset_solution.py) | |
+| 13 | `Dataset` of tensor pairs | [`13_dataset.py`](13_dataset.py) · [`13_dataset_solution.py`](13_dataset_solution.py) | **Done 2026-10-15.** One index per `__getitem__`. `DataLoader` stacks equal shapes. |
 | 14 | Sliding-window time series | [`14_sliding_window.py`](14_sliding_window.py) · [`14_sliding_window_solution.py`](14_sliding_window_solution.py) | |
 | 15 | Cross-entropy that ignores padding | [`15_masked_ce.py`](15_masked_ce.py) · [`15_masked_ce_solution.py`](15_masked_ce_solution.py) | |
 
