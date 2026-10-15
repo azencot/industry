@@ -72,12 +72,12 @@ On every problem: state shapes, state assumptions, code without a Python loop wh
 
 | Day | Date | Do |
 |-----|------|----|
-| 1 | **Thu 15** | **01–03 done** (collate, pad, padding mask). Still masked mean / loss and Dataset. Files 04, 13. |
+| 1 | **Thu 15** | **01–04 done.** Still file 13 (`Dataset`). Then speak three stories from the [bank](2026-10-15_behavioral-story-bank.md): **A ImagenTime, B dual-tower, C TR kill.** |
 | 2 | **Fri 16** | Scaled dot-product attention, padding mask, causal mask, multi-head shapes. Files 05–08. One timed attention from scratch. |
 | 3 | **Sat 17** | `nn.Module`, train loop, eval loop, pairwise similarity, masked cross-entropy. Files 09–12, 15. One or two easy Python problems. |
 | 4 | **Sun 18** | Two 40–45 min mocks. Mock 1: variable-length batch + mask. Mock 2: attention. No solution file open. |
 | Screen morning | **Mon or Tue** | From memory only: collate, padding mask, attention, one training loop. Then 20–30 min ML breadth. No new topic. |
 
-STAR still belongs on this screen (Chandler). Four stories, after the code runs: ambiguous scientific problem, a method you killed, a result with a number, work with engineers. IC verbs. Do not lead with the lab.
+STAR still belongs on this screen (Chandler). The bank is [`2026-10-15_behavioral-story-bank.md`](2026-10-15_behavioral-story-bank.md). Six stories, not the old four-topic list. Speak **A, B, C** on Thu 15. **D, E, F** on a later day. IC verbs. Do not lead with the lab. Do not invent a product ship.
 
 Before you walk in, you can write these without docs or autocomplete: custom `Dataset`, `collate_fn`, pad, padding mask, masked mean, masked loss, scaled dot-product attention, causal mask, padding+causal, multi-head reshape, a small `nn.Module`, train loop, eval loop, batched pairwise similarity, sliding-window time-series `Dataset`.

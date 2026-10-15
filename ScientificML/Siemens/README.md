@@ -23,6 +23,7 @@
 | **2026-10-14** | Prep | [`2026-10-14_recruiter-prep.md`](2026-10-14_recruiter-prep.md). Full emails: [`2026-10-14_recruiter-correspondence.md`](2026-10-14_recruiter-correspondence.md). |
 | **2026-10-14** | **Recruiter screen — Chandler** | Org, not the seat. Advancing. Debrief: [`2026-10-14_recruiter-debrief.md`](2026-10-14_recruiter-debrief.md). |
 | **2026-10-15** | Phone-screen coding drills | PyTorch stubs + solutions. [`coding/`](coding/). Schedule in the [debrief](2026-10-14_recruiter-debrief.md). |
+| **2026-10-15** | Behavioral story bank | Six Siemens stories plus backups. [`2026-10-15_behavioral-story-bank.md`](2026-10-15_behavioral-story-bank.md). Thu 15: speak A, B, C. |
 
 ## Loop (Chandler, 2026-10-14 — the schedule)
 

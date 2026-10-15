@@ -11,14 +11,19 @@ masked_mse: one scalar. Average only over valid positions (and D).
 Broadcast the mask with unsqueeze(-1). Do not divide by zero when a row
 is all padding: that row's mean is 0.
 """,
+import torch
 
 def masked_sum(x, mask):
-    raise NotImplementedError
+    return torch.sum(x * mask.unsqueeze(-1), dim=1)
 
 
 def masked_mean(x, mask):
-    raise NotImplementedError
+    lengths = torch.sum(mask, dim=1).clamp_min(1)
+    return masked_sum(x, mask) / lengths[:, None]
 
 
 def masked_mse(pred, target, mask):
-    raise NotImplementedError
+    err = (pred - target) ** 2                  # [B, T, D]
+    valid = mask.unsqueeze(-1).expand_as(err)   # [B, T, D]
+
+    return (err * valid).sum() / valid.sum().clamp_min(1)

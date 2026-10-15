@@ -22,7 +22,7 @@ Open the **problem** file only. Do not open `*_solution.py` until your file runs
 
 | Day | Date | Files |
 |-----|------|-------|
-| 1 | Thu 15 | **01–03 done.** Still 04, 13. |
+| 1 | Thu 15 | **01–04 done.** Still 13. Stories A–C are in the [behavioral bank](../2026-10-15_behavioral-story-bank.md), not in this folder. |
 | 2 | Fri 16 | 05–08. End with attention from scratch, timed. |
 | 3 | Sat 17 | 09–12, 15. Then one easy Python problem, not from this folder. |
 | 4 | Sun 18 | Two 40–45 min mocks. No solution file. Mock 1 = 01+03. Mock 2 = 05+06. |
@@ -35,7 +35,7 @@ Open the **problem** file only. Do not open `*_solution.py` until your file runs
 | 1 | `collate_fn` for variable-length sequences | [`01_collate.py`](01_collate.py) · [`01_collate_solution.py`](01_collate_solution.py) | **Done 2026-10-15.** Runs on the sample. Lengths still need one pass over `.shape[0]`. `pad_sequence` does the same copy loop in C++. Mask is `arange(Tmax)[None, :] < lengths[:, None]`. |
 | 2 | Right and left padding | [`02_pad_sequences.py`](02_pad_sequences.py) · [`02_pad_sequences_solution.py`](02_pad_sequences_solution.py) | **Done 2026-10-15.** Right pad is `[:Ti]`, left pad is `[-Ti:]`. Equal lengths need no extra branch. |
 | 3 | Padding mask, and the attention broadcast shape | [`03_padding_mask.py`](03_padding_mask.py) · [`03_padding_mask_solution.py`](03_padding_mask_solution.py) | **Done 2026-10-15.** `valid_true=False` flips the mask. Key mask is `[B, 1, 1, T]`. |
-| 4 | Masked sum, mean, MSE | [`04_masked_reductions.py`](04_masked_reductions.py) · [`04_masked_reductions_solution.py`](04_masked_reductions_solution.py) | |
+| 4 | Masked sum, mean, MSE | [`04_masked_reductions.py`](04_masked_reductions.py) · [`04_masked_reductions_solution.py`](04_masked_reductions_solution.py) | **Done 2026-10-15.** Sum and mean reduce over T. MSE averages every valid element. `clamp_min(1)` covers an all-pad row. |
 | 5 | Scaled dot-product attention | [`05_attention.py`](05_attention.py) · [`05_attention_solution.py`](05_attention_solution.py) | |
 | 6 | Attention with key padding and a causal mask | [`06_masked_attention.py`](06_masked_attention.py) · [`06_masked_attention_solution.py`](06_masked_attention_solution.py) | |
 | 7 | Causal mask, combined with padding | [`07_causal_mask.py`](07_causal_mask.py) · [`07_causal_mask_solution.py`](07_causal_mask_solution.py) | |
