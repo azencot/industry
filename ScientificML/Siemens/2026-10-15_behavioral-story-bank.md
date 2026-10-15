@@ -94,6 +94,41 @@ Avoid:
 - Universal claims that image representations are superior.
 - Implying every downstream gain was caused only by representation.
 
+
+### Follow-ups
+
+1. “Why did you believe converting time series to images would work?”
+
+“The hypothesis wasn’t that images are inherently better than 1D time series. It was that mature vision diffusion models had already solved many of the hard generative-modeling problems we cared about, so I asked whether we could design an invertible representation that lets us reuse that machinery without losing the temporal signal.
+
+We considered several representations. Line plots were too sparse and weren’t cleanly invertible, and alternatives like Gramian angular fields had scaling and reconstruction issues. Delay embeddings and STFT were much more promising because we could reconstruct the original signal and they exposed useful structure to a 2D model.
+
+So before committing significant compute, I made the representation itself pass a cheap test: can we reconstruct challenging signals—including spikes, periodic behavior, and cross-channel structure—with sufficiently high fidelity? Only after that did we invest in training the generative model.
+
+The important point is that I wasn’t starting from ‘2D must be better.’ I was asking whether we could change the representation enough to reuse a much more mature modeling ecosystem while preserving the information the application requires.”
+
+
+2. “Your collaborators disagreed with the 2D direction. How did you resolve that?”
+
+“Their concern was completely reasonable. Moving from 1D to 2D expands the representation, increases compute, and introduces the possibility that reconstruction errors destroy precisely the numerical information we care about.
+
+Rather than trying to win the argument theoretically, I proposed three tests: reconstruction fidelity, modeling benefit on a small controlled experiment, and computational cost. Importantly, these were tests where my idea could fail cheaply.
+
+Once we saw that the representation preserved the important signal characteristics and the small-scale generative results justified going further, we committed to the 2D direction. We still kept computational efficiency as an explicit constraint, which eventually led us to EDM and roughly 35 model evaluations instead of around 1,000 with the older diffusion sampler.
+
+That’s generally how I try to handle technical disagreement: I don’t want to convince people that my hypothesis is right. I want to design an experiment where either hypothesis can lose cheaply.”
+
+
+3. “How do you know the improvement actually came from the representation?”
+
+“I would be careful making that causal claim. The final system changed both the representation and how we could exploit vision diffusion models, so the end-to-end result doesn’t prove that 2D representation alone is universally superior.
+
+What we could establish was that the approach worked across very different regimes. For example, on MuJoCo we obtained a discriminative error of about 0.007 versus 0.059 for DiffTime, and on the very long Traffic sequences—around 17,500 time steps—we achieved classification accuracy of 0.684 versus 0.630 for LS4, while prediction error improved from 0.170 to 0.138.
+
+We also separated the efficiency claim: the roughly 30× reduction in model evaluations came primarily from adopting the EDM formulation and sampler, not from converting the series to images.
+
+So my conclusion isn’t ‘2D is always better.’ It’s narrower: an invertible representation can make mature vision generative models surprisingly effective for time series, including regimes where specialized 1D models struggle. And that result was strong enough to establish a new research direction for us.”
+
 ---
 
 ## Story B — Dual-Tower VLM: End-to-End Scientific Ownership and Delivery
@@ -113,15 +148,18 @@ Avoid:
 
 ### Siemens-ready 90-second version
 
-I lead a project on making general-purpose vision-language models reason over time series. The starting point was broad and ambiguous: many papers could perform one time-series task, but there was no unified system that transferred well across perception, reasoning, forecasting, and decision-making.
+One project I’ve been leading recently asks a fairly fundamental question: what is the right way to represent time series to a foundation model?
 
-I made TSRBench our north star and defined the problem around a stock Qwen3-VL-8B baseline: 0.618 on TSExam and 0.402 on TSRBench. I chose a dual representation — charts plus delay embeddings — and personally owned the core integration, including model patches, the collator, curriculum logic, and evaluation protocol.
+Today, there are roughly three common approaches. You can represent the values as text or tokens, use patch-based time-series encoders, or render the signal as a line plot and use a vision-language model. Each has advantages, but I felt they were all missing something. In particular, line plots make values, amplitudes, and trends very accessible, but they don’t explicitly expose the geometry of the underlying dynamics.
 
-The bigger Principal-level decision was how we would spend experiments. With eight GPUs and many hypotheses, full-scale evaluation could not be the inner loop. I created a staged process: perception alignment first, then language fine-tuning; and loss sanity → small benchmark subsets → full north-star evaluation. We tracked parse failures separately and refused to promote a feature that won one headline metric while regressing important slices.
+Given my earlier work on dynamical systems, I proposed adding a second view: a normalized delay embedding, which maps the series into a state-space representation and emphasizes dynamical structure. The hypothesis wasn’t that delay embeddings should replace plots. It was that the two representations expose different inductive biases, and a foundation model could benefit from both.
 
-That system delivered TSExam from 0.618 to about 0.905 and TSRBench from 0.402 to about 0.452 on one architecture. But the more durable result was the operating mechanism: staged training, config-first experiments, and tiered evaluation became how the project decided what deserved the next expensive run.
+But there was an important confound: adding another view also means another encoder and more visual tokens. So I pushed us to test the scientific hypothesis rather than simply show that a larger architecture performs better. We built matched Plot+Plot, Delay+Delay, and Plot+Delay systems using the same two-tower architecture and training procedure.
 
-At Principal level, I think the job is not only to produce a strong experiment. It is to create a technical system in which the broader team can repeatedly make high-quality scientific decisions.
+The result was quite strong. On TSRBench, our broadest benchmark, Plot-only achieved 45.2%, while Plot+Delay reached 53.2%—an 8 percentage-point improvement. Prediction improved particularly strongly, from 38.0% to 61.7%. Most importantly, Plot+Plot reached only 44.8% and Delay+Delay 42.6%, so simply adding a second tower didn’t reproduce the gain.
+
+For me, the broader lesson is very relevant to scientific ML: how you expose a physical or temporal system to a foundation model can matter as much as the model itself. Rather than immediately scaling architecture, I first ask which properties each representation makes accessible, and whether complementary views can expose structure that any single representation hides
+
 
 ### Seniority upgrades
 
@@ -139,6 +177,46 @@ Avoid:
 - Calling academic work "shipping to production."
 - Overclaiming downstream users.
 - Making it sound like you simply supervised jobs.
+
+
+### Follow-ups
+
+
+1. “Why did you choose delay embeddings as the second representation?”
+
+“That choice came directly from my earlier work on dynamical systems. A line plot gives the model a very intuitive representation of the observed signal—values, amplitude, trends, and local patterns—but it doesn’t explicitly represent the underlying state-space geometry.
+
+A delay embedding gives a different view. We construct vectors from delayed observations of the same signal, which can expose recurring trajectories and dynamical structure that isn’t as explicit in the original plot. We also normalize that representation, so it’s less sensitive to absolute scale and offset.
+
+That led to a very specific hypothesis: the plot should be strong when absolute numerical information matters, while the delay representation may contribute when understanding the dynamics matters. I didn’t expect either representation to dominate universally.
+
+And that’s broadly what we observed. Delay alone was actually much worse on numerical tasks—for example, on ChatTS-A numerical accuracy it achieved 29.0% versus 78.1% for Plot-only. But combining the two improved the broad TSRBench result from 45.2% to 53.2%, with the largest improvement on prediction, from 38.0% to 61.7%. So the useful insight wasn’t that delay embeddings are better; it was that they expose information that can be complementary to what the plot makes easy to access.”
+
+
+2. “How do you know the gain comes from complementary representations rather than simply more capacity?”
+
+“That was exactly the confound I was worried about. Plot+Delay has two encoders and a larger visual-token budget than the Plot-only baseline, so comparing only those two wouldn’t establish the claim.
+
+That’s why I pushed for matched duplicated-view controls. We trained Plot+Plot and Delay+Delay systems with the same architecture, trainable parameters, visual-token budget, and training procedure as our full model. The only important difference was whether the two towers received the same or complementary representations.
+
+On TSRBench, Plot-only was 45.2%. Plot+Plot was actually slightly lower at 44.8%, and Delay+Delay reached 42.6%. But Plot+Delay reached 53.2%.
+
+So I still wouldn’t claim that we’ve mathematically proven why the model improves, but we ruled out the most obvious alternative explanation: simply giving the model another encoder or more visual tokens was not sufficient to produce the gain.
+
+For me, that’s an important part of leading research: when you have a result that supports your hypothesis, actively design the experiment that could make your preferred explanation fail.”
+
+
+
+3. “Where does the approach not help, and what did you learn from that?”
+
+
+“It definitely doesn’t improve everything uniformly, and that’s actually informative.
+
+For example, on TSExam the dual-view model reached 89.9%, but Plot-only was also 89.9%, so there’s no improvement there. And on TSRBench perception, Plot-only was 87.4% versus 86.4% for our model. The large gain was concentrated much more in prediction—38.0% to 61.7%—with smaller gains in reasoning and decision-making.
+
+That changed how I interpret the result. I wouldn’t say every time-series problem needs two representations. If the task is mostly extracting visually accessible information, the plot may already contain what the model needs.
+
+The interesting research question is when does a second representation expose information that the first representation makes difficult for the model to recover? That’s where I think this becomes relevant beyond this particular paper. In scientific ML, you may have raw sensor measurements, geometric representations, state-space representations, or learned physical states. Rather than feeding everything into a larger model, I want to understand which representation contributes which capability and when it is actually worth the additional complexity.”
 
 ---
 
@@ -160,7 +238,7 @@ Avoid:
 
 ### Siemens-ready 90-second version
 
-On TSRBench, overall performance had plateaued around 46%, while reasoning remained around 29%. I chose temporal relations as a targeted intervention because the failures appeared decomposable into segmentation, ordering, and multi-hop composition. I designed a synthetic curriculum around those operations.
+On TSRBench, overall performance had plateaued around 50%, while reasoning remained around 29%. I chose temporal relations as a targeted intervention because the failures appeared decomposable into segmentation, ordering, and multi-hop composition. I designed a synthetic curriculum around those operations.
 
 Before the expensive 8B run, I set the decision rule. We would not promote a recipe with more than a three-point overall regression or a five-point regression on any reasoning subtask. I also required every reasoning task to appear explicitly in the readout rather than disappear inside an average.
 
@@ -189,6 +267,48 @@ Avoid:
 - Treating thresholds as statistical laws.
 - Saying synthetic data broadly failed.
 - Claiming distribution shift as proven mechanism.
+
+### Follow-ups
+
+1. “Why did you kill the experiment if the overall result improved?”
+
+“Because the overall metric wasn’t the objective of that intervention.
+
+We introduced the synthetic curriculum specifically because temporal-relation reasoning was weak. Before running the expensive experiment, I defined success criteria that included both aggregate performance and the targeted reasoning capabilities. In particular, I set a failure floor of a 5-point regression on any reasoning subtask.
+
+When the result came back, it was superficially encouraging. Average reasoning improved from about 29.5% to 31.2%, and two reasoning categories improved by roughly seven points. But the specific temporal-relation category we were targeting dropped from 26.9% to 21.9%—exactly five points.
+
+At that point, I recommended that we not promote the training mixture. We had defined the criterion before seeing the result, and I didn’t think it was scientifically defensible to change it afterward simply because some of the other numbers looked good.
+
+The important distinction was that I was killing the intervention, not the objective. The result told us our proposed mechanism for teaching temporal relations was wrong or incomplete, so the next step was to understand why.”
+
+
+2. “How did you choose the thresholds? Why five percentage points?”
+
+“They weren’t statistical laws, and I wouldn’t present them that way. They were decision thresholds for an expensive research iteration.
+
+Before training, I asked what amount of regression would make us uncomfortable deploying this curriculum into the main recipe even if the aggregate metric improved. We chose a 3-point floor on overall performance and a 5-point floor on any reasoning subtask.
+
+The reason for defining them beforehand was actually more important than the precise numbers. With many subtasks, it’s extremely easy after an experiment to emphasize whichever metrics support the story you want to tell.
+
+So I wanted us to establish in advance what evidence would cause us to reject our own hypothesis. Had the TR result been down one point, I probably wouldn’t have killed the direction based on that alone. But a five-point degradation on the capability the intervention was intended to improve crossed the risk threshold we had agreed on.
+
+That experience also changed our evaluation process: afterward, we evaluated interventions against the overall score, the reasoning average, and every reasoning subtask, rather than deciding based primarily on aggregate performance.”
+
+
+3. “What did you do after killing it?”
+
+This gives you the bridge into Story D, but don’t tell the entire next story unless they ask.
+
+“The failure changed the question for me. Initially we were asking, ‘How do we add more temporal-reasoning training data?’ After this experiment, I realized we first needed to understand why the model was failing those reasoning questions.
+
+So I stopped scaling the synthetic-data approach and went back to the errors themselves. I audited reasoning failures item by item and considered several competing explanations: perhaps the model lacked particular temporal operations, perhaps it knew the individual operations but couldn’t compose them, perhaps unfamiliar question formats were the problem, or perhaps some tasks required domain knowledge that wasn’t present in training.
+
+That analysis led us to separate the failures into actionable regimes and design much more targeted interventions. We used the smaller 0.8B model as a cheap diagnostic before committing resources to the 8B model.
+
+The early experiment moved overall accuracy from about 38.2% to 40.5% and reasoning from 24.5% to 25.5%. Those aren’t huge numbers, and the 8B experiment was still running, so I wouldn’t overstate the result. The more important outcome was that we went from blindly adding data to having specific hypotheses about the failure modes and experiments that could distinguish between them.
+
+That’s the behavior I want from a research organization: a failed experiment should reduce uncertainty and change what you do next, rather than simply trigger another larger run.”
 
 ---
 
