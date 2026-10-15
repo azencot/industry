@@ -59,7 +59,7 @@ Personal workspace for industry job prep: Amazon FinTech interviews, general for
 
 - **Purpose:** Principal / senior applied scientist roles centered on scientific ML for physical systems — surrogates, operator learning, simulation, industrial time series
 - **Not** forecasting-AS loops ([`Forecasting/`](Forecasting/)); **not** GenAI / LLM loops ([`GenAI/`](GenAI/))
-- **Active:** **Siemens** Principal Applied Scientist (Job ID 523023, Washington hybrid) — recruiter **Danielle Chandler**, referral **Danielle Robinson**. Recruiter screen **Thu 2026-10-15** (Teams). Prep: [`ScientificML/Siemens/2026-10-14_recruiter-prep.md`](ScientificML/Siemens/2026-10-14_recruiter-prep.md)
+- **Active:** **Siemens** Principal Applied Scientist (Job ID 523023, Washington hybrid) — recruiter **Danielle Chandler**, referral **Danielle Robinson**. Recruiter **done 2026-10-14**. Next: STAR + PyTorch screen; offer **Mon 19 / Tue 20 Oct**. Debrief: [`ScientificML/Siemens/2026-10-14_recruiter-debrief.md`](ScientificML/Siemens/2026-10-14_recruiter-debrief.md)
 - **Details:** [`ScientificML/INDEX.md`](ScientificML/INDEX.md)
 
 ---

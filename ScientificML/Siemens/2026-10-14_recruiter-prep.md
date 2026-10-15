@@ -128,6 +128,9 @@ Do not recite these on top of the intro. Pull one when she asks.
 
 > PhysicsAI and the rest of that Simcenter line take a physical system and learn a model so engineers do not rerun the expensive solver. I do the same kind of thing with operator methods: the structure I put in is how the process evolves. I want that work where the model has to land in a product, inside a company that owns the physical systems. I’m in Washington, so the hybrid setup matches where I live.
 
+
+
+
 ### Recent work (45–60s, only if she asks)
 
 > A line I keep coming back to is simulation from learned dynamics. Earlier that was Koopman and operator models of sequential processes. More recently I treated generation itself as the simulator: when you do not have enough real series, a generative model has to produce trajectories you would actually trust, including very long ones. In parallel I have been strict about evaluation — baselines first, ablations, and killing a mix when a slice gets worse. That is the working style I would bring: hypothesis, experiment, and a decision the team can act on.

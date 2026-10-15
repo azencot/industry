@@ -26,7 +26,7 @@ Shared profile: [`.cursor/skills/debrief/omri_azencot_experience.md`](../.cursor
 
 | Company | Contact | Next | Prep |
 |---------|---------|------|------|
-| **Siemens — Principal Applied Scientist** | **Danielle Chandler** (recruiter, external) · referral **Danielle Robinson** | **Thu 2026-10-15** recruiter screen — Teams | [`Siemens/`](Siemens/) — [prep](Siemens/2026-10-14_recruiter-prep.md) · [thread](Siemens/2026-10-14_recruiter-correspondence.md) |
+| **Siemens — Principal Applied Scientist** | **Danielle Chandler** (recruiter, external) · referral **Danielle Robinson** | **Send Mon 19 / Tue 20 Oct availability.** Next is STAR + PyTorch. | [`Siemens/`](Siemens/) — [debrief](Siemens/2026-10-14_recruiter-debrief.md) · [prep](Siemens/2026-10-14_recruiter-prep.md) |
 
 After each call: drop `YYYY-MM-DD_*.md` in that company’s folder and add a row to the session log below.
 
@@ -37,6 +37,8 @@ After each call: drop `YYYY-MM-DD_*.md` in that company’s folder and add a row
 | Date | Session | Notes |
 |------|---------|-------|
 | 2026-10-14 | Siemens recruiter thread + prep | Chandler outreach via Robinson referral. Teams, not cell. Prep: [`Siemens/2026-10-14_recruiter-prep.md`](Siemens/2026-10-14_recruiter-prep.md). Insider: SciML; later rounds ML breadth / depth / system design; AI4simulation is the match; time series projects exist. |
+| 2026-10-14 | Siemens recruiter screen (Chandler) | Org, not the seat. Advancing. Screen = STAR + PyTorch; then 3 × 1h virtual (behavioral, technical, functional). Offer **Mon 19 / Tue 20**. [`Siemens/2026-10-14_recruiter-debrief.md`](Siemens/2026-10-14_recruiter-debrief.md). |
+| 2026-10-15 | Robinson on the phone screen | Live PyTorch/Python + ML breadth. DataLoader, padding, attention. Must run unit tests. LeetCode is only the coding muscle. |
 
 ---
 
