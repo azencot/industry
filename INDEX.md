@@ -25,6 +25,7 @@ Personal workspace for industry job prep: Amazon FinTech interviews, general for
 ## Amazon FinTech (primary loop track)
 
 - **Role:** Senior Applied Scientist, FinTelligence
+- **Now:** Satya (14 Oct 2026) — team considering an **L5** offer. Next is a hiring-manager call, then an offer. Prep: [`Amazon_FinTech/2026-10-14_hm-l5-call-prep.md`](Amazon_FinTech/2026-10-14_hm-l5-call-prep.md)
 - **PS1:** Tue 30 Jun 2026 — **completed** with Karan Aggarwal. Debrief: [`Amazon_FinTech/debrief/2026-06-30_ps1-karan-real-interview.md`](Amazon_FinTech/debrief/2026-06-30_ps1-karan-real-interview.md)
 - **Format:** intro + ML/LLM depth + Leadership Principles + 1 medium live code (Amazon Live Code)
 - **Details:** [`Amazon_FinTech/INDEX.md`](Amazon_FinTech/INDEX.md), [`.cursor/skills/debrief/omri_azencot_experience.md`](.cursor/skills/debrief/omri_azencot_experience.md), [`Amazon_FinTech/prep-plan.md`](Amazon_FinTech/prep-plan.md)

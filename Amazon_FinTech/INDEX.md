@@ -8,6 +8,7 @@ Active interview track. Annotated index — read entries before opening every fi
 
 | Milestone | Date | Notes |
 |-----------|------|-------|
+| **Recruiter — Satya, L5 inclination** | Wed 14 Oct 2026 | Team **considering an L5 offer** (loop was L6 / Senior). Next: HM phone call, then an offer. Prep: [`2026-10-14_hm-l5-call-prep.md`](2026-10-14_hm-l5-call-prep.md). HM name and time not set. |
 | **PS1 — phone screen** | Tue 30 Jun 2026, 21:00 Asia/Jerusalem | **Done** — Karan; LP pivot, fundamentals grill, trailing z-score code. Debrief: [`2026-06-30_ps1-karan-real-interview.md`](debrief/2026-06-30_ps1-karan-real-interview.md) |
 | Imry Kissos referral call | 23 Jun 2026 | Principal AS; referred to role — Karan-focused prep pivot |
 | Prep window | 24–29 Jun 2026 (6 days) | See [`prep-plan.md`](prep-plan.md) — VLM depth + coding |
@@ -28,6 +29,7 @@ Active interview track. Annotated index — read entries before opening every fi
 | [`job-description.md`](job-description.md) | **Full JD** — responsibilities, qualifications, JD→prep map | Before tailoring scripts/stories to JD wording |
 | [`prep-plan.md`](prep-plan.md) | Karan-focused prep (24–29 Jun): VLM depth + coding | Daily — find today's block |
 | [`ps1-questions-for-karan.md`](ps1-questions-for-karan.md) | **PS1 night** — 2 questions to ask Karan + backups + quick reference card | Mon 29 / interview day |
+| [`2026-10-14_hm-l5-call-prep.md`](2026-10-14_hm-l5-call-prep.md) | **HM call after L5 inclination** — role conversation, scripts, questions; level and comp stay with Satya | Night before the hiring-manager call |
 | [`CV_Azencot_10399493.pdf`](CV_Azencot_10399493.pdf) | Resume for this application | Before intro / resume walkthrough |
 | [`stories/`](stories/) | STAR stories by Leadership Principle | Before LP drills and interview |
 | [`debrief/`](debrief/) | Session debriefs & cross-chat handoffs | Start session B; after `/debrief` |
