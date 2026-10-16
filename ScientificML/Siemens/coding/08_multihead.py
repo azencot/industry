@@ -15,14 +15,35 @@ Q @ K^T is [B, H, T, T]. Attention @ V is [B, H, T, Dh].
 
 view/reshape after permute needs contiguous memory.
 """,
+import torch
+import math
 
 def split_heads(x, n_heads):
-    raise NotImplementedError
+    B, T, D = x.shape
+    Dh = D // n_heads
+    
+    assert D % n_heads == 0
+
+    return x.reshape([B, T, -1, Dh]).transpose(2, 1).contiguous()
 
 
 def merge_heads(x):
-    raise NotImplementedError
+    B, H, T, Dh = x.shape
+    return x.transpose(2, 1).reshape([B, T, H * Dh])
 
 
 def multihead_attention(q, k, v, n_heads):
-    raise NotImplementedError
+    B, T, D = q.shape
+    Dh = D // n_heads
+
+    assert D % n_heads == 0
+
+    # [B, T, D] -> [B, H, T, Dh]
+    qh, kh, vh = split_heads(q, n_heads), split_heads(k, n_heads), split_heads(v, n_heads)
+
+    scores = qh @ kh.transpose(-2, -1) / math.sqrt(Dh)      # [B, H, T, Dh] @ [B, H, Dh, T] -> [B, H, T, T]
+
+    a = torch.softmax(scores, dim=-1)                        # [B, H, T, T]
+    yh = a @ vh                                             # [B, H, T, T] @ [B, H, T, Dh] -> [B, H, T, Dh]
+
+    return merge_heads(yh)                                     # [B, H, T, Dh] -> [B, T, D]

@@ -10,10 +10,21 @@ combine_causal_and_padding(padding_mask):
     return bool [B, 1, T, T], broadcastable to logits [B, H, T, T].
     A position is allowed only if it is causal AND the key is not padding.
 """,
+import torch
 
 def causal_mask(t, device=None):
-    raise NotImplementedError
+    mask = torch.ones([t, t], dtype=bool)
+    if device:
+        mask = mask.to(device)
+
+    mask = torch.tril(mask)
+    return mask
 
 
 def combine_causal_and_padding(padding_mask):
-    raise NotImplementedError
+    B, T = padding_mask.shape
+
+    Mp = padding_mask[:, None, None, :]
+    Mc = causal_mask(T, device=padding_mask.device)[None, None, :, :]
+
+    return Mc & Mp
