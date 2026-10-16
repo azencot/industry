@@ -12,6 +12,10 @@ Do not open 05_attention_solution.py until this file runs.
 Narrate every intermediate shape. No mask in this file.
 Complexity is about O(Tq * Tk * D). Say why the sqrt(D) is there.
 """,
+import torch
+import math
 
 def scaled_dot_product_attention(q, k, v):
-    raise NotImplementedError
+    qkt = q @ k.transpose(-2, -1)                         # [B, Tq, D] @ [B, D, Tk] = [B, Tq, Tk]
+    a = torch.softmax(qkt / math.sqrt(q.shape[-1]), dim=-1)    # [B, Tq, Tk] / []
+    return a @ v                                        # [B, Tq, Tk] @ [B, Tk, Dv] = [B, Tq, Dv] 

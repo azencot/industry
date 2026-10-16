@@ -14,6 +14,22 @@ come out as zeros, not NaN.
 
 Say what happens to the output if you forget the padding mask.
 """,
+import torch
+import math
 
-def masked_attention(q, k, v, key_padding_mask=None, causal=False):
-    raise NotImplementedError
+def masked_attention(q, k, v, key_padding_mask=None, causal=False):    
+    d = q.shape[-1]
+    scores = q @ k.transpose(-2, -1) / math.sqrt(d)              # [B, Tq, D] @ [B, D, Tk] = [B, Tq, Tk]
+
+    if key_padding_mask is not None:
+        scores = scores.masked_fill(~key_padding_mask[:, None, :], float("-inf"))
+
+    if causal:
+        B, Tq, Tk = scores.shape
+        Mc = torch.ones([Tq, Tk], dtype=torch.bool, device=scores.device)
+        Mc = torch.triu(Mc, diagonal=1)
+        scores = scores.masked_fill(Mc, float("-inf"))
+
+    a = torch.softmax(scores, dim=-1)
+    a = torch.nan_to_num(a, nan=0.0)
+    return a @ v
