@@ -51,6 +51,7 @@ Source stories, with the original numbers and bounds: [`2026-10-15_prior-loop-st
 
 Do not try to memorize all prior-loop cards. For Siemens, have these six as the main bank.
 
+
 ## Story A — ImagenTime: Setting a Non-Obvious Scientific Direction
 
 ### Best for
@@ -357,6 +358,48 @@ Avoid:
 - Treating +2.3 pp as the main success.
 - Claiming 0.8B guarantees 8B behavior.
 
+### Follow-ups
+
+1. “How did you determine what was actually causing the reasoning failures?”
+
+“I deliberately didn’t start by changing the model. The aggregate reasoning score only told us that something was wrong; it didn’t tell us what intervention would help.
+
+I went through failures item by item and, for each one, asked three questions: What operation is required to solve this? Has the model seen that operation or composition during training? And did it correctly extract the relevant information from the time series before reasoning about it?
+
+That let me separate several explanations that initially looked identical in the benchmark score. Some questions required specialized domain knowledge—for example, concepts from seismology. In others, the model could perceive the signal correctly but lacked an operation or couldn’t compose several operations. And another group depended heavily on unfamiliar formats or conventions, such as a particular scale used in the question.
+
+That distinction mattered because the interventions are completely different. A knowledge gap might require domain information; an operator gap suggests targeted reasoning examples; and a format gap may just require exposing the model to the convention.
+
+So the main contribution of the audit wasn’t the taxonomy itself. It was converting ‘reasoning is bad’ into competing hypotheses that we could experimentally distinguish.”
+
+
+2. “How did you know your diagnosis was correct?”
+
+“I didn’t assume the manual diagnosis was correct. I treated it as a set of hypotheses.
+
+The next step was to design targeted interventions that should produce different outcomes depending on which explanation was right. For example, if a failure really came from a missing operation, adding examples exercising that operation should improve those slices. If the real problem were perception, that intervention shouldn’t solve it.
+
+We then looked at slice-level movement, not just the aggregate benchmark. That’s important because a two-point aggregate improvement could come from somewhere completely unrelated to the hypothesis you’re testing.
+
+In our initial 0.8B experiments, overall accuracy moved from about 38.2% to 40.5%, and reasoning from 24.5% to 25.5%. Those are modest improvements, so I wouldn’t present them as proof that the taxonomy is correct.
+
+What I cared about more was whether the specific failure categories we targeted moved in the predicted direction. That gives us evidence about the mechanism and tells us whether it’s worth spending the compute to test the intervention at 8B.
+
+So my standard wasn’t ‘the benchmark went up.’ It was ‘did the intervention produce the pattern of changes that our hypothesis predicted?’”
+
+
+3. “Why did you use the 0.8B model first? How do you know the result transfers to 8B?”
+
+“I don’t know that it transfers, and I would be careful claiming that it does.
+
+The 0.8B model was a diagnostic instrument, not a substitute for the final experiment. At 8B, every iteration is substantially more expensive, so I wanted a cheap way to eliminate weak hypotheses before scaling them.
+
+My decision rule was essentially asymmetric. If an intervention designed to improve a particular capability couldn’t produce the expected slice-level effect even at 0.8B, that was evidence against immediately spending resources on the 8B run. If it behaved as predicted, then it earned the more expensive experiment.
+
+Of course, scaling can change behavior, so a positive 0.8B result doesn’t guarantee an 8B result. That’s why I wouldn’t report the smaller model as validation of the final method. It’s a stage gate for allocating research compute.
+
+More broadly, that’s how I like to run expensive ML research: use the cheapest experiment that can resolve the current uncertainty, and only scale once you’ve learned enough to justify the next investment.”
+
 ---
 
 ## Story E — Bosch Haifa: Cross-Functional Scientific ML with Real Sensor Constraints
@@ -404,6 +447,43 @@ Avoid:
 - Generic "we collaborated well" language.
 - Claiming you knew the sensor domain better than Bosch.
 
+### Follow-ups
+
+1. “What did the Bosch researchers know that changed your approach?”
+
+“Our initial model worked well on standard benchmarks, but performance degraded substantially on Bosch’s real sensor data. My first instinct was very ML-centric: stronger regularization, architecture changes, or additional tuning.
+
+The Bosch researchers pushed back because they understood how the measurements were actually produced. The real data violated several assumptions that were implicit in the benchmark setting: measurements could be irregularly sampled, noisy, partially observed, and imperfectly aligned across modalities.
+
+That changed my interpretation of the failure. The problem wasn’t simply that the generative model wasn’t powerful enough. We were asking it to learn a mapping under an observation process that our formulation effectively pretended didn’t exist.
+
+So instead of trying to preprocess the data until it resembled the clean benchmark, we started treating what is observed, when it is observed, and what is missing as part of the modeling problem itself.
+
+That’s a lesson I’ve carried forward: in scientific ML, domain expertise isn’t something I want after designing the model. I want it early enough that it can change the problem I think I’m solving.”
+
+
+2. “What did you actually change technically once you understood the problem?”
+
+“The key issue was that the model expected regularly sampled inputs, while the real sensor data could be irregular and partially observed.
+
+We considered simply interpolating everything onto a regular grid, but interpolation creates values that were never actually measured. If the model can’t distinguish those values from genuine observations, it can become overconfident in artifacts introduced by preprocessing.
+
+So I used interpolation together with an observation mask. We mapped the irregular measurements onto a regular representation that the model could process efficiently, but provided the mask so the model could distinguish between what was actually observed and what had been filled in by interpolation.
+
+Conceptually, that was the important change: interpolation became a computational representation, rather than an assumption that the reconstructed signal was ground truth.
+
+We incorporated that into the modality-translation pipeline and saw substantially better robustness on the Bosch data. More importantly, it changed how I approached these problems afterward: missingness and sampling patterns are information about the observation process, and I don’t want preprocessing to erase that information.”
+
+3. “Did this actually make it into a Bosch product?”
+
+“No, and I’d be careful not to characterize it that way. This was a research collaboration, not a production deployment.
+
+The meaningful outcome was that we moved from a method that performed well on academic benchmarks but degraded on the real Bosch data to a formulation that was much better aligned with the actual measurement process. The robustness extensions substantially improved the results and provided a strong research baseline for subsequent work.
+
+For me, the important experience was the interaction between ML research and the physical data-generating process. Neither side had the complete diagnosis initially. I understood the generative modeling deeply; the Bosch researchers understood the sensors and operating conditions deeply. The solution emerged by translating their operational knowledge into modeling assumptions we could test experimentally.
+
+That’s actually one reason I’m interested in Siemens. In industrial AI, I wouldn’t expect a model developed in isolation from the engineering system to survive contact with the real data. I find that interaction between domain constraints and ML formulation scientifically interesting.”
+
 ---
 
 ## Story F — Diffusion from the SDE Up: Building Organizational Technical Capability
@@ -428,7 +508,7 @@ I could have delegated the topic to students or treated existing libraries as bl
 
 I ran weekly deep technical sessions combining theory, implementation, and research ideation, and I worked through the mathematics and code myself. When the SDE formulation exposed a differential-equations gap, I slowed the process down and filled that foundation rather than papering over it. When public implementations proved fragile, I rewrote key components into a cleaner experimental framework.
 
-That investment eventually supported seven diffusion papers at ICML, ICLR, and NeurIPS and became reusable infrastructure behind ImagenTime, ImagenFew, and later projects. It also made it much faster for new researchers to ramp up.
+That investment eventually supported eight diffusion papers at ICML, ICLR, and NeurIPS and became reusable infrastructure behind ImagenTime, ImagenFew, and later projects. It also made it much faster for new researchers to ramp up.
 
 The Principal-level lesson for me is that technical leadership sometimes means recognizing a capability gap before there is an immediate deliverable, then building enough personal depth and reusable infrastructure that the capability compounds across projects.
 
@@ -444,8 +524,46 @@ Emphasize:
 Avoid:
 
 - "I organized a reading group."
-- Seven papers as the only outcome.
+- The paper count as the only outcome.
 - Making it sound like curiosity without delivery.
+
+### Follow-ups
+
+1. “How did you decide diffusion was worth investing in rather than just another research trend?”
+
+“I wasn’t interested in diffusion simply because it was becoming popular. I was looking at where generative modeling was heading and saw that diffusion was becoming a very general modeling framework, while my group had strong expertise in sequential representation learning but very little understanding of diffusion.
+
+I saw that as a strategic capability gap. If diffusion became important for sequential and scientific data—which I believed it would—we wouldn’t be able to evaluate research opportunities properly without understanding it deeply ourselves.
+
+So I made a deliberate investment. I started with two researchers, Ilan and Nimrod, and we worked through the field from the mathematical foundations through implementation. When we realized our understanding of the connection between differential equations and stochastic differential equations wasn’t strong enough, we actually stopped and rebuilt that part of the curriculum rather than treating the equations as black boxes.
+
+That investment eventually contributed to eight diffusion papers at ICML, ICLR, and NeurIPS, and, more importantly, gave us reusable expertise and infrastructure that later supported projects such as ImagenTime and ImagenFew.
+
+So the decision wasn’t really ‘should we write a diffusion paper?’ It was ‘is this a capability we’re going to need repeatedly over the next several years?’”
+
+
+2. “As the professor leading the group, how hands-on were you technically?”
+
+“Very hands-on, particularly because I didn’t think I could lead a new technical direction responsibly without understanding the machinery myself.
+
+I worked through the mathematics alongside the team, and I also coded with them. One problem we encountered was that the available diffusion repositories were often difficult to reason about or modify cleanly. So I personally worked on cleaning up and rewriting important components around the sampler, noise schedule, training objective, and evaluation pipeline.
+
+That was useful scientifically as well. Once you implement these pieces yourself, questions that look like minor implementation details often turn into research questions—for example, what exactly the model predicts, how the noise parameterization affects optimization, or how the numerical solver interacts with sampling cost.
+
+I don’t think Principal-level leadership means being the person who writes every line of code. But I do think it means being technically deep enough to enter the implementation when that’s where the uncertainty is, and then helping the team build abstractions so that the next researcher doesn’t have to solve the same problem again.”
+
+
+3. “How did you make sure this knowledge scaled beyond the three of you?”
+
+“From the beginning, I didn’t want the outcome to be that three people in the lab understood diffusion.
+
+We therefore treated the code and the learning process as reusable infrastructure. We cleaned up the implementation so that components like the sampler, noise schedule, objective, and evaluation could be reused rather than copied from project to project. We also developed a much clearer learning path because we’d already discovered where our own understanding had broken down.
+
+That changed how new students entered the area. Instead of spending months reconstructing the same knowledge from papers and fragile repositories, they could start from a codebase and conceptual framework that we understood and trusted.
+
+The evidence that this scaled was that diffusion stopped being one isolated project. It became an enabling technology across several projects—including ImagenTime and later ImagenFew—and contributed to eight papers across major ML venues.
+
+The leadership lesson for me was that learning something yourself creates expertise; turning that expertise into infrastructure, methodology, and people who can operate independently creates organizational capability. That’s the part I consider Principal-level impact.”
 
 ---
 
