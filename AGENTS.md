@@ -73,6 +73,7 @@ Load from [`.cursor/skills/`](.cursor/skills/) when the user invokes or the task
 | Skill | Trigger |
 |-------|---------|
 | `mock-lp` | LP / behavioral practice |
+| `siemens-mock` | Siemens phone-screen mock; log in `ScientificML/Siemens/mocks.md` |
 | `timed-code` | Timed LeetCode simulation |
 | `ml-deep-dive` | ML/LLM technical depth practice |
 | `follow-up-mock` | 15-min hard follow-up (mid-conversation; Yujie / Chung-Cheng / on-site) |

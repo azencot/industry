@@ -24,6 +24,7 @@
 | **2026-10-14** | **Recruiter screen — Chandler** | Org, not the seat. Advancing. Debrief: [`2026-10-14_recruiter-debrief.md`](2026-10-14_recruiter-debrief.md). |
 | **2026-10-15** | Phone-screen coding drills | PyTorch stubs + solutions. [`coding/`](coding/). Schedule in the [debrief](2026-10-14_recruiter-debrief.md). |
 | **2026-10-15** | Behavioral story bank | Six Siemens stories plus backups. [`2026-10-15_behavioral-story-bank.md`](2026-10-15_behavioral-story-bank.md). Thu 15: speak A, B, C. |
+| **2026-10-16** | Story A mock | ~15 min. GAF fact wrong; no number; "my students." [`mocks.md`](mocks.md). |
 
 ## Loop (Chandler, 2026-10-14 — the schedule)
 
