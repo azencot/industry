@@ -1,6 +1,7 @@
 """18. One masked training step — PROBLEM.
 
-Do not open 18_masked_train_step_solution.py until this file runs.
+Wednesday: start from 18_masked_train_step_broken.py, not from a clean editor.
+Do not open 18_masked_train_step_solution.py until the broken file's asserts pass.
 
 Two functions. The second calls the first.
 

@@ -10,7 +10,7 @@
 | **Referral** | **Danielle Robinson** (works at Siemens; sent the resume; gave the loop shape below) |
 | **Location** | **Any Siemens location in Washington** · **hybrid** |
 | **Posted** | 2026-09-17 |
-| **Status** | **Technical screen booked.** Fri **23 Oct 2026, 22:00–23:00 Thailand** (08:00–09:00 Pacific) with **Huzefa Rangwala**. Half resume / ML breadth, half PyTorch. Prep is Tue 20–Thu 22: [`2026-10-17_huzefa-screen.md`](2026-10-17_huzefa-screen.md). If that passes: **virtual on-site, 3 × 1 hour** (behavioral, technical, functional). |
+| **Status** | **Technical screen booked.** Fri **23 Oct 2026, 22:00–23:00 Thailand** (08:00–09:00 Pacific) with **Huzefa Rangwala**. The hour is about half resume methodology, half one PyTorch question. Prep (Tue 20–Thu 22) is coding-heavy, ~65–70%: [`2026-10-17_huzefa-screen.md`](2026-10-17_huzefa-screen.md). If that passes: **virtual on-site, 3 × 1 hour** (behavioral, technical, functional). |
 | **Comp (public JD)** | Base **$167,178–$226,236** + target incentive **15%** of base. Do not open with this. |
 
 ## Active thread

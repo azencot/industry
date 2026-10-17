@@ -1,6 +1,7 @@
-"""17. Attention across the series axis — PROBLEM.
+"""17. Attention across the series axis — PROBLEM. Wednesday, part A.
 
 Do not open 17_group_attention_solution.py until this file runs.
+After this runs, do 17b (cross-group), then 17c (multi-head). Do not open those first.
 
 The sequence axis is not time. That is the only new idea.
 

@@ -14,7 +14,7 @@ Source stories, with the original numbers and bounds: [`2026-10-15_prior-loop-st
 
 ## Oct 23 screen
 
-The hour with Huzefa is resume methodology plus one PyTorch question. Plan: [`2026-10-17_huzefa-screen.md`](2026-10-17_huzefa-screen.md). Only three stories are hot: **A** ImagenTime (fix the 16 Oct mock first), **B** dual-tower, **C** TR kill. Bosch only if he asks about a physical measurement. Leave D and F cold.
+Plan: [`2026-10-17_huzefa-screen.md`](2026-10-17_huzefa-screen.md). Prep is coding-heavy. Spoken work is methodology questions, not polished STAR speeches. Tuesday: stories **A** and **B** only. Friday anchors also include **C** (the pre-committed slice gate). Bosch only if he asks about a physical measurement. Leave D and F cold.
 
 ---
 

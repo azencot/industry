@@ -43,7 +43,8 @@ After each call: drop `YYYY-MM-DD_*.md` in that company’s folder and add a row
 | 2026-10-15 | Robinson on the phone screen | Live PyTorch/Python + ML breadth. DataLoader, padding, attention. Must run unit tests. Drills: [`Siemens/coding/`](Siemens/coding/). Stories: [`Siemens/2026-10-15_behavioral-story-bank.md`](Siemens/2026-10-15_behavioral-story-bank.md). |
 | 2026-10-16 | Story A mock | ~15 min, ImagenTime. GAF off-diagonal called zero. Log: [`Siemens/mocks.md`](Siemens/mocks.md). |
 | 2026-10-17 | Psistar founders prep | Call **Tue 20 Oct, 00:00 Thailand** with **Yochai Pagi** and **Matan Pagi**. Intro via Raz Marshanski. Prep: [`Psistar/2026-10-20_founders-call-prep.md`](Psistar/2026-10-20_founders-call-prep.md). |
-| 2026-10-17 | Huzefa screen booked | Fri 23 Oct, 22:00–23:00 Thailand. Half resume methodology, half PyTorch. Three mornings Tue 20–Thu 22. Coding stretch is composed tensor ops (16–18), not puzzles. [`Siemens/2026-10-17_huzefa-screen.md`](Siemens/2026-10-17_huzefa-screen.md). |
+| 2026-10-17 | Huzefa screen booked | Fri 23 Oct, 22:00–23:00 Thailand. Half resume methodology, half PyTorch. Three mornings Tue 20–Thu 22. [`Siemens/2026-10-17_huzefa-screen.md`](Siemens/2026-10-17_huzefa-screen.md). |
+| 2026-10-17 | Prep revised | Coding-heavy (~65–70%). 17 extended to cross-group and multi-head. 18 starts broken. Thursday mock is a different composition (19). |
 
 ---
 
