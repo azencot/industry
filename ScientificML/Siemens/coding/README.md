@@ -1,10 +1,10 @@
 # Siemens phone screen — PyTorch coding
 
-Live coding for the **Mon 2026-10-19 / Tue 2026-10-20** screen. Robinson: PyTorch/Python plus ML breadth. Examples she named: `DataLoader`, simple padding, attention matrix. The code has to **run on simple unit tests**.
+Live coding for **Fri 23 Oct 2026, 22:00–23:00 Thailand**, with Huzefa Rangwala. The coding half is still one PyTorch function plus a unit test. Robinson’s examples: `DataLoader`, simple padding, attention matrix. The full hour (resume half, what to raise, the three mornings) is [`../2026-10-17_huzefa-screen.md`](../2026-10-17_huzefa-screen.md).
 
-Chandler also put **STAR** on this screen. Stories stay in the [debrief](../2026-10-14_recruiter-debrief.md). This folder is the coding half.
+Stories stay in the [bank](../2026-10-15_behavioral-story-bank.md). This folder is the coding half.
 
-Not LeetCode. Not ML theory. The job is to implement tensor ops fast, say the shapes, and make a test pass.
+The step up from the short drills is **16–18**: same tensor ops, one longer function, and one attention axis that is not time. Implement, say the shapes, write the asserts, run.
 
 ## How to practice
 
@@ -20,13 +20,15 @@ Open the **problem** file only. Do not open `*_solution.py` until your file runs
 
 ## Schedule
 
+Sun 18 and Mon 19 are off. Three mornings start Tuesday. Detail and the spoken half: [`../2026-10-17_huzefa-screen.md`](../2026-10-17_huzefa-screen.md).
+
 | Day | Date | Files |
 |-----|------|-------|
-| 1 | Thu 15 | **01–04 and 13 done.** Stories A–C are in the [behavioral bank](../2026-10-15_behavioral-story-bank.md). |
-| 2 | Fri 16 | 05–08. End with attention from scratch, timed. |
-| 3 | Sat 17 | 09–12, 15. Then one easy Python problem, not from this folder. |
-| 4 | Sun 18 | Two 40–45 min mocks. No solution file. Mock 1 = 01+03. Mock 2 = 05+06. |
-| Screen morning | Mon or Tue | From memory: collate, padding mask, attention, one train loop. Stop there. |
+| — | Thu 15–Fri 16 | **01–04 and 13 done.** **05–08 drafted** in the problem files; core asserts passed 2026-10-17. |
+| 1 | **Tue 20** | Blank redo of **05+06** (25 min). Then **16**. |
+| 2 | **Wed 21** | **17**, then **18**. |
+| 3 | **Thu 22** | One 25-min blank mock: **16 or 18**. Repair only what broke. |
+| Pre-call | **Fri 23, ~20:30** | 20 min. Attention shapes from memory. Screen at 22:00. |
 
 ## Order
 
@@ -36,17 +38,20 @@ Open the **problem** file only. Do not open `*_solution.py` until your file runs
 | 2 | Right and left padding | [`02_pad_sequences.py`](02_pad_sequences.py) · [`02_pad_sequences_solution.py`](02_pad_sequences_solution.py) | **Done 2026-10-15.** Right pad is `[:Ti]`, left pad is `[-Ti:]`. Equal lengths need no extra branch. |
 | 3 | Padding mask, and the attention broadcast shape | [`03_padding_mask.py`](03_padding_mask.py) · [`03_padding_mask_solution.py`](03_padding_mask_solution.py) | **Done 2026-10-15.** `valid_true=False` flips the mask. Key mask is `[B, 1, 1, T]`. |
 | 4 | Masked sum, mean, MSE | [`04_masked_reductions.py`](04_masked_reductions.py) · [`04_masked_reductions_solution.py`](04_masked_reductions_solution.py) | **Done 2026-10-15.** Sum and mean reduce over T. MSE averages every valid element. `clamp_min(1)` covers an all-pad row. |
-| 5 | Scaled dot-product attention | [`05_attention.py`](05_attention.py) · [`05_attention_solution.py`](05_attention_solution.py) | |
-| 6 | Attention with key padding and a causal mask | [`06_masked_attention.py`](06_masked_attention.py) · [`06_masked_attention_solution.py`](06_masked_attention_solution.py) | |
-| 7 | Causal mask, combined with padding | [`07_causal_mask.py`](07_causal_mask.py) · [`07_causal_mask_solution.py`](07_causal_mask_solution.py) | |
-| 8 | Multi-head split, attend, merge | [`08_multihead.py`](08_multihead.py) · [`08_multihead_solution.py`](08_multihead_solution.py) | |
+| 5 | Scaled dot-product attention | [`05_attention.py`](05_attention.py) · [`05_attention_solution.py`](05_attention_solution.py) | **Drafted.** Core assert passed 2026-10-17. Tue 20 is a blank redo. |
+| 6 | Attention with key padding and a causal mask | [`06_masked_attention.py`](06_masked_attention.py) · [`06_masked_attention_solution.py`](06_masked_attention_solution.py) | **Drafted.** Padding, causal, both, and the all-pad row passed 2026-10-17. Blank redo Tue 20. |
+| 7 | Causal mask, combined with padding | [`07_causal_mask.py`](07_causal_mask.py) · [`07_causal_mask_solution.py`](07_causal_mask_solution.py) | **Drafted.** `tril` mask and the `[B, 1, T, T]` combine passed 2026-10-17. |
+| 8 | Multi-head split, attend, merge | [`08_multihead.py`](08_multihead.py) · [`08_multihead_solution.py`](08_multihead_solution.py) | **Drafted.** Shape and the identical-token case passed 2026-10-17. |
 | 9 | MLP and a residual block | [`09_mlp.py`](09_mlp.py) · [`09_mlp_solution.py`](09_mlp_solution.py) | |
 | 10 | One training epoch | [`10_train_loop.py`](10_train_loop.py) · [`10_train_loop_solution.py`](10_train_loop_solution.py) | |
 | 11 | Eval loop | [`11_eval_loop.py`](11_eval_loop.py) · [`11_eval_loop_solution.py`](11_eval_loop_solution.py) | |
 | 12 | Batched dot, cosine, Euclidean | [`12_pairwise.py`](12_pairwise.py) · [`12_pairwise_solution.py`](12_pairwise_solution.py) | |
 | 13 | `Dataset` of tensor pairs | [`13_dataset.py`](13_dataset.py) · [`13_dataset_solution.py`](13_dataset_solution.py) | **Done 2026-10-15.** One index per `__getitem__`. `DataLoader` stacks equal shapes. |
 | 14 | Sliding-window time series | [`14_sliding_window.py`](14_sliding_window.py) · [`14_sliding_window_solution.py`](14_sliding_window_solution.py) | |
-| 15 | Cross-entropy that ignores padding | [`15_masked_ce.py`](15_masked_ce.py) · [`15_masked_ce_solution.py`](15_masked_ce_solution.py) | |
+| 15 | Cross-entropy that ignores padding | [`15_masked_ce.py`](15_masked_ce.py) · [`15_masked_ce_solution.py`](15_masked_ce_solution.py) | Covered in composed form by 18. |
+| 16 | Pad, self-attend, masked mean pool | [`16_varlen_pool.py`](16_varlen_pool.py) · [`16_varlen_pool_solution.py`](16_varlen_pool_solution.py) | **Tue 20.** The composed question. |
+| 17 | Attention across series, not time | [`17_group_attention.py`](17_group_attention.py) · [`17_group_attention_solution.py`](17_group_attention_solution.py) | **Wed 21.** `[B, G, T, D]`, attend on `G`. |
+| 18 | Masked cross-entropy and one train step | [`18_masked_train_step.py`](18_masked_train_step.py) · [`18_masked_train_step_solution.py`](18_masked_train_step_solution.py) | **Wed 21.** |
 
 Mask convention in every file: **True = valid token**, False = pad. Say it before you code. If they flip it, flip the `~`.
 
@@ -100,3 +105,6 @@ Key padding mask `[B, Tk]` becomes `[B, 1, Tk]` for single-head scores `[B, Tq, 
 - [ ] eval loop
 - [ ] batched pairwise similarity
 - [ ] sliding-window time-series `Dataset`
+- [ ] variable-length attention pool (16)
+- [ ] attention across the series axis (17)
+- [ ] one masked train step (18)

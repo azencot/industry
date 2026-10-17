@@ -3,7 +3,7 @@
 **Type:** Recruiter screen, Microsoft Teams  
 **Recruiter:** Danielle Chandler  
 **Prior:** [`2026-10-14_recruiter-prep.md`](2026-10-14_recruiter-prep.md)  
-**Next:** Send availability for the technical screen. Target **Mon 2026-10-19** and **Tue 2026-10-20**.
+**Next:** Technical screen is booked. **Fri 23 Oct 2026, 22:00–23:00 Thailand** with **Huzefa Rangwala**. Plan: [`2026-10-17_huzefa-screen.md`](2026-10-17_huzefa-screen.md). The availability draft below is historical.
 
 Cleared the soft gate. The hiring manager wants a technical screen. She talked about the **org**, not the specific seat. Hiring manager still unnamed. Org details were not written down.
 
@@ -64,7 +64,9 @@ Chandler still said STAR is in this screen. Prepare both. Robinson is describing
 
 ## Practice before that screen
 
-Phone screen is **Mon 2026-10-19** or **Tue 2026-10-20**. Files and the full drill list: [`coding/README.md`](coding/README.md). Open the problem file only. Do not open `*_solution.py` until your file runs.
+**Superseded 2026-10-17.** The screen is Friday 23 Oct with Huzefa. Follow [`2026-10-17_huzefa-screen.md`](2026-10-17_huzefa-screen.md), not the Thu–Sun table below.
+
+Phone screen was expected **Mon 2026-10-19** or **Tue 2026-10-20**. Files and the drill list: [`coding/README.md`](coding/README.md). Open the problem file only. Do not open `*_solution.py` until your file runs.
 
 About **80–85%** of the coding time is these PyTorch problems. **15–20%** is easy Python (lists, dicts, two pointers, a sliding window) so the live-coding muscle stays warm. No DP, graphs, or obscure APIs.
 

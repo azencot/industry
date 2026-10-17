@@ -10,7 +10,7 @@
 | **Referral** | **Danielle Robinson** (works at Siemens; sent the resume; gave the loop shape below) |
 | **Location** | **Any Siemens location in Washington** · **hybrid** |
 | **Posted** | 2026-09-17 |
-| **Status** | **Recruiter done 2026-10-14.** HM wants a **technical screen**: STAR + **PyTorch** coding. If that passes: **virtual on-site, 3 × 1 hour** (behavioral, technical, functional). **Send availability for Mon 2026-10-19 and Tue 2026-10-20.** Debrief: [`2026-10-14_recruiter-debrief.md`](2026-10-14_recruiter-debrief.md). |
+| **Status** | **Technical screen booked.** Fri **23 Oct 2026, 22:00–23:00 Thailand** (08:00–09:00 Pacific) with **Huzefa Rangwala**. Half resume / ML breadth, half PyTorch. Prep is Tue 20–Thu 22: [`2026-10-17_huzefa-screen.md`](2026-10-17_huzefa-screen.md). If that passes: **virtual on-site, 3 × 1 hour** (behavioral, technical, functional). |
 | **Comp (public JD)** | Base **$167,178–$226,236** + target incentive **15%** of base. Do not open with this. |
 
 ## Active thread
@@ -25,6 +25,7 @@
 | **2026-10-15** | Phone-screen coding drills | PyTorch stubs + solutions. [`coding/`](coding/). Schedule in the [debrief](2026-10-14_recruiter-debrief.md). |
 | **2026-10-15** | Behavioral story bank | Six Siemens stories plus backups. [`2026-10-15_behavioral-story-bank.md`](2026-10-15_behavioral-story-bank.md). Thu 15: speak A, B, C. |
 | **2026-10-16** | Story A mock | ~15 min. GAF fact wrong; no number; "my students." [`mocks.md`](mocks.md). |
+| **2026-10-17** | Screen booked | **Huzefa Rangwala**, Fri 23 Oct, 22:00–23:00 Thailand. Robinson: resume methodology, ML breadth, then one PyTorch question. Plan: [`2026-10-17_huzefa-screen.md`](2026-10-17_huzefa-screen.md). |
 
 ## Loop (Chandler, 2026-10-14 — the schedule)
 
@@ -55,10 +56,11 @@ JD preferred center for this seat, per Robinson: **scientific ML for physical sy
 
 | Person | Role signal | Notes |
 |--------|-------------|--------|
-| **Danielle Chandler** | Recruiter (external address) | Process owner for this screen. Teams. |
-| **Danielle Robinson** | Siemens employee; referrer | Do not narrate her tips on the call. Two different Danielles. |
+| **Danielle Chandler** | Recruiter (external address) | Process owner. Teams. |
+| **Danielle Robinson** | Siemens employee; referrer | Worked with Huzefa at AWS on time series and AI4Science. Do not narrate her tips on the call. Two different Danielles. |
+| **Huzefa Rangwala** | Staff Scientist, Physical AI | Technical screen, Fri 23 Oct. Not confirmed as the hiring manager. Brief: [`2026-10-17_huzefa-screen.md`](2026-10-17_huzefa-screen.md). |
 
-Hiring manager not named yet.
+Hiring manager still unnamed.
 
 ## Track boundary
 
