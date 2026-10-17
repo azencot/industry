@@ -26,6 +26,7 @@
 | **2026-10-15** | Behavioral story bank | Six Siemens stories plus backups. [`2026-10-15_behavioral-story-bank.md`](2026-10-15_behavioral-story-bank.md). Thu 15: speak A, B, C. |
 | **2026-10-16** | Story A mock | ~15 min. GAF fact wrong; no number; "my students." [`mocks.md`](mocks.md). |
 | **2026-10-17** | Screen booked | **Huzefa Rangwala**, Fri 23 Oct, 22:00–23:00 Thailand. Robinson: resume methodology, ML breadth, then one PyTorch question. Plan: [`2026-10-17_huzefa-screen.md`](2026-10-17_huzefa-screen.md). |
+| **2026-10-17** | Evening coding | Attention draft passes, including causal via `triu(..., diagonal=1)`. Broadcast A, B, D pass. C and shape drills open. |
 
 ## Loop (Chandler, 2026-10-14 — the schedule)
 

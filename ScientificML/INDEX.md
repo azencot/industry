@@ -45,6 +45,7 @@ After each call: drop `YYYY-MM-DD_*.md` in that company’s folder and add a row
 | 2026-10-17 | Psistar founders prep | Call **Tue 20 Oct, 00:00 Thailand** with **Yochai Pagi** and **Matan Pagi**. Intro via Raz Marshanski. Prep: [`Psistar/2026-10-20_founders-call-prep.md`](Psistar/2026-10-20_founders-call-prep.md). |
 | 2026-10-17 | Huzefa screen booked | Fri 23 Oct, 22:00–23:00 Thailand. Half resume methodology, half PyTorch. Three mornings Tue 20–Thu 22. [`Siemens/2026-10-17_huzefa-screen.md`](Siemens/2026-10-17_huzefa-screen.md). |
 | 2026-10-17 | Prep revised | Coding-heavy (~65–70%). 17 extended to cross-group and multi-head. 18 starts broken. Thursday mock is a different composition (19). |
+| 2026-10-17 | Coding, evening | Attention with heads, plus broadcast A/B/D. Misses: tensor truthiness, `tril` polarity, mask lined up with features. Group-key mask and shape drills not started. |
 
 ---
 

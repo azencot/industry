@@ -137,10 +137,10 @@ No solution file until the asserts pass. Spoken blocks are short answers to the 
 
 | | |
 |--|--|
-| 20 min cap | [`tue_attention.py`](coding/tue_attention.py) from an empty editor. Narrate every shape. No notes, no autocomplete. Under 15 min clean: do not practice vanilla attention again. |
+| 20 min cap | [`tue_attention.py`](coding/tue_attention.py) from an empty editor. Sat 17 draft passes; do not reread it. Under 15 min clean: do not practice vanilla attention again. |
 | 20 min | [`16_varlen_pool.py`](coding/16_varlen_pool.py). 3–4 asserts. Padding, mask, attention, masked mean. |
-| 30 min | [`tue_broadcast.py`](coding/tue_broadcast.py). Key mask on `[B, H, Tq, Tk]`, masked mean, group-key mask on `[B, T, Gq, Gk]`, causal + padding into `[B, H, T, T]`. |
-| 30 min | [`tue_shapes.py`](coding/tue_shapes.py). Heads, permute-then-reshape, pairwise dot with no loop, flatten for CE. |
+| 15 min | [`tue_broadcast.py`](coding/tue_broadcast.py) part **C** only. A, B, and D passed on Sat 17. |
+| 30 min | [`tue_shapes.py`](coding/tue_shapes.py). Heads, permute-then-reshape, pairwise dot with no loop, flatten for CE. Not started. |
 | 45–60 min | Stories **A** and **B** only, as answers to the questions below. Apply the 16 Oct mock fixes before retelling A. |
 
 Tuesday questions:

@@ -21,7 +21,29 @@ Narrate every shape out loud.
 """
 
 import torch
-
+import math
 
 def scaled_dot_product_attention(q, k, v, key_padding_mask=None, causal=False):
-    raise NotImplementedError
+    # mul and normalize
+    scores = q @ k.transpose(-2, -1) / math.sqrt(q.shape[-1])       # [B, H, Tq, Dh] @ [B, H, Dh, Tk] -> [B, H, Tq, Tk]
+
+    # prepare masks, note valid vs invalid
+    B, Tq, Tk = q.shape[0], q.shape[-2], k.shape[-2]
+
+    Mp = torch.zeros([B, 1, 1, Tk], dtype=bool).to(q.device)
+    if key_padding_mask is not None:
+        Mp = ~key_padding_mask[:, None, None, :]
+
+    Mc = torch.zeros([1, 1, Tq, Tk], dtype=bool).to(q.device)
+    if causal:
+        Mc = torch.triu(torch.ones([Tq, Tk], dtype=bool).to(q.device), diagonal=1)                                     # TODO: not sure about the syntax
+        Mc = Mc[None, None, :, :]                                   # [1, 1, Tq, Tk]
+
+    scores = scores.masked_fill(Mp | Mc, float("-inf"))
+
+    # apply softmax
+    a = torch.softmax(scores, dim=-1)
+    a = torch.nan_to_num(a, nan=0.0)
+
+    # scale v and return
+    return a @ v                            # [??] @ [B, H, Tk, Dv] -> [B, H, Tq, Dv]

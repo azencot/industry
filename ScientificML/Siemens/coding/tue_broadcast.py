@@ -15,11 +15,14 @@ import torch
 
 
 def mask_attn_keys(scores, key_mask):
-    raise NotImplementedError
+    return scores.masked_fill(~key_mask[:, None, None, :], float("-inf"))
 
 
 def masked_mean_time(x, mask):
-    raise NotImplementedError
+    m = mask.unsqueeze(-1)
+    lengths = m.sum(dim=1).clamp_min(1)
+    
+    return x.masked_fill(~m, 0).sum(dim=1) / lengths
 
 
 def mask_group_keys(scores, key_mask):
@@ -27,4 +30,9 @@ def mask_group_keys(scores, key_mask):
 
 
 def mask_causal_and_padding(scores, padding_mask):
-    raise NotImplementedError
+    Mp = ~padding_mask[:, None, None, :]
+    
+    T = scores.shape[-1]
+    Mc = torch.triu(torch.ones([T, T], dtype=bool, device=scores.device), diagonal=1)
+
+    return scores.masked_fill(Mp | Mc, float("-inf"))

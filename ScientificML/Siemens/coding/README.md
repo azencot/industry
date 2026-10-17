@@ -25,7 +25,8 @@ Sun 18 and Mon 19 are off. Three mornings start Tuesday. Detail and the spoken h
 | Day | Date | Files |
 |-----|------|-------|
 | — | Thu 15–Fri 16 | **01–04 and 13 done.** **05–08 drafted** in the problem files; core asserts passed 2026-10-17. Tuesday does not reread them. |
-| 1 | **Tue 20** | [`tue_attention.py`](tue_attention.py) (20 min cap), **16** (20 min), [`tue_broadcast.py`](tue_broadcast.py), [`tue_shapes.py`](tue_shapes.py), then stories A and B as questions. |
+| — | **Sat 17** | [`tue_attention.py`](tue_attention.py) and broadcast A, B, D. Group-key mask (C) and [`tue_shapes.py`](tue_shapes.py) not started. |
+| 1 | **Tue 20** | Blank redo of attention (20 min cap), **16** (20 min), broadcast **C** only, then [`tue_shapes.py`](tue_shapes.py). Stories A and B as questions. |
 | 2 | **Wed 21** | **17**, then [`17b_cross_group.py`](17b_cross_group.py), [`17c_group_multihead.py`](17c_group_multihead.py), [`18_masked_train_step_broken.py`](18_masked_train_step_broken.py), a live debug sprint, then breadth questions. |
 | 3 | **Thu 22** | Mock. Coding file, opened that morning: [`19_thu_mock.py`](19_thu_mock.py). Repair only what broke. Then one new tensor problem in the session. |
 | Pre-call | **Fri 23, ~20:30** | 20 min. No heavy coding. Screen at 22:00. |
@@ -55,9 +56,9 @@ Sun 18 and Mon 19 are off. Three mornings start Tuesday. Detail and the spoken h
 | 17c | Multi-head cross-group | [`17c_group_multihead.py`](17c_group_multihead.py) · [`17c_group_multihead_solution.py`](17c_group_multihead_solution.py) | **Wed 21.** Scores `[B, T, H, Gq, Gk]`. |
 | 18 | Masked cross-entropy and one train step | [`18_masked_train_step_broken.py`](18_masked_train_step_broken.py) · [`18_masked_train_step.py`](18_masked_train_step.py) · [`18_masked_train_step_solution.py`](18_masked_train_step_solution.py) | **Wed 21.** Start from the broken file. |
 | 19 | Per-series attend over time, then pool | [`19_thu_mock.py`](19_thu_mock.py) · [`19_thu_mock_solution.py`](19_thu_mock_solution.py) | **Thu 22 mock.** Do not open before then. |
-| — | Tuesday attention, heads in the shape | [`tue_attention.py`](tue_attention.py) · [`tue_attention_solution.py`](tue_attention_solution.py) | **Tue 20**, 20 min cap. |
-| — | Broadcast / mask micro-drills | [`tue_broadcast.py`](tue_broadcast.py) · [`tue_broadcast_solution.py`](tue_broadcast_solution.py) | **Tue 20.** |
-| — | Shape micro-drills | [`tue_shapes.py`](tue_shapes.py) · [`tue_shapes_solution.py`](tue_shapes_solution.py) | **Tue 20.** |
+| — | Tuesday attention, heads in the shape | [`tue_attention.py`](tue_attention.py) · [`tue_attention_solution.py`](tue_attention_solution.py) | **Drafted Sat 17.** Padding, causal (`triu` diagonal 1), both, and the all-pad row pass. Tue 20 is still a blank 20 min cap. |
+| — | Broadcast / mask micro-drills | [`tue_broadcast.py`](tue_broadcast.py) · [`tue_broadcast_solution.py`](tue_broadcast_solution.py) | **Sat 17: A, B, D pass.** C (`mask_group_keys`) still open. |
+| — | Shape micro-drills | [`tue_shapes.py`](tue_shapes.py) · [`tue_shapes_solution.py`](tue_shapes_solution.py) | **Tue 20.** Not started. |
 
 Mask convention in every file: **True = valid token**, False = pad. Say it before you code. If they flip it, flip the `~`.
 
