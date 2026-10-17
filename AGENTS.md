@@ -10,6 +10,7 @@ Industry prep workspace:
 - **Forecasting** — general industry forecasting practice for AS roles (production, eval, tradeoffs); **not** SCOT
 - **GenAI** — generative AI / LLM role interviews and prep, including multimodal / TSFM research-scientist roles; **not** forecasting-AS loops
 - **ScientificML** — scientific ML / physical-AI principal applied scientist roles (simulation, operator learning, industrial time series); **not** forecasting-AS or GenAI loops
+- **IndustrialResearch** — industry research-lab conversations (Apple AI Research and similar); **not** product AS loops
 - **Talks** — dual-use HTML decks under [`talks/`](talks/) (Bosch cut now; community talks later); not company-loop notes
 - **SCOT** — relationship / contribution prep (not a PS1 machine unless it becomes a formal loop)
 
@@ -23,6 +24,7 @@ Not a production app repo.
    - Forecasting → [`Forecasting/INDEX.md`](Forecasting/INDEX.md) (week plan, notes, `/forecasting` drills)
    - GenAI → [`GenAI/INDEX.md`](GenAI/INDEX.md) (interviews, notes; GenAI roles only)
    - ScientificML → [`ScientificML/INDEX.md`](ScientificML/INDEX.md) (Siemens and similar scientific-ML loops)
+   - IndustrialResearch → [`IndustrialResearch/INDEX.md`](IndustrialResearch/INDEX.md) (research-lab intros; Apple lives in [`IndustrialResearch/apple/`](IndustrialResearch/apple/))
    - SCOT → [`Amazon_SCOT/INDEX.md`](Amazon_SCOT/INDEX.md) (contacts, collab, contribution pitch, questions)
 3. [`.cursor/skills/debrief/omri_azencot_experience.md`](.cursor/skills/debrief/omri_azencot_experience.md) — experience profile, flagship project, IC framing (shared)
 4. FinTech only: [`Amazon_FinTech/prep-plan.md`](Amazon_FinTech/prep-plan.md) — weekly plan; check today's focus
@@ -30,7 +32,8 @@ Not a production app repo.
 6. Forecasting only: [`Forecasting/prep-plan.md`](Forecasting/prep-plan.md); notes under [`Forecasting/notes/`](Forecasting/notes/); company prep under [`Forecasting/interviews/`](Forecasting/interviews/) (not GenAI/SCOT)
 7. GenAI only: notes under [`GenAI/notes/`](GenAI/notes/); company prep under [`GenAI/interviews/`](GenAI/interviews/) (not under Forecasting)
 8. ScientificML only: company prep under [`ScientificML/`](ScientificML/) (Siemens lives in [`ScientificML/Siemens/`](ScientificML/Siemens/); not under GenAI or Forecasting)
-9. SCOT only: [`contribution-plan.md`](Amazon_SCOT/contribution-plan.md) + [`mengfei-notes.md`](Amazon_SCOT/mengfei-notes.md) before Boris/Mengfei calls; session/post-call notes in [`Amazon_SCOT/notes/`](Amazon_SCOT/notes/) (SCOT debriefs live here, not under FinTech/Forecasting/GenAI/ScientificML)
+9. IndustrialResearch only: company prep under [`IndustrialResearch/`](IndustrialResearch/) (Apple research lives in [`IndustrialResearch/apple/`](IndustrialResearch/apple/); not the Health AIML loop under GenAI)
+10. SCOT only: [`contribution-plan.md`](Amazon_SCOT/contribution-plan.md) + [`mengfei-notes.md`](Amazon_SCOT/mengfei-notes.md) before Boris/Mengfei calls; session/post-call notes in [`Amazon_SCOT/notes/`](Amazon_SCOT/notes/) (SCOT debriefs live here, not under FinTech/Forecasting/GenAI/ScientificML)
 
 ## Behavior
 

@@ -2,7 +2,7 @@
 
 Personal workspace for industry job prep: Amazon FinTech interviews, general forecasting-role practice, generative AI role prep, Amazon SCOT relationship/contribution prep, LeetCode, and compounding interview artifacts.
 
-**New session?** Read in order: this file → [`AGENTS.md`](AGENTS.md) → active track INDEX (`Amazon_FinTech`, `Forecasting`, `GenAI`, `ScientificML`, or `Amazon_SCOT`).
+**New session?** Read in order: this file → [`AGENTS.md`](AGENTS.md) → active track INDEX (`Amazon_FinTech`, `Forecasting`, `GenAI`, `ScientificML`, `IndustrialResearch`, or `Amazon_SCOT`).
 
 ---
 
@@ -15,6 +15,7 @@ Personal workspace for industry job prep: Amazon FinTech interviews, general for
 | [`Forecasting/`](Forecasting/) | General industry forecasting practice (not SCOT) | When targeting forecasting AS roles |
 | [`GenAI/`](GenAI/) | Generative AI / LLM role interviews and prep (not forecasting) | When targeting GenAI roles |
 | [`ScientificML/`](ScientificML/) | Scientific ML / physical-AI principal AS roles (not forecasting, not GenAI) | Siemens and similar loops |
+| [`IndustrialResearch/`](IndustrialResearch/) | Industry research-lab conversations (not product AS loops) | Apple AI Research (Koltun / Ozan Sener) |
 | [`Amazon_SCOT/`](Amazon_SCOT/) | SCOT relationship track: contacts, collab, contribution pitch | Before Boris / Mengfei / SCOT calls |
 | [`code/`](code/) | LeetCode solutions (Python); `_practice` = scratch attempts | Coding prep, timed drills |
 | [`talks/`](talks/) | Dual-use talks (HTML decks) | Bosch 25-min cut now; community talks later — not company-loop notes. Ongoing TS-VLM lit: [`talks/lit-search.md`](talks/lit-search.md) |
@@ -62,6 +63,15 @@ Personal workspace for industry job prep: Amazon FinTech interviews, general for
 - **Active:** **Siemens** Principal Applied Scientist (Job ID 523023, Washington hybrid) — recruiter **Danielle Chandler**, referral **Danielle Robinson**. Technical screen **Fri 23 Oct 2026, 22:00–23:00 Thailand** with **Huzefa Rangwala**. Prep Tue 20–Thu 22: [`ScientificML/Siemens/2026-10-17_huzefa-screen.md`](ScientificML/Siemens/2026-10-17_huzefa-screen.md).
 - **Psistar** founders call — **Yochai Pagi** (CEO) and **Matan Pagi** (CTO), intro via **Raz Marshanski**. **Tue 20 Oct 2026, 00:00 Thailand** (Mon 19 Oct, 20:00 Israel). Prep: [`ScientificML/Psistar/2026-10-20_founders-call-prep.md`](ScientificML/Psistar/2026-10-20_founders-call-prep.md)
 - **Details:** [`ScientificML/INDEX.md`](ScientificML/INDEX.md)
+
+---
+
+## IndustrialResearch (research-lab conversations)
+
+- **Purpose:** Warm intros into industry research groups — what the group works on, whether it overlaps, what a seat would look like
+- **Not** a posted product loop. Apple Health AIML stays under [`GenAI/interviews/apple-health-aiml/`](GenAI/interviews/apple-health-aiml/)
+- **Active:** **Apple**, Vladlen Koltun’s organization. **Raja Giryes** introduced Omri to **Ozan Sener** (head of the ML group). Reply not sent. Draft: [`IndustrialResearch/apple/2026-10-17_ozan-intro.md`](IndustrialResearch/apple/2026-10-17_ozan-intro.md)
+- **Details:** [`IndustrialResearch/INDEX.md`](IndustrialResearch/INDEX.md)
 
 ---
 

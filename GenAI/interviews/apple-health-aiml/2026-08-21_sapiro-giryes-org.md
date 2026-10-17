@@ -56,7 +56,9 @@ Shared coauthor **Gregory Darnell** sits on both the HR paper and **RelCon** (wi
 | Paper | [ICASSP 2026](https://machinelearning.apple.com/research/coarse-grained) *Principled Coarse-Grained Acceptance for Speculative Decoding in Speech* — Yanuka, Dixon, Finkelshtein, Rotman, **Giryes**. Apple ML Research tags: speech/NLP, methods. Giryes affiliation **† Tel Aviv University**; coauthors look like **Apple UK** speech/TTS, not Health & Fitness. |
 | Sapiro link | Historical: Giryes **postdoc with Sapiro at Duke (2014–2015)**. That is lineage, not “Raja sits on Shirley’s team.” |
 
-Do **not** ask Raja to ping Shirley for this loop. Optional only if you already know him: coffee on **Apple AI Research vs Health**, not a referral into req 200670570.
+Do **not** ask Raja to ping Shirley for this loop.
+
+**2026-10-17:** Raja introduced Omri to **Ozan Sener**, head of the ML group in Vladlen Koltun’s organization. That thread is [`IndustrialResearch/apple/`](../../../IndustrialResearch/apple/). Keep it off this req. Do not mention Shirley or the Health loop in the reply to Ozan.
 
 ---
 

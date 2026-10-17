@@ -91,3 +91,4 @@ Related skill (shared with FinTech depth practice): **`/ml-deep-dive`**.
 | [`Forecasting/`](../Forecasting/) | Forecasting AS roles (LightGBM, Chronos, demand, etc.) |
 | [`Amazon_FinTech/`](../Amazon_FinTech/) | FinTelligence formal loop (LP, timed code, FinTech-framed LLM) |
 | [`Amazon_SCOT/`](../Amazon_SCOT/) | SCOT relationship / contribution |
+| [`IndustrialResearch/`](../IndustrialResearch/) | Industry research labs. Apple Koltun / Ozan Sener is there, not under Health AIML |

@@ -54,6 +54,7 @@ After each call: drop `YYYY-MM-DD_*.md` in that company’s folder and add a row
 |-------|---------|
 | **This folder (`ScientificML/`)** | Scientific ML / physical-AI / industrial applied-science interviews |
 | [`GenAI/`](../GenAI/) | LLM, multimodal, TSFM research-scientist loops |
+| [`IndustrialResearch/`](../IndustrialResearch/) | Industry research-lab intros (Apple Koltun org). Not this folder |
 | [`Forecasting/`](../Forecasting/) | Forecasting AS roles (LightGBM, Chronos, demand) |
 | [`Amazon_FinTech/`](../Amazon_FinTech/) | FinTelligence formal loop |
 | [`Amazon_SCOT/`](../Amazon_SCOT/) | SCOT relationship / contribution |
