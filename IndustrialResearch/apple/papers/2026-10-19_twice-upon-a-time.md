@@ -57,6 +57,20 @@ Category totals, which matter more than the headline:
 
 Perception does not improve. Decision is +1.2 points. Reasoning is +4.3. The overall jump is the prediction category.
 
+**Reasoning slice, counted from the TSRBench release** (`umd-zhou-lab/TSRBench`), not from a random-baseline row. The paper does not publish one. The slice is **1,710** of the 4,125 questions:
+
+| Task | N | Choices |
+|---|---:|---|
+| Etiological | 350 | 200 five-way, 150 six-way |
+| Numerical | 400 | 374 four-way, 19 three-way, 7 two-way |
+| Causal discovery | 300 | four-way |
+| Deductive | 250 | four-way |
+| Temporal relation | 160 | four-way |
+| Abductive | 150 | four-way |
+| Inductive | 100 | four-way |
+
+A uniform guess over those choices expects about **23.9%** (about 408 of 1,710). That is not 25%. Twenty-five percent is only the four-option rate, and etiological items are five- or six-way. Do not say “28% versus 25%.” The numbers to say are plot-only **35.8** and dual **40.1** on this same slice, item-weighted. The gap is about 74 questions.
+
 Inside prediction, say this before he asks. Event prediction goes from **21.7 to 84.2**. Forecasting goes from **46.2 to 50.4**. The category number 61.7 is mostly one task.
 
 **TSExam, 746 questions: plot only 89.9%, dual view 89.9%.** The delay stream does not move this benchmark. The abstract’s “89.9% on TSExam” is true and is not evidence for the second view.

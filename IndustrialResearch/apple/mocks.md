@@ -8,6 +8,7 @@ One file for every mock aimed at Ozan Sener. Append a section. Add a row to the 
 |------|------|-------|-------|
 | 2026-10-19 | Technical, ~7 min | KDM, one result he still defends | CIFAR numbers only on the second ask. No one-step teacher control. ImageNet described with no FID. |
 | 2026-10-19 | General, ~8 min | Why leave the university | Dodged the job-shape question once. “Technical lead,” then “all of the code.” |
+| 2026-10-19 | General, ~15 min | A method he thinks is wrong | No second-benchmark number. Reasoning guessed as 28 vs 25. Trace pilot has no delta. |
 
 ---
 
@@ -84,3 +85,43 @@ I would leave the compute ceiling. I would keep working on one technical problem
 ### Next
 
 The millions-of-users sentence, against a group whose public work is papers and prototypes. Not run in this mock.
+
+---
+
+## 2026-10-19 — a method he thinks is wrong
+
+**Kind:** General mock, about fifteen minutes. No assigned project. Interviewer asked for one method he thinks is wrong, and the result that would change his mind. Answers were not supplied in advance.
+
+**Opening:** Name one method you think is wrong, and the result that would convince you that you are the one who is wrong.
+
+### What he said
+
+He named the time-series language-model line. Incorporation by text, patches, or plots improved results, and each paper uses its own benchmark. He would reconsider if a method generalized past the benchmark it was built for. He named Twice Upon a Time as the attempt.
+
+Asked whether that paper cleared the bar: partly. He called perception the stride, trend and seasonality from plots and from a second view. He put the reasoning slice at about 28% against a 25% random baseline, and said he thought that was the number.
+
+After checking: closer to 40%. He could not verify the random baseline or the slice size. Those were looked up during the mock and added to the paper card. The slice is 1,710 questions. There is no published chance row. A uniform guess over the real choice counts is about 23.9%. Plot-only is 35.8. Dual is 40.1.
+
+Asked for a second benchmark and a number, he said TSRBench is fine and that he would extend it with gold reasoning traces. Asked whether a correct letter with a bad trace is a failure, he said yes, at least a soft one, and that traces trump accuracy.
+
+He then described a Stage C GRPO attempt: a synthetic set with gold traces, reward on trace plus answer. Preliminary results did not move the benchmark whether traces were correct or not. He did not pursue it, and it is not in the paper. No delta.
+
+### What landed
+
+The falsifier was stated before the paper: generalization past a home benchmark. He corrected 28% to about 40% once he looked, and he did not invent a chance level after being told the paper has none. The GRPO pilot is a real negative, if it stays qualitative.
+
+### What broke
+
+- The first answer did not name a method that is wrong. It named a missing evaluation property, then his own paper.
+- Perception was called the stride. On his table, perception stays flat. The reasoning gap on the 1,710-question slice is 35.8 to 40.1. Twenty-five percent is not the chance level.
+- Asked for a second benchmark and a number, he proposed a new annotation instead.
+- “Soft failure” and “traces trump accuracy” cannot both be the rule.
+- The trace pilot has no benchmark name and no delta. On a call, that is the failure. He will not know it was left out of the paper unless it is described as a result.
+
+### Spoken lock
+
+I would drop my objection if a method beat a strong baseline on a benchmark it was not built for, by a gap I can name. On TSRBench reasoning, 1,710 questions, the plot-only model is 35.8 and the dual model is 40.1. There is no published chance baseline. A uniform guess over the actual choices is about 24%, not 25%. Perception is not where the gain is. I tried rewarding gold reasoning traces on synthetic data. That run is not in the paper, and I will not quote a delta I do not have.
+
+### Next
+
+The second benchmark he already evaluated, with one number, before any proposal to extend TSRBench. Not run in this mock.

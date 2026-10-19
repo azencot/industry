@@ -42,6 +42,8 @@ After each note or call: drop `YYYY-MM-DD_*.md` in that company’s folder and a
 | 2026-10-19 | Two paper cards | KDM and Twice Upon a Time, with the numbers a follow-up will press. Daily list: [`apple/2026-10-19_todo.md`](apple/2026-10-19_todo.md). |
 | 2026-10-19 | KDM mock | ~7 min. CIFAR FIDs landed on the second ask. No one-step teacher control. Scaling line to use: FFHQ and AFHQv2 only. Log: [`apple/mocks.md`](apple/mocks.md). |
 | 2026-10-19 | Ozan, general mock | Why leave the university. Yes to an individual-contributor job only on the second ask. Three days a week on the time-series preprint. Log: [`apple/mocks.md`](apple/mocks.md). |
+| 2026-10-19 | Electric sheep, abstract only | Stopped after abstract and intro. Action supervision, emergent visual state, sixteen tokens from 83% to 89%. Not Ozan’s paper. No further reading. |
+| 2026-10-19 | Ozan, general mock | A method he thinks is wrong. TSRBench reasoning is 1,710 questions, 35.8 to 40.1. No second-benchmark number. Log: [`apple/mocks.md`](apple/mocks.md). |
 
 ---
 
