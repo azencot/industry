@@ -40,6 +40,8 @@ After each note or call: drop `YYYY-MM-DD_*.md` in that company’s folder and a
 | 2026-10-19 | Ozan prep, day 1 | Logged the 14-hour plan. Org briefing: Koltun’s 2025–2026 center is embodied/spatial intelligence and resource-limited large models; Ozan’s own latest paper is KV-cache eviction. Four papers recommended. Reply still unsent. [`apple/2026-10-19_org-briefing.md`](apple/2026-10-19_org-briefing.md). |
 | 2026-10-19 | Hiring profiles | Plan revised around who Ozan would hire. Strongest public match is a hands-on frontier-model efficiency scientist, not a senior academic lead. [`apple/2026-10-19_hiring-profiles.md`](apple/2026-10-19_hiring-profiles.md). |
 | 2026-10-19 | Two paper cards | KDM and Twice Upon a Time, with the numbers a follow-up will press. Daily list: [`apple/2026-10-19_todo.md`](apple/2026-10-19_todo.md). |
+| 2026-10-19 | KDM mock | ~7 min. CIFAR FIDs landed on the second ask. No one-step teacher control. Scaling line to use: FFHQ and AFHQv2 only. Log: [`apple/mocks.md`](apple/mocks.md). |
+| 2026-10-19 | Ozan, general mock | Why leave the university. Yes to an individual-contributor job only on the second ask. Three days a week on the time-series preprint. Log: [`apple/mocks.md`](apple/mocks.md). |
 
 ---
 

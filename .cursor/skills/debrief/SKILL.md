@@ -25,6 +25,8 @@ After mock interview, timed code drill, real interview, exploration session, or 
 
 **ScientificML / Siemens mocks** append to **[`ScientificML/Siemens/mocks.md`](../../ScientificML/Siemens/mocks.md)** — one running file, not one file per mock. Run and log via the `siemens-mock` skill. Company call notes stay as `ScientificML/Siemens/YYYY-MM-DD_*.md`.
 
+**IndustrialResearch / Apple (Ozan) mocks** append to **[`IndustrialResearch/apple/mocks.md`](../../IndustrialResearch/apple/mocks.md)** — one running file. Add a row to [`IndustrialResearch/INDEX.md`](../../IndustrialResearch/INDEX.md).
+
 **General reusable references** about Omri or project background live under **`.cursor/skills/debrief/`** so every future agent can load them independent of interview track.
 
 | File type | Path pattern | Example |
@@ -47,7 +49,7 @@ Template: [`Amazon_FinTech/debrief/README.md`](../../Amazon_FinTech/debrief/READ
    - Session type, duration, what was covered
    - What went well / what broke
    - Any recurring corrections ("still wrong", "forgot to mention X")
-2. **Write debrief** — FinTech session notes → **`Amazon_FinTech/debrief/`**. SCOT session notes → **`Amazon_SCOT/notes/`**. Forecasting session notes → **`Forecasting/notes/`**. GenAI session notes → **`GenAI/notes/`** (company calls → **`GenAI/interviews/`**). Siemens mocks → append to **`ScientificML/Siemens/mocks.md`**. General background about Omri or a project → **`.cursor/skills/debrief/`**.
+2. **Write debrief** — FinTech session notes → **`Amazon_FinTech/debrief/`**. SCOT session notes → **`Amazon_SCOT/notes/`**. Forecasting session notes → **`Forecasting/notes/`**. GenAI session notes → **`GenAI/notes/`** (company calls → **`GenAI/interviews/`**). Siemens mocks → append to **`ScientificML/Siemens/mocks.md`**. Ozan mocks → append to **`IndustrialResearch/apple/mocks.md`**. General background about Omri or a project → **`.cursor/skills/debrief/`**.
 3. **Update indexes**
    - FinTech: add row to debrief table in [`Amazon_FinTech/INDEX.md`](../../Amazon_FinTech/INDEX.md); mock table / timed log / stories README as applicable
    - SCOT: add timeline or key-files pointer in [`Amazon_SCOT/INDEX.md`](../../Amazon_SCOT/INDEX.md)
