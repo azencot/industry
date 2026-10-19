@@ -11,6 +11,7 @@ One file for every mock aimed at Ozan Sener. Append a section. Add a row to the 
 | 2026-10-19 | General, ~15 min | A method he thinks is wrong | No second-benchmark number. Reasoning guessed as 28 vs 25. Trace pilot has no delta. |
 | 2026-10-19 | Telling, ~5 min | KDM, no notes | CIFAR numbers in the first pass. Missed CTM 1.98. “SOTA” overclaims GET. No 64×64 FID. |
 | 2026-10-19 | Telling, ~5 min | Twice Upon a Time, no notes | 45.2 said. Dual said as 53.1. Missed same-view controls, event prediction, and flat TSExam. |
+| 2026-10-19 | Profile C, ~10 min | What he would start | Token cost, then a representation. KVP is the baseline. No y-axis. Mixed graph becomes a selector. |
 
 ---
 
@@ -177,3 +178,43 @@ Qwen3-VL-8B, plots plus a second view, prompt fusion under 300 tokens, and 45.2 
 ### Spoken lock
 
 On TSRBench, plot only is 45.2 and the dual view is 53.2. Plot+Plot and Delay+Delay, same picture to both towers, are 44.8 and 42.6. The overall jump is mostly event prediction, 21.7 to 84.2. Forecasting is 46.2 to 50.4. TSExam is 89.9 either way, so it is not evidence for the second view. Perception on TSRBench stays flat.
+
+---
+
+## 2026-10-19 — what he would start
+
+**Kind:** Profile C mock, about ten minutes, five answers. The question was one project for the first six months, and why not an extension of a paper he already has.
+
+**Opening:** Suppose the first six months were yours to define. What one project would you start, and why that one rather than extending a paper you already have?
+
+### What he said
+
+A project on making multimodal models more efficient. Several channels make the token count explode. Related to his multimodal work, and more general than it. He would start it rather than continue a paper because of impact and generality. The target is broad multimodal models, not time series in particular.
+
+Asked which tokens he would remove, and which existing method already removes tokens: he might not do eviction. The cache policy had crossed his mind as a baseline. He wants a representation that stores what is important and drops what is not. The policy’s advantage is that it is dynamic. He believes a strong representation can keep that.
+
+Asked what number against the policy is a win, and what number makes him stop: he wants a graph over token budgets where the representation is consistently better. He stops if it is always worse.
+
+Asked about winning only at tight budgets and losing when the cache is large: he would combine the two with a small selector, or start with rough thresholds.
+
+Asked whether he still ships the selector or drops the representation: the selector switches regimes. The representation is for tight budgets. The cache policy is for large ones. He will not drop the representation if some regime clearly improves on the policy.
+
+### What landed
+
+The cost is tokens. The baseline is the learned cache policy, at the same budget, across more than one budget. Losing at every budget is a stop. The mixed case got a rule: keep the representation where it wins, and keep the policy where it wins.
+
+### What broke
+
+- The first answer was a program. Impact and generality were the reason to start. No input, no tokens removed, no task.
+- “Stores what is important” restates the policy. Nothing was said about when the representation is computed, or what it throws away.
+- “Consistently better” has no y-axis. “Clearly improves” has no gap.
+- The selector arrived before a mixed graph existed. A threshold can be the rule. A learned selector is a third method.
+- The representation is never dropped if any regime wins. That is a keep rule. The only kill is losing everywhere.
+
+### Spoken lock
+
+I would start one comparison. The cost is tokens when several views enter the model. The baseline is the learned cache policy at the same token budget. The plot is task accuracy against that policy across budgets, on a task I name before I train. I stop if the representation is worse at every budget. If it wins only below a budget I also name in advance, I use it in that regime and the cache policy above it. I do not train a selector until that split is already on the graph.
+
+### Next
+
+Name the task and the token budget that counts as tight, before any selector. Not run in this mock.
