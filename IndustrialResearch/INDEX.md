@@ -26,7 +26,7 @@ Shared profile: [`.cursor/skills/debrief/omri_azencot_experience.md`](../.cursor
 
 | Org | Contact | Next | Prep |
 |-----|---------|------|------|
-| **Apple — ML group, Vladlen Koltun’s org** | **Ozan Sener** (head of the ML group). Intro **Raja Giryes** | Reply on Raja’s thread. Draft: [`apple/2026-10-17_ozan-intro.md`](apple/2026-10-17_ozan-intro.md) | [`apple/`](apple/) |
+| **Apple — ML group, Vladlen Koltun’s org** | **Ozan Sener** (head of the ML group, per Raja). Intro **Raja Giryes** | Reply on Raja’s thread. Draft: [`apple/2026-10-17_ozan-intro.md`](apple/2026-10-17_ozan-intro.md) | Plan: [`apple/2026-10-19_ozan-prep-plan.md`](apple/2026-10-19_ozan-prep-plan.md). Briefing: [`apple/2026-10-19_org-briefing.md`](apple/2026-10-19_org-briefing.md) |
 
 After each note or call: drop `YYYY-MM-DD_*.md` in that company’s folder and add a row below.
 
@@ -37,6 +37,8 @@ After each note or call: drop `YYYY-MM-DD_*.md` in that company’s folder and a
 | Date | Session | Notes |
 |------|---------|-------|
 | 2026-10-17 | Raja → Ozan intro | Raja mailed Ozan and Omri. Ozan heads the ML group in Vladlen Koltun’s Apple org. Separate from the Health AIML loop. Draft reply: [`apple/2026-10-17_ozan-intro.md`](apple/2026-10-17_ozan-intro.md). |
+| 2026-10-19 | Ozan prep, day 1 | Logged the 14-hour plan. Org briefing: Koltun’s 2025–2026 center is embodied/spatial intelligence and resource-limited large models; Ozan’s own latest paper is KV-cache eviction. Four papers recommended. Reply still unsent. [`apple/2026-10-19_org-briefing.md`](apple/2026-10-19_org-briefing.md). |
+| 2026-10-19 | Hiring profiles | Plan revised around who Ozan would hire. Strongest public match is a hands-on frontier-model efficiency scientist, not a senior academic lead. [`apple/2026-10-19_hiring-profiles.md`](apple/2026-10-19_hiring-profiles.md). |
 
 ---
 

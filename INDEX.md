@@ -70,7 +70,7 @@ Personal workspace for industry job prep: Amazon FinTech interviews, general for
 
 - **Purpose:** Warm intros into industry research groups — what the group works on, whether it overlaps, what a seat would look like
 - **Not** a posted product loop. Apple Health AIML stays under [`GenAI/interviews/apple-health-aiml/`](GenAI/interviews/apple-health-aiml/)
-- **Active:** **Apple**, Vladlen Koltun’s organization. **Raja Giryes** introduced Omri to **Ozan Sener** (head of the ML group). Reply not sent. Draft: [`IndustrialResearch/apple/2026-10-17_ozan-intro.md`](IndustrialResearch/apple/2026-10-17_ozan-intro.md)
+- **Active:** **Apple**, Vladlen Koltun’s organization. **Raja Giryes** introduced Omri to **Ozan Sener** (head of the ML group). Reply not sent. Draft: [`IndustrialResearch/apple/2026-10-17_ozan-intro.md`](IndustrialResearch/apple/2026-10-17_ozan-intro.md). Prep: [`IndustrialResearch/apple/2026-10-19_org-briefing.md`](IndustrialResearch/apple/2026-10-19_org-briefing.md)
 - **Details:** [`IndustrialResearch/INDEX.md`](IndustrialResearch/INDEX.md)
 
 ---
