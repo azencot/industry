@@ -67,7 +67,7 @@ Nobody in this public sample is an assistant professor, a research manager, or s
 4. **Seniority.** The posted title and the last two hires are individual-contributor research scientists, including people hired at graduation. A senior or principal title is not what this req advertises. The top of the pay band does not establish a principal seat.
 5. **Likely responsibilities.** Pick an efficiency bottleneck in a frontier model, train or adapt the model, run the ablation, publish, and work with a product team toward a shippable version. The agenda is the team’s. Manduchi’s move from VAEs to KV eviction is the existence proof.
 6. **Evidence.** The LLM-efficiency posting; Ozan’s ICML 2026 paper; Manduchi’s self-description; Moschella’s role, city, and coauthorship. **Against:** the posting does not name Ozan, and it is in Santa Clara while his visible juniors are in Zurich. **Already on the team:** Manduchi and likely Moschella. Hiring another person is still what the posting says, if it is this org.
-7. **Match.** Partial, and the strong half is the science. Diffusion, flows, representation choice, and working under compute limits are real. About 44 papers clears the publication line. The weak half is the hiring requirement: no stated record of training or adapting a frontier model, and no stated record of low-level systems work.
+7. **Match.** Partial. Diffusion, representation choice, and measured compute cuts are real, and so is hands-on adaptation of Qwen-class models: LoRA and DDP on Qwen3-VL-8B and Qwen3.5 from 0.8B through 27B, a vLLM serving path, and DeepSpeed ZeRO-3 stood up for 122B as infrastructure rather than as a result. About 44 papers clears the publication line. The remaining hole is the posting’s other minimum: low-level systems, and training a frontier model rather than adapting one.
 8. **Biggest weakness.** The posting’s minimum is a complete SOTA prototype across the stack, including systems programming, and responsibility for training frontier models. A stronger mathematical paper does not fill that line.
 9. **Emphasize.** One system you personally built, the simple baseline it had to beat, and the measured cost. Then say how that method would be retargeted if the problem were diffusion sampling cost or memory during long-context inference. Do not open with a research program you want to import.
 10. **Still missing.** Whether Ozan is the hiring manager for role 200631342. Whether Zurich can host the seat. Whether “frontier model” here means Apple’s models or open models of the size they already publish (Qwen-class, Gemma-class, a 32B agent).
@@ -106,11 +106,23 @@ Photorealism (role 200631299) is a real posting and a Koltun theme. It is not a 
 
 ---
 
-## What to optimize
+## Locked strategy (2026-10-19)
 
-Prepare for **Profile A**. That is the only profile that is both a live posting and continuous with the people Ozan has actually added.
+Omri agreed. Lead with Profile A when the conversation shows they want those skills. Keep Profile C as a short second beat, not the opening.
 
-Use the meeting to test **Profile C** with one question, late, after you have sounded like someone who can do A: whether he is adding people to an efficiency effort he already has, or whether there is room for someone to open a direction. If the answer is the first, a senior-professor framing will hurt. If the answer is the second, the same framing becomes the point.
+**Lead with A if he mentions any of these:** efficiency, memory, latency, KV cache, or sampling cost; diffusion; training or adapting large models; prototypes and the stack; what you have built yourself.
+
+**The A skills, in the order the posting lists them:**
+
+1. A complete prototype that reached a state-of-the-art number, built by the candidate.
+2. Training and adapting frontier models, with diffusion named alongside LLMs.
+3. The stack from systems programming to the algorithm. Python, PyTorch or JAX.
+4. An empirical study, then a publication.
+5. Work with a product team toward shipping. This last one is a responsibility on the posting and the weakest of the five for Omri. Do not invent it.
+
+**Evidence that can carry the opening.** Adapting Qwen3-VL-8B and Qwen3.5 (0.8B–27B) with LoRA and DDP, eval gated before the expensive run, vLLM on the 9B path. One-step diffusion distillation: fewer sampling steps because the reverse process was represented differently. Use the irregular-series compute cut only if he asks for another measured saving. Do not describe the 122B ZeRO-3 setup as a result.
+
+**C, briefly.** The version of C that fits this organization is Ozan’s own arrival: an established researcher who then worked on the lab’s problems, not a professor imported to install a program. The only direction worth having ready is the one that serves a bottleneck they already have: a representation that makes generation or long-context memory cheaper, scored against their KV policy or a standard sampler. Use it only if he asks what you would start, or if he says they want someone to open a direction. One experiment, then stop. Grants, students, and “I define agendas” stay out unless he asks how you work with other researchers.
 
 Do not spend the remaining hours on self-play, robotics, or neural rendering.
 

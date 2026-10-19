@@ -39,6 +39,7 @@ After each note or call: drop `YYYY-MM-DD_*.md` in that company’s folder and a
 | 2026-10-17 | Raja → Ozan intro | Raja mailed Ozan and Omri. Ozan heads the ML group in Vladlen Koltun’s Apple org. Separate from the Health AIML loop. Draft reply: [`apple/2026-10-17_ozan-intro.md`](apple/2026-10-17_ozan-intro.md). |
 | 2026-10-19 | Ozan prep, day 1 | Logged the 14-hour plan. Org briefing: Koltun’s 2025–2026 center is embodied/spatial intelligence and resource-limited large models; Ozan’s own latest paper is KV-cache eviction. Four papers recommended. Reply still unsent. [`apple/2026-10-19_org-briefing.md`](apple/2026-10-19_org-briefing.md). |
 | 2026-10-19 | Hiring profiles | Plan revised around who Ozan would hire. Strongest public match is a hands-on frontier-model efficiency scientist, not a senior academic lead. [`apple/2026-10-19_hiring-profiles.md`](apple/2026-10-19_hiring-profiles.md). |
+| 2026-10-19 | Two paper cards | KDM and Twice Upon a Time, with the numbers a follow-up will press. Daily list: [`apple/2026-10-19_todo.md`](apple/2026-10-19_todo.md). |
 
 ---
 
