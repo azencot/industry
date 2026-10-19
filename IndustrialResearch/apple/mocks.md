@@ -9,6 +9,8 @@ One file for every mock aimed at Ozan Sener. Append a section. Add a row to the 
 | 2026-10-19 | Technical, ~7 min | KDM, one result he still defends | CIFAR numbers only on the second ask. No one-step teacher control. ImageNet described with no FID. |
 | 2026-10-19 | General, ~8 min | Why leave the university | Dodged the job-shape question once. “Technical lead,” then “all of the code.” |
 | 2026-10-19 | General, ~15 min | A method he thinks is wrong | No second-benchmark number. Reasoning guessed as 28 vs 25. Trace pilot has no delta. |
+| 2026-10-19 | Telling, ~5 min | KDM, no notes | CIFAR numbers in the first pass. Missed CTM 1.98. “SOTA” overclaims GET. No 64×64 FID. |
+| 2026-10-19 | Telling, ~5 min | Twice Upon a Time, no notes | 45.2 said. Dual said as 53.1. Missed same-view controls, event prediction, and flat TSExam. |
 
 ---
 
@@ -125,3 +127,53 @@ I would drop my objection if a method beat a strong baseline on a benchmark it w
 ### Next
 
 The second benchmark he already evaluated, with one number, before any proposal to extend TSRBench. Not run in this mock.
+
+---
+
+## 2026-10-19 — KDM, five minutes, no notes
+
+**Kind:** Spoken telling. Not an interview. The bar was teacher FID, his FID, GET, the online number that beats him, and why offline is the setting.
+
+### What he said
+
+Diffusion as an SDE and as a Kolmogorov forward equation. Under certain conditions the equation integrates in one step by a matrix exponential. He called himself the technical lead. The use he defended was offline distillation: the teacher precomputes noise and data, the trajectory is not stored, and the teacher is not available afterward. Unconditional CIFAR-10: KDM FID 4.65 at 1 step, GET 6.91, EDM teacher 2.04 at 35 steps. He said this shrinks the gap to SOTA without beating the teacher. He said the one-step teacher was never run. Scaling: ImageNet was not run, for compute. FFHQ and AFHQv2 were named, with no FID.
+
+### What landed
+
+The three CIFAR numbers were in the first pass. Offline was a constraint, not a slogan. The missing one-step teacher was stated as missing. ImageNet was not narrated as a result.
+
+### What broke
+
+- CTM at 1.98, one step, online, was not said. It beats KDM and the teacher. “SOTA” makes GET the frontier.
+- FFHQ and AFHQv2 had no number. At 64×64 the student FID is about 2.5× the teacher’s.
+- “Technical lead” still does not name the decision: offline, a linear map on the endpoints, and the comparison to GET. The measured sampler is one student forward pass.
+
+### Spoken lock
+
+On unconditional CIFAR-10 the EDM teacher is FID 2.04 at 35 steps. My student is 4.65 at one step. GET, the offline method I compared against, is 6.91 at one step. CTM, the online one-step number in that table, is 1.98, and it is better than mine. I did not evaluate the teacher at one step. Reported scaling stops at FFHQ and AFHQv2, 64×64, where my FID is about two and a half times the teacher’s.
+
+---
+
+## 2026-10-19 — Twice Upon a Time, five minutes, no notes
+
+**Kind:** Spoken telling. Not an interview. The bar was 45.2 to 53.2, the same-view controls, event prediction, and the flat TSExam result, without being asked.
+
+### What he said
+
+He called himself the technical lead, working with his PhD student. He set the problem as multimodal time-series reasoning and the approach as complementary visual representations. TSRBench was the main benchmark, with TSExam and ChatTS also run. He wrote the architecture, the training curriculum, and much of the data pipeline. Plots keep scale. A delay view was motivated by earlier image-based generative work, along with STFT. The two streams are fused in the prompt, under 300 visual tokens, with extra features into the first language-model layers. Qwen3-VL-8B. Plot only 45.2%. Dual views he said as 53.1%, with perception left high on TSExam.
+
+### What landed
+
+Qwen3-VL-8B, plots plus a second view, prompt fusion under 300 tokens, and 45.2 for plots alone. The work he named — architecture and curriculum — is specific.
+
+### What broke
+
+- The table is 53.2, not 53.1.
+- Same-view controls, 44.8 and 42.6, were not said.
+- Event prediction, 21.7 to 84.2, was not said. Forecasting only moves from 46.2 to 50.4.
+- TSExam was used as a perception win. It is 89.9 either way. TSRBench perception stays flat, 87.4 to 86.4.
+- “My PhD student” is one person. Hedi Zisling and Liran Nochumsohn are the equal-contribution authors.
+
+### Spoken lock
+
+On TSRBench, plot only is 45.2 and the dual view is 53.2. Plot+Plot and Delay+Delay, same picture to both towers, are 44.8 and 42.6. The overall jump is mostly event prediction, 21.7 to 84.2. Forecasting is 46.2 to 50.4. TSExam is 89.9 either way, so it is not evidence for the second view. Perception on TSRBench stays flat.
