@@ -13,6 +13,7 @@ One file for every mock aimed at Ozan Sener. Append a section. Add a row to the 
 | 2026-10-19 | Telling, ~5 min | Twice Upon a Time, no notes | 45.2 said. Dual said as 53.1. Missed same-view controls, event prediction, and flat TSExam. |
 | 2026-10-19 | Profile C, ~10 min | What he would start | Token cost, then a representation. KVP is the baseline. No y-axis. Mixed graph becomes a selector. |
 | 2026-10-20 | Hiring, ~12 min | Intro, then the job | Week stayed the lab week. “May or may not” did not pick. Students leading is still his lab. |
+| 2026-10-20 | Hiring, ~8 min | Start date and the students | Can start now. Internships offered. Leave through Oct 2027 and tenure said plainly. Resignation is not owed on a first call. |
 
 ---
 
@@ -259,3 +260,40 @@ I would take a scientist role on a project someone else owns. I would not be hir
 ### Next
 
 What he thinks the group actually works on, in one sentence, before any paper. Not run in this mock.
+
+---
+
+## 2026-10-20 — start date and the students
+
+**Kind:** Hiring-manager mock, about eight minutes, four answers. No paper. Started after the introduction and after the question about a seat that is not a lead. Interviewer was Ozan. Answers were not supplied in advance.
+
+**Opening:** Faculty jobs do not end on a Friday. If we both wanted this, when could you actually start, and what happens to the PhD students who are in the middle of their work?
+
+### What he said
+
+He has been on leave since 1 October, so he can start as soon as possible. Some students still have research before they can finish. He sees a collaboration in which Apple brings some of them as interns. Alternatively he would keep a modest mentorship on weekends. The students are extremely independent, and biweekly remote mentorship is already how the group has worked for the past three months.
+
+Asked what is left of the week if no student comes and the university work stays at the university: the whole week. He is free Monday through Friday. Mentoring would be at most two or three hours of meetings a week. He does not see any constraint from the former group on a start at Apple.
+
+Asked whether he is still employed, and whether that appointment allows a full-time job elsewhere: he is on leave, so the university is not paying him and he is free to use his time. He said there is also no IP constraint with the university during that time.
+
+Asked when the leave ends, and whether the faculty job is still his: the leave ends in October 2027, and he can extend it. He is tenured, so the job is kept for a few years. He does not plan to go back to academia. He would be happy to start a new chapter in industry research.
+
+### What landed
+
+The start is now. The leave has dates: 1 October 2026 through October 2027, extendable. Tenure was stated when asked, and so was “I don’t plan to go back.” Monday through Friday free, with mentoring capped at two or three hours, is a number.
+
+### What broke
+
+- The first plan brought the students with him. Internships at Apple are not his to offer.
+- “Alternatively” did not pick. After the internships were ruled out, the two or three hours remained. Those hours are a close-out of students he already has. They are not, by themselves, a conflict.
+- Unpaid leave and “no IP constraint” were his reading of the arrangement. Stating that reading is enough for a first call. Finishing students he already has, unpaid and on their own academic work, is not a conflict by itself.
+- The appointment stays open through at least October 2027, and tenure keeps it for a few years. That is a fact to state. It is not a resignation to offer. A first conversation has no offer, no level, and no city. Resigning a tenured job before those exist is an unreasonable thing to volunteer.
+
+### Spoken lock
+
+I can start as soon as an offer is in hand. I have been on unpaid leave since 1 October, through October 2027, and I can extend it. I am tenured, so the appointment can sit there. I do not plan to return. I would resign when I accept an offer, and I will not name that date before then. My students do not come with me, and I will not offer them internships. What remains is advising students who are already mid-degree: unpaid, on their academic work, at most two or three hours a week, outside the work week.
+
+### Next
+
+What he thinks the group actually works on, in one sentence, before any paper. Still not run.

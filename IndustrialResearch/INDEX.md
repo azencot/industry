@@ -47,6 +47,7 @@ After each note or call: drop `YYYY-MM-DD_*.md` in that company’s folder and a
 | 2026-10-19 | Five-minute tellings | KDM: CIFAR numbers in the first pass, CTM not said. Twice Upon a Time: 45.2 said, same-view controls and event prediction not said. Log: [`apple/mocks.md`](apple/mocks.md). |
 | 2026-10-19 | Profile C mock | What he would start. Cache policy is the baseline. No task, no token budget, no y-axis. Mixed result becomes a selector. Log: [`apple/mocks.md`](apple/mocks.md). |
 | 2026-10-20 | Ozan, hiring mock | Intro, then the job. Week stayed the lab week. “May or may not” did not pick. Students leading is still his lab. Log: [`apple/mocks.md`](apple/mocks.md). |
+| 2026-10-20 | Ozan, start date | Can start now. Internships offered. Leave through Oct 2027 and tenure said plainly. Resignation is not owed on a first call. Log: [`apple/mocks.md`](apple/mocks.md). |
 
 ---
 
