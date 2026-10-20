@@ -12,6 +12,7 @@ One file for every mock aimed at Ozan Sener. Append a section. Add a row to the 
 | 2026-10-19 | Telling, ~5 min | KDM, no notes | CIFAR numbers in the first pass. Missed CTM 1.98. “SOTA” overclaims GET. No 64×64 FID. |
 | 2026-10-19 | Telling, ~5 min | Twice Upon a Time, no notes | 45.2 said. Dual said as 53.1. Missed same-view controls, event prediction, and flat TSExam. |
 | 2026-10-19 | Profile C, ~10 min | What he would start | Token cost, then a representation. KVP is the baseline. No y-axis. Mixed graph becomes a selector. |
+| 2026-10-20 | Hiring, ~12 min | Intro, then the job | Week stayed the lab week. “May or may not” did not pick. Students leading is still his lab. |
 
 ---
 
@@ -218,3 +219,43 @@ I would start one comparison. The cost is tokens when several views enter the mo
 ### Next
 
 Name the task and the token budget that counts as tight, before any selector. Not run in this mock.
+
+---
+
+## 2026-10-20 — hiring manager, the job
+
+**Kind:** Hiring-manager mock, about twelve minutes, five answers. No paper. Interviewer was Ozan with Raja’s note only. Omri introduced himself. Answers were not supplied in advance. The 20:00 meeting was still unconfirmed.
+
+**Opening:** Raja’s note was short. Tell me what you do, and what you’re hoping this conversation is.
+
+### What he said
+
+Associate professor at BGU, computer and information science. He directs the sequential learning group, about twenty people, five of them PhD students. Six years on sequential learning: representation learning, disentanglement, forecasting, generative modeling, multimodal. Day to day he is a hands-on technical lead. He likes one project, coding, and turning observations into algorithms. He is looking for industry opportunities and thinks this group is a top west-coast candidate.
+
+Asked what job he is picturing, given that hired roles do not come with a group: a scientist role that may or may not be a technical lead, collaborating toward a shared goal. A normal week would look like his current week. Once a project is set, he meets the team, from one person to many, decides directions, sets experiment gates, implements code, runs experiments, and reports back.
+
+Asked about the west coast: he is in Seattle. He understood from Raja that most of the work is remote, and that works. He will travel for onsite meetings. If most of the group is in the Bay Area, short-notice trips and several visits a year are easier.
+
+Asked whether he would still want the job as one scientist on a project someone else owns: yes. He is fine as a member of the scientific team. He said this is close to his group already. In principle he is the technical lead, and in many projects his students lead for a time and tell him what to do.
+
+Asked whether a fixed quarterly goal and one experiment, owned by someone else, is a week he wants: yes. He does not see much difference from today. The team sets quarterly goals and more detailed plans per project, runs experiments, and updates the plans as observations come in. He believes a similar loop happens at Apple Research.
+
+### What landed
+
+Seattle, and a yes to travel. The second and third asks got a yes. Implementing the code and running the experiment were in the week. Quarterly goals that move when the experiment moves are a real loop.
+
+### What broke
+
+- The introduction was the group. “Technical lead” and “directs” arrived before the job he wants. “Industry opportunities” and “a top west-coast candidate” do not say what he thinks the group works on.
+- “May or may not” did not pick. “Very similar to my current week,” a meeting of one to many, deciding directions, and reporting back to the team are the lab. The constraint was that the role does not come with a group. The week did not change.
+- “Raja said most of the work is remote” was stated as the arrangement. The Bay Area was the city that would be convenient. A group that is not remote, or not in the Bay Area, was left open.
+- Students telling him what to do are still his students. “In principle I am the technical lead” puts the title back in the sentence that was supposed to drop it.
+- “Not much difference” refuses the last constraint. “We set the goals” keeps him among the people who set the quarter. The question was a goal already fixed, and one experiment. “I believe a similar loop happens at Apple Research” describes their process for them.
+
+### Spoken lock
+
+I would take a scientist role on a project someone else owns. I would not be hiring a group or directing one. A normal week is the experiment: I implement it, I run it, and I bring the result back. The quarter’s goal is already set, and I do not reset it in the meeting. I am in Seattle. Remote work is what I understood from Raja, and I can travel. If the group is not in the Bay Area, I still want the job.
+
+### Next
+
+What he thinks the group actually works on, in one sentence, before any paper. Not run in this mock.
