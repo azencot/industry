@@ -4,7 +4,7 @@
 **Length:** 1 hour.
 **Interviewer:** **Huzefa Rangwala**, Staff Scientist, Physical AI, Siemens. This books the technical screen. He is not confirmed as the hiring manager.
 **Prep window:** Tuesday 20, Wednesday 21, Thursday 22. About 2.5–3 hours each. Friday is a 20-minute pre-call, not a fourth day.
-**Prep split (revised 2026-10-17):** **~65–70% coding, ~30–35% resume / ML breadth.** The hour itself is still about half methodology and half one PyTorch question. Practice spends more time on coding, because the weakness is syntax under pressure, not algorithms.
+**Prep split (revised 2026-10-20):** **~70–75% coding, ~25–30% resume.** Coding time is mostly modules, training, and losses. Attention is one exercise, not the week. Schedule: [`2026-10-20_coding-plan.md`](2026-10-20_coding-plan.md).
 
 Private note from **Danielle Robinson** (she worked with him at AWS). Do not quote it on the call. **Danielle Chandler** is the recruiter who owns the process. Two different people.
 
@@ -89,59 +89,25 @@ Wednesday's spoken block is the question list in the day plan below, not these n
 
 ---
 
-## Coding — harder axes and bugs, same APIs
+## Coding
 
-The weakness is PyTorch syntax under pressure: mask semantics, transpose axes, reshape after permute, broadcasting, flattening for cross-entropy, `zero_grad`. Make the drills harder through tensor-axis ambiguity, masking, realistic bugs, unit tests, and live debugging.
-
-The coding goal: implement ordinary ML tensor ops from a blank editor, narrate shapes, and fix mistakes. Mask convention in every file: **True = valid**. State it before you code.
-
-| Problem | What | File |
-|---------|------|------|
-| Tue attention | `q,k` are `[B, H, T, Dh]`, optional key mask and causal mask. 20 min cap. Under 15 min clean: stop repeating vanilla attention. | [`coding/tue_attention.py`](coding/tue_attention.py) |
-| **16** | Pad `[Ti, D]` → self-attend over time → masked mean → `[B, D]`. Fluency. 15–20 min. Under 15 min clean: stop repeating it. | [`coding/16_varlen_pool.py`](coding/16_varlen_pool.py) |
-| **17** | `[B, G, T, D]`, attend across **G** at each time. Highest-value base problem. | [`coding/17_group_attention.py`](coding/17_group_attention.py) |
-| **17b** | Cross-group: `q [B, Gq, T, D]`, `kv [B, Gk, T, D]`, `key_mask [B, Gk]`. Scores `[B, T, Gq, Gk]`. | [`coding/17b_cross_group.py`](coding/17b_cross_group.py) |
-| **17c** | Same as 17b with heads. Internal `[B, T, H, G, Dh]`. Scores `[B, T, H, Gq, Gk]`. | [`coding/17c_group_multihead.py`](coding/17c_group_multihead.py) |
-| **18** | Masked CE + one optimizer step. **Start from the broken file.** | [`coding/18_masked_train_step_broken.py`](coding/18_masked_train_step_broken.py) |
-| Thu mock | `[B, G, T, D]` and `lengths [B, G]`: each series attends over **T**, then masked mean → `[B, G, D]`. Not a repeat of 16–18. | [`coding/19_thu_mock.py`](coding/19_thu_mock.py) — do not open before Thursday |
-
-Tuesday micro-drills: [`coding/tue_broadcast.py`](coding/tue_broadcast.py), [`coding/tue_shapes.py`](coding/tue_shapes.py).
-
-### Out of scope
-
-Hard LeetCode, DP, trees, graphs, an MLP, a CNN, pairwise distance except as a tiny shape drill, a sliding-window `Dataset`, a PPO or GRPO implementation, distributed training APIs, obscure PyTorch functions.
-
-### Failure modes to clear before Friday
-
-- [ ] `k.transpose(-2, -1)`
-- [ ] `softmax(dim=-1)`
-- [ ] Mask convention said out loud: True = valid
-- [ ] `[B, T]` → `[B, 1, 1, T]`
-- [ ] Causal mask combined with a padding mask
-- [ ] `[B, T, D]` ↔ `[B, H, T, Dh]`
-- [ ] `reshape` after `permute`; `contiguous()` when `view` would throw
-- [ ] CE: logits `[N, C]`, targets `[N]` long
-- [ ] Pad labels ignored (`ignore_index`, or `reduction="none"` then mask)
-- [ ] `zero_grad` before `backward`
-- [ ] `model.train` vs `model.eval`
-- [ ] `no_grad` vs `eval` (`eval` does not turn gradients off)
-- [ ] Masked-mean denominator
+The coding schedule is [`2026-10-20_coding-plan.md`](2026-10-20_coding-plan.md). Attention and masking are already practiced. The next blocks are a transformer block, a train/eval loop, and masked cross-entropy. There is no solution file for those.
 
 ---
 
 ## Three days
 
-No solution file until the asserts pass. Spoken blocks are short answers to the questions, not rehearsed speeches.
+Spoken blocks stay short. Apply the 16 Oct mock fixes before retelling story A.
 
-### Tuesday 20 — attention fluency + problem 16 (~2.5–3 h)
+### Tuesday 20 — modules (~2.5–3 h)
 
 | | |
 |--|--|
-| 20 min cap | [`tue_attention.py`](coding/tue_attention.py) from an empty editor. Sat 17 draft passes; do not reread it. Under 15 min clean: do not practice vanilla attention again. |
-| 20 min | [`16_varlen_pool.py`](coding/16_varlen_pool.py). 3–4 asserts. Padding, mask, attention, masked mean. |
-| 15 min | [`tue_broadcast.py`](coding/tue_broadcast.py) part **C** only. A, B, and D passed on Sat 17. |
-| 30 min | [`tue_shapes.py`](coding/tue_shapes.py). Heads, permute-then-reshape, pairwise dot with no loop, flatten for CE. Not started. |
-| 45–60 min | Stories **A** and **B** only, as answers to the questions below. Apply the 16 Oct mock fixes before retelling A. |
+| 45 min | [`coding/A_transformer_block.py`](coding/A_transformer_block.py). |
+| 30 min | [`coding/B_train_eval.py`](coding/B_train_eval.py). |
+| 25 min | [`coding/C_masked_ce_broken.py`](coding/C_masked_ce_broken.py). Diagnose before editing. |
+| 20 min | Debugging sprint, one snippet at a time. |
+| 30 min | Stories **A** and **B**, questions below. |
 
 Tuesday questions:
 
@@ -153,15 +119,15 @@ Tuesday questions:
 - Why does delay-only fail numerically?
 - Why does a second view help on some tasks and not others?
 
-### Wednesday 21 — hardest coding day (~3 h)
+### Wednesday 21 — broader coding (~2.5–3 h)
 
 | | |
 |--|--|
-| 35–45 min | [`17_group_attention.py`](coding/17_group_attention.py), blank. Then [`17b_cross_group.py`](coding/17b_cross_group.py): permute, scores, mask keys, softmax over `Gk`, multiply values, restore shape. Shape asserts. No lookup. |
-| 25 min | [`17c_group_multihead.py`](coding/17c_group_multihead.py). Say which axes `transpose` hits. |
-| 25 min | [`18_masked_train_step_broken.py`](coding/18_masked_train_step_broken.py). Diagnose before editing. CE layout, pad labels, target dtype, `zero_grad`, `train` vs `eval`. |
-| 30 min | Debugging sprint. One broken snippet at a time, from the session, not from a file. Diagnose aloud, then a small hint. Bugs to cover if they have not already appeared: wrong softmax axis, inverted key mask, pad filled with 0 instead of `-inf`, wrong transpose, reshape after permute, CE on `[B, T, C]` directly, float targets, missing `zero_grad`, `eval` with gradients still on, pad included in the mean, device mismatch, causal mask off by one. |
-| 45 min | Breadth, rapid questions only. See the list below. |
+| 30 min | Variate attention: [`coding/17_group_attention.py`](coding/17_group_attention.py), then [`coding/17b_cross_group.py`](coding/17b_cross_group.py). Do not open the solution files. |
+| 30 min | [`coding/E_infonce.py`](coding/E_infonce.py). |
+| 25 min | One change to the transformer block: cross-attention, padding, unequal lengths, or dropout. |
+| 30 min | One unseen problem, chosen that morning. |
+| 30–40 min | Breadth, questions below. |
 
 Wednesday questions:
 
@@ -171,24 +137,22 @@ Wednesday questions:
 - Koopman: what problem the representation solves, why linear latent dynamics can help, limitations, stability / identifiability, how it differs from a generic latent-state model.
 - GRPO only if that line is on the resume. Use the card above. Do not implement PPO or GRPO.
 
-### Thursday 22 — mock + repair (~2.5 h)
+### Thursday 22 — two mocks (~2.5–3 h)
 
 | | |
 |--|--|
-| 50–55 min | Full mock. 20–25 min resume methodology / breadth (assumptions, alternatives, ablations, what the result does not prove, what would make you drop the method). 25–30 min coding: [`19_thu_mock.py`](coding/19_thu_mock.py), opened then, not before. Log breaks in [`mocks.md`](mocks.md). |
-| 45–60 min | Repair only what broke. Mask bugs → three mask drills. Reshape bugs → five shape transforms. CE bugs → two masked-loss exercises. `zero_grad` bugs → two training-step snippets. Do not add a new topic. |
-| 25 min | A **new** tensor problem, given in the session, using only matmul, transpose/permute, reshape, masking, softmax, reductions, CE. Not 16–18 and not 19. |
-| 30 min | Breadth rapid fire. Resume-specific. No story polishing. |
+| 50 min | Mock 1. 20 min resume. 30 min unseen coding, not a repeat of A–E. Log in [`mocks.md`](mocks.md). |
+| 30 min | Repair the weakest miss only. |
+| 30 min | Mock 2, coding only, a different category from mock 1. |
+| 20–30 min | Review the week's mistakes. No new topic. |
 
 ### Friday 23 — 20 minutes, around 20:30
 
-No heavy coding.
-
 | | |
 |--|--|
-| 5 min | From memory: `scores = q @ k.transpose(-2, -1)`, scale by `sqrt(d)`, `masked_fill`, `softmax(dim=-1)`, `attn @ v`. |
-| 5 min | Mask shapes: `[B, T]` → `[B, 1, 1, T]`. `[B, G]` → `[B, T, 1, G]` or the equivalent you actually use for group attention. |
-| 5 min | `zero_grad`, forward, loss, backward, step. |
+| 5 min | Transformer block structure, from memory. |
+| 5 min | Train step and cross-entropy layout. |
+| 5 min | One attention shape and one mask broadcast. |
 | 5 min | Three anchors. ImagenTime: representation hypothesis + a cheap test that could kill it. Dual tower: matched controls, where it helps, where it does not. TR kill: the slice gate written before the run. |
 
 Then stop. Call at 22:00.
@@ -197,9 +161,9 @@ Then stop. Call at 22:00.
 
 ## How the drills are run
 
-The session acts as the live screen. It does not reveal the solution up front.
+The session acts as the live screen. It does not reveal the solution up front. A, B, C, E, and F have no solution file.
 
-For every coding question: prompt only; you state input and output shapes; you name the axis the op uses; you code; you write 2–3 unit tests; run them; a miss gets a small hint, not the solution; then one follow-up that changes the axis, the mask, the number of groups, the query/key lengths, or the padding convention.
+For every coding question: prompt only; you state shapes; you code; you write 2–3 tests; run them; on a failure you diagnose before a hint; then one follow-up. Vary the category. Do not repeat a standalone attention drill. Full rules: [`2026-10-20_coding-plan.md`](2026-10-20_coding-plan.md).
 
 Resume questions push on assumptions, the alternative method, the ablation, what the result does not prove, and what would make you abandon the method.
 

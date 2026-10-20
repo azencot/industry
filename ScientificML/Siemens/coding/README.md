@@ -4,7 +4,7 @@ Live coding for **Fri 23 Oct 2026, 22:00–23:00 Thailand**, with Huzefa Rangwal
 
 Stories stay in the [bank](../2026-10-15_behavioral-story-bank.md). This folder is the coding half.
 
-Prep is **~65–70% coding**. The step up is axis ambiguity, masks, broadcasting, and debugging, on the same tensor ops. Plan: [`../2026-10-17_huzefa-screen.md`](../2026-10-17_huzefa-screen.md). Implement, say the shapes, write the asserts, run.
+Prep is **~70–75% coding**. Attention is already practiced. The live schedule is [`../2026-10-20_coding-plan.md`](../2026-10-20_coding-plan.md). A, B, C, E, and F have no solution file.
 
 ## How to practice
 
@@ -25,11 +25,11 @@ Sun 18 and Mon 19 are off. Three mornings start Tuesday. Detail and the spoken h
 | Day | Date | Files |
 |-----|------|-------|
 | — | Thu 15–Fri 16 | **01–04 and 13 done.** **05–08 drafted** in the problem files; core asserts passed 2026-10-17. Tuesday does not reread them. |
-| — | **Sat 17** | [`tue_attention.py`](tue_attention.py) and broadcast A, B, D. Group-key mask (C) and [`tue_shapes.py`](tue_shapes.py) not started. |
-| 1 | **Tue 20** | Blank redo of attention (20 min cap), **16** (20 min), broadcast **C** only, then [`tue_shapes.py`](tue_shapes.py). Stories A and B as questions. |
-| 2 | **Wed 21** | **17**, then [`17b_cross_group.py`](17b_cross_group.py), [`17c_group_multihead.py`](17c_group_multihead.py), [`18_masked_train_step_broken.py`](18_masked_train_step_broken.py), a live debug sprint, then breadth questions. |
-| 3 | **Thu 22** | Mock. Coding file, opened that morning: [`19_thu_mock.py`](19_thu_mock.py). Repair only what broke. Then one new tensor problem in the session. |
-| Pre-call | **Fri 23, ~20:30** | 20 min. No heavy coding. Screen at 22:00. |
+| — | **Sat 17** | [`tue_attention.py`](tue_attention.py) and broadcast A, B, D. Attention is no longer the main track. |
+| 1 | **Tue 20** | [`A_transformer_block.py`](A_transformer_block.py), [`B_train_eval.py`](B_train_eval.py), [`C_masked_ce_broken.py`](C_masked_ce_broken.py), a debug sprint, then stories A and B. |
+| 2 | **Wed 21** | **17** then **17b** (do not open solutions), [`E_infonce.py`](E_infonce.py), one transformer-block change, one unseen problem. |
+| 3 | **Thu 22** | Two mocks. Unseen problems, different categories. Repair only the weakest miss. |
+| Pre-call | **Fri 23, ~20:30** | 20 min. Block structure, train step, one mask shape, three story anchors. |
 
 ## Order
 
@@ -39,8 +39,8 @@ Sun 18 and Mon 19 are off. Three mornings start Tuesday. Detail and the spoken h
 | 2 | Right and left padding | [`02_pad_sequences.py`](02_pad_sequences.py) · [`02_pad_sequences_solution.py`](02_pad_sequences_solution.py) | **Done 2026-10-15.** Right pad is `[:Ti]`, left pad is `[-Ti:]`. Equal lengths need no extra branch. |
 | 3 | Padding mask, and the attention broadcast shape | [`03_padding_mask.py`](03_padding_mask.py) · [`03_padding_mask_solution.py`](03_padding_mask_solution.py) | **Done 2026-10-15.** `valid_true=False` flips the mask. Key mask is `[B, 1, 1, T]`. |
 | 4 | Masked sum, mean, MSE | [`04_masked_reductions.py`](04_masked_reductions.py) · [`04_masked_reductions_solution.py`](04_masked_reductions_solution.py) | **Done 2026-10-15.** Sum and mean reduce over T. MSE averages every valid element. `clamp_min(1)` covers an all-pad row. |
-| 5 | Scaled dot-product attention | [`05_attention.py`](05_attention.py) · [`05_attention_solution.py`](05_attention_solution.py) | **Drafted.** Core assert passed 2026-10-17. Tue 20 is a blank redo. |
-| 6 | Attention with key padding and a causal mask | [`06_masked_attention.py`](06_masked_attention.py) · [`06_masked_attention_solution.py`](06_masked_attention_solution.py) | **Drafted.** Padding, causal, both, and the all-pad row passed 2026-10-17. Blank redo Tue 20. |
+| 5 | Scaled dot-product attention | [`05_attention.py`](05_attention.py) · [`05_attention_solution.py`](05_attention_solution.py) | **Drafted.** Core assert passed 2026-10-17. Not the main track. |
+| 6 | Attention with key padding and a causal mask | [`06_masked_attention.py`](06_masked_attention.py) · [`06_masked_attention_solution.py`](06_masked_attention_solution.py) | **Drafted.** Padding, causal, both, and the all-pad row passed 2026-10-17. |
 | 7 | Causal mask, combined with padding | [`07_causal_mask.py`](07_causal_mask.py) · [`07_causal_mask_solution.py`](07_causal_mask_solution.py) | **Drafted.** `tril` mask and the `[B, 1, T, T]` combine passed 2026-10-17. |
 | 8 | Multi-head split, attend, merge | [`08_multihead.py`](08_multihead.py) · [`08_multihead_solution.py`](08_multihead_solution.py) | **Drafted.** Shape and the identical-token case passed 2026-10-17. |
 | 9 | MLP and a residual block | [`09_mlp.py`](09_mlp.py) · [`09_mlp_solution.py`](09_mlp_solution.py) | |
@@ -50,15 +50,20 @@ Sun 18 and Mon 19 are off. Three mornings start Tuesday. Detail and the spoken h
 | 13 | `Dataset` of tensor pairs | [`13_dataset.py`](13_dataset.py) · [`13_dataset_solution.py`](13_dataset_solution.py) | **Done 2026-10-15.** One index per `__getitem__`. `DataLoader` stacks equal shapes. |
 | 14 | Sliding-window time series | [`14_sliding_window.py`](14_sliding_window.py) · [`14_sliding_window_solution.py`](14_sliding_window_solution.py) | |
 | 15 | Cross-entropy that ignores padding | [`15_masked_ce.py`](15_masked_ce.py) · [`15_masked_ce_solution.py`](15_masked_ce_solution.py) | Covered in composed form by 18. |
-| 16 | Pad, self-attend, masked mean pool | [`16_varlen_pool.py`](16_varlen_pool.py) · [`16_varlen_pool_solution.py`](16_varlen_pool_solution.py) | **Tue 20.** Fluency. Stop if it is clean in under 15 min. |
+| 16 | Pad, self-attend, masked mean pool | [`16_varlen_pool.py`](16_varlen_pool.py) · [`16_varlen_pool_solution.py`](16_varlen_pool_solution.py) | Off the main track as of 2026-10-20. |
 | 17 | Attention across series, not time | [`17_group_attention.py`](17_group_attention.py) · [`17_group_attention_solution.py`](17_group_attention_solution.py) | **Wed 21, first.** `[B, G, T, D]`, attend on `G`. |
 | 17b | Cross-group attention | [`17b_cross_group.py`](17b_cross_group.py) · [`17b_cross_group_solution.py`](17b_cross_group_solution.py) | **Wed 21.** `Gq` queries, `Gk` keys, mask `[B, Gk]`. |
-| 17c | Multi-head cross-group | [`17c_group_multihead.py`](17c_group_multihead.py) · [`17c_group_multihead_solution.py`](17c_group_multihead_solution.py) | **Wed 21.** Scores `[B, T, H, Gq, Gk]`. |
-| 18 | Masked cross-entropy and one train step | [`18_masked_train_step_broken.py`](18_masked_train_step_broken.py) · [`18_masked_train_step.py`](18_masked_train_step.py) · [`18_masked_train_step_solution.py`](18_masked_train_step_solution.py) | **Wed 21.** Start from the broken file. |
-| 19 | Per-series attend over time, then pool | [`19_thu_mock.py`](19_thu_mock.py) · [`19_thu_mock_solution.py`](19_thu_mock_solution.py) | **Thu 22 mock.** Do not open before then. |
-| — | Tuesday attention, heads in the shape | [`tue_attention.py`](tue_attention.py) · [`tue_attention_solution.py`](tue_attention_solution.py) | **Drafted Sat 17.** Padding, causal (`triu` diagonal 1), both, and the all-pad row pass. Tue 20 is still a blank 20 min cap. |
+| 17c | Multi-head cross-group | [`17c_group_multihead.py`](17c_group_multihead.py) · [`17c_group_multihead_solution.py`](17c_group_multihead_solution.py) | Optional after 17b, only inside the 30 min cap. |
+| 18 | Masked cross-entropy and one train step | [`18_masked_train_step_broken.py`](18_masked_train_step_broken.py) · [`18_masked_train_step.py`](18_masked_train_step.py) · [`18_masked_train_step_solution.py`](18_masked_train_step_solution.py) | Superseded by **C** for Tue 20. |
+| 19 | Per-series attend over time, then pool | [`19_thu_mock.py`](19_thu_mock.py) · [`19_thu_mock_solution.py`](19_thu_mock_solution.py) | Not the Thursday mock anymore. Leave it closed. |
+| — | Tuesday attention, heads in the shape | [`tue_attention.py`](tue_attention.py) · [`tue_attention_solution.py`](tue_attention_solution.py) | **Drafted Sat 17.** Passes. Do not repeat as its own drill. |
 | — | Broadcast / mask micro-drills | [`tue_broadcast.py`](tue_broadcast.py) · [`tue_broadcast_solution.py`](tue_broadcast_solution.py) | **Sat 17: A, B, D pass.** C (`mask_group_keys`) still open. |
-| — | Shape micro-drills | [`tue_shapes.py`](tue_shapes.py) · [`tue_shapes_solution.py`](tue_shapes_solution.py) | **Tue 20.** Not started. |
+| — | Shape micro-drills | [`tue_shapes.py`](tue_shapes.py) · [`tue_shapes_solution.py`](tue_shapes_solution.py) | Dropped from the main track on 2026-10-20. |
+| A | Pre-norm transformer block | [`A_transformer_block.py`](A_transformer_block.py) | **Tue 20, first.** No solution file. |
+| B | Train step and eval | [`B_train_eval.py`](B_train_eval.py) | **Tue 20.** No solution file. |
+| C | Masked CE, two ways, start broken | [`C_masked_ce_broken.py`](C_masked_ce_broken.py) | **Tue 20.** No solution file. |
+| E | InfoNCE | [`E_infonce.py`](E_infonce.py) | **Wed 21.** No solution file. |
+| F | Mini causal LM | [`F_minigpt.py`](F_minigpt.py) | Optional. Skip if a mock would be cut. |
 
 Mask convention in every file: **True = valid token**, False = pad. Say it before you code. If they flip it, flip the `~`.
 
