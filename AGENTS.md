@@ -60,6 +60,14 @@ Not a production app repo.
 - End with **what you learned**
 - Priority LPs for this role: Customer Obsession, Ownership, Dive Deep, Deliver Results, Invent and Simplify, Earn Trust, Have Backbone, Learn and Be Curious
 
+## IndustrialResearch interviews
+
+From the 2026-10-20 call with Ozan Sener ([`IndustrialResearch/apple/2026-10-20_ozan-call.md`](IndustrialResearch/apple/2026-10-20_ozan-call.md)):
+
+- A research interview in this loop goes to the **assumption** that makes the method work, and to **how it differs** from the nearby methods.
+- Results are for when they are asked. Know the numbers. Do not open with the table for an interviewer working in this style.
+- Do not predict the next interviewer from ethnicity. One call is one person. Have the numbers ready because someone else in the loop may want them.
+
 ## ML / FinTech talking points (default frame)
 
 When discussing LLM systems for finance:

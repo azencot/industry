@@ -1,6 +1,6 @@
 # Organizational briefing — Koltun’s organization and Ozan Sener
 
-**Date:** 2026-10-19. **Call:** not confirmed. **Reply to Raja’s intro:** still unsent ([`2026-10-17_ozan-intro.md`](2026-10-17_ozan-intro.md)).
+**Date:** 2026-10-19. **Call:** happened 2026-10-20. Note: [`2026-10-20_ozan-call.md`](2026-10-20_ozan-call.md). The publication record below is unchanged. On the call, Ozan said his group pursues physics-based world models and efficient LLMs. The world models started with climate and now aim at reducing the cost of finite-element simulations. Digital twins: mostly yes, and other approaches are also considered. He did not name a method.
 
 **Question this note answers:** What is this research organization trying to accomplish, and where could Omri contribute?
 

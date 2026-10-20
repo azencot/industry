@@ -26,7 +26,7 @@ Shared profile: [`.cursor/skills/debrief/omri_azencot_experience.md`](../.cursor
 
 | Org | Contact | Next | Prep |
 |-----|---------|------|------|
-| **Apple — ML group, Vladlen Koltun’s org** | **Ozan Sener** (head of the ML group, per Raja). Intro **Raja Giryes** | Reply on Raja’s thread. Draft: [`apple/2026-10-17_ozan-intro.md`](apple/2026-10-17_ozan-intro.md) | Plan: [`apple/2026-10-19_ozan-prep-plan.md`](apple/2026-10-19_ozan-prep-plan.md). Briefing: [`apple/2026-10-19_org-briefing.md`](apple/2026-10-19_org-briefing.md) |
+| **Apple — ML group, Vladlen Koltun’s org** | **Ozan Sener** (head of the ML group, per Raja). Intro **Raja Giryes** | Recruiter will make contact. A few interviews and some coding. Call: [`apple/2026-10-20_ozan-call.md`](apple/2026-10-20_ozan-call.md) | Plan: [`apple/2026-10-19_ozan-prep-plan.md`](apple/2026-10-19_ozan-prep-plan.md). Briefing: [`apple/2026-10-19_org-briefing.md`](apple/2026-10-19_org-briefing.md) |
 
 After each note or call: drop `YYYY-MM-DD_*.md` in that company’s folder and add a row below.
 
@@ -48,6 +48,7 @@ After each note or call: drop `YYYY-MM-DD_*.md` in that company’s folder and a
 | 2026-10-19 | Profile C mock | What he would start. Cache policy is the baseline. No task, no token budget, no y-axis. Mixed result becomes a selector. Log: [`apple/mocks.md`](apple/mocks.md). |
 | 2026-10-20 | Ozan, hiring mock | Intro, then the job. Week stayed the lab week. “May or may not” did not pick. Students leading is still his lab. Log: [`apple/mocks.md`](apple/mocks.md). |
 | 2026-10-20 | Ozan, start date | Can start now. Internships offered. Leave through Oct 2027 and tenure said plainly. Resignation is not owed on a first call. Log: [`apple/mocks.md`](apple/mocks.md). |
+| 2026-10-20 | Ozan call | First conversation. Link arrived a few minutes late. Group work, as he said it: physics-based world models (climate, now finite-element cost; mostly digital twins) and efficient LLMs. Logistics included part time. KDM stayed on linearity and how it differs from other distillation. Results were not asked. Recruiter next. [`apple/2026-10-20_ozan-call.md`](apple/2026-10-20_ozan-call.md). |
 
 ---
 
