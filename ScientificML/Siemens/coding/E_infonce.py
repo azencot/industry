@@ -41,4 +41,28 @@ import torch
 
 
 def infonce(z1, z2, temperature=0.1):
-    raise NotImplementedError
+    # z1, z2 in [B, D]
+    B = z1.shape[0]
+
+    if B == 0:
+      return 0
+
+    # L2-normalize; TODO: emb of zeros?
+    z1n = torch.sqrt(torch.sum(z1 ** 2, dim=-1))             # [B, D] -> [B]
+    z2n = torch.sqrt(torch.sum(z2 ** 2, dim=-1))
+
+    z1 = z1 / z1n[:, None]                                  # [B, D] -> [B, D]
+    z2 = z2 / z2n[:, None]
+
+    # pairwise similarity [B, B]
+    ps = z1 @ z2.transpose(1, 0)                            # [B, D] @ [D, B] -> [B, B]
+
+    # divide by temperature;
+    temperature += 1e-6
+    ps = ps / temperature                                   # [B, B] -> [B, B]
+
+    # compute cross entropy -> return scalar
+    scores = torch.softmax(ps, dim=-1)                      # [B, B] -> [B, B]
+
+    return - torch.sum(torch.log(torch.diag(scores))) / B
+
