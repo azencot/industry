@@ -8,10 +8,21 @@ No solution file. Wednesday, after variate attention.
     return a scalar loss
 
 1. L2-normalize each embedding.
-2. Pairwise similarity [B, B].
-3. Divide by a temperature.
+2. Pairwise similarity [B, B]. Entry (i, j) compares z1[i] with z2[j].
+3. Divide by a temperature. Those scaled similarities are the logits.
 4. Positive for row i is column i.
+   Row i is "which z2 vector matches z1[i]?" The B columns are the B
+   candidate classes. The correct class for row i is j = i, the diagonal.
+   The label vector is therefore length B, and label[i] = i
+   (0 for row 0, 1 for row 1, and so on). Off-diagonal entries are the
+   negatives for that row.
 5. Cross-entropy.
+   One cross-entropy over the B columns of each row, then the mean over
+   the B rows. The logits argument is the [B, B] scaled-similarity
+   matrix. The target argument is the label vector from step 4, integer
+   class indices, not a one-hot matrix and not probabilities.
+   Cross-entropy applies the softmax itself. Do not softmax the matrix
+   before passing it in.
 
 Optional: add the loss with z1 and z2 swapped, and average the two.
 
