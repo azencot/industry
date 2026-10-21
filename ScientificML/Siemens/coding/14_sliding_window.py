@@ -20,10 +20,19 @@ from torch.utils.data import Dataset
 
 class SlidingWindowTS(Dataset):
     def __init__(self, x, context, horizon):
-        raise NotImplementedError
+        self.x = x
+        self.T = x.shape[0]
+        self.L = context
+        self.H = horizon
 
     def __len__(self):
-        raise NotImplementedError
+        return max(self.T - self.L - self.H + 1, 0)
 
     def __getitem__(self, index):
-        raise NotImplementedError
+        if index > self.T - self.L - self.H:
+            return None, None
+
+        inputs = self.x[index : index + self.L]
+        target = self.x[index + self.L : index + self.L + self.H]
+
+        return inputs, target
