@@ -48,17 +48,59 @@ Tests to write before you trust it:
 Time box: 40 minutes, then stop.
 """
 
+import torch
 import torch.nn as nn
 
+from A_transformer_block import TransformerBlock
 
 class MiniGPT(nn.Module):
     def __init__(self, vocab, d, n_heads, max_len):
         super().__init__()
-        raise NotImplementedError
+
+        self.V = vocab
+        self.d = d
+        self.n_heads = n_heads
+        self.max_len = max_len
+
+        self.vocab = nn.Parameter(torch.randn(self.V, d))
+        self.pos_enc = nn.Parameter(torch.randn(self.max_len, d))
+
+        self.tblock = TransformerBlock(d, n_heads, causal=True)
+        self.ln = nn.LayerNorm(d)
+
+        self.cls_head = nn.Linear(d, self.V)
 
     def forward(self, token_ids):
-        raise NotImplementedError
+        # token_ids in [B, T]
+        B, T, = token_ids.shape
 
+        assert T <= self.max_len
+
+        # 1) token embedding:  [B, T] -> [B, T, d]
+        token_emb = self.vocab[token_ids]
+
+        # 2) position embedding: [B, T, d] + [B, T, d] -> [B, T, d]
+        pos = torch.arange(T, device=token_ids.device)
+        x = token_emb + self.pos_enc[pos]         
+
+        # 3) pre-norm block -> TransformerBlock + causal
+        x = self.tblock(x)              # [B, T, d] -> [B, T, d]
+
+        # 4) LayerNorm + linear map to V
+        x = self.ln(x)                  # [B, T, d] -> [B, T, d]
+        x = self.cls_head(x)            # [B, T, d] -> [B, T, V]
+
+        return x
 
 def next_token_loss(logits, token_ids):
-    raise NotImplementedError
+    B, T, V = logits.shape
+
+    if T < 2:
+        return torch.zeros(()).to(logits.device)
+
+    logits = logits[:, :-1, :].reshape(-1, V).contiguous()
+    token_ids = token_ids[:, 1:].reshape(-1)
+
+    loss = nn.CrossEntropyLoss()(logits, token_ids)
+
+    return loss
