@@ -3,7 +3,7 @@
 **When:** Friday 23 October, **22:00–23:00 Thailand** (ICT). That is **08:00–09:00 Pacific**.
 **Length:** 1 hour.
 **Interviewer:** **Huzefa Rangwala**, Staff Scientist, Physical AI, Siemens. This books the technical screen. He is not confirmed as the hiring manager.
-**Prep window:** Tuesday 20, Wednesday 21, Thursday 22. About 2.5–3 hours each. Friday is a 20-minute pre-call, not a fourth day.
+**Prep window:** Tuesday 20, Wednesday 21, Thursday 22. About 2.5–3 hours each. Friday daytime is only the second mock if Thursday missed it. The last 20 minutes before the call are a review, not a new exercise.
 **Prep split (revised 2026-10-20):** **~70–75% coding, ~25–30% resume.** Coding time is mostly modules, training, and losses. Attention is one exercise, not the week. Schedule: [`2026-10-20_coding-plan.md`](2026-10-20_coding-plan.md).
 
 Private note from **Danielle Robinson** (she worked with him at AWS). Do not quote it on the call. **Danielle Chandler** is the recruiter who owns the process. Two different people.
@@ -91,7 +91,7 @@ Wednesday's spoken block is the question list in the day plan below, not these n
 
 ## Coding
 
-The coding schedule is [`2026-10-20_coding-plan.md`](2026-10-20_coding-plan.md). Attention and masking are already practiced. The next blocks are a transformer block, a train/eval loop, and masked cross-entropy. There is no solution file for those.
+The coding schedule is [`2026-10-20_coding-plan.md`](2026-10-20_coding-plan.md). Attention, the transformer block, train/eval, and masked cross-entropy are already practiced. Thursday 22 is a Gaussian NLL, a covariate forecast, a GRU classifier, a script that does not learn, then an unseen mock.
 
 ---
 
@@ -137,31 +137,17 @@ Wednesday questions:
 - Koopman: what problem the representation solves, why linear latent dynamics can help, limitations, stability / identifiability, how it differs from a generic latent-state model.
 - GRPO only if that line is on the resume. Use the card above. Do not implement PPO or GRPO.
 
-### Thursday 22 — two mocks (~2.5–3 h)
+### Thursday 22 and Friday 23
 
-| | |
-|--|--|
-| 50 min | Mock 1. 20 min resume. 30 min unseen coding, not a repeat of A–E. Log in [`mocks.md`](mocks.md). |
-| 30 min | Repair the weakest miss only. |
-| 30 min | Mock 2, coding only, a different category from mock 1. |
-| 20–30 min | Review the week's mistakes. No new topic. |
+Revised 22 Oct. Day order, files, and the cut rules are in [`2026-10-20_coding-plan.md`](2026-10-20_coding-plan.md).
 
-### Friday 23 — 20 minutes, around 20:30
-
-| | |
-|--|--|
-| 5 min | Transformer block structure, from memory. |
-| 5 min | Train step and cross-entropy layout. |
-| 5 min | One attention shape and one mask broadcast. |
-| 5 min | Three anchors. ImagenTime: representation hypothesis + a cheap test that could kill it. Dual tower: matched controls, where it helps, where it does not. TR kill: the slice gate written before the run. |
-
-Then stop. Call at 22:00.
+Thursday is J, K, M, then the debug script, then unseen mock 1. Mock 2 only if time remains. Friday daytime is mock 2 if Thursday missed it. The last 20 minutes before 22:00 are the block, the train step, one mask shape, and the three story anchors. No new exercise in that window.
 
 ---
 
 ## How the drills are run
 
-The session acts as the live screen. It does not reveal the solution up front. A, B, C, E, and F have no solution file.
+The session acts as the live screen. It does not reveal the solution up front. A–N have no solution file. L is a runnable script; what is wrong with it is not marked.
 
 For every coding question: prompt only; you state shapes; you code; you write 2–3 tests; run them; on a failure you diagnose before a hint; then one follow-up. Vary the category. Do not repeat a standalone attention drill. Full rules: [`2026-10-20_coding-plan.md`](2026-10-20_coding-plan.md).
 

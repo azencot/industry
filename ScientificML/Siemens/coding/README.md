@@ -4,7 +4,7 @@ Live coding for **Fri 23 Oct 2026, 22:00–23:00 Thailand**, with Huzefa Rangwal
 
 Stories stay in the [bank](../2026-10-15_behavioral-story-bank.md). This folder is the coding half.
 
-Prep is **~70–75% coding**. Attention is already practiced. The live schedule is [`../2026-10-20_coding-plan.md`](../2026-10-20_coding-plan.md). A, B, C, E, and F have no solution file.
+Prep is **~70–75% coding**. Attention is already practiced. The live schedule is [`../2026-10-20_coding-plan.md`](../2026-10-20_coding-plan.md). A–N have no solution file. L runs as written; the bugs are not marked.
 
 ## How to practice
 
@@ -26,10 +26,11 @@ Sun 18 and Mon 19 are off. Three mornings start Tuesday. Detail and the spoken h
 |-----|------|-------|
 | — | Thu 15–Fri 16 | **01–04 and 13 done.** **05–08 drafted** in the problem files; core asserts passed 2026-10-17. Tuesday does not reread them. |
 | — | **Sat 17** | [`tue_attention.py`](tue_attention.py) and broadcast A, B, D. Attention is no longer the main track. |
-| 1 | **Tue 20** | [`A_transformer_block.py`](A_transformer_block.py) and [`B_train_eval.py`](B_train_eval.py) drafted. [`E_infonce.py`](E_infonce.py) drafted the same day. C slipped to Thu 22. |
+| 1 | **Tue 20** | [`A_transformer_block.py`](A_transformer_block.py) and [`B_train_eval.py`](B_train_eval.py) drafted. [`E_infonce.py`](E_infonce.py) drafted the same day. C drafted later; do not repeat it. |
 | 2 | **Wed 21** | **17**, [`G_layernorm.py`](G_layernorm.py), [`14_sliding_window.py`](14_sliding_window.py), [`H_kmeans.py`](H_kmeans.py), [`F_minigpt.py`](F_minigpt.py), and [`I_mean_pool.py`](I_mean_pool.py) drafted. 17b not started. |
-| 3 | **Thu 22** | Two mocks. Unseen problems, different categories. Repair only the weakest miss. |
-| Pre-call | **Fri 23, ~20:30** | 20 min. Block structure, train step, one mask shape, three story anchors. |
+| 3 | **Thu 22** | [`J_gaussian_nll.py`](J_gaussian_nll.py), [`K_forecast_covariates.py`](K_forecast_covariates.py), [`M_gru_classifier.py`](M_gru_classifier.py), then [`L_wont_learn.py`](L_wont_learn.py), then unseen mock 1. Mock 2 if time remains. **N** only after both mocks. |
+| Daytime | **Fri 23** | Mock 2, if Thursday did not reach it. Not in the hour before the call. |
+| Pre-call | **Fri 23, last 20 min** | Block structure, train step, one mask shape, three story anchors. No new exercise. |
 
 ## Order
 
@@ -61,12 +62,17 @@ Sun 18 and Mon 19 are off. Three mornings start Tuesday. Detail and the spoken h
 | — | Shape micro-drills | [`tue_shapes.py`](tue_shapes.py) · [`tue_shapes_solution.py`](tue_shapes_solution.py) | Dropped from the main track on 2026-10-20. |
 | A | Pre-norm transformer block | [`A_transformer_block.py`](A_transformer_block.py) | **Drafted Tue 20.** No solution file. |
 | B | Train step and eval | [`B_train_eval.py`](B_train_eval.py) | **Drafted Tue 20.** No solution file. |
-| C | Masked CE, two ways, start broken | [`C_masked_ce_broken.py`](C_masked_ce_broken.py) | **Drafted Thu 22.** Both reductions. No solution file. The unreduced comment still says `[B*T, C]`; `reduction="none"` returns `[B*T]`. |
+| C | Masked CE, two ways, start broken | [`C_masked_ce_broken.py`](C_masked_ce_broken.py) | **Drafted.** Both reductions. Not a Thu 22 problem. No solution file. The unreduced comment still says `[B*T, C]`; `reduction="none"` returns `[B*T]`. |
 | E | InfoNCE | [`E_infonce.py`](E_infonce.py) | **Drafted Tue 20.** No solution file. Diagonal of the softmax. |
 | G | LayerNorm by hand | [`G_layernorm.py`](G_layernorm.py) | **Drafted Wed 21.** No solution file. Matches `nn.LayerNorm`. Mean and variance are `[..., 1]`. |
 | H | K-means | [`H_kmeans.py`](H_kmeans.py) | **Drafted Wed 21.** No solution file. Centroids are `x[:k].clone()`. Assignments are recomputed from the returned centroids. |
 | I | Mean-pool classifier | [`I_mean_pool.py`](I_mean_pool.py) | **Drafted Wed 21.** Embed, mean over T, linear to C. No solution file. |
 | F | Mini causal LM | [`F_minigpt.py`](F_minigpt.py) | **Drafted Wed 21.** Embedding, causal block from A, next-token loss. No solution file. |
+| J | Gaussian NLL | [`J_gaussian_nll.py`](J_gaussian_nll.py) | **Thu 22.** Problem only. Diagonal Gaussian, log-variance, pad mask. No solution file. |
+| K | Forecast with covariates | [`K_forecast_covariates.py`](K_forecast_covariates.py) | **Thu 22.** Problem only. You choose the module. No future target. No solution file. |
+| L | A model that does not learn | [`L_wont_learn.py`](L_wont_learn.py) | **Thu 22.** Runnable. Fit should fall under 1 after the fix. Bugs are not marked. No solution file. |
+| M | Variable-length GRU classifier | [`M_gru_classifier.py`](M_gru_classifier.py) | **Thu 22.** Problem only. Last valid state. No solution file. |
+| N | Supervised contrastive | [`N_supervised_contrastive.py`](N_supervised_contrastive.py) | **Optional, after both mocks.** Problem only. No solution file. |
 
 Mask convention in every file: **True = valid token**, False = pad. Say it before you code. If they flip it, flip the `~`.
 
@@ -124,4 +130,10 @@ Key padding mask `[B, Tk]` becomes `[B, 1, Tk]` for single-head scores `[B, Tq, 
 - [ ] attention across the series axis (17)
 - [ ] cross-group attention (17b) and multi-head (17c)
 - [ ] masked train step, starting from the broken file (18)
-- [ ] Thursday mock: per-series attend over time (19), not before Thursday
+- [ ] Gaussian NLL (J)
+- [ ] Forecast with past and future covariates (K)
+- [ ] GRU on a right-padded batch (M)
+- [ ] Debug [`L_wont_learn.py`](L_wont_learn.py), then re-run until held-out MSE is under 1
+- [ ] Unseen mock 1, then mock 2
+- [ ] Supervised contrastive (N), only after both mocks
+- [ ] 19 stays closed. It is not a mock.

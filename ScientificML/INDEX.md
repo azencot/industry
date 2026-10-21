@@ -51,6 +51,7 @@ After each call: drop `YYYY-MM-DD_*.md` in that company’s folder and add a row
 | 2026-10-21 | Coding | Group attention, LayerNorm, a sliding-window dataset, and K-means. 17b and another attention change were set aside. Misses: key-mask broadcast, LayerNorm device, a negative window count, and a centroid view of `x`. [`Siemens/coding/`](Siemens/coding/). |
 | 2026-10-21 | Story B mock | Dual tower. Matched controls landed. TSExam was first a win, then corrected to flat. Follow-ups chased scores; the next mock stays on the decision. [`Siemens/mocks.md`](Siemens/mocks.md). |
 | 2026-10-21 | Story A mock, full transcript | ImagenTime with Huzefa simulated. Three kill tests and the combined-system limit landed. Opening still has no number and still says "my students." Four-week plan stayed generic. [`Siemens/mocks.md`](Siemens/mocks.md). |
+| 2026-10-22 | Coding plan for Thu–Fri | Unseen mocks first if the day slips. New drills are Gaussian NLL, a covariate forecast, a GRU classifier, and a script that does not learn. [`Siemens/2026-10-20_coding-plan.md`](Siemens/2026-10-20_coding-plan.md). |
 
 ---
 

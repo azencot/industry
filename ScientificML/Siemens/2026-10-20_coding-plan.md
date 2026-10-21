@@ -2,75 +2,69 @@
 
 Supersedes the attention-and-mask schedule in [`2026-10-17_huzefa-screen.md`](2026-10-17_huzefa-screen.md). Resume questions in that file still stand. This file is the coding schedule.
 
+**Revised 22 Oct.** Thursday and Friday no longer start from another attention or mask drill. The open question is an unseen ML problem in about 25 minutes.
+
 **Screen:** Fri 23 Oct, 22:00–23:00 Thailand. About 25–30 min resume / ML breadth, then 25–30 min live PyTorch with unit tests. DataLoader, padding, and an attention matrix are examples, not the whole menu.
 
-**Split:** about **70–75% coding**, **25–30%** resume. Across the coding time: **35%** modules, **25%** training / losses / debugging, **25%** attention and tensor ops, **15%** another ML algorithm.
+No solution files for A–N. Do not look up an implementation before the attempt. [`coding/L_wont_learn.py`](coding/L_wont_learn.py) is the exception that runs: the bugs are not marked, and there is no solution file.
 
-No solution files for A–F. Do not look up an implementation before the attempt.
+## Already practiced — do not repeat as standalone drills
 
-## Already done — not the focus
+Dataset, `collate_fn`, padding, padding masks, masked reductions, scaled dot-product attention, causal attention, multi-head attention, the pre-norm block, train and eval, masked cross-entropy (both reductions), attention across variates, InfoNCE, the sliding-window dataset, the mini causal LM, LayerNorm, K-means, the mean-pool classifier.
 
-Dataset, `collate_fn`, padding, padding masks, masked reductions, scaled dot-product attention, causal attention, multi-head shapes. Sat 17: [`coding/tue_attention.py`](coding/tue_attention.py) and broadcast A, B, D.
+Cross-group attention (17b) and multi-head group attention (17c) are unfinished. They are not priorities.
 
-The weakness is syntax under a clock: APIs, transpose / permute / reshape, broadcasting, mask polarity, cross-entropy layout, the training step, debugging.
+Do not add another Transformer exercise, an algorithm puzzle, or an obscure API.
 
-APIs to stay inside: `nn.Module`, `nn.Linear`, `nn.LayerNorm`, `nn.Embedding`, `F.softmax`, `F.cross_entropy`, `matmul`, transpose / permute / reshape, masking, an optimizer, autograd. A problem should fit in 20–30 minutes, except the transformer block (40–45).
+## Still open, in this order
 
-## Exercises
+| | Priority | Time | File |
+|--|----------|------|------|
+| Unseen mock 1, then mock 2 | Highest | 25–30 min each | Not written ahead. Given at the start of the mock. |
+| **J** Gaussian NLL | Very high | 20–25 min | [`coding/J_gaussian_nll.py`](coding/J_gaussian_nll.py) |
+| **K** Forecast with covariates | Very high | 25–30 min | [`coding/K_forecast_covariates.py`](coding/K_forecast_covariates.py) |
+| **L** A model that does not learn | Very high | 25–30 min | [`coding/L_wont_learn.py`](coding/L_wont_learn.py) |
+| **M** Variable-length GRU classifier | Medium | 20–25 min | [`coding/M_gru_classifier.py`](coding/M_gru_classifier.py) |
+| **N** Supervised contrastive | Optional | 20–25 min | [`coding/N_supervised_contrastive.py`](coding/N_supervised_contrastive.py) |
 
-| | Priority | Time | File | When |
-|--|----------|------|------|------|
-| **A** Pre-norm transformer block. No `nn.MultiheadAttention`, no `F.scaled_dot_product_attention`. | Very high | 40–45 min | [`coding/A_transformer_block.py`](coding/A_transformer_block.py) | **Drafted Tue 20.** |
-| **B** Train step and eval loop | Very high | 25–30 min | [`coding/B_train_eval.py`](coding/B_train_eval.py) | **Drafted Tue 20.** |
-| **C** Masked CE, two ways. Start from the broken file. | High | 20–25 min | [`coding/C_masked_ce_broken.py`](coding/C_masked_ce_broken.py) | **Drafted Thu 22.** Both reductions. |
-| **D** Attend across variates, not time. Then cross-group. Multi-head only if time remains, cap 30 min. | High | 25–30 min | [`coding/17_group_attention.py`](coding/17_group_attention.py), then [`coding/17b_cross_group.py`](coding/17b_cross_group.py). Do not open the solution files. | **17 drafted Wed 21.** 17b not started. |
-| **E** InfoNCE. K-means only if E is done and mocks are not at risk. | Medium-high | 25–30 min | [`coding/E_infonce.py`](coding/E_infonce.py) | **Drafted Tue 20.** |
-| **14** Sliding-window time series. Not on the original menu. | Extra | — | [`coding/14_sliding_window.py`](coding/14_sliding_window.py) | **Drafted Wed 21.** |
-| **F** Mini causal LM | Optional | 30–40 min | [`coding/F_minigpt.py`](coding/F_minigpt.py) | **Drafted Wed 21.** |
-| **G** LayerNorm by hand | Extra | 25 min | [`coding/G_layernorm.py`](coding/G_layernorm.py) | **Drafted Wed 21.** |
-| **H** K-means | Extra | 25 min | [`coding/H_kmeans.py`](coding/H_kmeans.py) | **Drafted Wed 21.** |
-| **I** Mean-pool classifier | Extra | 20 min | [`coding/I_mean_pool.py`](coding/I_mean_pool.py) | **Drafted Wed 21,** after F. |
+If the day slips, cut **N** first, then **M**. Do not skip mock 1 in order to finish an optional exercise.
 
-A–E, 14, and F–I are drafted. 17b and 17c are not. Still open: the two unseen coding mocks.
+## Days already done
 
-## Days
+**Tuesday 20.** A (transformer block), B (train and eval), and E (InfoNCE) drafted. C slipped off that day and was drafted later. Do not repeat C as a new problem.
 
-### Tuesday 20 — modules (~2.5–3 h)
+**Wednesday 21.** 17 (variate attention), G (LayerNorm), 14 (sliding window), H (K-means), F (mini causal LM), and I (mean-pool classifier) drafted. 17b set aside. Story C and story B mocks logged in [`mocks.md`](mocks.md).
+
+## Thursday 22 — primary coding day
 
 | | |
 |--|--|
-| 45 min | **A.** Transformer block. **Drafted.** |
-| 30 min | **B.** Train and eval. **Drafted.** |
-| 25 min | **C.** Broken masked CE, then the second approach. Slipped to **Thu 22.** |
-| 20 min | Debugging sprint. One broken snippet at a time, from the session. Name the bug before editing. |
-| 30 min | Resume. Stories A and B, the questions in the [screen note](2026-10-17_huzefa-screen.md). |
+| 20–25 min | **J.** Gaussian NLL. Formula is in the file. You state the reduction, then code. |
+| 25–30 min | **K.** Covariate forecast. You propose the architecture before any code. |
+| 20–25 min | **M.** GRU classifier. Last valid state, not the state after the padding. |
+| | Short break. |
+| 25–30 min | **L.** Run the script. It does not learn. Diagnose, then fix, then re-run. |
+| 25–30 min | **Mock 1.** Unseen. Not an exact repeat. Log in [`mocks.md`](mocks.md). |
+| 15–20 min | Review the misses. No new topic. |
+| If time remains | **Mock 2**, a different category from mock 1. |
 
-Not today: another standalone attention drill, problem 16, broadcast C, shape drills, exercise D.
+**N** only after both mocks.
 
-### Wednesday 21 — broader coding (~2.5–3 h)
+### How a mock is given
 
-| | |
-|--|--|
-| 30 min | **D.** Variate attention. **Drafted.** Cross-group (17b) not started. |
-| — | **E.** InfoNCE. **Drafted Tue 20.** |
-| 25 min | **G.** LayerNorm by hand. **Drafted.** [`coding/G_layernorm.py`](coding/G_layernorm.py). |
-| 25 min | **H.** K-means. **Drafted.** [`coding/H_kmeans.py`](coding/H_kmeans.py). The transformer-block change is set aside. |
-| — | **14.** Sliding-window dataset. **Drafted.** [`coding/14_sliding_window.py`](coding/14_sliding_window.py). |
-| 30–40 min | **F.** Mini causal LM. **Drafted.** [`coding/F_minigpt.py`](coding/F_minigpt.py). |
-| 20 min | **I.** Mean-pool classifier. **Drafted** after F. [`coding/I_mean_pool.py`](coding/I_mean_pool.py). |
-| 30–40 min | Resume / breadth. Questions already listed in the screen note. |
+The category is not announced ahead of time. At least one of the two mocks is outside attention, masking, and Transformers. The prompt is a signature, the input and output contract, and the imports. You explain the shapes and the computation, then implement, then write 2–3 tests. On a failure, you diagnose before a hint. One follow-up if time remains.
 
-### Thursday 22 — mocks (~2.5–3 h)
+Score 1–5: problem understanding, shapes, PyTorch fluency, correctness, debugging, communication. Record time, hints, failed tests, the main mistake, and whether it was finished without a hint.
 
-| | |
-|--|--|
-| — | **C** is already drafted. Do not repeat it as the day’s new problem. |
-| 50 min | Mock 1. 20 min resume. 30 min an unseen coding problem. Not an exact repeat. Run tests. Log in [`mocks.md`](mocks.md). |
-| 30 min | Repair only the weakest miss: syntax, shape, mask, API, or time. |
-| 30 min | Mock 2, coding only, a different category from mock 1. |
-| 20–30 min | Review mistakes from the week. No new topic. |
+Do not use [`coding/19_thu_mock.py`](coding/19_thu_mock.py). Leave it closed.
 
-### Friday 23 — 20 minutes, around 20:30
+## Friday 23
+
+Light. If mock 2 did not happen on Thursday, do it earlier in the day, then 15 min on the misses. Do not run a hard mock in the hour before the call.
+
+### Last 20 minutes before 22:00
+
+No new exercise.
 
 | | |
 |--|--|
@@ -79,17 +73,23 @@ Not today: another standalone attention drill, problem 16, broadcast C, shape dr
 | 5 min | One attention shape and one mask broadcast. |
 | 5 min | Resume anchors: ImagenTime kill test, dual-tower controls, TR slice gate. |
 
-## After each exercise
+Call at 22:00.
 
-Score 1–5: problem understanding, shapes, PyTorch fluency, correctness, debugging, communication. Note time, hints, failed tests, and the main error.
+## After each exercise
 
 | Time | What happens |
 |------|----------------|
-| Under 15 min | One harder follow-up. Do not repeat the problem. |
-| 15–25 min | Target. One follow-up. |
-| 25–35 min | Review the miss. One shorter related drill. |
-| Over 35 min | Stop. Name the gap (concept, syntax, shape, debugging, or time). Explain only the missing piece. A simpler related problem, then the original later. |
+| Under 15 min | One harder follow-up. |
+| 15–25 min | On pace. One follow-up, then the next category. |
+| 25–35 min | Review that miss. One short repair. |
+| Over 35 min | Stop. Name the gap. Explain only the missing piece. Move on. |
 
-## How a drill is run
+One follow-up, and it changes the problem that was just solved: missing values, variable length, the reduction, an extra output, stability, or what is known at inference. Not a second problem from the same family.
 
-Problem statement only. You state shapes. You code. You write 2–3 tests. Run them. On a failure, you diagnose before a hint. Then one follow-up. No second attention drill when the category was already attention.
+Before coding, state the operation and the shapes. After it runs, say why it is correct, the cost, and the limitation.
+
+## What this is for
+
+An unfamiliar ML component in about 25 minutes. Shapes said out loud. A small `nn.Module`. A standard loss. A correct training step. Masks and broadcasting. A model that does not learn. A few tests. The assumption and the limitation.
+
+Not a larger set of memorized implementations.
