@@ -28,6 +28,7 @@
 | **2026-10-17** | Screen booked | **Huzefa Rangwala**, Fri 23 Oct, 22:00–23:00 Thailand. Robinson: resume methodology, ML breadth, then one PyTorch question. Plan: [`2026-10-17_huzefa-screen.md`](2026-10-17_huzefa-screen.md). |
 | **2026-10-17** | Evening coding | Attention draft passes, including causal via `triu(..., diagonal=1)`. Broadcast A, B, D pass. C and shape drills open. |
 | **2026-10-20** | Coding plan revised | Attention is enough. Next is a transformer block, train/eval, masked CE. [`2026-10-20_coding-plan.md`](2026-10-20_coding-plan.md). |
+| **2026-10-21** | Story C mock | TR kill. Targeted drop and the pre-commit landed. Reasoning average said as 28. The telling left the kill for the audit. [`mocks.md`](mocks.md). |
 
 ## Loop (Chandler, 2026-10-14 — the schedule)
 
