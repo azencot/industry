@@ -48,6 +48,7 @@ After each call: drop `YYYY-MM-DD_*.md` in that company’s folder and add a row
 | 2026-10-17 | Coding, evening | Attention with heads, plus broadcast A/B/D. Misses: tensor truthiness, `tril` polarity, mask lined up with features. Group-key mask and shape drills not started. |
 | 2026-10-20 | Coding plan revised | Attention is done enough. Tue–Thu shifts to a transformer block, train/eval, masked CE, variate attention, InfoNCE, and two unseen mocks. [`Siemens/2026-10-20_coding-plan.md`](Siemens/2026-10-20_coding-plan.md). |
 | 2026-10-21 | Story C mock | TR kill. 26.9→21.9 and the pre-commit landed. Reasoning average said as 28. The telling left the kill for the audit, and the 0.8B deltas were not said. [`Siemens/mocks.md`](Siemens/mocks.md). |
+| 2026-10-21 | Coding | Group attention, LayerNorm, a sliding-window dataset, and K-means. 17b and another attention change were set aside. Misses: key-mask broadcast, LayerNorm device, a negative window count, and a centroid view of `x`. [`Siemens/coding/`](Siemens/coding/). |
 
 ---
 

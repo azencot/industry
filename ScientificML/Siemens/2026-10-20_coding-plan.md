@@ -50,7 +50,7 @@ Not today: another standalone attention drill, problem 16, broadcast C, shape dr
 | 30 min | **D.** Variate attention. **Done.** Cross-group (17b) set aside: same pattern as 17. |
 | — | **E.** InfoNCE. **Done Tue 20.** |
 | 25 min | **G.** LayerNorm by hand. **Done.** [`coding/G_layernorm.py`](coding/G_layernorm.py). |
-| 25 min | Change the transformer block: padding, dropout, or a second LayerNorm on the MLP branch. One of these. |
+| 25 min | **H.** K-means. **Done.** [`coding/H_kmeans.py`](coding/H_kmeans.py). The transformer-block change is set aside. |
 | 30–40 min | Resume / breadth. Questions already listed in the screen note. |
 
 ### Thursday 22 — mocks (~2.5–3 h)
