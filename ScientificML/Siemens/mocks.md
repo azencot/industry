@@ -11,6 +11,7 @@ Story source: [`2026-10-15_behavioral-story-bank.md`](2026-10-15_behavioral-stor
 | 2026-10-16 | Behavioral, ~15 min | Story A — ImagenTime | GAF off-diagonal called zero. "My students." No number. EDM not separated. |
 | 2026-10-21 | Behavioral | Story C — TR kill | Reasoning average said as 28. Tempting gain called overall. Left the kill for the audit. 0.8B deltas not said. |
 | 2026-10-21 | Behavioral | Story B — dual tower | Controls landed. TSExam first called a win, then corrected to flat. Gain grouped prediction with decision-making. |
+| 2026-10-21 | Behavioral, full transcript | Story A — ImagenTime | Attribution held. Opening still has no number and still says "my students." Four-week plan stayed generic. |
 
 ---
 
@@ -103,3 +104,63 @@ The follow-ups chased those scores. He stopped that. The next mock stays on the 
 ### Next pass
 
 One retell: why a second tower could be a confound, what the matched controls ruled out, and the decision to treat the views as complementary. One sentence that TSExam stayed flat and the TSRBench gain sat in prediction. Then stop.
+
+---
+
+## 2026-10-21 — Story A, ImagenTime, full transcript
+
+**Kind:** Behavioral mock he ran elsewhere and asked to keep in this form. Interviewer: Huzefa Rangwala, simulated. Topic: research leadership, technical judgment, scientific rigor. One opening question and three follow-ups.
+
+**Score he was given:** 8/10. Research leadership 9. Technical depth 8. Scientific rigor 9. Principal-level judgment 7. Communication 8.
+
+### Question 1 — research leadership
+
+Tell me about a time when you proposed a research direction that was technically risky or unconventional, and you had to convince others it was worth pursuing. How did you make that decision, and what was the outcome?
+
+This was the ImagenTime project. A VAE generative project for time series had just finished. Diffusion was a natural continuation. A time-series-native architecture, such as a Transformer, was the standard approach. The observation was that vision diffusion had advanced in both modeling and implementation, so he suggested transforming time series into images to use that progress.
+
+Pushback he attributed to his students: representing 1D signals as 2D images would take more compute, and time-series images are not natural images. He did not settle it by seniority. Three conditions could kill the idea cheaply: reconstruction fidelity, promise on small benchmarks, and a manageable compute burden. He coded and ran those experiments. The preliminary results were encouraging, so they invested more compute and time. Outcome: a NeurIPS 2024 paper, then a series of papers, six so far, based on this idea.
+
+### Follow-up 1 — technical decision
+
+A lossless transformation does not necessarily produce a representation that is useful for generative modeling. What representations did he investigate, why did he select one, and what evidence made the 2D representation worth the extra compute?
+
+Four representations, all of which he said respected reconstruction: line plots, Gramian angular fields, delay embeddings, and short-time Fourier transforms. Line plots and Gramian angular fields required too much resolution and did not scale. Delay embeddings and STFT were compact and strong on the benchmarks. Tests were discrimination and prediction, against strong baselines including the previous VAE. The image representations were robust. The same framework handled sequences from about 24 to 17,000 steps, which competing methods did not show in that evaluation. That range was a main reason to accept the extra cost.
+
+### Follow-up 2 — causal attribution
+
+How did he establish that the improvement came from representing time series as images, rather than from a stronger diffusion architecture or a better sampler? What does the evidence support, and what remains unproven?
+
+The claim that representing time series as images is inherently better remains unproven. What was shown is that time-series image representations, with standard vision diffusion models and samplers, reached state-of-the-art generative results across benchmarks against strong baselines. Ablations matched compute, number of parameters, and training time. Isolating the image representation, the architecture, and the sampler is difficult: an image uses an image diffusion architecture, and a raw series uses a time-series architecture. One ablation tested multiple transformations. The representations were not equivalent. Delay embeddings and STFT were particularly robust. The results support the combined framework. They do not establish that the 2D representation alone caused the improvement.
+
+### Follow-up 3 — principal-level judgment
+
+Three scientists, a limited compute budget, four weeks, a similarly unconventional idea. How would he structure the weeks, and how would he decide to stop?
+
+Start with the minimal experiment that can show a positive signal or kill the idea cheaply, as on ImagenTime. Test the main hypothesis in a small setup, or use the best available proxy. Week 1: design the experiment, and define the hypothesis, failure gates, and expected outcomes. Week 2: data, implementation, and the evaluation pipeline. Week 3: run the experiments. Week 4: analyze, and make a pass-or-kill decision.
+
+### Evaluation from that session
+
+Strengths he was given: he set an unconventional direction without using seniority; the kill tests came before the investment; he coded the preliminary experiments; he separated the combined system from the unproven claim that 2D is inherently better; the line became a NeurIPS 2024 paper and follow-up papers.
+
+Improvements he was given:
+
+1. One concrete result in the opening. The answer ended on publications.
+2. Reconstruction as practical fidelity at a usable resolution. Do not treat every representation as equally practical or equally lossless.
+3. Keep the distinction he already made. Matched compute and parameter count do not isolate the representation.
+4. The four-week plan was generic. Name who does what, parallel work, an early checkpoint, explicit thresholds, the compute limit, and a scale, revise, or stop decision.
+
+Improved follow-up 3 from that session: identify the central hypothesis and the cheapest experiment that can falsify it, and set success and failure before seeing results. Week 1, with the team: those criteria and the smallest representative dataset. One scientist on the baseline and evaluation, one on the proposed method, one on data quality and failure analysis. Weeks 2 and 3: implement and run, smallest configurations first, with a checkpoint that stops the work if an assumption fails. Week 4: average performance, failure cases, compute cost, and robustness. The decision is scale, revise, or stop. Four weeks does not need a finished method. It needs evidence that the hypothesis is worth more investment.
+
+Takeaways he was given: keep ImagenTime for direction-setting; keep the three gates; put one number in the opening; be ready to say why delay embeddings and STFT stayed and line plots and Gramian angular fields did not; do not claim the image representation independently caused the gains; connect a future plan to people, compute, and gates. He was told not to over-rehearse it.
+
+### Against the bank
+
+These lines disagree with [`2026-10-15_behavioral-story-bank.md`](2026-10-15_behavioral-story-bank.md) or with the 16 October mock. Use the bank on Friday.
+
+- "My students" is the same break as 16 October. The bank's avoid line is "I convinced my students."
+- The opening still has no number. The bank's pair is about 58% on short-series discriminative score over prior diffusion models, and about 133% on long and ultra-long classification. Length 24 to about 17,000 can be the one result if he does not want both percentages.
+- Line plots were too sparse and not cleanly invertible. Gramian angular fields scaled poorly. "Too much resolution" covers neither. An off-diagonal Gramian cell is not zero.
+- Not every candidate passed practical reconstruction. Delay embeddings and STFT did.
+- "Six so far" is this telling. The bank's diffusion-investment line says eight papers. Do not treat those as the same count.
+- The drop from about 1,000 model evaluations to about 35 is the EDM sampler, not the image transform. He did not separate them here.

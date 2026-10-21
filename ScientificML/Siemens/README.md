@@ -31,6 +31,7 @@
 | **2026-10-21** | Story C mock | TR kill. Targeted drop and the pre-commit landed. Reasoning average said as 28. The telling left the kill for the audit. [`mocks.md`](mocks.md). |
 | **2026-10-21** | Coding | **17**, LayerNorm, sliding windows, and K-means drafted. 17b set aside. [`coding/`](coding/). |
 | **2026-10-21** | Story B mock | Dual tower. Controls landed. TSExam corrected to flat. Score-chasing stopped. [`mocks.md`](mocks.md). |
+| **2026-10-21** | Story A mock, full transcript | ImagenTime. Kill tests and the attribution limit landed. Opening still has no number and still says "my students." [`mocks.md`](mocks.md). |
 
 ## Loop (Chandler, 2026-10-14 — the schedule)
 

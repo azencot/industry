@@ -24,7 +24,20 @@ from torch import nn
 class MeanPoolClassifier(nn.Module):
     def __init__(self, n_tokens, d, n_classes):
         super().__init__()
-        raise NotImplementedError
+
+        self.emb = nn.Parameter(torch.randn([n_tokens, d]))
+        self.cls_head = nn.Linear(d, n_classes)
 
     def forward(self, token_ids):
-        raise NotImplementedError
+        T = token_ids.shape[1]
+
+        # embed        
+        token_emb = self.emb[token_ids]                 # [B, T] -> [B, T, D]
+
+        # average over T
+        emb_avg = torch.sum(token_emb, dim=1) / T       # [B, T, D] -> [B, D]
+
+        # linear map to C classes
+        pred = self.cls_head(emb_avg)                   # [B, D] -> [B, C]
+
+        return pred

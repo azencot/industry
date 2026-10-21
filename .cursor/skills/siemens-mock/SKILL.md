@@ -24,6 +24,8 @@ Phone-screen practice for the Siemens Principal Applied Scientist loop. Behavior
 
 Append to `mocks.md` in the same session, before you finish.
 
+If he pastes a finished mock in the long form — question, his answer, follow-ups, score, strengths, improvements, an improved answer, and takeaways — store that form in `mocks.md`. Do not compress it into the short template. Still add the index row and the session-log rows. Add a short note only where a line conflicts with the story bank.
+
 1. Add an index row: date, kind, focus, the break in one line.
 2. Append a section:
 
