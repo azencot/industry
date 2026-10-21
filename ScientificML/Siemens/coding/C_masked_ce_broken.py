@@ -28,10 +28,21 @@ import torch.nn.functional as F
 
 
 def masked_ce_ignore(logits, targets, valid_mask, ignore_index=-100):
-    del valid_mask, ignore_index
-    return F.cross_entropy(logits, targets)
+    C = logits.shape[-1]
+    logits_r = logits.reshape(-1, C)
+    targets_r = targets.reshape(-1)
+
+    targets_r = targets_r.masked_fill(~valid_mask.reshape(-1), ignore_index)
+
+    return F.cross_entropy(logits_r, targets_r)
 
 
 def masked_ce_unreduced(logits, targets, valid_mask):
-    del valid_mask
-    return F.cross_entropy(logits.softmax(dim=-1), targets.float())
+    C = logits.shape[-1]
+    loss = F.cross_entropy(logits.reshape(-1, C), targets.reshape(-1), reduction='none')           # [B*T, C], [B*T] -> [B*T, C] ??
+
+    valid_count = torch.sum(valid_mask)
+    if valid_count == 0:
+        return torch.zeros(()).to(logits.device)
+
+    return torch.sum(loss[valid_mask.reshape(-1)]) / valid_count
