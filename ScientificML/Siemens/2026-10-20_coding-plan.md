@@ -22,7 +22,7 @@ APIs to stay inside: `nn.Module`, `nn.Linear`, `nn.LayerNorm`, `nn.Embedding`, `
 |--|----------|------|------|------|
 | **A** Pre-norm transformer block. No `nn.MultiheadAttention`, no `F.scaled_dot_product_attention`. | Very high | 40–45 min | [`coding/A_transformer_block.py`](coding/A_transformer_block.py) | **Tue 20, first** |
 | **B** Train step and eval loop | Very high | 25–30 min | [`coding/B_train_eval.py`](coding/B_train_eval.py) | Tue 20 |
-| **C** Masked CE, two ways. Start from the broken file. | High | 20–25 min | [`coding/C_masked_ce_broken.py`](coding/C_masked_ce_broken.py) | Tue 20 |
+| **C** Masked CE, two ways. Start from the broken file. | High | 20–25 min | [`coding/C_masked_ce_broken.py`](coding/C_masked_ce_broken.py) | **Drafted Thu 22.** Both reductions. |
 | **D** Attend across variates, not time. Then cross-group. Multi-head only if time remains, cap 30 min. | High | 25–30 min | [`coding/17_group_attention.py`](coding/17_group_attention.py), then [`coding/17b_cross_group.py`](coding/17b_cross_group.py). Do not open the solution files. | Wed 21 |
 | **E** InfoNCE. K-means only if E is done and mocks are not at risk. | Medium-high | 25–30 min | [`coding/E_infonce.py`](coding/E_infonce.py) | Wed 21 |
 | **F** Mini causal LM | Optional | 30–40 min | [`coding/F_minigpt.py`](coding/F_minigpt.py) | Skip unless A–E are clean |
@@ -51,7 +51,7 @@ Not today: another standalone attention drill, problem 16, broadcast C, shape dr
 | — | **E.** InfoNCE. **Done Tue 20.** |
 | 25 min | **G.** LayerNorm by hand. **Done.** [`coding/G_layernorm.py`](coding/G_layernorm.py). |
 | 25 min | **H.** K-means. **Done.** [`coding/H_kmeans.py`](coding/H_kmeans.py). The transformer-block change is set aside. |
-| 20 min | **I.** Mean-pool classifier. Stub only. He opened [`coding/F_minigpt.py`](coding/F_minigpt.py) instead. |
+| 20 min | **I.** Mean-pool classifier. **Drafted** later Wed 21, after F. [`coding/I_mean_pool.py`](coding/I_mean_pool.py). |
 | 30–40 min | Resume / breadth. Questions already listed in the screen note. |
 
 ### Thursday 22 — mocks (~2.5–3 h)

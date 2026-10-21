@@ -61,11 +61,11 @@ Sun 18 and Mon 19 are off. Three mornings start Tuesday. Detail and the spoken h
 | — | Shape micro-drills | [`tue_shapes.py`](tue_shapes.py) · [`tue_shapes_solution.py`](tue_shapes_solution.py) | Dropped from the main track on 2026-10-20. |
 | A | Pre-norm transformer block | [`A_transformer_block.py`](A_transformer_block.py) | **Tue 20, first.** No solution file. |
 | B | Train step and eval | [`B_train_eval.py`](B_train_eval.py) | **Tue 20.** No solution file. |
-| C | Masked CE, two ways, start broken | [`C_masked_ce_broken.py`](C_masked_ce_broken.py) | **Tue 20.** No solution file. |
+| C | Masked CE, two ways, start broken | [`C_masked_ce_broken.py`](C_masked_ce_broken.py) | **Drafted Thu 22.** Both reductions. No solution file. The unreduced comment still says `[B*T, C]`; `reduction="none"` returns `[B*T]`. |
 | E | InfoNCE | [`E_infonce.py`](E_infonce.py) | **Drafted Tue 20.** No solution file. Diagonal of the softmax. |
 | G | LayerNorm by hand | [`G_layernorm.py`](G_layernorm.py) | **Drafted Wed 21.** No solution file. Matches `nn.LayerNorm`. Mean and variance are `[..., 1]`. |
 | H | K-means | [`H_kmeans.py`](H_kmeans.py) | **Drafted Wed 21.** No solution file. Centroids are `x[:k].clone()`. Assignments are recomputed from the returned centroids. |
-| I | Mean-pool classifier | [`I_mean_pool.py`](I_mean_pool.py) | Stub. Set aside Wed 21. No solution file. |
+| I | Mean-pool classifier | [`I_mean_pool.py`](I_mean_pool.py) | **Drafted Wed 21.** Embed, mean over T, linear to C. No solution file. |
 | F | Mini causal LM | [`F_minigpt.py`](F_minigpt.py) | **Wed 21, current.** Problem statement only. Reuses the block from A. |
 
 Mask convention in every file: **True = valid token**, False = pad. Say it before you code. If they flip it, flip the `~`.
