@@ -15,7 +15,7 @@ Personal workspace for industry job prep: Amazon FinTech interviews, general for
 | [`Forecasting/`](Forecasting/) | General industry forecasting practice (not SCOT) | When targeting forecasting AS roles |
 | [`GenAI/`](GenAI/) | Generative AI / LLM role interviews and prep (not forecasting) | When targeting GenAI roles |
 | [`ScientificML/`](ScientificML/) | Scientific ML / physical-AI principal AS roles (not forecasting, not GenAI) | Siemens and similar loops |
-| [`IndustrialResearch/`](IndustrialResearch/) | Industry research-lab conversations (not product AS loops) | Apple AI Research (Koltun / Ozan Sener) |
+| [`IndustrialResearch/`](IndustrialResearch/) | Industry research-lab conversations (not product AS loops) | Apple AI Research (Koltun / Ozan Sener); Meta multimodal RS (Elad Kravi → Michael) |
 | [`Amazon_SCOT/`](Amazon_SCOT/) | SCOT relationship track: contacts, collab, contribution pitch | Before Boris / Mengfei / SCOT calls |
 | [`code/`](code/) | LeetCode solutions (Python); `_practice` = scratch attempts | Coding prep, timed drills |
 | [`talks/`](talks/) | Dual-use talks (HTML decks) | Bosch 25-min cut now; community talks later — not company-loop notes. Ongoing TS-VLM lit: [`talks/lit-search.md`](talks/lit-search.md) |
@@ -70,7 +70,8 @@ Personal workspace for industry job prep: Amazon FinTech interviews, general for
 
 - **Purpose:** Warm intros into industry research groups — what the group works on, whether it overlaps, what a seat would look like
 - **Not** a posted product loop. Apple Health AIML stays under [`GenAI/interviews/apple-health-aiml/`](GenAI/interviews/apple-health-aiml/)
-- **Active:** **Apple**, Vladlen Koltun’s organization. **Raja Giryes** introduced Omri to **Ozan Sener** (head of the ML group). Reply not sent. Draft: [`IndustrialResearch/apple/2026-10-17_ozan-intro.md`](IndustrialResearch/apple/2026-10-17_ozan-intro.md). Prep: [`IndustrialResearch/apple/2026-10-19_org-briefing.md`](IndustrialResearch/apple/2026-10-19_org-briefing.md)
+- **Active:** **Apple**, Vladlen Koltun’s organization. **Raja Giryes** introduced Omri to **Ozan Sener** (head of the ML group). First call **2026-10-20**; recruiter next. [`IndustrialResearch/apple/2026-10-20_ozan-call.md`](IndustrialResearch/apple/2026-10-20_ozan-call.md)
+- **Active:** **Meta**, Research Scientist, Multi-Modal Understanding & Synthesis ([req `2010995136240732`](https://www.metacareers.com/profile/job_details/2010995136240732/), Pittsburgh + one unnamed location). **Elad Kravi** introduced Omri to **Michael** (HM; last name not in the note). Reply **sent 2026-10-21**, Elad on bcc. Waiting on Michael. [`IndustrialResearch/meta/2026-10-21_michael-intro.md`](IndustrialResearch/meta/2026-10-21_michael-intro.md)
 - **Details:** [`IndustrialResearch/INDEX.md`](IndustrialResearch/INDEX.md)
 
 ---
