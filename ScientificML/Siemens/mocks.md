@@ -10,6 +10,7 @@ Story source: [`2026-10-15_behavioral-story-bank.md`](2026-10-15_behavioral-stor
 |------|------|-------|-------|
 | 2026-10-16 | Behavioral, ~15 min | Story A — ImagenTime | GAF off-diagonal called zero. "My students." No number. EDM not separated. |
 | 2026-10-21 | Behavioral | Story C — TR kill | Reasoning average said as 28. Tempting gain called overall. Left the kill for the audit. 0.8B deltas not said. |
+| 2026-10-21 | Behavioral | Story B — dual tower | Controls landed. TSExam first called a win, then corrected to flat. Gain grouped prediction with decision-making. |
 
 ---
 
@@ -74,3 +75,31 @@ The kill was left behind. The seven-or-eight figure in the card counts operators
 ### Next pass
 
 One retell that stays on the kill: the plateau, the gate before the run, reasoning average 29.5 to 31.2 and two tasks up about 7 points, temporal relations 26.9 to 21.9, kill the mix, keep the objective. If asked what came next, one sentence that the question changed, then stop.
+
+---
+
+## 2026-10-21 — Story B, dual tower
+
+**Kind:** Behavioral mock. He stopped it when the follow-ups became a results table.
+
+**Prompt:** Stay with the dual-tower model. The gain could have been a second encoder and a larger visual-token budget. What did you check before you were willing to say the two views were complementary?
+
+### What he said
+
+VLMs are already strong on line plots. Other image representations reveal different features, so he combined chart and delay-embedding views. Charts keep scale and numerics. Delay embeddings keep dynamics and topology. A preliminary comparison on TSExam and a TSRBench subset favored the dual view over either view alone. He did not trust that, because the dual model also had more weights and more tokens. He matched weights, tokens, and data, and compared chart, delay, chart+chart, delay+delay, and chart+delay. Chart+delay won. On TSRBench he gave chart about 45, chart+chart 44.8, delay+delay 42.3, delay unknown, and chart+delay 53.2.
+
+Asked for the full TSExam scores, he corrected the preliminary claim. Single and dual views were about the same, around 89, and that was a check that the second view did not harm basic perception. Asked where the TSRBench gain sat, he said perception stayed similar, most of the gain was prediction and decision-making, and some individual reasoning tasks fell while the overall result still improved.
+
+### What landed
+
+The confound is the point of the story, and he named it before the controls. Chart+chart below chart is the evidence that a second stream is not the gain. He corrected TSExam himself: flat, not a win. The decision stayed in the first person.
+
+### What broke
+
+The first TSExam claim had the dual view ahead. The card is flat at 89.9 for both. Delay+delay was said as 42.3. The card is 42.6. He then put prediction and decision-making together as the gain, and said reasoning tasks decreased. The card concentrates the gain in prediction, 38.0 to 61.7, with smaller gains in reasoning and decision-making.
+
+The follow-ups chased those scores. He stopped that. The next mock stays on the challenge and the decision.
+
+### Next pass
+
+One retell: why a second tower could be a confound, what the matched controls ruled out, and the decision to treat the views as complementary. One sentence that TSExam stayed flat and the TSRBench gain sat in prediction. Then stop.

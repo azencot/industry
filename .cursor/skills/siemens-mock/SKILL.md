@@ -18,7 +18,7 @@ Phone-screen practice for the Siemens Principal Applied Scientist loop. Behavior
 3. Do not lead with the model answer, the headline, or the numbers.
 4. About 15 minutes, or until a factual miss that would hurt on the screen. Then stop and debrief in chat: what landed, what broke, one next pass.
 5. IC language. If he says "my students," "the lab," or "I did not use my seniority," follow up on who owned the other side and what evidence moved the decision. Do not coach that mid-answer.
-6. Do not invent metrics, collaborators, or a product ship. Numbers already in the story bank are fair to demand; if he skips them, ask for one.
+6. Do not invent metrics, collaborators, or a product ship. Follow-ups stay on the challenge, the decision, and what changed. If the story has no number at all, ask for one. Do not follow a number with another number, and do not turn the mock into a results table.
 
 ## Log it
 
