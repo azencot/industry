@@ -65,7 +65,8 @@ Sun 18 and Mon 19 are off. Three mornings start Tuesday. Detail and the spoken h
 | E | InfoNCE | [`E_infonce.py`](E_infonce.py) | **Drafted Tue 20.** No solution file. Diagonal of the softmax. |
 | G | LayerNorm by hand | [`G_layernorm.py`](G_layernorm.py) | **Drafted Wed 21.** No solution file. Matches `nn.LayerNorm`. Mean and variance are `[..., 1]`. |
 | H | K-means | [`H_kmeans.py`](H_kmeans.py) | **Drafted Wed 21.** No solution file. Centroids are `x[:k].clone()`. Assignments are recomputed from the returned centroids. |
-| F | Mini causal LM | [`F_minigpt.py`](F_minigpt.py) | Optional. Skip if a mock would be cut. |
+| I | Mean-pool classifier | [`I_mean_pool.py`](I_mean_pool.py) | Stub. Set aside Wed 21. No solution file. |
+| F | Mini causal LM | [`F_minigpt.py`](F_minigpt.py) | **Wed 21, current.** Problem statement only. Reuses the block from A. |
 
 Mask convention in every file: **True = valid token**, False = pad. Say it before you code. If they flip it, flip the `~`.
 

@@ -51,6 +51,7 @@ Not today: another standalone attention drill, problem 16, broadcast C, shape dr
 | — | **E.** InfoNCE. **Done Tue 20.** |
 | 25 min | **G.** LayerNorm by hand. **Done.** [`coding/G_layernorm.py`](coding/G_layernorm.py). |
 | 25 min | **H.** K-means. **Done.** [`coding/H_kmeans.py`](coding/H_kmeans.py). The transformer-block change is set aside. |
+| 20 min | **I.** Mean-pool classifier. Stub only. He opened [`coding/F_minigpt.py`](coding/F_minigpt.py) instead. |
 | 30–40 min | Resume / breadth. Questions already listed in the screen note. |
 
 ### Thursday 22 — mocks (~2.5–3 h)
