@@ -28,7 +28,7 @@ Shared profile: [`.cursor/skills/debrief/omri_azencot_experience.md`](../.cursor
 | Org | Contact | Next | Prep |
 |-----|---------|------|------|
 | **Apple — ML group, Vladlen Koltun’s org** | **Ozan Sener** (head of the ML group, per Raja). Intro **Raja Giryes** | Recruiter will make contact. A few interviews and some coding. Call: [`apple/2026-10-20_ozan-call.md`](apple/2026-10-20_ozan-call.md) | Plan: [`apple/2026-10-19_ozan-prep-plan.md`](apple/2026-10-19_ozan-prep-plan.md). Briefing: [`apple/2026-10-19_org-briefing.md`](apple/2026-10-19_org-briefing.md) |
-| **Meta — Multi-Modal Understanding & Synthesis** | **Michael** (HM Elad contacted; last name not in the intro). Intro **Elad Kravi** | Reply sent 2026-10-21. Elad bcc. Waiting on Michael. [`meta/2026-10-21_michael-intro.md`](meta/2026-10-21_michael-intro.md) | Req logged in that note. Pittsburgh, PA, plus one unnamed location. |
+| **Meta — Multi-Modal Understanding & Synthesis** | **Michael** (HM Elad contacted; last name not in the intro). Intro **Elad Kravi** | He agreed to a call. PTO two weeks from 2026-10-22. Propose Wed 4 Nov, 9:00am Pacific, flexible on Nov 4–6. Reply not sent. [`meta/2026-10-21_michael-intro.md`](meta/2026-10-21_michael-intro.md) | Req logged in that note. Pittsburgh, PA, plus one unnamed location. |
 
 After each note or call: drop `YYYY-MM-DD_*.md` in that company’s folder and add a row below.
 
@@ -53,6 +53,7 @@ After each note or call: drop `YYYY-MM-DD_*.md` in that company’s folder and a
 | 2026-10-20 | Ozan call | First conversation. Link arrived a few minutes late. Group work, as he said it: physics-based world models (climate, now finite-element cost; mostly digital twins) and efficient LLMs. Logistics included part time. KDM stayed on linearity and how it differs from other distillation. Results were not asked. Recruiter next. [`apple/2026-10-20_ozan-call.md`](apple/2026-10-20_ozan-call.md). |
 | 2026-10-21 | Elad → Michael intro | Omri sent Elad the Meta req (Research Scientist, Multi-Modal Understanding & Synthesis, `2010995136240732`). Elad contacted the HM, who was interested, then introduced Omri to Michael. |
 | 2026-10-21 | Reply to Michael | Sent. Elad on bcc. Generative and multimodal learning, structured representations, sequential dynamics, recent vision-language models. World models named as the team’s work. Asked for a short call. [`meta/2026-10-21_michael-intro.md`](meta/2026-10-21_michael-intro.md). |
+| 2026-10-21 | Michael replies | Happy to connect. PTO for two weeks starting 2026-10-22. He did not name a day. Draft proposes Wed 4 Nov at 9:00am Pacific, and says Nov 4–6 and other times are open. Not sent. |
 
 ---
 

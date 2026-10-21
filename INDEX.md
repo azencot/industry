@@ -71,7 +71,7 @@ Personal workspace for industry job prep: Amazon FinTech interviews, general for
 - **Purpose:** Warm intros into industry research groups — what the group works on, whether it overlaps, what a seat would look like
 - **Not** a posted product loop. Apple Health AIML stays under [`GenAI/interviews/apple-health-aiml/`](GenAI/interviews/apple-health-aiml/)
 - **Active:** **Apple**, Vladlen Koltun’s organization. **Raja Giryes** introduced Omri to **Ozan Sener** (head of the ML group). First call **2026-10-20**; recruiter next. [`IndustrialResearch/apple/2026-10-20_ozan-call.md`](IndustrialResearch/apple/2026-10-20_ozan-call.md)
-- **Active:** **Meta**, Research Scientist, Multi-Modal Understanding & Synthesis ([req `2010995136240732`](https://www.metacareers.com/profile/job_details/2010995136240732/), Pittsburgh + one unnamed location). **Elad Kravi** introduced Omri to **Michael** (HM; last name not in the note). Reply **sent 2026-10-21**, Elad on bcc. Waiting on Michael. [`IndustrialResearch/meta/2026-10-21_michael-intro.md`](IndustrialResearch/meta/2026-10-21_michael-intro.md)
+- **Active:** **Meta**, Research Scientist, Multi-Modal Understanding & Synthesis ([req `2010995136240732`](https://www.metacareers.com/profile/job_details/2010995136240732/), Pittsburgh + one unnamed location). **Elad Kravi** introduced Omri to **Michael** (HM; last name not in the note). Michael agreed to a call on **2026-10-21**, then goes on PTO for two weeks from **2026-10-22**. Propose **Wed 4 Nov, 9:00am Pacific**, flexible on Nov 4–6. Reply not sent. [`IndustrialResearch/meta/2026-10-21_michael-intro.md`](IndustrialResearch/meta/2026-10-21_michael-intro.md)
 - **Details:** [`IndustrialResearch/INDEX.md`](IndustrialResearch/INDEX.md)
 
 ---
