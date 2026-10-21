@@ -27,7 +27,7 @@ Sun 18 and Mon 19 are off. Three mornings start Tuesday. Detail and the spoken h
 | — | Thu 15–Fri 16 | **01–04 and 13 done.** **05–08 drafted** in the problem files; core asserts passed 2026-10-17. Tuesday does not reread them. |
 | — | **Sat 17** | [`tue_attention.py`](tue_attention.py) and broadcast A, B, D. Attention is no longer the main track. |
 | 1 | **Tue 20** | [`A_transformer_block.py`](A_transformer_block.py), [`B_train_eval.py`](B_train_eval.py), [`C_masked_ce_broken.py`](C_masked_ce_broken.py), a debug sprint, then stories A and B. |
-| 2 | **Wed 21** | **17** then **17b** (do not open solutions), [`E_infonce.py`](E_infonce.py), one transformer-block change, one unseen problem. |
+| 2 | **Wed 21** | **17** and [`G_layernorm.py`](G_layernorm.py) drafted. **17b** set aside (same pattern as 17). [`E_infonce.py`](E_infonce.py) already drafted. |
 | 3 | **Thu 22** | Two mocks. Unseen problems, different categories. Repair only the weakest miss. |
 | Pre-call | **Fri 23, ~20:30** | 20 min. Block structure, train step, one mask shape, three story anchors. |
 
@@ -51,8 +51,8 @@ Sun 18 and Mon 19 are off. Three mornings start Tuesday. Detail and the spoken h
 | 14 | Sliding-window time series | [`14_sliding_window.py`](14_sliding_window.py) · [`14_sliding_window_solution.py`](14_sliding_window_solution.py) | |
 | 15 | Cross-entropy that ignores padding | [`15_masked_ce.py`](15_masked_ce.py) · [`15_masked_ce_solution.py`](15_masked_ce_solution.py) | Covered in composed form by 18. |
 | 16 | Pad, self-attend, masked mean pool | [`16_varlen_pool.py`](16_varlen_pool.py) · [`16_varlen_pool_solution.py`](16_varlen_pool_solution.py) | Off the main track as of 2026-10-20. |
-| 17 | Attention across series, not time | [`17_group_attention.py`](17_group_attention.py) · [`17_group_attention_solution.py`](17_group_attention_solution.py) | **Wed 21, first.** `[B, G, T, D]`, attend on `G`. |
-| 17b | Cross-group attention | [`17b_cross_group.py`](17b_cross_group.py) · [`17b_cross_group_solution.py`](17b_cross_group_solution.py) | **Wed 21.** `Gq` queries, `Gk` keys, mask `[B, Gk]`. |
+| 17 | Attention across series, not time | [`17_group_attention.py`](17_group_attention.py) · [`17_group_attention_solution.py`](17_group_attention_solution.py) | **Drafted Wed 21.** `[B, G, T, D]`, attend on `G`. Key mask is `[B*T, 1, G]`. |
+| 17b | Cross-group attention | [`17b_cross_group.py`](17b_cross_group.py) · [`17b_cross_group_solution.py`](17b_cross_group_solution.py) | Set aside Wed 21. Same rearrange as 17. |
 | 17c | Multi-head cross-group | [`17c_group_multihead.py`](17c_group_multihead.py) · [`17c_group_multihead_solution.py`](17c_group_multihead_solution.py) | Optional after 17b, only inside the 30 min cap. |
 | 18 | Masked cross-entropy and one train step | [`18_masked_train_step_broken.py`](18_masked_train_step_broken.py) · [`18_masked_train_step.py`](18_masked_train_step.py) · [`18_masked_train_step_solution.py`](18_masked_train_step_solution.py) | Superseded by **C** for Tue 20. |
 | 19 | Per-series attend over time, then pool | [`19_thu_mock.py`](19_thu_mock.py) · [`19_thu_mock_solution.py`](19_thu_mock_solution.py) | Not the Thursday mock anymore. Leave it closed. |
@@ -62,7 +62,8 @@ Sun 18 and Mon 19 are off. Three mornings start Tuesday. Detail and the spoken h
 | A | Pre-norm transformer block | [`A_transformer_block.py`](A_transformer_block.py) | **Tue 20, first.** No solution file. |
 | B | Train step and eval | [`B_train_eval.py`](B_train_eval.py) | **Tue 20.** No solution file. |
 | C | Masked CE, two ways, start broken | [`C_masked_ce_broken.py`](C_masked_ce_broken.py) | **Tue 20.** No solution file. |
-| E | InfoNCE | [`E_infonce.py`](E_infonce.py) | **Wed 21.** No solution file. |
+| E | InfoNCE | [`E_infonce.py`](E_infonce.py) | **Drafted Tue 20.** No solution file. Diagonal of the softmax. |
+| G | LayerNorm by hand | [`G_layernorm.py`](G_layernorm.py) | **Drafted Wed 21.** No solution file. Matches `nn.LayerNorm`. Mean and variance are `[..., 1]`. |
 | F | Mini causal LM | [`F_minigpt.py`](F_minigpt.py) | Optional. Skip if a mock would be cut. |
 
 Mask convention in every file: **True = valid token**, False = pad. Say it before you code. If they flip it, flip the `~`.

@@ -47,10 +47,10 @@ Not today: another standalone attention drill, problem 16, broadcast C, shape dr
 
 | | |
 |--|--|
-| 30 min | **D.** Variate attention, then the cross-group follow-up. |
-| 30 min | **E.** InfoNCE. |
-| 25 min | Change the transformer block: cross-attention, padding, unequal query/key lengths, dropout, or a head-count change. One of these. |
-| 30 min | One unseen problem, chosen in the session. Not A–E. About 20–30 min. LayerNorm by hand, a residual MLP, masked pooling, a custom loss, top-k, or a small sequence module. |
+| 30 min | **D.** Variate attention. **Done.** Cross-group (17b) set aside: same pattern as 17. |
+| — | **E.** InfoNCE. **Done Tue 20.** |
+| 25 min | **G.** LayerNorm by hand. **Done.** [`coding/G_layernorm.py`](coding/G_layernorm.py). |
+| 25 min | Change the transformer block: padding, dropout, or a second LayerNorm on the MLP branch. One of these. |
 | 30–40 min | Resume / breadth. Questions already listed in the screen note. |
 
 ### Thursday 22 — mocks (~2.5–3 h)
