@@ -1,6 +1,6 @@
 # Elad Kravi → Michael (2026-10-21)
 
-**Status:** Michael replied 2026-10-21. He will take a short call. He is on PTO for two weeks starting 2026-10-22. Scheduling reply **not sent.** Draft below.  
+**Status:** Call booked. **Sat 7 Nov 2026, 00:05–00:30 Thailand (GMT+7).** That is **Fri 6 Nov, 09:05–09:30 Pacific** and **12:05–12:30 Eastern.** Invite received 2026-10-22.  
 **How:** Elad was bcc on Omri’s first note, so he does not see this exchange unless someone adds him.  
 **Do not:** attach a CV, mention any other company loop, or explain the personal calendar.
 
@@ -137,3 +137,17 @@ Omri
 - Offers one time, then says the three days and other hours are open.
 - Says Pacific, not a city, and does not say why that hour.
 - Does not mention Thailand or any other process.
+
+---
+
+## Invite
+
+Received 2026-10-22. Title: `aizencot@gmail.com | Michael`. To aizencot@gmail.com.
+
+| Clock | When |
+|---|---|
+| **Thailand, GMT+7** | Saturday 7 Nov 2026, 00:05–00:30 |
+| **Pacific** | Friday 6 Nov 2026, 09:05–09:30 |
+| **Eastern** | Friday 6 Nov 2026, 12:05–12:30 |
+
+US clocks are standard time. Daylight saving ends 1 Nov 2026. The calendar date is Saturday only in Thailand. For Michael it is Friday morning. Twenty-five minutes. Elad is not on this invite.
