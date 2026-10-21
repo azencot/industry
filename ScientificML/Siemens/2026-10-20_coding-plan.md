@@ -20,14 +20,18 @@ APIs to stay inside: `nn.Module`, `nn.Linear`, `nn.LayerNorm`, `nn.Embedding`, `
 
 | | Priority | Time | File | When |
 |--|----------|------|------|------|
-| **A** Pre-norm transformer block. No `nn.MultiheadAttention`, no `F.scaled_dot_product_attention`. | Very high | 40–45 min | [`coding/A_transformer_block.py`](coding/A_transformer_block.py) | **Tue 20, first** |
-| **B** Train step and eval loop | Very high | 25–30 min | [`coding/B_train_eval.py`](coding/B_train_eval.py) | Tue 20 |
+| **A** Pre-norm transformer block. No `nn.MultiheadAttention`, no `F.scaled_dot_product_attention`. | Very high | 40–45 min | [`coding/A_transformer_block.py`](coding/A_transformer_block.py) | **Drafted Tue 20.** |
+| **B** Train step and eval loop | Very high | 25–30 min | [`coding/B_train_eval.py`](coding/B_train_eval.py) | **Drafted Tue 20.** |
 | **C** Masked CE, two ways. Start from the broken file. | High | 20–25 min | [`coding/C_masked_ce_broken.py`](coding/C_masked_ce_broken.py) | **Drafted Thu 22.** Both reductions. |
-| **D** Attend across variates, not time. Then cross-group. Multi-head only if time remains, cap 30 min. | High | 25–30 min | [`coding/17_group_attention.py`](coding/17_group_attention.py), then [`coding/17b_cross_group.py`](coding/17b_cross_group.py). Do not open the solution files. | Wed 21 |
-| **E** InfoNCE. K-means only if E is done and mocks are not at risk. | Medium-high | 25–30 min | [`coding/E_infonce.py`](coding/E_infonce.py) | Wed 21 |
-| **F** Mini causal LM | Optional | 30–40 min | [`coding/F_minigpt.py`](coding/F_minigpt.py) | Skip unless A–E are clean |
+| **D** Attend across variates, not time. Then cross-group. Multi-head only if time remains, cap 30 min. | High | 25–30 min | [`coding/17_group_attention.py`](coding/17_group_attention.py), then [`coding/17b_cross_group.py`](coding/17b_cross_group.py). Do not open the solution files. | **17 drafted Wed 21.** 17b not started. |
+| **E** InfoNCE. K-means only if E is done and mocks are not at risk. | Medium-high | 25–30 min | [`coding/E_infonce.py`](coding/E_infonce.py) | **Drafted Tue 20.** |
+| **14** Sliding-window time series. Not on the original menu. | Extra | — | [`coding/14_sliding_window.py`](coding/14_sliding_window.py) | **Drafted Wed 21.** |
+| **F** Mini causal LM | Optional | 30–40 min | [`coding/F_minigpt.py`](coding/F_minigpt.py) | **Drafted Wed 21.** |
+| **G** LayerNorm by hand | Extra | 25 min | [`coding/G_layernorm.py`](coding/G_layernorm.py) | **Drafted Wed 21.** |
+| **H** K-means | Extra | 25 min | [`coding/H_kmeans.py`](coding/H_kmeans.py) | **Drafted Wed 21.** |
+| **I** Mean-pool classifier | Extra | 20 min | [`coding/I_mean_pool.py`](coding/I_mean_pool.py) | **Drafted Wed 21,** after F. |
 
-If a core slips, drop F and K-means before a mock. Must finish: A, B, C, D, and two unseen coding mocks.
+A–E, 14, and F–I are drafted. 17b and 17c are not. Still open: the two unseen coding mocks.
 
 ## Days
 
@@ -35,9 +39,9 @@ If a core slips, drop F and K-means before a mock. Must finish: A, B, C, D, and 
 
 | | |
 |--|--|
-| 45 min | **A.** Transformer block. |
-| 30 min | **B.** Train and eval. |
-| 25 min | **C.** Broken masked CE, then the second approach. |
+| 45 min | **A.** Transformer block. **Drafted.** |
+| 30 min | **B.** Train and eval. **Drafted.** |
+| 25 min | **C.** Broken masked CE, then the second approach. Slipped to **Thu 22.** |
 | 20 min | Debugging sprint. One broken snippet at a time, from the session. Name the bug before editing. |
 | 30 min | Resume. Stories A and B, the questions in the [screen note](2026-10-17_huzefa-screen.md). |
 
@@ -47,17 +51,20 @@ Not today: another standalone attention drill, problem 16, broadcast C, shape dr
 
 | | |
 |--|--|
-| 30 min | **D.** Variate attention. **Done.** Cross-group (17b) set aside: same pattern as 17. |
-| — | **E.** InfoNCE. **Done Tue 20.** |
-| 25 min | **G.** LayerNorm by hand. **Done.** [`coding/G_layernorm.py`](coding/G_layernorm.py). |
-| 25 min | **H.** K-means. **Done.** [`coding/H_kmeans.py`](coding/H_kmeans.py). The transformer-block change is set aside. |
-| 20 min | **I.** Mean-pool classifier. **Drafted** later Wed 21, after F. [`coding/I_mean_pool.py`](coding/I_mean_pool.py). |
+| 30 min | **D.** Variate attention. **Drafted.** Cross-group (17b) not started. |
+| — | **E.** InfoNCE. **Drafted Tue 20.** |
+| 25 min | **G.** LayerNorm by hand. **Drafted.** [`coding/G_layernorm.py`](coding/G_layernorm.py). |
+| 25 min | **H.** K-means. **Drafted.** [`coding/H_kmeans.py`](coding/H_kmeans.py). The transformer-block change is set aside. |
+| — | **14.** Sliding-window dataset. **Drafted.** [`coding/14_sliding_window.py`](coding/14_sliding_window.py). |
+| 30–40 min | **F.** Mini causal LM. **Drafted.** [`coding/F_minigpt.py`](coding/F_minigpt.py). |
+| 20 min | **I.** Mean-pool classifier. **Drafted** after F. [`coding/I_mean_pool.py`](coding/I_mean_pool.py). |
 | 30–40 min | Resume / breadth. Questions already listed in the screen note. |
 
 ### Thursday 22 — mocks (~2.5–3 h)
 
 | | |
 |--|--|
+| — | **C** is already drafted. Do not repeat it as the day’s new problem. |
 | 50 min | Mock 1. 20 min resume. 30 min an unseen coding problem. Not an exact repeat. Run tests. Log in [`mocks.md`](mocks.md). |
 | 30 min | Repair only the weakest miss: syntax, shape, mask, API, or time. |
 | 30 min | Mock 2, coding only, a different category from mock 1. |

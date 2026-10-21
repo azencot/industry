@@ -26,8 +26,8 @@ Sun 18 and Mon 19 are off. Three mornings start Tuesday. Detail and the spoken h
 |-----|------|-------|
 | — | Thu 15–Fri 16 | **01–04 and 13 done.** **05–08 drafted** in the problem files; core asserts passed 2026-10-17. Tuesday does not reread them. |
 | — | **Sat 17** | [`tue_attention.py`](tue_attention.py) and broadcast A, B, D. Attention is no longer the main track. |
-| 1 | **Tue 20** | [`A_transformer_block.py`](A_transformer_block.py), [`B_train_eval.py`](B_train_eval.py), [`C_masked_ce_broken.py`](C_masked_ce_broken.py), a debug sprint, then stories A and B. |
-| 2 | **Wed 21** | **17**, [`G_layernorm.py`](G_layernorm.py), [`14_sliding_window.py`](14_sliding_window.py), and [`H_kmeans.py`](H_kmeans.py) drafted. 17b set aside. |
+| 1 | **Tue 20** | [`A_transformer_block.py`](A_transformer_block.py) and [`B_train_eval.py`](B_train_eval.py) drafted. [`E_infonce.py`](E_infonce.py) drafted the same day. C slipped to Thu 22. |
+| 2 | **Wed 21** | **17**, [`G_layernorm.py`](G_layernorm.py), [`14_sliding_window.py`](14_sliding_window.py), [`H_kmeans.py`](H_kmeans.py), [`F_minigpt.py`](F_minigpt.py), and [`I_mean_pool.py`](I_mean_pool.py) drafted. 17b not started. |
 | 3 | **Thu 22** | Two mocks. Unseen problems, different categories. Repair only the weakest miss. |
 | Pre-call | **Fri 23, ~20:30** | 20 min. Block structure, train step, one mask shape, three story anchors. |
 
@@ -59,14 +59,14 @@ Sun 18 and Mon 19 are off. Three mornings start Tuesday. Detail and the spoken h
 | — | Tuesday attention, heads in the shape | [`tue_attention.py`](tue_attention.py) · [`tue_attention_solution.py`](tue_attention_solution.py) | **Drafted Sat 17.** Passes. Do not repeat as its own drill. |
 | — | Broadcast / mask micro-drills | [`tue_broadcast.py`](tue_broadcast.py) · [`tue_broadcast_solution.py`](tue_broadcast_solution.py) | **Sat 17: A, B, D pass.** C (`mask_group_keys`) still open. |
 | — | Shape micro-drills | [`tue_shapes.py`](tue_shapes.py) · [`tue_shapes_solution.py`](tue_shapes_solution.py) | Dropped from the main track on 2026-10-20. |
-| A | Pre-norm transformer block | [`A_transformer_block.py`](A_transformer_block.py) | **Tue 20, first.** No solution file. |
-| B | Train step and eval | [`B_train_eval.py`](B_train_eval.py) | **Tue 20.** No solution file. |
+| A | Pre-norm transformer block | [`A_transformer_block.py`](A_transformer_block.py) | **Drafted Tue 20.** No solution file. |
+| B | Train step and eval | [`B_train_eval.py`](B_train_eval.py) | **Drafted Tue 20.** No solution file. |
 | C | Masked CE, two ways, start broken | [`C_masked_ce_broken.py`](C_masked_ce_broken.py) | **Drafted Thu 22.** Both reductions. No solution file. The unreduced comment still says `[B*T, C]`; `reduction="none"` returns `[B*T]`. |
 | E | InfoNCE | [`E_infonce.py`](E_infonce.py) | **Drafted Tue 20.** No solution file. Diagonal of the softmax. |
 | G | LayerNorm by hand | [`G_layernorm.py`](G_layernorm.py) | **Drafted Wed 21.** No solution file. Matches `nn.LayerNorm`. Mean and variance are `[..., 1]`. |
 | H | K-means | [`H_kmeans.py`](H_kmeans.py) | **Drafted Wed 21.** No solution file. Centroids are `x[:k].clone()`. Assignments are recomputed from the returned centroids. |
 | I | Mean-pool classifier | [`I_mean_pool.py`](I_mean_pool.py) | **Drafted Wed 21.** Embed, mean over T, linear to C. No solution file. |
-| F | Mini causal LM | [`F_minigpt.py`](F_minigpt.py) | **Wed 21, current.** Problem statement only. Reuses the block from A. |
+| F | Mini causal LM | [`F_minigpt.py`](F_minigpt.py) | **Drafted Wed 21.** Embedding, causal block from A, next-token loss. No solution file. |
 
 Mask convention in every file: **True = valid token**, False = pad. Say it before you code. If they flip it, flip the `~`.
 
