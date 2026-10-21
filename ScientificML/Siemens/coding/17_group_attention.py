@@ -29,7 +29,28 @@ with no valid key.
 """
 
 import torch
-
+import math
 
 def group_attention(x, series_mask=None):
-    raise NotImplementedError
+    # the idea is the same as standard attention, but on the group dim instead of time dim
+
+    # x in [B, G, T, D]
+    B, G, T, D = x.shape
+
+    # transpose/reshape
+    x = x.transpose(2, 1).reshape(-1, G, D).contiguous()    # [B, G, T, D] -> [B*T, G, D]
+    
+    scores = x @ x.transpose(-2, -1) / math.sqrt(D)         # [B*T, G, D] @ [B*T, D, G] -> [B*T, G, G]
+
+    if series_mask is not None:                             # [B, G]
+        series_mask = series_mask.repeat_interleave(T, dim=0)   # [B, G] -> [B*T, G]
+        scores = scores.masked_fill(~series_mask[:, None, :], float("-inf"))
+
+    a = torch.softmax(scores, dim=-1)                       # [B*T, G, G] -> [B*T, G, G]
+    a = torch.nan_to_num(a, nan=0.0)                        # [B*T, G, G] -> [B*T, G, G]
+    y = a @ x                                               # [B*T, G, G] @ [B*T, G, D] -> [B*T, G, D]
+
+    # reshape/transpose
+    y = y.reshape(B, T, G, D).contiguous().transpose(2,1)   # [B*T, G, D] -> [B, T, G, D] -> [B, G, T, D]
+
+    return y
