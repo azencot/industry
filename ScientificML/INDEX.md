@@ -52,6 +52,7 @@ After each call: drop `YYYY-MM-DD_*.md` in that company’s folder and add a row
 | 2026-10-21 | Story B mock | Dual tower. Matched controls landed. TSExam was first a win, then corrected to flat. Follow-ups chased scores; the next mock stays on the decision. [`Siemens/mocks.md`](Siemens/mocks.md). |
 | 2026-10-21 | Story A mock, full transcript | ImagenTime with Huzefa simulated. Three kill tests and the combined-system limit landed. Opening still has no number and still says "my students." Four-week plan stayed generic. [`Siemens/mocks.md`](Siemens/mocks.md). |
 | 2026-10-22 | Coding plan for Thu–Fri | Unseen mocks first if the day slips. New drills are Gaussian NLL, a covariate forecast, a GRU classifier, and a script that does not learn. [`Siemens/2026-10-20_coding-plan.md`](Siemens/2026-10-20_coding-plan.md). |
+| 2026-10-22 | Story E mock | Bosch. He took the sensor constraint and refused a product claim. The method told was an EM loop; the bank's change is interpolation plus an observation mask. No number. [`Siemens/mocks.md`](Siemens/mocks.md). |
 
 ---
 

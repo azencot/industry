@@ -33,6 +33,7 @@
 | **2026-10-21** | Story B mock | Dual tower. Controls landed. TSExam corrected to flat. Score-chasing stopped. [`mocks.md`](mocks.md). |
 | **2026-10-21** | Story A mock, full transcript | ImagenTime. Kill tests and the attribution limit landed. Opening still has no number and still says "my students." [`mocks.md`](mocks.md). |
 | **2026-10-22** | Coding plan for Thu–Fri | No further attention drills. Thursday is Gaussian NLL, a covariate forecast, a GRU classifier, a script that does not learn, then an unseen mock. [`2026-10-20_coding-plan.md`](2026-10-20_coding-plan.md). |
+| **2026-10-22** | Story E mock | Bosch. Domain push landed. The method told was an EM loop; the bank's change is interpolation plus an observation mask. No number. [`mocks.md`](mocks.md). |
 
 ## Loop (Chandler, 2026-10-14 — the schedule)
 

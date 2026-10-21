@@ -12,6 +12,7 @@ Story source: [`2026-10-15_behavioral-story-bank.md`](2026-10-15_behavioral-stor
 | 2026-10-21 | Behavioral | Story C — TR kill | Reasoning average said as 28. Tempting gain called overall. Left the kill for the audit. 0.8B deltas not said. |
 | 2026-10-21 | Behavioral | Story B — dual tower | Controls landed. TSExam first called a win, then corrected to flat. Gain grouped prediction with decision-making. |
 | 2026-10-21 | Behavioral, full transcript | Story A — ImagenTime | Attribution held. Opening still has no number and still says "my students." Four-week plan stayed generic. |
+| 2026-10-22 | Behavioral, full transcript | Story E — Bosch | EM loop told in place of interpolation plus an observation mask. No number. Collaboration stayed general. Maintenance named as compute. |
 
 ---
 
@@ -164,3 +165,64 @@ These lines disagree with [`2026-10-15_behavioral-story-bank.md`](2026-10-15_beh
 - Not every candidate passed practical reconstruction. Delay embeddings and STFT did.
 - "Six so far" is this telling. The bank's diffusion-investment line says eight papers. Do not treat those as the same count.
 - The drop from about 1,000 model evaluations to about 35 is the EDM sampler, not the image transform. He did not separate them here.
+
+## 2026-10-22 — Story E, Bosch
+
+**Kind:** Behavioral mock he ran elsewhere and asked to keep in this form. Interviewer: Huzefa Rangwala, simulated. Topic: cross-functional collaboration, technical leadership, scientific judgment. One opening question and three follow-ups.
+
+**Score he was given:** 7.5/10. Technical leadership 8.5. Cross-functional collaboration 7. Scientific rigor 8. Product judgment 7.5. Communication 7.
+
+### Question 1 — cross-functional collaboration
+
+Tell me about a time you worked with people outside your area of expertise to solve a difficult technical problem. How did their perspective change your approach, and what was the outcome?
+
+A joint project with Bosch AI on generative modeling for time series. He led the technical component, from observation and ideation through implementation and experimentation. The model worked on offline in-house benchmarks and failed on real Bosch sensor data. His first plan was the ML one: more data, hyperparameters, more capacity. People at the Bosch site pushed him to look at the sensor data. It was irregularly sampled and noisy, so the framework was unlikely to generalize. He decided the fix was an EM-style loop that alternates data completion and sampling, not more data or more training. He called the results strong, and said the method later served as a research backbone at Bosch AI. He does not know whether Bosch productionized it.
+
+### Follow-up 1 — why not interpolate
+
+Why was the EM-style loop preferable to interpolating the irregular observations onto a regular grid and training the existing diffusion model? What did the iterative approach solve that interpolation would not?
+
+He said interpolation ignores the true data distribution, and that a loss on interpolated segments is incorrect. Even with an observation mask, a convolutional model still consumes the interpolated regions as inputs. The completion-and-sampling loop is preferable because the posterior is updated through training, so completion and sampling improve together.
+
+Feedback he was given: the intuition is reasonable and several claims are too loose. Interpolation is a legitimate baseline, especially with an observation mask. Masking the loss keeps interpolated targets out of the objective; interpolated inputs can still change the prediction. The stronger reason for an iterative completion is that it can carry uncertainty over the missing values, instead of one deterministic fill. He needs to say what each stage updates — latent completions, parameters, or both — and to separate a training update from completion at inference. He was told to be ready to write the completion step, the sampling step, and the objective.
+
+### Follow-up 2 — what would justify the extra method
+
+Three approaches: linear interpolation with an observation mask, then a standard diffusion model; a diffusion model trained directly on irregular observations; the iterative completion-and-sampling approach. What would he measure, and what result would convince him the simpler approach is enough?
+
+A discriminative test, same data, matched parameter counts and training budgets, on several datasets. Also a known distribution he can write down, and a comparison of each completion to that distribution, including the irregular-observation model if its samples can be put in one representation. The closer match is the better generative fidelity.
+
+Feedback he was given: matched budgets, more than one dataset, a synthetic ground truth, and fidelity rather than only pointwise reconstruction all landed. A discriminative score does not show that the completion is accurate or that observed measurements are kept. The missing pieces he was given: held-out reconstruction (hide a real measurement and score the prediction), distributional fidelity, more than one missingness rate and pattern, a check that completions respect the observations, and training cost, latency, and memory. The question is whether the iterative method's gain pays for the extra complexity.
+
+### Follow-up 3 — engineers prefer the simple version
+
+Bosch engineers are satisfied with interpolation because it is easier to maintain. His experiments show better generative results for the iterative method. How does he resolve that, and what evidence does he need before recommending the complex one?
+
+Maintainability matters, and he would start from the metrics Bosch cares about: generation quality, and compute (peak memory, GFLOPs, latency). He would compare the approaches and set improvement gates in advance. Consistent wins past those gates are the argument for the complex method. Mixed results mean he looks for the cases where interpolation fails and generation quality drops, and uses the complex method only there.
+
+Feedback he was given: he did not assume the sophisticated method should win. Business metrics, compute cost, gates, and a split by use case all landed. The disagreement he was handed was maintenance, not only compute. A principal answer includes engineering complexity, reliability, and the maintenance burden. The closer he was given: even a better generative result does not justify the method unless it pays for the operational and maintenance cost. If the simple approach meets the requirement, use it, and keep the complex method for the cases where the gap is material.
+
+### Evaluation from that session
+
+Strengths he was given: he owned the technical direction and changed it when the benchmark assumption failed; he took the sensor characteristics from Bosch instead of tuning the original model; the experiment sketch had matched budgets and a distribution-level check; he treated compute as a product constraint and left room for the simpler method; he separated a research backbone from a deployment he did not see.
+
+Improvements he was given:
+
+1. One concrete collaboration. Who looked at which measurements, which comment changed an assumption, who owned which part, and how they agreed on the evaluation. Do not invent a meeting that did not happen.
+2. The method, precisely. Why the original model failed, how irregular sampling was represented, whether interpolation and an observation mask were used, what the completion step and the sampling step update, and what was a training update versus an inference completion. The evidence for the change.
+3. Do not stop at the discriminative score. Reconstruction, distributional fidelity, observation consistency, and robustness to the missingness pattern.
+4. Maintenance, reliability, and engineering complexity, not only memory and latency.
+5. One real number, if he has one. "Strong results" is not a result. Do not claim a production deployment.
+
+Improved opening from that session, and it is not verified against the bank: he led the technical work with Bosch AI on generative modeling for industrial sensor data. Offline benchmarks were fine. Real Bosch sensor data was not. His first instinct was more data, tuning, or capacity. Domain experts pushed him into the measurements. They were irregularly sampled and noisy, which broke assumptions in the framework. He changed direction to an iterative completion-and-sampling method. The revised approach was substantially stronger on that sensor data and became a research backbone for later work at Bosch AI. He does not claim a product. The lesson he was handed: collaboration is not only listening; it is revising the mathematical assumption when their account of the system contradicts the model.
+
+Takeaways he was given: use this story for cross-functional work, industrial scientific ML, and a real constraint changing the method. The line to keep is that the failure was the data assumption, not insufficient capacity. He led the research. Bosch contributed the measurement knowledge. That knowledge changed the direction. The revision was tested. Research success is not a deployment. Do not say interpolation is always wrong. Do not leave EM imprecise. Do not treat a better generative score as enough to impose the complex system. Do not describe the collaboration without the actual exchange.
+
+### Against the bank
+
+These lines disagree with [`2026-10-15_behavioral-story-bank.md`](2026-10-15_behavioral-story-bank.md), Story E. Use the bank until he reconciles them. Do not promote the EM telling into the bank from this one mock.
+
+- The bank's task is modality translation: generate one sensor modality from another. This telling was generative modeling for time series, and the improved opening says industrial sensor data. The modality is missing.
+- The bank's technical change is interpolation onto a regular grid together with an observation mask, so filled values are not treated as measurements. This telling's change is an EM-style loop of completion and sampling, and interpolation is described as typically wrong. Those are different methods. Friday uses the mask version unless he confirms the loop was the implementation.
+- The bank already refuses a product ship. That part of this telling matches. "Research backbone" is the bank's "strong internal research baseline," said more strongly.
+- Neither version has a Bosch number. Do not invent one. If a real figure exists, it belongs in the bank only after he names the source.
