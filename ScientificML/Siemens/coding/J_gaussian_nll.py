@@ -34,7 +34,16 @@ Time box: 20–25 minutes. One follow-up after it runs.
 """
 
 import torch
-
+import math
 
 def gaussian_nll(mean, log_var, target, mask):
-    raise NotImplementedError
+    # mean, log_var, target in [B, T, D]; mask in [B, T]
+
+    # [B, T, D] + [B, T, D] * [B, T, D] -> [B, T, D]
+    gnll = .5 * (math.log(2 * math.pi) + log_var + (target - mean) ** 2 * torch.exp(-log_var))
+
+    gnll_count = torch.sum(mask) * mean.shape[-1]
+    if gnll_count == 0:
+        return torch.zeros(()).to(mean.device)
+
+    return torch.sum(gnll[mask]) / gnll_count
