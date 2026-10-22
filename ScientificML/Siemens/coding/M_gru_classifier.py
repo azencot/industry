@@ -33,7 +33,22 @@ from torch import nn
 class GRUClassifier(nn.Module):
     def __init__(self, d, hidden, n_classes):
         super().__init__()
-        raise NotImplementedError
+        
+        self.gru = nn.GRU(d, hidden, batch_first=True)
+        self.W = nn.Linear(hidden, n_classes)
+
 
     def forward(self, x, lengths):
-        raise NotImplementedError
+        # x in [B, T, D]; lengths in [B]
+        B = x.shape[0]
+        output, _ = self.gru(x)        # [B, T, D] -> [B, T, hidden]
+
+        last_h = [row[lengths[i] - 1] for i, row in enumerate(output)]  # [B, T, hidden] -> B x [hidden]
+        last_h = torch.stack(last_h)                                # B x [hidden] -> [B, hidden]
+
+        # instead of lines 46-47
+        # last_h = output[torch.arange(B), lengths-1]
+
+        pred = self.W(last_h)                                       # [B, hidden] -> [B, n_classes]
+
+        return pred
