@@ -22,6 +22,8 @@
 
 **Private lock (Guillermo email, 2026-08-22 — do not quote on loop):** Shirley and her team **used to report to him**; he **switched teams after a reorganization**. That **confirms** a former manager / skip line. He is **not** her current manager. Do **not** tell interviewers “Sapiro is / was Shirley’s boss.”
 
+**2026-10-22, private, different process:** a person at Apple said Sapiro is the skip over **Nick Foti** on AIML Data and Machine Learning Innovation. That process is [`IndustrialResearch/apple-dmli/`](../../../IndustrialResearch/apple-dmli/). Do not raise Foti or DMLI on the Health loop, and do not raise Shirley on the Foti screen.
+
 **Public-only read (still true for anyone who hasn’t seen the email):** they work in the **same Health AI / Health & Fitness cluster**. Sapiro is **more senior** (Distinguished Engineer; “leads Health AI”). Shirley is the **line manager** for this req. Public papers still do not prove a current report line.
 
 Shared coauthor **Gregory Darnell** sits on both the HR paper and **RelCon** (with Shirley) — one more edge in that cluster.

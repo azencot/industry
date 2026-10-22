@@ -24,7 +24,7 @@ Not a production app repo.
    - Forecasting → [`Forecasting/INDEX.md`](Forecasting/INDEX.md) (week plan, notes, `/forecasting` drills)
    - GenAI → [`GenAI/INDEX.md`](GenAI/INDEX.md) (interviews, notes; GenAI roles only)
    - ScientificML → [`ScientificML/INDEX.md`](ScientificML/INDEX.md) (Siemens and similar scientific-ML loops)
-   - IndustrialResearch → [`IndustrialResearch/INDEX.md`](IndustrialResearch/INDEX.md) (research-lab intros; Apple lives in [`IndustrialResearch/apple/`](IndustrialResearch/apple/); Meta lives in [`IndustrialResearch/meta/`](IndustrialResearch/meta/))
+   - IndustrialResearch → [`IndustrialResearch/INDEX.md`](IndustrialResearch/INDEX.md) (research-lab intros; Koltun / Ozan lives in [`IndustrialResearch/apple/`](IndustrialResearch/apple/); AIML DMLI / Nick Foti lives in [`IndustrialResearch/apple-dmli/`](IndustrialResearch/apple-dmli/); Meta lives in [`IndustrialResearch/meta/`](IndustrialResearch/meta/))
    - SCOT → [`Amazon_SCOT/INDEX.md`](Amazon_SCOT/INDEX.md) (contacts, collab, contribution pitch, questions)
 3. [`.cursor/skills/debrief/omri_azencot_experience.md`](.cursor/skills/debrief/omri_azencot_experience.md) — experience profile, flagship project, IC framing (shared)
 4. FinTech only: [`Amazon_FinTech/prep-plan.md`](Amazon_FinTech/prep-plan.md) — weekly plan; check today's focus
@@ -32,7 +32,7 @@ Not a production app repo.
 6. Forecasting only: [`Forecasting/prep-plan.md`](Forecasting/prep-plan.md); notes under [`Forecasting/notes/`](Forecasting/notes/); company prep under [`Forecasting/interviews/`](Forecasting/interviews/) (not GenAI/SCOT)
 7. GenAI only: notes under [`GenAI/notes/`](GenAI/notes/); company prep under [`GenAI/interviews/`](GenAI/interviews/) (not under Forecasting)
 8. ScientificML only: company prep under [`ScientificML/`](ScientificML/) (Siemens lives in [`ScientificML/Siemens/`](ScientificML/Siemens/); not under GenAI or Forecasting)
-9. IndustrialResearch only: company prep under [`IndustrialResearch/`](IndustrialResearch/) (Apple research lives in [`IndustrialResearch/apple/`](IndustrialResearch/apple/); Meta research lives in [`IndustrialResearch/meta/`](IndustrialResearch/meta/); not the Health AIML loop under GenAI)
+9. IndustrialResearch only: company prep under [`IndustrialResearch/`](IndustrialResearch/) (Koltun / Ozan lives in [`IndustrialResearch/apple/`](IndustrialResearch/apple/); AIML DMLI / Nick Foti lives in [`IndustrialResearch/apple-dmli/`](IndustrialResearch/apple-dmli/); Meta research lives in [`IndustrialResearch/meta/`](IndustrialResearch/meta/); not the Health AIML loop under GenAI)
 10. SCOT only: [`contribution-plan.md`](Amazon_SCOT/contribution-plan.md) + [`mengfei-notes.md`](Amazon_SCOT/mengfei-notes.md) before Boris/Mengfei calls; session/post-call notes in [`Amazon_SCOT/notes/`](Amazon_SCOT/notes/) (SCOT debriefs live here, not under FinTech/Forecasting/GenAI/ScientificML)
 
 ## Behavior

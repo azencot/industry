@@ -17,6 +17,7 @@ Turn a warm intro into a precise conversation: what the group actually works on,
 | File | What |
 |------|------|
 | [`apple/`](apple/) | Apple AI Research — Vladlen Koltun’s organization. Intro: Raja Giryes → Ozan Sener |
+| [`apple-dmli/`](apple-dmli/) | Apple AIML — Data and Machine Learning Innovation. Recruiter: Chelsea Elwood. HM: Nick Foti. Separate from Ozan and from Health AIML |
 | [`meta/`](meta/) | Meta — Research Scientist, Multi-Modal Understanding & Synthesis. Intro: Elad Kravi → Michael |
 
 Shared profile: [`.cursor/skills/debrief/omri_azencot_experience.md`](../.cursor/skills/debrief/omri_azencot_experience.md).
@@ -28,6 +29,7 @@ Shared profile: [`.cursor/skills/debrief/omri_azencot_experience.md`](../.cursor
 | Org | Contact | Next | Prep |
 |-----|---------|------|------|
 | **Apple — ML group, Vladlen Koltun’s org** | **Ozan Sener** (head of the ML group, per Raja). Intro **Raja Giryes** | Recruiter will make contact. A few interviews and some coding. Call: [`apple/2026-10-20_ozan-call.md`](apple/2026-10-20_ozan-call.md) | Plan: [`apple/2026-10-19_ozan-prep-plan.md`](apple/2026-10-19_ozan-prep-plan.md). Briefing: [`apple/2026-10-19_org-briefing.md`](apple/2026-10-19_org-briefing.md) |
+| **Apple — AIML Data and Machine Learning Innovation** | **Nick Foti** (HM). Skip **Guillermo Sapiro** (private). Recruiter **Chelsea Elwood** | Availability sent 2026-10-22: 28–30 Oct, 8–11am PT. Waiting on a hold. [`apple-dmli/2026-10-22_chelsea-screen.md`](apple-dmli/2026-10-22_chelsea-screen.md) | Req 200668189, foundation models for scientific domains. Do not name Foti or Sapiro to Chelsea. |
 | **Meta — Multi-Modal Understanding & Synthesis** | **Michael** (HM Elad contacted; last name not in the intro). Intro **Elad Kravi** | Call booked. Sat 7 Nov 00:05–00:30 Thailand = Fri 6 Nov 09:05–09:30 Pacific. [`meta/2026-10-21_michael-intro.md`](meta/2026-10-21_michael-intro.md) | Req logged in that note. Pittsburgh, PA, plus one unnamed location. |
 
 After each note or call: drop `YYYY-MM-DD_*.md` in that company’s folder and add a row below.
@@ -55,6 +57,8 @@ After each note or call: drop `YYYY-MM-DD_*.md` in that company’s folder and a
 | 2026-10-21 | Reply to Michael | Sent. Elad on bcc. Generative and multimodal learning, structured representations, sequential dynamics, recent vision-language models. World models named as the team’s work. Asked for a short call. [`meta/2026-10-21_michael-intro.md`](meta/2026-10-21_michael-intro.md). |
 | 2026-10-21 | Michael replies | Happy to connect. PTO for two weeks starting 2026-10-22. He did not name a day. Draft proposes Wed 4 Nov at 9:00am Pacific, and says Nov 4–6 and other times are open. Not sent. |
 | 2026-10-22 | Michael invite | Sat 7 Nov 00:05–00:30 Thailand. That is Fri 6 Nov 09:05–09:30 Pacific, 12:05–12:30 Eastern. Twenty-five minutes. [`meta/2026-10-21_michael-intro.md`](meta/2026-10-21_michael-intro.md). |
+| 2026-10-22 | Chelsea → Foti screen | AIML Data and Machine Learning Innovation. Senior Machine Learning Research Scientist. HM Nick Foti, skip Guillermo Sapiro, both private. Availability sent: 28–30 Oct, 8–11am PT, earlier better. Screen not booked. [`apple-dmli/2026-10-22_chelsea-screen.md`](apple-dmli/2026-10-22_chelsea-screen.md). |
+| 2026-10-22 | Foti strategy lock | No email to Sapiro, Tyler, or Chelsea about Health. Health no was product experience on a product seat. This screen is the August 2026 Bayes-update paper. [`apple-dmli/2026-10-22_strategy.md`](apple-dmli/2026-10-22_strategy.md). |
 
 ---
 

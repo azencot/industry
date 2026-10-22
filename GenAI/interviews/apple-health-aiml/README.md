@@ -48,7 +48,8 @@
 | **2026-09-08** | **On-site — Chung-Cheng** (2:05) | Done. Hour not written up. |
 | **2026-09-08** | **On-site — Haraldur** (3:05) | Done. Time-series representations; details not recovered. Thin: [`2026-09-08_onsite-debrief.md`](2026-09-08_onsite-debrief.md) |
 | **2026-09-08** | **On-site — Vincent Chan** (4:05) | Done. Fitness-team infra (self-weak) + menstrual onset; ~15 min over. Thin: [`2026-09-08_onsite-debrief.md`](2026-09-08_onsite-debrief.md) |
-| **2026-09-08** | **On-site day wrap** | All five done. Wait. [`2026-09-08_onsite-debrief.md`](2026-09-08_onsite-debrief.md) |
+| **2026-09-08** | **On-site day wrap** | All five done. [`2026-09-08_onsite-debrief.md`](2026-09-08_onsite-debrief.md) |
+| **2026-10-22** | **Closed, Omri’s account** | Comp was discussed at ICT5. Director and senior director blocked the offer: academic background, not enough product experience. Tyler said he would stay in touch. No close email is in the repo. Do not reopen it from the Foti screen. [`IndustrialResearch/apple-dmli/2026-10-22_strategy.md`](../../../IndustrialResearch/apple-dmli/2026-10-22_strategy.md). |
 
 ## Loop (from Tyler)
 
@@ -58,7 +59,7 @@
 | 2. Tech screen | 45 min | **Locked 2026-08-21:** depth check on **LLM training** + **multimodality fundamentals** (spoken; **no coding**) |
 | 3. Virtual on-site | **5 × 45 min** · Webex · **Tue 9/8** (all five) | Tyler **locked 2026-08-26:** (1) LLM training & infrastructure · (2) multimodal architecture & time-series encoding · (3) research depth & scientific rigor · (4) technical leadership & system thinking · (5) health domain & applied ML judgment. Person ↔ theme **not mapped**. CoderPad on invites = template (same as HM/Feng) |
 
-**Timeline:** ~**3–4 weeks** end-to-end once moving. Virtual on-site **done 2026-09-08**. Wait.
+**Timeline:** ~**3–4 weeks** end-to-end once moving. Virtual on-site **done 2026-09-08**. Closed afterward, on Omri’s account of 2026-10-22: ICT5 compensation was discussed, then director and senior director blocked the offer for insufficient product experience.
 
 ## Role in one line
 
