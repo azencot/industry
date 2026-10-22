@@ -41,10 +41,11 @@ class Regressor(nn.Module):
 
 
 model = Regressor()
-opt = torch.optim.Adam(
-    list(model.hidden.parameters()) + list(model.head.parameters()),
-    lr=1e-2,
-)
+# opt = torch.optim.Adam(
+#     list(model.hidden.parameters()) + list(model.head.parameters()),
+#     lr=1e-2,
+# )
+opt = torch.optim.Adam(model.parameters(), lr=1e-2)
 loss_fn = nn.MSELoss()
 
 
@@ -52,7 +53,7 @@ def test_mse():
     model.eval()
     with torch.no_grad():
         pred = model(x_test)
-        mse = torch.mean((pred - y_test) ** 2).item()
+        mse = torch.mean((pred - y_test) ** 2).item()       # TODO: switch to loss_fn for consistency?
     model.train()
     return mse
 
@@ -69,12 +70,16 @@ for epoch in range(60):
         idx = perm[i:i + 32]
         xb = x_train[idx]
         yb = y_train[idx]
+        
+        opt.zero_grad()
         pred = model(xb)
-        yb = torch.roll(yb, 1)
+        
+        # yb = torch.roll(yb, 1)              # ??
+        
         loss = loss_fn(pred, yb)
         loss.backward()
-        opt.zero_grad()
         opt.step()
+
         total += float(loss)
         n_batches += 1
     if epoch % 15 == 0 or epoch == 59:
