@@ -35,7 +35,41 @@ from torch import nn
 class ForecastWithCovariates(nn.Module):
     def __init__(self, dy, dc, d):
         super().__init__()
-        raise NotImplementedError
+
+        self.d = d
+        
+        # ARCH: I will go with a simple RNN, i.e., hn = f(W hc + U x), yn = g(V hn)
+        # Covariates via a simple concat + add: hn = f(W hc + U x + Q [xc, yc])
+        self.W = nn.Linear(d, d)
+        self.U = nn.Linear(dy, d)
+        self.V = nn.Linear(d, dy)
+        self.Q = nn.Linear(dc, d)
+        self.P = nn.Linear(dc, d)
+
+        self.relu = nn.ReLU()
 
     def forward(self, past_target, past_cov, future_cov):
-        raise NotImplementedError
+        # past_target in [B, L, Dy], past_cov in [B, L, Dc], future_cov in [B, H, Dc]
+        B, L = past_target.shape[:2]
+        H = future_cov.shape[1]
+
+        # pre-process history
+        hidden = torch.zeros([B, self.d]).to(past_target.device)
+        for k in range(L):
+            # hidden state
+            hidden = self.W(hidden) + self.U(past_target[:, k])
+
+            # use covariates
+            hidden = hidden + self.Q(past_cov[:, k])
+
+            hidden = self.relu(hidden)
+
+        pred_target = []
+        for j in range(H):
+                hidden = hidden + self.P(future_cov[:, j])
+                hidden = self.relu(hidden)
+            
+                # pred
+                pred_target.append(self.V(hidden))
+
+        return torch.stack(pred_target, dim=1)                # [B, H, dy]
