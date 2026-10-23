@@ -1,6 +1,6 @@
 # 2026-10-22 — Chelsea Elwood, hiring-manager screen
 
-**Stage:** Availability sent 2026-10-22. Screen not booked yet.  
+**Stage:** Availability sent 2026-10-22. Written questionnaire answered 2026-10-23 ([`2026-10-23_chelsea-questionnaire.md`](2026-10-23_chelsea-questionnaire.md)). Screen not booked yet.  
 **Screen:** 30 minutes, WebEx, with the hiring manager. Team, role, and background.
 
 Separate from the Ozan thread ([`../apple/`](../apple/)) and from Health AIML. What not to send, and how to use the thirty minutes: [`2026-10-22_strategy.md`](2026-10-22_strategy.md).

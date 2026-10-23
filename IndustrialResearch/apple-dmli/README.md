@@ -8,7 +8,7 @@
 | **Recruiter** | **Chelsea Elwood** |
 | **Hiring manager** | **Nick Foti**. Private confirmation 2026-10-22. His public title is Principal Research Scientist, Seattle. |
 | **Skip** | **Guillermo Sapiro**. Private confirmation 2026-10-22. Do not cite this. |
-| **Stage** | Availability sent 2026-10-22: 28–30 October, 8–11am PT, earlier better. Screen not booked. Note: [`2026-10-22_chelsea-screen.md`](2026-10-22_chelsea-screen.md). Strategy lock: [`2026-10-22_strategy.md`](2026-10-22_strategy.md). |
+| **Stage** | Availability submitted 2026-10-22 (28–30 October, 8–11am PT). Written questionnaire answered 2026-10-23. Scheduling confirmation still pending. Notes: [`2026-10-22_chelsea-screen.md`](2026-10-22_chelsea-screen.md), [`2026-10-23_chelsea-questionnaire.md`](2026-10-23_chelsea-questionnaire.md). Strategy lock: [`2026-10-22_strategy.md`](2026-10-22_strategy.md). |
 
 This process is separate from Vladlen Koltun’s organization ([`../apple/`](../apple/)). It is also separate from the Health AIML loop under [`GenAI/interviews/apple-health-aiml/`](../../GenAI/interviews/apple-health-aiml/).
 
