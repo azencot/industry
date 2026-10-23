@@ -155,9 +155,22 @@ Resume questions push on assumptions, the alternative method, the ablation, what
 
 ---
 
+## Questions to ask him
+
+Ask **two**. One sentence on why you are asking, then the question, then stop. If the hour runs out, the first two are the ones to keep. Do not ask him to present Chronos-2, GRPO, or his group. Do not ask compensation. He is a staff scientist, not a confirmed hiring manager, so ask about the work.
+
+1. **What a principal owns.** The posting spans time series, simulation, control, and evaluation. For this seat, what is the scientific problem a principal would own in the first two quarters, and what result would make you drop the approach?
+2. **Solver versus surrogate.** When the learned model and the numerical solver disagree, what is the rule today for which one an engineer trusts, and what would have to be true before that solver call becomes rare?
+3. **Where the constraint lives.** In the models this group actually ships, does the physical constraint sit in the architecture, in a projection, or in a check after the prediction? Where has a penalty in the loss looked acceptable and then failed on a new operating condition?
+4. **The gate that is not the average.** What has to be true before a model is allowed to sit next to a simulator that an engineer uses, and what result have you seen look fine on the average and still rejected?
+5. **Weakly related series.** Only if he is already on multivariate forecasting. When the series in a group are only weakly related, what should the shared computation do instead of forcing them to exchange information?
+
+If he has already answered one of these while probing the resume, skip it. Do not re-ask it to show you prepared it.
+
 ## On the call
 
 - Restate the coding problem and the shapes before typing.
 - If his test fails, read the assert and fix that case. Narrate the mask and the axis.
 - If he asks a paper of his, answer the scientific question from your work.
 - IC verbs. One metric. The claim you will not make.
+- If the last minutes are yours, ask two questions from the list above. Default to what a principal owns, then solver versus surrogate.
