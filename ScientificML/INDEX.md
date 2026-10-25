@@ -27,7 +27,7 @@ Shared profile: [`.cursor/skills/debrief/omri_azencot_experience.md`](../.cursor
 
 | Company | Contact | Next | Prep |
 |---------|---------|------|------|
-| **Siemens — Principal Applied Scientist** | **Danielle Chandler** (recruiter) · referral **Danielle Robinson** · screen **Huzefa Rangwala** | **Fri 23 Oct, 22:00–23:00 Thailand.** Prep Tue 20–Thu 22. | [`Siemens/`](Siemens/) — [Huzefa plan](Siemens/2026-10-17_huzefa-screen.md) · [debrief](Siemens/2026-10-14_recruiter-debrief.md) |
+| **Siemens — Principal Applied Scientist** | **Danielle Chandler** (recruiter) · referral **Danielle Robinson** · screen **Huzefa Rangwala** | **Loop confirmed 25 Oct.** Dates offered, not booked: 29–30 Oct or 3–5 Nov, 8–11 AM Seattle. Coding not confirmed. | [`Siemens/`](Siemens/) — [loop prep](Siemens/2026-10-25_virtual-loop-prep.md) · [screen](Siemens/2026-10-23_huzefa-debrief.md) |
 | **Psistar — founders** | **Yochai Pagi** (CEO) · **Matan Pagi** (CTO). Intro via **Raz Marshanski** | **Tue 20 Oct 2026, 00:00 Thailand** (Mon 19 Oct, 20:00 Israel). | [`Psistar/`](Psistar/) — [prep](Psistar/2026-10-20_founders-call-prep.md) |
 
 After each call: drop `YYYY-MM-DD_*.md` in that company’s folder and add a row to the session log below.
@@ -53,6 +53,8 @@ After each call: drop `YYYY-MM-DD_*.md` in that company’s folder and add a row
 | 2026-10-21 | Story A mock, full transcript | ImagenTime with Huzefa simulated. Three kill tests and the combined-system limit landed. Opening still has no number and still says "my students." Four-week plan stayed generic. [`Siemens/mocks.md`](Siemens/mocks.md). |
 | 2026-10-22 | Coding plan for Thu–Fri | Unseen mocks first if the day slips. New drills are Gaussian NLL, a covariate forecast, a GRU classifier, and a script that does not learn. [`Siemens/2026-10-20_coding-plan.md`](Siemens/2026-10-20_coding-plan.md). |
 | 2026-10-22 | Story E mock | Bosch. He took the sensor constraint and refused a product claim. The method told was an EM loop; the bank's change is interpolation plus an observation mask. No number. [`Siemens/mocks.md`](Siemens/mocks.md). |
+| 2026-10-23 | Huzefa technical screen | He will recommend proceeding. Multimodal project, then overfit/underfit/regularization, then bagging (platform swapped off SGD). Vote not finished; he said that was fine. Team = PM, two scientists, engineers; projects cross domains. [`Siemens/2026-10-23_huzefa-debrief.md`](Siemens/2026-10-23_huzefa-debrief.md). |
+| 2026-10-25 | Virtual loop confirmed | Chandler: 3 × 45–60 min, depth / breadth / system design, 2–3 leadership items each. Omri offered 29–30 Oct and 3–5 Nov, 8–11 AM Seattle, and asked about coding. [`Siemens/2026-10-25_virtual-loop-prep.md`](Siemens/2026-10-25_virtual-loop-prep.md). |
 
 ---
 

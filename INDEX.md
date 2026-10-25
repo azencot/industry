@@ -60,7 +60,7 @@ Personal workspace for industry job prep: Amazon FinTech interviews, general for
 
 - **Purpose:** Principal / senior applied scientist roles centered on scientific ML for physical systems — surrogates, operator learning, simulation, industrial time series
 - **Not** forecasting-AS loops ([`Forecasting/`](Forecasting/)); **not** GenAI / LLM loops ([`GenAI/`](GenAI/))
-- **Active:** **Siemens** Principal Applied Scientist (Job ID 523023, Washington hybrid) — recruiter **Danielle Chandler**, referral **Danielle Robinson**. Technical screen **Fri 23 Oct 2026, 22:00–23:00 Thailand** with **Huzefa Rangwala**. Prep Tue 20–Thu 22: [`ScientificML/Siemens/2026-10-17_huzefa-screen.md`](ScientificML/Siemens/2026-10-17_huzefa-screen.md).
+- **Active:** **Siemens** Principal Applied Scientist (Job ID 523023, Washington hybrid) — recruiter **Danielle Chandler**, referral **Danielle Robinson**. Screen with **Huzefa Rangwala** done **23 Oct**. Danielle confirmed the virtual loop **25 Oct**: 3 × 45–60 min (ML depth, breadth, system design). Dates offered, not booked: **29–30 Oct** or **3–5 Nov**, 8–11 AM Seattle. Coding not confirmed. [`ScientificML/Siemens/2026-10-25_virtual-loop-prep.md`](ScientificML/Siemens/2026-10-25_virtual-loop-prep.md).
 - **Psistar** founders call — **Yochai Pagi** (CEO) and **Matan Pagi** (CTO), intro via **Raz Marshanski**. **Tue 20 Oct 2026, 00:00 Thailand** (Mon 19 Oct, 20:00 Israel). Prep: [`ScientificML/Psistar/2026-10-20_founders-call-prep.md`](ScientificML/Psistar/2026-10-20_founders-call-prep.md)
 - **Details:** [`ScientificML/INDEX.md`](ScientificML/INDEX.md)
 

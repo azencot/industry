@@ -1,5 +1,7 @@
 # Siemens technical screen — Huzefa Rangwala — Fri 23 Oct 2026
 
+**Done.** He will recommend proceeding. Notes: [`2026-10-23_huzefa-debrief.md`](2026-10-23_huzefa-debrief.md). Bagging redo: [`coding/O_bagging.py`](coding/O_bagging.py).
+
 **When:** Friday 23 October, **22:00–23:00 Thailand** (ICT). That is **08:00–09:00 Pacific**.
 **Length:** 1 hour.
 **Interviewer:** **Huzefa Rangwala**, Staff Scientist, Physical AI, Siemens. This books the technical screen. He is not confirmed as the hiring manager.

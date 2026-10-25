@@ -3,7 +3,7 @@
 **Type:** Recruiter screen, Microsoft Teams  
 **Recruiter:** Danielle Chandler  
 **Prior:** [`2026-10-14_recruiter-prep.md`](2026-10-14_recruiter-prep.md)  
-**Next:** Technical screen is booked. **Fri 23 Oct 2026, 22:00–23:00 Thailand** with **Huzefa Rangwala**. Plan: [`2026-10-17_huzefa-screen.md`](2026-10-17_huzefa-screen.md). The availability draft below is historical.
+**Next:** Virtual loop confirmed **25 Oct 2026**. Prep: [`2026-10-25_virtual-loop-prep.md`](2026-10-25_virtual-loop-prep.md). Screen debrief: [`2026-10-23_huzefa-debrief.md`](2026-10-23_huzefa-debrief.md). The availability draft below is historical.
 
 Cleared the soft gate. The hiring manager wants a technical screen. She talked about the **org**, not the specific seat. Hiring manager still unnamed. Org details were not written down.
 

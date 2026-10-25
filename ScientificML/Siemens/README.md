@@ -10,7 +10,7 @@
 | **Referral** | **Danielle Robinson** (works at Siemens; sent the resume; gave the loop shape below) |
 | **Location** | **Any Siemens location in Washington** · **hybrid** |
 | **Posted** | 2026-09-17 |
-| **Status** | **Technical screen booked.** Fri **23 Oct 2026, 22:00–23:00 Thailand** (08:00–09:00 Pacific) with **Huzefa Rangwala**. The hour is about half resume methodology, half one PyTorch question. Prep (Tue 20–Thu 22) is coding-heavy, ~70–75%, and is no longer an attention week: [`2026-10-20_coding-plan.md`](2026-10-20_coding-plan.md). If that passes: **virtual on-site, 3 × 1 hour** (behavioral, technical, functional). |
+| **Status** | **Advanced.** Danielle confirmed the virtual loop on **25 Oct 2026**. Three interviews, 45–60 min, ML depth / breadth / system design, plus 2–3 leadership or functional items each. Dates proposed, not booked: **29–30 Oct** or **3–5 Nov**, 8–11 AM Seattle. Coding not confirmed. Prep: [`2026-10-25_virtual-loop-prep.md`](2026-10-25_virtual-loop-prep.md). |
 | **Comp (public JD)** | Base **$167,178–$226,236** + target incentive **15%** of base. Do not open with this. |
 
 ## Active thread
@@ -34,18 +34,30 @@
 | **2026-10-21** | Story A mock, full transcript | ImagenTime. Kill tests and the attribution limit landed. Opening still has no number and still says "my students." [`mocks.md`](mocks.md). |
 | **2026-10-22** | Coding plan for Thu–Fri | No further attention drills. Thursday is Gaussian NLL, a covariate forecast, a GRU classifier, a script that does not learn, then an unseen mock. [`2026-10-20_coding-plan.md`](2026-10-20_coding-plan.md). |
 | **2026-10-22** | Story E mock | Bosch. Domain push landed. The method told was an EM loop; the bank's change is interpolation plus an observation mask. No number. [`mocks.md`](mocks.md). |
+| **2026-10-23** | **Technical screen — Huzefa** | He will recommend proceeding. Multimodal project, overfit/underfit/regularization, then bagging after the platform dropped SGD. Vote unfinished; he accepted the principle. Team = PM, two scientists, engineers. [`2026-10-23_huzefa-debrief.md`](2026-10-23_huzefa-debrief.md). |
+| **2026-10-25** | **Loop confirmed by Chandler** | Three × 45–60 min. Depth, breadth, system design. Each interviewer scores 2–3 leadership or functional items. Omri offered 29–30 Oct and 3–5 Nov, 8–11 AM Seattle, and asked whether coding is included. Prep: [`2026-10-25_virtual-loop-prep.md`](2026-10-25_virtual-loop-prep.md). |
 
-## Loop (Chandler, 2026-10-14 — the schedule)
+## Loop (Chandler, 2026-10-25 — current)
+
+Supersedes the 14 Oct names for the three hours. Full notes: [`2026-10-25_virtual-loop-prep.md`](2026-10-25_virtual-loop-prep.md).
+
+| Stage | Format | Focus |
+|-------|--------|--------|
+| Recruiter | **Done 14 Oct** | Org overview |
+| Technical screen | **Done 23 Oct** — Huzefa | Resume methodology, overfit/regularization, bagging (platform swapped off SGD). He recommended proceeding. |
+| Virtual loop | **Confirmed, not scheduled.** 3 × 45–60 min. Last 10 min are his questions. | She named **ML depth**, **ML breadth**, **ML system design**. Distribution unknown. Each interviewer also scores **2–3** leadership principles or functional competencies. Live coding **not confirmed**. |
+
+## Loop (Chandler, 2026-10-14 — historical)
 
 | Stage | Format | Focus |
 |-------|--------|--------|
 | Recruiter | **Done** | Org overview |
-| Phone / technical screen | Virtual, live coding, unit tests | Chandler: **STAR** + PyTorch. Robinson 2026-10-15: **PyTorch/Python** + **ML breadth**. Examples: **DataLoader**, **padding**, **attention matrix**. |
-| Virtual on-site | **3 × 1 hour** | **Behavioral** · **technical** · **functional** |
+| Phone / technical screen | Virtual, live coding, unit tests | Chandler: **STAR** + PyTorch. Robinson 2026-10-15: **PyTorch/Python** + **ML breadth**. |
+| Virtual on-site | **3 × 1 hour** | She then called the hours **behavioral**, **technical**, and **functional**. The 25 Oct note is the finer spec. |
 
 ## Loop (private — Danielle Robinson, 2026-10-14 — the theme)
 
-Do **not** quote this back. Use it for what the technical hours may cover. Chandler’s table above is the schedule.
+Do **not** quote this back. Use it for what the technical hours may cover. The 25 Oct table is the schedule. Her theme matches the areas Chandler named on 25 Oct.
 
 | Stage | What Robinson said |
 |-------|--------------------|
@@ -66,7 +78,7 @@ JD preferred center for this seat, per Robinson: **scientific ML for physical sy
 |--------|-------------|--------|
 | **Danielle Chandler** | Recruiter (external address) | Process owner. Teams. |
 | **Danielle Robinson** | Siemens employee; referrer | Worked with Huzefa at AWS on time series and AI4Science. Do not narrate her tips on the call. Two different Danielles. |
-| **Huzefa Rangwala** | Staff Scientist, Physical AI | Technical screen, Fri 23 Oct. Not confirmed as the hiring manager. Brief: [`2026-10-17_huzefa-screen.md`](2026-10-17_huzefa-screen.md). |
+| **Huzefa Rangwala** | Staff Scientist, Physical AI | Screen done 23 Oct. Will recommend proceeding. Not confirmed as the hiring manager. Debrief: [`2026-10-23_huzefa-debrief.md`](2026-10-23_huzefa-debrief.md). |
 
 Hiring manager still unnamed.
 

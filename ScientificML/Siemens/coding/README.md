@@ -73,6 +73,7 @@ Sun 18 and Mon 19 are off. Three mornings start Tuesday. Detail and the spoken h
 | L | A model that does not learn | [`L_wont_learn.py`](L_wont_learn.py) | **Thu 22.** Runnable. Fit should fall under 1 after the fix. Bugs are not marked. No solution file. |
 | M | Variable-length GRU classifier | [`M_gru_classifier.py`](M_gru_classifier.py) | **Thu 22.** Problem only. Last valid state. No solution file. |
 | N | Supervised contrastive | [`N_supervised_contrastive.py`](N_supervised_contrastive.py) | **Optional, after both mocks.** Problem only. No solution file. |
+| O | Bagging (screen redo) | [`O_bagging.py`](O_bagging.py) | **23 Oct screen.** Platform swapped SGD for this. Problem only. `n` indices via `randint(0, n - 1)`, list rows by index, majority vote, tie → smaller label. |
 
 Mask convention in every file: **True = valid token**, False = pad. Say it before you code. If they flip it, flip the `~`.
 

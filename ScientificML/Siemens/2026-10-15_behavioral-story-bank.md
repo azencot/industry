@@ -12,9 +12,9 @@ Do not over-index on academic status, publication prestige, or student supervisi
 
 Source stories, with the original numbers and bounds: [`2026-10-15_prior-loop-star-stories.md`](2026-10-15_prior-loop-star-stories.md).
 
-## Oct 23 screen
+## Virtual loop (from 25 Oct)
 
-Plan: [`2026-10-17_huzefa-screen.md`](2026-10-17_huzefa-screen.md). Prep is coding-heavy. Spoken work is methodology questions, not polished STAR speeches. Tuesday: stories **A** and **B** only. Friday anchors also include **C** (the pre-committed slice gate). Bosch only if he asks about a physical measurement. Leave D and F cold.
+Plan: [`2026-10-25_virtual-loop-prep.md`](2026-10-25_virtual-loop-prep.md). Every interviewer scores two or three leadership or functional items, so these stories are in all three hours. Repair **A, B, C, E**. Do not add a new story. **D** if they ask for a failure audit. **F** only if they ask how a capability was built, and lead with the artifact rather than mentoring. Bosch stays interpolation plus an observation mask, and it is a research baseline.
 
 ---
 
