@@ -1,147 +1,155 @@
-# Call sheet — 27 Oct 2026
+# Psistar — Technical Discussion
 
-Open this during the call. Background stays in the other notes.
+October 27, 2026 | 45 minutes
 
-| | |
-|---|---|
-| **When** | **Tue 27 Oct 2026, 00:15 Thailand** (Mon 26 Oct, 20:15 Israel). **45 min.** |
-| **Who** | **Yochai Pagi** (CEO), **Matan Pagi** (CTO). **Zohar Sorek** coauthored the bilinear paper. |
-| **Already agreed** | Principal Researcher, **40%–60%**. Agenda plus hands-on. Seattle was in your letter and was not restated. |
+Participants: Yochai Pagi (CEO), Matan Pagi (CTO)
 
-Say this if you want the hour to have a shape, then let them go where the substance is.
+Role discussed: Part-time Principal Researcher (40–60%), remote from Seattle.
 
-> I want to use the time on four things: the problem you are on now, the solution you have, where I would sit and who I would work with, and what the next six months would need to look like for this to be a fit.
+## Meeting objectives
 
-If Matan is in the middle of a real failure of the model, stay there. Cut the last block to five minutes rather than rushing the model.
-
-**0–10. Current / next problem.** Leave with which problem is the six-month job, in their words.
-
-**10–25. Current solution.** Leave with what the model actually is, and where it has broken.
-
-**25–35. Where you fit, and who you work with.** Leave with one direction, and the person you would work with on it.
-
-**35–45. Expectations and mutual fit.** Leave with the artifact at six months, and what you can have in month one.
+1. Understand Psistar’s current predictive modeling approach and its limitations.
+2. Identify where my research background could make the greatest contribution.
+3. Align on responsibilities, collaboration, and expectations for the first six months.
 
 ---
 
-## 1. Current / next problem — 10 min
+## 1. Current research and technical challenges
 
-Ask the level first. Then stay on that branch. Both lists will not fit in ten minutes.
+Start by understanding what they are working on now.
 
-**Ask:** Which level of one-to-many are you on now, and which is next?
+- What is the main research problem you’re currently trying to solve?
+- Is zero-shot prediction across plants the immediate objective, or a longer-term goal?
+- What approaches have you already tried, and where have they fallen short?
 
-Understanding the plant, then operating the plant, then supervising many plants.
+### Current predictive model
 
-**Their level, in their words:**
+Bilinear MamKO suggests the following architecture:
 
-### If it is one predictive model
+\[
+\text{History} \rightarrow \text{Mamba} \rightarrow \text{Adaptive Koopman operators} \rightarrow \text{Bilinear dynamics} \rightarrow \text{MPC}.
+\]
 
-The question under that level is which object is supposed to be universal.
+The model adapts its dynamics based on historical context. MPC optimizes controls using sequential convex programming.
 
-> Do you want one dynamical model that covers unseen plants, or one mechanism that identifies a plant-specific model for each new plant?
+Important distinction: Adaptation within one plant does not establish zero-shot generalization across plants.
 
-A universal model would transfer with no plant-specific retraining, from historical observations and, where you have them, structure taken from the engineering documents. A universal mechanism would be allowed to fit something local, and the thing that transfers is the procedure for that fit.
+Questions to clarify:
 
-Ask only what their answer leaves open.
+- Are you currently training one predictive model per plant?
+- How do you represent plants with different sensors, controls, and configurations?
+- What information does the model receive when deployed to a new plant?
+- What have you observed when transferring models between plants?
+- How does the vision model interact with the predictive model?
+- What does the upcoming irregular time-series work address?
 
-- What context is enough to identify the dynamics of a plant the model has not seen?
-- What does the model treat as a state?
-- What, exactly, is shared across plants?
-- What information exists for a new plant?
-- What does zero-shot mean here?
-- How heterogeneous are the plants?
-- How will success be measured?
+Technical details worth understanding:
 
-**Their answer:**
+- How are future Koopman operators generated during MPC?
+- What are the main prediction and control failure modes?
+- What limits the current approach: accuracy, generalization, data, or computational cost?
 
-### If it is the higher level
+### Zero-shot generalization
 
-Supervising many plants, past a forecast. Ask these. Do not mix them into the model branch.
+The central distinction:
 
-- What does one-to-many mean operationally?
-- What currently prevents it?
-- How do operators actually spend their time?
-- What happens when two incidents are live at once?
-- How different are the plants?
-- How would you demonstrate success?
+**Universal predictive model.** One shared model directly predicts dynamics across plants.
 
-The concrete version, if the answers stay abstract:
+**Universal identification mechanism.** One shared model infers plant-specific dynamics from observations and context.
 
-> Suppose the system is deployed at ten power plants and each plant still has a dedicated operator. What are the three most common reasons those operators cannot be removed?
+Both can avoid gradient-based retraining, but they imply different architectures and evaluation strategies.
 
-**Their answer:**
-
----
-
-## 2. Current solution — 15 min
-
-What the bilinear paper supports is this chain. A history net emits time-varying Koopman operators from the observed past. The bilinear term lets the drift depend on the current control. Model-predictive control then chooses the inputs, by one quadratic program in the linear case and by sequential convex programming once the term is bilinear. Five passes are the headline controller, about 0.9 s against 0.1 s. On the time-varying reactor, closed-loop cost is about 30% lower. The calm cart is a little worse.
-
-Operators that depend on context are how one plant adapts as it drifts. That is not the same result as one model shared across plants. The paper has no shared training and no held-out plant. The irregular-series resampler was named on 20 Oct and is unpublished. A link from the vision model into the predictor is not in the paper.
-
-The path that would make the context-dependent operators into zero-shot is one shared map, taking a plant’s history to that plant’s operators, with the shared weights left alone. Whether they want that, or a fresh model per plant, is the question.
-
-**Ask:**
-
-- How do you represent different plants?
-- Is the bilinear model trained separately for each plant, or is one model trained across several dynamical systems?
-- How do you handle plants with different numbers and types of sensors and controls?
-- On a new plant, what does the predictive model need before the predictions are accurate? Historical trajectories, a calibration, or a parameter update?
-- Does the plant-specific vision model give structure to the predictive model, or are the two independent?
-- Does the irregular-series work cover asynchronous readings from a fixed set of sensors, or can it also take a different sensor set on each plant?
-
-If the answer is still one plant, ask where the formulation has broken, and whether a solve emits the matrices from history once and then stops.
-
-**Their answer:**
-
-**What is still open:**
+Clarify what zero-shot means in their setting and how much target-plant data is available.
 
 ---
 
-## 3. Where you fit, and who you work with — 10 min
+## 2. Potential research contributions
 
-Say this, then the experiment. The other two directions wait unless they pull on them.
+My strongest overlap is in transferable representations and predictive modeling of dynamical systems, rather than MPC optimization itself.
 
-> The piece I can take is the step from adaptation inside one plant to a plant you have not trained on. One shared mechanism reads a plant’s history and emits that plant’s operators. The weights stay frozen. A separate model per plant is the thing this replaces.
+Three possible directions:
 
-**First, and the one to own.** Split what the history means. A plant code \(c_i\) is what stays fixed about plant \(i\). A state code \(r_t\) is the recent operating condition. The operators are a function of both, \((A_t, B_t) = G(c_i, r_t)\), with \(G\) shared. That is amortized identification: infer the plant, do not refit it. This is the structured-Koopman and disentangling work.
+### A. Context-based system identification
 
-**Second, if they ask about doubt.** A distribution over operators given a short history, \(p(A_i, B_i \mid \mathcal{H}_i)\), when the context is too thin to name one plant. That is the generative and probabilistic side. It becomes useful once a point estimate already transfers. It is a worse first paper.
+Separate persistent plant characteristics from changing operating conditions:
 
-**Third, if the vision model is actually connected.** The plant encoder also sees sensor identity, equipment, and topology, \(z = E(x, \mathcal{M})\), with \(\mathcal{M}\) from the documents. This is the multimodal piece. It is the ambitious one, and it depends on how many plants exist and how different they are. Few plants, or plants that are nearly the same, means the transfer needs a physical bias rather than more data.
+\[
+c_i = E_{\mathrm{plant}}(\mathcal{H}_i), \qquad r_t = E_{\mathrm{state}}(\mathcal{H}_{t-L:t}),
+\]
 
-**The experiment, if they want a concrete start.** Leave one plant out. Train ordinary MamKO across the others. Train the split encoder the same way. On the held-out plant, no gradient steps. Compare both to a model fit on that plant alone. Plot error against how much context the held-out plant is given. Closed-loop cost comes after the forecast number is real.
+\[
+(A_t, B_t) = G_\theta(c_i, r_t).
+\]
 
-**Ask:**
+The shared model identifies plant-specific dynamics from context without parameter updates.
 
-- How many plants do you have, and how different are they? That decides whether this experiment can be run.
-- Who would I work with week to week, and who decides the paper?
-- What stays outside this seat? Drawing ingestion, customer tag mapping, and the pilot backlog.
+Relevant expertise: Structured Koopman models, disentanglement, sequential learning.
 
-**Their answer:**
+### B. Probabilistic dynamics identification
 
-**People:**
+Infer a distribution over plausible plant dynamics:
+
+\[
+p_\theta(A_i, B_i \mid \mathcal{H}_i).
+\]
+
+Useful when observations do not uniquely determine the system.
+
+Relevant expertise: Generative modeling, probabilistic forecasting, uncertainty quantification.
+
+### C. Multimodal plant representations
+
+Combine telemetry with equipment descriptions, sensor metadata, and plant topology.
+
+Potentially relevant if engineering documentation can provide structural information that improves transfer.
+
+Relevant expertise: Multimodal representation learning, vision-language models, time series.
+
+### Possible first experiment
+
+If sufficient data from multiple plants are available:
+
+- Train a shared baseline across plants.
+- Evaluate on a held-out plant without parameter updates.
+- Compare with a plant-specific model.
+- Measure multistep prediction accuracy as a function of available context.
+- Eventually evaluate control-conditioned prediction and MPC performance.
+
+Do not commit to an architecture before understanding their existing experiments and available data.
 
 ---
 
-## 4. Expectations and mutual fit — 10 min
+## 3. Collaboration and expectations
 
-The fraction is settled. This block is the work, the access, and whether both sides want that work.
+### Research responsibilities
 
-A fit is one pre-registered experiment and a paper, with you in the runs, at two or three days a week. A poor fit is the seat becoming the on-call path for a pilot.
+- What research problem would you most want me to own?
+- Who would I collaborate with regularly?
+- How much freedom would I have to shape the research direction?
+- What would constitute a successful first six months?
 
-**Ask:**
+### Resources and publication
 
-- If one problem is solved in six months, which one changes the company?
-- What can I train on in month one? A simulator you can check out, or a historian that stays on site?
-- What do you need from me in the first month, and what should you have from me at six months?
+- What data, simulation environments, and compute would be available?
+- Can the research lead to publications?
+- Can I continue collaborating with my academic students and colleagues?
+- Are there restrictions on publishing results obtained using company data?
 
-**Their answer:**
+### Working arrangement
 
-**Agreed next step:**
+- Confirm expectations for 40–60% involvement.
+- Confirm remote work from Seattle.
+- Clarify meeting cadence and hands-on research expectations.
+- Understand the next steps and timeline.
 
 ---
 
-## If you say one technical sentence
+## What I want to establish by the end
 
-> The piece I can take is not a better solver. It is a shared mechanism that reads a plant’s history and emits that plant’s operators, with the weights frozen on a plant that was held out. The first number is prediction error against a model fit on that plant, as a function of how much context you give it.
+**Technical:** What is the most important unsolved research problem, and what has already been attempted?
+
+**Scientific:** Is there a meaningful research direction where my expertise can accelerate progress?
+
+**Practical:** Would I have the resources, collaborators, independence, and time to make that contribution?
+
+**Next step:** Agree on a concrete follow-up, potentially a small technical investigation using their existing model or data.
