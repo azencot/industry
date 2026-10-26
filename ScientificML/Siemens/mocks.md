@@ -1,6 +1,6 @@
 # Siemens mock log
 
-One file for every Siemens phone-screen mock (behavioral and coding). Append a section. Add a row to the index. Do not open a new file per mock.
+One file for every Siemens mock (behavioral, coding, system design, and ML depth). Append a section. Add a row to the index. Do not open a new file per mock.
 
 Story source: [`2026-10-15_behavioral-story-bank.md`](2026-10-15_behavioral-story-bank.md). Coding drills: [`coding/README.md`](coding/README.md).
 
@@ -13,6 +13,8 @@ Story source: [`2026-10-15_behavioral-story-bank.md`](2026-10-15_behavioral-stor
 | 2026-10-21 | Behavioral | Story B — dual tower | Controls landed. TSExam first called a win, then corrected to flat. Gain grouped prediction with decision-making. |
 | 2026-10-21 | Behavioral, full transcript | Story A — ImagenTime | Attribution held. Opening still has no number and still says "my students." Four-week plan stayed generic. |
 | 2026-10-22 | Behavioral, full transcript | Story E — Bosch | EM loop told in place of interpolation plus an observation mask. No number. Collaboration stayed general. Maintenance named as compute. |
+| 2026-10-26 | System design, ~15 min | 500 machines, five sensors, anomaly alerts | Supervised labeling on 20 failures. Synthetic prevalence used as the eval. No shadow or rollout. 6.5/10. |
+| 2026-10-26 | ML depth, ~15 min | VAE, diffusion, flow matching | Objectives and TSTR landed. Marginal field called straight. Optimal velocity called a moving average. 8/10. |
 
 ---
 
@@ -226,3 +228,109 @@ These lines disagree with [`2026-10-15_behavioral-story-bank.md`](2026-10-15_beh
 - The bank's technical change is interpolation onto a regular grid together with an observation mask, so filled values are not treated as measurements. This telling's change is an EM-style loop of completion and sampling, and interpolation is described as typically wrong. Those are different methods. Friday uses the mask version unless he confirms the loop was the implementation.
 - The bank already refuses a product ship. That part of this telling matches. "Research backbone" is the bank's "strong internal research baseline," said more strongly.
 - Neither version has a Bosch number. Do not invent one. If a real figure exists, it belongs in the bank only after he names the source.
+
+## 2026-10-26 — System design, industrial sensor anomaly detection
+
+**Kind:** ML system design mock he ran elsewhere and asked to keep. About 15 minutes. Not a behavioral story, and not the Bosch project. Scenario: 500 machines of one type, five sensors at 1 Hz (temperature, pressure, vibration, current, voltage), six months of history, about 20 documented failures, thresholds that alarm too often, at most five maintenance alerts a day, near-real-time inference, operating conditions that vary. Design the anomaly system.
+
+**Score he was given:** 6.5/10. Clarification 9. ML fundamentals 8. Modeling judgment 7.5. Experimental methodology 6. Operational constraints 6. Deployment and monitoring 4. Communication 7.5. Practice scores, not a hiring prediction.
+
+### What he said
+
+He clarified what counts as abnormal, whether that is an extreme value, a dead sensor, or a bad relationship across sensors, how many types exist, whether the sensors can show it, the cost of a miss against a false alarm, how hard labeling is, and whether a rule can define it.
+
+He then started supervised. Engineers would label suspicious segments, about half their time labeling and half checking automated labels. Candidates would come from the existing thresholds and from high-variance stretches. A decision tree or a regression model would be the baseline, scored with a train/test split or cross-validation, and its predictions on unlabeled data would propose more candidates. A neural model would come after that. Alerts would respect five a day, and severity would outrank mild anomalies inside that budget.
+
+Pushed off the 20 failures, he switched to a masked autoencoder on the unlabeled streams, with reconstruction error as the score, expert review of high scores, and a separate model per anomaly duration.
+
+For evaluation he proposed synthetic failures, sets at 1% and 0.1% prevalence, precision, recall, and F1 against the thresholds, an alert threshold from the average score of the top-k events that day, and cross-validation that holds out five documented failures per fold.
+
+### What landed
+
+The opening questions distinguished kinds of anomaly, observability, labeling cost, and the business cost of a mistake. He started from a simple baseline and a person in the loop, and he named the alert cap and severity. When the positive count was challenged, he dropped the supervised plan and used the unlabeled history. He also noticed that one duration will not fit every failure.
+
+### What broke
+
+The first design needed labels the data does not have. About 7.8 billion multivariate observations and 20 documented failures. Thresholds can miss whole anomaly types, so mining candidates from them biases the labeled set. He did not say how the rest of the unlabeled stream is used until he was asked.
+
+Reconstruction error is not the anomaly. A strong autoencoder can reconstruct a fault, and a rare normal operating mode can score as a fault. Several masking scales inside one model were preferred to a model per duration. The comparison he was given: the existing thresholds, a statistical or feature detector, then the masked model, and the extra complexity has to move an operational number. Condition the score on the operating mode.
+
+Synthetic failures and a chosen prevalence do not measure alert precision in the plant. Changing how often failures appear changes precision. Twenty documented failures are not the prevalence of anomalous windows. Synthetic cases can stress a known pattern. They do not replace the real failures.
+
+Precision, recall, and F1 are not the decision. The metrics he was given: event-level recall on documented failures, false alerts per day, detection lead time, precision inside the alert budget, and the same cuts by operating condition. The number to lead with is event-level recall at a fixed alert budget, plus lead time.
+
+Holding out five failures does not stop leakage. Windows are correlated in time, failures on one machine are related, operating conditions are shared, and a random fold can train on times after the period being scored. He was told to use a chronological split, a gap in time, a held-out machine when that is possible, and to say that 20 events cannot support a tight confidence interval.
+
+The alert rule is not the average of the top-k scores. Calibrate on a historical validation window, group consecutive hits into an event, suppress repeats, rank by severity, require a minimum score, and apply the budget. Five a day is not a quota to fill. Ask whether a sixth urgent alert may go out, or whether five is a hard cap.
+
+He did not describe a rollout. The sequence he was given: replay the recorded streams, run in shadow next to the thresholds with no operational alert, have engineers review disagreements, pilot on a subset of machines, then widen while watching alert quality, latency, reliability, and maintenance outcomes. Keep a rollback.
+
+### Lesson from that session
+
+The gap is the frame, not the model menu. He went data, model, experiment, better model. The order he was given is requirements, data, baseline, model, evaluation, deployment, and the system comes before the architecture.
+
+Opening he was handed, and it is not something he said: three phases. First, the operational requirement and a baseline on the historical data. Second, a detector trained mostly on unlabeled streams, with experts reviewing selected events. Third, a historical replay and a shadow run before any alert is enabled. The objective the whole way is event-level detection inside the five-alert budget.
+
+### Next mock
+
+The session named a 15-minute follow-up: real-time probabilistic forecasting for 1,000 industrial sensors, with uncertainty, heterogeneous behavior, a latency bound, continuous monitoring, and drift. Ask one question at a time. Do not hand the design over while he is answering. Feedback after, not during. Track whether these move:
+
+- Unlabeled data and selection bias before a supervised model.
+- A score that is not raw reconstruction error, and a condition or context on it.
+- Real failures for the decision metric. Synthetic data only as a stress test.
+- Event-level recall under an alert budget, plus lead time.
+- A chronological split and, if possible, a held-out machine.
+- An alert policy that aggregates, deduplicates, ranks, and can emit fewer than five.
+- Shadow, then a limited pilot, then rollback. Say this before a second model.
+
+## 2026-10-26 — ML depth, VAE, diffusion, flow matching
+
+**Kind:** ML depth mock he ran elsewhere and asked to keep. About 15 minutes. Four questions on generative models for multivariate industrial sensor series. Practice scores, not a hiring prediction.
+
+**Score he was given:** 8/10. Fundamentals 8.5. Mathematical precision 7. Diffusion versus flow matching 7.5. Experimental methodology 9. Research judgment 9. Compute tradeoffs 8. Communication 8. Stronger than the same day's system-design mock (6.5). The gap is precision, not judgment.
+
+### Question 1 — the three families (8.5)
+
+He said a VAE trains on the posterior and maps a latent code to a simple prior. Diffusion is an SDE: the forward process adds noise and is not learned, the reverse process denoises. Flow matching fits a vector field on each time segment and integrates from noise to data. Objectives: ELBO, noise-matching \(L_\text{simple}\), velocity matching. A VAE samples the prior and decodes in one pass. Diffusion and flow matching integrate. He would take diffusion or flow matching when high-frequency detail matters and latency can wait, and a VAE when a fast, somewhat blurry sample is enough.
+
+What landed: the three objectives, one-pass versus iterative sampling, and quality against latency.
+
+What he was corrected on: blur is a likelihood and a decoder, not a property of every VAE. Flow matching learns one time-dependent velocity, not a separate field per segment. Diffusion and flow matching are both continuous-time models, and the cost depends on the parameterization and the solver. Training cost cannot be ranked without an architecture, a dataset, and a procedure.
+
+### Question 2 — why fewer steps (7.5)
+
+He said flow matching optimizes a straight path, the linear interpolation between noise and data, so the integral is easier than an unconstrained diffusion path. He did not remember the curvature-to-error link and said he would not invent it. He named EDM as a diffusion integrator that shrinks the gap.
+
+What landed: geometry matters, and he refused a formula he did not have. EDM is the right example.
+
+The correction: conditional flow matching can use the straight path \(x_t = (1-t)x_0 + t x_1\). The learned marginal field is an average over endpoint pairs, so those trajectories need not be straight. Fewer steps are not guaranteed. They depend on the coupling, the path, the learned field, and the solver. A probability-flow ODE plus a good solver can sample diffusion cheaply too.
+
+Euler on \(\dot x = v(x,t)\) is \(x_{n+1} = x_n + h\, v(x_n, t_n)\). Local truncation error is \(O(h^2)\). Global error is \(O(h)\). The acceleration is \(\partial v/\partial t + J_v(x,t)\, v(x,t)\). A smaller acceleration can allow a larger step at the same tolerance. Curvature alone does not set the difficulty. Stiffness, the time grid, and the solver order do too.
+
+### Question 3 — the field that is learned (7)
+
+Conditional target velocity is \(u_t(x_t \mid x_0, x_1) = x_1 - x_0\). The network sees only \(x_t\) and \(t\). He said the objective averages many pairs, so the field at one \(x_t\) points toward several \(x_1\), all toward the data, and that an exact repeat of \(x_t\) has probability zero, so training sees a neighborhood.
+
+What landed: the field is shared, and it averages endpoints rather than memorizing one path.
+
+The identity he did not say: the MSE optimum is \(v^*(x,t) = \mathbb{E}[x_1 - x_0 \mid x_t = x]\), a conditional expectation. Individual conditional velocities can oppose each other. That expectation is the marginal velocity. It satisfies the continuity equation \(\partial p_t/\partial t + \nabla\cdot(p_t v^*) = 0\), so integrating \(\dot x = v^*\) carries the prior along the prescribed path to the data, given capacity, optimization, and regularity.
+
+### Question 4 — which model to ship (9)
+
+The table he was given: VAE 0.18 / 1 step / 5 ms, diffusion 0.10 / 50 steps / 250 ms, flow matching 0.11 / 10 steps / 55 ms. Synthetic series for a downstream trainer. He said the aggregate quality number can miss the part of the distribution the downstream task needs. He would train on synthetic and test on real, and also look at coverage and variability, for all three models. He would rather buy quality than latency, because latency inside one family is usually easier to move.
+
+What landed: he refused the table as the decision, named train-on-synthetic test-on-real, and asked for a controlled comparison. This was the strongest answer.
+
+Still add: train-on-real test-on-real, and train on real plus synthetic, on the same held-out real set. Cut rare failures, rare operating regimes, cross-sensor dependence, and temporal structure, not only the average. Ask how many sequences, how often they are regenerated, and what the budgets are. 55 ms versus 250 ms is a different decision at millions of sequences than at a handful. Repeat seeds. A 0.10 versus 0.11 gap may be noise. Prefer flow matching when the downstream result is indistinguishable and the cost is lower. Prefer diffusion only when the gain on the important failures pays for the extra compute.
+
+### Refresh before the loop
+
+About an hour, not a survey of generative modeling.
+
+- Conditional flow matching versus the marginal field. The conditional expectation above. The continuity equation. A straight conditional path is not a straight marginal trajectory.
+- Score or noise prediction, the reverse SDE, the probability-flow ODE, DDPM versus DDIM, and the Euler errors above.
+- Train-on-real, train-on-synthetic, and real-plus-synthetic. Rare slices. Uncertainty. Cost at the customer's volume.
+
+### Next mock
+
+The session named a 15-minute ML breadth pass: classical versus deep models, generalization and regularization, optimization, imbalance, calibration, shift, representation learning, and selection under a constraint. One question at a time. Feedback after. Track whether the conditional-expectation identity and the marginal-versus-conditional distinction are said without a prompt.

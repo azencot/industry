@@ -96,7 +96,7 @@ For a design answer, in order: the decision the system supports, the data failur
 
 ## Depth and breadth
 
-Depth is defense of his own choices, in the nine questions from the brief: hypothesis, why that architecture, alternatives, strongest baseline, what the ablation shows, what is unproven, failure modes, what he would change, how it would run.
+Depth is defense of his own choices, in the nine questions from the brief: hypothesis, why that architecture, alternatives, strongest baseline, what the ablation shows, what is unproven, failure modes, what he would change, how it would run. Mock 1 is logged (26 Oct, VAE / diffusion / flow matching, 8/10): [`mocks.md`](mocks.md). The miss is the marginal field. Conditional paths can be straight. The learned velocity is \(\mathbb{E}[x_1-x_0\mid x_t=x]\), and those trajectories need not be straight. The next mock that session named is breadth.
 
 Breadth stays applied. He already answered overfit, underfit, and regularization with Huzefa. Have the one-minute version ready: high train fit and a weak holdout is overfit; both weak is underfit; weight decay, early stopping, and dropout each shrink a different gap. Other topics worth one tradeoff each: calibration, distribution shift, leakage, and when a point forecast is the wrong output.
 
@@ -130,7 +130,7 @@ Add one of these only if that interviewer is a teammate or a stakeholder and the
 ## Until the date is booked
 
 1. Wait for Danielle on coding and which day.
-2. One system-design mock on Bosch sensors, then one on ImagenTime. Requirements first, then a constraint he did not plan for.
+2. System design. Mock 1 is logged (26 Oct, 500 machines, anomaly alerts, 6.5/10): [`mocks.md`](mocks.md). The miss is the frame. Requirements, a baseline, the operational metric, and a shadow rollout come before a second model. The follow-up that session named is a 15-minute probabilistic forecast for 1,000 sensors. Still ground one pass in Bosch and one in ImagenTime.
 3. Speak A, C, and E once each with a metric and the method the bank actually records.
 4. Say the Why Siemens paragraph once.
 5. Leave `coding/` closed unless she confirms a coding interview.

@@ -62,6 +62,8 @@ After each call: drop `YYYY-MM-DD_*.md` in that company’s folder and add a row
 | 2026-10-26 | Psistar control reading | Skimmed Korda & Mezić. Read MamKO and bilinear MamKO. Watched Brunton’s MPC lecture, plus two industrial-autonomy videos (XMPro, IT/OT Insider). SCP lecture and the two robustness papers not done. [`Psistar/2026-10-26_koopman-control-prep.md`](Psistar/2026-10-26_koopman-control-prep.md). |
 | 2026-10-26 | Where the control is chosen | The net emits a horizon of Koopman matrices from observed history before the QP (MamKO eq. 9g, Section 4). MPC chooses \(u\). Bilinear SCP re-linearizes that step in the candidate \(u\); it does not re-encode imagined futures in the paper’s account. [`Psistar/2026-10-26_where-control-is-optimized.md`](Psistar/2026-10-26_where-control-is-optimized.md). |
 | 2026-10-26 | Psistar call sheet | Live page for the 45 minutes: problem, current solution, where Omri fits and with whom, expectations. [`Psistar/2026-10-27_call-sheet.md`](Psistar/2026-10-27_call-sheet.md). |
+| 2026-10-26 | Siemens system-design mock | 500 machines, five sensors, anomaly alerts. Clarification 9. Deployment 4. Overall 6.5. Supervised plan on 20 failures, then a masked autoencoder. Eval used synthetic prevalence and F1. No shadow or rollout. [`Siemens/mocks.md`](Siemens/mocks.md). |
+| 2026-10-26 | Siemens ML depth mock | VAE, diffusion, flow matching. 8/10. Objectives and train-on-synthetic test-on-real landed. Marginal trajectories called straight. Optimal velocity called a moving average. [`Siemens/mocks.md`](Siemens/mocks.md). |
 
 ---
 

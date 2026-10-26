@@ -36,6 +36,8 @@
 | **2026-10-22** | Story E mock | Bosch. Domain push landed. The method told was an EM loop; the bank's change is interpolation plus an observation mask. No number. [`mocks.md`](mocks.md). |
 | **2026-10-23** | **Technical screen — Huzefa** | He will recommend proceeding. Multimodal project, overfit/underfit/regularization, then bagging after the platform dropped SGD. Vote unfinished; he accepted the principle. Team = PM, two scientists, engineers. [`2026-10-23_huzefa-debrief.md`](2026-10-23_huzefa-debrief.md). |
 | **2026-10-25** | **Loop confirmed by Chandler** | Three × 45–60 min. Depth, breadth, system design. Each interviewer scores 2–3 leadership or functional items. Omri offered 29–30 Oct and 3–5 Nov, 8–11 AM Seattle, and asked whether coding is included. Prep: [`2026-10-25_virtual-loop-prep.md`](2026-10-25_virtual-loop-prep.md). |
+| **2026-10-26** | System-design mock | Industrial sensor anomaly detection, about 15 min, 6.5/10. Clarification was strong. Eval and deployment were the gap. [`mocks.md`](mocks.md). |
+| **2026-10-26** | ML depth mock | VAE, diffusion, and flow matching, about 15 min, 8/10. Downstream eval was the strong part. The marginal vector field and the conditional expectation were the gap. [`mocks.md`](mocks.md). |
 
 ## Loop (Chandler, 2026-10-25 — current)
 
