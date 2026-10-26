@@ -1,6 +1,6 @@
 # Koopman control prep — logged 26 Oct 2026
 
-What the prep chat assigned, and what was actually covered before the Tue 27 Oct 00:15 Thailand deep dive. Meeting briefing stays in [`2026-10-27_technical-deep-dive.md`](2026-10-27_technical-deep-dive.md).
+What the prep chat assigned, and what was actually covered before the Tue 27 Oct 00:15 Thailand deep dive. Meeting briefing stays in [`2026-10-27_technical-deep-dive.md`](2026-10-27_technical-deep-dive.md). Where the control is chosen: [`2026-10-26_where-control-is-optimized.md`](2026-10-26_where-control-is-optimized.md).
 
 The chat’s goal was the control stack, not another pass on Koopman theory: linear versus time-varying versus bilinear MPC, and SCP versus a fully nonlinear action-conditioned model.
 

@@ -60,6 +60,7 @@ After each call: drop `YYYY-MM-DD_*.md` in that company’s folder and add a row
 | 2026-10-25 | Psistar role frame | Omri proposed part-time Principal Research Scientist, 2–3 days/week, remote Seattle. They agreed Principal Researcher at 40%–60%, technical leadership and hands-on. Seattle not restated. |
 | 2026-10-25 | Psistar deep-dive briefing | 45-min technical meeting. Own transferable Koopman (shared lift, local \(G\), held-out regime). Resampler and flowsheet mask attach. Probabilistic control waits. [`Psistar/2026-10-27_technical-deep-dive.md`](Psistar/2026-10-27_technical-deep-dive.md). |
 | 2026-10-26 | Psistar control reading | Skimmed Korda & Mezić. Read MamKO and bilinear MamKO. Watched Brunton’s MPC lecture, plus two industrial-autonomy videos (XMPro, IT/OT Insider). SCP lecture and the two robustness papers not done. [`Psistar/2026-10-26_koopman-control-prep.md`](Psistar/2026-10-26_koopman-control-prep.md). |
+| 2026-10-26 | Where the control is chosen | The net emits a horizon of Koopman matrices from observed history before the QP (MamKO eq. 9g, Section 4). MPC chooses \(u\). Bilinear SCP re-linearizes that step in the candidate \(u\); it does not re-encode imagined futures in the paper’s account. [`Psistar/2026-10-26_where-control-is-optimized.md`](Psistar/2026-10-26_where-control-is-optimized.md). |
 
 ---
 
