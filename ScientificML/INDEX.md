@@ -17,7 +17,7 @@ Company-loop prep: take an ambiguous industrial or physical problem through hypo
 | File | What |
 |------|------|
 | [`Siemens/`](Siemens/) | Siemens Principal Applied Scientist — Data & AI, Washington hybrid |
-| [`Psistar/`](Psistar/) | Psistar founders call — Yochai Pagi, Matan Pagi, Tue 20 Oct 2026 00:00 Thailand |
+| [`Psistar/`](Psistar/) | Psistar founders — follow-up Tue 27 Oct 2026, 00:15 Thailand. [One-to-many](Psistar/2026-10-27_one-to-many.md) · [call card](Psistar/2026-10-27_contribution-and-call.md) |
 
 Shared profile: [`.cursor/skills/debrief/omri_azencot_experience.md`](../.cursor/skills/debrief/omri_azencot_experience.md).
 
@@ -28,7 +28,7 @@ Shared profile: [`.cursor/skills/debrief/omri_azencot_experience.md`](../.cursor
 | Company | Contact | Next | Prep |
 |---------|---------|------|------|
 | **Siemens — Principal Applied Scientist** | **Danielle Chandler** (recruiter) · referral **Danielle Robinson** · screen **Huzefa Rangwala** | **Loop confirmed 25 Oct.** Dates offered, not booked: 29–30 Oct or 3–5 Nov, 8–11 AM Seattle. Coding not confirmed. | [`Siemens/`](Siemens/) — [loop prep](Siemens/2026-10-25_virtual-loop-prep.md) · [screen](Siemens/2026-10-23_huzefa-debrief.md) |
-| **Psistar — founders** | **Yochai Pagi** (CEO) · **Matan Pagi** (CTO). Intro via **Raz Marshanski** | **Tue 20 Oct 2026, 00:00 Thailand** (Mon 19 Oct, 20:00 Israel). | [`Psistar/`](Psistar/) — [prep](Psistar/2026-10-20_founders-call-prep.md) |
+| **Psistar — founders** | **Yochai Pagi** (CEO) · **Matan Pagi** (CTO). Raz Marshanski was a candidate; Omri recommended him on the 20 Oct call. | **Tue 27 Oct 2026, 00:15 Thailand** (Mon 26 Oct, 20:15 Israel). 45-min technical deep dive. Role frame: Principal Researcher, 40%–60%. | [`Psistar/`](Psistar/) — [briefing](Psistar/2026-10-27_technical-deep-dive.md) · [control log](Psistar/2026-10-26_koopman-control-prep.md) · [20 Oct](Psistar/2026-10-20_founders-call.md) |
 
 After each call: drop `YYYY-MM-DD_*.md` in that company’s folder and add a row to the session log below.
 
@@ -55,6 +55,11 @@ After each call: drop `YYYY-MM-DD_*.md` in that company’s folder and add a row
 | 2026-10-22 | Story E mock | Bosch. He took the sensor constraint and refused a product claim. The method told was an EM loop; the bank's change is interpolation plus an observation mask. No number. [`Siemens/mocks.md`](Siemens/mocks.md). |
 | 2026-10-23 | Huzefa technical screen | He will recommend proceeding. Multimodal project, then overfit/underfit/regularization, then bagging (platform swapped off SGD). Vote not finished; he said that was fine. Team = PM, two scientists, engineers; projects cross domains. [`Siemens/2026-10-23_huzefa-debrief.md`](Siemens/2026-10-23_huzefa-debrief.md). |
 | 2026-10-25 | Virtual loop confirmed | Chandler: 3 × 45–60 min, depth / breadth / system design, 2–3 leadership items each. Omri offered 29–30 Oct and 3–5 Nov, 8–11 AM Seattle, and asked about coding. [`Siemens/2026-10-25_virtual-loop-prep.md`](Siemens/2026-10-25_virtual-loop-prep.md). |
+| 2026-10-25 | Psistar follow-up prep | One-to-many as two problems (Rosetta ingest, PsiFM lift). Koopman paper is the frozen-backbone cut on one simulator. World models and JEPA used as the loss and the planning picture. [`Psistar/2026-10-27_one-to-many.md`](Psistar/2026-10-27_one-to-many.md) · [`Psistar/2026-10-27_contribution-and-call.md`](Psistar/2026-10-27_contribution-and-call.md). Call assumed **Tue 27 Oct, 00:15 Thailand**. |
+| 2026-10-25 | Psistar 20 Oct call logged | From Omri’s meeting summary. One-to-many, TSFM plus vision twin, predictive operations, research-lab hiring. Matan to formalize a zero-shot irregular resampler and a second paper. [`Psistar/2026-10-20_founders-call.md`](Psistar/2026-10-20_founders-call.md). |
+| 2026-10-25 | Psistar role frame | Omri proposed part-time Principal Research Scientist, 2–3 days/week, remote Seattle. They agreed Principal Researcher at 40%–60%, technical leadership and hands-on. Seattle not restated. |
+| 2026-10-25 | Psistar deep-dive briefing | 45-min technical meeting. Own transferable Koopman (shared lift, local \(G\), held-out regime). Resampler and flowsheet mask attach. Probabilistic control waits. [`Psistar/2026-10-27_technical-deep-dive.md`](Psistar/2026-10-27_technical-deep-dive.md). |
+| 2026-10-26 | Psistar control reading | Skimmed Korda & Mezić. Read MamKO and bilinear MamKO. Watched Brunton’s MPC lecture, plus two industrial-autonomy videos (XMPro, IT/OT Insider). SCP lecture and the two robustness papers not done. [`Psistar/2026-10-26_koopman-control-prep.md`](Psistar/2026-10-26_koopman-control-prep.md). |
 
 ---
 
