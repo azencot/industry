@@ -4,7 +4,7 @@
 **Interviewer:** Huzefa Rangwala, Staff Scientist, Physical AI  
 **When:** Fri 23 Oct 2026, 22:00–23:00 Thailand (08:00–09:00 Pacific)  
 **Prior:** [`2026-10-17_huzefa-screen.md`](2026-10-17_huzefa-screen.md)  
-**Outcome:** He will recommend that they proceed. Danielle confirmed the loop on **25 Oct**. Prep: [`2026-10-25_virtual-loop-prep.md`](2026-10-25_virtual-loop-prep.md). Three interviews, 45–60 min. She named ML depth, breadth, and system design. Dates are not booked.
+**Outcome:** He will recommend that they proceed. Danielle confirmed the loop on **25 Oct** and booked it on **28 Oct**: Tue 3 Nov, 1:00–4:00 PM PT. Prep: [`2026-10-25_virtual-loop-prep.md`](2026-10-25_virtual-loop-prep.md). Three interviews, 45–60 min. She named ML depth, breadth, and system design.
 
 The hour was enjoyable. He was helpful. He opened with his own background, then Omri’s introduction, then a few minutes on the multimodal project (architecture, design, the bet, Omri’s role, results). After that he said he had to ask ML questions, then the platform coding task, then one question from Omri.
 

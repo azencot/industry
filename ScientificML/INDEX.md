@@ -27,7 +27,7 @@ Shared profile: [`.cursor/skills/debrief/omri_azencot_experience.md`](../.cursor
 
 | Company | Contact | Next | Prep |
 |---------|---------|------|------|
-| **Siemens — Principal Applied Scientist** | **Danielle Chandler** (recruiter) · referral **Danielle Robinson** · screen **Huzefa Rangwala** | **Loop confirmed 25 Oct.** Dates offered, not booked: 29–30 Oct or 3–5 Nov, 8–11 AM Seattle. Coding not confirmed. | [`Siemens/`](Siemens/) — [loop prep](Siemens/2026-10-25_virtual-loop-prep.md) · [screen](Siemens/2026-10-23_huzefa-debrief.md) |
+| **Siemens — Principal Applied Scientist** | **Danielle Chandler** (recruiter) · referral **Danielle Robinson** · screen **Huzefa Rangwala** | **Booked Tue 3 Nov, 1:00–4:00 PM PT** (Wed 4 Nov, 4:00–7:00 AM Thailand). Xiang, Govindan, Nallapati. Coding not confirmed. | [`Siemens/`](Siemens/) — [loop prep](Siemens/2026-10-25_virtual-loop-prep.md) · [screen](Siemens/2026-10-23_huzefa-debrief.md) |
 | **Psistar — founders** | **Yochai Pagi** (CEO) · **Matan Pagi** (CTO). Raz Marshanski was a candidate; Omri recommended him on the 20 Oct call. | **Tue 27 Oct 2026, 00:15 Thailand** (Mon 26 Oct, 20:15 Israel). 45-min technical deep dive. Role frame: Principal Researcher, 40%–60%. | [`Psistar/`](Psistar/) — [briefing](Psistar/2026-10-27_technical-deep-dive.md) · [control log](Psistar/2026-10-26_koopman-control-prep.md) · [20 Oct](Psistar/2026-10-20_founders-call.md) |
 
 After each call: drop `YYYY-MM-DD_*.md` in that company’s folder and add a row to the session log below.
@@ -64,6 +64,9 @@ After each call: drop `YYYY-MM-DD_*.md` in that company’s folder and add a row
 | 2026-10-26 | Psistar call sheet | Live page for the 45 minutes: problem, current solution, where Omri fits and with whom, expectations. [`Psistar/2026-10-27_call-sheet.md`](Psistar/2026-10-27_call-sheet.md). |
 | 2026-10-26 | Siemens system-design mock | 500 machines, five sensors, anomaly alerts. Clarification 9. Deployment 4. Overall 6.5. Supervised plan on 20 failures, then a masked autoencoder. Eval used synthetic prevalence and F1. No shadow or rollout. [`Siemens/mocks.md`](Siemens/mocks.md). |
 | 2026-10-26 | Siemens ML depth mock | VAE, diffusion, flow matching. 8/10. Objectives and train-on-synthetic test-on-real landed. Marginal trajectories called straight. Optimal velocity called a moving average. [`Siemens/mocks.md`](Siemens/mocks.md). |
+| 2026-10-28 | Siemens loop booked | Omri confirmed Tue 3 Nov, 1:00–4:00 PM PT: Bing Xiang, Vivek Govindan, Ramesh Nallapati. Thailand is Wed 4 Nov, 4:00–7:00 AM. Coding still unstated. [`Siemens/2026-10-25_virtual-loop-prep.md`](Siemens/2026-10-25_virtual-loop-prep.md). |
+| 2026-10-28 | Siemens loop prep plan | Days through 2 Nov. System design is the gap. Breadth resumes at calibration. Depth keeps the conditional-expectation identity. No topic is assigned to an interviewer. [`Siemens/2026-10-28_loop-prep-plan.md`](Siemens/2026-10-28_loop-prep-plan.md). |
+| 2026-10-28 | Siemens breadth recall | Not a mock. Cost threshold and prevalence shift landed. Misses: FP = 0.05 × 9,900, the name ECE, and using calibration to pick a ranker. [`Siemens/2026-10-28_breadth-recall.md`](Siemens/2026-10-28_breadth-recall.md). |
 
 ---
 

@@ -10,7 +10,7 @@ Screen notes: [`2026-10-23_huzefa-debrief.md`](2026-10-23_huzefa-debrief.md). St
 
 ## Status
 
-Danielle confirmed the team wants the next stage. Dates are **proposed**, not booked. Live coding is **not confirmed**. Omri asked her whether the loop includes it and is waiting.
+**Booked.** Omri confirmed Danielle’s times on 28 Oct. Live coding is still **not confirmed**. She has not said which hour is depth, breadth, or system design. Day plan and interviewer notes: [`2026-10-28_loop-prep-plan.md`](2026-10-28_loop-prep-plan.md).
 
 Do not prep another coding round unless she says so. Do not treat the four system-design scenarios below as Siemens questions.
 
@@ -47,6 +47,18 @@ He offered:
 | Tue 3 Nov, Wed 4 Nov, Thu 5 Nov | 8:00–11:00 AM PST | 23:00–02:00 |
 
 US clocks change on Sun 1 Nov, so the November nights start an hour later in Thailand. He said he can flex if another time is easier for the team. He asked whether the loop includes live coding. That answer is still open.
+
+Danielle came back with Tuesday afternoon, not the morning window. Omri confirmed. Pacific is PST that week.
+
+| Order | Pacific, Tue 3 Nov | Thailand, Wed 4 Nov | Interviewer |
+|-------|--------------------|---------------------|-------------|
+| 1 | 1:00–2:00 PM | 4:00–5:00 AM | Bing Xiang |
+| 2 | 2:00–3:00 PM | 5:00–6:00 AM | Vivek Govindan |
+| 3 | 3:00–4:00 PM | 6:00–7:00 AM | Ramesh Nallapati |
+
+Three hours back to back. The Thailand block is early morning. He said it will be difficult and that he will do it.
+
+Public pages, not from Danielle, and the scrapers disagree with each other. Use the names. Do not open by reciting a title. Chandler posted in May 2026 that Bing Xiang joined Data & AI. A public profile lists Vivek Govindan as a senior principal ML engineer in Siemens Physical AI, Seattle, on design and simulation. Ramesh Nallapati posted in May 2026 that he joined Siemens as VP of Applied Science for a Physical AI science organization. Amazon Science still lists him at AWS, so treat the title as his own post, not a confirmed org chart.
 
 ---
 
@@ -127,9 +139,9 @@ Add one of these only if that interviewer is a teammate or a stakeholder and the
 
 ---
 
-## Until the date is booked
+## Until the loop
 
-1. Wait for Danielle on coding and which day.
+1. Follow [`2026-10-28_loop-prep-plan.md`](2026-10-28_loop-prep-plan.md). Coding stays one refresh hour unless she says otherwise. Stories stay A, B, C, E.
 2. System design. Mock 1 is logged (26 Oct, 500 machines, anomaly alerts, 6.5/10): [`mocks.md`](mocks.md). The miss is the frame. Requirements, a baseline, the operational metric, and a shadow rollout come before a second model. The follow-up that session named is a 15-minute probabilistic forecast for 1,000 sensors. Still ground one pass in Bosch and one in ImagenTime.
 3. Speak A, C, and E once each with a metric and the method the bank actually records.
 4. Say the Why Siemens paragraph once.
