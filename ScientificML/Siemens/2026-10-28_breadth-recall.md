@@ -2,7 +2,7 @@
 
 **Kind:** Concept refresh and recall. Not a mock. Mocks stay in [`mocks.md`](mocks.md).
 **Scope:** Class imbalance, calibration, threshold selection, prevalence shift, event-level evaluation.
-**Status:** Recall pass done. The breadth mock is still separate.
+**Status:** Recall pass done. The breadth mock from later the same day is in [`mocks.md`](mocks.md). It stopped at a 20-inspection cap. Precision at K was not yet a known notation.
 
 Guided practice, not a principal-level score. Second set of four concepts was the stronger half.
 

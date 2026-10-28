@@ -39,8 +39,10 @@
 | **2026-10-26** | System-design mock | Industrial sensor anomaly detection, about 15 min, 6.5/10. Clarification was strong. Eval and deployment were the gap. [`mocks.md`](mocks.md). |
 | **2026-10-26** | ML depth mock | VAE, diffusion, and flow matching, about 15 min, 8/10. Downstream eval was the strong part. The marginal vector field and the conditional expectation were the gap. [`mocks.md`](mocks.md). |
 | **2026-10-28** | **Loop booked** | Omri confirmed. Tue 3 Nov, 1:00–2:00 PM PT Bing Xiang, 2:00–3:00 Vivek Govindan, 3:00–4:00 Ramesh Nallapati. Thailand: Wed 4 Nov, 4:00–7:00 AM. Coding still unstated. [`2026-10-25_virtual-loop-prep.md`](2026-10-25_virtual-loop-prep.md). |
-| **2026-10-28** | Loop prep plan | Five and a half hours a day through 2 Nov. System design first, then the unfinished breadth mock, then a short depth refresh. Interviewer notes are hypotheses. [`2026-10-28_loop-prep-plan.md`](2026-10-28_loop-prep-plan.md). |
+| **2026-10-28** | Loop prep plan, revised | Same-day replacement. All three domains each day through 2 Nov, with extra time on system design and breadth. Depth stays on the CV. Stories stay A, B, C, E. [`2026-10-28_loop-prep-plan.md`](2026-10-28_loop-prep-plan.md). |
 | **2026-10-28** | Breadth recall | Imbalance, calibration, cost threshold, prevalence, event recall. Not a mock. FP computed as 45 instead of 495. ECE name missing. Ranking task scored by calibration. [`2026-10-28_breadth-recall.md`](2026-10-28_breadth-recall.md). |
+| **2026-10-28** | ML breadth mock | Stopped after three questions. 6.5 provisional. Threshold formula landed. The 20-inspection cap did not become precision at 20. [`mocks.md`](mocks.md). |
+| **2026-10-28** | ML depth mock, Koopman | 7.5. Separate from the 26 Oct generative-model depth mock. Spectral constraint and the low-data interpretation were the gaps. Synthetic-data question not taken. [`mocks.md`](mocks.md). |
 
 ## Loop (Chandler, 2026-10-25 — current)
 

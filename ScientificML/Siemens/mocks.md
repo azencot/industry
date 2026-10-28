@@ -1,6 +1,6 @@
 # Siemens mock log
 
-One file for every Siemens mock (behavioral, coding, system design, and ML depth). Append a section. Add a row to the index. Do not open a new file per mock.
+One file for every Siemens mock (behavioral, coding, system design, ML depth, and ML breadth). Append a section. Add a row to the index. Do not open a new file per mock.
 
 Story source: [`2026-10-15_behavioral-story-bank.md`](2026-10-15_behavioral-story-bank.md). Coding drills: [`coding/README.md`](coding/README.md).
 
@@ -15,6 +15,8 @@ Story source: [`2026-10-15_behavioral-story-bank.md`](2026-10-15_behavioral-stor
 | 2026-10-22 | Behavioral, full transcript | Story E — Bosch | EM loop told in place of interpolation plus an observation mask. No number. Collaboration stayed general. Maintenance named as compute. |
 | 2026-10-26 | System design, ~15 min | 500 machines, five sensors, anomaly alerts | Supervised labeling on 20 failures. Synthetic prevalence used as the eval. No shadow or rollout. 6.5/10. |
 | 2026-10-26 | ML depth, ~15 min | VAE, diffusion, flow matching | Objectives and TSTR landed. Marginal field called straight. Optimal velocity called a moving average. 8/10. |
+| 2026-10-28 | ML breadth, stopped early | 10,000 machines, 0.5% failures, 20 inspections | Cost threshold 0.99% landed. Capacity left as unconstrained FP/FN. Precision@K unknown. 6.5/10 provisional. |
+| 2026-10-28 | ML depth, Koopman | Lift, linear latent dynamics, long horizon, ablations | Idea and the encoder–A–decoder baseline landed. Unit-circle constraint underspecified. Low-data win read as “the system is Koopman.” 7.5/10. |
 
 ---
 
@@ -334,3 +336,103 @@ About an hour, not a survey of generative modeling.
 ### Next mock
 
 The session named a 15-minute ML breadth pass: classical versus deep models, generalization and regularization, optimization, imbalance, calibration, shift, representation learning, and selection under a constraint. One question at a time. Feedback after. Track whether the conditional-expectation identity and the marginal-versus-conditional distinction are said without a prompt.
+
+## 2026-10-28 — ML breadth, failure prediction under a budget
+
+**Kind:** ML breadth mock. Three questions, then he asked to stop. Industrial failure prediction: model choice, a cost threshold, then a cap of 20 inspections. No hints during the answers. Feedback after. Provisional **6.5/10** on this fragment, not a full breadth interview. The same-day recall log is separate: [`2026-10-28_breadth-recall.md`](2026-10-28_breadth-recall.md).
+
+### Question 1 — which model (8)
+
+10,000 machines. Three years. About 200 features. Fail within seven days. Prevalence about 0.5%.
+
+| | XGBoost | DNN |
+|--|---------|-----|
+| AUROC | 0.96 | 0.97 |
+| AUPRC | 0.31 | 0.35 |
+| Recall | 0.85 | 0.90 |
+| Precision | 0.18 | 0.15 |
+
+The team wants the DNN for the higher AUROC, AUPRC, and recall. He refused that and asked the cost of a miss against the cost of a false alarm. If misses dominate, he would take the DNN for the higher recall.
+
+What landed: he did not ship the larger AUROC, and he asked for the costs.
+
+What he skipped: the two recalls are one threshold each, and those thresholds may not match. He did not ask for the precision-recall curve or for both models at the same operating point. Ranking quality and the deployed decision are different.
+
+### Question 2 — the threshold (7)
+
+A miss costs $50,000. An unnecessary inspection costs $500. At most 20 inspections a day. He wrote \(p^* = C_{FP}/(C_{FP}+C_{FN}) = 500/50{,}500 \approx 0.99\%\). He would then compare the dollar cost of the extra false negatives against the extra false positives, and he said the counts were hard to do in his head.
+
+The formula is right. It applies when the probabilities are calibrated, the costs are known, inspecting prevents the loss, the machines are independent, and there is no cap. He did not say calibration. He did not use the 20.
+
+### Question 3 — twenty slots (4)
+
+Both models are calibrated. On this day XGBoost puts 80 machines over 0.99%, and the DNN puts 120 over it. The crew can inspect 20. He did not know how to place the cap and stopped.
+
+The gap: a fixed budget is a top-K rank, not a threshold that returns 80 or 120 names. Expected benefit of inspecting a machine is \(U(p) = p\, C_{FN} - (1-p)\, C_{FP}\). With the same costs on every machine, \(U\) rises with \(p\), so the 20 slots are the 20 highest probabilities whose \(U\) is still positive. The 0.99% line is only the eligibility cut. It does not choose among the machines that clear it. If costs differ by machine, rank by \(U\), not by \(p\).
+
+Compare the models under that same policy. The numbers that match the crew are precision at 20 and expected utility at 20. Recall at 20, lead time, false-alert burden, and whether the daily ranking is stable come after. AUROC and AUPRC stay as summaries. They do not score a 20-slot day.
+
+### Precision at K, taught after he stopped
+
+He had not met the @K notation. Precision at K is the positives inside the K highest scores, divided by K. Recall at K divides by all positives, not by K. A threshold lets the selected count move. Top K freezes the count. For this crew, compute them on each day’s ranking, on a temporal holdout, not on one top-20 taken from the whole history. Repeated alerts on one machine and overlapping seven-day windows still need an event definition.
+
+**Exercise, not yet answered.** 1,000 machines, 40 failures. 8 of those failures are in the top 10. 12 are in the top 20. Precision at 10, precision at 20, recall at 10, recall at 20. Why can precision fall from 10 to 20 while recall rises?
+
+### What to say next time
+
+1. The decision, the costs, and the constraint.
+2. The policy: eligibility threshold if probabilities are calibrated, then the K highest positive benefits if a cap binds.
+3. Score every model with that same policy. Precision at K and utility at K before AUROC.
+4. Calibration before any dollar threshold. Heterogeneous costs mean rank by benefit, not by probability.
+
+Next breadth mock should be a different topic. One more constrained-ranking case with unequal inspection costs comes before it, plus the four numbers above.
+
+## 2026-10-28 — ML depth, Koopman
+
+**Kind:** ML depth mock grounded in the CV. Six questions, then he asked to stop before a synthetic-data question. No hints during the answers. **7.5/10.** This is not the 26 Oct depth mock on VAE, diffusion, and flow matching. The interviewer was assumed to know sequence models and not Koopman theory. Do not open this story with the lab title.
+
+CV lines the mock used, not a new story bank: NeurIPS 2026 Koopman generative operators; NeurIPS 2026 co-evolving EM for irregular series in a lifted representation; NeurIPS 2025 distilling Koopman operators; ICLR 2023 multifactor disentanglement via structured Koopman autoencoders; ICML 2020 consistent Koopman autoencoders.
+
+### Question 1 — the idea (8.5)
+
+Nonlinear dynamics can be linear in a lifted space of observables, infinite-dimensional in the theory. He separated lift and projection from the dynamics, and he named interpretability and the link to linear-systems tools.
+
+What he left out: a finite learned matrix is an approximation, not that operator. Powers of the matrix are the practical payoff, a forecast of many steps without a new network call. One physical example was missing.
+
+### Question 2 — the baseline (8)
+
+Encoder, linear map, decoder. Reconstruction loss, latent one-step loss \(Az_t \approx z_{t+1}\), and he named consistency or stability as optional. Forecast either by rolling the observation back in, or by \(A^H\) on a fixed history encoding.
+
+The representative objective he was given, and it is a baseline rather than every paper: \(z_t = E(x_t)\), \(\hat x_{t+1} = D(Az_t)\), and a sum of reconstruction \(\|D(E(x_t))-x_t\|^2\), latent \(\|AE(x_t)-E(x_{t+1})\|^2\), and observation \(\|D(AE(x_t))-x_{t+1}\|^2\). Horizon \(H\) is \(D(A^H E(x_t))\). He did not separate the latent loss from the decoded forecast, and he did not say how a lookback window becomes one \(z_t\).
+
+### Question 3 — a long horizon that dies (7)
+
+He named eigenvalues outside and inside the unit circle, asked for eigenvalues on the unit circle, and if the system is not a long-horizon linear system, a time-dependent operator.
+
+Diagnose before changing the architecture. Reconstruction error asks whether the lift is adequate. One-step latent error against the error of \(A^H\) asks whether the dynamics are the failure. Error versus horizon, rollout versus \(A^H\), and whether the series is stochastic come before a new module. A decaying mode can be the physics. A multi-step loss is a training change, not a new architecture.
+
+### Question 4 — eigenvalues on the unit circle (6.5)
+
+He said the latent dynamics then have no shrinking or expanding modes, so a system with short intervals of growth or decay will not fit.
+
+That is the right restriction and too small a claim. For a diagonalizable \(A\) with every \(|\lambda_i|=1\), the modes persist: oscillation or a constant. Decay and exponential growth are excluded. Damped physical systems need \(|\lambda|<1\). A nontrivial Jordan block can still grow polynomially while every eigenvalue sits on the circle. The constraint is not a certificate of bounded trajectories, and it is not the default for every stable plant.
+
+### Question 5 — the ablation (8)
+
+Same encoder and decoder, Koopman dynamics against a Transformer dynamics module, matched parameter count, data, and training, several datasets and several metrics.
+
+Add an MLP dynamics module and a linear forecast. Cut by horizon and by how much data there is. Several seeds. Latency and memory next to accuracy. A shared tuning budget.
+
+### Question 6 — low data, then the Transformer catches up (7)
+
+He would select Koopman or the Transformer from the data limit and the inference budget. He read the low-data win as evidence that the system respects the Koopman assumptions, and that more data reveals complexity the linear latent model cannot hold. He also said there is a regime where Koopman wins on both accuracy and cost.
+
+The low-data win supports a useful bias. It does not establish that the plant is a Koopman system. Regularization, optimization, and effective capacity can produce the same curve. A selector is extra machinery. Prefer one model on the accuracy-cost frontier unless two operating regimes pay for the switch. If Koopman meets the accuracy bar, the cheaper inference is the reason to ship it. If the Transformer’s gain on the decision is large and the latency is affordable, ship that.
+
+### Not answered
+
+How to judge synthetic sensor sequences when real failures are scarce: fidelity to the real series, and whether a failure model trained on the synthetic data improves on real holdout. Out of the score. A later depth pass can start there, on the CV’s generative papers, not on flow matching unless he brings it up.
+
+### What to redo
+
+Answers were short. The shape he was given: the idea, the mechanism, what it changes in practice, and the limit. On a failure, name the candidate causes and the measurement that separates them before naming a new architecture. Qualify the spectral claim. A low-data win is a bias, not a proof about the plant.

@@ -65,8 +65,10 @@ After each call: drop `YYYY-MM-DD_*.md` in that company’s folder and add a row
 | 2026-10-26 | Siemens system-design mock | 500 machines, five sensors, anomaly alerts. Clarification 9. Deployment 4. Overall 6.5. Supervised plan on 20 failures, then a masked autoencoder. Eval used synthetic prevalence and F1. No shadow or rollout. [`Siemens/mocks.md`](Siemens/mocks.md). |
 | 2026-10-26 | Siemens ML depth mock | VAE, diffusion, flow matching. 8/10. Objectives and train-on-synthetic test-on-real landed. Marginal trajectories called straight. Optimal velocity called a moving average. [`Siemens/mocks.md`](Siemens/mocks.md). |
 | 2026-10-28 | Siemens loop booked | Omri confirmed Tue 3 Nov, 1:00–4:00 PM PT: Bing Xiang, Vivek Govindan, Ramesh Nallapati. Thailand is Wed 4 Nov, 4:00–7:00 AM. Coding still unstated. [`Siemens/2026-10-25_virtual-loop-prep.md`](Siemens/2026-10-25_virtual-loop-prep.md). |
-| 2026-10-28 | Siemens loop prep plan | Days through 2 Nov. System design is the gap. Breadth resumes at calibration. Depth keeps the conditional-expectation identity. No topic is assigned to an interviewer. [`Siemens/2026-10-28_loop-prep-plan.md`](Siemens/2026-10-28_loop-prep-plan.md). |
+| 2026-10-28 | Siemens loop prep plan | Revised the same day. Depth, breadth, and system design every day through 2 Nov. One-domain days are retired. Stories stay the bank. [`Siemens/2026-10-28_loop-prep-plan.md`](Siemens/2026-10-28_loop-prep-plan.md). |
 | 2026-10-28 | Siemens breadth recall | Not a mock. Cost threshold and prevalence shift landed. Misses: FP = 0.05 × 9,900, the name ECE, and using calibration to pick a ranker. [`Siemens/2026-10-28_breadth-recall.md`](Siemens/2026-10-28_breadth-recall.md). |
+| 2026-10-28 | Siemens ML breadth mock | Stopped at question 3. Cost threshold 0.99% landed. A cap of 20 inspections was not turned into a top-K rank. Precision@K was new. Provisional 6.5. [`Siemens/mocks.md`](Siemens/mocks.md). |
+| 2026-10-28 | Siemens ML depth mock, Koopman | 7.5. Lift and the encoder–linear–decoder baseline landed. Unit-circle eigenvalues left unqualified. A low-data win was read as proof the system is Koopman. Synthetic-data question not answered. Separate from the 26 Oct flow-matching depth mock. [`Siemens/mocks.md`](Siemens/mocks.md). |
 
 ---
 

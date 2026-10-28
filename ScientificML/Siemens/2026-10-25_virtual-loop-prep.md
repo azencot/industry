@@ -141,7 +141,7 @@ Add one of these only if that interviewer is a teammate or a stakeholder and the
 
 ## Until the loop
 
-1. Follow [`2026-10-28_loop-prep-plan.md`](2026-10-28_loop-prep-plan.md). Coding stays one refresh hour unless she says otherwise. Stories stay A, B, C, E.
+1. Follow the revised [`2026-10-28_loop-prep-plan.md`](2026-10-28_loop-prep-plan.md). All three domains each day. Stories stay A, B, C, E. Coding stays closed unless she says otherwise.
 2. System design. Mock 1 is logged (26 Oct, 500 machines, anomaly alerts, 6.5/10): [`mocks.md`](mocks.md). The miss is the frame. Requirements, a baseline, the operational metric, and a shadow rollout come before a second model. The follow-up that session named is a 15-minute probabilistic forecast for 1,000 sensors. Still ground one pass in Bosch and one in ImagenTime.
 3. Speak A, C, and E once each with a metric and the method the bank actually records.
 4. Say the Why Siemens paragraph once.
