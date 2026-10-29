@@ -17,6 +17,7 @@ Story source: [`2026-10-15_behavioral-story-bank.md`](2026-10-15_behavioral-stor
 | 2026-10-26 | ML depth, ~15 min | VAE, diffusion, flow matching | Objectives and TSTR landed. Marginal field called straight. Optimal velocity called a moving average. 8/10. |
 | 2026-10-28 | ML breadth, stopped early | 10,000 machines, 0.5% failures, 20 inspections | Cost threshold 0.99% landed. Capacity left as unconstrained FP/FN. Precision@K unknown. 6.5/10 provisional. |
 | 2026-10-28 | ML depth, Koopman | Lift, linear latent dynamics, long horizon, ablations | Idea and the encoder–A–decoder baseline landed. Unit-circle constraint underspecified. Low-data win read as “the system is Koopman.” 7.5/10. |
+| 2026-10-28 | Behavioral, stopped | Story A — ImagenTime, disagreement | Kill tests and EDM landed. Still “my students.” No number. “Insist” on the POC. Vote instead of the decision. Q7 unanswered. 8.0/10. |
 
 ---
 
@@ -436,3 +437,49 @@ How to judge synthetic sensor sequences when real failures are scarce: fidelity 
 ### What to redo
 
 Answers were short. The shape he was given: the idea, the mechanism, what it changes in practice, and the limit. On a failure, name the candidate causes and the measurement that separates them before naming a new architecture. Qualify the spectral claim. A low-data win is a bias, not a proof about the plant.
+
+## 2026-10-28 — Behavioral, ImagenTime disagreement
+
+**Kind:** Behavioral mock. He picked the story. Seven questions were planned. He stopped before the last. No hints during the answers. **8.0/10.** Do not retell ImagenTime as the next behavioral mock. Source: [`2026-10-15_behavioral-story-bank.md`](2026-10-15_behavioral-story-bank.md), story A.
+
+### What he said
+
+After a VAE, the obvious next step was a native time-series diffusion model, probably a Transformer. He wanted the vision diffusion stack, so he proposed mapping series to images. He called the hesitation his students’. He did not pull rank. He owned a proof of concept with three kill tests: reconstruction, a basic benchmark, and compute. Line plots were too sparse. GAF did not scale. Delay embeddings and STFT passed reconstruction and the benchmark. He watched compute against native time-series baselines. The result he named was NeurIPS 2024 and state of the art from short to ultra-long sequences.
+
+On mixed results he would show both the promising findings and the cost, then discuss how to proceed. He treated the compute objection as mostly inference, because training happens once, and he took EDM himself. After EDM, inference cost was comparable to the non-vision methods, so he continued.
+
+On dissent he said the group puts two or more options through a minimal proof of concept, and that in other projects the idea came from the students. On this one, a student proposed a learnable image map. Delay embeddings and STFT were already strong, so a learnable map meant rerunning the study. The student ran a proof of concept. Discriminative score was about 10% worse. The deadline was close, so they left it for later.
+
+He said that 10% did not prove the idea was bad. He thinks a learnable map is better than a fixed one. A few more days would have been needed, and those days would have weakened the submission or slipped the cycle. The team voted to postpone.
+
+Looking back, he wished he had put a student on the proof of concept even though they disliked the idea, because doing the work informs the judgment. In later projects he said he will insist on a role for teammates on the proof of concept, even a small one.
+
+If a senior person refuses the direction, he would allow a bounded detour with a kill-or-continue schedule, the same standard he used on himself.
+
+He did not answer how he would tell that person, at the deadline, that another two weeks will not be granted.
+
+### What landed
+
+The fork was native diffusion versus a representation change. The three kill tests were his, and they were cheap. He compared transforms and he separated EDM from the image step: the sampler is what made inference comparable. He did not treat the learnable map as disproved. He named the deadline as the reason to postpone it. The line to keep is that disagreement became a test with a stop rule, not a demand that the group agree first.
+
+### What broke
+
+- **“My students.”** Same break as 16 Oct and 21 Oct. Name who owned the native stack and what they said. The interpersonal half was thin: how the concern was phrased, what he changed because of it, and how he said the postponement was a deadline, not a verdict on the idea.
+- **No number.** “State of the art” is still the result. The bank’s pair is about 58% on short-series discriminative score, or about 133% on long-series classification. One.
+- **GAF.** “Did not scale” is the right failure and still incomplete. The field is dense. The sparse image is the line plot.
+- **Training happens once.** He said the compute objection then applies only to training. A production system retrains and adapts. Split training cost, latency, throughput, and hardware before calling inference “solved.”
+- **“Insist.”** Putting teammates on the proof of concept so the evidence is shared is the lesson. Requiring people who oppose the idea to staff it is the reading to avoid. Say he would invite them into the design of the test and keep the implementation if they declined.
+- **The vote.** Input is not the decision. He still has to say who decided, on what criterion, when the group did not agree.
+- **Question 7 is open.** The researcher still wants two more weeks after the stop rule failed. How he says no without making it a verdict on their judgment.
+
+### Against the bank
+
+Use the bank on the facts. Do not promote this telling’s new lines into the bank from one mock.
+
+- The learnable-map proof of concept and the 10% discriminative drop are this telling. They are not in the bank. Keep them only if he confirms the number and the source.
+- EDM was correctly separated here. That part matches the bank. The drop from about 1,000 evaluations to about 35 is the sampler, if he wants the figure.
+- The chat’s extra portfolio (a vector-field failure, a struggling student, influence without a title, leading the group) is not a new story. Next behavioral mock is not ImagenTime. Use **C**, **B**, or **E**. Do not open with the lab.
+
+### Next pass
+
+One retell that is not this prompt. If ImagenTime comes up anyway: who disagreed, the three tests, one number, EDM as the sampler, and the postponement said as a deadline. Drop “my students” and “insist.” The unanswered close is still the stop rule after someone wants two more weeks.

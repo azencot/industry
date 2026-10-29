@@ -10,7 +10,7 @@
 | **Referral** | **Danielle Robinson** (works at Siemens; sent the resume; gave the loop shape below) |
 | **Location** | **Any Siemens location in Washington** · **hybrid** |
 | **Posted** | 2026-09-17 |
-| **Status** | **Loop booked.** Tue **3 Nov 2026**, 1:00–4:00 PM Pacific (Wed **4 Nov**, 4:00–7:00 AM Thailand). Bing Xiang, Vivek Govindan, Ramesh Nallapati, in that order, one hour each. Omri confirmed 28 Oct. Which hour is depth, breadth, or system design is unstated. Coding not confirmed. Prep: [`2026-10-25_virtual-loop-prep.md`](2026-10-25_virtual-loop-prep.md). |
+| **Status** | **Loop booked.** Tue **3 Nov 2026**, 1:00–4:00 PM Pacific (Wed **4 Nov**, 4:00–7:00 AM Thailand). Robinson, 29 Oct: Vivek is system design. Bing leads the applied-science team. Bing and Ramesh split breadth and depth. She did not say which. Coding not confirmed. Do not quote her on the call. Prep: [`2026-10-28_loop-prep-plan.md`](2026-10-28_loop-prep-plan.md). |
 | **Comp (public JD)** | Base **$167,178–$226,236** + target incentive **15%** of base. Do not open with this. |
 
 ## Active thread
@@ -43,6 +43,8 @@
 | **2026-10-28** | Breadth recall | Imbalance, calibration, cost threshold, prevalence, event recall. Not a mock. FP computed as 45 instead of 495. ECE name missing. Ranking task scored by calibration. [`2026-10-28_breadth-recall.md`](2026-10-28_breadth-recall.md). |
 | **2026-10-28** | ML breadth mock | Stopped after three questions. 6.5 provisional. Threshold formula landed. The 20-inspection cap did not become precision at 20. [`mocks.md`](mocks.md). |
 | **2026-10-28** | ML depth mock, Koopman | 7.5. Separate from the 26 Oct generative-model depth mock. Spectral constraint and the low-data interpretation were the gaps. Synthetic-data question not taken. [`mocks.md`](mocks.md). |
+| **2026-10-28** | Behavioral mock | ImagenTime, 8.0. Stopped before the unpopular-decision close. EDM separated. “My students” and “insist” remain. Next behavioral mock is not this story. [`mocks.md`](mocks.md). |
+| **2026-10-29** | Plan revised from Robinson | Vivek is system design. Bing and Ramesh split breadth and depth. Depth is any CV paper. Design lead is PDE generation and scale. [`2026-10-28_loop-prep-plan.md`](2026-10-28_loop-prep-plan.md). |
 
 ## Loop (Chandler, 2026-10-25 — current)
 
@@ -52,7 +54,7 @@ Supersedes the 14 Oct names for the three hours. Full notes: [`2026-10-25_virtua
 |-------|--------|--------|
 | Recruiter | **Done 14 Oct** | Org overview |
 | Technical screen | **Done 23 Oct** — Huzefa | Resume methodology, overfit/regularization, bagging (platform swapped off SGD). He recommended proceeding. |
-| Virtual loop | **Booked Tue 3 Nov 2026, 1:00–4:00 PM PT.** Wed 4 Nov, 4:00–7:00 AM Thailand. Bing Xiang, Vivek Govindan, Ramesh Nallapati. | She named **ML depth**, **ML breadth**, **ML system design**. Who owns which hour is unknown. Each interviewer also scores **2–3** leadership principles or functional competencies. Live coding **not confirmed**. |
+| Virtual loop | **Booked Tue 3 Nov 2026, 1:00–4:00 PM PT.** Wed 4 Nov, 4:00–7:00 AM Thailand. Bing Xiang, Vivek Govindan, Ramesh Nallapati. | Robinson, 29 Oct: **Vivek is system design.** Bing and Ramesh split **breadth and depth**. She did not say which. Each interviewer also scores **2–3** leadership principles or functional competencies. Live coding **not confirmed**. |
 
 ## Loop (Chandler, 2026-10-14 — historical)
 
@@ -84,11 +86,11 @@ JD preferred center for this seat, per Robinson: **scientific ML for physical sy
 | Person | Role signal | Notes |
 |--------|-------------|--------|
 | **Danielle Chandler** | Recruiter (external address) | Process owner. Teams. |
-| **Danielle Robinson** | Siemens employee; referrer | Worked with Huzefa at AWS on time series and AI4Science. Do not narrate her tips on the call. Two different Danielles. |
+| **Danielle Robinson** | Siemens employee; referrer | Works with Bing and Ramesh. 29 Oct: Vivek is system design; Bing and Ramesh split breadth and depth. Do not narrate her tips on the call. Two different Danielles. |
 | **Huzefa Rangwala** | Staff Scientist, Physical AI | Screen done 23 Oct. Will recommend proceeding. Not confirmed as the hiring manager. Debrief: [`2026-10-23_huzefa-debrief.md`](2026-10-23_huzefa-debrief.md). |
-| **Bing Xiang** | Loop, hour 1 | Tue 3 Nov, 1:00–2:00 PM PT. Public: Chandler posted that he joined Data & AI, May 2026. Title not confirmed here. |
-| **Vivek Govindan** | Loop, hour 2 | Tue 3 Nov, 2:00–3:00 PM PT. Public profile: senior principal ML engineer, Siemens Physical AI, Seattle, design and simulation. |
-| **Ramesh Nallapati** | Loop, hour 3 | Tue 3 Nov, 3:00–4:00 PM PT. His May 2026 post: VP of Applied Science, Physical AI science organization. Amazon Science still lists AWS. |
+| **Bing Xiang** | Loop, hour 1. Breadth or depth. | Tue 3 Nov, 1:00–2:00 PM PT. Robinson: he leads the applied-science team. Public: Chandler posted that he joined Data & AI, May 2026. Title not confirmed here. |
+| **Vivek Govindan** | Loop, hour 2. System design. | Tue 3 Nov, 2:00–3:00 PM PT. Robinson: engineer, high-level design, then optimization. PDE generation is likely, not guaranteed. Public profile: senior principal ML engineer, Siemens Physical AI, Seattle. |
+| **Ramesh Nallapati** | Loop, hour 3. Breadth or depth. | Tue 3 Nov, 3:00–4:00 PM PT. The hour Bing does not take. His May 2026 post: VP of Applied Science, Physical AI science organization. Amazon Science still lists AWS. |
 
 Hiring manager still unnamed. Do not treat the public titles as the org chart.
 

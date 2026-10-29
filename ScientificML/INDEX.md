@@ -69,6 +69,8 @@ After each call: drop `YYYY-MM-DD_*.md` in that company’s folder and add a row
 | 2026-10-28 | Siemens breadth recall | Not a mock. Cost threshold and prevalence shift landed. Misses: FP = 0.05 × 9,900, the name ECE, and using calibration to pick a ranker. [`Siemens/2026-10-28_breadth-recall.md`](Siemens/2026-10-28_breadth-recall.md). |
 | 2026-10-28 | Siemens ML breadth mock | Stopped at question 3. Cost threshold 0.99% landed. A cap of 20 inspections was not turned into a top-K rank. Precision@K was new. Provisional 6.5. [`Siemens/mocks.md`](Siemens/mocks.md). |
 | 2026-10-28 | Siemens ML depth mock, Koopman | 7.5. Lift and the encoder–linear–decoder baseline landed. Unit-circle eigenvalues left unqualified. A low-data win was read as proof the system is Koopman. Synthetic-data question not answered. Separate from the 26 Oct flow-matching depth mock. [`Siemens/mocks.md`](Siemens/mocks.md). |
+| 2026-10-28 | Siemens behavioral mock | ImagenTime disagreement, 8.0. Kill tests and EDM landed. Still “my students.” No number. “Insist” on the proof of concept. Last question, the unpopular stop, not answered. [`Siemens/mocks.md`](Siemens/mocks.md). |
+| 2026-10-29 | Siemens plan, Robinson’s hours | Vivek is system design. Bing and Ramesh split breadth and depth. Depth is any CV paper. Design priority is PDE generation and scale. Six CV titles mapped. The PDF is not in the repo. [`Siemens/2026-10-28_loop-prep-plan.md`](Siemens/2026-10-28_loop-prep-plan.md). |
 
 ---
 

@@ -10,7 +10,7 @@ Screen notes: [`2026-10-23_huzefa-debrief.md`](2026-10-23_huzefa-debrief.md). St
 
 ## Status
 
-**Booked.** Omri confirmed Danielle’s times on 28 Oct. Live coding is still **not confirmed**. She has not said which hour is depth, breadth, or system design. Day plan and interviewer notes: [`2026-10-28_loop-prep-plan.md`](2026-10-28_loop-prep-plan.md).
+**Booked.** Omri confirmed Danielle Chandler’s times on 28 Oct. Live coding is still **not confirmed**. Danielle Robinson, 29 Oct: Vivek is system design. Bing leads the applied-science team. Bing and Ramesh split breadth and depth. She did not say which. Do not quote her on the call. Day plan: [`2026-10-28_loop-prep-plan.md`](2026-10-28_loop-prep-plan.md).
 
 Do not prep another coding round unless she says so. Do not treat the four system-design scenarios below as Siemens questions.
 
