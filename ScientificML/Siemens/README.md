@@ -45,6 +45,9 @@
 | **2026-10-28** | ML depth mock, Koopman | 7.5. Separate from the 26 Oct generative-model depth mock. Spectral constraint and the low-data interpretation were the gaps. Synthetic-data question not taken. [`mocks.md`](mocks.md). |
 | **2026-10-28** | Behavioral mock | ImagenTime, 8.0. Stopped before the unpopular-decision close. EDM separated. “My students” and “insist” remain. Next behavioral mock is not this story. [`mocks.md`](mocks.md). |
 | **2026-10-29** | Plan revised from Robinson | Vivek is system design. Bing and Ramesh split breadth and depth. Depth is any CV paper. Design lead is PDE generation and scale. [`2026-10-28_loop-prep-plan.md`](2026-10-28_loop-prep-plan.md). |
+| **2026-10-29** | System-design mock, Vivek | PDE generation, 7.0. Shortfall and the spectral diagnosis landed. The second budget used wall-clock instead of node-hours. Storage and residuals missing. Next design mock is training, not another generation pipeline. [`mocks.md`](mocks.md). |
+| **2026-10-29** | ML depth mock, Closing the Loop | 7.0. The one-shot completion and the four regimes landed. The theorem did not. The ELBO write-up stays unverified. Not the Bosch story. [`mocks.md`](mocks.md). |
+| **2026-10-29** | ML breadth mock | New factory, 6.5, stopped before the stable-AUROC question. Same calibration and cap gap as 28 Oct. Review sheet, then a training-fundamentals mock. Not another cost policy. [`mocks.md`](mocks.md). [`2026-10-29_breadth-review.md`](2026-10-29_breadth-review.md). |
 
 ## Loop (Chandler, 2026-10-25 — current)
 

@@ -38,7 +38,9 @@ Rotate which technical block is last. The extra depth and design time is her fee
 | Behavioral | 20 min |
 | Review and log | 20 min |
 
-One question, then wait. No hints until the end. Score after. He may stop. A short answer is not a miss. A design with no bottleneck and no optimization does not get credit for the architecture.
+One question, then wait. No hints until the end. Score after. He may stop. A short answer is not a miss. A design with no bottleneck and no optimization does not get credit for the architecture. A depth or design mock is 20–25 minutes: one opening question and at most three follow-ups.
+
+The same miss keeps showing up. A first answer names one mechanism and skips the other: the M-step when the E-step is frozen, reconstruction error when the fault is the anomaly, calibration when the task is a rank. The second miss is a list of fixes before a measurement: node-hours, a profile of \(K(T_E+T_M)\), precision at K. The third is a formula he cannot say for a paper on the CV. Depth questions go to a paper not yet defended.
 
 ## CV papers
 
@@ -49,7 +51,7 @@ Level A is a 20-minute defense. Level B is 5–10 minutes plus follow-ups. Level
 | Paper | Venue | Target | Now |
 |-------|-------|--------|-----|
 | Koopman Generative Operators for Efficient Probabilistic Time-Series Forecasting | NeurIPS 2026 | A | Partial. The 28 Oct depth mock was the Koopman baseline, not this paper’s generative model, sampling, or cost. |
-| Closing the Loop: Co-Evolving EM for Irregular Time Series Generation in Lifted Representations | NeurIPS 2026 | A | Not defended. Not the Bosch story. |
+| Closing the Loop: Co-Evolving EM for Irregular Time Series Generation in Lifted Representations | NeurIPS 2026 | A | Motivation said, 29 Oct, 7.0. The theorem was not stated. The classical ELBO write-up is not the paper. Read the PDF before another telling. Not the Bosch story. |
 | Distilling the Knowledge of Koopman Operators | NeurIPS 2025 | A | Not defended. |
 | ImagenTime | NeurIPS 2024 | A | Behavioral only. No paper defense: objective, training, inference, ablation. |
 | Multifactor Sequential Disentanglement via Structured Koopman Autoencoders | ICLR 2023 | B | Named only. |
@@ -59,7 +61,9 @@ For a Level A paper: why this approach, the algorithm, the objective, training, 
 
 ## System design — Vivek
 
-Open-ended. Clarify, then architecture, then he changes a constraint or names a bottleneck. Optimize after a profile. Do not open with more GPUs or a surrogate.
+Open-ended. Clarify, then architecture, then he changes a constraint or names a bottleneck. Optimize after a profile. Do not open with more GPUs or a surrogate. Keep a mock to 20–25 minutes and three follow-ups.
+
+Design mock 1 is logged (29 Oct, PDE generation, 7.0): [`mocks.md`](mocks.md). The 100,000-trajectory shortfall landed. The later counts used wall-clock instead of the remaining node-hours. Storage and a PDE residual were not said. The next mock is scenario B, not another generation pipeline. The repair-versus-resimulate choice stays unscored.
 
 **A. PDE data generation.** Which PDE family, which systems, resolution, how many runs, parameter ranges, initial and boundary conditions, accuracy, compute, and the downstream task. Solver, sampling, mesh or grid, time integration, stability, validation, storage. Independent runs across workers, CPU versus GPU, scheduling, load balance, failure and checkpoint. Schema, provenance, compression, layout, streaming versus offline. Then the bottleneck: resolution, adaptive sampling, a surrogate, fidelity against throughput. Check convergence, conservation where it applies, coverage, and whether a downstream model improves. The point is the system, not a new specialty in numerical PDE.
 
@@ -82,19 +86,19 @@ Huzefa, 23 Oct, one hour. He will recommend proceeding.
 
 That is the screen breadth actually resembled: a resume project, then a diagnosis, then a practical constraint. Robinson’s earlier private examples (DataLoader, padding, attention) were not this hour. Do not prepare as if they were.
 
-Still open from the mocks, and worth the 70 minutes: precision at K and recall at K on each day’s ranking, a hard inspection cap, calibration before a cost threshold, and naming the measurement before the fix. Do not re-drill a concept he already used correctly. The 28 Oct breadth mock stopped at the cap of 20. The precision-at-K exercise in [`mocks.md`](mocks.md) is unanswered.
+Breadth mock 2 is logged (29 Oct, new factory, 6.5): [`mocks.md`](mocks.md). Shift and the time split landed. Calibration and the dollar threshold did not. The review sheet is [`2026-10-29_breadth-review.md`](2026-10-29_breadth-review.md). Read it. Do not run another inspection-policy mock until then. The next breadth mock is overfitting, regularization, and optimization: about 20 minutes, one opening question, two follow-ups. The 28 Oct precision-at-K exercise in [`mocks.md`](mocks.md) is still unanswered. Do not look up the four rates before computing them.
 
 ## Days
 
-**Thu 29.** Depth: this matrix, then Koopman generative operators as a paper, not as generic Koopman. Design: scenario A, requirements through the bottleneck. Breadth: one applied evaluation question in the screen’s style. Behavioral: the 28 Oct corrections only. “My students,” “insist,” one number, EDM as the sampler. Not a second ImagenTime mock.
+**Thu 29.** Depth mock 2 is done: Closing the Loop, 7.0. Design mock 1 is done. Breadth: one applied evaluation question in the screen’s style. Behavioral: the 28 Oct corrections only. “My students,” “insist,” one number, EDM as the sampler. Not a second ImagenTime mock.
 
-**Fri 30.** Depth: Closing the Loop. Objective, training, how it is scored. Design: scenario C, scale and throughput. Breadth: training that is unstable, or validation rising while training loss falls. Diagnose first. Behavioral: story **C**, the killed lever. Not a new failure story.
+**Fri 30.** Depth: twenty to thirty minutes on the Closing the Loop PDF. The objective, the E-step, the theorem, the initialization. Not another mock of this paper. If that page is done, one unused paper: distillation or Koopman generative operators. Design: scenario B, training on the trajectories. A ten-minute ledger before it: 60,000 node-hours at 256 and at 128, and the storage of one 256×256 trajectory. Breadth: read the review sheet, then one short mock on overfitting, regularization, and optimization. Not another cost threshold. Behavioral: story **C**, the killed lever. Not a new failure story.
 
-**Sat 31.** Depth: ImagenTime as a paper, then one CV line not yet defended. Design: scenario B, training the model on the trajectories. Breadth: shift, leakage, and comparing two models at the same operating point. Behavioral: story **E** only with the mask and interpolation. There is no separate influence-without-authority story. Do not invent one.
+**Sat 31.** Depth: ImagenTime as a paper, then one CV line not yet defended. Design: scenario C, same budget and more trajectories, after a profile. Not another generation architecture. Breadth: leakage, and two models at the same operating point. Behavioral: story **E** only with the mask and interpolation. There is no separate influence-without-authority story. Do not invent one.
 
 **Sun 1.** Depth: distillation and structured Koopman, then a random CV line. Design: scenario D, surrogate versus solver. Breadth: one mixed question. Behavioral: the stop rule, on story **C** or **B**. Question 7 from the ImagenTime mock stays unanswered until he answers it on a different story.
 
-**Mon 2.** Consolidation. Random papers, including one he did not lead. One 30-minute design, PDE generation then an optimization. One mixed breadth question. Story review, not new material. One page: six papers, the design sequence, the screen diagnosis, the open misses (precision at K, the stop rule, no number on ImagenTime).
+**Mon 2.** Consolidation. Random papers, including one he did not lead. One design, training or a surrogate, with the node-hour ledger and one residual. Not another generation pipeline. One mixed breadth question. Story review, not new material. One page: six papers, the design sequence, the screen diagnosis, the open misses (precision at K, the stop rule, no number on ImagenTime, the 60,000 node-hour split).
 
 **Tue 3.** No study block. Sleep for a 4:00 AM Wednesday start.
 
@@ -114,4 +118,4 @@ Behavioral mock 1 is logged (28 Oct, ImagenTime, 8.0): [`mocks.md`](mocks.md). T
 
 ## By 2 Nov
 
-One Level A defense that is not the generic Koopman baseline. Closing the Loop said without the Bosch story. One design that starts with PDE generation, names a bottleneck, and changes the system. One breadth answer that ranks under a cap. The stop rule, said as his decision.
+One Level A defense of a paper not yet used: distillation or Koopman generative operators. Closing the Loop only after the PDF, and not as the Bosch story. One design that trains on the trajectories, keeps a node-hour ledger, and names a residual. The breadth sheet read, then one training-fundamentals answer. The stop rule, said as his decision.

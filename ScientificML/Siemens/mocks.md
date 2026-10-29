@@ -18,6 +18,9 @@ Story source: [`2026-10-15_behavioral-story-bank.md`](2026-10-15_behavioral-stor
 | 2026-10-28 | ML breadth, stopped early | 10,000 machines, 0.5% failures, 20 inspections | Cost threshold 0.99% landed. Capacity left as unconstrained FP/FN. Precision@K unknown. 6.5/10 provisional. |
 | 2026-10-28 | ML depth, Koopman | Lift, linear latent dynamics, long horizon, ablations | Idea and the encoder–A–decoder baseline landed. Unit-circle constraint underspecified. Low-data win read as “the system is Koopman.” 7.5/10. |
 | 2026-10-28 | Behavioral, stopped | Story A — ImagenTime, disagreement | Kill tests and EDM landed. Still “my students.” No number. “Insist” on the POC. Vote instead of the decision. Q7 unanswered. 8.0/10. |
+| 2026-10-29 | System design, Vivek | One million PDE trajectories | Clarification and the 100,000-trajectory shortfall landed. Later counts used wall-clock instead of the node-hour budget. Storage and PDE residuals not said. 7.0/10. |
+| 2026-10-29 | ML depth, Closing the Loop | Co-evolving EM, irregular series | Motivation and the four missingness regimes landed. The monotone quantity and the E-step distribution were not stated. 7.0/10. |
+| 2026-10-29 | ML breadth, stopped | New factory, 1% failures, 200 inspections | Shift and the random-window split landed. Calibration unnamed. No expected-cost threshold. Q4 unanswered. 6.5/10. |
 
 ---
 
@@ -483,3 +486,111 @@ Use the bank on the facts. Do not promote this telling’s new lines into the ba
 ### Next pass
 
 One retell that is not this prompt. If ImagenTime comes up anyway: who disagreed, the three tests, one number, EDM as the sampler, and the postponement said as a deadline. Drop “my students” and “insist.” The unanswered close is still the stop rule after someone wants two more weeks.
+
+## 2026-10-29 — System design, one million PDE trajectories
+
+**Kind:** System design, Vivek Govindan simulated. One million 2D fluid trajectories for a foundation model. He stopped before the last question. That question is not scored. **7.0/10.** Do not repeat PDE data generation as the next design mock. Keep the next one to 20–25 minutes and three follow-ups.
+
+### What he was given
+
+2D fluids. Initial conditions, boundary conditions, and physical parameters vary. An existing validated CPU solver. 256×256, four variables, 1,000 time steps. 500 CPU nodes, 64 cores each. 32 A100s. Two CPU node-hours per high-fidelity trajectory. Budget: 200,000 CPU node-hours, 10,000 GPU-hours, four weeks.
+
+He asked the cost of one trajectory and the budget before proposing a system. Clarification 9/10. Architecture 8/10.
+
+### What he said
+
+200,000 node-hours at two hours each is 100,000 high-fidelity trajectories, short of one million. He would spend week one on about 42,000 high-resolution runs, downsample them to 32, 64, and 128, train a super-resolution network in week two, then generate low-resolution trajectories and upsample them. If quality failed, raise the input resolution. He assumed solver cost scales with the number of grid points.
+
+On turbulence, low MSE and high structural similarity still left the foundation model weak, and small-scale energy was low. He would cut evaluation by regime, use a physical metric per regime, look at Fourier error by frequency, try a finer resolution ladder, check whether hard regimes were underrepresented, and add data or input resolution there. 8/10.
+
+With two weeks and 60,000 node-hours left: 32 and 64 miss turbulent structure, 128 works on about 90% of trajectories, 256 is reliable, and highly turbulent flows are 20% of the target distribution. He asked how 20% turbulence becomes a 10% failure rate. Half of the turbulent cases fail. He would spend about half the remaining time on high resolution for turbulence and half on 128 for the rest, and augment to grow the set. 6/10. His trajectory counts used the nodes and the wall clock, and they exceeded the node-hour budget.
+
+On turning 15,000 turbulent trajectories into 200,000 examples, he said rotation might work and that he would need to look up physics-specific augmentation. The alternative he offered was a generative model constrained to the PDE and the boundary conditions. 6.5/10.
+
+On a diffusion model whose spectra look right but whose trajectories break mass conservation or time evolution, he split statistical scores (discriminative, predictive, FID) from physical scores (mass, temporal consistency), and he would threshold with the downstream model and the requirement. 7/10.
+
+He did not answer the last choice: 200,000 synthetic trajectories, 40,000 pass the physics checks, repair costs 20% of a new high-fidelity run. Use all, use the 40,000, or repair. Unscored.
+
+### What landed
+
+The budget was the first fact, and 100,000 versus one million was the right shortfall. The design was a resolution ladder plus a learned upsampler, with a fallback to a finer input. The turbulence pass diagnosed a hidden regime instead of trusting MSE. He separated a pretty spectrum from a conserved quantity.
+
+### What broke
+
+- **The ledger.** Remaining node-hours are the constraint, not how many nodes exist. At 256, 60,000 / 2 = 30,000 trajectories. If 128 costs a quarter of that, 0.5 node-hours, the same budget is 120,000. An even split of the hours is 15,000 at 256 and 60,000 at 128. Also keep GPU-hours, the deadline, storage, and the upsampler’s own cost. The linear grid-point assumption was not checked against the solver.
+- **Storage.** Four variables, 1,000 steps, 256×256 is about 262 million scalars. FP32 is about 1.05 GB a trajectory. One million uncompressed is about 1 PB. Compression, layout, and streaming were not in the design.
+- **What super-resolution cannot invent.** A 32 or 64 field can omit the turbulent scales. A network can sharpen an image and still invent the wrong dynamics. Separate a missing spatial scale from a wrong time evolution, and score the foundation model on a long horizon, not on MSE of the upsampled frame.
+- **Augmentation.** A rotation that preserves an equation on an infinite domain can break this run’s boundary condition. He did not say how an augmented sample is checked. The check is a residual against the trusted solver’s tolerance, not a new generative model as the first move.
+- **The residual.** For incompressible flow, \(\nabla \cdot u \approx 0\), and the momentum residual is \(\partial_t u + (u\cdot\nabla)u + \rho^{-1}\nabla p - \nu\nabla^2 u - f\), inside the tolerance of the trusted simulations. Also the initial condition, the boundary condition, the energy spectrum, and the energy budget. FID is not that test. A hard constraint and a numerical tolerance are different.
+
+### Next mock
+
+Not this scenario. Train the foundation model on the trajectories: representation, mixed resolution, distributed training, GPU use, throughput, validation, long-horizon rollout. Before that, a short ledger drill only: node-hours, storage, and one residual. Twenty to twenty-five minutes, three follow-ups, no hints until the end. The repair-versus-resimulate choice stays open and unscored.
+
+## 2026-10-29 — ML depth, Closing the Loop
+
+**Kind:** Depth. Paper: Closing the Loop, NeurIPS 2026. Bing or Ramesh simulated. He stopped after four questions. **7.0/10.** Motivation 8.5, the probabilistic step 6.0, the deterioration diagnosis 7.5, the compute tradeoff 7.0. Not the Bosch story. Do not run another full mock on this paper until the theorem is read from the manuscript. The next mock is breadth.
+
+### What he said
+
+The task is to generate a regularly sampled series from an irregular one. Prior work, including one of theirs, treated missingness as random drops, completed the series, and trained a generator on the completion. He named two failures. Real irregularity includes sensor failure and block missingness, and their benchmark has four kinds. A completion trained with MSE pulls toward the conditional mean, so the generator sees a biased distribution and loses coverage. Their alternative is an EM-like loop. The E-step draws a full series from a pretrained posterior \(q_w(x_{\mathrm{full}}\mid x_{\mathrm{partial}})\) and does not train. The M-step trains a diffusion model by denoising, in the same family as ImagenTime and EDM. He said the monotonicity result is for an idealized EM under stated assumptions, not automatically for the neural implementation. He offered the initialization and did not give it. He asked whether a formula belonged in a discussion interview, then said he did not remember the objective.
+
+If quality rose and then fell, he said their runs did not do that. He would look at the M-step first, because that is the step that changes weights: learning rate, step count, convergence, and whether the learned distribution moved. He would also limit how far a new model may move from the previous one. After the challenge that a frozen E-step can still change the completed-data distribution, he proposed a toy set whose complete series are known, corrupt it, and compare each E-step to that set with a distributional score and a discriminative score. He would also watch whether the theoretical objective stops being monotone. A biased completion, once trained on, can make the next completion more biased.
+
+On a 5% gain at five times the training cost, he would not defend it without the decision. In a scientific use the 5% might separate a usable trajectory from a useless one. In a business use it might be a large sum or nothing. To cut training cost in half he named faster samplers on the E-step, and on the M-step a learning-rate and epoch change, a smaller network, or a different generator, including flow matching or a VAE.
+
+### What landed
+
+The problem, the one-shot completion, and the reason a mean completion is the wrong training set. Four irregularity types as an evaluation change, separate from the algorithm. Idealized EM is not the neural loop. He did not invent a theorem he could not remember. The toy series with a known complete trajectory is the right instrument. He did not treat 5% as automatically worth five times the compute.
+
+### What broke
+
+- **The quantity.** He did not say what is observed, what is latent, or which objective the theorem keeps from getting worse. The post-mock write-up is classical EM: missing values as latents, an ELBO, and a nondecreasing observed-data log-likelihood when the E-step is exact and the M-step improves the expected complete-data log-likelihood. That write-up is a reference. It is not this paper’s theorem. The manuscript is not in the repo, and no public PDF turned up. Do not recite the ELBO as the result.
+- **Whose posterior.** He called \(q_w\) pretrained and frozen. The project page says the loop samples completions from the generator itself, and that each round uses the current model. Those two sentences are not yet reconciled. PSLR, named on that page as the posterior sampler in the lifted image representation, was not in his answer. Initialization is still unsaid.
+- **Mean collapse.** The warning applies to a conditional-mean estimator trained with MSE. It is not a claim about every completion method. The 2025 predecessor’s own abstract says the vision model is masked so completed values are weak conditioning, not a second ground truth. If “our prior” is that paper, say the mask. Do not describe it as training on the imputation as if it were data.
+- **A frozen E-step can still bias the next M-step.** The weights do not move. The completed trajectories do, because they are draws from a model that just changed. Likelihood moving the right way does not mean FID, the discriminative score, or a downstream number moves the right way.
+- **Profile before the menu.** Cost is outer iterations times E-step plus M-step. First measure which term dominates. Then stop when validation plateaus, warm-start the next M-step if it is not already warm-started, cut sampling steps, cut posterior samples, and shorten the M-step. A new generator, including flow matching, is the last change. Flow matching is not automatically cheaper to train or to sample.
+
+### Public page, not the manuscript
+
+[imageni2r.vercel.app](https://imageni2r.vercel.app/) lists Gal Fadlon and Idan Arbiv as the marked first authors and Omri Azencot last. It calls the method a co-evolving Monte Carlo EM and quotes 59% on discriminative score, 73% on context-FID, and four corruption regimes. Those figures are the page. Use one of them only after the PDF confirms it. Do not narrate their implementation as his.
+
+### Before the next telling
+
+Read the PDF and answer, in his words, without filling gaps: the objective, the E-step distribution, whether that posterior is the current generator, a pretrained model, or both, what the M-step updates, whether that step is a likelihood, an ELBO, a denoising loss, or something else, the theorem’s quantity and its assumptions, which of those assumptions the code drops, and the initialization. Two minutes. Then one page: formulation, the loop, initialization, the theorem, where the code departs, the result, the cost, and three hard questions. Not another scored mock unless that reading shows the motivation answer was wrong.
+
+### Papers already used in a depth mock
+
+Koopman as a baseline, 28 Oct, not the generative-operators paper. Flow matching, 26 Oct, only if he brings it up. Closing the Loop, this log. Still unused as a paper defense: Koopman generative operators, distillation, ImagenTime, structured Koopman autoencoders, consistent Koopman autoencoders. The next depth question is one of those.
+
+## 2026-10-29 — ML breadth, new factory
+
+**Kind:** Breadth, Bing Xiang simulated. A transformer predicts failure within 24 hours. Offline AUROC 0.96, precision 0.82, recall 0.88. A new factory: 0.71, 0.35, 0.52. He stopped before the last question. That question is not scored. **6.5/10.** Shift 8, the split 8, the inspection policy 5. Same gap as the 28 Oct breadth mock. Do not run another cost-and-calibration mock until the review sheet is used. Sheet: [`2026-10-29_breadth-review.md`](2026-10-29_breadth-review.md). The next mock is overfitting, regularization, and optimization. About 20 minutes, one opening question, two follow-ups.
+
+### What he said
+
+He called it distribution shift. He would compare the training factory with the new one, and he would look at slices rather than the three headline numbers. Failures might sit in a temperature range or an operating condition the training set does not have. He would collect data at the new factory, split it, and fine-tune, with a gate that the weak slices improve and the others do not fall apart.
+
+On a random split of windows, with the same machines and possibly overlapping times in both sides, and with failures in about 1% of windows: the link between train and test can explain the offline score. He would split in time first and cut windows after. He would also hold out factories. AUROC can look strong when failures are rare. He would rescore at a working threshold, add AUPRC, and set the threshold from the cost of a false positive and a false negative.
+
+On 10,000 machines, about 100 failures a day, at most 200 inspections, a miss at $20,000 and a needless inspection at $500: he would calibrate first. He remembered a sigmoid or another monotonic map and did not remember the names. He would rank the machines. If fewer than 200 were predicted to fail, he would inspect fewer than 200. He then asked to review the rest.
+
+He did not answer why AUROC can stay at 0.85 while maintenance says there are too many needless inspections.
+
+### What landed
+
+Shift before a larger model. Slices, target data, and a gate against regressions. Time split before windowing, and a held-out factory. AUPRC when the positive rate is 1%. The inspection cap is a maximum, not a quota to fill.
+
+### What broke
+
+He did not separate a bad evaluation, a broken pipeline, a shift, and a weak model before naming shift. He did not mention units, sampling rate, or whether “failure” means the same thing at the new factory. He did not separate covariate shift, label shift, and a changed relationship between sensors and failure. He did not hold out machines, and he did not leave a gap at the time boundary. He did not say precision at 200 or recall at 200.
+
+Calibration stayed “a sigmoid.” Ranking and a probability you can multiply by a dollar cost are different jobs. A strictly monotone map does not change AUROC or precision at K. It changes a threshold written in probability.
+
+### Not his answer
+
+The derivation below was written after he stopped. Do not treat it as what he said. It is on the review sheet.
+
+If an inspection prevents the failure, and the $500 is paid only when the inspection was unnecessary, inspect when \(500(1-p) < 20000 p\), so \(p > 500/20500 \approx 2.44\%\). If every inspection costs $500, the line is \(p > 2.5\%\). With the same costs on every machine, benefit \(20500 p - 500\) ranks the same way as \(p\). Inspect the top of that list, and stop at 200 or at the first non-positive benefit, whichever comes first. If costs differ by machine, rank by the benefit, not by \(p\).
+
+Stable AUROC is not stable precision. At a fixed true-positive rate 0.8 and false-positive rate 0.05, precision is 64% when 10% of windows fail and about 13.9% when 1% fail. An inspected machine that does not later fail is not automatically a false positive if the inspection prevented the failure. That last point was also not in his answer.

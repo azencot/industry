@@ -71,6 +71,9 @@ After each call: drop `YYYY-MM-DD_*.md` in that company’s folder and add a row
 | 2026-10-28 | Siemens ML depth mock, Koopman | 7.5. Lift and the encoder–linear–decoder baseline landed. Unit-circle eigenvalues left unqualified. A low-data win was read as proof the system is Koopman. Synthetic-data question not answered. Separate from the 26 Oct flow-matching depth mock. [`Siemens/mocks.md`](Siemens/mocks.md). |
 | 2026-10-28 | Siemens behavioral mock | ImagenTime disagreement, 8.0. Kill tests and EDM landed. Still “my students.” No number. “Insist” on the proof of concept. Last question, the unpopular stop, not answered. [`Siemens/mocks.md`](Siemens/mocks.md). |
 | 2026-10-29 | Siemens plan, Robinson’s hours | Vivek is system design. Bing and Ramesh split breadth and depth. Depth is any CV paper. Design priority is PDE generation and scale. Six CV titles mapped. The PDF is not in the repo. [`Siemens/2026-10-28_loop-prep-plan.md`](Siemens/2026-10-28_loop-prep-plan.md). |
+| 2026-10-29 | Siemens system-design mock, PDE data | 7.0. The 100,000-trajectory shortfall and the turbulence diagnosis landed. Later counts ignored the remaining node-hours. Storage and the PDE residual were not said. Repair question not scored. [`Siemens/mocks.md`](Siemens/mocks.md). |
+| 2026-10-29 | Siemens ML depth mock, Closing the Loop | 7.0. Motivation and four missingness regimes landed. The monotone quantity was not stated. Classical EM in the debrief is not the paper’s theorem. [`Siemens/mocks.md`](Siemens/mocks.md). |
+| 2026-10-29 | Siemens ML breadth mock, new factory | 6.5, stopped. Shift and the time split landed. Calibration unnamed. The 2.44% line is review, not his answer. [`Siemens/mocks.md`](Siemens/mocks.md). Sheet: [`Siemens/2026-10-29_breadth-review.md`](Siemens/2026-10-29_breadth-review.md). |
 
 ---
 
