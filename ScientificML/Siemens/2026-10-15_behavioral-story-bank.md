@@ -315,6 +315,14 @@ The early experiment moved overall accuracy from about 38.2% to 40.5% and reason
 
 That’s the behavior I want from a research organization: a failed experiment should reduce uncertainty and change what you do next, rather than simply trigger another larger run.”
 
+### Told again, 29 Oct
+
+Same story. Mock in [`mocks.md`](mocks.md), 8.0. Do not replace this section with that telling.
+
+He said reasoning at about 28, then 29.2. The pair to say is about 29.5 to 31.2. Temporal relations 26.9 to 21.9 is the one that matched. The gates are three points overall and five points on any reasoning subtask, set before the run, and they are not a statistical test. He killed the synthetic mix. He did not kill the multimodal project or temporal reasoning as an objective.
+
+He said the team agreed, and that the lesson went into the group’s research book: find the cause before the next intervention. The book is that sentence. Do not add chapters. The audit’s findings, who ran it, the seeds, and the compute saved were not in this telling. Do not fill them in. Numeric reasoning down 3.4 points, and the 0.8B probe, were not said. Say them only from this section, if asked.
+
 ---
 
 ## Story D — TSRBench Audit: Turning Ambiguity into a Scientific Program

@@ -92,7 +92,7 @@ Breadth mock 2 is logged (29 Oct, new factory, 6.5): [`mocks.md`](mocks.md). Shi
 
 **Thu 29.** Depth mock 2 is done: Closing the Loop, 7.0. Design mock 1 is done. Breadth: one applied evaluation question in the screen’s style. Behavioral: the 28 Oct corrections only. “My students,” “insist,” one number, EDM as the sampler. Not a second ImagenTime mock.
 
-**Fri 30.** Depth: twenty to thirty minutes on the Closing the Loop PDF. The objective, the E-step, the theorem, the initialization. Not another mock of this paper. If that page is done, one unused paper: distillation or Koopman generative operators. Design: scenario B, training on the trajectories. A ten-minute ledger before it: 60,000 node-hours at 256 and at 128, and the storage of one 256×256 trajectory. Breadth: read the review sheet, then one short mock on overfitting, regularization, and optimization. Not another cost threshold. Behavioral: story **C**, the killed lever. Not a new failure story.
+**Fri 30.** Depth: twenty to thirty minutes on the Closing the Loop PDF. The objective, the E-step, the theorem, the initialization. Not another mock of this paper. If that page is done, one unused paper: distillation or Koopman generative operators. Design: scenario B, training on the trajectories. A ten-minute ledger before it: 60,000 node-hours at 256 and at 128, and the storage of one 256×256 trajectory. Breadth: read the review sheet, then one short mock on overfitting, regularization, and optimization. Not another cost threshold. Behavioral: story **B**, the two controls. Story C was today’s mock. Do not retell it, and do not invent the audit.
 
 **Sat 31.** Depth: ImagenTime as a paper, then one CV line not yet defended. Design: scenario C, same budget and more trajectories, after a profile. Not another generation architecture. Breadth: leakage, and two models at the same operating point. Behavioral: story **E** only with the mask and interpolation. There is no separate influence-without-authority story. Do not invent one.
 
@@ -106,7 +106,9 @@ Breadth mock 2 is logged (29 Oct, new factory, 6.5): [`mocks.md`](mocks.md). Shi
 
 Twenty minutes. “I,” one metric, the decision, the limit. Do not open with the lab, the headcount, or the grant.
 
-Behavioral mock 1 is logged (28 Oct, ImagenTime, 8.0): [`mocks.md`](mocks.md). The next one is not this story. “My students” and “insist” are still the breaks. The unanswered close is a stop rule after someone wants two more weeks.
+Behavioral mock 1 is logged (28 Oct, ImagenTime, 8.0): [`mocks.md`](mocks.md). “My students” and “insist” are still the breaks. The unanswered close is a stop rule after someone wants two more weeks.
+
+Behavioral mock 2 is logged (29 Oct, story C, 8.0). The gates and 26.9 to 21.9 landed. Reasoning was again said as 28 to 29.2. The bank’s pair is 29.5 to 31.2. “We agreed” is the leadership miss. The next behavioral pass is not this story. Do not invent the audit.
 
 | Theme | Use |
 |-------|-----|

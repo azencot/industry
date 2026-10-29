@@ -74,6 +74,7 @@ After each call: drop `YYYY-MM-DD_*.md` in that company’s folder and add a row
 | 2026-10-29 | Siemens system-design mock, PDE data | 7.0. The 100,000-trajectory shortfall and the turbulence diagnosis landed. Later counts ignored the remaining node-hours. Storage and the PDE residual were not said. Repair question not scored. [`Siemens/mocks.md`](Siemens/mocks.md). |
 | 2026-10-29 | Siemens ML depth mock, Closing the Loop | 7.0. Motivation and four missingness regimes landed. The monotone quantity was not stated. Classical EM in the debrief is not the paper’s theorem. [`Siemens/mocks.md`](Siemens/mocks.md). |
 | 2026-10-29 | Siemens ML breadth mock, new factory | 6.5, stopped. Shift and the time split landed. Calibration unnamed. The 2.44% line is review, not his answer. [`Siemens/mocks.md`](Siemens/mocks.md). Sheet: [`Siemens/2026-10-29_breadth-review.md`](Siemens/2026-10-29_breadth-review.md). |
+| 2026-10-29 | Siemens behavioral mock, TR kill | 8.0. Gates and 26.9 to 21.9 landed. Reasoning again said as 28 to 29.2. The bank stays 29.5 to 31.2. Consensus stood in for the decision. [`Siemens/mocks.md`](Siemens/mocks.md). |
 
 ---
 

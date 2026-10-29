@@ -48,6 +48,7 @@
 | **2026-10-29** | System-design mock, Vivek | PDE generation, 7.0. Shortfall and the spectral diagnosis landed. The second budget used wall-clock instead of node-hours. Storage and residuals missing. Next design mock is training, not another generation pipeline. [`mocks.md`](mocks.md). |
 | **2026-10-29** | ML depth mock, Closing the Loop | 7.0. The one-shot completion and the four regimes landed. The theorem did not. The ELBO write-up stays unverified. Not the Bosch story. [`mocks.md`](mocks.md). |
 | **2026-10-29** | ML breadth mock | New factory, 6.5, stopped before the stable-AUROC question. Same calibration and cap gap as 28 Oct. Review sheet, then a training-fundamentals mock. Not another cost policy. [`mocks.md`](mocks.md). [`2026-10-29_breadth-review.md`](2026-10-29_breadth-review.md). |
+| **2026-10-29** | Behavioral mock, story C | TR kill, 8.0. The five-point drop and the gates landed. Reasoning was said as 28 to 29.2. Speak 29.5 to 31.2. He stopped the mix, not the project. [`mocks.md`](mocks.md). |
 
 ## Loop (Chandler, 2026-10-25 — current)
 

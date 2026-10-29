@@ -21,6 +21,7 @@ Story source: [`2026-10-15_behavioral-story-bank.md`](2026-10-15_behavioral-stor
 | 2026-10-29 | System design, Vivek | One million PDE trajectories | Clarification and the 100,000-trajectory shortfall landed. Later counts used wall-clock instead of the node-hour budget. Storage and PDE residuals not said. 7.0/10. |
 | 2026-10-29 | ML depth, Closing the Loop | Co-evolving EM, irregular series | Motivation and the four missingness regimes landed. The monotone quantity and the E-step distribution were not stated. 7.0/10. |
 | 2026-10-29 | ML breadth, stopped | New factory, 1% failures, 200 inspections | Shift and the random-window split landed. Calibration unnamed. No expected-cost threshold. Q4 unanswered. 6.5/10. |
+| 2026-10-29 | Behavioral | Story C — TR kill | Gates and 26.9 to 21.9 landed. Reasoning still said as 28 to 29.2. “We agreed.” The lever, not the project. 8.0/10. |
 
 ---
 
@@ -594,3 +595,34 @@ The derivation below was written after he stopped. Do not treat it as what he sa
 If an inspection prevents the failure, and the $500 is paid only when the inspection was unnecessary, inspect when \(500(1-p) < 20000 p\), so \(p > 500/20500 \approx 2.44\%\). If every inspection costs $500, the line is \(p > 2.5\%\). With the same costs on every machine, benefit \(20500 p - 500\) ranks the same way as \(p\). Inspect the top of that list, and stop at 200 or at the first non-positive benefit, whichever comes first. If costs differ by machine, rank by the benefit, not by \(p\).
 
 Stable AUROC is not stable precision. At a fixed true-positive rate 0.8 and false-positive rate 0.05, precision is 64% when 10% of windows fail and about 13.9% when 1% fail. An inspected machine that does not later fail is not automatically a false positive if the inspection prevented the failure. That last point was also not in his answer.
+
+## 2026-10-29 — Behavioral, TR kill
+
+**Kind:** Behavioral, Bing Xiang simulated. About 15–20 minutes. One opening question and two follow-ups. **8.0/10.** Judgment 9, ownership 8, leadership 7, communication 8, the lesson 8.5. Story **C** in [`2026-10-15_behavioral-story-bank.md`](2026-10-15_behavioral-story-bank.md). Do not retell it as the next behavioral mock. The coaching script in the session still says 28 and 29.2. Do not rehearse that script.
+
+### What he said
+
+On the multimodal time-series project he built a dual-tower model on Qwen3-VL: a chart for scale, a delay embedding for dynamics. TSRBench, which he called 15 task domains, stalled near 50%. Reasoning was about 28%, against a random baseline near 25%. He picked temporal reasoning at 26.9%. The task looked like segment, classify, and order. He built synthetic data for it. Before the run he set two gates: no more than 3 points down overall, and no more than 5 points down on any one task.
+
+Reasoning went from 28% to 29.2%. Some tasks rose about 7 points. Temporal reasoning fell from 26.9% to 21.9%, exactly 5 points, so he stopped that direction. More synthetic data without a cause would not be justified. The others agreed, because the gates were already written. They turned to a benchmark audit.
+
+He showed both the gains and the gate that failed. They had already said that if the extra data did not help temporal reasoning, something else was going on. Continuing would waste more than stopping. On reflection he would audit the task and the model before adding data. The group put that into its research book: name the cause before the next intervention.
+
+### What landed
+
+The gates came before the run. He did not keep the mix because the average moved. He stopped the synthetic-data lever and kept the project. The lesson is a rule he says the group now uses: a hypothesis is not a diagnosis.
+
+### What broke
+
+- **28 and 29.2.** Same slip as 21 Oct. The bank’s pair is about 29.5 to 31.2. Temporal relations 26.9 to 21.9 is the number that held. Also unsaid: numeric reasoning down 3.4 points.
+- **The gate’s scope.** He said any individual task. The bank says any reasoning subtask, plus a three-point floor on the overall score, chosen as a research tolerance and not as a statistical test. He did not say whether one seed and a five-point drop could be noise.
+- **“We agreed.”** Q1 has the decision in the first person. Q2 and Q3 hand it to the group. The line to keep: he recommended stopping the mix, he said why the gate failed, and he pointed the next work at the audit. Agreement is not the decision.
+- **What the audit found.** Not in this telling. Who ran it, what the failures were, and what compute the kill saved are open. Do not invent them. The research book is the one sentence he said. Do not add a chapter.
+
+### Still open, and only if he has the fact
+
+Why three points and five points. Whether the five-point drop was more than one seed. What the audit actually found. What he did for the people who had built the data. What he would do if someone still wanted two more weeks of synthetic data. He did not claim that disagreement happened. Do not add it.
+
+### Not his answer
+
+The session’s rewritten two-minute script is coaching. It still uses 28 and 29.2. Speak the bank’s 90-second version. Kill the lever, not the objective.
