@@ -23,6 +23,7 @@ Story source: [`2026-10-15_behavioral-story-bank.md`](2026-10-15_behavioral-stor
 | 2026-10-29 | ML breadth, stopped | New factory, 1% failures, 200 inspections | Shift and the random-window split landed. Calibration unnamed. No expected-cost threshold. Q4 unanswered. 6.5/10. |
 | 2026-10-29 | Behavioral | Story C — TR kill | Gates and 26.9 to 21.9 landed. Reasoning still said as 28 to 29.2. “We agreed.” The lever, not the project. 8.0/10. |
 | 2026-10-30 | ML breadth | 100M transformer, validation rises after 6,000 | Overfit named. The step-6,000 checkpoint was not the first move. Larger models, then a learned map, then resampling. No weight decay or dropout. 6.5/10. |
+| 2026-10-30 | System design, Vivek | Industrial time-series foundation model | CFD surrogate aborted, unscored. Three holdouts landed. Decoder-only plus a mask, then a metadata token. 500 factories treated as 500 machines. 7.0/10. |
 
 ---
 
@@ -666,4 +667,42 @@ Early stopping. Weight decay versus an L2 term under Adam. Dropout in train and 
 
 The debrief says a 29 Oct recall produced Platt versus isotonic and \(B_i = 20500 p_i - 500\), so \(p > 500/20500 \approx 2.44\%\). That recall is not a scored mock and has no separate file. The 28 Oct top-10 and top-20 arithmetic is still unanswered.
 
-Logged breadth scores are 6.5, 6.5, and 6.5. Depth is 7.5 and 7.0. Design is 7.0. Behavioral is 8.0 and 8.0. The averages are of these logs only. They are not a hiring scale. The repeated miss is the elaborate test before the cheap one.
+Logged breadth scores are 6.5, 6.5, and 6.5. Depth is 7.5 and 7.0. Design is 7.0 and 7.0. Behavioral is 8.0 and 8.0. The averages are of these logs only. They are not a hiring scale. The repeated miss is the elaborate test before the cheap one. The aborted CFD opening on 30 Oct is not in the design average.
+
+## 2026-10-30 — System design, industrial time series
+
+**Kind:** System design, Vivek Govindan simulated. The first prompt was a CFD surrogate. He stopped it. That opening is not scored and is not in the 7.0 average. The restart is a foundation model on heterogeneous industrial sensors: forecast, anomaly, failure. About 100 million hours. 64 H100s for two weeks. One opening question and three follow-ups. **7.0/10.** Framing 8, architecture 6.5, pretraining 6.5, transfer 7.5, deployment 7, adaptability 7. Two completed design mocks, both 7.0.
+
+### The aborted opening
+
+Steady 3D velocity and pressure from geometry, about 5,000 CFD runs, 8 A100s, at least 100× faster than the solver. He would search for a physics-informed 3D generator, reproduce two papers whose inference fits the budget, then train on a subset. Split 70/15/15. Generative scores plus incompressibility, mass, and boundary conditions. He stopped when the meshes were unstructured, about 200,000 nodes, and different per geometry, and the field was mostly deterministic. A literature search is not the opening design. A baseline and its tradeoff still have to be said in an unfamiliar domain. Do not score this attempt.
+
+### What he said
+
+Patch the series, encode it, and attach a mask, the sampling rate, and the time range. A decoder-only transformer, because the same stack has been used for classification and for forecasting. Pretrain by completing masked spans with MSE. Split oldest time to train, then validation, then recent test, and also hold out machines and factories. Train an encoder on the series plus the side information, then fine-tune it and train the transformer. The mask tells the model which sensors and times to ignore. The three splits are the three transfer tests: new times, new machines, new factories.
+
+Told that causal attention fights a bidirectional mask, and that one machine has 8 sensors and another 200: he switched to a transformer autoencoder. The encoder completes, the decoder emits the signal. A later stage would forecast with a causal mask and classify without one. A metadata token at the front would carry the sensor count, identities, and units. Variable length would avoid padding. Sampling rate stays in the signal.
+
+After 48 hours, training and validation reconstruction fall, forecasting improves on seen machines and not on unseen factories, and the team wants to keep pretraining. He would check whether those factories sit inside the training distribution, with KL and histograms. If they do, he would treat the forecasting head as overfit and test that with data drawn from unseen factories whose distribution matches training, including by augmenting the training set. If the factories are missing, resample or reweight toward them and retrain. If the head is overfit, early stopping, weight decay, dropout, or a smaller head. Continue if the factories are well represented and overfitting is unlikely. Modify for a mild gap. Stop if the gap is large.
+
+He would not ship one threshold for every factory. Rank alerts that have positive benefit. With false-positive cost \(x\) and false-negative cost \(y\), inspect when \((x+y)p - x > 0\), and \(y\) is much larger than \(x\). If a batched server handles \(z\) sequences a second and each machine sends one sequence a second, the fleet needs \(500/z\) transformers.
+
+### What landed
+
+Three holdouts, not one random window: future time, unseen machines, unseen factories. Unlabeled hours went to masked reconstruction, and the mask, the rate, and the time range were in the input. He dropped the decoder-only stack when causal attention was the objection. A falling reconstruction loss was not, by itself, a reason to keep spending the 64 H100s. The single threshold was refused. The benefit line \((x+y)p > x\) is the same rule as \(p > x/(x+y)\), and a non-positive benefit is not inspected.
+
+### What broke
+
+- **The token.** A metadata prefix is not the sensor stream. A token is one sensor’s patch, its observation mask, a time delta, a sensor identity, and a unit. Say that shape before the architecture. Per-sensor normalization is missing, and MSE across temperature and current will follow the large unit. A natural gap and a span he masked for the loss are different masks. Padding is still required in a batch, or the batch is packed. A new sensor identity needs an unknown-type embedding.
+- **Causal versus bidirectional.** He corrected this when asked. The opening had already paired a decoder-only stack with masked reconstruction.
+- **Head versus encoder.** KL and a histogram can show a marginal shift and miss a different temporal dependence or a different cross-sensor pattern. Freeze the encoder and train a small head on a little data from the unseen factory. Fast adaptation means the representation transferred. A flat head means it did not. Continue only if the held-out factory’s downstream number is moving and the extra hours are worth it. A lower reconstruction loss is not that number.
+- **500 factories, not 500 machines.** \(500/z\) is the server count only if 500 sequences arrive each second. The prompt was 500 factories. Throughput is not the one-second update. Ingestion, the queue, the forward pass, and the alert each add delay. Cache the history, batch across machines, and screen with a cheap score before the transformer. Peak load, not the average.
+- **The score is not a probability.** The benefit line needs a calibrated \(p\), per factory and per regime. Also false alarms per machine-day, missed failures, and lead time, inside the inspection cap.
+
+### Not his answer
+
+The session’s thirty-second pitch was written afterward. Do not treat it as what he said. The line to practice is the token, the loss on observed values only, the three holdouts, and a threshold from a calibrated cost. Then the latency path.
+
+### Next
+
+Not another foundation-model design until that token can be said first. The next session is a depth recall: Koopman, diffusion on his own papers, and the Closing the Loop objective. The classical ELBO is still not that paper’s theorem. One question at a time. Feedback after each recall item. No hints during a mock.

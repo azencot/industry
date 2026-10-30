@@ -63,7 +63,9 @@ For a Level A paper: why this approach, the algorithm, the objective, training, 
 
 Open-ended. Clarify, then architecture, then he changes a constraint or names a bottleneck. Optimize after a profile. Do not open with more GPUs or a surrogate. Keep a mock to 20–25 minutes and three follow-ups.
 
-Design mock 1 is logged (29 Oct, PDE generation, 7.0): [`mocks.md`](mocks.md). The 100,000-trajectory shortfall landed. The later counts used wall-clock instead of the remaining node-hours. Storage and a PDE residual were not said. The next mock is scenario B, not another generation pipeline. The repair-versus-resimulate choice stays unscored.
+Design mock 1 is logged (29 Oct, PDE generation, 7.0): [`mocks.md`](mocks.md). The 100,000-trajectory shortfall landed. The later counts used wall-clock instead of the remaining node-hours. Storage and a PDE residual were not said. The repair-versus-resimulate choice stays unscored.
+
+Design mock 2 is logged (30 Oct, industrial time series, 7.0). The CFD opening is unscored. Say the sensor-time token, the observed-only loss, and latency separate from throughput before another design. Two design mocks, both 7.0.
 
 **A. PDE data generation.** Which PDE family, which systems, resolution, how many runs, parameter ranges, initial and boundary conditions, accuracy, compute, and the downstream task. Solver, sampling, mesh or grid, time integration, stability, validation, storage. Independent runs across workers, CPU versus GPU, scheduling, load balance, failure and checkpoint. Schema, provenance, compression, layout, streaming versus offline. Then the bottleneck: resolution, adaptive sampling, a surrogate, fidelity against throughput. Check convergence, conservation where it applies, coverage, and whether a downstream model improves. The point is the system, not a new specialty in numerical PDE.
 
@@ -94,9 +96,9 @@ Breadth mock 3 is logged (30 Oct, overfitting, 6.5). The checkpoint at step 6,00
 
 **Thu 29.** Depth mock 2 is done: Closing the Loop, 7.0. Design mock 1 is done. Breadth: one applied evaluation question in the screen’s style. Behavioral: the 28 Oct corrections only. “My students,” “insist,” one number, EDM as the sampler. Not a second ImagenTime mock.
 
-**Fri 30.** Breadth mock 3 is done: overfitting, 6.5. The fundamentals recall is done and is not a mock. Say AdamW and layer norm again before any new breadth question. Depth: twenty to thirty minutes on the Closing the Loop PDF. The objective, the E-step, the theorem, the initialization. Not another mock of this paper. If that page is done, one unused paper: distillation or Koopman generative operators. Design: scenario D, a surrogate for an expensive simulator. Data, constraints, a budget, and a check against the solver. Not a second generation-pipeline mock. Behavioral: story **B**, the two controls. Story C was yesterday. Do not retell it, and do not invent the audit.
+**Fri 30.** Breadth mock 3 is done: overfitting, 6.5. The fundamentals recall is done and is not a mock. Design mock 2 is done: the CFD opening was aborted and is unscored. The time-series foundation model is 7.0. The token was a metadata prefix, and 500 factories were treated as 500 machines. Say the sensor-time token before another design. Behavioral: story **B**, the two controls, if it was not already done. Do not retell story C, and do not invent the audit.
 
-**Sat 31.** Depth: ImagenTime as a paper, then one CV line not yet defended. Design: if Friday’s surrogate was not run, that is the mock. Otherwise scenario B, training on the trajectories, with the node-hour ledger. Breadth: AdamW and layer norm from memory, then inverted dropout and cosine versus warm restarts. Not a scored mock. Behavioral: story **E** only with the mask and interpolation. There is no separate influence-without-authority story. Do not invent one.
+**Sat 31.** Depth recall, not a mock: Koopman, diffusion from his own papers, and the Closing the Loop objective. The classical ELBO is not that theorem until the PDF says so. One question, then the correction. Design: say the token, the mask, the loss, and the latency path. Not a second scored design. Breadth: AdamW and layer norm from memory. Behavioral: story **E** only with the mask and interpolation.
 
 **Sun 1.** Depth: distillation and structured Koopman, then a random CV line. Design: scenario D, surrogate versus solver. Breadth: one mixed question. Behavioral: the stop rule, on story **C** or **B**. Question 7 from the ImagenTime mock stays unanswered until he answers it on a different story.
 
@@ -122,4 +124,4 @@ Behavioral mock 2 is logged (29 Oct, story C, 8.0). The gates and 26.9 to 21.9 l
 
 ## By 2 Nov
 
-One Level A defense of a paper not yet used: distillation or Koopman generative operators. Closing the Loop only after the PDF, and not as the Bosch story. One surrogate design with a budget and a solver check. AdamW and layer norm said without notes. The stop rule, said as his decision.
+One Level A defense of a paper not yet used: distillation or Koopman generative operators. Closing the Loop only from the PDF, and not as the Bosch story. The sensor-time token, the observed-only loss, and latency separate from throughput. AdamW and layer norm said without notes. The stop rule, said as his decision.

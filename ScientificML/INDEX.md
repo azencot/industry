@@ -77,6 +77,7 @@ After each call: drop `YYYY-MM-DD_*.md` in that company’s folder and add a row
 | 2026-10-29 | Siemens behavioral mock, TR kill | 8.0. Gates and 26.9 to 21.9 landed. Reasoning again said as 28 to 29.2. The bank stays 29.5 to 31.2. Consensus stood in for the decision. [`Siemens/mocks.md`](Siemens/mocks.md). |
 | 2026-10-30 | Siemens ML breadth mock, overfitting | 6.5. Overfit named. The step-6,000 checkpoint, weight decay, and dropout were not. A larger model and a learned map came first. [`Siemens/mocks.md`](Siemens/mocks.md). |
 | 2026-10-30 | Siemens fundamentals recall | Not a mock. 6.2 on six answers. AdamW 4. Layer norm 3. Question 7 not taken. [`Siemens/2026-10-30_fundamentals-recall.md`](Siemens/2026-10-30_fundamentals-recall.md). |
+| 2026-10-30 | Siemens system-design mock, time series | 7.0. CFD opening aborted and unscored. Three holdouts landed. The token and the factory count did not. [`Siemens/mocks.md`](Siemens/mocks.md). |
 
 ---
 
