@@ -40,7 +40,7 @@ Rotate which technical block is last. The extra depth and design time is her fee
 
 One question, then wait. No hints until the end. Score after. He may stop. A short answer is not a miss. A design with no bottleneck and no optimization does not get credit for the architecture. A depth or design mock is 20–25 minutes: one opening question and at most three follow-ups.
 
-The same miss keeps showing up. A first answer names one mechanism and skips the other: the M-step when the E-step is frozen, reconstruction error when the fault is the anomaly, calibration when the task is a rank. The second miss is a list of fixes before a measurement: node-hours, a profile of \(K(T_E+T_M)\), precision at K. The third is a formula he cannot say for a paper on the CV. Depth questions go to a paper not yet defended.
+The same miss keeps showing up. A first answer names one mechanism and skips the other: the M-step when the E-step is frozen, reconstruction error when the fault is the anomaly, calibration when the task is a rank. The second miss is a list of fixes before a measurement: node-hours, a profile of \(K(T_E+T_M)\), precision at K. The third is a formula he cannot say for a paper on the CV. The fourth, from 30 Oct, is a larger model and a learned map before the checkpoint at step 6,000. Depth questions go to a paper not yet defended. Breadth mocks wait until early stopping, AdamW, and dropout can be said cold.
 
 ## CV papers
 
@@ -86,15 +86,17 @@ Huzefa, 23 Oct, one hour. He will recommend proceeding.
 
 That is the screen breadth actually resembled: a resume project, then a diagnosis, then a practical constraint. Robinson’s earlier private examples (DataLoader, padding, attention) were not this hour. Do not prepare as if they were.
 
-Breadth mock 2 is logged (29 Oct, new factory, 6.5): [`mocks.md`](mocks.md). Shift and the time split landed. Calibration and the dollar threshold did not. The review sheet is [`2026-10-29_breadth-review.md`](2026-10-29_breadth-review.md). Read it. Do not run another inspection-policy mock until then. The next breadth mock is overfitting, regularization, and optimization: about 20 minutes, one opening question, two follow-ups. The 28 Oct precision-at-K exercise in [`mocks.md`](mocks.md) is still unanswered. Do not look up the four rates before computing them.
+Breadth mock 2 is logged (29 Oct, new factory, 6.5): [`mocks.md`](mocks.md). Shift and the time split landed. Calibration and the dollar threshold did not. The review sheet is [`2026-10-29_breadth-review.md`](2026-10-29_breadth-review.md). The 28 Oct precision-at-K exercise in [`mocks.md`](mocks.md) is still unanswered.
+
+Breadth mock 3 is logged (30 Oct, overfitting, 6.5). The checkpoint at step 6,000 was not the first move. No weight decay, dropout, or smaller model. The same-day recall is [`2026-10-30_fundamentals-recall.md`](2026-10-30_fundamentals-recall.md): 8, 4, 7, 3, 7, 8, about 6.2, not a mock. AdamW and layer norm are the two to say again. Question 7, the three experiments, was not taken. Three breadth mocks, each 6.5.
 
 ## Days
 
 **Thu 29.** Depth mock 2 is done: Closing the Loop, 7.0. Design mock 1 is done. Breadth: one applied evaluation question in the screen’s style. Behavioral: the 28 Oct corrections only. “My students,” “insist,” one number, EDM as the sampler. Not a second ImagenTime mock.
 
-**Fri 30.** Depth: twenty to thirty minutes on the Closing the Loop PDF. The objective, the E-step, the theorem, the initialization. Not another mock of this paper. If that page is done, one unused paper: distillation or Koopman generative operators. Design: scenario B, training on the trajectories. A ten-minute ledger before it: 60,000 node-hours at 256 and at 128, and the storage of one 256×256 trajectory. Breadth: read the review sheet, then one short mock on overfitting, regularization, and optimization. Not another cost threshold. Behavioral: story **B**, the two controls. Story C was today’s mock. Do not retell it, and do not invent the audit.
+**Fri 30.** Breadth mock 3 is done: overfitting, 6.5. The fundamentals recall is done and is not a mock. Say AdamW and layer norm again before any new breadth question. Depth: twenty to thirty minutes on the Closing the Loop PDF. The objective, the E-step, the theorem, the initialization. Not another mock of this paper. If that page is done, one unused paper: distillation or Koopman generative operators. Design: scenario D, a surrogate for an expensive simulator. Data, constraints, a budget, and a check against the solver. Not a second generation-pipeline mock. Behavioral: story **B**, the two controls. Story C was yesterday. Do not retell it, and do not invent the audit.
 
-**Sat 31.** Depth: ImagenTime as a paper, then one CV line not yet defended. Design: scenario C, same budget and more trajectories, after a profile. Not another generation architecture. Breadth: leakage, and two models at the same operating point. Behavioral: story **E** only with the mask and interpolation. There is no separate influence-without-authority story. Do not invent one.
+**Sat 31.** Depth: ImagenTime as a paper, then one CV line not yet defended. Design: if Friday’s surrogate was not run, that is the mock. Otherwise scenario B, training on the trajectories, with the node-hour ledger. Breadth: AdamW and layer norm from memory, then inverted dropout and cosine versus warm restarts. Not a scored mock. Behavioral: story **E** only with the mask and interpolation. There is no separate influence-without-authority story. Do not invent one.
 
 **Sun 1.** Depth: distillation and structured Koopman, then a random CV line. Design: scenario D, surrogate versus solver. Breadth: one mixed question. Behavioral: the stop rule, on story **C** or **B**. Question 7 from the ImagenTime mock stays unanswered until he answers it on a different story.
 
@@ -120,4 +122,4 @@ Behavioral mock 2 is logged (29 Oct, story C, 8.0). The gates and 26.9 to 21.9 l
 
 ## By 2 Nov
 
-One Level A defense of a paper not yet used: distillation or Koopman generative operators. Closing the Loop only after the PDF, and not as the Bosch story. One design that trains on the trajectories, keeps a node-hour ledger, and names a residual. The breadth sheet read, then one training-fundamentals answer. The stop rule, said as his decision.
+One Level A defense of a paper not yet used: distillation or Koopman generative operators. Closing the Loop only after the PDF, and not as the Bosch story. One surrogate design with a budget and a solver check. AdamW and layer norm said without notes. The stop rule, said as his decision.

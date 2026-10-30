@@ -22,6 +22,7 @@ Story source: [`2026-10-15_behavioral-story-bank.md`](2026-10-15_behavioral-stor
 | 2026-10-29 | ML depth, Closing the Loop | Co-evolving EM, irregular series | Motivation and the four missingness regimes landed. The monotone quantity and the E-step distribution were not stated. 7.0/10. |
 | 2026-10-29 | ML breadth, stopped | New factory, 1% failures, 200 inspections | Shift and the random-window split landed. Calibration unnamed. No expected-cost threshold. Q4 unanswered. 6.5/10. |
 | 2026-10-29 | Behavioral | Story C — TR kill | Gates and 26.9 to 21.9 landed. Reasoning still said as 28 to 29.2. “We agreed.” The lever, not the project. 8.0/10. |
+| 2026-10-30 | ML breadth | 100M transformer, validation rises after 6,000 | Overfit named. The step-6,000 checkpoint was not the first move. Larger models, then a learned map, then resampling. No weight decay or dropout. 6.5/10. |
 
 ---
 
@@ -626,3 +627,43 @@ Why three points and five points. Whether the five-point drop was more than one 
 ### Not his answer
 
 The session’s rewritten two-minute script is coaching. It still uses 28 and 29.2. Speak the bank’s 90-second version. Kill the lever, not the objective.
+
+## 2026-10-30 — ML breadth, overfitting
+
+**Kind:** Breadth, Ramesh Nallapati simulated. A 100M transformer, AdamW, forecasting. Training loss falls through 10,000 steps. Validation loss falls, then rises after step 6,000. A few small datasets are especially bad. One opening question and two follow-ups. **6.5/10.** Diagnosis 7, method 7.5, generalization tools 5, priority 6. Do not run another breadth mock until the list below can be said in under a minute each. The next design block is still scenario B.
+
+### What he said
+
+He called it overfitting, then checked the setup: the same chunking and normalization on train, validation, and test; that training actually updates the weights; that evaluation reproduces the training loss with gradients off. He would also try the optimizer. If those passed, he would train 250M and 500M models and compare validation.
+
+When the larger models fit the training set better and the validation set worse, he left overfitting. He said a time split with no overlap can mean the validation distribution has moved. He would compare the distributions with KL and histograms, learn a map, and change trend or seasonality in the training series so they look more like validation, without solving the forecast. Augmentation or a linear forecast might bridge the gap. He would check the mapped series against validation, then the forecast metrics.
+
+Told the distributions are similar and the gap remains, especially on small datasets, he called it class imbalance. He would resample so each dataset is drawn about equally often, or up-weight the loss on the small ones. He would resample first, because it needs less tuning.
+
+### What landed
+
+Overfitting was the first name, and the sanity checks were real: protocol, a live update, and a train-set eval with no gradient. A chronological split can change the distribution, and trend and seasonality are concrete places to look. Unequal datasets can dominate a mixed objective, and resampling is a legitimate lever.
+
+### What broke
+
+The curves already say the fit is past the validation minimum. The first action is the checkpoint near step 6,000. That picks a model. It does not change the loss. A larger model was the test he chose. The result he was then given, lower training loss and worse validation, is what extra capacity does when the data are thin. The cheap comparison is a smaller model, weight decay, and dropout, on a short sweep, with the split held fixed and the gap reported per dataset.
+
+Shift stayed possible and stopped being the leading hypothesis once he was told the distributions match. A KL between raw high-dimensional series is a poor first measurement. A map fit so that training looks like validation, especially if it uses validation outcomes, is not a fix. It spends the set you are supposed to be surprised by.
+
+“Class imbalance” is the wrong name. Classes were not the issue. Datasets of different sizes were. Equal sampling can hammer a small set and overfit it harder. Reweighting changes the loss. Neither one is dropout, weight decay, or a smaller net. Asked for regularization, he did not name those three.
+
+### Not his answer
+
+The session’s preferred order was written after the mock. Do not treat it as what he said. Early stopping at the validation minimum, then weight decay and dropout, then a smaller model, then how often each dataset is sampled. Score each change by the per-dataset validation number and the train–validation gap.
+
+AdamW’s weight decay is applied to the weights, separate from the adaptive step. That is not the same as adding \(\frac{\lambda}{2}\|\theta\|^2\) to the loss and letting Adam rescale it. Dropout zeros activations in training. At eval it is off. Inverted dropout scales the kept units by \(1/(1-p)\) during training so the eval pass needs no extra factor. Layer norm is over the features of one token and does not use the batch. Batch norm uses the batch. A transformer uses layer norm.
+
+A larger model can still generalize better. Capacity is not a monotone law. Optimization and the data can dominate it. Say that if asked, and still try the checkpoint first when validation has already turned up.
+
+### Recall before the next breadth mock
+
+Early stopping. Weight decay versus an L2 term under Adam. Dropout in train and at eval. Layer norm versus batch norm. A learning-rate schedule. Proportional sampling, equal sampling, and a temperature in between. How a learning curve separates overfitting from a shift. One minute each. No new breadth mock until AdamW and layer norm are fluent. The 30 Oct recall is [`2026-10-30_fundamentals-recall.md`](2026-10-30_fundamentals-recall.md): AdamW 4, layer norm 3. Question 7 was not taken.
+
+The debrief says a 29 Oct recall produced Platt versus isotonic and \(B_i = 20500 p_i - 500\), so \(p > 500/20500 \approx 2.44\%\). That recall is not a scored mock and has no separate file. The 28 Oct top-10 and top-20 arithmetic is still unanswered.
+
+Logged breadth scores are 6.5, 6.5, and 6.5. Depth is 7.5 and 7.0. Design is 7.0. Behavioral is 8.0 and 8.0. The averages are of these logs only. They are not a hiring scale. The repeated miss is the elaborate test before the cheap one.
