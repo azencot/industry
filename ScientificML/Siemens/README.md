@@ -52,6 +52,9 @@
 | **2026-10-30** | ML breadth mock, overfitting | 6.5. Three breadth logs, each 6.5. The validation minimum was not the first action. Recall early stopping, AdamW, and dropout before another breadth mock. [`mocks.md`](mocks.md). |
 | **2026-10-30** | Fundamentals recall | Not a mock. About 6.2. Early stopping 8, AdamW 4, dropout 7, layer norm 3, cosine 7, sampling 8. The three-experiment question was not taken. [`2026-10-30_fundamentals-recall.md`](2026-10-30_fundamentals-recall.md). |
 | **2026-10-30** | System-design mock, Vivek | Time-series foundation model, 7.0. CFD surrogate aborted, not in the average. Two design mocks, both 7.0. Token and latency are the redo. [`mocks.md`](mocks.md). |
+| **2026-10-30** | Depth recall | Not a mock. About 8.1. Koopman 9, control 7, diffusion 8.5, VAE versus GAN 8. EM skipped. Closed-loop control is the open item. [`2026-10-30_depth-recall.md`](2026-10-30_depth-recall.md). |
+| **2026-10-30** | Breadth rapid-fire | Not a mock. About 8.1. AdamW and layer norm at 8.5, up from 4 and 3. Full-mock breadth average stays 6.5. Accuracy 99.2% is inconsistent with the other rates. [`2026-10-30_breadth-rapid-fire.md`](2026-10-30_breadth-rapid-fire.md). |
+| **2026-10-30** | ML depth mock, multimodal | 7.5. Architecture 8.5. Causal diagnosis 5.5: invertibility, a target embedding, and attention maps. Koopman, Closing the Loop, and this mock average about 7.3. [`mocks.md`](mocks.md). |
 
 ## Loop (Chandler, 2026-10-25 — current)
 

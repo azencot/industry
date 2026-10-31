@@ -78,6 +78,9 @@ After each call: drop `YYYY-MM-DD_*.md` in that company’s folder and add a row
 | 2026-10-30 | Siemens ML breadth mock, overfitting | 6.5. Overfit named. The step-6,000 checkpoint, weight decay, and dropout were not. A larger model and a learned map came first. [`Siemens/mocks.md`](Siemens/mocks.md). |
 | 2026-10-30 | Siemens fundamentals recall | Not a mock. 6.2 on six answers. AdamW 4. Layer norm 3. Question 7 not taken. [`Siemens/2026-10-30_fundamentals-recall.md`](Siemens/2026-10-30_fundamentals-recall.md). |
 | 2026-10-30 | Siemens system-design mock, time series | 7.0. CFD opening aborted and unscored. Three holdouts landed. The token and the factory count did not. [`Siemens/mocks.md`](Siemens/mocks.md). |
+| 2026-10-30 | Siemens depth recall | Not a mock. 8.1 on four answers. Koopman 9, control 7, diffusion 8.5, VAE 8. EM skipped. One-step accuracy is not an MPC. [`Siemens/2026-10-30_depth-recall.md`](Siemens/2026-10-30_depth-recall.md). |
+| 2026-10-30 | Siemens breadth rapid-fire | Not a mock. 8.1 on five answers. AdamW 8.5, layer norm 8.5. Do not average with the 6.5 breadth mocks. The 99.2% accuracy does not match the other rates. Stories A and C deferred. [`Siemens/2026-10-30_breadth-rapid-fire.md`](Siemens/2026-10-30_breadth-rapid-fire.md). |
+| 2026-10-30 | Siemens ML depth mock, multimodal | 7.5. Two-stage chart and delay training landed. The causal split of information, perception, and reasoning was 5.5. Loop depth average about 7.3. [`Siemens/mocks.md`](Siemens/mocks.md). |
 
 ---
 

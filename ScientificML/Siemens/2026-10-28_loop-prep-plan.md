@@ -96,9 +96,9 @@ Breadth mock 3 is logged (30 Oct, overfitting, 6.5). The checkpoint at step 6,00
 
 **Thu 29.** Depth mock 2 is done: Closing the Loop, 7.0. Design mock 1 is done. Breadth: one applied evaluation question in the screen’s style. Behavioral: the 28 Oct corrections only. “My students,” “insist,” one number, EDM as the sampler. Not a second ImagenTime mock.
 
-**Fri 30.** Breadth mock 3 is done: overfitting, 6.5. The fundamentals recall is done and is not a mock. Design mock 2 is done: the CFD opening was aborted and is unscored. The time-series foundation model is 7.0. The token was a metadata prefix, and 500 factories were treated as 500 machines. Say the sensor-time token before another design. Behavioral: story **B**, the two controls, if it was not already done. Do not retell story C, and do not invent the audit.
+**Fri 30.** Breadth mock 3, the fundamentals recall, the depth recall, and design mock 2 are done. The rapid-fire is done and is not a mock: [`2026-10-30_breadth-rapid-fire.md`](2026-10-30_breadth-rapid-fire.md). Scores 7.5, 8.5, 8.5, 8.5, 7.5, average 8.1. Do not fold 8.1 into the 6.5 breadth-mock average. AdamW and layer norm moved from 4 and 3 to 8.5. The behavioral review of stories A and C was deferred, not done.
 
-**Sat 31.** Depth recall, not a mock: Koopman, diffusion from his own papers, and the Closing the Loop objective. The classical ELBO is not that theorem until the PDF says so. One question, then the correction. Design: say the token, the mask, the loss, and the latency path. Not a second scored design. Breadth: AdamW and layer norm from memory. Behavioral: story **E** only with the mask and interpolation.
+**Sat 31.** Depth mock 3 is done: multimodal, 7.5. The causal split was 5.5. First block is three diagnosis cases, feedback after each, not a scored mock: a relation the model cannot answer, a forecast that fails on a new machine, a one-step model that diverges. Do not redo Koopman, diffusion, AdamW, or layer norm. Then either an unnamed breadth failure or the sensor-time token and latency. Five minutes of standard EM only if those are done. It is not Closing the Loop. Behavioral: the deferred pass on **A** and **C**, with the bank’s numbers. Story **E** only if time remains, and only with the mask and interpolation.
 
 **Sun 1.** Depth: distillation and structured Koopman, then a random CV line. Design: scenario D, surrogate versus solver. Breadth: one mixed question. Behavioral: the stop rule, on story **C** or **B**. Question 7 from the ImagenTime mock stays unanswered until he answers it on a different story.
 
@@ -124,4 +124,4 @@ Behavioral mock 2 is logged (29 Oct, story C, 8.0). The gates and 26.9 to 21.9 l
 
 ## By 2 Nov
 
-One Level A defense of a paper not yet used: distillation or Koopman generative operators. Closing the Loop only from the PDF, and not as the Bosch story. The sensor-time token, the observed-only loss, and latency separate from throughput. AdamW and layer norm said without notes. The stop rule, said as his decision.
+The causal split: recover the fact from the image, extract it with one question, and hand the true numbers to the LLM. The sensor-time token and latency separate from throughput. One unnamed failure, with a confusion matrix that adds up. Stories A and C with the bank’s numbers. The stop rule, said as his decision.

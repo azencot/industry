@@ -24,6 +24,7 @@ Story source: [`2026-10-15_behavioral-story-bank.md`](2026-10-15_behavioral-stor
 | 2026-10-29 | Behavioral | Story C — TR kill | Gates and 26.9 to 21.9 landed. Reasoning still said as 28 to 29.2. “We agreed.” The lever, not the project. 8.0/10. |
 | 2026-10-30 | ML breadth | 100M transformer, validation rises after 6,000 | Overfit named. The step-6,000 checkpoint was not the first move. Larger models, then a learned map, then resampling. No weight decay or dropout. 6.5/10. |
 | 2026-10-30 | System design, Vivek | Industrial time-series foundation model | CFD surrogate aborted, unscored. Three holdouts landed. Decoder-only plus a mask, then a metadata token. 500 factories treated as 500 machines. 7.0/10. |
+| 2026-10-30 | ML depth | Qwen3-VL, chart and delay | Two-stage train and the view dropout landed. Fusion was not a token. Causal split of information, perception, and reasoning was invertibility, a target embedding, and attention. 7.5/10. |
 
 ---
 
@@ -706,3 +707,37 @@ The session’s thirty-second pitch was written afterward. Do not treat it as wh
 ### Next
 
 Not another foundation-model design until that token can be said first. The next session is a depth recall: Koopman, diffusion on his own papers, and the Closing the Loop objective. The classical ELBO is still not that paper’s theorem. One question at a time. Feedback after each recall item. No hints during a mock.
+
+## 2026-10-30 — ML depth, multimodal
+
+**Kind:** Depth mock. Feedback after the end. Qwen3-VL on multivariate series: chart, delay embedding, DINOv3. **7.5/10.** Architecture 8.5, alignment 8, experiments 8, the one-run decision 7.5, the causal split 5.5. Loop depth scores in this tracker: Koopman 7.5, Closing the Loop 7.0, this mock 7.5, about 7.3. The 26 Oct flow-matching mock stays 8 and is outside that three. The tables below were given to him. They are not results from the story bank.
+
+### What he said
+
+Series become images. If the budget allows, two views, as in the project: a chart through Qwen3-VL’s ViT, a delay embedding through pretrained DINOv3 and a projector. Stage A is perception on captions, in the LLaVA pattern: the answer is the caption, and the loss is next-token prediction. The LLM stays frozen. He trains the projector and possibly DINO. Qwen’s ViT stays frozen. Stage B is the downstream task. LoRA on the LLM, and possibly on DINO.
+
+To stop the LLM from using only one view, captions must need view 1 or view 2, and training drops one view or keeps both. Stage A is perception of time-series images: trend, seasonality, noise, a segment, a value. It is not yet reasoning. If Stage A’s loss falls and reasoning does not, he would ablate at matched tokens, weights, budget, and data. Swap the visual form for text or patches, or another image. Alignment is cosine similarity or a likelihood against related and unrelated text. Reasoning is TSRBench’s five or six reasoning tasks, against models that are and are not time-series language models.
+
+Given a text oracle at 92%, chart 74%, delay 69%, both 75%, and a longer Stage A at 76%, with the misses on numerical comparison and temporal order, and one training run left: the aggregate is not a bottleneck. Slice those two tasks and audit at inference cost. If the missing pieces are segmentation, value extraction, and sorting, add data for those and run a short LoRA. Native series as text spends too many tokens to compete with an image. A patch encoder might matter, and it would need its own reasoning baseline.
+
+Trend 95%, seasonality 91%, numerical comparison 58%, temporal order 54%. Chart-only and chart-plus-delay make almost the same mistakes. Three hypotheses: the image dropped the fact, the encoder did not extract a fact that is in the image, or the LLM has the fact and cannot reason. Inference only. He would prove invertibility, true for delay embeddings and mostly true for charts, and run no experiment. For perception he would build a toy set whose embeddings are known and compare the system’s vectors to those targets. For reasoning he would read attention maps between text and vision.
+
+### What landed
+
+A real system, not a sketch: which tower is frozen, which loss is stage A, and LoRA only after perception. View dropout plus captions that need a specific view. Stage A named as perception, not as reasoning. On the gap, he refused to pick a bottleneck from the average, and he spent the audit before the one training run. A short LoRA is the right size for that one run.
+
+### What broke
+
+- **The join.** He never said how the two streams become tokens in the LLM: shapes, the projection, concatenation, a view id, and whether a gradient enters DINO. A metadata story is not that sentence. This is the same miss as the foundation-model design.
+- **Dropout is not fusion.** A model can solve chart-only items and delay-only items and still never use both on one item. The comparison is chart, delay, and both, on items that are wrong unless both views are present.
+- **A caption of a trend is not a numerical comparison.** Say that split. Cosine to a related sentence is not alignment. A matched-versus-mismatched score, a retrieval, or a perception probe is. Matching the parameter count is not required for an engineering comparison under a compute cap.
+- **92% is not headroom.** The oracle shows the LLM can answer when the text is given. It does not show the image contains that text. A learned series encoder that emits \(K\) tokens, with \(K\) far below \(T\), is not the same objection as pasting the raw series into the prompt.
+- **The causal split, 5.5.** Invertibility of the math is not invertibility of the rendered image. Rasterization, resolution, and a delay plot can keep a shape and drop the order of the peaks. There is no single correct embedding, so a distance to a chosen target does not prove perception. Attention can land on the right patch and the arithmetic can still be wrong. The tests that separate the three: recover the fact from the rendered image without the VLM; ask the VLM a one-step extraction; hand the LLM the true numbers in text and ask the same question. A jump from 54% on the image to 90% on the true numbers shows that skipping vision matters. It does not say which of the three caused it.
+
+### Not his answer
+
+The six-row protocol in the session was written afterward. Do not treat it as what he said. The line to practice is: name the hypothesis, the one change, the result that would support it, and what that result still does not prove.
+
+### Next
+
+Three short cases, feedback after each, not a scored mock. Perception versus a relation. A forecast that dies on a new machine. A one-step model that diverges on a rollout. Then either an unnamed breadth failure or the sensor-time token and the latency path. Stories A and C are still deferred.
