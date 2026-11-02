@@ -66,7 +66,7 @@ After each note or call: drop `YYYY-MM-DD_*.md` in that company’s folder and a
 | 2026-11-02 | Foti plan revised | Masha Fedzechkina’s internship post shifts the read toward representation, expression, and early training. Questions replaced. Next is the Bayes-consistency paper (arXiv:2605.06915), then the multimodal presentation. Do not claim mech-interp or Bayesian expertise. [`apple-dmli/2026-11-02_nick-foti-prep-plan.md`](apple-dmli/2026-11-02_nick-foti-prep-plan.md). |
 | 2026-11-02 | Bayes paper, introductory | Question, consistency versus accuracy, and the numerical reference posterior. Q1 scored 7/10. The gap is not derived. Internal update versus bad verbalization was not answered. Not mastered. High-level only. [`apple-dmli/2026-11-02_bayes-paper-prep.md`](apple-dmli/2026-11-02_bayes-paper-prep.md). |
 | 2026-11-02 | 90-second intro | Representation learning, Koopman VAEs, sequential disentanglement, then the ongoing time-series vision-language project. Logged as spoken. Two project sentences still say “we.” [`apple-dmli/2026-11-02_90-sec-intro.md`](apple-dmli/2026-11-02_90-sec-intro.md). |
-| 2026-11-02 | Meeting cheat sheet | One page for the call: intro, five questions, paper lines, and the lines not to cross. KoVAE and Dual-Time tellings added. [`apple-dmli/2026-11-02_meeting-cheat-sheet.md`](apple-dmli/2026-11-02_meeting-cheat-sheet.md). |
+| 2026-11-02 | Meeting cheat sheet | One page for the call: intro, five questions, paper lines, and the lines not to cross. KoVAE, Dual-Time, and two research directions added. [`apple-dmli/2026-11-02_meeting-cheat-sheet.md`](apple-dmli/2026-11-02_meeting-cheat-sheet.md). |
 
 ---
 
