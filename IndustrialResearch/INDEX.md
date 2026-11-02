@@ -62,6 +62,7 @@ After each note or call: drop `YYYY-MM-DD_*.md` in that company’s folder and a
 | 2026-10-23 | Chelsea questionnaire | She submitted the 28–30 Oct availability and sent a written intake. Omri answered the same day: Research Science, foundation models, Green Card, start now, senior end of the posted base, no number. Health loop named, and the reply offers to reuse that feedback. Do not expand it. [`apple-dmli/2026-10-23_chelsea-questionnaire.md`](apple-dmli/2026-10-23_chelsea-questionnaire.md). |
 | 2026-11-02 | Foti talk prep | Logged the session plan: Bayesian inference for scientific data, activation patching, causal tracing, then three research questions he might ask. Multimodal presentation deferred. [`apple-dmli/2026-11-02_nick-foti-prep-plan.md`](apple-dmli/2026-11-02_nick-foti-prep-plan.md). |
 | 2026-11-02 | Patching session | Activation patching, causal tracing, probe vs intervention. Recall exercise solid. Research-design mock 6.5/10: a logit shift after patching was taken as evidence of scientific reasoning. Resume question is whether a head encodes the relationship or only the correct answer. [`apple-dmli/2026-11-02_activation-patching-session.md`](apple-dmli/2026-11-02_activation-patching-session.md). |
+| 2026-11-02 | Questions for Nick | Five priority questions plus optional technical questions, kept in his format for the live call. [`apple-dmli/2026-11-02_questions-for-nick.md`](apple-dmli/2026-11-02_questions-for-nick.md). |
 
 ---
 

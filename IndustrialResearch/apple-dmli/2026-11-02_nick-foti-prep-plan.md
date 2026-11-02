@@ -7,7 +7,7 @@ Talk prep for later today. Interactive tutorial. Multimodal project presentation
 | **Person** | Nick Foti, Principal Research Scientist, Seattle. Hiring manager. |
 | **Role** | AIML — Sr Machine Learning Research Scientist, Data and ML Innovation. Seattle, WA. Req **200668189-3337**. |
 | **Team brief** | Fundamental research on how foundation models work and how to expand them in scientific domains. |
-| **Status** | Plan logged 2026-11-02. Bayes 1A explained, check unanswered. Activation patching and causal tracing introduced the same day; session log and the resume question are in [`2026-11-02_activation-patching-session.md`](2026-11-02_activation-patching-session.md). |
+| **Status** | Plan logged 2026-11-02. Bayes 1A explained, check unanswered. Activation patching and causal tracing introduced the same day; session log and the resume question are in [`2026-11-02_activation-patching-session.md`](2026-11-02_activation-patching-session.md). Live questions: [`2026-11-02_questions-for-nick.md`](2026-11-02_questions-for-nick.md). |
 
 Strategy lock still holds: [`2026-10-22_strategy.md`](2026-10-22_strategy.md). Do not open with Health, Sapiro, or Ozan. The paper to know before Part C is *LLMs Are Not (Consistently) Bayesian* (Apple ML Research, August 2026). Verify findings from the paper. Do not invent them.
 
