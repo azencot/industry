@@ -6,7 +6,7 @@ Updated the same day after Masha Fedzechkina’s LinkedIn post. Live questions: 
 |---|---|
 | **Person** | Nick Foti, Principal Research Scientist, Seattle. Hiring manager. |
 | **Role** | AIML — Sr Machine Learning Research Scientist, Data and ML Innovation. Seattle, WA. Req **200668189-3337**. |
-| **Next** | Interactive pass on *LLMs are not (consistently) Bayesian*. Then the multimodal project presentation. |
+| **Next** | Paper is introductory only, not mastered. Log: [`2026-11-02_bayes-paper-prep.md`](2026-11-02_bayes-paper-prep.md). Next session derives \(\Delta(q)\). Then the multimodal presentation. |
 | **Do not claim** | Established expertise in mechanistic interpretability or Bayesian inference. Transferable research skill and real interest only. |
 
 Strategy lock still holds: [`2026-10-22_strategy.md`](2026-10-22_strategy.md). Do not open with Health, Sapiro, or Ozan.
@@ -69,17 +69,13 @@ Current wording is in [`2026-11-02_questions-for-nick.md`](2026-11-02_questions-
 
 *LLMs are not (consistently) Bayesian: Quantifying internal (in)consistencies of LLMs’ probabilistic beliefs.* Chacha Chen, Matthew Jörke, Adam Goliński, Masha Fedzechkina, Guillermo Sapiro, Sinead Williamson, Nicholas Foti. Correspondence: Nicholas Foti. [arXiv:2605.06915](https://arxiv.org/abs/2605.06915). [Apple ML Research](https://machinelearning.apple.com/research/llms-not-consistently-bayesian).
 
-Interactive, one question at a time, critique the answer. Stay on the paper’s method and conclusions. Do not recite a summary that has not been worked through in that pass.
+Introductory pass is logged: [`2026-11-02_bayes-paper-prep.md`](2026-11-02_bayes-paper-prep.md). Not mastered. Do not open the next session with another summary.
 
-Cover, in the Q&A:
-
-1. Central hypothesis.
-2. Definition of Bayesian consistency.
-3. Experimental methodology.
-4. Main findings.
-5. Expressed probabilities versus internal beliefs.
-6. Limitations and alternative explanations.
-7. Implications.
+1. Derive the reference posterior and \(\Delta(q)=D_{\mathrm{KL}}(q\parallel p)\).
+2. One concrete example from the paper, start to finish.
+3. The central figures.
+4. One limitation and a follow-up. The unanswered question belongs here: inconsistent internal update versus a consistent update that is verbalized badly.
+5. A short mock discussion.
 
 ## 7. Status
 
@@ -91,10 +87,13 @@ Done, as of this update:
 - Scientific-reasoning versus shortcut mock. Score on file: 6.5/10. A successful patch was treated as evidence of scientific reasoning.
 - Five interview questions, revised after the post.
 - Positioning revised around representation, expression, and training.
+- 90-second intro logged. [`2026-11-02_90-sec-intro.md`](2026-11-02_90-sec-intro.md). Two project sentences still say “we.”
+- Call page: [`2026-11-02_meeting-cheat-sheet.md`](2026-11-02_meeting-cheat-sheet.md). Intro there says “I.”
+- Introductory pass on arXiv:2605.06915. Not mastered. [`2026-11-02_bayes-paper-prep.md`](2026-11-02_bayes-paper-prep.md).
 
 Still open:
 
-- The paper Q&A above. This is the next session.
+- The paper. Question, motivation, and the numerical reference posterior are in hand. Q1 scored 7/10. The gap is not derived. Q2, internal update versus bad verbalization, was not answered. Results and critique are thin. High-level conversation only.
 - Multimodal project presentation, after that paper.
 - Patching follow-up, if mech-interp comes back: a head that flips a wrong answer to the scientific one may encode the relationship, or only the answer. Unanswered in the session log.
 - ROME corruption-and-restore in detail. No hands-on patching implementation yet.

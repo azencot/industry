@@ -4,6 +4,8 @@ November 2, 2026 | Senior ML Research Scientist
 
 Updated after Masha Fedzechkina’s internship post. Ask these, not the earlier five.
 
+Spoken intro: [`2026-11-02_90-sec-intro.md`](2026-11-02_90-sec-intro.md). Call page: [`2026-11-02_meeting-cheat-sheet.md`](2026-11-02_meeting-cheat-sheet.md).
+
 ## ⭐ Five Priority Questions — Quick Reference
 
 1. **Research Agenda:** What are the main research questions your team is currently pursuing around understanding foundation models in scientific domains?
