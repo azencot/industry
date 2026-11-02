@@ -65,7 +65,9 @@ Open-ended. Clarify, then architecture, then he changes a constraint or names a 
 
 Design mock 1 is logged (29 Oct, PDE generation, 7.0): [`mocks.md`](mocks.md). The 100,000-trajectory shortfall landed. The later counts used wall-clock instead of the remaining node-hours. Storage and a PDE residual were not said. The repair-versus-resimulate choice stays unscored.
 
-Design mock 2 is logged (30 Oct, industrial time series, 7.0). The CFD opening is unscored. Say the sensor-time token, the observed-only loss, and latency separate from throughput before another design. Two design mocks, both 7.0.
+Design mock 2 is logged (30 Oct, industrial time series, 7.0). The CFD opening is unscored. Say the sensor-time token, the observed-only loss, and latency separate from throughput before another design.
+
+Design mock 3 is logged (31 Oct, 24-hour warning, 7.0). XGBoost and the cap of 20 landed. A window containing the failure was labeled positive, and Friday at 9 AM was still positive. Features stopped at min, max, and mean. Three design mocks, each 7.0. The next one is a different system. The probe is the label at three times, then the features a tree sees.
 
 **A. PDE data generation.** Which PDE family, which systems, resolution, how many runs, parameter ranges, initial and boundary conditions, accuracy, compute, and the downstream task. Solver, sampling, mesh or grid, time integration, stability, validation, storage. Independent runs across workers, CPU versus GPU, scheduling, load balance, failure and checkpoint. Schema, provenance, compression, layout, streaming versus offline. Then the bottleneck: resolution, adaptive sampling, a surrogate, fidelity against throughput. Check convergence, conservation where it applies, coverage, and whether a downstream model improves. The point is the system, not a new specialty in numerical PDE.
 
@@ -98,9 +100,9 @@ Breadth mock 3 is logged (30 Oct, overfitting, 6.5). The checkpoint at step 6,00
 
 **Fri 30.** Breadth mock 3, the fundamentals recall, the depth recall, and design mock 2 are done. The rapid-fire is done and is not a mock: [`2026-10-30_breadth-rapid-fire.md`](2026-10-30_breadth-rapid-fire.md). Scores 7.5, 8.5, 8.5, 8.5, 7.5, average 8.1. Do not fold 8.1 into the 6.5 breadth-mock average. AdamW and layer norm moved from 4 and 3 to 8.5. The behavioral review of stories A and C was deferred, not done.
 
-**Sat 31.** Depth mock 3 is done: multimodal, 7.5. The causal split was 5.5. First block is three diagnosis cases, feedback after each, not a scored mock: a relation the model cannot answer, a forecast that fails on a new machine, a one-step model that diverges. Do not redo Koopman, diffusion, AdamW, or layer norm. Then either an unnamed breadth failure or the sensor-time token and latency. Five minutes of standard EM only if those are done. It is not Closing the Loop. Behavioral: the deferred pass on **A** and **C**, with the bank’s numbers. Story **E** only if time remains, and only with the mask and interpolation.
+**Sat 31.** Breadth mocks 4 and 5 are done, 7.5 partial and 7.3. Design mock 3 is done, 7.0. The label did not encode a 24-hour lead. InfoNCE and L1 versus L2 are still the one-minute review. Stories **A** and **C** stay deferred.
 
-**Sun 1.** Depth: distillation and structured Koopman, then a random CV line. Design: scenario D, surrogate versus solver. Breadth: one mixed question. Behavioral: the stop rule, on story **C** or **B**. Question 7 from the ImagenTime mock stays unanswered until he answers it on a different story.
+**Sun 1.** Design first, a different system from the 1,000-machine maintenance problem. Open with three timestamps and a lead time: positive, negative, or excluded. Then the features, the split, and why that model. Not a causal question. Depth after that: distillation or ImagenTime as a paper, one of them. Breadth only if the label can be said cleanly. Behavioral: stories **A** and **C** with the bank’s numbers, if the design is done.
 
 **Mon 2.** Consolidation. Random papers, including one he did not lead. One design, training or a surrogate, with the node-hour ledger and one residual. Not another generation pipeline. One mixed breadth question. Story review, not new material. One page: six papers, the design sequence, the screen diagnosis, the open misses (precision at K, the stop rule, no number on ImagenTime, the 60,000 node-hour split).
 
@@ -124,4 +126,4 @@ Behavioral mock 2 is logged (29 Oct, story C, 8.0). The gates and 26.9 to 21.9 l
 
 ## By 2 Nov
 
-The causal split: recover the fact from the image, extract it with one question, and hand the true numbers to the LLM. The sensor-time token and latency separate from throughput. One unnamed failure, with a confusion matrix that adds up. Stories A and C with the bank’s numbers. The stop rule, said as his decision.
+A different design, opened with the label: positive, negative, or too late. Features a tree can take, on more than one horizon. InfoNCE with the log and the exp. L1 zeros weights. L2 shrinks them. Stories A and C with the bank’s numbers.

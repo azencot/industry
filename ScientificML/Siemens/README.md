@@ -55,6 +55,9 @@
 | **2026-10-30** | Depth recall | Not a mock. About 8.1. Koopman 9, control 7, diffusion 8.5, VAE versus GAN 8. EM skipped. Closed-loop control is the open item. [`2026-10-30_depth-recall.md`](2026-10-30_depth-recall.md). |
 | **2026-10-30** | Breadth rapid-fire | Not a mock. About 8.1. AdamW and layer norm at 8.5, up from 4 and 3. Full-mock breadth average stays 6.5. Accuracy 99.2% is inconsistent with the other rates. [`2026-10-30_breadth-rapid-fire.md`](2026-10-30_breadth-rapid-fire.md). |
 | **2026-10-30** | ML depth mock, multimodal | 7.5. Architecture 8.5. Causal diagnosis 5.5: invertibility, a target embedding, and attention maps. Koopman, Closing the Loop, and this mock average about 7.3. [`mocks.md`](mocks.md). |
+| **2026-10-31** | ML breadth mock, new facility | 7.5, partial. Four breadth mocks average 6.75 if this partial is included. The rapid-fire 8.1 stays out. Next design is the 24-hour failure question, not started. [`mocks.md`](mocks.md). |
+| **2026-10-31** | ML breadth mock, fundamentals | 7.3. Five questions. InfoNCE and the temperature direction are the miss. Five-mock arithmetic mean about 6.9, and the mocks are not the same test. [`mocks.md`](mocks.md). |
+| **2026-10-31** | System-design mock, 24-hour warning | 7.0. Third design mock at 7.0. Labels and features were the gap. Next design is a different system, opened on the label. [`mocks.md`](mocks.md). |
 
 ## Loop (Chandler, 2026-10-25 — current)
 

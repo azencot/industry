@@ -25,6 +25,9 @@ Story source: [`2026-10-15_behavioral-story-bank.md`](2026-10-15_behavioral-stor
 | 2026-10-30 | ML breadth | 100M transformer, validation rises after 6,000 | Overfit named. The step-6,000 checkpoint was not the first move. Larger models, then a learned map, then resampling. No weight decay or dropout. 6.5/10. |
 | 2026-10-30 | System design, Vivek | Industrial time-series foundation model | CFD surrogate aborted, unscored. Three holdouts landed. Decoder-only plus a mask, then a metadata token. 500 factories treated as 500 machines. 7.0/10. |
 | 2026-10-30 | ML depth | Qwen3-VL, chart and delay | Two-stage train and the view dropout landed. Fusion was not a token. Causal split of information, perception, and reasoning was invertibility, a target embedding, and attention. 7.5/10. |
+| 2026-10-31 | ML breadth, stopped | New facility, 0.5% failures, 20 inspections | Diagnosis before a bigger model. A and B selected. Used \(20500p-500\) where every inspection costs $500. Dollars not computed. Policy question unscored. 7.5/10 partial. |
+| 2026-10-31 | ML breadth | AdamW, LSTM, ViT, stability, InfoNCE | Instability diagnosis 8.5. L2 called sparsity. Temperature reversed. InfoNCE missing the log and the exp. 7.3/10. |
+| 2026-10-31 | System design | 1,000 machines, 24-hour warning | XGBoost and a cap of 20 landed. A window that contains the failure was the positive. Friday at 9 AM was still positive. Features were min, max, and mean. 7.0/10. |
 
 ---
 
@@ -741,3 +744,121 @@ The six-row protocol in the session was written afterward. Do not treat it as wh
 ### Next
 
 Three short cases, feedback after each, not a scored mock. Perception versus a relation. A forecast that dies on a new machine. A one-step model that diverges on a rollout. Then either an unnamed breadth failure or the sensor-time token and the latency path. Stories A and C are still deferred.
+
+## 2026-10-31 — ML breadth, new facility
+
+**Kind:** Breadth. Feedback after the end. He stopped before the last question. That question is not scored. **7.5/10 partial.** Diagnosis 8.5, metrics 8, the cost rule 8, calibration 7, the 20-machine arithmetic 7.5. Four breadth mocks, 6.5, 6.5, 6.5, and this 7.5, average 6.75 if the two partials are included. The 30 Oct rapid-fire at 8.1 stays out. Not comparable to a finished interview.
+
+### What he was given
+
+A transformer. Train AUROC 0.97, AUPRC 0.72, recall 91%. Validation 0.95, 0.65, 87%. A new facility: 0.91, 0.18, 64%. The team wants a larger model, a fine-tune, or a new threshold. Then: prevalence 5% in validation and 0.5% in deployment. A false alarm costs $500. A miss costs $20,000. At most 20 inspections a week. 10,000 predictions a week. After a monotone calibration: 5 machines at 40%, 15 at 8%, 80 at 1%, and 9,900 below 0.5%.
+
+### What he said
+
+He would not change the model first. He asked for precision on train, validation, and deployment, and for precision at K and recall at K if the plant has a quota. He wanted the false-positive rate, the false-negative rate, and the two costs. A low AUPRC means many false positives, which can still be acceptable if a miss is very expensive. That is the decision. Separately, he would check normalization, units, and sensor layout against training. If those match, he would look for a shift: operating mode, typical values, failure cases, a distribution distance, and whether the new site was scarce in training. Then error cases against training cases. A short fine-tune on a split of the new site, with a held-out slice.
+
+A tenfold drop in positives can cut AUPRC even if the ranking is similar. He would keep predictions with positive benefit, \(20500p - 500 > 0\), and return the top 20 or fewer. If the model says 80% and the rate is 20%, calibration means extra inspections at $500, while a high AUROC makes misses less worrying. Twenty inspections at $500 is $10,000, so he would calibrate with a sigmoid or a nondecreasing map. He did not name them.
+
+Only the 8% group and above meet his rule, so he inspects all of A and all of B. That is 20, and each has positive benefit. A monotone map keeps the high ranks and can move some scores from a false positive to a negative benefit. Prevented failures should be counted in the prevalence. The higher prevalence can pull groups C and D into the policy.
+
+He did not answer how many failures the system prevented once inspections change the outcome. He asked to stop. The question had left breadth for a causal estimate. Unscored. He wants the next design to be a plain applied system, not that topic.
+
+### What landed
+
+Diagnosis before a larger model: precision, a cap, the two costs, the pipeline, then a shift, then a short fine-tune with a holdout. Prevalence can move AUPRC without a collapse in rank. The benefit line and a cap of 20, not a quota of 20. Groups A and B, and not C. A monotone map does not reorder the list and can change how many scores clear a probability line.
+
+### What broke
+
+- **AUPRC is not the false-positive count at the threshold.** It averages precision across recall. The operating point still needs its own precision. And AUROC fell from 0.95 to 0.91, so the AUPRC drop is not only the tenfold prevalence change.
+- **Which $500.** \(20500p - 500\) is the benefit when the $500 is paid only on a false alarm. This prompt charges $500 on every inspection, and the inspection prevents the failure. The benefit is \(20000p - 500\), so \(p > 2.5\%\). Groups A and B still clear that line. Group C at 1% does not. He did not compute the dollars. Per machine, A is \(0.4 \times 20000 - 500 = 7500\), times 5 is 37,500. B is \(0.08 \times 20000 - 500 = 1100\), times 15 is 16,500. Together, 54,000 a week. That is 3.2 expected failures prevented, 64,000 of avoided loss, minus 10,000 of inspections.
+- **Names, again.** A sigmoid fit on the score is Platt. A nondecreasing fit is isotonic. A high AUROC does not make misses cheap. Recall under a cap of 20 is a different number from AUROC.
+- **A prevented failure is not an observed failure.** Counting it into the prevalence pretends the untreated outcome was seen. The probabilities can estimate how many inspections should have caught, if they are calibrated and the inspection actually prevents the failure. They are not a new prevalence that pulls C and D over the line.
+
+### Not his answer
+
+The $54,000 total and the 2.5% line were written after he stopped. Do not treat them as what he said. He picked A and B. He did not say the dollars.
+
+### Next
+
+Not the causal question. A simpler design, about 20 minutes, four questions, no feedback until the end. The opening is already set and not answered: 1,000 machines, three years, rare failures, predict 24 hours ahead. Temperature, pressure, vibration, power. He may ask, then the formulation, the data, and the architecture. No causal detour and no mesh.
+
+## 2026-10-31 — ML breadth, five fundamentals
+
+**Kind:** Breadth. Five separate questions. He stopped after the fifth and asked for feedback. **7.3/10.** AdamW 7, LSTM versus Transformer 7.5, CNN versus ViT 8, instability 8.5, InfoNCE 5.5. Five breadth mocks at 6.5, 6.5, 6.5, 7.5 partial, and 7.3. The arithmetic mean is about 6.9. They are not the same test. The 30 Oct rapid-fire at 8.1 stays out.
+
+### What he said
+
+Validation rising while training falls is overfitting. He would raise weight decay and dropout, and he would cut the learning rate only if training were unstable. Weight decay, he said, makes a sparser model, more weights near zero, and a sparse model generalizes because it keeps only the necessary weights. Dropout builds a larger ensemble by forcing other wirings. A smaller learning rate moves more slowly and can find a better minimum. L2 inside Adam enters the moments. AdamW does not. That split is right.
+
+An LSTM reapplies one unit and carries a hidden state and a cell. A Transformer is attention and an MLP, not a recurrence. The LSTM has few weights and vanishing gradients. The Transformer has many weights and handles long sequences. Attention is \(O(T^2)\). The LSTM is linear in length. Attention and the MLP do not care about order. A position index, a sine and cosine, or RoPE puts the order back. The LSTM gets order because each step sees the previous one.
+
+A CNN scans with a kernel. A ViT cuts the image into tokens, adds special tokens, and runs attention and an MLP. The CNN has a spatial bias and the ViT does not. ViTs beat CNNs only at large data, because they have more weights and must learn the bias. Fine-tuning is easier when the pretraining distribution is close. He would try LoRA, then full fine-tuning, then training from scratch, after a shift check. A close distribution gets LoRA. A large shift might skip LoRA, though LoRA is cheap next to a full fine-tune.
+
+A spike at step 12,000, with large gradients and NaNs: warmup ending too soon, bad or unnormalized data, mixed precision, no clipping, or too high a learning rate. Check whether warmup ends near 12,000, whether clipping is in the code, whether the run is BF16 or FP16, then the batch at that step. If the norm exceeds \(a\), replace \(g\) with \(a g / \|g\|\). Clipping can slow convergence. FP16 has a smaller range than FP32. BF16 keeps the range and drops precision, which is what training wants.
+
+InfoNCE pulls a pair together and pushes others apart. He wrote the loss as a similarity of the pair divided by a sum of similarities, and the other term can be the positive or a negative. Temperature divides the argument of the exponential. A larger temperature, he said, makes a one-hot, and a smaller one spreads the mass. Hard negatives help and are hard to find without labels. More negatives structure the space. A negative that is actually positive pushes true pairs apart.
+
+### What landed
+
+Overfitting named, and regularization before a smaller step size. AdamW’s moments are computed without the penalty. Recurrence versus attention, order from the recurrence, and three ways to put position into a Transformer, including RoPE. A CNN’s spatial bias, and LoRA before a full fine-tune when the distributions match. The instability pass is the strongest in the set: schedule, clipping, the float format, then the batch. The clip formula is the one that rescales a finite vector down to length \(a\). BF16 keeps FP32’s exponent range. False negatives in contrastive learning are the wrong objective.
+
+### What broke
+
+- **L2 is not sparsity.** L1 drives weights to zero. L2 penalizes large weights, \(\frac{\lambda}{2}\|w\|^2\), and does not in general zero them. A smaller learning rate changes the step. It is not a treatment for overfitting, and it does not promise a better minimum.
+- **\(O(T^2)\) is the attention term, not the whole layer.** With width \(d\), attention is \(O(T^2 d)\) and the projections and MLP are \(O(T d^2)\). An LSTM step is \(O(dD + d^2)\), times \(T\). Materializing the scores costs \(O(T^2)\) memory. FlashAttention avoids storing that matrix. The pairwise work is still quadratic. An LSTM’s backward pass also stores activations along \(T\). Parameter count is a choice of width and depth, not a fact about the family. An LSTM was built to reduce vanishing gradients. It does not remove the long-range problem.
+- **A ViT is not a CNN with more weights.** The data gap is locality, shared weights, and a hierarchy, which a plain ViT does not assume. Before LoRA, freeze the backbone and train the head. Then LoRA, then a full fine-tune, then a scratch run only if those lose. Judge them on the validation number, the budget, and the shift.
+- **InfoNCE, 5.5.** The loss is \(-\log\) of a softmax of exponentiated similarities. For anchor \(z_i\), positive \(z_i^+\), negatives \(z_j^-\), and similarity \(s\),
+
+\[
+-\log \frac{\exp(s(z_i,z_i^+)/\tau)}{\exp(s(z_i,z_i^+)/\tau)+\sum_j \exp(s(z_i,z_j^-)/\tau)}.
+\]
+
+  Temperature divides the similarity inside the exp. A smaller \(\tau\) sharpens the softmax and puts more weight on the largest scores, including hard negatives. A larger \(\tau\) flattens it. He had that direction backward. More negatives are not free: false negatives, duplicates, cost, and negatives that are only hard because they are mislabeled.
+
+### Not his answer
+
+The loss and the temperature direction above are the correction. He wrote a ratio of similarities and said a larger temperature concentrates the distribution.
+
+### Next
+
+Say InfoNCE and the temperature once, in under a minute, and L1 versus L2 in one sentence. Then the design that is still unopened: 1,000 machines, three years, a failure 24 hours ahead. About 20 minutes, four questions, no feedback until the end. Stories A and C are still deferred.
+
+## 2026-10-31 — System design, 24-hour warning
+
+**Kind:** System design. About 25–30 minutes. Predictive maintenance, 1,000 machines, about 50 sensors, three years, a sample every 10 seconds. Binary failure, about 1% of machines a month. A useful sign can appear from 6 hours to 7 days before the event. Refresh hourly. All machines in at most 10 minutes. Prefer CPU. At most 20 inspections a day. **7.0/10.** Clarifying 9, labels 5, model 8, features 5.5, the decision 8, rollout 8, monitoring 8. The 7.0 is the whole answer, not the average of those parts. Three design mocks, each 7.0.
+
+### What he said
+
+He asked the sample rate and the size, how many failure types and how long a lookback an expert would use, how regular and how missing the series are, and the throughput and the latency. A thousand hourly scores looked cheap enough, depending on the model.
+
+He would clean automatically and by hand, and drop series that are not regular enough. A chronological split. Overlapping seven-day windows, stepped by six hours. Aggregate to one minute. A window is positive if it contains the first failure. Start with XGBoost: a fast CPU baseline that can weight a rare class. A network waits until the useful history is known. Rank by expected benefit and alert at most 20 machines.
+
+Failure at Friday 3 PM. Wednesday 3 PM positive. Thursday 3 PM positive. Friday 9 AM positive if the machine is still failed. A calibrated model should assign Wednesday a lower probability than Thursday.
+
+For 10,080 steps and 50 sensors he would aggregate, or train an encoder from scratch on the \(10080 \times 50\) tensor. Irregular series complicate that. Pushed for features, he named operating-regime thresholds, the mean, the maximum, and the minimum.
+
+AUROC 0.94 and AUPRC 0.32 are not enough under 20 inspections. He added precision, recall, precision at 20, recall at 20, calibration, the two error rates, and the two costs. Rank by expected benefit. Inspect when \(yp > x\), with \(y\) the cost of a miss, \(x\) the cost of a false alarm, and \(p\) the probability.
+
+Offline evaluation, then shadow, then a person in the loop, then more automation with a person still on the critical cases.
+
+If alerts rise and failures do not, and one factory is much worse: slice by factory, see whether it is local, check the pipeline and the protocol, compare recent and old distributions, find regimes that were scarce, retrain if there is data, otherwise resample or reweight toward the recent data.
+
+### What landed
+
+The questions that change the system: rate, lookback, missingness, and the 10-minute budget. XGBoost before a network, on CPU, with a weight on the rare class, and a cap of 20. Wednesday and Thursday are inside a 24-hour-to-7-day window. Precision at 20, calibration, and the two costs. Shadow before an alert that anyone acts on. A factory slice before a global retrain.
+
+### What broke
+
+- **The label.** A window that contains the failure teaches detection, not a warning. Friday 9 AM is six hours before Friday 3 PM. Under a 24-hour lead it is not an actionable positive. One rule: positive when \(24\mathrm{h} \le T-t \le 7\mathrm{d}\), negative when nothing fails in seven days, and the gap \(0 < T-t < 24\mathrm{h}\) held out or given its own head. The horizon is a business choice. A calibrated probability need not rise as the event gets closer.
+- **Dropped rows.** Throwing out irregular series and downtime removes the warning. Keep the gaps and add a missingness flag. Features use only what is known at the prediction time. Overlapping windows must not cross the time split, and a machine’s event must not sit in both train and test.
+- **The feature.** Mean, min, and max on one window is not the model input. Per sensor, on 1 hour, 6 hours, 24 hours, and 7 days: mean, median, spread, a slope, the recent value against the history, time above a threshold, missingness, downtime, and the regime. Fifty sensors, four horizons, and about ten numbers is on the order of 2,000 features. That is an XGBoost input. An encoder from scratch is a later experiment. Temperature given the load is the interaction, if one is needed.
+- **\(yp > x\).** That line does not state the assumption. If the inspection prevents the failure and the cost is paid only when the alarm was unnecessary, the benefit is \(p C_{FN} - (1-p) C_{FP}\), and the cutoff is \(p > C_{FP}/(C_{FP}+C_{FN})\). If every inspection costs \(C_{FP}\), the benefit is \(p C_{FN} - C_{FP}\). Precision at 20 is 20 distinct machines that day, not 20 overlapping windows.
+- **The rollout.** Name the number that stops the pilot, and a rollback. An automatic alert is not an automatic repair. On the factory that got worse, check calibration and a replaced sensor before resampling. Reweighting does not create labels that were never collected.
+
+### Not his answer
+
+The horizon rule, the 2,000-feature sketch, and the two benefit lines were written after the mock. He said Wednesday and Thursday positive, Friday positive if the failure was still present, and \(yp > x\).
+
+### Next
+
+Not this maintenance problem again. A different system, and the first probe is a timestamp: which predictions are positive, negative, or excluded, and which statistics a tree actually sees. No causal detour. Stories A and C are still deferred.
