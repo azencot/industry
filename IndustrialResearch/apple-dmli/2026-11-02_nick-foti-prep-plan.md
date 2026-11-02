@@ -1,102 +1,102 @@
 # 2026-11-02 — Nick Foti prep plan
 
-Talk prep for later today. Interactive tutorial. Multimodal project presentation is deferred until Omri asks for it.
+Updated the same day after Masha Fedzechkina’s LinkedIn post. Live questions: [`2026-11-02_questions-for-nick.md`](2026-11-02_questions-for-nick.md). Patching session: [`2026-11-02_activation-patching-session.md`](2026-11-02_activation-patching-session.md).
 
 | | |
 |---|---|
 | **Person** | Nick Foti, Principal Research Scientist, Seattle. Hiring manager. |
 | **Role** | AIML — Sr Machine Learning Research Scientist, Data and ML Innovation. Seattle, WA. Req **200668189-3337**. |
-| **Team brief** | Fundamental research on how foundation models work and how to expand them in scientific domains. |
-| **Status** | Plan logged 2026-11-02. Bayes 1A explained, check unanswered. Activation patching and causal tracing introduced the same day; session log and the resume question are in [`2026-11-02_activation-patching-session.md`](2026-11-02_activation-patching-session.md). Live questions: [`2026-11-02_questions-for-nick.md`](2026-11-02_questions-for-nick.md). |
+| **Next** | Interactive pass on *LLMs are not (consistently) Bayesian*. Then the multimodal project presentation. |
+| **Do not claim** | Established expertise in mechanistic interpretability or Bayesian inference. Transferable research skill and real interest only. |
 
-Strategy lock still holds: [`2026-10-22_strategy.md`](2026-10-22_strategy.md). Do not open with Health, Sapiro, or Ozan. The paper to know before Part C is *LLMs Are Not (Consistently) Bayesian* (Apple ML Research, August 2026). Verify findings from the paper. Do not invent them.
+Strategy lock still holds: [`2026-10-22_strategy.md`](2026-10-22_strategy.md). Do not open with Health, Sapiro, or Ozan.
 
-## Gaps to close today
+## 1. Masha Fedzechkina’s LinkedIn post
 
-Omri’s background is generative modeling, diffusion, Koopman operators, dynamical systems, sequential representation learning, and multimodal foundation models. He is an Associate Professor of CS at Ben-Gurion University.
+Omri’s reading of a public post. Not re-checked against LinkedIn here. The post advertises an Apple PhD research internship on understanding foundation models and improving their reliability. It is not necessarily Nick’s req. The themes overlap the JD and the August 2026 paper. Masha Fedzechkina is a coauthor on that paper.
 
-He does not have working familiarity with:
+Her question, as he recorded it: “What does it take to build models that know what they know and say what they know?”
 
-1. Bayesian statistical methods for scientific inference.
-2. Activation patching.
-3. Causal tracing and mechanistic interpretability.
+Three directions:
 
-Do not pretend he has hands-on experience with methods he has not used.
+1. **Internal representations.** What information do foundation models encode internally?
+2. **Representation–output alignment.** Why do models fail to express information they appear to possess?
+3. **Early training and representation formation.** Can better inductive biases and training procedures prevent these discrepancies?
 
-## What the req asks for
+Methods named in the post: representation probing, training models from scratch, controlled synthetic experiments, and behavior across conditions and scales.
 
-- Design robust experiments on the internals of foundation models.
-- Implement experimental pipelines.
-- Analyze and interpret results.
-- Bayesian statistical methods for scientific inference.
-- Experiments on foundation-model behavior.
-- Activation patching and causal tracing.
-- A coherent research story from an ambiguous question.
+## 2. How to read the seat
 
-Nick’s public line: Bayesian statistical modeling, probabilistic inference, dynamical systems, and recent work on foundation models and probabilistic reasoning in LLMs.
+The team looks interested in how foundation models acquire, organize, and express knowledge. That can include how training procedures shape internal representations and downstream reliability, not only analysis of a frozen pretrained model.
 
-## How to teach
+Priorities, in order:
 
-- Assume probability, linear algebra, optimization, neural nets, diffusion, and modern ML research.
-- Do not assume specialized Bayesian or interpretability vocabulary.
-- Skip introductions to mathematics he already knows.
-- Derive the important equations. Connect them to scientific inference and foundation models.
-- One topic, then one question. Wait. Critique the answer. Then continue.
-- Track weaknesses and revisit them.
-- Separate established methods from open research.
-- No generic behavioral questions.
-- No multimodal project prep until he asks.
+1. **Representation learning and reliability.** What is encoded. What downstream components can read. What actually influences the prediction. Why a representation and the expressed output can disagree.
+2. **Controlled experiments.** A falsifiable hypothesis. Synthetic data that isolates one mechanism. Counterfactuals and distribution shift. Correlation, decodability, and causal influence kept apart.
+3. **Training dynamics and inductive biases.** How architecture and objective shape the representation. Whether structured representations improve reliability. Whether an early training intervention prevents a later failure.
+4. **Bayesian reasoning.** Posterior inference and uncertainty. Probabilistic consistency. Belief updating. Calibration versus a coherent probabilistic update.
+5. **Mechanistic interpretability.** Activation patching, causal tracing, probing, and the limits of an intervention.
 
-## Modules
+## 3. Alignment
 
-### 1 — Bayesian statistical methods (35 min)
+**Structured representation learning — strong conceptual fit.** Koopman VAEs, sequential disentanglement, structured latent dynamical models. The work is about how architecture and objective shape representations of sequential observations. That is the link to early representation formation and later reliability.
 
-**Part A — Foundations.** Prior, likelihood, posterior, evidence. MAP vs MLE. Posterior predictive. Credible vs confidence intervals. Aleatoric vs epistemic uncertainty. Misspecification and posterior predictive checks. Each item: definition, formula, why it matters for scientific inference, one sequential or scientific example.
+**Multimodal foundation models — strong practical fit.** Time-series representations for vision-language models, dual-view representations, multimodal alignment, Qwen adaptation, LoRA, controlled evaluation. Two views of the same series are a way to ask which scientific properties are encoded, which survive alignment, and which are expressed in language.
 
-**Part B — Computation.** Why MCMC and HMC exist, assumptions, limits. No HMC implementation. Variational inference and the ELBO. Amortized inference. Approximate Bayesian inference in deep learning. Pay attention to variational inference, VAEs, and diffusion, because that is his background.
+Proposed extension, not a completed experiment:
 
-**Part C — Bayesian reasoning in LLMs.** What it would mean for an LLM to be Bayesian. How to test consistent belief updates. Calibration vs coherent Bayesian updates. Why a useful model need not be Bayesian. Experiment design. Connect to Foti’s probabilistic-reasoning work only after the paper is checked.
+1. Probe visual representations for temporal properties.
+2. Compare those probes with the language-model answers.
+3. Find representation–output discrepancies.
+4. Intervene to see where the information is lost or ignored.
+5. Test whether another training objective improves the alignment.
 
-**Assessment.** 3–4 questions, one at a time. At least one derivation and one experimental design. Critique missing points.
+**Generative modeling — supporting fit.** Diffusion, scientific time-series generation, data-scarce learning. A generator with known factors can supply the synthetic experiments in which those factors are manipulated separately.
 
-### 2 — Activation patching (25 min)
+## 4. Positioning
 
-Question: which internal computations causally contribute to a behavior?
+The through-line is how models learn representations of complex data, and how architecture and objective change those representations. The recent work asks the same question for multimodal models that connect continuous scientific data to a pretrained vision-language model.
 
-Correlation vs intervention. Clean and corrupted inputs. Caching activations. Patching them across runs. Effect on a target output. Layers, heads, positions. Positive and negative results. Standard workflow on a small factual or temporal Transformer example.
+The interest to state: what the model represents, how that information influences the prediction, and how training can improve reliability. Benchmark score is not the point.
 
-Caveats: off-distribution interventions, choice of corruption, confounding and interactions, what one head cannot mean, why a successful patch is not a unique localized mechanism.
+Do not claim a record in mechanistic interpretability or Bayesian inference.
 
-**Assessment.** He designs a patching experiment. Judge whether it supports a causal claim.
+## 5. Questions
 
-### 3 — Causal tracing and related methods (20 min)
+Current wording is in [`2026-11-02_questions-for-nick.md`](2026-11-02_questions-for-nick.md). Q3 now asks whether the gap in Masha’s post, and early training as a cause of that gap, is one of the team’s directions. Q5 combines independence and what success looks like after a year.
 
-Causal tracing in mechanistic interpretability. Relation to activation patching. The ROME line. Causal tracing vs statistical causal discovery. Comparison: activation patching, probing, attention maps, model editing — what each can and cannot establish. Comparison table.
+## 6. Next session — the paper
 
-Then a scientific foundation-model case: a multimodal model sees a time series and answers questions about order, trend, and periodicity. How to tell internal temporal order from a superficial visual shortcut. Synthetic controls, counterfactuals, probes, interventions, behavior, negative controls.
+*LLMs are not (consistently) Bayesian: Quantifying internal (in)consistencies of LLMs’ probabilistic beliefs.* Chacha Chen, Matthew Jörke, Adam Goliński, Masha Fedzechkina, Guillermo Sapiro, Sinead Williamson, Nicholas Foti. Correspondence: Nicholas Foti. [arXiv:2605.06915](https://arxiv.org/abs/2605.06915). [Apple ML Research](https://machinelearning.apple.com/research/llms-not-consistently-bayesian).
 
-**Assessment.** He designs an experiment that separates temporal reasoning from shortcut learning. Challenge the assumptions.
+Interactive, one question at a time, critique the answer. Stay on the paper’s method and conclusions. Do not recite a summary that has not been worked through in that pass.
 
-### 4 — Integration (10 min)
+Cover, in the Q&A:
 
-Three questions Nick might ask, with no answer given first:
+1. Central hypothesis.
+2. Definition of Bayesian consistency.
+3. Experimental methodology.
+4. Main findings.
+5. Expressed probabilities versus internal beliefs.
+6. Limitations and alternative explanations.
+7. Implications.
 
-1. How would you test whether an LLM performs Bayesian belief updating?
-2. How would you tell whether a foundation model internally represents a scientific concept?
-3. How would you design a research program on the limitations of foundation models on scientific data?
+## 7. Status
 
-Score each answer on correctness, experimental rigor, clarity, missing controls, novelty, and whether it sounds like an independent senior research scientist. Offer a stronger answer when the reply is weak.
+Done, as of this update:
 
-## Session log
+- Basic Bayesian inference tutorial and recall.
+- Activation patching and causal tracing, at introduction level. Session: [`2026-11-02_activation-patching-session.md`](2026-11-02_activation-patching-session.md).
+- Mechanistic-interpretability recall.
+- Scientific-reasoning versus shortcut mock. Score on file: 6.5/10. A successful patch was treated as evidence of scientific reasoning.
+- Five interview questions, revised after the post.
+- Positioning revised around representation, expression, and training.
 
-| Module | State |
-|--------|--------|
-| 1A Foundations | Explained 2026-11-02. Forecast-interval check not answered. |
-| 1B Computation | Not started |
-| 1C LLMs and Bayes | Not started. Verify the August 2026 paper before citing results. |
-| 1 assessment | Not started |
-| 2 Activation patching | Introduced 2026-11-02. Recall exercise done. Mock scored 6.5/10: a successful patch was treated as evidence of scientific reasoning. Log: [`2026-11-02_activation-patching-session.md`](2026-11-02_activation-patching-session.md). |
-| 3 Causal tracing | Introduced as systematic patching, including the probe/patch/attention distinction. ROME corruption-and-restore detail not yet covered. |
-| 4 Interview simulation | One research-design mock done inside the patching session. The three planned questions are not started. |
-| Resume question | Does a head that flips an incorrect prediction to the scientific answer encode the relationship, or only the answer? Unanswered. Start here for mech-interp. |
-| Multimodal presentation | Explicitly deferred |
+Still open:
+
+- The paper Q&A above. This is the next session.
+- Multimodal project presentation, after that paper.
+- Patching follow-up, if mech-interp comes back: a head that flips a wrong answer to the scientific one may encode the relationship, or only the answer. Unanswered in the session log.
+- ROME corruption-and-restore in detail. No hands-on patching implementation yet.
+
+Teaching constraints that still apply: one question at a time, derive what matters, do not pretend he has run these methods, separate established technique from open research, no generic behavioral questions.
