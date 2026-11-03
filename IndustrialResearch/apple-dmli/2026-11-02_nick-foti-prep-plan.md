@@ -6,7 +6,7 @@ Updated the same day after Masha Fedzechkina’s LinkedIn post. Live questions: 
 |---|---|
 | **Person** | Nick Foti, Principal Research Scientist, Seattle. Hiring manager. |
 | **Role** | AIML — Sr Machine Learning Research Scientist, Data and ML Innovation. Seattle, WA. Req **200668189-3337**. |
-| **Next** | Paper is introductory only, not mastered. Log: [`2026-11-02_bayes-paper-prep.md`](2026-11-02_bayes-paper-prep.md). Next session derives \(\Delta(q)\). Then the multimodal presentation. |
+| **Next** | Call happened 2026-11-02. No next step named. [`2026-11-02_nick-call.md`](2026-11-02_nick-call.md). |
 | **Do not claim** | Established expertise in mechanistic interpretability or Bayesian inference. Transferable research skill and real interest only. |
 
 Strategy lock still holds: [`2026-10-22_strategy.md`](2026-10-22_strategy.md). Do not open with Health, Sapiro, or Ozan.
