@@ -84,6 +84,9 @@ After each call: drop `YYYY-MM-DD_*.md` in that company’s folder and add a row
 | 2026-10-31 | Siemens ML breadth mock, new facility | 7.5, partial. Diagnosis before a bigger model. Groups A and B selected. The $500 was treated as a false-alarm cost. Policy question not scored. [`Siemens/mocks.md`](Siemens/mocks.md). |
 | 2026-10-31 | Siemens ML breadth mock, fundamentals | 7.3. Instability 8.5. InfoNCE 5.5. L2 called sparsity. Temperature direction reversed. [`Siemens/mocks.md`](Siemens/mocks.md). |
 | 2026-10-31 | Siemens system-design mock, 24-hour warning | 7.0. XGBoost and 20 inspections landed. The positive window contained the failure. Friday at 9 AM was still positive. Three design mocks, each 7.0. [`Siemens/mocks.md`](Siemens/mocks.md). |
+| 2026-11-03 | Siemens system-design mock, minute-15 defects | 7.5. One score per component was built as about 30 windows. \(yp>x\) again. Catching every defect inside 600 checks is 33% precision, said as about 68%. Four design mocks average 7.125. [`Siemens/mocks.md`](Siemens/mocks.md). |
+| 2026-11-03 | Siemens ML breadth mock, eight questions | 8.0. AdamW, L1 versus L2, and the temperature direction held. Shift names were wrong. A better validation score with a higher training loss was called underfit. [`Siemens/mocks.md`](Siemens/mocks.md). |
+| 2026-11-04 | Siemens hour sheets | Bing 4–5 AM, Vivek 5–6 AM if the invitation still says so, Ramesh 6–7 AM. [`Siemens/2026-11-04_bing-cheat-sheet.md`](Siemens/2026-11-04_bing-cheat-sheet.md). |
 
 ---
 

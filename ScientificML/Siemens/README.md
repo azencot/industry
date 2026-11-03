@@ -58,6 +58,9 @@
 | **2026-10-31** | ML breadth mock, new facility | 7.5, partial. Four breadth mocks average 6.75 if this partial is included. The rapid-fire 8.1 stays out. Next design is the 24-hour failure question, not started. [`mocks.md`](mocks.md). |
 | **2026-10-31** | ML breadth mock, fundamentals | 7.3. Five questions. InfoNCE and the temperature direction are the miss. Five-mock arithmetic mean about 6.9, and the mocks are not the same test. [`mocks.md`](mocks.md). |
 | **2026-10-31** | System-design mock, 24-hour warning | 7.0. Third design mock at 7.0. Labels and features were the gap. Next design is a different system, opened on the label. [`mocks.md`](mocks.md). |
+| **2026-11-03** | System-design mock, minute-15 defects | 7.5. Fourth design mock. Average 7.125. Training rows did not match the minute-15 decision. No further full design mock. [`mocks.md`](mocks.md). |
+| **2026-11-03** | ML breadth mock, eight questions | 8.0. Strongest breadth mock. Temperature corrected. Covariate, label, and concept were not. No further full breadth mock. [`mocks.md`](mocks.md). |
+| **2026-11-04** | Hour sheets | Bing, Vivek, Ramesh. Confirm Vivek’s time. [`2026-11-04_bing-cheat-sheet.md`](2026-11-04_bing-cheat-sheet.md), [`2026-11-04_vivek-cheat-sheet.md`](2026-11-04_vivek-cheat-sheet.md), [`2026-11-04_ramesh-cheat-sheet.md`](2026-11-04_ramesh-cheat-sheet.md). |
 
 ## Loop (Chandler, 2026-10-25 — current)
 

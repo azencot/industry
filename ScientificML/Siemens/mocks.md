@@ -28,6 +28,8 @@ Story source: [`2026-10-15_behavioral-story-bank.md`](2026-10-15_behavioral-stor
 | 2026-10-31 | ML breadth, stopped | New facility, 0.5% failures, 20 inspections | Diagnosis before a bigger model. A and B selected. Used \(20500p-500\) where every inspection costs $500. Dollars not computed. Policy question unscored. 7.5/10 partial. |
 | 2026-10-31 | ML breadth | AdamW, LSTM, ViT, stability, InfoNCE | Instability diagnosis 8.5. L2 called sparsity. Temperature reversed. InfoNCE missing the log and the exp. 7.3/10. |
 | 2026-10-31 | System design | 1,000 machines, 24-hour warning | XGBoost and a cap of 20 landed. A window that contains the failure was the positive. Friday at 9 AM was still positive. Features were min, max, and mean. 7.0/10. |
+| 2026-11-03 | System design | Quality defects at minute 15 | Clarifying and XGBoost landed. Thirty windows, each labeled with the final inspection. \(yp>x\) again. 200/600 is 33%, said as about 68%. 7.5/10. |
+| 2026-11-03 | ML breadth | AdamW, InfoNCE, shift, LoRA | AdamW 9, L1 versus L2 9, attention 8.5, diffusion 8.5. Temperature direction corrected. Shift names wrong. Higher train loss called underfit. 8.0/10. |
 
 ---
 
@@ -862,3 +864,89 @@ The horizon rule, the 2,000-feature sketch, and the two benefit lines were writt
 ### Next
 
 Not this maintenance problem again. A different system, and the first probe is a timestamp: which predictions are positive, negative, or excluded, and which statistics a tree actually sees. No causal detour. Stories A and C are still deferred.
+
+## 2026-11-03 — System design, defects at minute 15
+
+**Kind:** System design. Quality defects on 20 lines, five factories, 500 components a line, 10,000 a day. About 2% fail inspection. Four stages, 30 minutes, one prediction at the end of stage 2, minute 15. Sensors at 1 Hz. Fifteen operating parameters, some of them local to a line. Two years. Labels about 98% reliable. About 3% of readings missing. Operators can check 30 components a line a day. **7.5/10.** Clarifying 9, the target 7, the split 7.5, the model 8, training 7.5, a bad line 8, the metrics 8, the decision 7, the rollout 8. The 7.5 is the whole answer. Four design mocks: 7.0, 7.0, 7.0, 7.5. Mean 7.125. No further full design mock before the loop.
+
+### What he said
+
+He asked how far back the signal sits, how far the 1 Hz series can be aggregated, how many warnings the line can take, how the operating parameters are spread, how good the labels are, what is missing or broken, how often to predict, and how early the score has to exist.
+
+Aggregate to 10 seconds. Five-minute windows, stepped every 10 seconds, about 30 windows in the first ten minutes. Each window gets the pass or fail from minute 30. Binary. He said the early-signal story is not yet shown.
+
+Use all of the sensors and the process metadata. Repair gaps from a similar line or an expert. Drop a line’s day when that fails. Ignore the occasional spike and the calibration error at first.
+
+Split in time. Hold out components. Do not let a window cross a split. Score time, machines, and factories.
+
+XGBoost, because it is light, fast, and simpler than a network.
+
+Reweight the 2% defect class. Asked why window counts would differ: every component takes the same time, so every component has the same number of windows.
+
+Two weak lines: the pipeline, parameter calibration, how many positives, spikes, the distributions. Fine-tune the global model if those lines were scarce. A separate model if they are actually different.
+
+AUROC 0.96 and AUPRC 0.58 are not the decision. Add precision, recall, calibration, precision at 30, recall at 30, and the cost of a false inspection. Five hundred scores at 15 ms is 7.5 seconds. At most 30 alerts a line. One threshold if the costs match across lines. Rank by benefit and keep the top 30, or fewer, with positive benefit. Inspect when \(yp > x\). He put the precision needed to catch every defect near 67.67%.
+
+Offline, shadow, a controlled use, then full use. Watch calibration, precision at 30, recall at 30, prevalence, and errors by line.
+
+### What landed
+
+The opening questions were about the decision and the clock, not the network. XGBoost first. He caught an unsupported claim that window counts differ. 500 times 15 ms is 7.5 seconds, so latency is not the constraint. A cap of 30 per line, and fewer if the benefit is not positive. A time split, a component that does not leak across it, and a separate question for a new line or a new factory. Shadow before an operator acts.
+
+### What broke
+
+- **One row per component.** The live system scores each component once, at minute 15. The training row is the sensors and the metadata known by minute 15, and the label is the inspection at minute 30. That label may arrive later. A feature may not. A five-minute slice can be a feature. It is not a second training row with the same label. Thirty correlated windows are not thirty independent defects.
+- **Spikes and dropped days.** A spike can be the defect. A missingness flag and a training-set fill beat deleting a line-day or copying another line’s values into the gap. Say which number the tree sees: a mean, a slope, a spike, stage 1 against stage 2, the operating parameters, the line, and the fraction missing.
+- **Two kinds of holdout.** Future components on the same lines are a time split. A new line or a new factory is a different split. Do not report them as one number.
+- **\(yp > x\), again.** If a false intervention costs \(C_{FP}\) and it is paid only when the part would have passed, and a true intervention prevents a loss \(C_{FN}\), the benefit is \(p C_{FN} - (1-p) C_{FP}\), and the cutoff is \(p > C_{FP}/(C_{FP}+C_{FN})\). If every check costs \(C_{FP}\), drop the \((1-p)\). Start unweighted, then compare a weight. Weighting is not automatically the deployed policy.
+- **33%, not about 68%.** Ten thousand components and 2% defects is 200 defects a day. Twenty lines times 30 checks is 600 checks. If every defect sat inside those 600, precision would be \(200/600 = 33\%\). That still assumes the checks fall on the lines that have the defects.
+- **The label moves after the intervention.** A part that would have failed can pass because someone changed the process. The inspection after that action is not the untreated label. Predictive quality and intervention effect are different measurements. Name the rollback number before the pilot.
+
+### Not his answer
+
+The one-row construction, the feature list, the utility line, and the 33% figure were written after the mock. He built about 30 windows, each with the final label, and he said \(yp > x\).
+
+### Before the loop
+
+No more full design mock. Three sentences if the question is a system. When is the prediction, and what is known then. The training row is that same moment, and the label is the later outcome. For a tree, say the features. InfoNCE, the temperature, and L1 versus L2 are still the one-minute breadth review. Stories A and C are still deferred.
+
+## 2026-11-03 — ML breadth, eight questions
+
+**Kind:** Breadth, eight questions, feedback after the set. **8.0/10.** AdamW 9, InfoNCE 7.5, warmup 7.5, attention 8.5, shift 6, regularization 9, diffusion 8.5, LoRA 7. The eight scores average about 7.9. This is the strongest breadth mock. It does not replace the earlier 6.5s, and the 30 Oct rapid-fire stays out. No further full breadth mock.
+
+### What he said
+
+L2 inside Adam enters the loss, then the gradient, then both moments. AdamW applies the decay after the moments. SGD has no moments, so the two forms match.
+
+InfoNCE is a log of \(\exp(x_i x_j / \tau)\) over a sum of \(\exp(x_i x_k / \tau)\). The pair is the positive. The sum includes the positive and the negatives. A smaller \(\tau\) sharpens the softmax, and \(\tau \to 0\) is one-hot. A larger \(\tau\) spreads it. He did not remember what 1,024 negatives do versus 32.
+
+Warmup exists because the moments are garbage at the start. Cosine decay lowers the rate late so convergence is steadier. If the batch doubles, he would watch gradient explosions, float instability, and memory, and he would retune warmup if he changed the rate.
+
+A day at 1 Hz is \(60 \times 60 \times 24 = 86{,}400\) tokens, and he set \(d = 100\). Compute is \(O(T^2 d)\). Memory is \(O(T^2)\). The matrix is \(86{,}400^2 = 7{,}464{,}960{,}000\). Aggregate over 10 or 100 seconds, or patch and encode.
+
+Covariate shift is a change in factory conditions. Label shift is a change in how that factory is labeled. Concept drift is a change in defect prevalence. Prevalence alone does not prove drift. A factory change can be a condition the model does not cover. Calibration is a reliability diagram. Fix it with Platt or isotonic regression.
+
+L1 and L2 add a norm of the weights. L1 is sparsity. L2 is smaller weights, not necessarily zeros. If validation was better earlier, stop there. Otherwise compare weight decay with and without dropout. Augment only if the data are small and the augmentation is valid. A large decay that hurts train and validation is underfit. Sweep the decay, pick the validation winner, and report that model’s test score.
+
+Forward noise needs no network. The reverse step denoises and is compared to the clean signal or to the noise. Training samples one noise level because the objective is an expectation. Fifty steps down to five lengthens each integration step of the SDE and raises the error. Keep quality with a better sampler, such as EDM, or with distillation.
+
+A 7B model, LoRA, 20,000 pairs. Training loss falls, validation rises after 1,000 steps, accuracy stuck at 65%. Rank 8 to 64 fits training better and validation worse. He called that a shift, and said the larger rank makes the overfit clearer. He would lower the rank, add data, and adapt fewer weights. If a lower rank reaches 70% validation with a higher training loss, he called that underfit and would raise the rank again, or augment.
+
+### What landed
+
+AdamW, L1 versus L2, and the temperature direction. Those three were the misses on 31 Oct. The day-long attention count is right, and so is \(O(T^2 d)\) against \(O(T^2)\) memory. Platt and isotonic were named. Diffusion training as one noise level, and a coarser sampler as a larger step, are enough. He did not treat prevalence alone as proof of drift.
+
+### What broke
+
+- **The three shifts, 6.** Covariate shift is \(P(X)\) changing while \(P(Y\mid X)\) stays. Label shift is \(P(Y)\) changing while \(P(X\mid Y)\) stays. It is not a new labeling manual. Concept drift is \(P(Y\mid X)\) changing. It is not “the defect rate moved.” A factory that spends more time in a risky regime can raise prevalence with the same conditional. Recalibrate on recent labeled data, and score the map on a slice that was not used to fit it.
+- **Batch size.** Doubling the batch at a fixed token budget cuts the number of steps in half. The gradient is less noisy, so a larger rate may be tolerable. Doubling the rate is a thing to try, not a rule. Warmup and the decay have to be rewritten for the new step count.
+- **More negatives.** He left this blank. More negatives can add hard contrasts and can also add false negatives, cost, and a point of diminishing return. Two different series can share a trend. Treating that pair as a negative pushes true neighbors apart.
+- **LoRA.** The curves are overfitting: train keeps falling, validation turns up, and more rank makes that worse. A shift is possible and not shown. The first move is the checkpoint near the best validation step, then a smaller rank. A higher training loss with better validation accuracy is a model that generalizes. It is not a reason to grow the rank back toward 8.
+
+### Not his answer
+
+The three shift definitions, the batch-size step count, and the reading of the 70% validation result were written after the mock. He had prevalence as concept drift, and the 70% case as underfit.
+
+### Before the loop
+
+No more full breadth mock and no more full design mock. If a system question comes: when the prediction happens, the training row is that moment, and a tree is told its features. If a breadth question comes: covariate, label, and concept, in one sentence each. A worse training loss with a better validation number is not underfit. Stories A and C with the bank’s numbers, if there is a quarter hour. Sleep for a 4:00 AM start.

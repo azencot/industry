@@ -67,7 +67,9 @@ Design mock 1 is logged (29 Oct, PDE generation, 7.0): [`mocks.md`](mocks.md). T
 
 Design mock 2 is logged (30 Oct, industrial time series, 7.0). The CFD opening is unscored. Say the sensor-time token, the observed-only loss, and latency separate from throughput before another design.
 
-Design mock 3 is logged (31 Oct, 24-hour warning, 7.0). XGBoost and the cap of 20 landed. A window containing the failure was labeled positive, and Friday at 9 AM was still positive. Features stopped at min, max, and mean. Three design mocks, each 7.0. The next one is a different system. The probe is the label at three times, then the features a tree sees.
+Design mock 3 is logged (31 Oct, 24-hour warning, 7.0). XGBoost and the cap of 20 landed. A window containing the failure was labeled positive, and Friday at 9 AM was still positive. Features stopped at min, max, and mean.
+
+Design mock 4 is logged (3 Nov, defects at minute 15, 7.5): [`mocks.md`](mocks.md). Four design mocks average 7.125. The live score is one per component at minute 15. He built about 30 windows, each with the final label. No further full design mock. If a system question comes: when the prediction happens, the training row matches that moment, and a tree is told its features.
 
 **A. PDE data generation.** Which PDE family, which systems, resolution, how many runs, parameter ranges, initial and boundary conditions, accuracy, compute, and the downstream task. Solver, sampling, mesh or grid, time integration, stability, validation, storage. Independent runs across workers, CPU versus GPU, scheduling, load balance, failure and checkpoint. Schema, provenance, compression, layout, streaming versus offline. Then the bottleneck: resolution, adaptive sampling, a surrogate, fidelity against throughput. Check convergence, conservation where it applies, coverage, and whether a downstream model improves. The point is the system, not a new specialty in numerical PDE.
 
@@ -127,3 +129,11 @@ Behavioral mock 2 is logged (29 Oct, story C, 8.0). The gates and 26.9 to 21.9 l
 ## By 2 Nov
 
 A different design, opened with the label: positive, negative, or too late. Features a tree can take, on more than one horizon. InfoNCE with the log and the exp. L1 zeros weights. L2 shrinks them. Stories A and C with the bank’s numbers.
+
+## Before the loop
+
+Design mock 4 is logged (3 Nov, 7.5). No more full design mock. When the prediction happens. The training row is that moment, and the label is later. A tree is told its features. InfoNCE: smaller temperature, sharper softmax. L1 zeros a weight. L2 shrinks it. Stories A and C with the bank’s numbers, if there is a quarter hour. Sleep for a 4:00 AM start.
+
+Breadth mock 6 is logged (3 Nov, 8.0): [`mocks.md`](mocks.md). No more full breadth mock. Temperature and L1 versus L2 held. Say the three shifts if asked: \(P(X)\), \(P(Y)\), \(P(Y\mid X)\). A worse training loss with a better validation number is not underfit.
+
+Sheets for the three hours: [`2026-11-04_bing-cheat-sheet.md`](2026-11-04_bing-cheat-sheet.md), [`2026-11-04_vivek-cheat-sheet.md`](2026-11-04_vivek-cheat-sheet.md), [`2026-11-04_ramesh-cheat-sheet.md`](2026-11-04_ramesh-cheat-sheet.md). Confirm Vivek’s invitation. Do not say Danielle’s name.
