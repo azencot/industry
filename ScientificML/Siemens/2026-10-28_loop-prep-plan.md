@@ -137,3 +137,5 @@ Design mock 4 is logged (3 Nov, 7.5). No more full design mock. When the predict
 Breadth mock 6 is logged (3 Nov, 8.0): [`mocks.md`](mocks.md). No more full breadth mock. Temperature and L1 versus L2 held. Say the three shifts if asked: \(P(X)\), \(P(Y)\), \(P(Y\mid X)\). A worse training loss with a better validation number is not underfit.
 
 Sheets for the three hours: [`2026-11-04_bing-cheat-sheet.md`](2026-11-04_bing-cheat-sheet.md), [`2026-11-04_vivek-cheat-sheet.md`](2026-11-04_vivek-cheat-sheet.md), [`2026-11-04_ramesh-cheat-sheet.md`](2026-11-04_ramesh-cheat-sheet.md). Confirm Vivek’s invitation. Do not say Danielle’s name.
+
+Bing is done: [`2026-11-04_bing-debrief.md`](2026-11-04_bing-debrief.md). He wanted reasoning examples and did not press the implementation. The stumble was why Transformers scale: parallel tokens, matrix multiplies, residuals, and a quadratic attention cost. Bosch product adoption is unknown. Say what was delivered. Do not say it shipped.

@@ -10,7 +10,7 @@
 | **Referral** | **Danielle Robinson** (works at Siemens; sent the resume; gave the loop shape below) |
 | **Location** | **Any Siemens location in Washington** · **hybrid** |
 | **Posted** | 2026-09-17 |
-| **Status** | **Loop booked.** Tue **3 Nov 2026**, 1:00–4:00 PM Pacific (Wed **4 Nov**, 4:00–7:00 AM Thailand). Robinson, 29 Oct: Vivek is system design. Bing leads the applied-science team. Bing and Ramesh split breadth and depth. She did not say which. Coding not confirmed. Do not quote her on the call. Prep: [`2026-10-28_loop-prep-plan.md`](2026-10-28_loop-prep-plan.md). |
+| **Status** | **Loop in progress.** Bing Xiang done Wed **4 Nov**, 4:00–5:00 AM Thailand. Mostly the multimodal project, plus a deadline, Bosch, and short breadth. He stumbled on why Transformers scale. Outcome unknown. Vivek’s 5:00–6:00 design hour may have moved. Ramesh is 6:00–7:00. Do not quote Robinson. Debrief: [`2026-11-04_bing-debrief.md`](2026-11-04_bing-debrief.md). |
 | **Comp (public JD)** | Base **$167,178–$226,236** + target incentive **15%** of base. Do not open with this. |
 
 ## Active thread
@@ -61,6 +61,7 @@
 | **2026-11-03** | System-design mock, minute-15 defects | 7.5. Fourth design mock. Average 7.125. Training rows did not match the minute-15 decision. No further full design mock. [`mocks.md`](mocks.md). |
 | **2026-11-03** | ML breadth mock, eight questions | 8.0. Strongest breadth mock. Temperature corrected. Covariate, label, and concept were not. No further full breadth mock. [`mocks.md`](mocks.md). |
 | **2026-11-04** | Hour sheets | Bing, Vivek, Ramesh. Confirm Vivek’s time. [`2026-11-04_bing-cheat-sheet.md`](2026-11-04_bing-cheat-sheet.md), [`2026-11-04_vivek-cheat-sheet.md`](2026-11-04_vivek-cheat-sheet.md), [`2026-11-04_ramesh-cheat-sheet.md`](2026-11-04_ramesh-cheat-sheet.md). |
+| **2026-11-04** | **Bing Xiang — done** | Mostly the multimodal project. Deadline story and Bosch. He does not know if Bosch shipped it. Stumbled on why Transformers scale. [`2026-11-04_bing-debrief.md`](2026-11-04_bing-debrief.md). |
 
 ## Loop (Chandler, 2026-10-25 — current)
 
@@ -70,7 +71,7 @@ Supersedes the 14 Oct names for the three hours. Full notes: [`2026-10-25_virtua
 |-------|--------|--------|
 | Recruiter | **Done 14 Oct** | Org overview |
 | Technical screen | **Done 23 Oct** — Huzefa | Resume methodology, overfit/regularization, bagging (platform swapped off SGD). He recommended proceeding. |
-| Virtual loop | **Booked Tue 3 Nov 2026, 1:00–4:00 PM PT.** Wed 4 Nov, 4:00–7:00 AM Thailand. Bing Xiang, Vivek Govindan, Ramesh Nallapati. | Robinson, 29 Oct: **Vivek is system design.** Bing and Ramesh split **breadth and depth**. She did not say which. Each interviewer also scores **2–3** leadership principles or functional competencies. Live coding **not confirmed**. |
+| Virtual loop | **In progress.** Bing done Wed 4 Nov, 4:00–5:00 AM Thailand. Vivek’s hour may have moved. Ramesh is 6:00–7:00. | Bing’s hour was mostly depth on the multimodal project, plus a deadline, Bosch, and short breadth. Robinson, 29 Oct: **Vivek is system design.** Each interviewer also scores **2–3** leadership principles or functional competencies. Live coding **not confirmed**. |
 
 ## Loop (Chandler, 2026-10-14 — historical)
 
@@ -104,7 +105,7 @@ JD preferred center for this seat, per Robinson: **scientific ML for physical sy
 | **Danielle Chandler** | Recruiter (external address) | Process owner. Teams. |
 | **Danielle Robinson** | Siemens employee; referrer | Works with Bing and Ramesh. 29 Oct: Vivek is system design; Bing and Ramesh split breadth and depth. Do not narrate her tips on the call. Two different Danielles. |
 | **Huzefa Rangwala** | Staff Scientist, Physical AI | Screen done 23 Oct. Will recommend proceeding. Not confirmed as the hiring manager. Debrief: [`2026-10-23_huzefa-debrief.md`](2026-10-23_huzefa-debrief.md). |
-| **Bing Xiang** | Loop, hour 1. Breadth or depth. | Tue 3 Nov, 1:00–2:00 PM PT. Robinson: he leads the applied-science team. Public: Chandler posted that he joined Data & AI, May 2026. Title not confirmed here. |
+| **Bing Xiang** | Loop, hour 1. **Done.** | Wed 4 Nov, 4:00–5:00 AM Thailand. Mostly depth on the multimodal project, plus a deadline and Bosch. He asked if Bosch shipped it. Omri said he did not know. Stumbled on why Transformers scale. Debrief: [`2026-11-04_bing-debrief.md`](2026-11-04_bing-debrief.md). |
 | **Vivek Govindan** | Loop, hour 2. System design. | Tue 3 Nov, 2:00–3:00 PM PT. Robinson: engineer, high-level design, then optimization. PDE generation is likely, not guaranteed. Public profile: senior principal ML engineer, Siemens Physical AI, Seattle. |
 | **Ramesh Nallapati** | Loop, hour 3. Breadth or depth. | Tue 3 Nov, 3:00–4:00 PM PT. The hour Bing does not take. His May 2026 post: VP of Applied Science, Physical AI science organization. Amazon Science still lists AWS. |
 

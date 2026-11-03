@@ -2,6 +2,14 @@
 
 **4:00–5:00 AM Thailand** (1:00–2:00 PM Pacific). Breadth or depth. He leads the applied-science team. The other of those two hours is Ramesh. Do not say who assigned the hours, and do not say Danielle’s name.
 
+
+
+
+
+
+
+
+
 ## 45–60 seconds
 
 I’m an Associate Professor of Computer Science at Ben-Gurion University, on leave and moving into industry research. I work on sequential and generative learning: time series, diffusion, and Koopman representations. Lately I have been building multimodal models that combine those representations with vision-language models. I start from a concrete modeling limit, state a hypothesis, and design the experiment that can kill it. I implement and evaluate that experiment myself. Siemens is interesting because generalization, physical structure, and reliability are the constraints, not optional extras.
