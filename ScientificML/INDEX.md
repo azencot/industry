@@ -88,6 +88,7 @@ After each call: drop `YYYY-MM-DD_*.md` in that company’s folder and add a row
 | 2026-11-03 | Siemens ML breadth mock, eight questions | 8.0. AdamW, L1 versus L2, and the temperature direction held. Shift names were wrong. A better validation score with a higher training loss was called underfit. [`Siemens/mocks.md`](Siemens/mocks.md). |
 | 2026-11-04 | Siemens hour sheets | Bing 4–5 AM, Vivek 5–6 AM if the invitation still says so, Ramesh 6–7 AM. [`Siemens/2026-11-04_bing-cheat-sheet.md`](Siemens/2026-11-04_bing-cheat-sheet.md). |
 | 2026-11-04 | Siemens loop, Bing Xiang | Done. Mostly the multimodal project. Deadline and Bosch. Product adoption unknown. Stumbled on why Transformers scale. [`Siemens/2026-11-04_bing-debrief.md`](Siemens/2026-11-04_bing-debrief.md). |
+| 2026-11-04 | Siemens loop, Ramesh Nallapati | Done. Diffusion story, then ImagenFew. Context FID did not land. He said six later papers. The bank says eight. Data scarcity and synthetic examples. [`Siemens/2026-11-04_ramesh-debrief.md`](Siemens/2026-11-04_ramesh-debrief.md). |
 
 ---
 

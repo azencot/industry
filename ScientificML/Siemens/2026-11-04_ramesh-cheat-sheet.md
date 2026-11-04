@@ -228,6 +228,49 @@ Do not assume he will ask about his own publications.
 
 “What would a successful first six months look like for someone joining your team at the principal scientist level?”
 
+
+2. Scaling laws for Physical AI ⭐
+
+“In language modeling, we’ve seen relatively predictable scaling behavior. Do you expect similar scaling laws for physical foundation models, or do you think the diversity of physical systems makes that much harder?”
+
+Why it’s strong: This is a substantive question at the intersection of his Nova experience and current role. It may lead to an interesting discussion about data diversity, compute, and generalization.
+
+3. Simulation data versus real-world data ⭐
+
+“One thing I’m curious about is how you’re thinking about simulation data versus real-world measurements. Do you see simulation primarily as a way to scale pretraining, or as something that should remain part of the model’s inference process?”
+
+Why it’s strong: Particularly relevant to Siemens, where simulation is a major asset. It creates a natural opening for discussing generative modeling and domain adaptation.
+
+4. Representation learning for physics
+
+“In language, tokenization gives us a relatively standard representation. In Physical AI, we have meshes, point clouds, fields, trajectories, and sensor measurements. Do you think a unified representation is feasible, or will domain-specific representations remain necessary?”
+
+Why it’s strong: Directly connects to ImagenTime’s central research question: how representation influences learnability.
+
+5. What should a physical foundation model actually learn?
+
+“Do you think the goal should be to learn a general representation of physical systems, or to learn dynamics that can actually support prediction, simulation, and control?”
+
+Why it’s strong: It probes the distinction between representation learning and learning useful physical dynamics.
+
+6. The limits of purely data-driven models
+
+“Where do you think purely data-driven foundation models will struggle most in Physical AI? Is it extrapolation to unseen operating regimes, long-horizon stability, or enforcing physical constraints?”
+
+Why it’s strong: It encourages a discussion of scientific limitations rather than just capabilities.
+
+7. Research evaluation
+
+“For physical foundation models, what would convince you that a model has learned transferable physical structure rather than just interpolating across a large collection of simulations?”
+
+Why it’s strong: This is a particularly good question for a distinguished scientist. It focuses on scientific evidence and experimental design.
+
+8. Research direction and intellectual freedom
+
+“Given how broad Physical AI is, how much of the research direction is driven by specific Siemens applications versus longer-term scientific questions that researchers identify themselves?”
+
+Why it’s strong: It helps you understand the actual nature of the position and whether there’s room for fundamental research.
+
 ⸻
 
 11. DURING THE INTERVIEW — REMINDERS

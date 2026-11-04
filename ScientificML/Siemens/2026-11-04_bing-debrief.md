@@ -32,4 +32,4 @@ Diffusion is a stable way to learn a distribution with more than one plausible o
 
 ## Still open
 
-Ramesh, 6:00–7:00 AM, breadth or depth. Sheet: [`2026-11-04_ramesh-cheat-sheet.md`](2026-11-04_ramesh-cheat-sheet.md). Vivek was the design hour at 5:00–6:00 and may have moved. Check the invitation. Sheet: [`2026-11-04_vivek-cheat-sheet.md`](2026-11-04_vivek-cheat-sheet.md).
+Ramesh is logged in [`2026-11-04_ramesh-debrief.md`](2026-11-04_ramesh-debrief.md). Vivek was the design hour at 5:00–6:00 and may have moved. Check the invitation. Sheet: [`2026-11-04_vivek-cheat-sheet.md`](2026-11-04_vivek-cheat-sheet.md).

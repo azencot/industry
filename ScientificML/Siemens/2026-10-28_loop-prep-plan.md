@@ -139,3 +139,5 @@ Breadth mock 6 is logged (3 Nov, 8.0): [`mocks.md`](mocks.md). No more full brea
 Sheets for the three hours: [`2026-11-04_bing-cheat-sheet.md`](2026-11-04_bing-cheat-sheet.md), [`2026-11-04_vivek-cheat-sheet.md`](2026-11-04_vivek-cheat-sheet.md), [`2026-11-04_ramesh-cheat-sheet.md`](2026-11-04_ramesh-cheat-sheet.md). Confirm Vivek’s invitation. Do not say Danielle’s name.
 
 Bing is done: [`2026-11-04_bing-debrief.md`](2026-11-04_bing-debrief.md). He wanted reasoning examples and did not press the implementation. The stumble was why Transformers scale: parallel tokens, matrix multiplies, residuals, and a quadratic attention cost. Bosch product adoption is unknown. Say what was delivered. Do not say it shipped.
+
+Ramesh is done: [`2026-11-04_ramesh-debrief.md`](2026-11-04_ramesh-debrief.md). He stayed on the diffusion story for about 30 minutes and wanted the gains. Omri said six later papers. The bank says eight. Context FID did not land. Ramesh named data scarcity and heavy use of synthetic examples. Vivek may still be unscheduled.

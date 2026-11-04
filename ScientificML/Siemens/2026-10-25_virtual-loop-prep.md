@@ -10,7 +10,7 @@ Screen notes: [`2026-10-23_huzefa-debrief.md`](2026-10-23_huzefa-debrief.md). St
 
 ## Status
 
-**Booked.** Omri confirmed Danielle Chandler’s times on 28 Oct. Live coding is still **not confirmed**. Danielle Robinson, 29 Oct: Vivek is system design. Bing leads the applied-science team. Bing and Ramesh split breadth and depth. She did not say which. Do not quote her on the call. Day plan: [`2026-10-28_loop-prep-plan.md`](2026-10-28_loop-prep-plan.md).
+**In progress.** Bing and Ramesh done Wed 4 Nov 2026. Vivek’s hour may have moved. Live coding is still **not confirmed**. Danielle Robinson, 29 Oct: Vivek is system design. Do not quote her on the call. Debriefs: [`2026-11-04_bing-debrief.md`](2026-11-04_bing-debrief.md), [`2026-11-04_ramesh-debrief.md`](2026-11-04_ramesh-debrief.md). Day plan: [`2026-10-28_loop-prep-plan.md`](2026-10-28_loop-prep-plan.md).
 
 Do not prep another coding round unless she says so. Do not treat the four system-design scenarios below as Siemens questions.
 
