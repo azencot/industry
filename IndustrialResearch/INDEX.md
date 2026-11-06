@@ -18,6 +18,7 @@ Turn a warm intro into a precise conversation: what the group actually works on,
 |------|------|
 | [`apple/`](apple/) | Apple AI Research — Vladlen Koltun’s organization. Intro: Raja Giryes → Ozan Sener |
 | [`apple-dmli/`](apple-dmli/) | Apple AIML — Data and Machine Learning Innovation. Recruiter: Chelsea Elwood. HM: Nick Foti. Separate from Ozan and from Health AIML |
+| [`miriam-farber/`](miriam-farber/) | Apple — Agentic AI Researcher, Herzliya. HM: Miriam Farber. Role ID 200690118-0865. Separate from Ozan, Foti, and Health AIML |
 | [`meta/`](meta/) | Meta — Research Scientist, Multi-Modal Understanding & Synthesis. Intro: Elad Kravi → Michael |
 
 Shared profile: [`.cursor/skills/debrief/omri_azencot_experience.md`](../.cursor/skills/debrief/omri_azencot_experience.md).
@@ -30,6 +31,7 @@ Shared profile: [`.cursor/skills/debrief/omri_azencot_experience.md`](../.cursor
 |-----|---------|------|------|
 | **Apple — ML group, Vladlen Koltun’s org** | **Ozan Sener** (head of the ML group, per Raja). Intro **Raja Giryes** | Recruiter will make contact. A few interviews and some coding. Call: [`apple/2026-10-20_ozan-call.md`](apple/2026-10-20_ozan-call.md) | Plan: [`apple/2026-10-19_ozan-prep-plan.md`](apple/2026-10-19_ozan-prep-plan.md). Briefing: [`apple/2026-10-19_org-briefing.md`](apple/2026-10-19_org-briefing.md) |
 | **Apple — AIML Data and Machine Learning Innovation** | **Nick Foti** (HM). Skip **Guillermo Sapiro** (private). Recruiter **Chelsea Elwood** | First call **2026-11-02**. No next step named. [`apple-dmli/2026-11-02_nick-call.md`](apple-dmli/2026-11-02_nick-call.md) | He still publishes, and he wants user impact from applied research. Multimodal project, not Closing the Loop. Do not ask what skill the team lacks. Do not name Foti or Sapiro to Chelsea. Do not expand the offer to reuse Health feedback. |
+| **Apple — Agentic AI Researcher, Herzliya** | **Miriam Farber** (HM) | Meeting in November 2026. [`miriam-farber/2026-11-05_meeting-cheat-sheet.md`](miriam-farber/2026-11-05_meeting-cheat-sheet.md) | Role ID **200690118-0865**. Decide ICT level, research ownership, and whether Seattle with visits to Herzliya is possible. Do not promise relocation. Do not claim production agents. |
 | **Meta — Multi-Modal Understanding & Synthesis** | **Michael** (HM Elad contacted; last name not in the intro). Intro **Elad Kravi** | Call booked. Sat 7 Nov 00:05–00:30 Thailand = Fri 6 Nov 09:05–09:30 Pacific. [`meta/2026-10-21_michael-intro.md`](meta/2026-10-21_michael-intro.md) | Req logged in that note. Pittsburgh, PA, plus one unnamed location. |
 
 After each note or call: drop `YYYY-MM-DD_*.md` in that company’s folder and add a row below.
@@ -68,6 +70,7 @@ After each note or call: drop `YYYY-MM-DD_*.md` in that company’s folder and a
 | 2026-11-02 | 90-second intro | Representation learning, Koopman VAEs, sequential disentanglement, then the ongoing time-series vision-language project. Logged as spoken. Two project sentences still say “we.” [`apple-dmli/2026-11-02_90-sec-intro.md`](apple-dmli/2026-11-02_90-sec-intro.md). |
 | 2026-11-02 | Meeting cheat sheet | One page for the call: intro, five questions, paper lines, and the lines not to cross. KoVAE, Dual-Time, and two research directions added. [`apple-dmli/2026-11-02_meeting-cheat-sheet.md`](apple-dmli/2026-11-02_meeting-cheat-sheet.md). |
 | 2026-11-02 | Nick call | First conversation. They still publish. He wants impact on users, applied research, and hands-on experiments. Multimodal project, not Closing the Loop. He took notes on which view helps which data, and on staged training plus reasoning traces. Two questions only. The skill question is the one not to repeat. No next step. [`apple-dmli/2026-11-02_nick-call.md`](apple-dmli/2026-11-02_nick-call.md). |
+| 2026-11-05 | Miriam Farber cheat sheet | Agentic AI Researcher, Herzliya, role ID 200690118-0865. HM Miriam Farber. Meeting in November 2026. Three decisions: ICT level, research ownership, Seattle with visits. [`miriam-farber/2026-11-05_meeting-cheat-sheet.md`](miriam-farber/2026-11-05_meeting-cheat-sheet.md). |
 
 ---
 
