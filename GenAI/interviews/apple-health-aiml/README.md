@@ -49,7 +49,7 @@
 | **2026-09-08** | **On-site — Haraldur** (3:05) | Done. Time-series representations; details not recovered. Thin: [`2026-09-08_onsite-debrief.md`](2026-09-08_onsite-debrief.md) |
 | **2026-09-08** | **On-site — Vincent Chan** (4:05) | Done. Fitness-team infra (self-weak) + menstrual onset; ~15 min over. Thin: [`2026-09-08_onsite-debrief.md`](2026-09-08_onsite-debrief.md) |
 | **2026-09-08** | **On-site day wrap** | All five done. [`2026-09-08_onsite-debrief.md`](2026-09-08_onsite-debrief.md) |
-| **2026-10-22** | **Closed, Omri’s account** | Comp was discussed at ICT5. Director and senior director blocked the offer: academic background, not enough product experience. Tyler said he would stay in touch. No close email is in the repo. Do not reopen it from the Foti screen. [`IndustrialResearch/apple-dmli/2026-10-22_strategy.md`](../../../IndustrialResearch/apple-dmli/2026-10-22_strategy.md). |
+| **2026-10-22** | **Closed, Omri’s account** | Comp was discussed at ICT5. Director and senior director blocked the offer: academic background, not enough product experience. Tyler said he would stay in touch. No close email is in the repo. Do not reopen it from the Foti screen. [`IndustrialResearch/Apple-NickFoti/2026-10-22_strategy.md`](../../../IndustrialResearch/Apple-NickFoti/2026-10-22_strategy.md). |
 
 ## Loop (from Tyler)
 
@@ -91,4 +91,4 @@ Apple rarely labels **Health AIML** vs **Health AI** cleanly; prefer Tyler / HM 
 | **Aditya Nair** | Senior MLE, Apple Health (Seattle) | Local org signal | [anair111](https://www.linkedin.com/in/anair111) |
 | **Raja Giryes** | TAU prof; Apple **RS on sabbatical** (Jul 2025–) | Public: **Apple AI Research** / **Vladlen Koltun**; ICASSP 2026 **speech** speculative decoding. **Not** Health AIML. Historical: Sapiro postdoc (Duke 2014–15) | [raja-giryes-0818935](https://www.linkedin.com/in/raja-giryes-0818935) |
 
-**Outreach:** Do **not** email Shirley, Feng, or the five on-site interviewers. Tyler / the plan email own scheduling. **Kimmel → Sapiro (2026-08-22):** Guillermo **replied** — [`2026-08-22_kimmel-sapiro-outreach.md`](2026-08-22_kimmel-sapiro-outreach.md). One clarification already sent. **No third email.** Do not name-drop papers. **Raja:** wrong org for this req. His intro to **Ozan Sener** (Koltun’s ML group, 2026-10-17) lives in [`IndustrialResearch/apple/`](../../../IndustrialResearch/apple/).
+**Outreach:** Do **not** email Shirley, Feng, or the five on-site interviewers. Tyler / the plan email own scheduling. **Kimmel → Sapiro (2026-08-22):** Guillermo **replied** — [`2026-08-22_kimmel-sapiro-outreach.md`](2026-08-22_kimmel-sapiro-outreach.md). One clarification already sent. **No third email.** Do not name-drop papers. **Raja:** wrong org for this req. His intro to **Ozan Sener** (Koltun’s ML group, 2026-10-17) lives in [`IndustrialResearch/Apple-OzanSener/`](../../../IndustrialResearch/Apple-OzanSener/).

@@ -25,11 +25,11 @@ After mock interview, timed code drill, real interview, exploration session, or 
 
 **ScientificML / Siemens mocks** append to **[`ScientificML/Siemens/mocks.md`](../../ScientificML/Siemens/mocks.md)** — one running file, not one file per mock. Run and log via the `siemens-mock` skill. Company call notes stay as `ScientificML/Siemens/YYYY-MM-DD_*.md`.
 
-**IndustrialResearch / Apple (Ozan) mocks** append to **[`IndustrialResearch/apple/mocks.md`](../../IndustrialResearch/apple/mocks.md)** — one running file. A real call is its own note, `IndustrialResearch/apple/YYYY-MM-DD_*.md`, not a section in the mock log. Add a row to [`IndustrialResearch/INDEX.md`](../../IndustrialResearch/INDEX.md) either way.
+**IndustrialResearch / Apple (Ozan) mocks** append to **[`IndustrialResearch/Apple-OzanSener/mocks.md`](../../IndustrialResearch/Apple-OzanSener/mocks.md)** — one running file. A real call is its own note, `IndustrialResearch/Apple-OzanSener/YYYY-MM-DD_*.md`, not a section in the mock log. Add a row to [`IndustrialResearch/INDEX.md`](../../IndustrialResearch/INDEX.md) either way.
 
-**IndustrialResearch / Apple DMLI (Nick Foti)** notes live under **[`IndustrialResearch/apple-dmli/`](../../IndustrialResearch/apple-dmli/)**. A real email or call is `IndustrialResearch/apple-dmli/YYYY-MM-DD_*.md`. Add a row to [`IndustrialResearch/INDEX.md`](../../IndustrialResearch/INDEX.md). Do not file Foti or Chelsea notes under `apple/` (that folder is Ozan) or under Health AIML.
+**IndustrialResearch / Apple DMLI (Nick Foti)** notes live under **[`IndustrialResearch/Apple-NickFoti/`](../../../IndustrialResearch/Apple-NickFoti/)**. A real email or call is `IndustrialResearch/Apple-NickFoti/YYYY-MM-DD_*.md`. Add a row to [`IndustrialResearch/INDEX.md`](../../IndustrialResearch/INDEX.md). Do not file Foti or Chelsea notes under `Apple-OzanSener/` or under Health AIML.
 
-**IndustrialResearch / Meta** notes live under **[`IndustrialResearch/meta/`](../../IndustrialResearch/meta/)**. A real email or call is `IndustrialResearch/meta/YYYY-MM-DD_*.md`. Add a row to [`IndustrialResearch/INDEX.md`](../../IndustrialResearch/INDEX.md). Do not file Meta notes under Apple or GenAI.
+**IndustrialResearch / Meta** notes live under **[`IndustrialResearch/Meta-Michael/`](../../../IndustrialResearch/Meta-Michael/)**. A real email or call is `IndustrialResearch/Meta-Michael/YYYY-MM-DD_*.md`. Add a row to [`IndustrialResearch/INDEX.md`](../../IndustrialResearch/INDEX.md). Do not file Meta notes under Apple or GenAI.
 
 **General reusable references** about Omri or project background live under **`.cursor/skills/debrief/`** so every future agent can load them independent of interview track.
 
@@ -53,7 +53,7 @@ Template: [`Amazon_FinTech/debrief/README.md`](../../Amazon_FinTech/debrief/READ
    - Session type, duration, what was covered
    - What went well / what broke
    - Any recurring corrections ("still wrong", "forgot to mention X")
-2. **Write debrief** — FinTech session notes → **`Amazon_FinTech/debrief/`**. SCOT session notes → **`Amazon_SCOT/notes/`**. Forecasting session notes → **`Forecasting/notes/`**. GenAI session notes → **`GenAI/notes/`** (company calls → **`GenAI/interviews/`**). Siemens mocks → append to **`ScientificML/Siemens/mocks.md`**. Ozan mocks → append to **`IndustrialResearch/apple/mocks.md`**. A real Ozan call → **`IndustrialResearch/apple/YYYY-MM-DD_*.md`**. Foti / DMLI notes → **`IndustrialResearch/apple-dmli/YYYY-MM-DD_*.md`**. Meta notes → **`IndustrialResearch/meta/YYYY-MM-DD_*.md`**. General background about Omri or a project → **`.cursor/skills/debrief/`**.
+2. **Write debrief** — FinTech session notes → **`Amazon_FinTech/debrief/`**. SCOT session notes → **`Amazon_SCOT/notes/`**. Forecasting session notes → **`Forecasting/notes/`**. GenAI session notes → **`GenAI/notes/`** (company calls → **`GenAI/interviews/`**). Siemens mocks → append to **`ScientificML/Siemens/mocks.md`**. Ozan mocks → append to **`IndustrialResearch/Apple-OzanSener/mocks.md`**. A real Ozan call → **`IndustrialResearch/Apple-OzanSener/YYYY-MM-DD_*.md`**. Foti / DMLI notes → **`IndustrialResearch/Apple-NickFoti/YYYY-MM-DD_*.md`**. Meta notes → **`IndustrialResearch/Meta-Michael/YYYY-MM-DD_*.md`**. General background about Omri or a project → **`.cursor/skills/debrief/`**.
 3. **Update indexes**
    - FinTech: add row to debrief table in [`Amazon_FinTech/INDEX.md`](../../Amazon_FinTech/INDEX.md); mock table / timed log / stories README as applicable
    - SCOT: add timeline or key-files pointer in [`Amazon_SCOT/INDEX.md`](../../Amazon_SCOT/INDEX.md)

@@ -24,7 +24,7 @@ Not a production app repo.
    - Forecasting → [`Forecasting/INDEX.md`](Forecasting/INDEX.md) (week plan, notes, `/forecasting` drills)
    - GenAI → [`GenAI/INDEX.md`](GenAI/INDEX.md) (interviews, notes; GenAI roles only)
    - ScientificML → [`ScientificML/INDEX.md`](ScientificML/INDEX.md) (Siemens and similar scientific-ML loops)
-   - IndustrialResearch → [`IndustrialResearch/INDEX.md`](IndustrialResearch/INDEX.md) (research-lab intros; Koltun / Ozan lives in [`IndustrialResearch/apple/`](IndustrialResearch/apple/); AIML DMLI / Nick Foti lives in [`IndustrialResearch/apple-dmli/`](IndustrialResearch/apple-dmli/); Miriam Farber / Agentic AI Researcher lives in [`IndustrialResearch/miriam-farber/`](IndustrialResearch/miriam-farber/); Meta lives in [`IndustrialResearch/meta/`](IndustrialResearch/meta/))
+   - IndustrialResearch → [`IndustrialResearch/INDEX.md`](IndustrialResearch/INDEX.md) (research-lab intros; Koltun / Ozan lives in [`IndustrialResearch/Apple-OzanSener/`](IndustrialResearch/Apple-OzanSener/); AIML DMLI / Nick Foti lives in [`IndustrialResearch/Apple-NickFoti/`](IndustrialResearch/Apple-NickFoti/); Miriam Farber / Agentic AI Researcher lives in [`IndustrialResearch/Apple-MiriamFarber/`](IndustrialResearch/Apple-MiriamFarber/); Meta lives in [`IndustrialResearch/Meta-Michael/`](IndustrialResearch/Meta-Michael/))
    - SCOT → [`Amazon_SCOT/INDEX.md`](Amazon_SCOT/INDEX.md) (contacts, collab, contribution pitch, questions)
 3. [`.cursor/skills/debrief/omri_azencot_experience.md`](.cursor/skills/debrief/omri_azencot_experience.md) — experience profile, flagship project, IC framing (shared)
 4. FinTech only: [`Amazon_FinTech/prep-plan.md`](Amazon_FinTech/prep-plan.md) — weekly plan; check today's focus
@@ -32,7 +32,7 @@ Not a production app repo.
 6. Forecasting only: [`Forecasting/prep-plan.md`](Forecasting/prep-plan.md); notes under [`Forecasting/notes/`](Forecasting/notes/); company prep under [`Forecasting/interviews/`](Forecasting/interviews/) (not GenAI/SCOT)
 7. GenAI only: notes under [`GenAI/notes/`](GenAI/notes/); company prep under [`GenAI/interviews/`](GenAI/interviews/) (not under Forecasting)
 8. ScientificML only: company prep under [`ScientificML/`](ScientificML/) (Siemens lives in [`ScientificML/Siemens/`](ScientificML/Siemens/); not under GenAI or Forecasting)
-9. IndustrialResearch only: company prep under [`IndustrialResearch/`](IndustrialResearch/) (Koltun / Ozan lives in [`IndustrialResearch/apple/`](IndustrialResearch/apple/); AIML DMLI / Nick Foti lives in [`IndustrialResearch/apple-dmli/`](IndustrialResearch/apple-dmli/); Miriam Farber / Agentic AI Researcher lives in [`IndustrialResearch/miriam-farber/`](IndustrialResearch/miriam-farber/); Meta research lives in [`IndustrialResearch/meta/`](IndustrialResearch/meta/); not the Health AIML loop under GenAI)
+9. IndustrialResearch only: company prep under [`IndustrialResearch/`](IndustrialResearch/) (Koltun / Ozan lives in [`IndustrialResearch/Apple-OzanSener/`](IndustrialResearch/Apple-OzanSener/); AIML DMLI / Nick Foti lives in [`IndustrialResearch/Apple-NickFoti/`](IndustrialResearch/Apple-NickFoti/); Miriam Farber / Agentic AI Researcher lives in [`IndustrialResearch/Apple-MiriamFarber/`](IndustrialResearch/Apple-MiriamFarber/); Meta research lives in [`IndustrialResearch/Meta-Michael/`](IndustrialResearch/Meta-Michael/); not the Health AIML loop under GenAI)
 10. SCOT only: [`contribution-plan.md`](Amazon_SCOT/contribution-plan.md) + [`mengfei-notes.md`](Amazon_SCOT/mengfei-notes.md) before Boris/Mengfei calls; session/post-call notes in [`Amazon_SCOT/notes/`](Amazon_SCOT/notes/) (SCOT debriefs live here, not under FinTech/Forecasting/GenAI/ScientificML)
 
 ## Behavior
@@ -62,7 +62,7 @@ Not a production app repo.
 
 ## IndustrialResearch interviews
 
-From the 2026-10-20 call with Ozan Sener ([`IndustrialResearch/apple/2026-10-20_ozan-call.md`](IndustrialResearch/apple/2026-10-20_ozan-call.md)):
+From the 2026-10-20 call with Ozan Sener ([`IndustrialResearch/Apple-OzanSener/2026-10-20_ozan-call.md`](IndustrialResearch/Apple-OzanSener/2026-10-20_ozan-call.md)):
 
 - A research interview in this loop goes to the **assumption** that makes the method work, and to **how it differs** from the nearby methods.
 - Results are for when they are asked. Know the numbers. Do not open with the table for an interviewer working in this style.

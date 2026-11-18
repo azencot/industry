@@ -8,7 +8,7 @@
 | **Hiring manager** | **Miriam Farber** |
 | **Stage** | Meeting in November 2026. Cheat sheet: [`2026-11-05_meeting-cheat-sheet.md`](2026-11-05_meeting-cheat-sheet.md). |
 
-This is a separate Apple conversation. It is not Vladlen Koltun’s organization ([`../apple/`](../apple/)), not AIML DMLI / Nick Foti ([`../apple-dmli/`](../apple-dmli/)), and not Health AIML under [`GenAI/interviews/apple-health-aiml/`](../../GenAI/interviews/apple-health-aiml/).
+This is a separate Apple conversation. It is not Vladlen Koltun’s organization ([`../Apple-OzanSener/`](../Apple-OzanSener/)), not AIML DMLI / Nick Foti ([`../Apple-NickFoti/`](../Apple-NickFoti/)), and not Health AIML under [`GenAI/interviews/apple-health-aiml/`](../../GenAI/interviews/apple-health-aiml/).
 
 Decide three things on the call: ICT level (and whether ICT5 is in scope), research ownership versus implementation, and whether a Seattle base with visits to Herzliya is possible.
 

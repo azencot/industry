@@ -65,7 +65,7 @@ Say if asked. Do not open with this list.
 | World models of human behavior, planning, simulation, model-based RL | Not this research program. Do not claim it. |
 | Audio | Not a line to offer. |
 
-Leave, students, and start date stay off this email. If he asks: unpaid leave since 1 October 2026, through October 2027. The practiced version is in [`../apple/2026-10-20_ozan-call.md`](../apple/2026-10-20_ozan-call.md). Do not mention that call.
+Leave, students, and start date stay off this email. If he asks: unpaid leave since 1 October 2026, through October 2027. The practiced version is in [`../Apple-OzanSener/2026-10-20_ozan-call.md`](../Apple-OzanSener/2026-10-20_ozan-call.md). Do not mention that call.
 
 ---
 
