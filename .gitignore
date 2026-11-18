@@ -6,6 +6,9 @@ __pycache__/
 **/__pycache__/
 *.pyc
 
+# Matplotlib font cache
+.mplconfig/
+
 # Confidential NeurIPS submission (anonymous / do not distribute)
 Amazon_SCOT/papers/neurips2026_kgo_koopman_generative_operator.pdf
 
