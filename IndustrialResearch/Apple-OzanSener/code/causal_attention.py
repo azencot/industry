@@ -21,11 +21,23 @@ Constraints:
 
 from __future__ import annotations
 
+import math
 import torch
 
 
 def causal_attention(q: torch.Tensor, k: torch.Tensor, v: torch.Tensor) -> torch.Tensor:
-    raise NotImplementedError("Implement causal attention.")
+    # q, k, v in [B, H, T, D]
+    B, H, T, D = q.shape
+    qkt = q @ k.transpose(-2, -1) / math.sqrt(D)                        # [B, H, T, D] @ [B, H, D, T] -> [B, H, T, T]
+
+    # causal mask
+    mask = torch.triu(torch.ones(T, T, dtype=bool, device=q.device), diagonal=1)    # [T, T] -> [T, T]
+    scores = qkt.masked_fill(mask[None, None, :, :], float("-inf"))     # [T, T] -> [1, 1, T, T] -> [B, H, T, T]
+
+    scores = torch.softmax(scores, dim=-1)                             # [B, H, T, T] -> [B, H, T, T]
+
+    return scores @ v                                                   # [B, H, T, T] @ [B, H, T, D] -> [B, H, T, D] 
+
 
 
 if __name__ == "__main__":
