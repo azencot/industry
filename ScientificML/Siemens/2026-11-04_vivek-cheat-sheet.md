@@ -2,8 +2,13 @@
 **Interview:** November 5, 2026 | Principal Applied Scientist, Physical AI
 **Expected emphasis:** End-to-end ML system design, scientific/industrial data, scaling and reliability. Danielle identified Vivek as the system-design interviewer, possibly including PDE data generation. His public profile suggests an engineering/systems perspective; exact questions are unknown.
 
+
+
+
 ## 1. Natural introduction (25–35 seconds)
 I'm an Associate Professor of Computer Science at Ben-Gurion University. My research focuses on time series, generative modeling, and dynamical systems. I've also been working hands-on with multimodal models, from data preparation and training to evaluation. I'm now exploring industry research roles, and I'm particularly interested in how scientific ML systems can generalize across real industrial settings.
+
+
 
 ## 2. Universal whiteboard framework — use in this order
 **Objective and action → prediction unit and horizon → data/labels → scale/latency → baseline/model → evaluation → serving → monitoring/failures.**
@@ -94,11 +99,15 @@ If he asks outside industrial ML: audio → VAD → ASR → speaker embeddings/d
 ## 9. Agent harness (only if asked)
 Task/permissions → model-driven orchestrator → validated tool call → execution → observation/state → next step. Include least privilege, timeouts, bounded retries, idempotency, checkpoints, approval for consequential actions, stopping rules. Evaluate task success, tool correctness, evidence grounding, safety, latency and cost. Start with one agent.
 
+
+
 ## 10. Questions for Vivek — choose 2
 1. "How do you decide which components of an industrial ML system should run at the edge versus centrally, especially when models become larger?"
 2. "When sensor data comes from very different equipment, do you see metadata standardization or learning across heterogeneity as the harder engineering challenge?"
+
 3. "What technical constraints have most changed your architecture decisions when moving ML from prototypes to industrial deployments?"
 4. "How do you validate synthetic-data pipelines and learned surrogates against real measurements or trusted solvers?"
+
 5. "How closely do applied scientists own the data and deployment architecture versus collaborating with dedicated infrastructure teams?"
 
 ## 11. Last-minute reminders
